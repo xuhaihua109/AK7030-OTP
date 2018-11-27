@@ -1,0 +1,1882 @@
+
+
+HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
+                                                                                               Tue Nov 27 17:18:07 2018
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
+     1                           	processor	16C77
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	config,global,class=CONFIG,delta=2
+     5                           	psect	idataCOMMON,global,class=CODE,delta=2
+     6                           	psect	cinit,global,class=CODE,delta=2
+     7                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	dataCOMMON,global,class=COMMON,space=1,delta=1
+     9                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+    10                           	psect	clrtext,global,class=CODE,delta=2
+    11                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    12                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+    13                           	psect	maintext,global,class=CODE,delta=2
+    14                           	psect	text561,local,class=CODE,delta=2
+    15                           	psect	text569,local,class=CODE,delta=2
+    16                           	psect	text570,local,class=CODE,delta=2
+    17                           	psect	text571,local,class=CODE,delta=2
+    18                           	psect	text572,local,class=CODE,delta=2
+    19                           	psect	text573,local,class=CODE,delta=2
+    20                           	psect	text574,local,class=CODE,delta=2
+    21                           	psect	text575,local,class=CODE,delta=2
+    22                           	psect	text576,local,class=CODE,delta=2
+    23                           	psect	text577,local,class=CODE,delta=2
+    24                           	psect	intentry,global,class=CODE,delta=2
+    25                           	psect	text578,local,class=CODE,delta=2
+    26                           	psect	pa_nodes,global,class=CODE,delta=2
+    27                           	dabs	1,0x7E,2
+    28  000A                     	;#
+    29                           
+    30                           	psect	config
+    31  2000  2FFF               	dw	12287	;#
+    32  2001  3FDE               	dw	16350	;#
+    33  2002  3FF8               	dw	16376	;#
+    34                           
+    35                           	psect	idataCOMMON
+    36  0000                     __pidataCOMMON:	
+    37  001F                     _ADCON0	set	31
+    38  001E                     _ADRESH	set	30
+    39  001B                     _OP1CON0	set	27
+    40  001C                     _OP1CON1	set	28
+    41  001D                     _OP1CON2	set	29
+    42  0010                     _T1CON	set	16
+    43  000F                     _TMR1H	set	15
+    44  000E                     _TMR1L	set	14
+    45  006A                     _ADIF	set	106
+    46  00F8                     _ADON	set	248
+    47  00FA                     _CHS0	set	250
+    48  00FB                     _CHS1	set	251
+    49  00FC                     _CHS2	set	252
+    50  00FD                     _CHS3	set	253
+    51  005F                     _GIE	set	95
+    52  0028                     _PA0	set	40
+    53  005E                     _PEIE	set	94
+    54  0060                     _TMR1IF	set	96
+    55  0080                     _TMR1ON	set	128
+    56  009F                     _ADCON1	set	159
+    57  009E                     _ADRESL	set	158
+    58  0087                     _DACCON	set	135
+    59  0088                     _DACR0	set	136
+    60  0089                     _DACR1	set	137
+    61  009B                     _OP2CON0	set	155
+    62  009C                     _OP2CON1	set	156
+    63  009D                     _OP2CON2	set	157
+    64  046A                     _ADIE	set	1130
+    65  0460                     _TMR1IE	set	1120
+    66  0428                     _TRISA0	set	1064
+    67  0429                     _TRISA1	set	1065
+    68  042B                     _TRISA3	set	1067
+    69  042F                     _TRISA7	set	1071
+    70  0430                     _TRISB0	set	1072
+    71  0432                     _TRISB2	set	1074
+    72  0433                     _TRISB3	set	1075
+    73  0434                     _TRISB4	set	1076
+    74  0435                     _TRISB5	set	1077
+    75  0436                     _TRISB6	set	1078
+    76  0108                     _CLKPR	set	264
+    77  0847                     _CLKPCE	set	2119
+    78                           
+    79                           	psect	cinit
+    80  0119                     start_initialization:	
+    81  0119  3020               	movlw	low __pbssBANK0
+    82                           
+    83                           ; Clear objects allocated to COMMON
+    84  011A  01F8               	clrf	__pbssCOMMON& (0+127)
+    85  011B  01F9               	clrf	(__pbssCOMMON+1)& (0+127)
+    86  011C  01FA               	clrf	(__pbssCOMMON+2)& (0+127)
+    87                           
+    88                           ; Clear objects allocated to BANK0
+    89  011D  1383               	bcf	3,7	;select IRP bank0
+    90  011E  0084               	movwf	4
+    91  011F  303A               	movlw	low (__pbssBANK0+26)
+    92  0120  118A  2132         	fcall	clear_ram
+    93                           
+    94                           ;initializer for _sampleChannelSelect
+    95  0122  300D               	movlw	13
+    96  0123  00FB               	movwf	__pdataCOMMON& (0+127)
+    97  0124                     end_of_initialization:	
+    98                           ;End of C runtime variable initialization code
+    99                           
+   100  0124  0183               	clrf	3
+   101  0125  118A  28D4         	ljmp	_main	;jump to C main() function
+   102                           
+   103                           	psect	bssCOMMON
+   104  0078                     __pbssCOMMON:	
+   105  0078                     _sampleCount:	
+   106  0078                     	ds	1
+   107  0079                     _sampleTimes:	
+   108  0079                     	ds	1
+   109  007A                     _timer10msCnt:	
+   110  007A                     	ds	1
+   111                           
+   112                           	psect	dataCOMMON
+   113  007B                     __pdataCOMMON:	
+   114  007B                     _sampleChannelSelect:	
+   115  007B                     	ds	1
+   116                           
+   117                           	psect	bssBANK0
+   118  0020                     __pbssBANK0:	
+   119  0020                     _buffer_Sample_AD_Value:	
+   120  0020                     	ds	20
+   121  0034                     ISR@flashCnt:	
+   122  0034                     	ds	2
+   123  0036                     _multiFilterMaxValue:	
+   124  0036                     	ds	2
+   125  0038                     _multiFilterMinValue:	
+   126  0038                     	ds	2
+   127                           
+   128                           	psect	clrtext
+   129  0132                     clear_ram:	
+   130                           ;	Called with FSR containing the base address, and
+   131                           ;	W with the last address+1
+   132                           
+   133  0132  0064               	clrwdt	;clear the watchdog before getting into this loop
+   134  0133                     clrloop:	
+   135  0133  0180               	clrf	0	;clear RAM location pointed to by FSR
+   136  0134  0A84               	incf	4,f	;increment pointer
+   137  0135  0604               	xorwf	4,w	;XOR with final address
+   138  0136  1903               	btfsc	3,2	;have we reached the end yet?
+   139  0137  3400               	retlw	0	;all done for this memory range, return
+   140  0138  0604               	xorwf	4,w	;XOR again to restore value
+   141  0139  2933               	goto	clrloop	;do the next byte
+   142                           
+   143                           	psect	cstackCOMMON
+   144  0070                     __pcstackCOMMON:	
+   145  0070                     ?_clock_config:	
+   146  0070                     ?_timer1_interrupt_config:	
+   147                           ; 0 bytes @ 0x0
+   148                           
+   149  0070                     ?_timer1_config:	
+   150                           ; 0 bytes @ 0x0
+   151                           
+   152  0070                     ?_adConverter_config:	
+   153                           ; 0 bytes @ 0x0
+   154                           
+   155  0070                     ?_dac_init:	
+   156                           ; 0 bytes @ 0x0
+   157                           
+   158  0070                     ?_op1_init:	
+   159                           ; 0 bytes @ 0x0
+   160                           
+   161  0070                     ?_op2_init:	
+   162                           ; 0 bytes @ 0x0
+   163                           
+   164  0070                     ?_start_timer1:	
+   165                           ; 0 bytes @ 0x0
+   166                           
+   167  0070                     ?_process_AD_Converter_Value:	
+   168                           ; 0 bytes @ 0x0
+   169                           
+   170  0070                     ?_AD_Sample:	
+   171                           ; 0 bytes @ 0x0
+   172                           
+   173  0070                     ?_SetTempThermistorChannel:	
+   174                           ; 0 bytes @ 0x0
+   175                           
+   176  0070                     ?_main:	
+   177                           ; 0 bytes @ 0x0
+   178                           
+   179  0070                     ?_ISR:	
+   180                           ; 0 bytes @ 0x0
+   181                           
+   182  0070                     ??_ISR:	
+   183                           ; 0 bytes @ 0x0
+   184                           
+   185  0070                     ?_start_AD_Converter:	
+   186                           ; 0 bytes @ 0x0
+   187                           
+   188  0070                     ?_stop_AD_Converter:	
+   189                           ; 0 bytes @ 0x0
+   190                           
+   191  0070                     ?_clearAdCompleteFalg:	
+   192                           ; 0 bytes @ 0x0
+   193                           
+   194  0070                     ?_isAD_Completed:	
+   195                           ; 0 bytes @ 0x0
+   196                           
+   197                           
+   198                           ; 1 bytes @ 0x0
+   199  0070                     	ds	2
+   200  0072                     ??_clock_config:	
+   201  0072                     ??_timer1_interrupt_config:	
+   202                           ; 0 bytes @ 0x2
+   203                           
+   204  0072                     ??_timer1_config:	
+   205                           ; 0 bytes @ 0x2
+   206                           
+   207  0072                     ??_adConverter_config:	
+   208                           ; 0 bytes @ 0x2
+   209                           
+   210  0072                     ??_dac_init:	
+   211                           ; 0 bytes @ 0x2
+   212                           
+   213  0072                     ??_op1_init:	
+   214                           ; 0 bytes @ 0x2
+   215                           
+   216  0072                     ??_op2_init:	
+   217                           ; 0 bytes @ 0x2
+   218                           
+   219  0072                     ??_start_timer1:	
+   220                           ; 0 bytes @ 0x2
+   221                           
+   222  0072                     ??_SetTempThermistorChannel:	
+   223                           ; 0 bytes @ 0x2
+   224                           
+   225  0072                     ??_start_AD_Converter:	
+   226                           ; 0 bytes @ 0x2
+   227                           
+   228  0072                     ??_stop_AD_Converter:	
+   229                           ; 0 bytes @ 0x2
+   230                           
+   231  0072                     ??_isAD_Completed:	
+   232                           ; 0 bytes @ 0x2
+   233                           
+   234  0072                     ??_clearAdCompleteFalg:	
+   235                           ; 0 bytes @ 0x2
+   236                           
+   237  0072                     ?_getAdValue:	
+   238                           ; 0 bytes @ 0x2
+   239                           
+   240                           
+   241                           ; 2 bytes @ 0x2
+   242  0072                     	ds	2
+   243  0074                     ??_getAdValue:	
+   244  0074                     getAdValue@AdValue:	
+   245                           ; 0 bytes @ 0x4
+   246                           
+   247                           
+   248                           ; 2 bytes @ 0x4
+   249  0074                     	ds	2
+   250  0076                     getAdValue@AdHighValue:	
+   251                           
+   252                           ; 2 bytes @ 0x6
+   253  0076                     	ds	2
+   254  0078                     ??_process_AD_Converter_Value:	
+   255  0078                     ??_main:	
+   256                           ; 0 bytes @ 0x8
+   257                           
+   258                           
+   259                           	psect	cstackBANK0
+   260  003A                     __pcstackBANK0:	
+   261                           ; 0 bytes @ 0x8
+   262                           
+   263  003A                     ??_AD_Sample:	
+   264                           
+   265                           ; 0 bytes @ 0x0
+   266  003A                     	ds	2
+   267                           
+   268                           	psect	maintext
+   269  00D4                     __pmaintext:	
+   270 ;;Data sizes: Strings 0, constant 0, data 1, bss 29, persistent 0 stack 0
+   271 ;;Auto spaces:   Size  Autos    Used
+   272 ;; COMMON          14      8      12
+   273 ;; BANK0           80      2      28
+   274 ;; BANK1           80      0       0
+   275 ;; BANK3           96      0       0
+   276 ;; BANK2           96      0       0
+   277 ;;
+   278 ;; Pointer list with targets:
+   279 ;; ?_getAdValue	unsigned int  size(1) Largest target is 0
+   280 ;;
+   281 ;;
+   282 ;; Critical Paths under _main in COMMON
+   283 ;;
+   284 ;;   _AD_Sample->_getAdValue
+   285 ;;
+   286 ;; Critical Paths under _ISR in COMMON
+   287 ;;
+   288 ;;   None.
+   289 ;;
+   290 ;; Critical Paths under _main in BANK0
+   291 ;;
+   292 ;;   _process_AD_Converter_Value->_AD_Sample
+   293 ;;
+   294 ;; Critical Paths under _ISR in BANK0
+   295 ;;
+   296 ;;   None.
+   297 ;;
+   298 ;; Critical Paths under _main in BANK1
+   299 ;;
+   300 ;;   None.
+   301 ;;
+   302 ;; Critical Paths under _ISR in BANK1
+   303 ;;
+   304 ;;   None.
+   305 ;;
+   306 ;; Critical Paths under _main in BANK3
+   307 ;;
+   308 ;;   None.
+   309 ;;
+   310 ;; Critical Paths under _ISR in BANK3
+   311 ;;
+   312 ;;   None.
+   313 ;;
+   314 ;; Critical Paths under _main in BANK2
+   315 ;;
+   316 ;;   None.
+   317 ;;
+   318 ;; Critical Paths under _ISR in BANK2
+   319 ;;
+   320 ;;   None.
+   321 ;;
+   322 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   323 ;;
+   324 ;;
+   325 ;;Call Graph Tables:
+   326 ;;
+   327 ;; ---------------------------------------------------------------------------------
+   328 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   329 ;; ---------------------------------------------------------------------------------
+   330 ;; (0) _main                                                 0     0      0      50
+   331 ;;                       _clock_config
+   332 ;;            _timer1_interrupt_config
+   333 ;;                      _timer1_config
+   334 ;;                 _adConverter_config
+   335 ;;                           _dac_init
+   336 ;;                           _op1_init
+   337 ;;                           _op2_init
+   338 ;;                       _start_timer1
+   339 ;;         _process_AD_Converter_Value
+   340 ;; ---------------------------------------------------------------------------------
+   341 ;; (1) _process_AD_Converter_Value                           0     0      0      50
+   342 ;;                          _AD_Sample
+   343 ;; ---------------------------------------------------------------------------------
+   344 ;; (2) _AD_Sample                                            2     2      0      50
+   345 ;;                                              0 BANK0      2     2      0
+   346 ;;           _SetTempThermistorChannel
+   347 ;;                 _start_AD_Converter
+   348 ;;                     _isAD_Completed
+   349 ;;                _clearAdCompleteFalg
+   350 ;;                  _stop_AD_Converter
+   351 ;;                         _getAdValue
+   352 ;; ---------------------------------------------------------------------------------
+   353 ;; (3) _getAdValue                                           6     4      2      50
+   354 ;;                                              2 COMMON     6     4      2
+   355 ;;                     _isAD_Completed
+   356 ;; ---------------------------------------------------------------------------------
+   357 ;; (3) _SetTempThermistorChannel                             0     0      0       0
+   358 ;; ---------------------------------------------------------------------------------
+   359 ;; (3) _clearAdCompleteFalg                                  0     0      0       0
+   360 ;; ---------------------------------------------------------------------------------
+   361 ;; (4) _isAD_Completed                                       0     0      0       0
+   362 ;; ---------------------------------------------------------------------------------
+   363 ;; (3) _stop_AD_Converter                                    0     0      0       0
+   364 ;; ---------------------------------------------------------------------------------
+   365 ;; (3) _start_AD_Converter                                   0     0      0       0
+   366 ;; ---------------------------------------------------------------------------------
+   367 ;; (1) _start_timer1                                         0     0      0       0
+   368 ;; ---------------------------------------------------------------------------------
+   369 ;; (1) _op2_init                                             0     0      0       0
+   370 ;; ---------------------------------------------------------------------------------
+   371 ;; (1) _op1_init                                             0     0      0       0
+   372 ;; ---------------------------------------------------------------------------------
+   373 ;; (1) _dac_init                                             0     0      0       0
+   374 ;; ---------------------------------------------------------------------------------
+   375 ;; (1) _adConverter_config                                   0     0      0       0
+   376 ;; ---------------------------------------------------------------------------------
+   377 ;; (1) _timer1_config                                        0     0      0       0
+   378 ;; ---------------------------------------------------------------------------------
+   379 ;; (1) _timer1_interrupt_config                              0     0      0       0
+   380 ;; ---------------------------------------------------------------------------------
+   381 ;; (1) _clock_config                                         0     0      0       0
+   382 ;; ---------------------------------------------------------------------------------
+   383 ;; Estimated maximum stack depth 4
+   384 ;; ---------------------------------------------------------------------------------
+   385 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   386 ;; ---------------------------------------------------------------------------------
+   387 ;; (5) _ISR                                                  2     2      0       0
+   388 ;;                                              0 COMMON     2     2      0
+   389 ;; ---------------------------------------------------------------------------------
+   390 ;; Estimated maximum stack depth 5
+   391 ;; ---------------------------------------------------------------------------------
+   392 ;; Call Graph Graphs:
+   393 ;; _main (ROOT)
+   394 ;;   _clock_config
+   395 ;;   _timer1_interrupt_config
+   396 ;;   _timer1_config
+   397 ;;   _adConverter_config
+   398 ;;   _dac_init
+   399 ;;   _op1_init
+   400 ;;   _op2_init
+   401 ;;   _start_timer1
+   402 ;;   _process_AD_Converter_Value
+   403 ;;     _AD_Sample
+   404 ;;       _SetTempThermistorChannel
+   405 ;;       _start_AD_Converter
+   406 ;;       _isAD_Completed
+   407 ;;       _clearAdCompleteFalg
+   408 ;;       _stop_AD_Converter
+   409 ;;       _getAdValue
+   410 ;;         _isAD_Completed
+   411 ;;
+   412 ;; _ISR (ROOT)
+   413 ;;
+   414 ;; Address spaces:
+   415 ;;Name               Size   Autos  Total    Cost      Usage
+   416 ;;BANK3               60      0       0      10        0.0%
+   417 ;;BITBANK3            60      0       0       9        0.0%
+   418 ;;SFR3                 0      0       0       4        0.0%
+   419 ;;BITSFR3              0      0       0       4        0.0%
+   420 ;;BANK2               60      0       0      12        0.0%
+   421 ;;BITBANK2            60      0       0      11        0.0%
+   422 ;;SFR2                 0      0       0       5        0.0%
+   423 ;;BITSFR2              0      0       0       5        0.0%
+   424 ;;SFR1                 0      0       0       2        0.0%
+   425 ;;BITSFR1              0      0       0       2        0.0%
+   426 ;;BANK1               50      0       0       8        0.0%
+   427 ;;BITBANK1            50      0       0       7        0.0%
+   428 ;;CODE                 0      0       0       0        0.0%
+   429 ;;DATA                 0      0      2C       6        0.0%
+   430 ;;ABS                  0      0      28       3        0.0%
+   431 ;;NULL                 0      0       0       0        0.0%
+   432 ;;STACK                0      0       4       2        0.0%
+   433 ;;BANK0               50      2      1C       5       35.0%
+   434 ;;BITBANK0            50      0       0       4        0.0%
+   435 ;;SFR0                 0      0       0       1        0.0%
+   436 ;;BITSFR0              0      0       0       1        0.0%
+   437 ;;COMMON               E      8       C       1       85.7%
+   438 ;;BITCOMMON            E      0       0       0        0.0%
+   439                           
+   440                           
+   441 ;; *************** function _main *****************
+   442 ;; Defined at:
+   443 ;;		line 83 in file "C:\AK7030-OTP\main.c"
+   444 ;; Parameters:    Size  Location     Type
+   445 ;;		None
+   446 ;; Auto vars:     Size  Location     Type
+   447 ;;		None
+   448 ;; Return value:  Size  Location     Type
+   449 ;;		None               void
+   450 ;; Registers used:
+   451 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   452 ;; Tracked objects:
+   453 ;;		On entry : 17F/0
+   454 ;;		On exit  : 60/0
+   455 ;;		Unchanged: FFE00/0
+   456 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   457 ;;      Params:         0       0       0       0       0
+   458 ;;      Locals:         0       0       0       0       0
+   459 ;;      Temps:          0       0       0       0       0
+   460 ;;      Totals:         0       0       0       0       0
+   461 ;;Total ram usage:        0 bytes
+   462 ;; Hardware stack levels required when called:    5
+   463 ;; This function calls:
+   464 ;;		_clock_config
+   465 ;;		_timer1_interrupt_config
+   466 ;;		_timer1_config
+   467 ;;		_adConverter_config
+   468 ;;		_dac_init
+   469 ;;		_op1_init
+   470 ;;		_op2_init
+   471 ;;		_start_timer1
+   472 ;;		_process_AD_Converter_Value
+   473 ;; This function is called by:
+   474 ;;		Startup code after reset
+   475 ;; This function uses a non-reentrant model
+   476 ;;
+   477  00D4                     _main:	
+   478                           
+   479                           ;main.c: 84: clock_config();
+   480                           
+   481                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   482  00D4  118A  215A  118A   	fcall	_clock_config
+   483                           
+   484                           ;main.c: 85: timer1_interrupt_config();
+   485  00D7  118A  2161  118A   	fcall	_timer1_interrupt_config
+   486                           
+   487                           ;main.c: 86: timer1_config();
+   488  00DA  118A  2152  118A   	fcall	_timer1_config
+   489                           
+   490                           ;main.c: 88: adConverter_config();
+   491  00DD  118A  2127  118A   	fcall	_adConverter_config
+   492                           
+   493                           ;main.c: 92: TRISB3=1;
+   494  00E0  1586               	bsf	6,3
+   495                           
+   496                           ;main.c: 93: TRISB4=1;
+   497  00E1  1606               	bsf	6,4
+   498                           
+   499                           ;main.c: 94: TRISB5=0;
+   500  00E2  1286               	bcf	6,5
+   501                           
+   502                           ;main.c: 97: TRISA7=0;
+   503  00E3  1385               	bcf	5,7
+   504                           
+   505                           ;main.c: 98: TRISB6=1;
+   506  00E4  1706               	bsf	6,6
+   507                           
+   508                           ;main.c: 100: TRISA0 = 0;
+   509  00E5  1005               	bcf	5,0
+   510                           
+   511                           ;main.c: 101: TRISA1 = 0;
+   512  00E6  1085               	bcf	5,1
+   513                           
+   514                           ;main.c: 102: TRISA3 = 0;
+   515  00E7  1185               	bcf	5,3
+   516                           
+   517                           ;main.c: 105: dac_init();
+   518  00E8  118A  214A  118A   	fcall	_dac_init
+   519                           
+   520                           ;main.c: 106: op1_init();
+   521  00EB  118A  2142  118A   	fcall	_op1_init
+   522                           
+   523                           ;main.c: 107: op2_init();
+   524  00EE  118A  213A  118A   	fcall	_op2_init
+   525                           
+   526                           ;main.c: 109: start_timer1();
+   527  00F1  118A  2167  118A   	fcall	_start_timer1
+   528  00F4                     l2798:	
+   529  00F4  0064               	clrwdt	;#
+   530                           
+   531                           ;main.c: 113: if(timer10msCnt >= 5 )
+   532  00F5  3005               	movlw	5
+   533  00F6  027A               	subwf	_timer10msCnt,w
+   534  00F7  1C03               	skipc
+   535  00F8  28F4               	goto	l2798
+   536                           
+   537                           ;main.c: 114: {
+   538                           ;main.c: 115: timer10msCnt = 0;
+   539  00F9  01FA               	clrf	_timer10msCnt
+   540                           
+   541                           ;main.c: 116: process_AD_Converter_Value();
+   542  00FA  118A  200D  118A   	fcall	_process_AD_Converter_Value
+   543  00FD  28F4               	goto	l2798
+   544  00FE                     __end_of_main:	
+   545                           
+   546                           	psect	text561
+   547  000D                     __ptext561:	
+   548 ;; =============== function _main ends ============
+   549                           
+   550                           
+   551 ;; *************** function _process_AD_Converter_Value *****************
+   552 ;; Defined at:
+   553 ;;		line 100 in file "C:\AK7030-OTP\common.c"
+   554 ;; Parameters:    Size  Location     Type
+   555 ;;		None
+   556 ;; Auto vars:     Size  Location     Type
+   557 ;;		None
+   558 ;; Return value:  Size  Location     Type
+   559 ;;		None               void
+   560 ;; Registers used:
+   561 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   562 ;; Tracked objects:
+   563 ;;		On entry : 0/0
+   564 ;;		On exit  : 60/0
+   565 ;;		Unchanged: FFE9F/0
+   566 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   567 ;;      Params:         0       0       0       0       0
+   568 ;;      Locals:         0       0       0       0       0
+   569 ;;      Temps:          0       0       0       0       0
+   570 ;;      Totals:         0       0       0       0       0
+   571 ;;Total ram usage:        0 bytes
+   572 ;; Hardware stack levels used:    1
+   573 ;; Hardware stack levels required when called:    4
+   574 ;; This function calls:
+   575 ;;		_AD_Sample
+   576 ;; This function is called by:
+   577 ;;		_main
+   578 ;; This function uses a non-reentrant model
+   579 ;;
+   580  000D                     _process_AD_Converter_Value:	
+   581                           
+   582                           ;common.c: 101: AD_Sample();
+   583                           
+   584                           ; Regs used in _process_AD_Converter_Value: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   585  000D  280E               	ljmp	l2702
+   586  000E                     __end_of_process_AD_Converter_Value:	
+   587  000E                     __ptext562:	
+   588 ;; =============== function _process_AD_Converter_Value ends ============
+   589                           
+   590                           
+   591 ;; *************** function _AD_Sample *****************
+   592 ;; Defined at:
+   593 ;;		line 114 in file "C:\AK7030-OTP\common.c"
+   594 ;; Parameters:    Size  Location     Type
+   595 ;;		None
+   596 ;; Auto vars:     Size  Location     Type
+   597 ;;		None
+   598 ;; Return value:  Size  Location     Type
+   599 ;;		None               void
+   600 ;; Registers used:
+   601 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   602 ;; Tracked objects:
+   603 ;;		On entry : 0/0
+   604 ;;		On exit  : 60/0
+   605 ;;		Unchanged: FFE9F/0
+   606 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   607 ;;      Params:         0       0       0       0       0
+   608 ;;      Locals:         0       0       0       0       0
+   609 ;;      Temps:          0       2       0       0       0
+   610 ;;      Totals:         0       2       0       0       0
+   611 ;;Total ram usage:        2 bytes
+   612 ;; Hardware stack levels used:    1
+   613 ;; Hardware stack levels required when called:    3
+   614 ;; This function calls:
+   615 ;;		_SetTempThermistorChannel
+   616 ;;		_start_AD_Converter
+   617 ;;		_isAD_Completed
+   618 ;;		_clearAdCompleteFalg
+   619 ;;		_stop_AD_Converter
+   620 ;;		_getAdValue
+   621 ;; This function is called by:
+   622 ;;		_process_AD_Converter_Value
+   623 ;; This function uses a non-reentrant model
+   624 ;;
+   625  000E                     _AD_Sample:	
+   626  000E                     l2702:	
+   627                           ; Regs used in _AD_Sample: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   628                           
+   629                           
+   630                           ;common.c: 115: if(sampleTimes == 0)
+   631  000E  08F9               	movf	_sampleTimes,f
+   632  000F  1D03               	skipz
+   633  0010  281B               	goto	l1342
+   634                           
+   635                           ;common.c: 116: {
+   636                           ;common.c: 117: SetTempThermistorChannel();
+   637  0011  209D  118A         	fcall	_SetTempThermistorChannel
+   638                           
+   639                           ;common.c: 118: multiFilterMaxValue = 0;
+   640  0013  01B6               	clrf	_multiFilterMaxValue
+   641  0014  01B7               	clrf	_multiFilterMaxValue+1
+   642                           
+   643                           ;common.c: 120: multiFilterSumValue = 0;
+   644  0015  01B8               	clrf	_multiFilterMinValue
+   645  0016  01B9               	clrf	_multiFilterMinValue+1
+   646                           
+   647                           ;common.c: 121: sampleCount = 1;
+   648  0017  01F8               	clrf	_sampleCount
+   649  0018  0AF8               	incf	_sampleCount,f
+   650                           
+   651                           ;common.c: 122: start_AD_Converter();
+   652  0019  2099  118A         	fcall	_start_AD_Converter
+   653  001B                     l1342:	
+   654                           
+   655                           ;common.c: 123: }
+   656                           ;common.c: 125: if(sampleTimes < 10)
+   657  001B  300A               	movlw	10
+   658  001C  0279               	subwf	_sampleTimes,w
+   659  001D  1C03               	btfss	3,0
+   660  001E  283A               	goto	l2726
+   661                           
+   662                           ;common.c: 178: else
+   663                           ;common.c: 179: {
+   664                           ;common.c: 180: sampleTimes = 0;
+   665  001F  01F9               	clrf	_sampleTimes
+   666                           
+   667                           ;common.c: 182: stop_AD_Converter();
+   668  0020  2090  118A         	fcall	_stop_AD_Converter
+   669                           
+   670                           ;common.c: 192: }
+   671                           ;common.c: 195: if(sampleChannelSelect == 13)
+   672  0022  087B               	movf	_sampleChannelSelect,w
+   673  0023  3A0D               	xorlw	13
+   674  0024  1D03               	skipz
+   675  0025  288D               	goto	l2764
+   676                           
+   677                           ;common.c: 196: {
+   678                           ;common.c: 197: sampleChannelSelect = 12;
+   679  0026  300C               	movlw	12
+   680  0027  00FB               	movwf	_sampleChannelSelect
+   681                           
+   682                           ;common.c: 198: }
+   683  0028  0008               	return
+   684  0029                     l2716:	
+   685                           
+   686                           ;common.c: 128: {
+   687                           ;common.c: 129: if(sampleCount <= 10)
+   688  0029  300B               	movlw	11
+   689  002A  0278               	subwf	_sampleCount,w
+   690  002B  1803               	skipnc
+   691  002C  2837               	goto	l2724
+   692                           
+   693                           ;common.c: 130: {
+   694                           ;common.c: 131: sampleCount ++;
+   695  002D  0AF8               	incf	_sampleCount,f
+   696                           
+   697                           ;common.c: 132: if(isAD_Completed())
+   698  002E  2094  118A         	fcall	_isAD_Completed
+   699  0030  3A00               	xorlw	0
+   700  0031  1903               	skipnz
+   701  0032  283A               	goto	l2726
+   702                           
+   703                           ;common.c: 81: ADIF = 0;
+   704                           
+   705                           ; Regs used in _clearAdCompleteFalg: []
+   706                           
+   707                           ;common.c: 133: {
+   708                           ;common.c: 134: clearAdCompleteFalg();
+   709  0033  110D               	bcf	13,2
+   710                           
+   711                           ;common.c: 135: stop_AD_Converter();
+   712  0034  2090  118A         	fcall	_stop_AD_Converter
+   713                           
+   714                           ;common.c: 136: break;
+   715  0036  283F               	goto	l2728
+   716  0037                     l2724:	
+   717                           
+   718                           ;common.c: 139: else
+   719                           ;common.c: 140: {
+   720                           ;common.c: 141: sampleCount = 0;
+   721  0037  01F8               	clrf	_sampleCount
+   722                           
+   723                           ;common.c: 142: sampleTimes = 0;
+   724  0038  01F9               	clrf	_sampleTimes
+   725                           
+   726                           ;common.c: 143: break;
+   727  0039  283F               	goto	l2728
+   728  003A                     l2726:	
+   729  003A  2094  118A         	fcall	_isAD_Completed
+   730  003C  3A00               	xorlw	0
+   731  003D  1903               	skipnz
+   732  003E  2829               	goto	l2716
+   733  003F                     l2728:	
+   734                           
+   735                           ;common.c: 144: }
+   736                           ;common.c: 145: }
+   737                           ;common.c: 147: if(sampleCount != 0)
+   738  003F  0878               	movf	_sampleCount,w
+   739  0040  1903               	btfsc	3,2
+   740  0041  284E               	goto	l2732
+   741                           
+   742                           ;common.c: 148: {
+   743                           ;common.c: 149: buffer_Sample_AD_Value[sampleTimes] = getAdValue();
+   744  0042  20AF  118A         	fcall	_getAdValue
+   745  0044  1003               	clrc
+   746  0045  0D79               	rlf	_sampleTimes,w
+   747  0046  3E20               	addlw	_buffer_Sample_AD_Value& (0+255)
+   748  0047  0084               	movwf	4
+   749  0048  0872               	movf	?_getAdValue,w
+   750  0049  1383               	bcf	3,7	;select IRP bank0
+   751  004A  0080               	movwf	0
+   752  004B  0A84               	incf	4,f
+   753  004C  0873               	movf	?_getAdValue+1,w
+   754  004D  2856               	goto	L1
+   755  004E                     l2732:	
+   756                           ;common.c: 150: }
+   757                           
+   758                           
+   759                           ;common.c: 151: else
+   760                           ;common.c: 152: {
+   761                           ;common.c: 153: buffer_Sample_AD_Value[sampleTimes] = 2048;
+   762  004E  1003               	clrc
+   763  004F  0D79               	rlf	_sampleTimes,w
+   764  0050  3E20               	addlw	_buffer_Sample_AD_Value& (0+255)
+   765  0051  0084               	movwf	4
+   766  0052  3008               	movlw	8
+   767  0053  1383               	bcf	3,7	;select IRP bank0
+   768  0054  0180               	clrf	0
+   769  0055  0A84               	incf	4,f
+   770  0056                     L1:	
+   771  0056  0080               	movwf	0
+   772                           
+   773                           ;common.c: 154: }
+   774                           ;common.c: 156: if(sampleTimes == 0)
+   775  0057  08F9               	movf	_sampleTimes,f
+   776  0058  1D03               	skipz
+   777  0059  2862               	goto	l2738
+   778                           
+   779                           ;common.c: 157: {
+   780                           ;common.c: 158: multiFilterMaxValue = buffer_Sample_AD_Value[0];
+   781  005A  0821               	movf	_buffer_Sample_AD_Value+1,w
+   782  005B  00B7               	movwf	_multiFilterMaxValue+1
+   783  005C  0820               	movf	_buffer_Sample_AD_Value,w
+   784  005D  00B6               	movwf	_multiFilterMaxValue
+   785                           
+   786                           ;common.c: 159: multiFilterMinValue = buffer_Sample_AD_Value[0];
+   787  005E  0821               	movf	_buffer_Sample_AD_Value+1,w
+   788  005F  00B9               	movwf	_multiFilterMinValue+1
+   789  0060  0820               	movf	_buffer_Sample_AD_Value,w
+   790  0061  00B8               	movwf	_multiFilterMinValue
+   791  0062                     l2738:	
+   792                           
+   793                           ;common.c: 160: }
+   794                           ;common.c: 161: if(multiFilterMaxValue < buffer_Sample_AD_Value[sampleTimes])
+   795  0062  20CA  118A         	fcall	PL2	;call to abstracted procedure
+   796  0064  0237               	subwf	_multiFilterMaxValue+1,w
+   797  0065  1D03               	skipz
+   798  0066  2869               	goto	u435
+   799  0067  083A               	movf	??_AD_Sample,w
+   800  0068  0236               	subwf	_multiFilterMaxValue,w
+   801  0069                     u435:	
+   802  0069  1803               	skipnc
+   803  006A  2874               	goto	l1353
+   804                           
+   805                           ;common.c: 162: {
+   806                           ;common.c: 163: multiFilterMaxValue = buffer_Sample_AD_Value[sampleTimes];
+   807  006B  1003               	clrc
+   808  006C  0D79               	rlf	_sampleTimes,w
+   809  006D  3E20               	addlw	_buffer_Sample_AD_Value& (0+255)
+   810  006E  0084               	movwf	4
+   811  006F  0800               	movf	0,w
+   812  0070  00B6               	movwf	_multiFilterMaxValue
+   813  0071  0A84               	incf	4,f
+   814  0072  0800               	movf	0,w
+   815  0073  00B7               	movwf	_multiFilterMaxValue+1
+   816  0074                     l1353:	
+   817                           
+   818                           ;common.c: 164: }
+   819                           ;common.c: 165: if(multiFilterMinValue > buffer_Sample_AD_Value[sampleTimes])
+   820  0074  20CA  118A         	fcall	PL2	;call to abstracted procedure
+   821  0076  0839               	movf	_multiFilterMinValue+1,w
+   822  0077  023B               	subwf	??_AD_Sample+1,w
+   823  0078  1D03               	skipz
+   824  0079  287C               	goto	u445
+   825  007A  0838               	movf	_multiFilterMinValue,w
+   826  007B  023A               	subwf	??_AD_Sample,w
+   827  007C                     u445:	
+   828  007C  1803               	skipnc
+   829  007D  2887               	goto	l2744
+   830                           
+   831                           ;common.c: 166: {
+   832                           ;common.c: 167: multiFilterMinValue = buffer_Sample_AD_Value[sampleTimes];
+   833  007E  1003               	clrc
+   834  007F  0D79               	rlf	_sampleTimes,w
+   835  0080  3E20               	addlw	_buffer_Sample_AD_Value& (0+255)
+   836  0081  0084               	movwf	4
+   837  0082  0800               	movf	0,w
+   838  0083  00B8               	movwf	_multiFilterMinValue
+   839  0084  0A84               	incf	4,f
+   840  0085  0800               	movf	0,w
+   841  0086  00B9               	movwf	_multiFilterMinValue+1
+   842  0087                     l2744:	
+   843  0087  300A               	movlw	10
+   844                           
+   845                           ;common.c: 171: sampleTimes++;
+   846  0088  0AF9               	incf	_sampleTimes,f
+   847                           
+   848                           ;common.c: 173: if(sampleTimes < 10)
+   849  0089  0279               	subwf	_sampleTimes,w
+   850  008A  1803               	skipnc
+   851  008B  0008               	return
+   852                           
+   853                           ;common.c: 174: {
+   854                           ;common.c: 175: start_AD_Converter();
+   855  008C  2899               	ljmp	l2566
+   856  008D                     l2764:	
+   857                           
+   858                           ;common.c: 199: else
+   859                           ;common.c: 200: {
+   860                           ;common.c: 201: sampleChannelSelect = 13;
+   861  008D  300D               	movlw	13
+   862  008E  00FB               	movwf	_sampleChannelSelect
+   863  008F  0008               	return
+   864  0090                     __end_of_AD_Sample:	
+   865  0090                     __ptext567:	
+   866 ;; =============== function _isAD_Completed ends ============
+   867                           
+   868                           
+   869 ;; *************** function _stop_AD_Converter *****************
+   870 ;; Defined at:
+   871 ;;		line 67 in file "C:\AK7030-OTP\common.c"
+   872 ;; Parameters:    Size  Location     Type
+   873 ;;		None
+   874 ;; Auto vars:     Size  Location     Type
+   875 ;;		None
+   876 ;; Return value:  Size  Location     Type
+   877 ;;		None               void
+   878 ;; Registers used:
+   879 ;;		None
+   880 ;; Tracked objects:
+   881 ;;		On entry : 0/0
+   882 ;;		On exit  : 60/0
+   883 ;;		Unchanged: FFF9F/0
+   884 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   885 ;;      Params:         0       0       0       0       0
+   886 ;;      Locals:         0       0       0       0       0
+   887 ;;      Temps:          0       0       0       0       0
+   888 ;;      Totals:         0       0       0       0       0
+   889 ;;Total ram usage:        0 bytes
+   890 ;; Hardware stack levels used:    1
+   891 ;; Hardware stack levels required when called:    1
+   892 ;; This function calls:
+   893 ;;		Nothing
+   894 ;; This function is called by:
+   895 ;;		_AD_Sample
+   896 ;; This function uses a non-reentrant model
+   897 ;;
+   898  0090                     _stop_AD_Converter:	
+   899                           
+   900                           ;common.c: 68: ADON = 0;
+   901                           
+   902                           ; Regs used in _stop_AD_Converter: []
+   903  0090  1283               	bcf	3,5	;RP0=0, select bank0
+   904  0091  1303               	bcf	3,6	;RP1=0, select bank0
+   905  0092  101F               	bcf	31,0
+   906  0093  0008               	return
+   907  0094                     __end_of_stop_AD_Converter:	
+   908  0094                     __ptext566:	
+   909 ;; =============== function _clearAdCompleteFalg ends ============
+   910                           
+   911                           
+   912 ;; *************** function _isAD_Completed *****************
+   913 ;; Defined at:
+   914 ;;		line 72 in file "C:\AK7030-OTP\common.c"
+   915 ;; Parameters:    Size  Location     Type
+   916 ;;		None
+   917 ;; Auto vars:     Size  Location     Type
+   918 ;;		None
+   919 ;; Return value:  Size  Location     Type
+   920 ;;                  1    wreg      unsigned char 
+   921 ;; Registers used:
+   922 ;;		wreg
+   923 ;; Tracked objects:
+   924 ;;		On entry : 0/0
+   925 ;;		On exit  : 60/0
+   926 ;;		Unchanged: FFF9F/0
+   927 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   928 ;;      Params:         0       0       0       0       0
+   929 ;;      Locals:         0       0       0       0       0
+   930 ;;      Temps:          0       0       0       0       0
+   931 ;;      Totals:         0       0       0       0       0
+   932 ;;Total ram usage:        0 bytes
+   933 ;; Hardware stack levels used:    1
+   934 ;; Hardware stack levels required when called:    1
+   935 ;; This function calls:
+   936 ;;		Nothing
+   937 ;; This function is called by:
+   938 ;;		_getAdValue
+   939 ;;		_AD_Sample
+   940 ;; This function uses a non-reentrant model
+   941 ;;
+   942  0094                     _isAD_Completed:	
+   943                           
+   944                           ;common.c: 73: if(ADIF)
+   945                           
+   946                           ; Regs used in _isAD_Completed: [wreg]
+   947  0094  1283               	bcf	3,5	;RP0=0, select bank0
+   948  0095  1303               	bcf	3,6	;RP1=0, select bank0
+   949  0096  190D               	btfsc	13,2
+   950                           
+   951                           ;common.c: 74: return 1;
+   952  0097  3401               	retlw	1
+   953                           
+   954                           ;common.c: 75: else
+   955                           ;common.c: 76: return 0;
+   956  0098  3400               	retlw	0
+   957  0099                     __end_of_isAD_Completed:	
+   958  0099                     __ptext568:	
+   959 ;; =============== function _stop_AD_Converter ends ============
+   960                           
+   961                           
+   962 ;; *************** function _start_AD_Converter *****************
+   963 ;; Defined at:
+   964 ;;		line 62 in file "C:\AK7030-OTP\common.c"
+   965 ;; Parameters:    Size  Location     Type
+   966 ;;		None
+   967 ;; Auto vars:     Size  Location     Type
+   968 ;;		None
+   969 ;; Return value:  Size  Location     Type
+   970 ;;		None               void
+   971 ;; Registers used:
+   972 ;;		None
+   973 ;; Tracked objects:
+   974 ;;		On entry : 60/0
+   975 ;;		On exit  : 60/0
+   976 ;;		Unchanged: FFF9F/0
+   977 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   978 ;;      Params:         0       0       0       0       0
+   979 ;;      Locals:         0       0       0       0       0
+   980 ;;      Temps:          0       0       0       0       0
+   981 ;;      Totals:         0       0       0       0       0
+   982 ;;Total ram usage:        0 bytes
+   983 ;; Hardware stack levels used:    1
+   984 ;; Hardware stack levels required when called:    1
+   985 ;; This function calls:
+   986 ;;		Nothing
+   987 ;; This function is called by:
+   988 ;;		_AD_Sample
+   989 ;; This function uses a non-reentrant model
+   990 ;;
+   991  0099                     _start_AD_Converter:	
+   992  0099                     l2566:	
+   993                           ; Regs used in _start_AD_Converter: []
+   994                           
+   995                           
+   996                           ;common.c: 63: ADON = 1;
+   997  0099  141F               	bsf	31,0
+   998  009A  0008               	return
+   999  009B                     __end_of_start_AD_Converter:	
+  1000  009B                     __ptext565:	
+  1001 ;; =============== function _SetTempThermistorChannel ends ============
+  1002                           
+  1003                           
+  1004 ;; *************** function _clearAdCompleteFalg *****************
+  1005 ;; Defined at:
+  1006 ;;		line 80 in file "C:\AK7030-OTP\common.c"
+  1007 ;; Parameters:    Size  Location     Type
+  1008 ;;		None
+  1009 ;; Auto vars:     Size  Location     Type
+  1010 ;;		None
+  1011 ;; Return value:  Size  Location     Type
+  1012 ;;		None               void
+  1013 ;; Registers used:
+  1014 ;;		None
+  1015 ;; Tracked objects:
+  1016 ;;		On entry : 60/0
+  1017 ;;		On exit  : 60/0
+  1018 ;;		Unchanged: FFF9F/0
+  1019 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1020 ;;      Params:         0       0       0       0       0
+  1021 ;;      Locals:         0       0       0       0       0
+  1022 ;;      Temps:          0       0       0       0       0
+  1023 ;;      Totals:         0       0       0       0       0
+  1024 ;;Total ram usage:        0 bytes
+  1025 ;; Hardware stack levels used:    1
+  1026 ;; Hardware stack levels required when called:    1
+  1027 ;; This function calls:
+  1028 ;;		Nothing
+  1029 ;; This function is called by:
+  1030 ;;		_AD_Sample
+  1031 ;; This function uses a non-reentrant model
+  1032 ;;
+  1033  009B                     _clearAdCompleteFalg:	
+  1034                           
+  1035                           ;common.c: 81: ADIF = 0;
+  1036                           
+  1037                           ; Regs used in _clearAdCompleteFalg: []
+  1038  009B  110D               	bcf	13,2
+  1039  009C  0008               	return
+  1040  009D                     __end_of_clearAdCompleteFalg:	
+  1041  009D                     __ptext564:	
+  1042 ;; =============== function _getAdValue ends ============
+  1043                           
+  1044                           
+  1045 ;; *************** function _SetTempThermistorChannel *****************
+  1046 ;; Defined at:
+  1047 ;;		line 217 in file "C:\AK7030-OTP\common.c"
+  1048 ;; Parameters:    Size  Location     Type
+  1049 ;;		None
+  1050 ;; Auto vars:     Size  Location     Type
+  1051 ;;		None
+  1052 ;; Return value:  Size  Location     Type
+  1053 ;;		None               void
+  1054 ;; Registers used:
+  1055 ;;		wreg
+  1056 ;; Tracked objects:
+  1057 ;;		On entry : 0/0
+  1058 ;;		On exit  : 60/0
+  1059 ;;		Unchanged: FFF9F/0
+  1060 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1061 ;;      Params:         0       0       0       0       0
+  1062 ;;      Locals:         0       0       0       0       0
+  1063 ;;      Temps:          0       0       0       0       0
+  1064 ;;      Totals:         0       0       0       0       0
+  1065 ;;Total ram usage:        0 bytes
+  1066 ;; Hardware stack levels used:    1
+  1067 ;; Hardware stack levels required when called:    1
+  1068 ;; This function calls:
+  1069 ;;		Nothing
+  1070 ;; This function is called by:
+  1071 ;;		_AD_Sample
+  1072 ;; This function uses a non-reentrant model
+  1073 ;;
+  1074  009D                     _SetTempThermistorChannel:	
+  1075                           
+  1076                           ;common.c: 220: if(sampleChannelSelect == 12)
+  1077                           
+  1078                           ; Regs used in _SetTempThermistorChannel: [wreg]
+  1079  009D  087B               	movf	_sampleChannelSelect,w
+  1080  009E  3A0C               	xorlw	12
+  1081  009F  1D03               	skipz
+  1082  00A0  28A8               	goto	l1365
+  1083                           
+  1084                           ;common.c: 221: {
+  1085                           ;common.c: 222: CHS3 = 1;
+  1086  00A1  1283               	bcf	3,5	;RP0=0, select bank0
+  1087  00A2  1303               	bcf	3,6	;RP1=0, select bank0
+  1088  00A3  169F               	bsf	31,5
+  1089                           
+  1090                           ;common.c: 223: CHS2 = 1;
+  1091  00A4  161F               	bsf	31,4
+  1092                           
+  1093                           ;common.c: 224: CHS1 = 0;
+  1094  00A5  119F               	bcf	31,3
+  1095                           
+  1096                           ;common.c: 225: CHS0 = 0;
+  1097  00A6  111F               	bcf	31,2
+  1098                           
+  1099                           ;common.c: 226: }
+  1100  00A7  0008               	return
+  1101  00A8                     l1365:	
+  1102                           
+  1103                           ;common.c: 227: else
+  1104                           ;common.c: 228: {
+  1105                           ;common.c: 229: CHS3 = 1;
+  1106  00A8  1283               	bcf	3,5	;RP0=0, select bank0
+  1107  00A9  1303               	bcf	3,6	;RP1=0, select bank0
+  1108  00AA  169F               	bsf	31,5
+  1109                           
+  1110                           ;common.c: 230: CHS2 = 1;
+  1111  00AB  161F               	bsf	31,4
+  1112                           
+  1113                           ;common.c: 231: CHS1 = 0;
+  1114  00AC  119F               	bcf	31,3
+  1115                           
+  1116                           ;common.c: 232: CHS0 = 1;
+  1117  00AD  151F               	bsf	31,2
+  1118  00AE  0008               	return
+  1119  00AF                     __end_of_SetTempThermistorChannel:	
+  1120  00AF                     __ptext563:	
+  1121 ;; =============== function _AD_Sample ends ============
+  1122                           
+  1123                           
+  1124 ;; *************** function _getAdValue *****************
+  1125 ;; Defined at:
+  1126 ;;		line 85 in file "C:\AK7030-OTP\common.c"
+  1127 ;; Parameters:    Size  Location     Type
+  1128 ;;		None
+  1129 ;; Auto vars:     Size  Location     Type
+  1130 ;;  AdHighValue     2    6[COMMON] unsigned int 
+  1131 ;;  AdValue         2    4[COMMON] unsigned int 
+  1132 ;; Return value:  Size  Location     Type
+  1133 ;;                  2    2[COMMON] unsigned int 
+  1134 ;; Registers used:
+  1135 ;;		wreg, status,2, pclath, cstack
+  1136 ;; Tracked objects:
+  1137 ;;		On entry : 0/0
+  1138 ;;		On exit  : 60/0
+  1139 ;;		Unchanged: FFF9F/0
+  1140 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1141 ;;      Params:         2       0       0       0       0
+  1142 ;;      Locals:         4       0       0       0       0
+  1143 ;;      Temps:          0       0       0       0       0
+  1144 ;;      Totals:         6       0       0       0       0
+  1145 ;;Total ram usage:        6 bytes
+  1146 ;; Hardware stack levels used:    1
+  1147 ;; Hardware stack levels required when called:    2
+  1148 ;; This function calls:
+  1149 ;;		_isAD_Completed
+  1150 ;; This function is called by:
+  1151 ;;		_AD_Sample
+  1152 ;; This function uses a non-reentrant model
+  1153 ;;
+  1154  00AF                     _getAdValue:	
+  1155                           
+  1156                           ;common.c: 86: unsigned int AdValue = 0,AdHighValue = 0;
+  1157                           
+  1158                           ; Regs used in _getAdValue: [wreg+status,2+pclath+cstack]
+  1159  00AF  01F4               	clrf	getAdValue@AdValue
+  1160  00B0  01F5               	clrf	getAdValue@AdValue+1
+  1161                           
+  1162                           ;common.c: 87: if(isAD_Completed()!=0)
+  1163  00B1  2094  118A         	fcall	_isAD_Completed
+  1164  00B3  3A00               	xorlw	0
+  1165  00B4  1903               	skipnz
+  1166  00B5  28C5               	goto	l1335
+  1167                           
+  1168                           ;common.c: 88: {
+  1169                           ;common.c: 89: ADIF = 0;
+  1170  00B6  110D               	bcf	13,2
+  1171                           
+  1172                           ;common.c: 90: AdValue = ADRESL;
+  1173  00B7  1683               	bsf	3,5	;RP0=1, select bank1
+  1174  00B8  081E               	movf	30,w	;volatile
+  1175  00B9  00F4               	movwf	getAdValue@AdValue
+  1176  00BA  01F5               	clrf	getAdValue@AdValue+1
+  1177                           
+  1178                           ;common.c: 91: AdHighValue = ADRESH;
+  1179  00BB  1283               	bcf	3,5	;RP0=0, select bank0
+  1180  00BC  081E               	movf	30,w	;volatile
+  1181  00BD  00F6               	movwf	getAdValue@AdHighValue
+  1182  00BE  01F7               	clrf	getAdValue@AdHighValue+1
+  1183                           
+  1184                           ;common.c: 92: AdHighValue = AdHighValue << 8;
+  1185  00BF  00F7               	movwf	getAdValue@AdHighValue+1
+  1186  00C0  01F6               	clrf	getAdValue@AdHighValue
+  1187                           
+  1188                           ;common.c: 93: AdValue = AdValue | AdHighValue;
+  1189  00C1  0876               	movf	getAdValue@AdHighValue,w
+  1190  00C2  04F4               	iorwf	getAdValue@AdValue,f
+  1191  00C3  0877               	movf	getAdValue@AdHighValue+1,w
+  1192  00C4  04F5               	iorwf	getAdValue@AdValue+1,f
+  1193  00C5                     l1335:	
+  1194                           
+  1195                           ;common.c: 94: }
+  1196                           ;common.c: 96: return AdValue;
+  1197  00C5  0875               	movf	getAdValue@AdValue+1,w
+  1198  00C6  00F3               	movwf	?_getAdValue+1
+  1199  00C7  0874               	movf	getAdValue@AdValue,w
+  1200  00C8  00F2               	movwf	?_getAdValue
+  1201  00C9  0008               	return
+  1202  00CA                     __end_of_getAdValue:	
+  1203  00CA                     PL2:	
+  1204  00CA  1003               	clrc
+  1205  00CB  0D79               	rlf	_sampleTimes,w
+  1206  00CC  3E20               	addlw	_buffer_Sample_AD_Value& (0+255)
+  1207  00CD  0084               	movwf	4
+  1208  00CE  0800               	movf	0,w
+  1209  00CF  00BA               	movwf	??_AD_Sample
+  1210  00D0  0A84               	incf	4,f
+  1211  00D1  0800               	movf	0,w
+  1212  00D2  00BB               	movwf	??_AD_Sample+1
+  1213  00D3  0008               	return
+  1214                           
+  1215                           	psect	text569
+  1216  0167                     __ptext569:	
+  1217 ;; =============== function _start_AD_Converter ends ============
+  1218                           
+  1219                           
+  1220 ;; *************** function _start_timer1 *****************
+  1221 ;; Defined at:
+  1222 ;;		line 40 in file "C:\AK7030-OTP\common.c"
+  1223 ;; Parameters:    Size  Location     Type
+  1224 ;;		None
+  1225 ;; Auto vars:     Size  Location     Type
+  1226 ;;		None
+  1227 ;; Return value:  Size  Location     Type
+  1228 ;;		None               void
+  1229 ;; Registers used:
+  1230 ;;		None
+  1231 ;; Tracked objects:
+  1232 ;;		On entry : 17F/20
+  1233 ;;		On exit  : 17F/0
+  1234 ;;		Unchanged: FFE80/0
+  1235 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1236 ;;      Params:         0       0       0       0       0
+  1237 ;;      Locals:         0       0       0       0       0
+  1238 ;;      Temps:          0       0       0       0       0
+  1239 ;;      Totals:         0       0       0       0       0
+  1240 ;;Total ram usage:        0 bytes
+  1241 ;; Hardware stack levels used:    1
+  1242 ;; Hardware stack levels required when called:    1
+  1243 ;; This function calls:
+  1244 ;;		Nothing
+  1245 ;; This function is called by:
+  1246 ;;		_main
+  1247 ;; This function uses a non-reentrant model
+  1248 ;;
+  1249  0167                     _start_timer1:	
+  1250                           
+  1251                           ;common.c: 41: TMR1ON = 1;
+  1252                           
+  1253                           ; Regs used in _start_timer1: []
+  1254  0167  1283               	bcf	3,5	;RP0=0, select bank0
+  1255  0168  1410               	bsf	16,0
+  1256  0169  0008               	return
+  1257  016A                     __end_of_start_timer1:	
+  1258                           
+  1259                           	psect	text570
+  1260  013A                     __ptext570:	
+  1261 ;; =============== function _start_timer1 ends ============
+  1262                           
+  1263                           
+  1264 ;; *************** function _op2_init *****************
+  1265 ;; Defined at:
+  1266 ;;		line 40 in file "C:\AK7030-OTP\periph.c"
+  1267 ;; Parameters:    Size  Location     Type
+  1268 ;;		None
+  1269 ;; Auto vars:     Size  Location     Type
+  1270 ;;		None
+  1271 ;; Return value:  Size  Location     Type
+  1272 ;;		None               void
+  1273 ;; Registers used:
+  1274 ;;		wreg
+  1275 ;; Tracked objects:
+  1276 ;;		On entry : 17F/0
+  1277 ;;		On exit  : 17F/20
+  1278 ;;		Unchanged: FFE80/0
+  1279 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1280 ;;      Params:         0       0       0       0       0
+  1281 ;;      Locals:         0       0       0       0       0
+  1282 ;;      Temps:          0       0       0       0       0
+  1283 ;;      Totals:         0       0       0       0       0
+  1284 ;;Total ram usage:        0 bytes
+  1285 ;; Hardware stack levels used:    1
+  1286 ;; Hardware stack levels required when called:    1
+  1287 ;; This function calls:
+  1288 ;;		Nothing
+  1289 ;; This function is called by:
+  1290 ;;		_main
+  1291 ;; This function uses a non-reentrant model
+  1292 ;;
+  1293  013A                     _op2_init:	
+  1294                           
+  1295                           ;periph.c: 47: OP2CON1=0x03;
+  1296                           
+  1297                           ; Regs used in _op2_init: [wreg]
+  1298  013A  3003               	movlw	3
+  1299  013B  1683               	bsf	3,5	;RP0=1, select bank1
+  1300  013C  009C               	movwf	28	;volatile
+  1301                           
+  1302                           ;periph.c: 49: OP2CON2=0xB0;
+  1303  013D  30B0               	movlw	176
+  1304  013E  009D               	movwf	29	;volatile
+  1305                           
+  1306                           ;periph.c: 50: OP2CON0=0x80;
+  1307  013F  3080               	movlw	128
+  1308  0140  009B               	movwf	27	;volatile
+  1309  0141  0008               	return
+  1310  0142                     __end_of_op2_init:	
+  1311                           
+  1312                           	psect	text571
+  1313  0142                     __ptext571:	
+  1314 ;; =============== function _op2_init ends ============
+  1315                           
+  1316                           
+  1317 ;; *************** function _op1_init *****************
+  1318 ;; Defined at:
+  1319 ;;		line 26 in file "C:\AK7030-OTP\periph.c"
+  1320 ;; Parameters:    Size  Location     Type
+  1321 ;;		None
+  1322 ;; Auto vars:     Size  Location     Type
+  1323 ;;		None
+  1324 ;; Return value:  Size  Location     Type
+  1325 ;;		None               void
+  1326 ;; Registers used:
+  1327 ;;		wreg
+  1328 ;; Tracked objects:
+  1329 ;;		On entry : 17F/20
+  1330 ;;		On exit  : 17F/0
+  1331 ;;		Unchanged: FFE80/0
+  1332 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1333 ;;      Params:         0       0       0       0       0
+  1334 ;;      Locals:         0       0       0       0       0
+  1335 ;;      Temps:          0       0       0       0       0
+  1336 ;;      Totals:         0       0       0       0       0
+  1337 ;;Total ram usage:        0 bytes
+  1338 ;; Hardware stack levels used:    1
+  1339 ;; Hardware stack levels required when called:    1
+  1340 ;; This function calls:
+  1341 ;;		Nothing
+  1342 ;; This function is called by:
+  1343 ;;		_main
+  1344 ;; This function uses a non-reentrant model
+  1345 ;;
+  1346  0142                     _op1_init:	
+  1347                           
+  1348                           ;periph.c: 33: OP1CON1=0x02;
+  1349                           
+  1350                           ; Regs used in _op1_init: [wreg]
+  1351  0142  3002               	movlw	2
+  1352  0143  1283               	bcf	3,5	;RP0=0, select bank0
+  1353  0144  009C               	movwf	28	;volatile
+  1354                           
+  1355                           ;periph.c: 34: OP1CON2=0xA0;
+  1356  0145  30A0               	movlw	160
+  1357  0146  009D               	movwf	29	;volatile
+  1358                           
+  1359                           ;periph.c: 35: OP1CON0=0x80;
+  1360  0147  3080               	movlw	128
+  1361  0148  009B               	movwf	27	;volatile
+  1362  0149  0008               	return
+  1363  014A                     __end_of_op1_init:	
+  1364                           
+  1365                           	psect	text572
+  1366  014A                     __ptext572:	
+  1367 ;; =============== function _op1_init ends ============
+  1368                           
+  1369                           
+  1370 ;; *************** function _dac_init *****************
+  1371 ;; Defined at:
+  1372 ;;		line 14 in file "C:\AK7030-OTP\periph.c"
+  1373 ;; Parameters:    Size  Location     Type
+  1374 ;;		None
+  1375 ;; Auto vars:     Size  Location     Type
+  1376 ;;		None
+  1377 ;; Return value:  Size  Location     Type
+  1378 ;;		None               void
+  1379 ;; Registers used:
+  1380 ;;		wreg
+  1381 ;; Tracked objects:
+  1382 ;;		On entry : 17F/20
+  1383 ;;		On exit  : 17F/20
+  1384 ;;		Unchanged: FFE80/0
+  1385 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1386 ;;      Params:         0       0       0       0       0
+  1387 ;;      Locals:         0       0       0       0       0
+  1388 ;;      Temps:          0       0       0       0       0
+  1389 ;;      Totals:         0       0       0       0       0
+  1390 ;;Total ram usage:        0 bytes
+  1391 ;; Hardware stack levels used:    1
+  1392 ;; Hardware stack levels required when called:    1
+  1393 ;; This function calls:
+  1394 ;;		Nothing
+  1395 ;; This function is called by:
+  1396 ;;		_main
+  1397 ;; This function uses a non-reentrant model
+  1398 ;;
+  1399  014A                     _dac_init:	
+  1400                           
+  1401                           ;periph.c: 15: DACCON|=2;
+  1402                           
+  1403                           ; Regs used in _dac_init: [wreg]
+  1404  014A  1487               	bsf	7,1	;volatile
+  1405                           
+  1406                           ;periph.c: 17: DACR0=0x19;
+  1407  014B  3019               	movlw	25
+  1408  014C  0088               	movwf	8	;volatile
+  1409                           
+  1410                           ;periph.c: 18: DACCON|=(1)<<2;
+  1411  014D  1507               	bsf	7,2	;volatile
+  1412                           
+  1413                           ;periph.c: 20: DACR1=0x06;
+  1414  014E  3006               	movlw	6
+  1415  014F  0089               	movwf	9	;volatile
+  1416                           
+  1417                           ;periph.c: 21: DACCON|=(1)<<3;
+  1418  0150  1587               	bsf	7,3	;volatile
+  1419  0151  0008               	return
+  1420  0152                     __end_of_dac_init:	
+  1421                           
+  1422                           	psect	text573
+  1423  0127                     __ptext573:	
+  1424 ;; =============== function _dac_init ends ============
+  1425                           
+  1426                           
+  1427 ;; *************** function _adConverter_config *****************
+  1428 ;; Defined at:
+  1429 ;;		line 52 in file "C:\AK7030-OTP\common.c"
+  1430 ;; Parameters:    Size  Location     Type
+  1431 ;;		None
+  1432 ;; Auto vars:     Size  Location     Type
+  1433 ;;		None
+  1434 ;; Return value:  Size  Location     Type
+  1435 ;;		None               void
+  1436 ;; Registers used:
+  1437 ;;		wreg
+  1438 ;; Tracked objects:
+  1439 ;;		On entry : 17F/0
+  1440 ;;		On exit  : 17F/20
+  1441 ;;		Unchanged: FFE80/0
+  1442 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1443 ;;      Params:         0       0       0       0       0
+  1444 ;;      Locals:         0       0       0       0       0
+  1445 ;;      Temps:          0       0       0       0       0
+  1446 ;;      Totals:         0       0       0       0       0
+  1447 ;;Total ram usage:        0 bytes
+  1448 ;; Hardware stack levels used:    1
+  1449 ;; Hardware stack levels required when called:    1
+  1450 ;; This function calls:
+  1451 ;;		Nothing
+  1452 ;; This function is called by:
+  1453 ;;		_main
+  1454 ;; This function uses a non-reentrant model
+  1455 ;;
+  1456  0127                     _adConverter_config:	
+  1457                           
+  1458                           ;common.c: 53: TRISB0 = 1;
+  1459                           
+  1460                           ; Regs used in _adConverter_config: [wreg]
+  1461  0127  1683               	bsf	3,5	;RP0=1, select bank1
+  1462  0128  30C4               	movlw	196
+  1463  0129  1406               	bsf	6,0
+  1464                           
+  1465                           ;common.c: 54: TRISB2 = 1;
+  1466  012A  1506               	bsf	6,2
+  1467                           
+  1468                           ;common.c: 55: ADCON0 = 0xC4;
+  1469  012B  1283               	bcf	3,5	;RP0=0, select bank0
+  1470  012C  009F               	movwf	31	;volatile
+  1471                           
+  1472                           ;common.c: 56: ADCON1 = 0xFE;
+  1473  012D  30FE               	movlw	254
+  1474  012E  1683               	bsf	3,5	;RP0=1, select bank1
+  1475  012F  009F               	movwf	31	;volatile
+  1476                           
+  1477                           ;common.c: 57: ADIE = 0;
+  1478  0130  110D               	bcf	13,2
+  1479  0131  0008               	return
+  1480  0132                     __end_of_adConverter_config:	
+  1481                           
+  1482                           	psect	text574
+  1483  0152                     __ptext574:	
+  1484 ;; =============== function _adConverter_config ends ============
+  1485                           
+  1486                           
+  1487 ;; *************** function _timer1_config *****************
+  1488 ;; Defined at:
+  1489 ;;		line 32 in file "C:\AK7030-OTP\common.c"
+  1490 ;; Parameters:    Size  Location     Type
+  1491 ;;		None
+  1492 ;; Auto vars:     Size  Location     Type
+  1493 ;;		None
+  1494 ;; Return value:  Size  Location     Type
+  1495 ;;		None               void
+  1496 ;; Registers used:
+  1497 ;;		wreg
+  1498 ;; Tracked objects:
+  1499 ;;		On entry : 17F/20
+  1500 ;;		On exit  : 17F/0
+  1501 ;;		Unchanged: FFE80/0
+  1502 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1503 ;;      Params:         0       0       0       0       0
+  1504 ;;      Locals:         0       0       0       0       0
+  1505 ;;      Temps:          0       0       0       0       0
+  1506 ;;      Totals:         0       0       0       0       0
+  1507 ;;Total ram usage:        0 bytes
+  1508 ;; Hardware stack levels used:    1
+  1509 ;; Hardware stack levels required when called:    1
+  1510 ;; This function calls:
+  1511 ;;		Nothing
+  1512 ;; This function is called by:
+  1513 ;;		_main
+  1514 ;; This function uses a non-reentrant model
+  1515 ;;
+  1516  0152                     _timer1_config:	
+  1517                           
+  1518                           ;common.c: 33: T1CON = 0xC4;
+  1519                           
+  1520                           ; Regs used in _timer1_config: [wreg]
+  1521  0152  30C4               	movlw	196
+  1522  0153  1283               	bcf	3,5	;RP0=0, select bank0
+  1523  0154  0090               	movwf	16	;volatile
+  1524                           
+  1525                           ;common.c: 34: TMR1H = 0xC3;
+  1526  0155  30C3               	movlw	195
+  1527  0156  008F               	movwf	15	;volatile
+  1528                           
+  1529                           ;common.c: 35: TMR1L = 0x50;
+  1530  0157  3050               	movlw	80
+  1531  0158  008E               	movwf	14	;volatile
+  1532  0159  0008               	return
+  1533  015A                     __end_of_timer1_config:	
+  1534                           
+  1535                           	psect	text575
+  1536  0161                     __ptext575:	
+  1537 ;; =============== function _timer1_config ends ============
+  1538                           
+  1539                           
+  1540 ;; *************** function _timer1_interrupt_config *****************
+  1541 ;; Defined at:
+  1542 ;;		line 45 in file "C:\AK7030-OTP\common.c"
+  1543 ;; Parameters:    Size  Location     Type
+  1544 ;;		None
+  1545 ;; Auto vars:     Size  Location     Type
+  1546 ;;		None
+  1547 ;; Return value:  Size  Location     Type
+  1548 ;;		None               void
+  1549 ;; Registers used:
+  1550 ;;		None
+  1551 ;; Tracked objects:
+  1552 ;;		On entry : 17F/40
+  1553 ;;		On exit  : 17F/20
+  1554 ;;		Unchanged: FFE80/0
+  1555 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1556 ;;      Params:         0       0       0       0       0
+  1557 ;;      Locals:         0       0       0       0       0
+  1558 ;;      Temps:          0       0       0       0       0
+  1559 ;;      Totals:         0       0       0       0       0
+  1560 ;;Total ram usage:        0 bytes
+  1561 ;; Hardware stack levels used:    1
+  1562 ;; Hardware stack levels required when called:    1
+  1563 ;; This function calls:
+  1564 ;;		Nothing
+  1565 ;; This function is called by:
+  1566 ;;		_main
+  1567 ;; This function uses a non-reentrant model
+  1568 ;;
+  1569  0161                     _timer1_interrupt_config:	
+  1570                           
+  1571                           ;common.c: 46: GIE = 1;
+  1572                           
+  1573                           ; Regs used in _timer1_interrupt_config: []
+  1574  0161  178B               	bsf	11,7
+  1575                           
+  1576                           ;common.c: 47: PEIE = 1;
+  1577  0162  170B               	bsf	11,6
+  1578                           
+  1579                           ;common.c: 48: TMR1IE = 1;
+  1580  0163  1683               	bsf	3,5	;RP0=1, select bank1
+  1581  0164  1303               	bcf	3,6	;RP1=0, select bank1
+  1582  0165  140C               	bsf	12,0
+  1583  0166  0008               	return
+  1584  0167                     __end_of_timer1_interrupt_config:	
+  1585                           
+  1586                           	psect	text576
+  1587  015A                     __ptext576:	
+  1588 ;; =============== function _timer1_interrupt_config ends ============
+  1589                           
+  1590                           
+  1591 ;; *************** function _clock_config *****************
+  1592 ;; Defined at:
+  1593 ;;		line 24 in file "C:\AK7030-OTP\common.c"
+  1594 ;; Parameters:    Size  Location     Type
+  1595 ;;		None
+  1596 ;; Auto vars:     Size  Location     Type
+  1597 ;;		None
+  1598 ;; Return value:  Size  Location     Type
+  1599 ;;		None               void
+  1600 ;; Registers used:
+  1601 ;;		wreg, status,2
+  1602 ;; Tracked objects:
+  1603 ;;		On entry : 17F/0
+  1604 ;;		On exit  : 17F/40
+  1605 ;;		Unchanged: FFE80/0
+  1606 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1607 ;;      Params:         0       0       0       0       0
+  1608 ;;      Locals:         0       0       0       0       0
+  1609 ;;      Temps:          0       0       0       0       0
+  1610 ;;      Totals:         0       0       0       0       0
+  1611 ;;Total ram usage:        0 bytes
+  1612 ;; Hardware stack levels used:    1
+  1613 ;; Hardware stack levels required when called:    1
+  1614 ;; This function calls:
+  1615 ;;		Nothing
+  1616 ;; This function is called by:
+  1617 ;;		_main
+  1618 ;; This function uses a non-reentrant model
+  1619 ;;
+  1620  015A                     _clock_config:	
+  1621                           
+  1622                           ;common.c: 26: CLKPR = 0x80;
+  1623                           
+  1624                           ; Regs used in _clock_config: [wreg+status,2]
+  1625  015A  3080               	movlw	128
+  1626  015B  1703               	bsf	3,6	;RP1=1, select bank2
+  1627  015C  0088               	movwf	8	;volatile
+  1628                           
+  1629                           ;common.c: 27: CLKPR = 0x00;
+  1630  015D  0188               	clrf	8	;volatile
+  1631  015E                     l1303:	
+  1632                           ;common.c: 28: while(CLKPCE);
+  1633                           
+  1634  015E  1F88               	btfss	8,7
+  1635  015F  0008               	return
+  1636  0160  295E               	goto	l1303
+  1637  0161                     __end_of_clock_config:	
+  1638                           
+  1639                           	psect	text577
+  1640  00FE                     __ptext577:	
+  1641 ;; =============== function _clock_config ends ============
+  1642                           
+  1643                           
+  1644 ;; *************** function _ISR *****************
+  1645 ;; Defined at:
+  1646 ;;		line 123 in file "C:\AK7030-OTP\main.c"
+  1647 ;; Parameters:    Size  Location     Type
+  1648 ;;		None
+  1649 ;; Auto vars:     Size  Location     Type
+  1650 ;;		None
+  1651 ;; Return value:  Size  Location     Type
+  1652 ;;		None               void
+  1653 ;; Registers used:
+  1654 ;;		wreg, status,2, status,0
+  1655 ;; Tracked objects:
+  1656 ;;		On entry : 0/0
+  1657 ;;		On exit  : 60/0
+  1658 ;;		Unchanged: FFF9F/0
+  1659 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1660 ;;      Params:         0       0       0       0       0
+  1661 ;;      Locals:         0       0       0       0       0
+  1662 ;;      Temps:          2       0       0       0       0
+  1663 ;;      Totals:         2       0       0       0       0
+  1664 ;;Total ram usage:        2 bytes
+  1665 ;; Hardware stack levels used:    1
+  1666 ;; This function calls:
+  1667 ;;		Nothing
+  1668 ;; This function is called by:
+  1669 ;;		Interrupt level 1
+  1670 ;; This function uses a non-reentrant model
+  1671 ;;
+  1672  00FE                     _ISR:	
+  1673                           
+  1674                           ;main.c: 124: if(TMR1IF == 1)
+  1675  00FE  1283               	bcf	3,5	;RP0=0, select bank0
+  1676  00FF  1303               	bcf	3,6	;RP1=0, select bank0
+  1677  0100  1C0C               	btfss	12,0
+  1678  0101  2912               	goto	i1l656
+  1679                           
+  1680                           ;main.c: 125: {
+  1681                           ;main.c: 126: TMR1IF = 0 ;
+  1682  0102  100C               	bcf	12,0
+  1683                           
+  1684                           ;main.c: 127: timer10msCnt++;
+  1685  0103  0AFA               	incf	_timer10msCnt,f
+  1686                           
+  1687                           ;main.c: 129: static unsigned int flashCnt = 0;
+  1688                           ;main.c: 130: flashCnt++;
+  1689  0104  0AB4               	incf	ISR@flashCnt,f
+  1690  0105  1903               	skipnz
+  1691  0106  0AB5               	incf	ISR@flashCnt+1,f
+  1692                           
+  1693                           ;main.c: 131: if(flashCnt > 100)
+  1694  0107  3000               	movlw	0
+  1695  0108  0235               	subwf	ISR@flashCnt+1,w
+  1696  0109  3065               	movlw	101
+  1697  010A  1903               	skipnz
+  1698  010B  0234               	subwf	ISR@flashCnt,w
+  1699  010C  1C03               	skipc
+  1700  010D  2912               	goto	i1l656
+  1701                           
+  1702                           ;main.c: 132: {
+  1703                           ;main.c: 133: PA0 = ~PA0;
+  1704  010E  3001               	movlw	1
+  1705  010F  0685               	xorwf	5,f
+  1706                           
+  1707                           ;main.c: 134: flashCnt = 0;
+  1708  0110  01B4               	clrf	ISR@flashCnt
+  1709  0111  01B5               	clrf	ISR@flashCnt+1
+  1710  0112                     i1l656:	
+  1711  0112  0871               	movf	??_ISR+1,w
+  1712  0113  008A               	movwf	10
+  1713  0114  0E70               	swapf	??_ISR^(0+-128),w
+  1714  0115  0083               	movwf	3
+  1715  0116  0EFE               	swapf	126,f
+  1716  0117  0E7E               	swapf	126,w
+  1717  0118  0009               	retfie
+  1718  0119                     __end_of_ISR:	
+  1719                           
+  1720                           	psect	intentry
+  1721  0004                     __pintentry:	
+  1722                           ; Regs used in _ISR: [wreg+status,2+status,0]
+  1723                           
+  1724  0004                     interrupt_function:	
+  1725  007E                     saved_w	set	btemp
+  1726  0004  00FE               	movwf	btemp
+  1727  0005  0E03               	swapf	3,w
+  1728  0006  00F0               	movwf	??_ISR
+  1729  0007  080A               	movf	10,w
+  1730  0008  00F1               	movwf	??_ISR+1
+  1731  0009  118A  28FE         	ljmp	_ISR
+  1732                           
+  1733                           	psect	text578
+  1734  0000                     __ptext578:	
+  1735 ;; =============== function _ISR ends ============
+  1736                           
+  1737  007E                     btemp	set	126	;btemp
+  1738  007E                     wtemp0	set	126
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Tue Nov 27 17:18:07 2018
+
+                     ??_clock_config 0072                __size_of_start_timer1 0003  
+                ?_start_AD_Converter 0070                                   fsr 0004  
+           ?_timer1_interrupt_config 0070                     ??_isAD_Completed 0072  
+                                _PA0 0028                                  _GIE 005F  
+                                u435 0069                                  _ISR 00FE  
+                                u445 007C          __size_of_adConverter_config 000B  
+         __size_of_stop_AD_Converter 0004                                  fsr0 0004  
+                                indf 0000                                 ?_ISR 0070  
+               ??_start_AD_Converter 0072                   __size_of_AD_Sample 0082  
+                               l2001 0000                                 l2004 0000  
+                               l1303 015E                                 l1312 0000  
+                               l1321 0000                                 l1306 0000  
+                               l1315 0000                                 l1324 0000  
+                               l1332 0000                                 l1309 0000  
+                               l1318 0000                                 l1342 001B  
+                               l1335 00C5                                 l2400 0000  
+                               l1336 0000                                 l1353 0074  
+                               l2402 0000                                 l1339 0000  
+                               l2404 0000                                 l1365 00A8  
+                               l2380 0000                                 l2382 0000  
+                               l2390 0000                                 l2710 0000  
+                               l2702 000E                                 l2384 0000  
+                               l2392 0000                                 l2720 0000  
+                               l2712 0000                                 l2800 0000  
+                               l2378 0000                                 l2386 0000  
+                               l2394 0000                                 l2570 0000  
+                               l2730 0000                                 l2706 0000  
+                               l2388 0000                                 l2396 0000  
+                               l2732 004E                                 l2724 0037  
+                               l2716 0029                                 l2708 0000  
+                               l2804 0000                                 l2398 0000  
+                               l2566 0099                                 l2582 0000  
+                               l2590 0000                                 l2726 003A  
+                               l2568 0000                                 l2584 0000  
+                               l2760 0000                                 l2752 0000  
+                               l2744 0087                                 l2728 003F  
+                               l2594 0000                                 l2746 0000  
+                               l2738 0062                                 l2770 0000  
+                               l2588 0000                                 l2764 008D  
+                               l2780 0000                                 l2772 0000  
+                               l2766 0000                                 l2790 0000  
+                               l2782 0000                                 l2774 0000  
+                               l2792 0000                                 l2784 0000  
+                               l2776 0000                                 l2768 0000  
+                               l2794 0000                                 l2786 0000  
+                               l2778 0000                                 l2796 0000  
+                               l2788 0000                                 l1998 0000  
+                               l2798 00F4                                 _ADIE 046A  
+                               _ADIF 006A                                 _ADON 00F8  
+                               _CHS0 00FA                                 _CHS1 00FB  
+                               _CHS2 00FC                                 _CHS3 00FD  
+                               _PEIE 005E                                 _main 00D4  
+                               btemp 007E                         _start_timer1 0167  
+                               start 000B                                ??_ISR 0070  
+                _sampleChannelSelect 007B                                ?_main 0070  
+                              _DACR0 0088                                _DACR1 0089  
+                              _CLKPR 0108                                _T1CON 0010  
+                              i1l656 0112                                _TMR1H 000F  
+                              _TMR1L 000E                                pclath 000A  
+                              status 0003                                wtemp0 007E  
+                       __end_of_main 00FE                    __end_of_AD_Sample 0090  
+                             ??_main 0078                               _ADCON0 001F  
+                             _ADCON1 009F                 __end_of_clock_config 0161  
+                             _DACCON 0087                               _ADRESH 001E  
+                             _ADRESL 009E                               _CLKPCE 0847  
+                             i1l2560 0000                               i1l2554 0000  
+                             i1l2564 0000                               i1l2558 0000  
+                   __end_of_dac_init 0152                               _TMR1IE 0460  
+                             _TMR1IF 0060                               _TMR1ON 0080  
+                             _TRISA0 0428                               _TRISA1 0429  
+                             _TRISB0 0430                               _TRISA3 042B  
+                             _TRISB2 0432                               _TRISB3 0433  
+                             _TRISB4 0434                               _TRISB5 0435  
+                             _TRISA7 042F                               _TRISB6 0436  
+        __end_of_clearAdCompleteFalg 009D                     __end_of_op1_init 014A  
+                   __end_of_op2_init 0142                               clrloop 0133  
+                       __pdataCOMMON 007B                               saved_w 007E  
+                  getAdValue@AdValue 0074          ?_process_AD_Converter_Value 0070  
+                     __pcstackCOMMON 0070                          ISR@flashCnt 0034  
+              __end_of_timer1_config 015A     __size_of_timer1_interrupt_config 0006  
+                         __pbssBANK0 0020                           _getAdValue 00AF  
+                         __pmaintext 00D4                           __pintentry 0004  
+         __end_of_adConverter_config 0132    __size_of_SetTempThermistorChannel 0012  
+          ?_SetTempThermistorChannel 0070                            ?_dac_init 0070  
+              __size_of_clock_config 0007                              _OP1CON0 001B  
+                            _OP1CON1 001C                              _OP1CON2 001D  
+                            _OP2CON0 009B                              _OP2CON1 009C  
+                            _OP2CON2 009D                            ?_op1_init 0070  
+                          ?_op2_init 0070               _buffer_Sample_AD_Value 0020  
+        __size_of_start_AD_Converter 0002                         _clock_config 015A  
+                _multiFilterMaxValue 0036                  _multiFilterMinValue 0038  
+                         ??_dac_init 0072                            _AD_Sample 000E  
+                       __size_of_ISR 001B                           ??_op1_init 0072  
+                         ??_op2_init 0072              __size_of_isAD_Completed 0005  
+               end_of_initialization 0124                          ?_getAdValue 0072  
+                         ?_AD_Sample 0070              _timer1_interrupt_config 0161  
+       __size_of_clearAdCompleteFalg 0002                        __pidataCOMMON 0000  
+                __size_of_getAdValue 001B                  start_initialization 0119  
+                        __end_of_ISR 0119                        ?_start_timer1 0070  
+   __end_of_SetTempThermistorChannel 00AF                          ??_AD_Sample 003A  
+          ??_timer1_interrupt_config 0072                          __pbssCOMMON 0078  
+                  __size_of_dac_init 0008                        __pcstackBANK0 003A  
+                 _adConverter_config 0127                       _isAD_Completed 0094  
+                  __size_of_op1_init 0008                    __size_of_op2_init 0008  
+                     ??_start_timer1 0072                  ?_adConverter_config 0070  
+             __size_of_timer1_config 0008                            __ptext561 000D  
+                          __ptext570 013A                            __ptext562 000E  
+                          __ptext571 0142                            __ptext563 00AF  
+                          __ptext572 014A                            __ptext564 009D  
+                          __ptext573 0127                            __ptext565 009B  
+                          __ptext574 0152                            __ptext566 0094  
+                          __ptext575 0161                            __ptext567 0090  
+                          __ptext576 015A                            __ptext568 0099  
+                          __ptext577 00FE                            __ptext569 0167  
+                          __ptext578 0000                 ??_adConverter_config 0072  
+             __end_of_isAD_Completed 0099           __end_of_start_AD_Converter 009B  
+              getAdValue@AdHighValue 0076                    interrupt_function 0004  
+                       ??_getAdValue 0074      __end_of_timer1_interrupt_config 0167  
+           _SetTempThermistorChannel 009D                   __end_of_getAdValue 00CA  
+                    ?_isAD_Completed 0070                        _timer1_config 0152  
+       ??_process_AD_Converter_Value 0078                  _clearAdCompleteFalg 009B  
+               ?_clearAdCompleteFalg 0070                 __end_of_start_timer1 016A  
+__size_of_process_AD_Converter_Value 0001                             _dac_init 014A  
+                     ?_timer1_config 0070                    _stop_AD_Converter 0090  
+                           _op1_init 0142                             _op2_init 013A  
+                 ?_stop_AD_Converter 0070                        __size_of_main 002A  
+                ??_stop_AD_Converter 0072                         _timer10msCnt 007A  
+                           clear_ram 0132                ??_clearAdCompleteFalg 0072  
+          __end_of_stop_AD_Converter 0094                          _sampleCount 0078  
+                        _sampleTimes 0079                             intlevel1 0000  
+                      ?_clock_config 0070                      ??_timer1_config 0072  
+ __end_of_process_AD_Converter_Value 000E           _process_AD_Converter_Value 000D  
+         ??_SetTempThermistorChannel 0072                   _start_AD_Converter 0099  
