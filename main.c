@@ -62,9 +62,10 @@ extern void _delay(unsigned long);
 ****************************************************************************/
 
 
-#define CONFIG1 IO_MODE16   & PWRTE_ON   & LVTEN_ON    & WDTE_ON    &  RDSEL_ON & SMT_ON 
-#define CONFIG2 OTP_MOD4K  & BOR26V      & FOSC_RC20M  & RESETE_OFF  
+#define CONFIG1 IO_MODE16   & PWRTE_ON   & LVTEN_ON    & WDTE_ON    &  RDSEL_ON & SMT_ON
+#define CONFIG2 OTP_MOD4K  & BOR26V      & FOSC_RC20M  & RESETE_OFF
 #define CONFIG3 OTP_4K_0  & WDTPS_128   & SUT_ON      & SUT_0
+
 
 __CONFIG(CONFIG1);
 __CONFIG(CONFIG2);
@@ -75,11 +76,18 @@ __CONFIG(CONFIG3);
 #define SLEEP_PWADC()  SMCR = 0X05; SLEEP()
 #define SLEEP_PWOFF()  SMCR = 0X09; SLEEP()
 
+static unsigned char timer10msCnt = 0;
+
 
 void main (void)
 {	
 	clock_config();	//使系统时钟稳定
+	timer1_interrupt_config();
+	timer1_config();
 	
+	adConverter_config();
+
+
 	//OP1配置
 	TRISB3=1;	//PB3（A1P）输入
 	TRISB4=1;	//PB4（A1N）输入
@@ -89,20 +97,42 @@ void main (void)
 	TRISA7=0;	//PA7（A2E）输出	  DAC1信号输出Pin
 	TRISB6=1;	//PB6(A2P)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
 
-    //LED配置
-    TRISB0=0;   //可接指示灯闪烁，表示程序正常运行
-	TRISB2 =1;// set PB2 as input
 	TRISA0 = 0; //SET PA0,PA1,PA3 as output
 	TRISA1 = 0;
-    TRISA3 = 0;	
+	TRISA3 = 0;
+
 
 	dac_init(); //DAC0/1初始化
 	op1_init(); //OP1初始化
 	op2_init(); //OP2初始化
 
+	start_timer1();
     while(1)
     {	
-	   PB0=~PB0;
-       __delay_us(1000);
+       CLRWDT();//feed watch dog
+       if(timer10msCnt >= 5 ) //50ms
+		{
+		  timer10msCnt = 0;
+    	   process_AD_Converter_Value();
+		}
 	}	
+}
+
+
+void interrupt ISR(void)
+{
+	if(TMR1IF == 1)
+    {
+		TMR1IF = 0 ;
+		timer10msCnt++;
+#ifdef DEBUG_FUNCITON
+		static unsigned int flashCnt = 0;
+		flashCnt++;
+		if(flashCnt >  100) //100*10ms =1s
+		{
+			PA0 = ~PA0;
+			flashCnt = 0;
+		}
+#endif
+    }
 }
