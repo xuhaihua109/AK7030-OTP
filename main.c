@@ -89,8 +89,8 @@ void main (void)
 
 
 	//OP1配置
-	TRISB3=1;	//PB3（A1P）输入
-	TRISB4=1;	//PB4（A1N）输入
+	TRISB3=1;	//PB3（A1P）输入 ,A1N is connected to DAC0
+//	TRISB4=1;	//PB4（A1N）输入
 	TRISB5=0;	//PB5（A1E）输出  DAC0信号输出Pin
     
     //OP2配置
