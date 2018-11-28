@@ -39,17 +39,17 @@ fsr0	equ	4
 c	equ	1
 z	equ	0
 pclath	equ	10
-# 70 "C:\AK7030-OTP\main.c"
+# 70 "C:\123\AK7030-OTP\main.c"
 	psect config,class=CONFIG,delta=2 ;#
-# 70 "C:\AK7030-OTP\main.c"
+# 70 "C:\123\AK7030-OTP\main.c"
 	dw 0x2FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF ;#
-# 71 "C:\AK7030-OTP\main.c"
+# 71 "C:\123\AK7030-OTP\main.c"
 	psect config,class=CONFIG,delta=2 ;#
-# 71 "C:\AK7030-OTP\main.c"
+# 71 "C:\123\AK7030-OTP\main.c"
 	dw 0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE ;#
-# 72 "C:\AK7030-OTP\main.c"
+# 72 "C:\123\AK7030-OTP\main.c"
 	psect config,class=CONFIG,delta=2 ;#
-# 72 "C:\AK7030-OTP\main.c"
+# 72 "C:\123\AK7030-OTP\main.c"
 	dw 0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8 ;#
 	FNCALL	_main,_clock_config
 	FNCALL	_main,_timer1_interrupt_config
@@ -76,7 +76,7 @@ pclath	equ	10
 psect	idataCOMMON,class=CODE,space=0,delta=2
 global __pidataCOMMON
 __pidataCOMMON:
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	13
 
 ;initializer for _sampleChannelSelect
@@ -191,7 +191,7 @@ _timer10msCnt:
 psect	dataCOMMON,class=COMMON,space=1
 global __pdataCOMMON
 __pdataCOMMON:
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 _sampleChannelSelect:
        ds      1
 
@@ -524,7 +524,7 @@ __pmaintext:
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 83 in file "C:\AK7030-OTP\main.c"
+;;		line 83 in file "C:\123\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -559,7 +559,7 @@ __pmaintext:
 ;; This function uses a non-reentrant model
 ;;
 psect	maintext
-	file	"C:\AK7030-OTP\main.c"
+	file	"C:\123\AK7030-OTP\main.c"
 	line	83
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
@@ -648,7 +648,7 @@ l2796:
 	line	112
 	
 l2798:	
-# 112 "C:\AK7030-OTP\main.c"
+# 112 "C:\123\AK7030-OTP\main.c"
  clrwdt ;#
 psect	maintext
 	line	113
@@ -692,7 +692,7 @@ __ptext561:
 
 ;; *************** function _process_AD_Converter_Value *****************
 ;; Defined at:
-;;		line 100 in file "C:\AK7030-OTP\common.c"
+;;		line 100 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -720,7 +720,7 @@ __ptext561:
 ;; This function uses a non-reentrant model
 ;;
 psect	text561
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	100
 	global	__size_of_process_AD_Converter_Value
 	__size_of_process_AD_Converter_Value	equ	__end_of_process_AD_Converter_Value-_process_AD_Converter_Value
@@ -750,7 +750,7 @@ __ptext562:
 
 ;; *************** function _AD_Sample *****************
 ;; Defined at:
-;;		line 114 in file "C:\AK7030-OTP\common.c"
+;;		line 114 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -783,7 +783,7 @@ __ptext562:
 ;; This function uses a non-reentrant model
 ;;
 psect	text562
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	114
 	global	__size_of_AD_Sample
 	__size_of_AD_Sample	equ	__end_of_AD_Sample-_AD_Sample
@@ -1153,7 +1153,7 @@ __ptext563:
 
 ;; *************** function _getAdValue *****************
 ;; Defined at:
-;;		line 85 in file "C:\AK7030-OTP\common.c"
+;;		line 85 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1182,7 +1182,7 @@ __ptext563:
 ;; This function uses a non-reentrant model
 ;;
 psect	text563
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	85
 	global	__size_of_getAdValue
 	__size_of_getAdValue	equ	__end_of_getAdValue-_getAdValue
@@ -1266,7 +1266,7 @@ __ptext564:
 
 ;; *************** function _SetTempThermistorChannel *****************
 ;; Defined at:
-;;		line 217 in file "C:\AK7030-OTP\common.c"
+;;		line 217 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1294,7 +1294,7 @@ __ptext564:
 ;; This function uses a non-reentrant model
 ;;
 psect	text564
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	217
 	global	__size_of_SetTempThermistorChannel
 	__size_of_SetTempThermistorChannel	equ	__end_of_SetTempThermistorChannel-_SetTempThermistorChannel
@@ -1370,7 +1370,7 @@ __ptext565:
 
 ;; *************** function _clearAdCompleteFalg *****************
 ;; Defined at:
-;;		line 80 in file "C:\AK7030-OTP\common.c"
+;;		line 80 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1398,7 +1398,7 @@ __ptext565:
 ;; This function uses a non-reentrant model
 ;;
 psect	text565
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	80
 	global	__size_of_clearAdCompleteFalg
 	__size_of_clearAdCompleteFalg	equ	__end_of_clearAdCompleteFalg-_clearAdCompleteFalg
@@ -1428,7 +1428,7 @@ __ptext566:
 
 ;; *************** function _isAD_Completed *****************
 ;; Defined at:
-;;		line 72 in file "C:\AK7030-OTP\common.c"
+;;		line 72 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1457,7 +1457,7 @@ __ptext566:
 ;; This function uses a non-reentrant model
 ;;
 psect	text566
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	72
 	global	__size_of_isAD_Completed
 	__size_of_isAD_Completed	equ	__end_of_isAD_Completed-_isAD_Completed
@@ -1506,7 +1506,7 @@ __ptext567:
 
 ;; *************** function _stop_AD_Converter *****************
 ;; Defined at:
-;;		line 67 in file "C:\AK7030-OTP\common.c"
+;;		line 67 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1534,7 +1534,7 @@ __ptext567:
 ;; This function uses a non-reentrant model
 ;;
 psect	text567
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	67
 	global	__size_of_stop_AD_Converter
 	__size_of_stop_AD_Converter	equ	__end_of_stop_AD_Converter-_stop_AD_Converter
@@ -1566,7 +1566,7 @@ __ptext568:
 
 ;; *************** function _start_AD_Converter *****************
 ;; Defined at:
-;;		line 62 in file "C:\AK7030-OTP\common.c"
+;;		line 62 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1594,7 +1594,7 @@ __ptext568:
 ;; This function uses a non-reentrant model
 ;;
 psect	text568
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	62
 	global	__size_of_start_AD_Converter
 	__size_of_start_AD_Converter	equ	__end_of_start_AD_Converter-_start_AD_Converter
@@ -1624,7 +1624,7 @@ __ptext569:
 
 ;; *************** function _start_timer1 *****************
 ;; Defined at:
-;;		line 40 in file "C:\AK7030-OTP\common.c"
+;;		line 40 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1652,7 +1652,7 @@ __ptext569:
 ;; This function uses a non-reentrant model
 ;;
 psect	text569
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	40
 	global	__size_of_start_timer1
 	__size_of_start_timer1	equ	__end_of_start_timer1-_start_timer1
@@ -1683,7 +1683,7 @@ __ptext570:
 
 ;; *************** function _op2_init *****************
 ;; Defined at:
-;;		line 40 in file "C:\AK7030-OTP\periph.c"
+;;		line 40 in file "C:\123\AK7030-OTP\periph.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1711,7 +1711,7 @@ __ptext570:
 ;; This function uses a non-reentrant model
 ;;
 psect	text570
-	file	"C:\AK7030-OTP\periph.c"
+	file	"C:\123\AK7030-OTP\periph.c"
 	line	40
 	global	__size_of_op2_init
 	__size_of_op2_init	equ	__end_of_op2_init-_op2_init
@@ -1751,7 +1751,7 @@ __ptext571:
 
 ;; *************** function _op1_init *****************
 ;; Defined at:
-;;		line 26 in file "C:\AK7030-OTP\periph.c"
+;;		line 26 in file "C:\123\AK7030-OTP\periph.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1779,7 +1779,7 @@ __ptext571:
 ;; This function uses a non-reentrant model
 ;;
 psect	text571
-	file	"C:\AK7030-OTP\periph.c"
+	file	"C:\123\AK7030-OTP\periph.c"
 	line	26
 	global	__size_of_op1_init
 	__size_of_op1_init	equ	__end_of_op1_init-_op1_init
@@ -1819,7 +1819,7 @@ __ptext572:
 
 ;; *************** function _dac_init *****************
 ;; Defined at:
-;;		line 14 in file "C:\AK7030-OTP\periph.c"
+;;		line 14 in file "C:\123\AK7030-OTP\periph.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1847,7 +1847,7 @@ __ptext572:
 ;; This function uses a non-reentrant model
 ;;
 psect	text572
-	file	"C:\AK7030-OTP\periph.c"
+	file	"C:\123\AK7030-OTP\periph.c"
 	line	14
 	global	__size_of_dac_init
 	__size_of_dac_init	equ	__end_of_dac_init-_dac_init
@@ -1863,8 +1863,8 @@ l2392:
 	line	17
 	
 l2394:	
-;periph.c: 17: DACR0=0x19;
-	movlw	(019h)
+;periph.c: 17: DACR0=0x11;
+	movlw	(011h)
 	movwf	(136)^080h	;volatile
 	line	18
 	
@@ -1872,8 +1872,8 @@ l2396:
 ;periph.c: 18: DACCON|=(1)<<2;
 	bsf	(135)^080h+(2/8),(2)&7	;volatile
 	line	20
-;periph.c: 20: DACR1=0x06;
-	movlw	(06h)
+;periph.c: 20: DACR1=0x04;
+	movlw	(04h)
 	movwf	(137)^080h	;volatile
 	line	21
 	
@@ -1897,7 +1897,7 @@ __ptext573:
 
 ;; *************** function _adConverter_config *****************
 ;; Defined at:
-;;		line 52 in file "C:\AK7030-OTP\common.c"
+;;		line 52 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1925,7 +1925,7 @@ __ptext573:
 ;; This function uses a non-reentrant model
 ;;
 psect	text573
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	52
 	global	__size_of_adConverter_config
 	__size_of_adConverter_config	equ	__end_of_adConverter_config-_adConverter_config
@@ -1976,7 +1976,7 @@ __ptext574:
 
 ;; *************** function _timer1_config *****************
 ;; Defined at:
-;;		line 32 in file "C:\AK7030-OTP\common.c"
+;;		line 32 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2004,7 +2004,7 @@ __ptext574:
 ;; This function uses a non-reentrant model
 ;;
 psect	text574
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	32
 	global	__size_of_timer1_config
 	__size_of_timer1_config	equ	__end_of_timer1_config-_timer1_config
@@ -2044,7 +2044,7 @@ __ptext575:
 
 ;; *************** function _timer1_interrupt_config *****************
 ;; Defined at:
-;;		line 45 in file "C:\AK7030-OTP\common.c"
+;;		line 45 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2072,7 +2072,7 @@ __ptext575:
 ;; This function uses a non-reentrant model
 ;;
 psect	text575
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	45
 	global	__size_of_timer1_interrupt_config
 	__size_of_timer1_interrupt_config	equ	__end_of_timer1_interrupt_config-_timer1_interrupt_config
@@ -2110,7 +2110,7 @@ __ptext576:
 
 ;; *************** function _clock_config *****************
 ;; Defined at:
-;;		line 24 in file "C:\AK7030-OTP\common.c"
+;;		line 24 in file "C:\123\AK7030-OTP\common.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2138,7 +2138,7 @@ __ptext576:
 ;; This function uses a non-reentrant model
 ;;
 psect	text576
-	file	"C:\AK7030-OTP\common.c"
+	file	"C:\123\AK7030-OTP\common.c"
 	line	24
 	global	__size_of_clock_config
 	__size_of_clock_config	equ	__end_of_clock_config-_clock_config
@@ -2185,7 +2185,7 @@ __ptext577:
 
 ;; *************** function _ISR *****************
 ;; Defined at:
-;;		line 123 in file "C:\AK7030-OTP\main.c"
+;;		line 123 in file "C:\123\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2212,7 +2212,7 @@ __ptext577:
 ;; This function uses a non-reentrant model
 ;;
 psect	text577
-	file	"C:\AK7030-OTP\main.c"
+	file	"C:\123\AK7030-OTP\main.c"
 	line	123
 	global	__size_of_ISR
 	__size_of_ISR	equ	__end_of_ISR-_ISR

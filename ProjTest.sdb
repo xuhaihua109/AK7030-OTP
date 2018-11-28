@@ -2,7 +2,7 @@
 [d version 1.1 ]
 [d edition pro ]
 [d chip 16C77 ]
-"184 C:\AK7030-OTP\yn8p520.h
+"184 C:\123\AK7030-OTP\yn8p520.h
 [s S31 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
@@ -168,9 +168,9 @@
 `uc 1 ADVREF1 1 0 :1:7 
 ]
 [u S600 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
-"123 C:\AK7030-OTP\main.c
+"123 C:\123\AK7030-OTP\main.c
 [v F798 `(v  1 t 0 ]
-"184 C:\AK7030-OTP\yn8p520.h
+"184 C:\123\AK7030-OTP\yn8p520.h
 [s S698 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
@@ -504,7 +504,7 @@
 [u S1664 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
 "3 bmul.c
 [v ___bmul `(uc  1 e 1 0 ]
-"24 C:\AK7030-OTP\common.c
+"24 C:\123\AK7030-OTP\common.c
 [v _clock_config `(v  1 e 0 0 ]
 "32
 [v _timer1_config `(v  1 e 0 0 ]
@@ -534,11 +534,11 @@
 [v _getAdCh12Value `(ui  1 e 2 0 ]
 "245
 [v _getAdCh13Value `(ui  1 e 2 0 ]
-"83 C:\AK7030-OTP\main.c
+"83 C:\123\AK7030-OTP\main.c
 [v _main `(v  1 e 0 0 ]
 "123
 [v _ISR `I(v  1 e 0 0 ]
-"14 C:\AK7030-OTP\periph.c
+"14 C:\123\AK7030-OTP\periph.c
 [v _dac_init `(v  1 e 0 0 ]
 "26
 [v _op1_init `(v  1 e 0 0 ]
@@ -616,7 +616,7 @@
 [v ___tmul `(um  1 e 3 0 ]
 "3 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\wmul.c
 [v ___wmul `(ui  1 e 2 0 ]
-"11 C:\AK7030-OTP\common.c
+"11 C:\123\AK7030-OTP\common.c
 [v _buffer_Sample_AD_Value `[10]ui  1 s 20 buffer_Sample_AD_Value ]
 "12
 [v _sampleTimes `uc  1 s 1 sampleTimes ]
@@ -627,9 +627,9 @@
 [v _multiFilterMinValue `ui  1 s 2 multiFilterMinValue ]
 "15
 [v _sampleCount `uc  1 s 1 sampleCount ]
-"79 C:\AK7030-OTP\main.c
+"79 C:\123\AK7030-OTP\main.c
 [v _timer10msCnt `uc  1 s 1 timer10msCnt ]
-"164 C:\AK7030-OTP\yn8p520.h
+"164 C:\123\AK7030-OTP\yn8p520.h
 [v _INDF `VEuc  1 e 1 @0 ]
 "168
 [v _LVDCON `VEuc  1 e 1 @1 ]
@@ -1251,12 +1251,12 @@
 [v _ALG6 `VEuc  1 e 1 @398 ]
 "913
 [v _ALG7 `VEuc  1 e 1 @399 ]
-"83 C:\AK7030-OTP\main.c
+"83 C:\123\AK7030-OTP\main.c
 [v _main `(v  1 e 0 0 ]
 {
 "119
 } 0
-"100 C:\AK7030-OTP\common.c
+"100 C:\123\AK7030-OTP\common.c
 [v _process_AD_Converter_Value `(v  1 e 0 0 ]
 {
 "102
@@ -1304,7 +1304,7 @@
 {
 "42
 } 0
-"40 C:\AK7030-OTP\periph.c
+"40 C:\123\AK7030-OTP\periph.c
 [v _op2_init `(v  1 e 0 0 ]
 {
 "51
@@ -1319,7 +1319,7 @@
 {
 "22
 } 0
-"52 C:\AK7030-OTP\common.c
+"52 C:\123\AK7030-OTP\common.c
 [v _adConverter_config `(v  1 e 0 0 ]
 {
 "58
@@ -1339,7 +1339,7 @@
 {
 "29
 } 0
-"123 C:\AK7030-OTP\main.c
+"123 C:\123\AK7030-OTP\main.c
 [v _ISR `I(v  1 e 0 0 ]
 {
 "129

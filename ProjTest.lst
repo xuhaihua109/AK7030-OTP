@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
-                                                                                               Tue Nov 27 17:18:07 2018
+                                                                                               Wed Nov 28 19:05:21 2018
 
 HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
      1                           	processor	16C77
@@ -446,7 +446,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    440                           
    441 ;; *************** function _main *****************
    442 ;; Defined at:
-   443 ;;		line 83 in file "C:\AK7030-OTP\main.c"
+   443 ;;		line 83 in file "C:\123\AK7030-OTP\main.c"
    444 ;; Parameters:    Size  Location     Type
    445 ;;		None
    446 ;; Auto vars:     Size  Location     Type
@@ -556,7 +556,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    550                           
    551 ;; *************** function _process_AD_Converter_Value *****************
    552 ;; Defined at:
-   553 ;;		line 100 in file "C:\AK7030-OTP\common.c"
+   553 ;;		line 100 in file "C:\123\AK7030-OTP\common.c"
    554 ;; Parameters:    Size  Location     Type
    555 ;;		None
    556 ;; Auto vars:     Size  Location     Type
@@ -596,7 +596,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    590                           
    591 ;; *************** function _AD_Sample *****************
    592 ;; Defined at:
-   593 ;;		line 114 in file "C:\AK7030-OTP\common.c"
+   593 ;;		line 114 in file "C:\123\AK7030-OTP\common.c"
    594 ;; Parameters:    Size  Location     Type
    595 ;;		None
    596 ;; Auto vars:     Size  Location     Type
@@ -874,7 +874,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    868                           
    869 ;; *************** function _stop_AD_Converter *****************
    870 ;; Defined at:
-   871 ;;		line 67 in file "C:\AK7030-OTP\common.c"
+   871 ;;		line 67 in file "C:\123\AK7030-OTP\common.c"
    872 ;; Parameters:    Size  Location     Type
    873 ;;		None
    874 ;; Auto vars:     Size  Location     Type
@@ -917,7 +917,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    911                           
    912 ;; *************** function _isAD_Completed *****************
    913 ;; Defined at:
-   914 ;;		line 72 in file "C:\AK7030-OTP\common.c"
+   914 ;;		line 72 in file "C:\123\AK7030-OTP\common.c"
    915 ;; Parameters:    Size  Location     Type
    916 ;;		None
    917 ;; Auto vars:     Size  Location     Type
@@ -967,7 +967,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    961                           
    962 ;; *************** function _start_AD_Converter *****************
    963 ;; Defined at:
-   964 ;;		line 62 in file "C:\AK7030-OTP\common.c"
+   964 ;;		line 62 in file "C:\123\AK7030-OTP\common.c"
    965 ;; Parameters:    Size  Location     Type
    966 ;;		None
    967 ;; Auto vars:     Size  Location     Type
@@ -1009,7 +1009,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1003                           
   1004 ;; *************** function _clearAdCompleteFalg *****************
   1005 ;; Defined at:
-  1006 ;;		line 80 in file "C:\AK7030-OTP\common.c"
+  1006 ;;		line 80 in file "C:\123\AK7030-OTP\common.c"
   1007 ;; Parameters:    Size  Location     Type
   1008 ;;		None
   1009 ;; Auto vars:     Size  Location     Type
@@ -1050,7 +1050,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1044                           
   1045 ;; *************** function _SetTempThermistorChannel *****************
   1046 ;; Defined at:
-  1047 ;;		line 217 in file "C:\AK7030-OTP\common.c"
+  1047 ;;		line 217 in file "C:\123\AK7030-OTP\common.c"
   1048 ;; Parameters:    Size  Location     Type
   1049 ;;		None
   1050 ;; Auto vars:     Size  Location     Type
@@ -1129,7 +1129,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1123                           
   1124 ;; *************** function _getAdValue *****************
   1125 ;; Defined at:
-  1126 ;;		line 85 in file "C:\AK7030-OTP\common.c"
+  1126 ;;		line 85 in file "C:\123\AK7030-OTP\common.c"
   1127 ;; Parameters:    Size  Location     Type
   1128 ;;		None
   1129 ;; Auto vars:     Size  Location     Type
@@ -1225,7 +1225,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1219                           
   1220 ;; *************** function _start_timer1 *****************
   1221 ;; Defined at:
-  1222 ;;		line 40 in file "C:\AK7030-OTP\common.c"
+  1222 ;;		line 40 in file "C:\123\AK7030-OTP\common.c"
   1223 ;; Parameters:    Size  Location     Type
   1224 ;;		None
   1225 ;; Auto vars:     Size  Location     Type
@@ -1269,7 +1269,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1263                           
   1264 ;; *************** function _op2_init *****************
   1265 ;; Defined at:
-  1266 ;;		line 40 in file "C:\AK7030-OTP\periph.c"
+  1266 ;;		line 40 in file "C:\123\AK7030-OTP\periph.c"
   1267 ;; Parameters:    Size  Location     Type
   1268 ;;		None
   1269 ;; Auto vars:     Size  Location     Type
@@ -1322,7 +1322,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1316                           
   1317 ;; *************** function _op1_init *****************
   1318 ;; Defined at:
-  1319 ;;		line 26 in file "C:\AK7030-OTP\periph.c"
+  1319 ;;		line 26 in file "C:\123\AK7030-OTP\periph.c"
   1320 ;; Parameters:    Size  Location     Type
   1321 ;;		None
   1322 ;; Auto vars:     Size  Location     Type
@@ -1375,7 +1375,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1369                           
   1370 ;; *************** function _dac_init *****************
   1371 ;; Defined at:
-  1372 ;;		line 14 in file "C:\AK7030-OTP\periph.c"
+  1372 ;;		line 14 in file "C:\123\AK7030-OTP\periph.c"
   1373 ;; Parameters:    Size  Location     Type
   1374 ;;		None
   1375 ;; Auto vars:     Size  Location     Type
@@ -1409,15 +1409,15 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1403                           ; Regs used in _dac_init: [wreg]
   1404  014A  1487               	bsf	7,1	;volatile
   1405                           
-  1406                           ;periph.c: 17: DACR0=0x19;
-  1407  014B  3019               	movlw	25
+  1406                           ;periph.c: 17: DACR0=0x11;
+  1407  014B  3011               	movlw	17
   1408  014C  0088               	movwf	8	;volatile
   1409                           
   1410                           ;periph.c: 18: DACCON|=(1)<<2;
   1411  014D  1507               	bsf	7,2	;volatile
   1412                           
-  1413                           ;periph.c: 20: DACR1=0x06;
-  1414  014E  3006               	movlw	6
+  1413                           ;periph.c: 20: DACR1=0x04;
+  1414  014E  3004               	movlw	4
   1415  014F  0089               	movwf	9	;volatile
   1416                           
   1417                           ;periph.c: 21: DACCON|=(1)<<3;
@@ -1432,7 +1432,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1426                           
   1427 ;; *************** function _adConverter_config *****************
   1428 ;; Defined at:
-  1429 ;;		line 52 in file "C:\AK7030-OTP\common.c"
+  1429 ;;		line 52 in file "C:\123\AK7030-OTP\common.c"
   1430 ;; Parameters:    Size  Location     Type
   1431 ;;		None
   1432 ;; Auto vars:     Size  Location     Type
@@ -1492,7 +1492,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1486                           
   1487 ;; *************** function _timer1_config *****************
   1488 ;; Defined at:
-  1489 ;;		line 32 in file "C:\AK7030-OTP\common.c"
+  1489 ;;		line 32 in file "C:\123\AK7030-OTP\common.c"
   1490 ;; Parameters:    Size  Location     Type
   1491 ;;		None
   1492 ;; Auto vars:     Size  Location     Type
@@ -1545,7 +1545,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1539                           
   1540 ;; *************** function _timer1_interrupt_config *****************
   1541 ;; Defined at:
-  1542 ;;		line 45 in file "C:\AK7030-OTP\common.c"
+  1542 ;;		line 45 in file "C:\123\AK7030-OTP\common.c"
   1543 ;; Parameters:    Size  Location     Type
   1544 ;;		None
   1545 ;; Auto vars:     Size  Location     Type
@@ -1596,7 +1596,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1590                           
   1591 ;; *************** function _clock_config *****************
   1592 ;; Defined at:
-  1593 ;;		line 24 in file "C:\AK7030-OTP\common.c"
+  1593 ;;		line 24 in file "C:\123\AK7030-OTP\common.c"
   1594 ;; Parameters:    Size  Location     Type
   1595 ;;		None
   1596 ;; Auto vars:     Size  Location     Type
@@ -1649,7 +1649,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1643                           
   1644 ;; *************** function _ISR *****************
   1645 ;; Defined at:
-  1646 ;;		line 123 in file "C:\AK7030-OTP\main.c"
+  1646 ;;		line 123 in file "C:\123\AK7030-OTP\main.c"
   1647 ;; Parameters:    Size  Location     Type
   1648 ;;		None
   1649 ;; Auto vars:     Size  Location     Type
@@ -1745,7 +1745,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
 
 
 HI-TECH Software PICC Macro Assembler V9.83 build 10920 
-Symbol Table                                                                                   Tue Nov 27 17:18:07 2018
+Symbol Table                                                                                   Wed Nov 28 19:05:21 2018
 
                      ??_clock_config 0072                __size_of_start_timer1 0003  
                 ?_start_AD_Converter 0070                                   fsr 0004  

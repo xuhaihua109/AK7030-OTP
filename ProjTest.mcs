@@ -2,47 +2,47 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=C:\dev1\DAC_OP_Test V1.1\common.p1
+Location=C:\123\AK7030-OTP\main.p1
 Folder=Intermediary
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File001]
-Location=C:\dev1\DAC_OP_Test V1.1\main.p1
+Location=C:\123\AK7030-OTP\common.p1
 Folder=Intermediary
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File002]
-Location=C:\dev1\DAC_OP_Test V1.1\periph.p1
+Location=C:\123\AK7030-OTP\periph.p1
 Folder=Intermediary
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File003]
-Location=C:\AK7030-OTP\main.p1
-Folder=Intermediary
+Location=C:\123\AK7030-OTP\ProjTest.cof
+Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
@@ -54,8 +54,8 @@ ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File004]
-Location=C:\AK7030-OTP\common.p1
-Folder=Intermediary
+Location=C:\123\AK7030-OTP\ProjTest.hex
+Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
@@ -67,8 +67,8 @@ ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File005]
-Location=C:\AK7030-OTP\periph.p1
-Folder=Intermediary
+Location=C:\123\AK7030-OTP\ProjTest.sym
+Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
@@ -80,332 +80,124 @@ ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File006]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.cof
+Location=C:\123\AK7030-OTP\ProjTest.map
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File007]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.hex
+Location=C:\123\AK7030-OTP\ProjTest.hxl
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File008]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.sym
+Location=C:\123\AK7030-OTP\startup.lst
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File009]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.map
+Location=C:\123\AK7030-OTP\startup.rlf
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File010]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.hxl
+Location=C:\123\AK7030-OTP\doprnt.p1
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File011]
-Location=C:\dev1\DAC_OP_Test V1.1\startup.lst
+Location=C:\123\AK7030-OTP\doprnt.pre
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File012]
-Location=C:\dev1\DAC_OP_Test V1.1\startup.rlf
+Location=C:\123\AK7030-OTP\ProjTest.obj
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File013]
-Location=C:\dev1\DAC_OP_Test V1.1\doprnt.p1
+Location=C:\123\AK7030-OTP\ProjTest.lst
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File014]
-Location=C:\dev1\DAC_OP_Test V1.1\doprnt.pre
+Location=C:\123\AK7030-OTP\ProjTest.rlf
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=C9=1
 TraceCmdString=
 DebugOptions=
 [File015]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.obj
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File016]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.lst
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File017]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.rlf
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File018]
-Location=C:\dev1\DAC_OP_Test V1.1\ProjTest.sdb
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\common.c|src\main.c|src\periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File019]
-Location=C:\AK7030-OTP\ProjTest.cof
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File020]
-Location=C:\AK7030-OTP\ProjTest.hex
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File021]
-Location=C:\AK7030-OTP\ProjTest.sym
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File022]
-Location=C:\AK7030-OTP\ProjTest.map
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File023]
-Location=C:\AK7030-OTP\ProjTest.hxl
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File024]
-Location=C:\AK7030-OTP\startup.lst
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File025]
-Location=C:\AK7030-OTP\startup.rlf
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File026]
-Location=C:\AK7030-OTP\doprnt.p1
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File027]
-Location=C:\AK7030-OTP\doprnt.pre
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File028]
-Location=C:\AK7030-OTP\ProjTest.obj
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File029]
-Location=C:\AK7030-OTP\ProjTest.lst
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File030]
-Location=C:\AK7030-OTP\ProjTest.rlf
-Folder=Output
-DeviceName=PIC16C77
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\bin\picc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|common.c|periph.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=1
-TraceCmdString=
-DebugOptions=
-[File031]
-Location=C:\AK7030-OTP\ProjTest.sdb
+Location=C:\123\AK7030-OTP\ProjTest.sdb
 Folder=Output
 DeviceName=PIC16C77
 LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}

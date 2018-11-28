@@ -1,5 +1,5 @@
 
-# 1 "C:\AK7030-OTP\common.c"
+# 1 "C:\123\AK7030-OTP\common.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\AK7030-OTP\yn8p520.h"
+# 164 "C:\123\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,7 +799,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 21 "C:\AK7030-OTP\common.h"
+# 21 "C:\123\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -823,7 +823,7 @@ unsigned int getAdCh12Value();
 
 unsigned int getAdCh13Value();
 
-# 11 "C:\AK7030-OTP\common.c"
+# 11 "C:\123\AK7030-OTP\common.c"
 static unsigned int buffer_Sample_AD_Value[10];
 static unsigned char sampleTimes;
 static unsigned char sampleChannelSelect = 13;
