@@ -257,7 +257,7 @@ unsigned int getAdCh13Value()
 	return sampleCH13Value;
 }
 
-void setDA_ConvertValue(unsigned char ucValue)
+void setDAC0_ChannelValue(unsigned char ucValue)
 {
 	DACR0=ucValue;
 }
@@ -288,7 +288,6 @@ unsigned char isFinishedSmallTimer()
 		return 1;
 	else
 		return 0;
-	return 0;
 }
 
 unsigned char isPermitSampleTime()
