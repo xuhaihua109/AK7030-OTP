@@ -1,5 +1,5 @@
 
-# 1 "C:\123\AK7030-OTP\main.c"
+# 1 "C:\AK7030-OTP\main.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\123\AK7030-OTP\yn8p520.h"
+# 164 "C:\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,7 +799,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 21 "C:\123\AK7030-OTP\common.h"
+# 21 "C:\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -823,14 +823,26 @@ unsigned int getAdCh12Value();
 
 unsigned int getAdCh13Value();
 
-# 6 "C:\123\AK7030-OTP\periph.h"
+unsigned char isPermitSampleTime();
+
+void clrSampeTime();
+
+void setDAC0_ChannelValue(unsigned char ucValue);
+
+void startBigTimer();
+void startSmallTimer();
+
+unsigned char isFinishedBigTimer();
+unsigned char isFinishedSmallTimer();
+
+# 6 "C:\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
 void int_enable(unsigned char mode);
 
 
-# 26 "C:\123\AK7030-OTP\main.c"
+# 26 "C:\AK7030-OTP\main.c"
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
@@ -839,12 +851,33 @@ asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x2FFF & 0x3FFF & 0x3FFF
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
 
-# 79
-static unsigned char timer10msCnt = 0;
-
-
+# 83
 void main (void)
 {
+enum step
+{
+SENSE_PB2_INPUT_VOLTAGE = 0,
+SENSE_PB2_DURATION_ONE_SECOND,
+SENSE_PB2_INPUT_VOLTAGE__AGAIN,
+SENSE_PB2_DURATION__SECOND,
+SET_PA2_VALUE,
+PROCESS_AD_VALUE,
+WAIT_SET_TIME_FINISHED,
+SET_TIME_BE_FINISHED,
+CHECKING_PULL_OUT_BATTERY,
+CHECKING_INSTALLED_BATTERY,
+};
+
+enum workTimerType
+{
+BIG_TIMER_WORK = 0,
+SMALL_TIMER_WORK,
+};
+
+static enum step ampStep;
+
+static enum workTimerType tDA_timer;
+
 clock_config();
 timer1_interrupt_config();
 timer1_config();
@@ -864,6 +897,10 @@ TRISB6=1;
 TRISA0 = 0;
 TRISA1 = 0;
 TRISA3 = 0;
+TRISA2 = 0;
+PA2 = 1;
+
+TRISB2 = 1;
 
 
 dac_init();
@@ -871,32 +908,216 @@ op1_init();
 op2_init();
 
 start_timer1();
+
+static unsigned char testStep;
 while(1)
 {
 asm(" clrwdt");
-if(timer10msCnt >= 5 )
+if(isPermitSampleTime())
 {
-timer10msCnt = 0;
+clrSampeTime();
 process_AD_Converter_Value();
-}
-}
-}
 
-
-void interrupt ISR(void)
+switch(ampStep)
 {
-if(TMR1IF == 1)
+case SENSE_PB2_INPUT_VOLTAGE:
 {
-TMR1IF = 0 ;
-timer10msCnt++;
-
-static unsigned int flashCnt = 0;
-flashCnt++;
-if(flashCnt > 100)
-{
-PA0 = ~PA0;
-flashCnt = 0;
+if(!PB2)
+ampStep++;
+break;
 }
 
+case SENSE_PB2_DURATION_ONE_SECOND:
+{
+static unsigned char ucConfirmTimer1S = 0;
+if(!PB2)
+{
+ucConfirmTimer1S++;
+}
+else
+{
+ucConfirmTimer1S = 0;
+}
+
+if(ucConfirmTimer1S >= 10)
+{
+ucConfirmTimer1S = 0;
+ampStep++;
+}
+
+break;
+}
+
+case SENSE_PB2_INPUT_VOLTAGE__AGAIN:
+{
+if(!PB2)
+ampStep++;
+break;
+}
+
+case SENSE_PB2_DURATION__SECOND:
+{
+static unsigned char ucConfirmTimerZptS = 0;
+if(!PB2)
+{
+ucConfirmTimerZptS++;
+}
+else
+{
+ucConfirmTimerZptS = 0;
+}
+
+if(ucConfirmTimerZptS >= 3)
+{
+ucConfirmTimerZptS = 0;
+ampStep++;
+}
+
+break;
+}
+
+case SET_PA2_VALUE:
+{
+PA2 = 0;
+ampStep++;
+break;
+}
+
+case PROCESS_AD_VALUE:
+{
+static unsigned char ucInit = 0;
+if(getAdCh13Value() > 40)
+{
+PA0 = 0;
+PA1 = 1;
+PA3 = 1;
+tDA_timer = BIG_TIMER_WORK;
+setDAC0_ChannelValue(27);
+startBigTimer();
+}
+else if(getAdCh13Value() <35)
+{
+PA0 = 1;
+PA1 = 0;
+PA3 = 0;
+tDA_timer = SMALL_TIMER_WORK;
+setDAC0_ChannelValue(25);
+startSmallTimer();
+}
+else
+{
+if(!ucInit)
+{
+ucInit = 1;
+PA0 = 0;
+PA1 = 1;
+PA3 = 1;
+tDA_timer = BIG_TIMER_WORK;
+setDAC0_ChannelValue(27);
+startBigTimer();
 }
 }
+
+ampStep++;
+break;
+}
+
+case WAIT_SET_TIME_FINISHED:
+{
+switch(tDA_timer)
+{
+case BIG_TIMER_WORK:
+{
+static unsigned char ucConfrimeCnt = 0;
+if(!isFinishedBigTimer())
+{
+if(!PB2)
+ucConfrimeCnt++;
+else
+ucConfrimeCnt = 0;
+
+if(ucConfrimeCnt >=3)
+{
+ucConfrimeCnt = 0;
+ampStep = SET_PA2_VALUE;
+}
+}
+else
+{
+ampStep++;
+}
+break;
+}
+
+case SMALL_TIMER_WORK:
+{
+if(!isFinishedSmallTimer())
+{
+if(getAdCh13Value() > 40)
+ampStep = PROCESS_AD_VALUE;
+}
+else
+{
+ampStep++;
+}
+break;
+}
+
+default:
+break;
+}
+
+break;
+}
+
+case SET_TIME_BE_FINISHED:
+{
+PA2 = 1;
+PA0 = 0;
+PA1 = 0;
+PA2 = 0;
+setDAC0_ChannelValue(25);
+ampStep++;
+break;
+}
+
+case CHECKING_PULL_OUT_BATTERY:
+{
+static unsigned char ucCheckBatteryCnt = 0;
+if(PB2)
+ucCheckBatteryCnt++;
+else
+ucCheckBatteryCnt = 0;
+
+if(ucCheckBatteryCnt > 2)
+{
+ucCheckBatteryCnt = 0;
+ampStep++;
+}
+break;
+}
+
+case CHECKING_INSTALLED_BATTERY:
+{
+static unsigned char ucInstalledBatteryCnt = 0;
+if(!PB2)
+ucInstalledBatteryCnt++;
+else
+ucInstalledBatteryCnt = 0;
+
+if(ucInstalledBatteryCnt > 10)
+{
+ucInstalledBatteryCnt = 0;
+ampStep = SENSE_PB2_INPUT_VOLTAGE;
+}
+break;
+}
+
+default:
+break;
+
+}
+}
+}
+}
+

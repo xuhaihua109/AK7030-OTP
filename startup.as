@@ -3,7 +3,7 @@
 	; Copyright (C) 1984-2011 HI-TECH Software
 	;Serial no. HCPICP-11111
 
-	; Auto-generated runtime startup code for final link stage.
+	; Auto-generated runtime startup code for prelink stage.
 
 	;
 	; Compiler options:
@@ -55,11 +55,7 @@ intlevel5:
 	psect	reset_vec
 reset_vec:
 	; No powerup routine
-	global start
-
-; jump to start
-	goto	start & 0x7FF | (reset_vec & not 0x7FF)
-
+	; No interrupt routine
 
 
 	psect	init

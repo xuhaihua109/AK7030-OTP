@@ -1,5 +1,5 @@
 
-# 1 "C:\123\AK7030-OTP\common.c"
+# 1 "C:\AK7030-OTP\common.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\123\AK7030-OTP\yn8p520.h"
+# 164 "C:\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,7 +799,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 21 "C:\123\AK7030-OTP\common.h"
+# 21 "C:\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -823,7 +823,19 @@ unsigned int getAdCh12Value();
 
 unsigned int getAdCh13Value();
 
-# 11 "C:\123\AK7030-OTP\common.c"
+unsigned char isPermitSampleTime();
+
+void clrSampeTime();
+
+void setDAC0_ChannelValue(unsigned char ucValue);
+
+void startBigTimer();
+void startSmallTimer();
+
+unsigned char isFinishedBigTimer();
+unsigned char isFinishedSmallTimer();
+
+# 11 "C:\AK7030-OTP\common.c"
 static unsigned int buffer_Sample_AD_Value[10];
 static unsigned char sampleTimes;
 static unsigned char sampleChannelSelect = 13;
@@ -831,6 +843,17 @@ static unsigned int multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
 static unsigned char sampleCount;
 static unsigned int sampleCH13Value,sampleCH12Value;
 
+typedef struct
+{
+unsigned char timer10msStopWatch;
+
+}TimeStopWatch;
+
+static TimeStopWatch timer;
+
+
+static unsigned char ucTimer1sCnt = 0;
+static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
 static void SetTempThermistorChannel(void);
 
@@ -917,7 +940,7 @@ void process_AD_Converter_Value()
 AD_Sample();
 }
 
-# 113
+# 124
 static void AD_Sample(void)
 {
 if(sampleTimes == 0)
@@ -1011,7 +1034,7 @@ sampleChannelSelect = 13;
 }
 }
 
-# 216
+# 227
 static void SetTempThermistorChannel(void)
 {
 
@@ -1043,4 +1066,83 @@ return sampleCH12Value;
 unsigned int getAdCh13Value()
 {
 return sampleCH13Value;
+}
+
+void setDA_ConvertValue(unsigned char ucValue)
+{
+DACR0=ucValue;
+}
+
+void startBigTimer()
+{
+uiBigTimer = 34200;
+}
+
+
+void startSmallTimer()
+{
+uiSmallTimer = 10800;
+}
+
+
+unsigned char isFinishedBigTimer()
+{
+if(uiBigTimer == 0)
+return 1;
+else
+return 0;
+}
+
+unsigned char isFinishedSmallTimer()
+{
+if(uiSmallTimer == 0)
+return 1;
+else
+return 0;
+return 0;
+}
+
+unsigned char isPermitSampleTime()
+{
+if(timer.timer10msStopWatch > 10)
+{
+return 1;
+}
+else
+return 0;
+}
+
+void clrSampeTime()
+{
+timer.timer10msStopWatch = 0;
+}
+
+void interrupt ISR(void)
+{
+if(TMR1IF == 1)
+{
+TMR1IF = 0 ;
+timer.timer10msStopWatch++;
+ucTimer1sCnt++;
+
+if(ucTimer1sCnt >= 100)
+{
+ucTimer1sCnt = 0;
+if(uiBigTimer > 0)
+uiBigTimer--;
+
+if(uiSmallTimer)
+uiSmallTimer--;
+}
+
+
+static unsigned int flashCnt = 0;
+flashCnt++;
+if(flashCnt > 100)
+{
+PA0 = ~PA0;
+flashCnt = 0;
+}
+
+}
 }

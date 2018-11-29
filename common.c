@@ -15,6 +15,17 @@ static uint multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
 static uchar sampleCount;
 static uint sampleCH13Value,sampleCH12Value;
 
+typedef struct
+{
+	unsigned char timer10msStopWatch;
+
+}TimeStopWatch;
+
+static  TimeStopWatch timer;
+
+
+static unsigned char ucTimer1sCnt = 0;
+static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
 static void SetTempThermistorChannel(void);
 
@@ -244,4 +255,83 @@ unsigned int getAdCh12Value()
 unsigned int getAdCh13Value()
 {
 	return sampleCH13Value;
+}
+
+void setDA_ConvertValue(unsigned char ucValue)
+{
+	DACR0=ucValue;
+}
+
+void startBigTimer()
+{
+	uiBigTimer = 34200; //34200s = 9.5h
+}
+
+
+void startSmallTimer()
+{
+	uiSmallTimer = 10800; //10800 = 3h
+}
+
+
+unsigned char isFinishedBigTimer()
+{
+	if(uiBigTimer == 0)
+		return 1;
+	else
+		return 0;
+}
+
+unsigned char isFinishedSmallTimer()
+{
+	if(uiSmallTimer == 0)
+		return 1;
+	else
+		return 0;
+	return 0;
+}
+
+unsigned char isPermitSampleTime()
+{
+	if(timer.timer10msStopWatch > 10) //10*10ms = 100ms
+	{
+		return 1;
+	}
+	else
+		return 0;
+}
+
+void clrSampeTime()
+{
+	timer.timer10msStopWatch = 0;
+}
+
+void interrupt ISR(void)
+{
+	if(TMR1IF == 1)  //this is a timer interrupt for 10ms
+    {
+		TMR1IF = 0 ;
+		timer.timer10msStopWatch++;
+		ucTimer1sCnt++;
+
+		if(ucTimer1sCnt >= 100)// 100*10ms = 1s
+		{
+			ucTimer1sCnt = 0;
+			if(uiBigTimer > 0)
+				uiBigTimer--;
+
+			if(uiSmallTimer)
+				uiSmallTimer--;
+		}
+
+#ifdef DEBUG_FUNCITON
+		static unsigned int flashCnt = 0;
+		flashCnt++;
+		if(flashCnt >  100) //100*10ms =1s
+		{
+			PA0 = ~PA0;
+			flashCnt = 0;
+		}
+#endif
+    }
 }

@@ -41,5 +41,18 @@ unsigned int getAdCh12Value();
 
 unsigned int getAdCh13Value();
 
+unsigned char isPermitSampleTime();
+
+void clrSampeTime();
+
+void setDAC0_ChannelValue(unsigned char ucValue);
+
+void startBigTimer(); //9.5 hours
+void startSmallTimer();// 3 hours
+
+unsigned char isFinishedBigTimer();
+unsigned char isFinishedSmallTimer();
+
+
 
 #endif

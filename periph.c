@@ -14,10 +14,10 @@ void dac_init()
 {
 	DACCON|=2;      //参考电压选择VCC  00-VSS 01-OP2OUT 10-VCC 11-PB5
 	
-	DACR0=0x11;     //DAC0输出VCC*17/64=1.3V通过OP1缓冲从PB5输出 Vcc = 5v	
+	DACR0=0x19;     //DAC0输出VCC*25/64=1.3V通过OP1缓冲从PB5输出	
 	DACCON|=(1)<<2; //使能DAC0
 
-	DACR1=0x04;     //DAC1输出VCC*4/64=0.3V通过OP1缓冲从PA7输出	 Vcc = 5v 
+	DACR1=0x06;     //DAC1输出VCC*6/64=0.3V通过OP1缓冲从PA7输出	 
 	DACCON|=(1)<<3; //使能DAC1	
 }
 

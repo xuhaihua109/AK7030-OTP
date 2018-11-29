@@ -76,11 +76,36 @@ __CONFIG(CONFIG3);
 #define SLEEP_PWADC()  SMCR = 0X05; SLEEP()
 #define SLEEP_PWOFF()  SMCR = 0X09; SLEEP()
 
-static unsigned char timer10msCnt = 0;
+
+
 
 
 void main (void)
 {	
+enum step
+{
+	SENSE_PB2_INPUT_VOLTAGE = 0,
+	SENSE_PB2_DURATION_ONE_SECOND,
+	SENSE_PB2_INPUT_VOLTAGE__AGAIN,
+	SENSE_PB2_DURATION__SECOND,
+	SET_PA2_VALUE,
+	PROCESS_AD_VALUE,
+	WAIT_SET_TIME_FINISHED,
+	SET_TIME_BE_FINISHED,
+	CHECKING_PULL_OUT_BATTERY,
+	CHECKING_INSTALLED_BATTERY,
+};
+
+enum workTimerType
+{
+	BIG_TIMER_WORK = 0,
+	SMALL_TIMER_WORK,
+};
+
+static enum step ampStep;
+
+static enum workTimerType tDA_timer;
+
 	clock_config();	//使系统时钟稳定
 	timer1_interrupt_config();
 	timer1_config();
@@ -89,17 +114,21 @@ void main (void)
 
 
 	//OP1配置
-	TRISB3=1;	//PB3（A1P）输入 ,A1N is connected to DAC0
-//	TRISB4=1;	//PB4（A1N）输入
+	TRISB3=1;	//PB3（A1P）输入
+	TRISB4=1;	//PB4（A1N）输入
 	TRISB5=0;	//PB5（A1E）输出  DAC0信号输出Pin
     
     //OP2配置
 	TRISA7=0;	//PA7（A2E）输出	  DAC1信号输出Pin
 	TRISB6=1;	//PB6(A2P)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
 
-	TRISA0 = 0; //SET PA0,PA1,PA3 as output
+	TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
 	TRISA1 = 0;
 	TRISA3 = 0;
+	TRISA2 = 0;
+	PA2 = 1;
+
+	TRISB2 = 1;//SET PB2 as input
 
 
 	dac_init(); //DAC0/1初始化
@@ -107,32 +136,216 @@ void main (void)
 	op2_init(); //OP2初始化
 
 	start_timer1();
+
+	static unsigned char testStep;
     while(1)
     {	
        CLRWDT();//feed watch dog
-       if(timer10msCnt >= 5 ) //50ms
+       if(isPermitSampleTime())   // this function is called every 100ms
 		{
-		  timer10msCnt = 0;
+    	   clrSampeTime();
     	   process_AD_Converter_Value();
+
+    	   switch(ampStep)
+		   {
+    	   	   case SENSE_PB2_INPUT_VOLTAGE:
+    	   	   {
+    	   		   if(!PB2)
+    	   			ampStep++;
+    	   			break;
+    	   	   }
+
+			   case SENSE_PB2_DURATION_ONE_SECOND:
+			   {
+				   static unsigned char ucConfirmTimer1S = 0;
+					 if(!PB2)
+					 {
+						 ucConfirmTimer1S++;
+					 }
+					 else
+					 {
+						 ucConfirmTimer1S = 0;
+					 }
+
+					 if(ucConfirmTimer1S >= 10) //100ms*10 = 1s
+					 {
+						 ucConfirmTimer1S = 0;
+						 ampStep++;
+					 }
+
+					 break;
+			   }
+
+			   case SENSE_PB2_INPUT_VOLTAGE__AGAIN:
+			   {
+				   if(!PB2)
+					ampStep++;
+					break;
+			   }
+
+			   case SENSE_PB2_DURATION__SECOND:
+			   {
+				   	 static unsigned char ucConfirmTimerZptS = 0;//ZptS = zero point three second
+					 if(!PB2)
+					 {
+						 ucConfirmTimerZptS++;
+					 }
+					 else
+					 {
+						 ucConfirmTimerZptS = 0;
+					 }
+
+					 if(ucConfirmTimerZptS >= 3) //100ms*3 = 0.3s
+					 {
+						 ucConfirmTimerZptS = 0;
+						 ampStep++;
+					 }
+
+					 break;
+			   }
+
+			   case SET_PA2_VALUE:
+			   {
+				   PA2 = 0;
+				   ampStep++;
+				   break;
+			   }
+
+			   case PROCESS_AD_VALUE:
+			   {
+				   static unsigned char ucInit = 0;
+				   if(getAdCh13Value() > 40)
+				   {
+					   PA0 = 0;
+					   PA1 = 1;
+					   PA3 = 1;
+					   tDA_timer = BIG_TIMER_WORK;
+					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+					   startBigTimer();
+				   }
+				   else if(getAdCh13Value() <35)
+				   {
+					   PA0 = 1;
+					   PA1 = 0;
+					   PA3 = 0;
+					   tDA_timer = SMALL_TIMER_WORK;
+					   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+					   startSmallTimer();
+				   }
+				   else
+				   {
+					   if(!ucInit)
+					   {
+						   ucInit = 1;
+						   PA0 = 0;
+						   PA1 = 1;
+						   PA3 = 1;
+						   tDA_timer = BIG_TIMER_WORK;
+						   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+						   startBigTimer();
+					   }
+				   }
+
+				   ampStep++;
+				   break;
+			   }
+
+			   case WAIT_SET_TIME_FINISHED:
+			   {
+				   switch(tDA_timer)
+				   {
+					   case BIG_TIMER_WORK:
+					   {
+						   static unsigned char ucConfrimeCnt = 0;
+						   if(!isFinishedBigTimer())
+						   {
+							   if(!PB2)
+								   ucConfrimeCnt++;
+							   else
+								   ucConfrimeCnt = 0;
+
+							   if(ucConfrimeCnt >=3)
+							   {
+								   ucConfrimeCnt = 0;
+								   ampStep = SET_PA2_VALUE;
+							   }
+						   }
+						   else
+						   {
+							   ampStep++;
+						   }
+						   break;
+					   }
+
+					   case SMALL_TIMER_WORK:
+					   {
+						   if(!isFinishedSmallTimer())
+						   {
+							   if(getAdCh13Value() > 40)
+								   ampStep = PROCESS_AD_VALUE;
+						   }
+						   else
+						   {
+							   ampStep++;
+						   }
+						   break;
+					   }
+
+					   default:
+						   break;
+				   }
+
+				   break;
+			   }
+
+			   case SET_TIME_BE_FINISHED:
+			   {
+				   PA2 = 1;
+				   PA0 = 0;
+				   PA1 = 0;
+				   PA2 = 0;
+				   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+				   ampStep++;
+				   break;
+			   }
+
+			   case CHECKING_PULL_OUT_BATTERY:
+			   {
+				   static unsigned char ucCheckBatteryCnt = 0;
+				   if(PB2)
+					   ucCheckBatteryCnt++;
+				   else
+					   ucCheckBatteryCnt = 0;
+
+				   if(ucCheckBatteryCnt > 2)
+				   {
+					   ucCheckBatteryCnt = 0;
+					   ampStep++;
+				   }
+				   break;
+			   }
+
+			   case CHECKING_INSTALLED_BATTERY:
+			   {
+				   static unsigned char ucInstalledBatteryCnt = 0;
+				   if(!PB2)
+					   ucInstalledBatteryCnt++;
+				   else
+					   ucInstalledBatteryCnt = 0;
+
+				   if(ucInstalledBatteryCnt > 10) //1s
+				   {
+					   ucInstalledBatteryCnt = 0;
+					   ampStep = SENSE_PB2_INPUT_VOLTAGE;
+				   }
+				   break;
+			   }
+
+			   default:
+				   break;
+
+		   }
 		}
 	}	
 }
 
-
-void interrupt ISR(void)
-{
-	if(TMR1IF == 1)
-    {
-		TMR1IF = 0 ;
-		timer10msCnt++;
-#ifdef DEBUG_FUNCITON
-		static unsigned int flashCnt = 0;
-		flashCnt++;
-		if(flashCnt >  100) //100*10ms =1s
-		{
-			PA0 = ~PA0;
-			flashCnt = 0;
-		}
-#endif
-    }
-}

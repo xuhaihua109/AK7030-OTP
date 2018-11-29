@@ -1,5 +1,5 @@
 
-# 1 "C:\123\AK7030-OTP\periph.c"
+# 1 "C:\AK7030-OTP\periph.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\123\AK7030-OTP\yn8p520.h"
+# 164 "C:\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,13 +799,13 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 6 "C:\123\AK7030-OTP\periph.h"
+# 6 "C:\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
 void int_enable(unsigned char mode);
 
-# 21 "C:\123\AK7030-OTP\common.h"
+# 21 "C:\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -829,15 +829,27 @@ unsigned int getAdCh12Value();
 
 unsigned int getAdCh13Value();
 
-# 13 "C:\123\AK7030-OTP\periph.c"
+unsigned char isPermitSampleTime();
+
+void clrSampeTime();
+
+void setDAC0_ChannelValue(unsigned char ucValue);
+
+void startBigTimer();
+void startSmallTimer();
+
+unsigned char isFinishedBigTimer();
+unsigned char isFinishedSmallTimer();
+
+# 13 "C:\AK7030-OTP\periph.c"
 void dac_init()
 {
 DACCON|=2;
 
-DACR0=0x11;
+DACR0=0x19;
 DACCON|=(1)<<2;
 
-DACR1=0x04;
+DACR1=0x06;
 DACCON|=(1)<<3;
 }
 
