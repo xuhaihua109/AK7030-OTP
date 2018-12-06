@@ -131,9 +131,9 @@ static enum workTimerType tDA_timer;
 	TRISB2 = 1;//SET PB2 as input
 
 
-	dac_init(); //DAC0/1初始化
-	op1_init(); //OP1初始化
-	op2_init(); //OP2初始化
+//	dac_init(); //DAC0/1初始化
+//	op1_init(); //OP1初始化
+//	op2_init(); //OP2初始化
 
 	start_timer1();
 
@@ -144,8 +144,22 @@ static enum workTimerType tDA_timer;
        if(isPermitSampleTime())   // this function is called every 100ms
 		{
     	   clrSampeTime();
+
+    	   PA3 = ~PA3;
+   
     	   process_AD_Converter_Value();
 
+		   if(getAdCh13Value() >= 2048)
+              PA0 = 1;
+		    else
+			  PA0 = 0;
+
+
+		   if(getAdCh12Value() >= 2925)
+		                 PA2 = 1;
+		   		    else
+		   			  PA2 = 0;
+/*
     	   switch(ampStep)
 		   {
     	   	   case SENSE_PB2_INPUT_VOLTAGE:
@@ -345,7 +359,9 @@ static enum workTimerType tDA_timer;
 				   break;
 
 		   }
+*/
 		}
+   
 	}	
 }
 

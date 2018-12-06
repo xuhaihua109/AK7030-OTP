@@ -4,12 +4,12 @@
 
 #define TEMP_MAX_CONTINOUS_SAMPLE_TIMES 10
 
-#define TEMP_MAX_CONVERT_MACHINE_CYCLE  10
+#define TEMP_MAX_CONVERT_MACHINE_CYCLE  100
 
 #define RIGHT_SHIFT_NUMBER    3    // mean to divide 8
 
 static uint buffer_Sample_AD_Value[TEMP_MAX_CONTINOUS_SAMPLE_TIMES];
-static uchar sampleTimes;
+static uchar sampleTimes = 0;
 static uchar sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
 static uint multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
 static uchar sampleCount;
@@ -62,10 +62,10 @@ void timer1_interrupt_config()
 void adConverter_config()
 {
 	TRISB0 = 1;//set input as AD input
-	TRISB2 = 1; //set input as AD input
+	TRISB1 = 1; //set input as AD input
 	ADCON0 = 0xC4;//set right align for value,low speed for AD converting,select channel 12
 	ADCON1 = 0xFE; //set Vref = 2.1V, sample = 20 Tad, converting clock Fosc/256 (because ADSP is zero)
-	ADIE = 0;// disable AD interupt.
+	ADIE = 1;// enable AD interupt.
 }
 
 
@@ -95,14 +95,14 @@ void clearAdCompleteFalg()
 unsigned int getAdValue()
 {
 	unsigned int AdValue = 0,AdHighValue = 0;
-	if(isAD_Completed()!=0)
-	{
-		ADIF = 0;//
+//	if(isAD_Completed()!=0)
+//	{
+//		ADIF = 0;//
 		AdValue = ADRESL; //low 8 bit
 		AdHighValue = ADRESH;
 		AdHighValue = AdHighValue << 8;
 		AdValue = AdValue | AdHighValue;
-	}
+//	}
 
 	return AdValue;
 }
@@ -313,6 +313,8 @@ void interrupt ISR(void)
 		timer.timer10msStopWatch++;
 		ucTimer1sCnt++;
 
+		PA1 = ~PA1;
+
 		if(ucTimer1sCnt >= 100)// 100*10ms = 1s
 		{
 			ucTimer1sCnt = 0;
@@ -322,15 +324,5 @@ void interrupt ISR(void)
 			if(uiSmallTimer)
 				uiSmallTimer--;
 		}
-
-#ifdef DEBUG_FUNCITON
-		static unsigned int flashCnt = 0;
-		flashCnt++;
-		if(flashCnt >  100) //100*10ms =1s
-		{
-			PA0 = ~PA0;
-			flashCnt = 0;
-		}
-#endif
     }
 }
