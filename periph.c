@@ -33,6 +33,11 @@ void op1_init()
     OP1CON1=0x02; //正沿负沿不中断 OP1 负端选择DAC0(内部管脚)引脚 ，OP1正端选择A1P(PB3)引脚    00000010B
 	OP1CON2=0xA0; //A1E(PB5)输出 负端MUX连接 其他用途                                        10100000B
 	OP1CON0=0x80; //OP1使能 正相输出 禁止滤波                                                10000000B
+
+	//OP1配置
+	TRISB3=1;	//PB3（A1P）输入
+	TRISB4=1;	//PB4（A1N）输入
+	TRISB5=0;	//PB5（A1E）输出  DAC0信号输出Pin
 }
 
 ////////////////////OP2配置为放大模式将DAC1电压从A1E(PA7)输出///////////////////////
@@ -46,8 +51,13 @@ void op2_init()
     //配置：OP2负端选择DAC1=0.3V(内部管脚) , OP2正端选择A2P(PB6)引脚
     OP2CON1=0x00; // set PB6 as A2P, set PB7 as A2N
 	//OP2CON2=0xA0; //A2E(PA7)输出 负端MUX连接 其他用途 增益放大使能 放大1倍                    10100000B
-    OP2CON2=0x90; //A2E(PA7)输出 ,负端MUX断开 其他用途 增益放大使能 放大1倍                    10110000B
+    OP2CON2=0xA0; //A2E(PA7)输出 ,负端MUX连接, 其他用途 增益放大使能 放大1倍                    10100000B
 	OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B 
+
+	//OP2配置
+	TRISA7=0;	//PA7（A2E）输出	  DAC1信号输出Pin
+	TRISB6=1;	//PB6(A2P)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
+	TRISB7 = 1; //PB7(A2N)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
 }
 
 /********************************************************************
@@ -68,4 +78,31 @@ void int_enable(uchar mode)
 		PEIE=0;    // 外设中断使能
         GIE=0;     // 全局中断使能			
 	}
+}
+
+
+void adc_test_init(uchar channel,uchar ref)
+{
+	ADCON0|=channel<<2;//通道号
+	ADCON1|=ref<<6;	//参考电压 0-OP1 1-VCC 2-PB5 3-2.1v
+	ADON=1;	//启动ADC
+	ADIE=1;	//使能中断
+}
+
+
+void setAdcSampleChannel(uchar ucChannel)
+{
+	ADCON0|=ucChannel<<2;//通道号
+}
+
+void adc_start()
+{
+	GO=1;
+}
+
+uint adc_get(void)
+{
+	uint val;
+	val = (ADRESH<<8) | ADRESL;
+	return val;
 }

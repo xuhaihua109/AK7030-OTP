@@ -21,17 +21,11 @@
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
-void start_timer1();
 
 void adConverter_config();
 
-void start_AD_Converter();
+void setAdcSampleChannel(uchar ucChannel);
 
-void stop_AD_Converter();
-
-unsigned char isAD_Completed();
-
-void clearAdCompleteFalg();
 
 unsigned int getAdValue();
 
@@ -52,6 +46,9 @@ void startSmallTimer();// 3 hours
 
 unsigned char isFinishedBigTimer();
 unsigned char isFinishedSmallTimer();
+
+uchar getAD_ConvertFlag();
+void  setAD_ConvertFlag(uchar flag);
 
 
 
