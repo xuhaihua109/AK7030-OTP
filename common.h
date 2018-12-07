@@ -27,7 +27,7 @@ void adConverter_config();
 void setAdcSampleChannel(uchar ucChannel);
 
 
-unsigned int getAdValue();
+unsigned int getAdOriginalValue();
 
 void process_AD_Converter_Value();
 

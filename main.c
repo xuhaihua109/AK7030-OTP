@@ -106,6 +106,17 @@ void main (void)
 
 	static enum workTimerType tDA_timer;
 
+	TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
+	TRISA1 = 0;
+	TRISA3 = 0;
+	TRISA2 = 0;
+	PA2 = 1;
+
+	TRISB2 = 1;//SET PB2 as input
+
+	TRISB1 = 1;// set AD sample Channel 13
+	TRISB0 = 1;// set AD sample Channel 12
+
 	clock_config();	//使系统时钟稳定
 	timer1_config();
 	timer1_interrupt_config();
@@ -116,13 +127,9 @@ void main (void)
 	op1_init(); //OP1初始化
 	op2_init(); //OP2初始化
 
-	TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
-	TRISA1 = 0;
-	TRISA3 = 0;
-	TRISA2 = 0;
-	PA2 = 1;
 
-	TRISB2 = 1;//SET PB2 as input
+
+
 
 	adc_start();	//ADC启动
 
