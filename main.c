@@ -144,205 +144,215 @@ void main (void)
     	   clrSampeTime();
     	   process_AD_Converter_Value();
 
-    	   switch(ampStep)
-		   {
-    	   	   case SENSE_PB2_INPUT_VOLTAGE:
-    	   	   {
-    	   		   if(!PB2)
-    	   			ampStep++;
-    	   			break;
-    	   	   }
+    	  if(getAdOriginalValue() > 2048)
+    		  PA2 = 1;
+    	  else
+    		  PA2 = 0;
 
-			   case SENSE_PB2_DURATION_ONE_SECOND:
-			   {
-				   static unsigned char ucConfirmTimer1S = 0;
-					 if(!PB2)
-					 {
-						 ucConfirmTimer1S++;
-					 }
-					 else
-					 {
-						 ucConfirmTimer1S = 0;
-					 }
+    	  if(getAdCh13Value() > 2048)
+    		  PA3 = 1;
+    	  else
+    		  PA3 = 0;
 
-					 if(ucConfirmTimer1S >= 10) //100ms*10 = 1s
-					 {
-						 ucConfirmTimer1S = 0;
-						 ampStep++;
-					 }
-
-					 break;
-			   }
-
-			   case SENSE_PB2_INPUT_VOLTAGE__AGAIN:
-			   {
-				   if(!PB2)
-					ampStep++;
-					break;
-			   }
-
-			   case SENSE_PB2_DURATION__SECOND:
-			   {
-				   	 static unsigned char ucConfirmTimerZptS = 0;//ZptS = zero point three second
-					 if(!PB2)
-					 {
-						 ucConfirmTimerZptS++;
-					 }
-					 else
-					 {
-						 ucConfirmTimerZptS = 0;
-					 }
-
-					 if(ucConfirmTimerZptS >= 3) //100ms*3 = 0.3s
-					 {
-						 ucConfirmTimerZptS = 0;
-						 ampStep++;
-					 }
-
-					 break;
-			   }
-
-			   case SET_PA2_VALUE:
-			   {
-				   PA2 = 0;
-				   ampStep++;
-				   break;
-			   }
-
-			   case PROCESS_AD_VALUE:
-			   {
-				   static unsigned char ucInit = 0;
-				   if(getAdCh13Value() > 40)
-				   {
-					   PA0 = 0;
-					   PA1 = 1;
-					   PA3 = 1;
-					   tDA_timer = BIG_TIMER_WORK;
-					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
-					   startBigTimer();
-				   }
-				   else if(getAdCh13Value() <35)
-				   {
-					   PA0 = 1;
-					   PA1 = 0;
-					   PA3 = 0;
-					   tDA_timer = SMALL_TIMER_WORK;
-					   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
-					   startSmallTimer();
-				   }
-				   else
-				   {
-					   if(!ucInit)
-					   {
-						   ucInit = 1;
-						   PA0 = 0;
-						   PA1 = 1;
-						   PA3 = 1;
-						   tDA_timer = BIG_TIMER_WORK;
-						   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
-						   startBigTimer();
-					   }
-				   }
-
-				   ampStep++;
-				   break;
-			   }
-
-			   case WAIT_SET_TIME_FINISHED:
-			   {
-				   switch(tDA_timer)
-				   {
-					   case BIG_TIMER_WORK:
-					   {
-						   static unsigned char ucConfrimeCnt = 0;
-						   if(!isFinishedBigTimer())
-						   {
-							   if(!PB2)
-								   ucConfrimeCnt++;
-							   else
-								   ucConfrimeCnt = 0;
-
-							   if(ucConfrimeCnt >=3)
-							   {
-								   ucConfrimeCnt = 0;
-								   ampStep = SET_PA2_VALUE;
-							   }
-						   }
-						   else
-						   {
-							   ampStep++;
-						   }
-						   break;
-					   }
-
-					   case SMALL_TIMER_WORK:
-					   {
-						   if(!isFinishedSmallTimer())
-						   {
-							   if(getAdCh13Value() > 40)
-								   ampStep = PROCESS_AD_VALUE;
-						   }
-						   else
-						   {
-							   ampStep++;
-						   }
-						   break;
-					   }
-
-					   default:
-						   break;
-				   }
-
-				   break;
-			   }
-
-			   case SET_TIME_BE_FINISHED:
-			   {
-				   PA2 = 1;
-				   PA0 = 0;
-				   PA1 = 0;
-				   PA2 = 0;
-				   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
-				   ampStep++;
-				   break;
-			   }
-
-			   case CHECKING_PULL_OUT_BATTERY:
-			   {
-				   static unsigned char ucCheckBatteryCnt = 0;
-				   if(PB2)
-					   ucCheckBatteryCnt++;
-				   else
-					   ucCheckBatteryCnt = 0;
-
-				   if(ucCheckBatteryCnt > 2)
-				   {
-					   ucCheckBatteryCnt = 0;
-					   ampStep++;
-				   }
-				   break;
-			   }
-
-			   case CHECKING_INSTALLED_BATTERY:
-			   {
-				   static unsigned char ucInstalledBatteryCnt = 0;
-				   if(!PB2)
-					   ucInstalledBatteryCnt++;
-				   else
-					   ucInstalledBatteryCnt = 0;
-
-				   if(ucInstalledBatteryCnt > 10) //1s
-				   {
-					   ucInstalledBatteryCnt = 0;
-					   ampStep = SENSE_PB2_INPUT_VOLTAGE;
-				   }
-				   break;
-			   }
-
-			   default:
-				   break;
-
-		   }
+//    	   switch(ampStep)
+//		   {
+//    	   	   case SENSE_PB2_INPUT_VOLTAGE:
+//    	   	   {
+//    	   		   if(!PB2)
+//    	   			ampStep++;
+//    	   			break;
+//    	   	   }
+//
+//			   case SENSE_PB2_DURATION_ONE_SECOND:
+//			   {
+//				   static unsigned char ucConfirmTimer1S = 0;
+//					 if(!PB2)
+//					 {
+//						 ucConfirmTimer1S++;
+//					 }
+//					 else
+//					 {
+//						 ucConfirmTimer1S = 0;
+//					 }
+//
+//					 if(ucConfirmTimer1S >= 10) //100ms*10 = 1s
+//					 {
+//						 ucConfirmTimer1S = 0;
+//						 ampStep++;
+//					 }
+//
+//					 break;
+//			   }
+//
+//			   case SENSE_PB2_INPUT_VOLTAGE__AGAIN:
+//			   {
+//				   if(!PB2)
+//					ampStep++;
+//					break;
+//			   }
+//
+//			   case SENSE_PB2_DURATION__SECOND:
+//			   {
+//				   	 static unsigned char ucConfirmTimerZptS = 0;//ZptS = zero point three second
+//					 if(!PB2)
+//					 {
+//						 ucConfirmTimerZptS++;
+//					 }
+//					 else
+//					 {
+//						 ucConfirmTimerZptS = 0;
+//					 }
+//
+//					 if(ucConfirmTimerZptS >= 3) //100ms*3 = 0.3s
+//					 {
+//						 ucConfirmTimerZptS = 0;
+//						 ampStep++;
+//					 }
+//
+//					 break;
+//			   }
+//
+//			   case SET_PA2_VALUE:
+//			   {
+//				   PA2 = 0;
+//				   ampStep++;
+//				   break;
+//			   }
+//
+//			   case PROCESS_AD_VALUE:
+//			   {
+//				   static unsigned char ucInit = 0;
+//				   if(getAdCh13Value() > 40)
+//				   {
+//					   PA0 = 0;
+//					   PA1 = 1;
+//					   PA3 = 1;
+//					   tDA_timer = BIG_TIMER_WORK;
+//					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+//					   startBigTimer();
+//				   }
+//				   else if(getAdCh13Value() <35)
+//				   {
+//					   PA0 = 1;
+//					   PA1 = 0;
+//					   PA3 = 0;
+//					   tDA_timer = SMALL_TIMER_WORK;
+//					   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+//					   startSmallTimer();
+//				   }
+//				   else
+//				   {
+//					   if(!ucInit)
+//					   {
+//						   ucInit = 1;
+//						   PA0 = 0;
+//						   PA1 = 1;
+//						   PA3 = 1;
+//						   tDA_timer = BIG_TIMER_WORK;
+//						   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+//						   startBigTimer();
+//					   }
+//				   }
+//
+//				   ampStep++;
+//				   break;
+//			   }
+//
+//			   case WAIT_SET_TIME_FINISHED:
+//			   {
+//				   switch(tDA_timer)
+//				   {
+//					   case BIG_TIMER_WORK:
+//					   {
+//						   static unsigned char ucConfrimeCnt = 0;
+//						   if(!isFinishedBigTimer())
+//						   {
+//							   if(!PB2)
+//								   ucConfrimeCnt++;
+//							   else
+//								   ucConfrimeCnt = 0;
+//
+//							   if(ucConfrimeCnt >=3)
+//							   {
+//								   ucConfrimeCnt = 0;
+//								   ampStep = SET_PA2_VALUE;
+//							   }
+//						   }
+//						   else
+//						   {
+//							   ampStep++;
+//						   }
+//						   break;
+//					   }
+//
+//					   case SMALL_TIMER_WORK:
+//					   {
+//						   if(!isFinishedSmallTimer())
+//						   {
+//							   if(getAdCh13Value() > 40)
+//								   ampStep = PROCESS_AD_VALUE;
+//						   }
+//						   else
+//						   {
+//							   ampStep++;
+//						   }
+//						   break;
+//					   }
+//
+//					   default:
+//						   break;
+//				   }
+//
+//				   break;
+//			   }
+//
+//			   case SET_TIME_BE_FINISHED:
+//			   {
+//				   PA2 = 1;
+//				   PA0 = 0;
+//				   PA1 = 0;
+//				   PA2 = 0;
+//				   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+//				   ampStep++;
+//				   break;
+//			   }
+//
+//			   case CHECKING_PULL_OUT_BATTERY:
+//			   {
+//				   static unsigned char ucCheckBatteryCnt = 0;
+//				   if(PB2)
+//					   ucCheckBatteryCnt++;
+//				   else
+//					   ucCheckBatteryCnt = 0;
+//
+//				   if(ucCheckBatteryCnt > 2)
+//				   {
+//					   ucCheckBatteryCnt = 0;
+//					   ampStep++;
+//				   }
+//				   break;
+//			   }
+//
+//			   case CHECKING_INSTALLED_BATTERY:
+//			   {
+//				   static unsigned char ucInstalledBatteryCnt = 0;
+//				   if(!PB2)
+//					   ucInstalledBatteryCnt++;
+//				   else
+//					   ucInstalledBatteryCnt = 0;
+//
+//				   if(ucInstalledBatteryCnt > 10) //1s
+//				   {
+//					   ucInstalledBatteryCnt = 0;
+//					   ampStep = SENSE_PB2_INPUT_VOLTAGE;
+//				   }
+//				   break;
+//			   }
+//
+//			   default:
+//				   break;
+//
+//		   }
 		}
 	}
 }

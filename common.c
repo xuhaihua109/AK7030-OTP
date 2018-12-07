@@ -236,6 +236,7 @@ void interrupt ISR(void)
 
 		if(ucTimer1sCnt >= 100)// 100*10ms = 1s
 		{
+			PA1 = ~PA1;
 			ucTimer1sCnt = 0;
 			if(uiBigTimer > 0)
 				uiBigTimer--;
