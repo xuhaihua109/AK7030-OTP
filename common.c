@@ -188,7 +188,7 @@ void startSmallTimer()
 	uiSmallTimer = 10800; //10800 = 3h
 #ifdef DEBUG_FUNCITON
 
-	uiSmallTimer = 18;
+	uiSmallTimer = 180;
 #endif
 }
 
