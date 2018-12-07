@@ -128,9 +128,6 @@ void main (void)
 	op2_init(); //OP2≥ı ºªØ
 
 
-
-
-
 	adc_start();	//ADC∆Ù∂Ø
 
 
