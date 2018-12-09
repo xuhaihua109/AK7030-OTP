@@ -96,7 +96,7 @@ void process_AD_Converter_Value()
 	{
 		setAD_ConvertFlag(0);
 		AD_Sample();
-		setAdcSampleChannel(sampleChannelSelect);
+//		setAdcSampleChannel(sampleChannelSelect);
 		adc_start();	//ADCÆô¶¯
 	}
 }
@@ -190,8 +190,17 @@ void startBigTimer()
 
 	uiBigTimer = 570;
 #endif
+}
+
+void clearBigTimer()
+{
+	uiBigTimer = 0;
+}
 
 
+void clearSmallTimer()
+{
+	uiSmallTimer = 0;
 }
 
 
@@ -255,6 +264,7 @@ void interrupt ISR(void)
 			if(uiSmallTimer)
 				uiSmallTimer--;
 		}
+    }
 
 	if(ADIF)
 	   {
@@ -267,6 +277,4 @@ void interrupt ISR(void)
 			adc_original_CH13_value = adc_get();
 
 	   }
-
-    }
 }
