@@ -1,0 +1,2060 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"164 D:\111\AK7030-OTP\yn8p520.h
+[v _INDF `Vuc  1 e@0 ]
+"168 D:\111\AK7030-OTP\yn8p520.h
+[v _LVDCON `Vuc  1 e@1 ]
+"171 D:\111\AK7030-OTP\yn8p520.h
+[v _PCL `Vuc  1 e@2 ]
+"175 D:\111\AK7030-OTP\yn8p520.h
+[v _STATUS `Vuc  1 e@3 ]
+"177 D:\111\AK7030-OTP\yn8p520.h
+[v _CARRY `Vb  1 e@24 ]
+"178 D:\111\AK7030-OTP\yn8p520.h
+[v _DC `Vb  1 e@25 ]
+"179 D:\111\AK7030-OTP\yn8p520.h
+[v _ZERO `Vb  1 e@26 ]
+"180 D:\111\AK7030-OTP\yn8p520.h
+[v _nPD `Vb  1 e@27 ]
+"181 D:\111\AK7030-OTP\yn8p520.h
+[v _nTO `Vb  1 e@28 ]
+"182 D:\111\AK7030-OTP\yn8p520.h
+[v _IRP `Vb  1 e@31 ]
+"183 D:\111\AK7030-OTP\yn8p520.h
+[v _RP0 `Vb  1 e@29 ]
+"184 D:\111\AK7030-OTP\yn8p520.h
+[v _RP1 `Vb  1 e@30 ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S3 . C DC Z nPD nTO RP IRP ]
+[s S4 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S4 . . RP0 RP1 ]
+[u S2 `S3 1 `S4 1 ]
+[n S2 . . . ]
+"201 D:\111\AK7030-OTP\yn8p520.h
+[v _STATUSbits `VS2  1 e@3 ]
+"205 D:\111\AK7030-OTP\yn8p520.h
+[v _FSR `Vuc  1 e@4 ]
+"209 D:\111\AK7030-OTP\yn8p520.h
+[v _PORTA `Vuc  1 e@5 ]
+"211 D:\111\AK7030-OTP\yn8p520.h
+[v _PA0 `Vb  1 e@40 ]
+"212 D:\111\AK7030-OTP\yn8p520.h
+[v _PA1 `Vb  1 e@41 ]
+"213 D:\111\AK7030-OTP\yn8p520.h
+[v _PA2 `Vb  1 e@42 ]
+"214 D:\111\AK7030-OTP\yn8p520.h
+[v _PA3 `Vb  1 e@43 ]
+"215 D:\111\AK7030-OTP\yn8p520.h
+[v _PA4 `Vb  1 e@44 ]
+"216 D:\111\AK7030-OTP\yn8p520.h
+[v _PA5 `Vb  1 e@45 ]
+"217 D:\111\AK7030-OTP\yn8p520.h
+[v _PA6 `Vb  1 e@46 ]
+"218 D:\111\AK7030-OTP\yn8p520.h
+[v _PA7 `Vb  1 e@47 ]
+"221 D:\111\AK7030-OTP\yn8p520.h
+[v _PORTB `Vuc  1 e@6 ]
+"223 D:\111\AK7030-OTP\yn8p520.h
+[v _PB0 `Vb  1 e@48 ]
+"224 D:\111\AK7030-OTP\yn8p520.h
+[v _PB1 `Vb  1 e@49 ]
+"225 D:\111\AK7030-OTP\yn8p520.h
+[v _PB2 `Vb  1 e@50 ]
+"226 D:\111\AK7030-OTP\yn8p520.h
+[v _PB3 `Vb  1 e@51 ]
+"227 D:\111\AK7030-OTP\yn8p520.h
+[v _PB4 `Vb  1 e@52 ]
+"228 D:\111\AK7030-OTP\yn8p520.h
+[v _PB5 `Vb  1 e@53 ]
+"229 D:\111\AK7030-OTP\yn8p520.h
+[v _PB6 `Vb  1 e@54 ]
+"230 D:\111\AK7030-OTP\yn8p520.h
+[v _PB7 `Vb  1 e@55 ]
+"233 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR0L `Vuc  1 e@7 ]
+"234 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR0H `Vuc  1 e@8 ]
+"238 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR0 `Vui  1 e@7 ]
+"241 D:\111\AK7030-OTP\yn8p520.h
+[v _T0CON `Vui  1 e@9 ]
+"244 D:\111\AK7030-OTP\yn8p520.h
+[v _T0PS0 `Vb  1 e@72 ]
+"245 D:\111\AK7030-OTP\yn8p520.h
+[v _T0PS1 `Vb  1 e@73 ]
+"246 D:\111\AK7030-OTP\yn8p520.h
+[v _T0PS2 `Vb  1 e@74 ]
+"247 D:\111\AK7030-OTP\yn8p520.h
+[v _PSA `Vb  1 e@75 ]
+"248 D:\111\AK7030-OTP\yn8p520.h
+[v _T0SE `Vb  1 e@76 ]
+"249 D:\111\AK7030-OTP\yn8p520.h
+[v _T0CS `Vb  1 e@77 ]
+"250 D:\111\AK7030-OTP\yn8p520.h
+[v _T08BIT `Vb  1 e@78 ]
+"251 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR0ON `Vb  1 e@79 ]
+"254 D:\111\AK7030-OTP\yn8p520.h
+[v _PCLATH `Vuc  1 e@10 ]
+[s S6 :4 `uc 1 ]
+[n S6 . . ]
+[u S5 `S6 1 ]
+[n S5 . . ]
+"261 D:\111\AK7030-OTP\yn8p520.h
+[v _PCLATHbits `VS5  1 e@10 ]
+"265 D:\111\AK7030-OTP\yn8p520.h
+[v _INTCON `Vuc  1 e@11 ]
+"267 D:\111\AK7030-OTP\yn8p520.h
+[v _RBIF `Vb  1 e@88 ]
+"268 D:\111\AK7030-OTP\yn8p520.h
+[v _INT0IF `Vb  1 e@89 ]
+"269 D:\111\AK7030-OTP\yn8p520.h
+[v _T0IF `Vb  1 e@90 ]
+"270 D:\111\AK7030-OTP\yn8p520.h
+[v _RBIE `Vb  1 e@91 ]
+"271 D:\111\AK7030-OTP\yn8p520.h
+[v _INT0IE `Vb  1 e@92 ]
+"272 D:\111\AK7030-OTP\yn8p520.h
+[v _T0IE `Vb  1 e@93 ]
+"273 D:\111\AK7030-OTP\yn8p520.h
+[v _PEIE `Vb  1 e@94 ]
+"274 D:\111\AK7030-OTP\yn8p520.h
+[v _GIE `Vb  1 e@95 ]
+"275 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR0IF `Vb  1 e@90 ]
+"276 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR0IE `Vb  1 e@93 ]
+[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S8 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
+[s S9 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S9 . . TMR0IF . TMR0IE ]
+[u S7 `S8 1 `S9 1 ]
+[n S7 . . . ]
+"295 D:\111\AK7030-OTP\yn8p520.h
+[v _INTCONbits `VS7  1 e@11 ]
+"300 D:\111\AK7030-OTP\yn8p520.h
+[v _PIR1 `Vuc  1 e@12 ]
+"302 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR1IF `Vb  1 e@96 ]
+"303 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR2IF `Vb  1 e@97 ]
+"304 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1IF `Vb  1 e@98 ]
+"305 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPIF `Vb  1 e@99 ]
+"306 D:\111\AK7030-OTP\yn8p520.h
+[v _TXIF `Vb  1 e@100 ]
+"307 D:\111\AK7030-OTP\yn8p520.h
+[v _RCIF `Vb  1 e@101 ]
+"308 D:\111\AK7030-OTP\yn8p520.h
+[v _INT1IF `Vb  1 e@102 ]
+"309 D:\111\AK7030-OTP\yn8p520.h
+[v _INT2IF `Vb  1 e@103 ]
+"312 D:\111\AK7030-OTP\yn8p520.h
+[v _PIR2 `Vuc  1 e@13 ]
+"314 D:\111\AK7030-OTP\yn8p520.h
+[v _OP1IF `Vb  1 e@104 ]
+"315 D:\111\AK7030-OTP\yn8p520.h
+[v _OP2IF `Vb  1 e@105 ]
+"316 D:\111\AK7030-OTP\yn8p520.h
+[v _ADIF `Vb  1 e@106 ]
+"317 D:\111\AK7030-OTP\yn8p520.h
+[v _LVDIF `Vb  1 e@107 ]
+"318 D:\111\AK7030-OTP\yn8p520.h
+[v _PWMIF `Vb  1 e@108 ]
+"319 D:\111\AK7030-OTP\yn8p520.h
+[v _BCLIF `Vb  1 e@109 ]
+"323 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR1L `Vuc  1 e@14 ]
+"327 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR1H `Vuc  1 e@15 ]
+"331 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR1 `Vui  1 e@14 ]
+"334 D:\111\AK7030-OTP\yn8p520.h
+[v _T1CON `Vuc  1 e@16 ]
+"336 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR1ON `Vb  1 e@128 ]
+"337 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR1CS `Vb  1 e@129 ]
+"338 D:\111\AK7030-OTP\yn8p520.h
+[v _nT1SYNC `Vb  1 e@130 ]
+"339 D:\111\AK7030-OTP\yn8p520.h
+[v _T1OSCEN `Vb  1 e@131 ]
+"340 D:\111\AK7030-OTP\yn8p520.h
+[v _T1INSYNC `Vb  1 e@130 ]
+"341 D:\111\AK7030-OTP\yn8p520.h
+[v _T1CKPS0 `Vb  1 e@132 ]
+"342 D:\111\AK7030-OTP\yn8p520.h
+[v _T1CKPS1 `Vb  1 e@133 ]
+"343 D:\111\AK7030-OTP\yn8p520.h
+[v _RD16 `Vb  1 e@135 ]
+"346 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR2 `Vuc  1 e@17 ]
+"350 D:\111\AK7030-OTP\yn8p520.h
+[v _T2CON `Vuc  1 e@18 ]
+"353 D:\111\AK7030-OTP\yn8p520.h
+[v _T2CKPS0 `Vb  1 e@144 ]
+"354 D:\111\AK7030-OTP\yn8p520.h
+[v _T2CKPS1 `Vb  1 e@145 ]
+"355 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR2ON `Vb  1 e@146 ]
+"356 D:\111\AK7030-OTP\yn8p520.h
+[v _TOUTPS0 `Vb  1 e@147 ]
+"357 D:\111\AK7030-OTP\yn8p520.h
+[v _TOUTPS1 `Vb  1 e@148 ]
+"358 D:\111\AK7030-OTP\yn8p520.h
+[v _TOUTPS2 `Vb  1 e@149 ]
+"359 D:\111\AK7030-OTP\yn8p520.h
+[v _TOUTPS3 `Vb  1 e@150 ]
+"362 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPBUF `Vuc  1 e@19 ]
+"366 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPCON `Vuc  1 e@20 ]
+"368 D:\111\AK7030-OTP\yn8p520.h
+[v _CKP `Vb  1 e@164 ]
+"369 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPEN `Vb  1 e@165 ]
+"370 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPOV `Vb  1 e@166 ]
+"371 D:\111\AK7030-OTP\yn8p520.h
+[v _WCOL `Vb  1 e@167 ]
+"372 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPM0 `Vb  1 e@160 ]
+"373 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPM1 `Vb  1 e@161 ]
+"374 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPM2 `Vb  1 e@162 ]
+"375 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPM3 `Vb  1 e@163 ]
+"378 D:\111\AK7030-OTP\yn8p520.h
+[v _CCPR1L `Vuc  1 e@21 ]
+"382 D:\111\AK7030-OTP\yn8p520.h
+[v _CCPR1H `Vuc  1 e@22 ]
+"386 D:\111\AK7030-OTP\yn8p520.h
+[v _CCPR1 `Vui  1 e@21 ]
+"389 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1CON `Vuc  1 e@23 ]
+"391 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1M0 `Vb  1 e@184 ]
+"392 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1M1 `Vb  1 e@185 ]
+"393 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1M2 `Vb  1 e@186 ]
+"394 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1M3 `Vb  1 e@187 ]
+"395 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1Y `Vb  1 e@188 ]
+"396 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1X `Vb  1 e@189 ]
+[s S11 :4 `uc 1 :2 `uc 1 ]
+[n S11 . CCP1M DC1B ]
+[s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S12 . CCP1M0 CCP1M1 CCP1M2 CCP1M3 CCP1Y CCP1X ]
+[u S10 `S11 1 `S12 1 ]
+[n S10 . . . ]
+"411 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1CONbits `VS10  1 e@23 ]
+"415 D:\111\AK7030-OTP\yn8p520.h
+[v _RCSTA `Vuc  1 e@24 ]
+"417 D:\111\AK7030-OTP\yn8p520.h
+[v _RX9D `Vb  1 e@192 ]
+"418 D:\111\AK7030-OTP\yn8p520.h
+[v _OERR `Vb  1 e@193 ]
+"419 D:\111\AK7030-OTP\yn8p520.h
+[v _FERR `Vb  1 e@194 ]
+"420 D:\111\AK7030-OTP\yn8p520.h
+[v _RXPARITY `Vb  1 e@195 ]
+"421 D:\111\AK7030-OTP\yn8p520.h
+[v _CREN `Vb  1 e@196 ]
+"422 D:\111\AK7030-OTP\yn8p520.h
+[v _SREN `Vb  1 e@197 ]
+"423 D:\111\AK7030-OTP\yn8p520.h
+[v _RX9 `Vb  1 e@198 ]
+"424 D:\111\AK7030-OTP\yn8p520.h
+[v _SPEN `Vb  1 e@199 ]
+"425 D:\111\AK7030-OTP\yn8p520.h
+[v _RCD8 `Vb  1 e@192 ]
+"426 D:\111\AK7030-OTP\yn8p520.h
+[v _RC9 `Vb  1 e@198 ]
+"427 D:\111\AK7030-OTP\yn8p520.h
+[v _nRC8 `Vb  1 e@198 ]
+"428 D:\111\AK7030-OTP\yn8p520.h
+[v _RC8_9 `Vb  1 e@198 ]
+"431 D:\111\AK7030-OTP\yn8p520.h
+[v _TXREG `Vuc  1 e@25 ]
+"435 D:\111\AK7030-OTP\yn8p520.h
+[v _RCREG `Vuc  1 e@26 ]
+"439 D:\111\AK7030-OTP\yn8p520.h
+[v _OP1CON0 `Vuc  1 e@27 ]
+[s S14 :4 `uc 1 ]
+[n S14 . OP1F ]
+[s S15 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S15 . OP1F0 OP1F1 OP1F2 OP1F3 OP1ZLF OP1POL OP1OUT OP1ON ]
+[u S13 `S14 1 `S15 1 ]
+[n S13 . . . ]
+"456 D:\111\AK7030-OTP\yn8p520.h
+[v _OP1CON0bits `VS13  1 e@27 ]
+"460 D:\111\AK7030-OTP\yn8p520.h
+[v _OP1CON1 `Vuc  1 e@28 ]
+[s S17 :2 `uc 1 :2 `uc 1 :2 `uc 1 ]
+[n S17 . OP1NCH RSV OP1PCH ]
+[s S18 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S18 . OP1NCH0 OP1NCH1 RSV0 RSV1 OP1PCH0 OP1PCH1 OP1INTN OP1INTP ]
+[u S16 `S17 1 `S18 1 ]
+[n S16 . . . ]
+"479 D:\111\AK7030-OTP\yn8p520.h
+[v _OP1CON1bits `VS16  1 e@28 ]
+"483 D:\111\AK7030-OTP\yn8p520.h
+[v _OP1CON2 `Vuc  1 e@29 ]
+[s S20 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S20 . RSV0 RSV1 RSV2 RSV3 A1O2N A1NS OP1A2DEN OP1OUTEN ]
+[u S19 `S20 1 ]
+[n S19 . . ]
+"497 D:\111\AK7030-OTP\yn8p520.h
+[v _OP1CON2bits `VS19  1 e@29 ]
+"501 D:\111\AK7030-OTP\yn8p520.h
+[v _ADRESH `Vuc  1 e@30 ]
+"505 D:\111\AK7030-OTP\yn8p520.h
+[v _ADCON0 `Vuc  1 e@31 ]
+"507 D:\111\AK7030-OTP\yn8p520.h
+[v _ADON `Vb  1 e@248 ]
+"508 D:\111\AK7030-OTP\yn8p520.h
+[v _GO_nDONE `Vb  1 e@249 ]
+"509 D:\111\AK7030-OTP\yn8p520.h
+[v _GO `Vb  1 e@249 ]
+"510 D:\111\AK7030-OTP\yn8p520.h
+[v _CHS0 `Vb  1 e@250 ]
+"511 D:\111\AK7030-OTP\yn8p520.h
+[v _CHS1 `Vb  1 e@251 ]
+"512 D:\111\AK7030-OTP\yn8p520.h
+[v _CHS2 `Vb  1 e@252 ]
+"513 D:\111\AK7030-OTP\yn8p520.h
+[v _CHS3 `Vb  1 e@253 ]
+"514 D:\111\AK7030-OTP\yn8p520.h
+[v _nDONE `Vb  1 e@250 ]
+"515 D:\111\AK7030-OTP\yn8p520.h
+[v _GO_DONE `Vb  1 e@250 ]
+[s S22 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
+[n S22 . ADON G0 CHS ]
+[s S23 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S23 . ADON GO CHS0 CHS1 CHS2 CHS3 ]
+[u S21 `S22 1 `S23 1 ]
+[n S21 . . . ]
+"531 D:\111\AK7030-OTP\yn8p520.h
+[v _ADCON0bits `VS21  1 e@31 ]
+"541 D:\111\AK7030-OTP\yn8p520.h
+[v _WDTCON `Vuc  1 e@129 ]
+"543 D:\111\AK7030-OTP\yn8p520.h
+[v _SWDTEN `Vb  1 e@1032 ]
+[s S25 :1 `uc 1 ]
+[n S25 . SWDTEN ]
+[u S24 `S25 1 ]
+[n S24 . . ]
+"549 D:\111\AK7030-OTP\yn8p520.h
+[v _WDTCONbits `VS24  1 e@129 ]
+"553 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA `Vuc  1 e@133 ]
+"555 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA0 `Vb  1 e@1064 ]
+"556 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA1 `Vb  1 e@1065 ]
+"557 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA2 `Vb  1 e@1066 ]
+"558 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA3 `Vb  1 e@1067 ]
+"559 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA4 `Vb  1 e@1068 ]
+"560 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA5 `Vb  1 e@1069 ]
+"561 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA6 `Vb  1 e@1070 ]
+"562 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISA7 `Vb  1 e@1071 ]
+"565 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB `Vuc  1 e@134 ]
+"567 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB0 `Vb  1 e@1072 ]
+"568 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB1 `Vb  1 e@1073 ]
+"569 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB2 `Vb  1 e@1074 ]
+"570 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB3 `Vb  1 e@1075 ]
+"571 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB4 `Vb  1 e@1076 ]
+"572 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB5 `Vb  1 e@1077 ]
+"573 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB6 `Vb  1 e@1078 ]
+"574 D:\111\AK7030-OTP\yn8p520.h
+[v _TRISB7 `Vb  1 e@1079 ]
+"576 D:\111\AK7030-OTP\yn8p520.h
+[v _DACCON `Vuc  1 e@135 ]
+[s S27 :2 `uc 1 ]
+[n S27 . DACCH ]
+[s S28 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S28 . DACCH0 DACCH1 DAC0EN DAC1EN ]
+[u S26 `S27 1 `S28 1 ]
+[n S26 . . . ]
+"589 D:\111\AK7030-OTP\yn8p520.h
+[v _DACCONbits `VS26  1 e@135 ]
+"592 D:\111\AK7030-OTP\yn8p520.h
+[v _DACR0 `Vuc  1 e@136 ]
+"593 D:\111\AK7030-OTP\yn8p520.h
+[v _DACR1 `Vuc  1 e@137 ]
+"596 D:\111\AK7030-OTP\yn8p520.h
+[v _PIE1 `Vuc  1 e@140 ]
+"598 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR1IE `Vb  1 e@1120 ]
+"599 D:\111\AK7030-OTP\yn8p520.h
+[v _TMR2IE `Vb  1 e@1121 ]
+"600 D:\111\AK7030-OTP\yn8p520.h
+[v _CCP1IE `Vb  1 e@1122 ]
+"601 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPIE `Vb  1 e@1123 ]
+"602 D:\111\AK7030-OTP\yn8p520.h
+[v _TXIE `Vb  1 e@1124 ]
+"603 D:\111\AK7030-OTP\yn8p520.h
+[v _RCIE `Vb  1 e@1125 ]
+"604 D:\111\AK7030-OTP\yn8p520.h
+[v _INT1IE `Vb  1 e@1126 ]
+"605 D:\111\AK7030-OTP\yn8p520.h
+[v _INT2IE `Vb  1 e@1127 ]
+"608 D:\111\AK7030-OTP\yn8p520.h
+[v _PIE2 `Vuc  1 e@141 ]
+"610 D:\111\AK7030-OTP\yn8p520.h
+[v _OP1IE `Vb  1 e@1128 ]
+"611 D:\111\AK7030-OTP\yn8p520.h
+[v _OP2IE `Vb  1 e@1129 ]
+"612 D:\111\AK7030-OTP\yn8p520.h
+[v _ADIE `Vb  1 e@1130 ]
+"613 D:\111\AK7030-OTP\yn8p520.h
+[v _LVDIE `Vb  1 e@1131 ]
+"614 D:\111\AK7030-OTP\yn8p520.h
+[v _PWMIE `Vb  1 e@1132 ]
+"615 D:\111\AK7030-OTP\yn8p520.h
+[v _BCLIE `Vb  1 e@1133 ]
+"619 D:\111\AK7030-OTP\yn8p520.h
+[v _PCON `Vuc  1 e@142 ]
+"621 D:\111\AK7030-OTP\yn8p520.h
+[v _nBOR `Vb  1 e@1136 ]
+"622 D:\111\AK7030-OTP\yn8p520.h
+[v _nPOR `Vb  1 e@1137 ]
+"623 D:\111\AK7030-OTP\yn8p520.h
+[v _INTEDG2 `Vb  1 e@1138 ]
+"624 D:\111\AK7030-OTP\yn8p520.h
+[v _INTEDG1 `Vb  1 e@1139 ]
+"625 D:\111\AK7030-OTP\yn8p520.h
+[v _INTEDG0 `Vb  1 e@1140 ]
+"626 D:\111\AK7030-OTP\yn8p520.h
+[v _CKOE `Vb  1 e@1141 ]
+"627 D:\111\AK7030-OTP\yn8p520.h
+[v _I2C_AUX `Vb  1 e@1142 ]
+"628 D:\111\AK7030-OTP\yn8p520.h
+[v _nBO `Vb  1 e@1136 ]
+"632 D:\111\AK7030-OTP\yn8p520.h
+[v _PWST `Vuc  1 e@143 ]
+"635 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPADD2 `Vuc  1 e@144 ]
+"638 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPCON2 `Vuc  1 e@145 ]
+"639 D:\111\AK7030-OTP\yn8p520.h
+[v _SEN `Vb  1 e@1160 ]
+"640 D:\111\AK7030-OTP\yn8p520.h
+[v _RSEN `Vb  1 e@1161 ]
+"641 D:\111\AK7030-OTP\yn8p520.h
+[v _PEN `Vb  1 e@1162 ]
+"642 D:\111\AK7030-OTP\yn8p520.h
+[v _RCEN `Vb  1 e@1163 ]
+"643 D:\111\AK7030-OTP\yn8p520.h
+[v _ACKEN `Vb  1 e@1164 ]
+"644 D:\111\AK7030-OTP\yn8p520.h
+[v _ACKDT `Vb  1 e@1165 ]
+"645 D:\111\AK7030-OTP\yn8p520.h
+[v _ACKSTAT `Vb  1 e@1166 ]
+"646 D:\111\AK7030-OTP\yn8p520.h
+[v _GCEN `Vb  1 e@1167 ]
+"649 D:\111\AK7030-OTP\yn8p520.h
+[v _PR2 `Vuc  1 e@146 ]
+"652 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPADD `Vuc  1 e@147 ]
+"655 D:\111\AK7030-OTP\yn8p520.h
+[v _SSPSTAT `Vuc  1 e@148 ]
+"657 D:\111\AK7030-OTP\yn8p520.h
+[v _BF `Vb  1 e@1184 ]
+"658 D:\111\AK7030-OTP\yn8p520.h
+[v _UA `Vb  1 e@1185 ]
+"659 D:\111\AK7030-OTP\yn8p520.h
+[v _R_nW `Vb  1 e@1186 ]
+"660 D:\111\AK7030-OTP\yn8p520.h
+[v _S `Vb  1 e@1187 ]
+"661 D:\111\AK7030-OTP\yn8p520.h
+[v _P `Vb  1 e@1188 ]
+"662 D:\111\AK7030-OTP\yn8p520.h
+[v _D_nA `Vb  1 e@1189 ]
+"663 D:\111\AK7030-OTP\yn8p520.h
+[v _CKE `Vb  1 e@1190 ]
+"664 D:\111\AK7030-OTP\yn8p520.h
+[v _SMP `Vb  1 e@1191 ]
+"665 D:\111\AK7030-OTP\yn8p520.h
+[v _R `Vb  1 e@1186 ]
+"666 D:\111\AK7030-OTP\yn8p520.h
+[v _D `Vb  1 e@1189 ]
+"667 D:\111\AK7030-OTP\yn8p520.h
+[v _I2C_READ `Vb  1 e@1186 ]
+"668 D:\111\AK7030-OTP\yn8p520.h
+[v _I2C_START `Vb  1 e@1187 ]
+"669 D:\111\AK7030-OTP\yn8p520.h
+[v _I2C_STOP `Vb  1 e@1188 ]
+"670 D:\111\AK7030-OTP\yn8p520.h
+[v _I2C_DATA `Vb  1 e@1189 ]
+"671 D:\111\AK7030-OTP\yn8p520.h
+[v _R_W `Vb  1 e@1186 ]
+"672 D:\111\AK7030-OTP\yn8p520.h
+[v _D_A `Vb  1 e@1189 ]
+"673 D:\111\AK7030-OTP\yn8p520.h
+[v _READ_WRITE `Vb  1 e@1186 ]
+"674 D:\111\AK7030-OTP\yn8p520.h
+[v _DATA_ADDRESS `Vb  1 e@1189 ]
+"675 D:\111\AK7030-OTP\yn8p520.h
+[v _nW `Vb  1 e@1186 ]
+"676 D:\111\AK7030-OTP\yn8p520.h
+[v _nA `Vb  1 e@1189 ]
+"677 D:\111\AK7030-OTP\yn8p520.h
+[v _nWRITE `Vb  1 e@1186 ]
+"678 D:\111\AK7030-OTP\yn8p520.h
+[v _nADDRESS `Vb  1 e@1189 ]
+"681 D:\111\AK7030-OTP\yn8p520.h
+[v _PWMCON1 `Vuc  1 e@150 ]
+"683 D:\111\AK7030-OTP\yn8p520.h
+[v _PWM1ASE `Vb  1 e@1200 ]
+"684 D:\111\AK7030-OTP\yn8p520.h
+[v _PWM1OP2ASEN `Vb  1 e@1201 ]
+"685 D:\111\AK7030-OTP\yn8p520.h
+[v _PWM1OP1ASEN `Vb  1 e@1202 ]
+"686 D:\111\AK7030-OTP\yn8p520.h
+[v _PWM1RSE `Vb  1 e@1204 ]
+"687 D:\111\AK7030-OTP\yn8p520.h
+[v _PWM1OP2RSEN `Vb  1 e@1205 ]
+"688 D:\111\AK7030-OTP\yn8p520.h
+[v _PWM1OP1RSEN `Vb  1 e@1206 ]
+"692 D:\111\AK7030-OTP\yn8p520.h
+[v _PWMCON0 `Vuc  1 e@151 ]
+"694 D:\111\AK7030-OTP\yn8p520.h
+[v _PWM1S `Vb  1 e@1214 ]
+"698 D:\111\AK7030-OTP\yn8p520.h
+[v _TXSTA `Vuc  1 e@152 ]
+"700 D:\111\AK7030-OTP\yn8p520.h
+[v _TX9D `Vb  1 e@1216 ]
+"701 D:\111\AK7030-OTP\yn8p520.h
+[v _TRMT `Vb  1 e@1217 ]
+"702 D:\111\AK7030-OTP\yn8p520.h
+[v _BRGH `Vb  1 e@1218 ]
+"703 D:\111\AK7030-OTP\yn8p520.h
+[v _TXPARITY `Vb  1 e@1219 ]
+"704 D:\111\AK7030-OTP\yn8p520.h
+[v _SYNC `Vb  1 e@1220 ]
+"705 D:\111\AK7030-OTP\yn8p520.h
+[v _TXEN `Vb  1 e@1221 ]
+"706 D:\111\AK7030-OTP\yn8p520.h
+[v _TX9 `Vb  1 e@1222 ]
+"707 D:\111\AK7030-OTP\yn8p520.h
+[v _CSRC `Vb  1 e@1223 ]
+"708 D:\111\AK7030-OTP\yn8p520.h
+[v _TXD8 `Vb  1 e@1216 ]
+"709 D:\111\AK7030-OTP\yn8p520.h
+[v _nTX8 `Vb  1 e@1222 ]
+"710 D:\111\AK7030-OTP\yn8p520.h
+[v _TX8_9 `Vb  1 e@1222 ]
+"713 D:\111\AK7030-OTP\yn8p520.h
+[v _SPBRG `Vuc  1 e@153 ]
+"717 D:\111\AK7030-OTP\yn8p520.h
+[v _UARTCON `Vuc  1 e@154 ]
+"719 D:\111\AK7030-OTP\yn8p520.h
+[v _INVMODE `Vb  1 e@1232 ]
+"720 D:\111\AK7030-OTP\yn8p520.h
+[v _PARITY `Vb  1 e@1233 ]
+"721 D:\111\AK7030-OTP\yn8p520.h
+[v _RXODD_EVEN `Vb  1 e@1234 ]
+"722 D:\111\AK7030-OTP\yn8p520.h
+[v _BOUD_CLK `Vb  1 e@1235 ]
+"723 D:\111\AK7030-OTP\yn8p520.h
+[v _HALF_DUPLEX `Vb  1 e@1236 ]
+"724 D:\111\AK7030-OTP\yn8p520.h
+[v _DLSB `Vb  1 e@1237 ]
+"725 D:\111\AK7030-OTP\yn8p520.h
+[v _STOP_BIT1 `Vb  1 e@1238 ]
+"726 D:\111\AK7030-OTP\yn8p520.h
+[v _STOP_BIT0 `Vb  1 e@1239 ]
+"729 D:\111\AK7030-OTP\yn8p520.h
+[v _OP2CON0 `Vuc  1 e@155 ]
+[s S30 :4 `uc 1 ]
+[n S30 . OP2F ]
+[s S31 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S31 . OP2F0 OP2F1 OP2F2 OP2F3 OP2ZLF OP2POL OP2OUT OP2ON ]
+[u S29 `S30 1 `S31 1 ]
+[n S29 . . . ]
+"746 D:\111\AK7030-OTP\yn8p520.h
+[v _OP2CON0bits `VS29  1 e@155 ]
+"750 D:\111\AK7030-OTP\yn8p520.h
+[v _OP2CON1 `Vuc  1 e@156 ]
+[s S33 :3 `uc 1 :3 `uc 1 ]
+[n S33 . OP2NCH OP2PCH ]
+[s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S34 . OP2NCH0 OP2NCH1 OP2NCH2 OP2PCH0 OP2PCH1 OP2PCH2 OP2INTN OP2INTP ]
+[u S32 `S33 1 `S34 1 ]
+[n S32 . . . ]
+"768 D:\111\AK7030-OTP\yn8p520.h
+[v _OP2CON1bits `VS32  1 e@156 ]
+"772 D:\111\AK7030-OTP\yn8p520.h
+[v _OP2CON2 `Vuc  1 e@157 ]
+[s S36 :3 `uc 1 ]
+[n S36 . PGA ]
+[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S37 . PGA0 PGA1 PGA2 PGAEN A2O2N A2NS OP2A2DEN OP2OUTEN ]
+[u S35 `S36 1 `S37 1 ]
+[n S35 . . . ]
+"789 D:\111\AK7030-OTP\yn8p520.h
+[v _OP2CON2bits `VS35  1 e@157 ]
+"793 D:\111\AK7030-OTP\yn8p520.h
+[v _ADRESL `Vuc  1 e@158 ]
+"797 D:\111\AK7030-OTP\yn8p520.h
+[v _ADCON1 `Vuc  1 e@159 ]
+"799 D:\111\AK7030-OTP\yn8p520.h
+[v _ADCS0 `Vb  1 e@1272 ]
+"800 D:\111\AK7030-OTP\yn8p520.h
+[v _ADCS1 `Vb  1 e@1273 ]
+"801 D:\111\AK7030-OTP\yn8p520.h
+[v _ADCS2 `Vb  1 e@1274 ]
+"802 D:\111\AK7030-OTP\yn8p520.h
+[v _ACQT0 `Vb  1 e@1275 ]
+"803 D:\111\AK7030-OTP\yn8p520.h
+[v _ACQT1 `Vb  1 e@1276 ]
+"804 D:\111\AK7030-OTP\yn8p520.h
+[v _ACQT2 `Vb  1 e@1277 ]
+"805 D:\111\AK7030-OTP\yn8p520.h
+[v _ADVREF0 `Vb  1 e@1276 ]
+"806 D:\111\AK7030-OTP\yn8p520.h
+[v _ADVERF1 `Vb  1 e@1277 ]
+[s S39 :3 `uc 1 :3 `uc 1 :2 `uc 1 ]
+[n S39 . ADCS ACQT ADVREF ]
+[s S40 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S40 . ADCS0 ADCS1 ADCS2 ACQT0 ACQT1 ACOT2 ADVREF0 ADVREF1 ]
+[u S38 `S39 1 `S40 1 ]
+[n S38 . . . ]
+"824 D:\111\AK7030-OTP\yn8p520.h
+[v _ADCON1bits `VS38  1 e@159 ]
+"833 D:\111\AK7030-OTP\yn8p520.h
+[v _PAPU `Vuc  1 e@261 ]
+"837 D:\111\AK7030-OTP\yn8p520.h
+[v _PBPU `Vuc  1 e@262 ]
+"841 D:\111\AK7030-OTP\yn8p520.h
+[v _PBMASK `Vuc  1 e@263 ]
+"845 D:\111\AK7030-OTP\yn8p520.h
+[v _CLKPR `Vuc  1 e@264 ]
+"847 D:\111\AK7030-OTP\yn8p520.h
+[v _CLKPS0 `Vb  1 e@2112 ]
+"848 D:\111\AK7030-OTP\yn8p520.h
+[v _CLKPS1 `Vb  1 e@2113 ]
+"849 D:\111\AK7030-OTP\yn8p520.h
+[v _CLKPCE `Vb  1 e@2119 ]
+"852 D:\111\AK7030-OTP\yn8p520.h
+[v _SMCR `Vuc  1 e@265 ]
+"854 D:\111\AK7030-OTP\yn8p520.h
+[v _SE `Vb  1 e@2120 ]
+"855 D:\111\AK7030-OTP\yn8p520.h
+[v _SM0 `Vb  1 e@2121 ]
+"856 D:\111\AK7030-OTP\yn8p520.h
+[v _SM1 `Vb  1 e@2122 ]
+"857 D:\111\AK7030-OTP\yn8p520.h
+[v _SM2 `Vb  1 e@2123 ]
+"860 D:\111\AK7030-OTP\yn8p520.h
+[v _ALG0 `Vuc  1 e@268 ]
+"863 D:\111\AK7030-OTP\yn8p520.h
+[v _DACBIASEN `Vb  1 e@2148 ]
+"864 D:\111\AK7030-OTP\yn8p520.h
+[v _IOVCCEN `Vb  1 e@2149 ]
+"865 D:\111\AK7030-OTP\yn8p520.h
+[v _BIASEN `Vb  1 e@2150 ]
+"866 D:\111\AK7030-OTP\yn8p520.h
+[v _LDO2P0EN `Vb  1 e@2151 ]
+"869 D:\111\AK7030-OTP\yn8p520.h
+[v _ALG1 `Vuc  1 e@269 ]
+"873 D:\111\AK7030-OTP\yn8p520.h
+[v _ALG2 `Vuc  1 e@270 ]
+"877 D:\111\AK7030-OTP\yn8p520.h
+[v _ALG3 `Vuc  1 e@271 ]
+"885 D:\111\AK7030-OTP\yn8p520.h
+[v _PAPD `Vuc  1 e@389 ]
+"889 D:\111\AK7030-OTP\yn8p520.h
+[v _PBPD `Vuc  1 e@390 ]
+"893 D:\111\AK7030-OTP\yn8p520.h
+[v _PAOD `Vuc  1 e@391 ]
+"897 D:\111\AK7030-OTP\yn8p520.h
+[v _PBOD `Vuc  1 e@392 ]
+"901 D:\111\AK7030-OTP\yn8p520.h
+[v _ALG4 `Vuc  1 e@396 ]
+"905 D:\111\AK7030-OTP\yn8p520.h
+[v _ALG5 `Vuc  1 e@397 ]
+"909 D:\111\AK7030-OTP\yn8p520.h
+[v _ALG6 `Vuc  1 e@398 ]
+"913 D:\111\AK7030-OTP\yn8p520.h
+[v _ALG7 `Vuc  1 e@399 ]
+[p mainexit ]
+"21 D:\111\AK7030-OTP\common.h
+[v _clock_config `(v  0 ef ]
+"22 D:\111\AK7030-OTP\common.h
+[v _timer1_config `(v  0 ef ]
+"23 D:\111\AK7030-OTP\common.h
+[v _timer1_interrupt_config `(v  0 ef ]
+"18 D:\111\AK7030-OTP\periph.h
+[v _adc_test_init `(v  0 ef2`uc`uc ]
+"13 D:\111\AK7030-OTP\periph.h
+[v _dac_init `(v  0 ef ]
+"14 D:\111\AK7030-OTP\periph.h
+[v _op1_init `(v  0 ef ]
+"15 D:\111\AK7030-OTP\periph.h
+[v _op2_init `(v  0 ef ]
+"20 D:\111\AK7030-OTP\periph.h
+[v _adc_start `(v  0 ef ]
+"43 D:\111\AK7030-OTP\common.h
+[v _isPermitSampleTime `(uc  0 ef ]
+"45 D:\111\AK7030-OTP\common.h
+[v _clrSampeTime `(v  0 ef ]
+"32 D:\111\AK7030-OTP\common.h
+[v _process_AD_Converter_Value `(v  0 ef ]
+"52 D:\111\AK7030-OTP\common.h
+[v _clearBigTimer `(v  0 ef ]
+"53 D:\111\AK7030-OTP\common.h
+[v _clearSmallTimer `(v  0 ef ]
+"41 D:\111\AK7030-OTP\common.h
+[v _getAdOriginalCh13Value `(ui  0 ef ]
+"47 D:\111\AK7030-OTP\common.h
+[v _setDAC0_ChannelValue `(v  0 ef1`uc ]
+"49 D:\111\AK7030-OTP\common.h
+[v _startBigTimer `(v  0 ef ]
+"50 D:\111\AK7030-OTP\common.h
+[v _startSmallTimer `(v  0 ef ]
+"55 D:\111\AK7030-OTP\common.h
+[v _isFinishedBigTimer `(uc  0 ef ]
+"56 D:\111\AK7030-OTP\common.h
+[v _isFinishedSmallTimer `(uc  0 ef ]
+[; ;stdio.h: 12: typedef int ptrdiff_t;
+[; ;stdio.h: 13: typedef unsigned size_t;
+[; ;stdio.h: 14: typedef unsigned short wchar_t;
+[; ;stdarg.h: 31: typedef void * va_list[1];
+[; ;stdarg.h: 34: extern void * __va_start(void);
+[; ;stdarg.h: 37: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 27: extern int errno;
+[; ;stdio.h: 58: struct __prbuf
+[; ;stdio.h: 59: {
+[; ;stdio.h: 60: char * ptr;
+[; ;stdio.h: 61: void (* func)(char);
+[; ;stdio.h: 62: };
+[; ;conio.h: 17: extern int errno;
+[; ;conio.h: 20: extern void init_uart(void);
+[; ;conio.h: 22: extern char getch(void);
+[; ;conio.h: 23: extern char getche(void);
+[; ;conio.h: 24: extern void putch(char);
+[; ;conio.h: 25: extern void ungetch(char);
+[; ;conio.h: 27: extern bit kbhit(void);
+[; ;conio.h: 31: extern char * cgets(char *);
+[; ;conio.h: 32: extern void cputs(const char *);
+[; ;stdio.h: 103: extern int cprintf(char *, ...);
+[; ;stdio.h: 108: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 195: extern char * gets(char *);
+[; ;stdio.h: 196: extern int puts(const char *);
+[; ;stdio.h: 197: extern int scanf(const char *, ...);
+[; ;stdio.h: 198: extern int sscanf(const char *, const char *, ...);
+[; ;stdio.h: 199: extern int vprintf(const char *, va_list);
+[; ;stdio.h: 200: extern int vsprintf(char *, const char *, va_list);
+[; ;stdio.h: 201: extern int vscanf(const char *, va_list ap);
+[; ;stdio.h: 202: extern int vsscanf(const char *, const char *, va_list);
+[; ;stdio.h: 206: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 207: extern int printf(const char *, ...);
+[; ;yn8p520.h: 164: volatile unsigned char INDF @ 0x000;
+[; ;yn8p520.h: 168: volatile unsigned char LVDCON @ 0x001;
+[; ;yn8p520.h: 171: volatile unsigned char PCL @ 0x002;
+[; ;yn8p520.h: 175: volatile unsigned char STATUS @ 0x003;
+[; ;yn8p520.h: 177: volatile bit CARRY @ ((unsigned)&STATUS*8)+0;
+[; ;yn8p520.h: 178: volatile bit DC @ ((unsigned)&STATUS*8)+1;
+[; ;yn8p520.h: 179: volatile bit ZERO @ ((unsigned)&STATUS*8)+2;
+[; ;yn8p520.h: 180: volatile bit nPD @ ((unsigned)&STATUS*8)+3;
+[; ;yn8p520.h: 181: volatile bit nTO @ ((unsigned)&STATUS*8)+4;
+[; ;yn8p520.h: 182: volatile bit IRP @ ((unsigned)&STATUS*8)+7;
+[; ;yn8p520.h: 183: volatile bit RP0 @ ((unsigned)&STATUS*8)+5;
+[; ;yn8p520.h: 184: volatile bit RP1 @ ((unsigned)&STATUS*8)+6;
+[; ;yn8p520.h: 186: volatile union {
+[; ;yn8p520.h: 187: struct {
+[; ;yn8p520.h: 188: unsigned C : 1;
+[; ;yn8p520.h: 189: unsigned DC : 1;
+[; ;yn8p520.h: 190: unsigned Z : 1;
+[; ;yn8p520.h: 191: unsigned nPD : 1;
+[; ;yn8p520.h: 192: unsigned nTO : 1;
+[; ;yn8p520.h: 193: unsigned RP : 2;
+[; ;yn8p520.h: 194: unsigned IRP : 1;
+[; ;yn8p520.h: 195: };
+[; ;yn8p520.h: 196: struct {
+[; ;yn8p520.h: 197: unsigned : 5;
+[; ;yn8p520.h: 198: unsigned RP0 : 1;
+[; ;yn8p520.h: 199: unsigned RP1 : 1;
+[; ;yn8p520.h: 200: };
+[; ;yn8p520.h: 201: } STATUSbits @ 0x003;
+[; ;yn8p520.h: 205: volatile unsigned char FSR @ 0x004;
+[; ;yn8p520.h: 209: volatile unsigned char PORTA @ 0x005;
+[; ;yn8p520.h: 211: volatile bit PA0 @ ((unsigned)&PORTA*8)+0;
+[; ;yn8p520.h: 212: volatile bit PA1 @ ((unsigned)&PORTA*8)+1;
+[; ;yn8p520.h: 213: volatile bit PA2 @ ((unsigned)&PORTA*8)+2;
+[; ;yn8p520.h: 214: volatile bit PA3 @ ((unsigned)&PORTA*8)+3;
+[; ;yn8p520.h: 215: volatile bit PA4 @ ((unsigned)&PORTA*8)+4;
+[; ;yn8p520.h: 216: volatile bit PA5 @ ((unsigned)&PORTA*8)+5;
+[; ;yn8p520.h: 217: volatile bit PA6 @ ((unsigned)&PORTA*8)+6;
+[; ;yn8p520.h: 218: volatile bit PA7 @ ((unsigned)&PORTA*8)+7;
+[; ;yn8p520.h: 221: volatile unsigned char PORTB @ 0x006;
+[; ;yn8p520.h: 223: volatile bit PB0 @ ((unsigned)&PORTB*8)+0;
+[; ;yn8p520.h: 224: volatile bit PB1 @ ((unsigned)&PORTB*8)+1;
+[; ;yn8p520.h: 225: volatile bit PB2 @ ((unsigned)&PORTB*8)+2;
+[; ;yn8p520.h: 226: volatile bit PB3 @ ((unsigned)&PORTB*8)+3;
+[; ;yn8p520.h: 227: volatile bit PB4 @ ((unsigned)&PORTB*8)+4;
+[; ;yn8p520.h: 228: volatile bit PB5 @ ((unsigned)&PORTB*8)+5;
+[; ;yn8p520.h: 229: volatile bit PB6 @ ((unsigned)&PORTB*8)+6;
+[; ;yn8p520.h: 230: volatile bit PB7 @ ((unsigned)&PORTB*8)+7;
+[; ;yn8p520.h: 233: volatile unsigned char TMR0L @ 0x007;
+[; ;yn8p520.h: 234: volatile unsigned char TMR0H @ 0x008;
+[; ;yn8p520.h: 238: volatile unsigned int TMR0 @ 0x007;
+[; ;yn8p520.h: 241: volatile unsigned int T0CON @ 0x009;
+[; ;yn8p520.h: 244: volatile bit T0PS0 @ ((unsigned)&T0CON*8)+0;
+[; ;yn8p520.h: 245: volatile bit T0PS1 @ ((unsigned)&T0CON*8)+1;
+[; ;yn8p520.h: 246: volatile bit T0PS2 @ ((unsigned)&T0CON*8)+2;
+[; ;yn8p520.h: 247: volatile bit PSA @ ((unsigned)&T0CON*8)+3;
+[; ;yn8p520.h: 248: volatile bit T0SE @ ((unsigned)&T0CON*8)+4;
+[; ;yn8p520.h: 249: volatile bit T0CS @ ((unsigned)&T0CON*8)+5;
+[; ;yn8p520.h: 250: volatile bit T08BIT @ ((unsigned)&T0CON*8)+6;
+[; ;yn8p520.h: 251: volatile bit TMR0ON @ ((unsigned)&T0CON*8)+7;
+[; ;yn8p520.h: 254: volatile unsigned char PCLATH @ 0x00A;
+[; ;yn8p520.h: 257: volatile union {
+[; ;yn8p520.h: 258: struct {
+[; ;yn8p520.h: 259: unsigned : 4;
+[; ;yn8p520.h: 260: };
+[; ;yn8p520.h: 261: } PCLATHbits @ 0x00A;
+[; ;yn8p520.h: 265: volatile unsigned char INTCON @ 0x00B;
+[; ;yn8p520.h: 267: volatile bit RBIF @ ((unsigned)&INTCON*8)+0;
+[; ;yn8p520.h: 268: volatile bit INT0IF @ ((unsigned)&INTCON*8)+1;
+[; ;yn8p520.h: 269: volatile bit T0IF @ ((unsigned)&INTCON*8)+2;
+[; ;yn8p520.h: 270: volatile bit RBIE @ ((unsigned)&INTCON*8)+3;
+[; ;yn8p520.h: 271: volatile bit INT0IE @ ((unsigned)&INTCON*8)+4;
+[; ;yn8p520.h: 272: volatile bit T0IE @ ((unsigned)&INTCON*8)+5;
+[; ;yn8p520.h: 273: volatile bit PEIE @ ((unsigned)&INTCON*8)+6;
+[; ;yn8p520.h: 274: volatile bit GIE @ ((unsigned)&INTCON*8)+7;
+[; ;yn8p520.h: 275: volatile bit TMR0IF @ ((unsigned)&INTCON*8)+2;
+[; ;yn8p520.h: 276: volatile bit TMR0IE @ ((unsigned)&INTCON*8)+5;
+[; ;yn8p520.h: 278: volatile union {
+[; ;yn8p520.h: 279: struct {
+[; ;yn8p520.h: 280: unsigned RBIF : 1;
+[; ;yn8p520.h: 281: unsigned INTF : 1;
+[; ;yn8p520.h: 282: unsigned T0IF : 1;
+[; ;yn8p520.h: 283: unsigned RBIE : 1;
+[; ;yn8p520.h: 284: unsigned INTE : 1;
+[; ;yn8p520.h: 285: unsigned T0IE : 1;
+[; ;yn8p520.h: 286: unsigned PEIE : 1;
+[; ;yn8p520.h: 287: unsigned GIE : 1;
+[; ;yn8p520.h: 288: };
+[; ;yn8p520.h: 289: struct {
+[; ;yn8p520.h: 290: unsigned : 2;
+[; ;yn8p520.h: 291: unsigned TMR0IF : 1;
+[; ;yn8p520.h: 292: unsigned : 2;
+[; ;yn8p520.h: 293: unsigned TMR0IE : 1;
+[; ;yn8p520.h: 294: };
+[; ;yn8p520.h: 295: } INTCONbits @ 0x00B;
+[; ;yn8p520.h: 300: volatile unsigned char PIR1 @ 0x00C;
+[; ;yn8p520.h: 302: volatile bit TMR1IF @ ((unsigned)&PIR1*8)+0;
+[; ;yn8p520.h: 303: volatile bit TMR2IF @ ((unsigned)&PIR1*8)+1;
+[; ;yn8p520.h: 304: volatile bit CCP1IF @ ((unsigned)&PIR1*8)+2;
+[; ;yn8p520.h: 305: volatile bit SSPIF @ ((unsigned)&PIR1*8)+3;
+[; ;yn8p520.h: 306: volatile bit TXIF @ ((unsigned)&PIR1*8)+4;
+[; ;yn8p520.h: 307: volatile bit RCIF @ ((unsigned)&PIR1*8)+5;
+[; ;yn8p520.h: 308: volatile bit INT1IF @ ((unsigned)&PIR1*8)+6;
+[; ;yn8p520.h: 309: volatile bit INT2IF @ ((unsigned)&PIR1*8)+7;
+[; ;yn8p520.h: 312: volatile unsigned char PIR2 @ 0x00D;
+[; ;yn8p520.h: 314: volatile bit OP1IF @ ((unsigned)&PIR2*8)+0;
+[; ;yn8p520.h: 315: volatile bit OP2IF @ ((unsigned)&PIR2*8)+1;
+[; ;yn8p520.h: 316: volatile bit ADIF @ ((unsigned)&PIR2*8)+2;
+[; ;yn8p520.h: 317: volatile bit LVDIF @ ((unsigned)&PIR2*8)+3;
+[; ;yn8p520.h: 318: volatile bit PWMIF @ ((unsigned)&PIR2*8)+4;
+[; ;yn8p520.h: 319: volatile bit BCLIF @ ((unsigned)&PIR2*8)+5;
+[; ;yn8p520.h: 323: volatile unsigned char TMR1L @ 0x00E;
+[; ;yn8p520.h: 327: volatile unsigned char TMR1H @ 0x00F;
+[; ;yn8p520.h: 331: volatile unsigned int TMR1 @ 0x00E;
+[; ;yn8p520.h: 334: volatile unsigned char T1CON @ 0x010;
+[; ;yn8p520.h: 336: volatile bit TMR1ON @ ((unsigned)&T1CON*8)+0;
+[; ;yn8p520.h: 337: volatile bit TMR1CS @ ((unsigned)&T1CON*8)+1;
+[; ;yn8p520.h: 338: volatile bit nT1SYNC @ ((unsigned)&T1CON*8)+2;
+[; ;yn8p520.h: 339: volatile bit T1OSCEN @ ((unsigned)&T1CON*8)+3;
+[; ;yn8p520.h: 340: volatile bit T1INSYNC @ ((unsigned)&T1CON*8)+2;
+[; ;yn8p520.h: 341: volatile bit T1CKPS0 @ ((unsigned)&T1CON*8)+4;
+[; ;yn8p520.h: 342: volatile bit T1CKPS1 @ ((unsigned)&T1CON*8)+5;
+[; ;yn8p520.h: 343: volatile bit RD16 @ ((unsigned)&T1CON*8)+7;
+[; ;yn8p520.h: 346: volatile unsigned char TMR2 @ 0x011;
+[; ;yn8p520.h: 350: volatile unsigned char T2CON @ 0x012;
+[; ;yn8p520.h: 353: volatile bit T2CKPS0 @ ((unsigned)&T2CON*8)+0;
+[; ;yn8p520.h: 354: volatile bit T2CKPS1 @ ((unsigned)&T2CON*8)+1;
+[; ;yn8p520.h: 355: volatile bit TMR2ON @ ((unsigned)&T2CON*8)+2;
+[; ;yn8p520.h: 356: volatile bit TOUTPS0 @ ((unsigned)&T2CON*8)+3;
+[; ;yn8p520.h: 357: volatile bit TOUTPS1 @ ((unsigned)&T2CON*8)+4;
+[; ;yn8p520.h: 358: volatile bit TOUTPS2 @ ((unsigned)&T2CON*8)+5;
+[; ;yn8p520.h: 359: volatile bit TOUTPS3 @ ((unsigned)&T2CON*8)+6;
+[; ;yn8p520.h: 362: volatile unsigned char SSPBUF @ 0x013;
+[; ;yn8p520.h: 366: volatile unsigned char SSPCON @ 0x014;
+[; ;yn8p520.h: 368: volatile bit CKP @ ((unsigned)&SSPCON*8)+4;
+[; ;yn8p520.h: 369: volatile bit SSPEN @ ((unsigned)&SSPCON*8)+5;
+[; ;yn8p520.h: 370: volatile bit SSPOV @ ((unsigned)&SSPCON*8)+6;
+[; ;yn8p520.h: 371: volatile bit WCOL @ ((unsigned)&SSPCON*8)+7;
+[; ;yn8p520.h: 372: volatile bit SSPM0 @ ((unsigned)&SSPCON*8)+0;
+[; ;yn8p520.h: 373: volatile bit SSPM1 @ ((unsigned)&SSPCON*8)+1;
+[; ;yn8p520.h: 374: volatile bit SSPM2 @ ((unsigned)&SSPCON*8)+2;
+[; ;yn8p520.h: 375: volatile bit SSPM3 @ ((unsigned)&SSPCON*8)+3;
+[; ;yn8p520.h: 378: volatile unsigned char CCPR1L @ 0x015;
+[; ;yn8p520.h: 382: volatile unsigned char CCPR1H @ 0x016;
+[; ;yn8p520.h: 386: volatile unsigned int CCPR1 @ 0x015;
+[; ;yn8p520.h: 389: volatile unsigned char CCP1CON @ 0x017;
+[; ;yn8p520.h: 391: volatile bit CCP1M0 @ ((unsigned)&CCP1CON*8)+0;
+[; ;yn8p520.h: 392: volatile bit CCP1M1 @ ((unsigned)&CCP1CON*8)+1;
+[; ;yn8p520.h: 393: volatile bit CCP1M2 @ ((unsigned)&CCP1CON*8)+2;
+[; ;yn8p520.h: 394: volatile bit CCP1M3 @ ((unsigned)&CCP1CON*8)+3;
+[; ;yn8p520.h: 395: volatile bit CCP1Y @ ((unsigned)&CCP1CON*8)+4;
+[; ;yn8p520.h: 396: volatile bit CCP1X @ ((unsigned)&CCP1CON*8)+5;
+[; ;yn8p520.h: 398: volatile union {
+[; ;yn8p520.h: 399: struct {
+[; ;yn8p520.h: 400: unsigned CCP1M : 4;
+[; ;yn8p520.h: 401: unsigned DC1B : 2;
+[; ;yn8p520.h: 402: };
+[; ;yn8p520.h: 403: struct {
+[; ;yn8p520.h: 404: unsigned CCP1M0 : 1;
+[; ;yn8p520.h: 405: unsigned CCP1M1 : 1;
+[; ;yn8p520.h: 406: unsigned CCP1M2 : 1;
+[; ;yn8p520.h: 407: unsigned CCP1M3 : 1;
+[; ;yn8p520.h: 408: unsigned CCP1Y : 1;
+[; ;yn8p520.h: 409: unsigned CCP1X : 1;
+[; ;yn8p520.h: 410: };
+[; ;yn8p520.h: 411: } CCP1CONbits @ 0x017;
+[; ;yn8p520.h: 415: volatile unsigned char RCSTA @ 0x018;
+[; ;yn8p520.h: 417: volatile bit RX9D @ ((unsigned)&RCSTA*8)+0;
+[; ;yn8p520.h: 418: volatile bit OERR @ ((unsigned)&RCSTA*8)+1;
+[; ;yn8p520.h: 419: volatile bit FERR @ ((unsigned)&RCSTA*8)+2;
+[; ;yn8p520.h: 420: volatile bit RXPARITY @ ((unsigned)&RCSTA*8)+3;
+[; ;yn8p520.h: 421: volatile bit CREN @ ((unsigned)&RCSTA*8)+4;
+[; ;yn8p520.h: 422: volatile bit SREN @ ((unsigned)&RCSTA*8)+5;
+[; ;yn8p520.h: 423: volatile bit RX9 @ ((unsigned)&RCSTA*8)+6;
+[; ;yn8p520.h: 424: volatile bit SPEN @ ((unsigned)&RCSTA*8)+7;
+[; ;yn8p520.h: 425: volatile bit RCD8 @ ((unsigned)&RCSTA*8)+0;
+[; ;yn8p520.h: 426: volatile bit RC9 @ ((unsigned)&RCSTA*8)+6;
+[; ;yn8p520.h: 427: volatile bit nRC8 @ ((unsigned)&RCSTA*8)+6;
+[; ;yn8p520.h: 428: volatile bit RC8_9 @ ((unsigned)&RCSTA*8)+6;
+[; ;yn8p520.h: 431: volatile unsigned char TXREG @ 0x019;
+[; ;yn8p520.h: 435: volatile unsigned char RCREG @ 0x01A;
+[; ;yn8p520.h: 439: volatile unsigned char OP1CON0 @ 0x01B;
+[; ;yn8p520.h: 442: volatile union {
+[; ;yn8p520.h: 443: struct {
+[; ;yn8p520.h: 444: unsigned OP1F : 4;
+[; ;yn8p520.h: 445: };
+[; ;yn8p520.h: 446: struct {
+[; ;yn8p520.h: 447: unsigned OP1F0 : 1;
+[; ;yn8p520.h: 448: unsigned OP1F1 : 1;
+[; ;yn8p520.h: 449: unsigned OP1F2 : 1;
+[; ;yn8p520.h: 450: unsigned OP1F3 : 1;
+[; ;yn8p520.h: 451: unsigned OP1ZLF : 1;
+[; ;yn8p520.h: 452: unsigned OP1POL : 1;
+[; ;yn8p520.h: 453: unsigned OP1OUT : 1;
+[; ;yn8p520.h: 454: unsigned OP1ON : 1;
+[; ;yn8p520.h: 455: };
+[; ;yn8p520.h: 456: } OP1CON0bits @ 0x01B;
+[; ;yn8p520.h: 460: volatile unsigned char OP1CON1 @ 0x01C;
+[; ;yn8p520.h: 463: volatile union {
+[; ;yn8p520.h: 464: struct {
+[; ;yn8p520.h: 465: unsigned OP1NCH : 2;
+[; ;yn8p520.h: 466: unsigned RSV : 2;
+[; ;yn8p520.h: 467: unsigned OP1PCH : 2;
+[; ;yn8p520.h: 468: };
+[; ;yn8p520.h: 469: struct {
+[; ;yn8p520.h: 470: unsigned OP1NCH0 : 1;
+[; ;yn8p520.h: 471: unsigned OP1NCH1 : 1;
+[; ;yn8p520.h: 472: unsigned RSV0 : 1;
+[; ;yn8p520.h: 473: unsigned RSV1 : 1;
+[; ;yn8p520.h: 474: unsigned OP1PCH0 : 1;
+[; ;yn8p520.h: 475: unsigned OP1PCH1 : 1;
+[; ;yn8p520.h: 476: unsigned OP1INTN : 1;
+[; ;yn8p520.h: 477: unsigned OP1INTP : 1;
+[; ;yn8p520.h: 478: };
+[; ;yn8p520.h: 479: } OP1CON1bits @ 0x01C;
+[; ;yn8p520.h: 483: volatile unsigned char OP1CON2 @ 0x01D;
+[; ;yn8p520.h: 486: volatile union {
+[; ;yn8p520.h: 487: struct {
+[; ;yn8p520.h: 488: unsigned RSV0 : 1;
+[; ;yn8p520.h: 489: unsigned RSV1 : 1;
+[; ;yn8p520.h: 490: unsigned RSV2 : 1;
+[; ;yn8p520.h: 491: unsigned RSV3 : 1;
+[; ;yn8p520.h: 492: unsigned A1O2N : 1;
+[; ;yn8p520.h: 493: unsigned A1NS : 1;
+[; ;yn8p520.h: 494: unsigned OP1A2DEN : 1;
+[; ;yn8p520.h: 495: unsigned OP1OUTEN : 1;
+[; ;yn8p520.h: 496: };
+[; ;yn8p520.h: 497: } OP1CON2bits @ 0x01D;
+[; ;yn8p520.h: 501: volatile unsigned char ADRESH @ 0x01E;
+[; ;yn8p520.h: 505: volatile unsigned char ADCON0 @ 0x01F;
+[; ;yn8p520.h: 507: volatile bit ADON @ ((unsigned)&ADCON0*8)+0;
+[; ;yn8p520.h: 508: volatile bit GO_nDONE @ ((unsigned)&ADCON0*8)+1;
+[; ;yn8p520.h: 509: volatile bit GO @ ((unsigned)&ADCON0*8)+1;
+[; ;yn8p520.h: 510: volatile bit CHS0 @ ((unsigned)&ADCON0*8)+2;
+[; ;yn8p520.h: 511: volatile bit CHS1 @ ((unsigned)&ADCON0*8)+3;
+[; ;yn8p520.h: 512: volatile bit CHS2 @ ((unsigned)&ADCON0*8)+4;
+[; ;yn8p520.h: 513: volatile bit CHS3 @ ((unsigned)&ADCON0*8)+5;
+[; ;yn8p520.h: 514: volatile bit nDONE @ ((unsigned)&ADCON0*8)+2;
+[; ;yn8p520.h: 515: volatile bit GO_DONE @ ((unsigned)&ADCON0*8)+2;
+[; ;yn8p520.h: 517: volatile union {
+[; ;yn8p520.h: 518: struct {
+[; ;yn8p520.h: 519: unsigned ADON : 1;
+[; ;yn8p520.h: 520: unsigned G0 : 1;
+[; ;yn8p520.h: 521: unsigned CHS : 4;
+[; ;yn8p520.h: 522: };
+[; ;yn8p520.h: 523: struct {
+[; ;yn8p520.h: 524: unsigned ADON : 1;
+[; ;yn8p520.h: 525: unsigned GO : 1;
+[; ;yn8p520.h: 526: unsigned CHS0 : 1;
+[; ;yn8p520.h: 527: unsigned CHS1 : 1;
+[; ;yn8p520.h: 528: unsigned CHS2 : 1;
+[; ;yn8p520.h: 529: unsigned CHS3 : 1;
+[; ;yn8p520.h: 530: };
+[; ;yn8p520.h: 531: } ADCON0bits @ 0x01f;
+[; ;yn8p520.h: 541: volatile unsigned char WDTCON @ 0x081;
+[; ;yn8p520.h: 543: volatile bit SWDTEN @ ((unsigned)&WDTCON*8)+0;
+[; ;yn8p520.h: 545: volatile union {
+[; ;yn8p520.h: 546: struct {
+[; ;yn8p520.h: 547: unsigned SWDTEN : 1;
+[; ;yn8p520.h: 548: };
+[; ;yn8p520.h: 549: } WDTCONbits @ 0x081;
+[; ;yn8p520.h: 553: volatile unsigned char TRISA @ 0x085;
+[; ;yn8p520.h: 555: volatile bit TRISA0 @ ((unsigned)&TRISA*8)+0;
+[; ;yn8p520.h: 556: volatile bit TRISA1 @ ((unsigned)&TRISA*8)+1;
+[; ;yn8p520.h: 557: volatile bit TRISA2 @ ((unsigned)&TRISA*8)+2;
+[; ;yn8p520.h: 558: volatile bit TRISA3 @ ((unsigned)&TRISA*8)+3;
+[; ;yn8p520.h: 559: volatile bit TRISA4 @ ((unsigned)&TRISA*8)+4;
+[; ;yn8p520.h: 560: volatile bit TRISA5 @ ((unsigned)&TRISA*8)+5;
+[; ;yn8p520.h: 561: volatile bit TRISA6 @ ((unsigned)&TRISA*8)+6;
+[; ;yn8p520.h: 562: volatile bit TRISA7 @ ((unsigned)&TRISA*8)+7;
+[; ;yn8p520.h: 565: volatile unsigned char TRISB @ 0x086;
+[; ;yn8p520.h: 567: volatile bit TRISB0 @ ((unsigned)&TRISB*8)+0;
+[; ;yn8p520.h: 568: volatile bit TRISB1 @ ((unsigned)&TRISB*8)+1;
+[; ;yn8p520.h: 569: volatile bit TRISB2 @ ((unsigned)&TRISB*8)+2;
+[; ;yn8p520.h: 570: volatile bit TRISB3 @ ((unsigned)&TRISB*8)+3;
+[; ;yn8p520.h: 571: volatile bit TRISB4 @ ((unsigned)&TRISB*8)+4;
+[; ;yn8p520.h: 572: volatile bit TRISB5 @ ((unsigned)&TRISB*8)+5;
+[; ;yn8p520.h: 573: volatile bit TRISB6 @ ((unsigned)&TRISB*8)+6;
+[; ;yn8p520.h: 574: volatile bit TRISB7 @ ((unsigned)&TRISB*8)+7;
+[; ;yn8p520.h: 576: volatile unsigned char DACCON @ 0x087;
+[; ;yn8p520.h: 579: volatile union {
+[; ;yn8p520.h: 580: struct {
+[; ;yn8p520.h: 581: unsigned DACCH : 2;
+[; ;yn8p520.h: 582: };
+[; ;yn8p520.h: 583: struct {
+[; ;yn8p520.h: 584: unsigned DACCH0 : 1;
+[; ;yn8p520.h: 585: unsigned DACCH1 : 1;
+[; ;yn8p520.h: 586: unsigned DAC0EN : 1;
+[; ;yn8p520.h: 587: unsigned DAC1EN : 1;
+[; ;yn8p520.h: 588: };
+[; ;yn8p520.h: 589: } DACCONbits @ 0x087;
+[; ;yn8p520.h: 592: volatile unsigned char DACR0 @ 0x088;
+[; ;yn8p520.h: 593: volatile unsigned char DACR1 @ 0x089;
+[; ;yn8p520.h: 596: volatile unsigned char PIE1 @ 0x08C;
+[; ;yn8p520.h: 598: volatile bit TMR1IE @ ((unsigned)&PIE1*8)+0;
+[; ;yn8p520.h: 599: volatile bit TMR2IE @ ((unsigned)&PIE1*8)+1;
+[; ;yn8p520.h: 600: volatile bit CCP1IE @ ((unsigned)&PIE1*8)+2;
+[; ;yn8p520.h: 601: volatile bit SSPIE @ ((unsigned)&PIE1*8)+3;
+[; ;yn8p520.h: 602: volatile bit TXIE @ ((unsigned)&PIE1*8)+4;
+[; ;yn8p520.h: 603: volatile bit RCIE @ ((unsigned)&PIE1*8)+5;
+[; ;yn8p520.h: 604: volatile bit INT1IE @ ((unsigned)&PIE1*8)+6;
+[; ;yn8p520.h: 605: volatile bit INT2IE @ ((unsigned)&PIE1*8)+7;
+[; ;yn8p520.h: 608: volatile unsigned char PIE2 @ 0x08D;
+[; ;yn8p520.h: 610: volatile bit OP1IE @ ((unsigned)&PIE2*8)+0;
+[; ;yn8p520.h: 611: volatile bit OP2IE @ ((unsigned)&PIE2*8)+1;
+[; ;yn8p520.h: 612: volatile bit ADIE @ ((unsigned)&PIE2*8)+2;
+[; ;yn8p520.h: 613: volatile bit LVDIE @ ((unsigned)&PIE2*8)+3;
+[; ;yn8p520.h: 614: volatile bit PWMIE @ ((unsigned)&PIE2*8)+4;
+[; ;yn8p520.h: 615: volatile bit BCLIE @ ((unsigned)&PIE2*8)+5;
+[; ;yn8p520.h: 619: volatile unsigned char PCON @ 0x08E;
+[; ;yn8p520.h: 621: volatile bit nBOR @ ((unsigned)&PCON*8)+0;
+[; ;yn8p520.h: 622: volatile bit nPOR @ ((unsigned)&PCON*8)+1;
+[; ;yn8p520.h: 623: volatile bit INTEDG2 @ ((unsigned)&PCON*8)+2;
+[; ;yn8p520.h: 624: volatile bit INTEDG1 @ ((unsigned)&PCON*8)+3;
+[; ;yn8p520.h: 625: volatile bit INTEDG0 @ ((unsigned)&PCON*8)+4;
+[; ;yn8p520.h: 626: volatile bit CKOE @ ((unsigned)&PCON*8)+5;
+[; ;yn8p520.h: 627: volatile bit I2C_AUX @ ((unsigned)&PCON*8)+6;
+[; ;yn8p520.h: 628: volatile bit nBO @ ((unsigned)&PCON*8)+0;
+[; ;yn8p520.h: 632: volatile unsigned char PWST @ 0x08F;
+[; ;yn8p520.h: 635: volatile unsigned char SSPADD2 @ 0x090;
+[; ;yn8p520.h: 638: volatile unsigned char SSPCON2 @ 0x091;
+[; ;yn8p520.h: 639: volatile bit SEN @ ((unsigned)&SSPCON2*8)+0;
+[; ;yn8p520.h: 640: volatile bit RSEN @ ((unsigned)&SSPCON2*8)+1;
+[; ;yn8p520.h: 641: volatile bit PEN @ ((unsigned)&SSPCON2*8)+2;
+[; ;yn8p520.h: 642: volatile bit RCEN @ ((unsigned)&SSPCON2*8)+3;
+[; ;yn8p520.h: 643: volatile bit ACKEN @ ((unsigned)&SSPCON2*8)+4;
+[; ;yn8p520.h: 644: volatile bit ACKDT @ ((unsigned)&SSPCON2*8)+5;
+[; ;yn8p520.h: 645: volatile bit ACKSTAT @ ((unsigned)&SSPCON2*8)+6;
+[; ;yn8p520.h: 646: volatile bit GCEN @ ((unsigned)&SSPCON2*8)+7;
+[; ;yn8p520.h: 649: volatile unsigned char PR2 @ 0x092;
+[; ;yn8p520.h: 652: volatile unsigned char SSPADD @ 0x093;
+[; ;yn8p520.h: 655: volatile unsigned char SSPSTAT @ 0x094;
+[; ;yn8p520.h: 657: volatile bit BF @ ((unsigned)&SSPSTAT*8)+0;
+[; ;yn8p520.h: 658: volatile bit UA @ ((unsigned)&SSPSTAT*8)+1;
+[; ;yn8p520.h: 659: volatile bit R_nW @ ((unsigned)&SSPSTAT*8)+2;
+[; ;yn8p520.h: 660: volatile bit S @ ((unsigned)&SSPSTAT*8)+3;
+[; ;yn8p520.h: 661: volatile bit P @ ((unsigned)&SSPSTAT*8)+4;
+[; ;yn8p520.h: 662: volatile bit D_nA @ ((unsigned)&SSPSTAT*8)+5;
+[; ;yn8p520.h: 663: volatile bit CKE @ ((unsigned)&SSPSTAT*8)+6;
+[; ;yn8p520.h: 664: volatile bit SMP @ ((unsigned)&SSPSTAT*8)+7;
+[; ;yn8p520.h: 665: volatile bit R @ ((unsigned)&SSPSTAT*8)+2;
+[; ;yn8p520.h: 666: volatile bit D @ ((unsigned)&SSPSTAT*8)+5;
+[; ;yn8p520.h: 667: volatile bit I2C_READ @ ((unsigned)&SSPSTAT*8)+2;
+[; ;yn8p520.h: 668: volatile bit I2C_START @ ((unsigned)&SSPSTAT*8)+3;
+[; ;yn8p520.h: 669: volatile bit I2C_STOP @ ((unsigned)&SSPSTAT*8)+4;
+[; ;yn8p520.h: 670: volatile bit I2C_DATA @ ((unsigned)&SSPSTAT*8)+5;
+[; ;yn8p520.h: 671: volatile bit R_W @ ((unsigned)&SSPSTAT*8)+2;
+[; ;yn8p520.h: 672: volatile bit D_A @ ((unsigned)&SSPSTAT*8)+5;
+[; ;yn8p520.h: 673: volatile bit READ_WRITE @ ((unsigned)&SSPSTAT*8)+2;
+[; ;yn8p520.h: 674: volatile bit DATA_ADDRESS @ ((unsigned)&SSPSTAT*8)+5;
+[; ;yn8p520.h: 675: volatile bit nW @ ((unsigned)&SSPSTAT*8)+2;
+[; ;yn8p520.h: 676: volatile bit nA @ ((unsigned)&SSPSTAT*8)+5;
+[; ;yn8p520.h: 677: volatile bit nWRITE @ ((unsigned)&SSPSTAT*8)+2;
+[; ;yn8p520.h: 678: volatile bit nADDRESS @ ((unsigned)&SSPSTAT*8)+5;
+[; ;yn8p520.h: 681: volatile unsigned char PWMCON1 @ 0x096;
+[; ;yn8p520.h: 683: volatile bit PWM1ASE @ ((unsigned)&PWMCON1*8)+0;
+[; ;yn8p520.h: 684: volatile bit PWM1OP2ASEN @ ((unsigned)&PWMCON1*8)+1;
+[; ;yn8p520.h: 685: volatile bit PWM1OP1ASEN @ ((unsigned)&PWMCON1*8)+2;
+[; ;yn8p520.h: 686: volatile bit PWM1RSE @ ((unsigned)&PWMCON1*8)+4;
+[; ;yn8p520.h: 687: volatile bit PWM1OP2RSEN @ ((unsigned)&PWMCON1*8)+5;
+[; ;yn8p520.h: 688: volatile bit PWM1OP1RSEN @ ((unsigned)&PWMCON1*8)+6;
+[; ;yn8p520.h: 692: volatile unsigned char PWMCON0 @ 0x097;
+[; ;yn8p520.h: 694: volatile bit PWM1S @ ((unsigned)&PWMCON0*8)+6;
+[; ;yn8p520.h: 698: volatile unsigned char TXSTA @ 0x098;
+[; ;yn8p520.h: 700: volatile bit TX9D @ ((unsigned)&TXSTA*8)+0;
+[; ;yn8p520.h: 701: volatile bit TRMT @ ((unsigned)&TXSTA*8)+1;
+[; ;yn8p520.h: 702: volatile bit BRGH @ ((unsigned)&TXSTA*8)+2;
+[; ;yn8p520.h: 703: volatile bit TXPARITY @ ((unsigned)&TXSTA*8)+3;
+[; ;yn8p520.h: 704: volatile bit SYNC @ ((unsigned)&TXSTA*8)+4;
+[; ;yn8p520.h: 705: volatile bit TXEN @ ((unsigned)&TXSTA*8)+5;
+[; ;yn8p520.h: 706: volatile bit TX9 @ ((unsigned)&TXSTA*8)+6;
+[; ;yn8p520.h: 707: volatile bit CSRC @ ((unsigned)&TXSTA*8)+7;
+[; ;yn8p520.h: 708: volatile bit TXD8 @ ((unsigned)&TXSTA*8)+0;
+[; ;yn8p520.h: 709: volatile bit nTX8 @ ((unsigned)&TXSTA*8)+6;
+[; ;yn8p520.h: 710: volatile bit TX8_9 @ ((unsigned)&TXSTA*8)+6;
+[; ;yn8p520.h: 713: volatile unsigned char SPBRG @ 0x099;
+[; ;yn8p520.h: 717: volatile unsigned char UARTCON @ 0x09A;
+[; ;yn8p520.h: 719: volatile bit INVMODE @ ((unsigned)&UARTCON*8)+0;
+[; ;yn8p520.h: 720: volatile bit PARITY @ ((unsigned)&UARTCON*8)+1;
+[; ;yn8p520.h: 721: volatile bit RXODD_EVEN @ ((unsigned)&UARTCON*8)+2;
+[; ;yn8p520.h: 722: volatile bit BOUD_CLK @ ((unsigned)&UARTCON*8)+3;
+[; ;yn8p520.h: 723: volatile bit HALF_DUPLEX @ ((unsigned)&UARTCON*8)+4;
+[; ;yn8p520.h: 724: volatile bit DLSB @ ((unsigned)&UARTCON*8)+5;
+[; ;yn8p520.h: 725: volatile bit STOP_BIT1 @ ((unsigned)&UARTCON*8)+6;
+[; ;yn8p520.h: 726: volatile bit STOP_BIT0 @ ((unsigned)&UARTCON*8)+7;
+[; ;yn8p520.h: 729: volatile unsigned char OP2CON0 @ 0x09B;
+[; ;yn8p520.h: 732: volatile union {
+[; ;yn8p520.h: 733: struct {
+[; ;yn8p520.h: 734: unsigned OP2F : 4;
+[; ;yn8p520.h: 735: };
+[; ;yn8p520.h: 736: struct {
+[; ;yn8p520.h: 737: unsigned OP2F0 : 1;
+[; ;yn8p520.h: 738: unsigned OP2F1 : 1;
+[; ;yn8p520.h: 739: unsigned OP2F2 : 1;
+[; ;yn8p520.h: 740: unsigned OP2F3 : 1;
+[; ;yn8p520.h: 741: unsigned OP2ZLF : 1;
+[; ;yn8p520.h: 742: unsigned OP2POL : 1;
+[; ;yn8p520.h: 743: unsigned OP2OUT : 1;
+[; ;yn8p520.h: 744: unsigned OP2ON : 1;
+[; ;yn8p520.h: 745: };
+[; ;yn8p520.h: 746: } OP2CON0bits @ 0x09B;
+[; ;yn8p520.h: 750: volatile unsigned char OP2CON1 @ 0x09C;
+[; ;yn8p520.h: 753: volatile union {
+[; ;yn8p520.h: 754: struct {
+[; ;yn8p520.h: 755: unsigned OP2NCH : 3;
+[; ;yn8p520.h: 756: unsigned OP2PCH : 3;
+[; ;yn8p520.h: 757: };
+[; ;yn8p520.h: 758: struct {
+[; ;yn8p520.h: 759: unsigned OP2NCH0 : 1;
+[; ;yn8p520.h: 760: unsigned OP2NCH1 : 1;
+[; ;yn8p520.h: 761: unsigned OP2NCH2 : 1;
+[; ;yn8p520.h: 762: unsigned OP2PCH0 : 1;
+[; ;yn8p520.h: 763: unsigned OP2PCH1 : 1;
+[; ;yn8p520.h: 764: unsigned OP2PCH2 : 1;
+[; ;yn8p520.h: 765: unsigned OP2INTN : 1;
+[; ;yn8p520.h: 766: unsigned OP2INTP : 1;
+[; ;yn8p520.h: 767: };
+[; ;yn8p520.h: 768: } OP2CON1bits @ 0x09C;
+[; ;yn8p520.h: 772: volatile unsigned char OP2CON2 @ 0x09D;
+[; ;yn8p520.h: 775: volatile union {
+[; ;yn8p520.h: 776: struct {
+[; ;yn8p520.h: 777: unsigned PGA : 3;
+[; ;yn8p520.h: 778: };
+[; ;yn8p520.h: 779: struct {
+[; ;yn8p520.h: 780: unsigned PGA0 : 1;
+[; ;yn8p520.h: 781: unsigned PGA1 : 1;
+[; ;yn8p520.h: 782: unsigned PGA2 : 1;
+[; ;yn8p520.h: 783: unsigned PGAEN : 1;
+[; ;yn8p520.h: 784: unsigned A2O2N : 1;
+[; ;yn8p520.h: 785: unsigned A2NS : 1;
+[; ;yn8p520.h: 786: unsigned OP2A2DEN : 1;
+[; ;yn8p520.h: 787: unsigned OP2OUTEN : 1;
+[; ;yn8p520.h: 788: };
+[; ;yn8p520.h: 789: } OP2CON2bits @ 0x09D;
+[; ;yn8p520.h: 793: volatile unsigned char ADRESL @ 0x09E;
+[; ;yn8p520.h: 797: volatile unsigned char ADCON1 @ 0x09F;
+[; ;yn8p520.h: 799: volatile bit ADCS0 @ ((unsigned)&ADCON1*8)+0;
+[; ;yn8p520.h: 800: volatile bit ADCS1 @ ((unsigned)&ADCON1*8)+1;
+[; ;yn8p520.h: 801: volatile bit ADCS2 @ ((unsigned)&ADCON1*8)+2;
+[; ;yn8p520.h: 802: volatile bit ACQT0 @ ((unsigned)&ADCON1*8)+3;
+[; ;yn8p520.h: 803: volatile bit ACQT1 @ ((unsigned)&ADCON1*8)+4;
+[; ;yn8p520.h: 804: volatile bit ACQT2 @ ((unsigned)&ADCON1*8)+5;
+[; ;yn8p520.h: 805: volatile bit ADVREF0 @ ((unsigned)&ADCON1*8)+4;
+[; ;yn8p520.h: 806: volatile bit ADVERF1 @ ((unsigned)&ADCON1*8)+5;
+[; ;yn8p520.h: 808: volatile union {
+[; ;yn8p520.h: 809: struct {
+[; ;yn8p520.h: 810: unsigned ADCS : 3;
+[; ;yn8p520.h: 811: unsigned ACQT : 3;
+[; ;yn8p520.h: 812: unsigned ADVREF : 2;
+[; ;yn8p520.h: 813: };
+[; ;yn8p520.h: 814: struct {
+[; ;yn8p520.h: 815: unsigned ADCS0 : 1;
+[; ;yn8p520.h: 816: unsigned ADCS1 : 1;
+[; ;yn8p520.h: 817: unsigned ADCS2 : 1;
+[; ;yn8p520.h: 818: unsigned ACQT0 : 1;
+[; ;yn8p520.h: 819: unsigned ACQT1 : 1;
+[; ;yn8p520.h: 820: unsigned ACOT2 : 1;
+[; ;yn8p520.h: 821: unsigned ADVREF0 : 1;
+[; ;yn8p520.h: 822: unsigned ADVREF1 : 1;
+[; ;yn8p520.h: 823: };
+[; ;yn8p520.h: 824: } ADCON1bits @ 0x09f;
+[; ;yn8p520.h: 833: volatile unsigned char PAPU @ 0x105;
+[; ;yn8p520.h: 837: volatile unsigned char PBPU @ 0x106;
+[; ;yn8p520.h: 841: volatile unsigned char PBMASK @ 0x107;
+[; ;yn8p520.h: 845: volatile unsigned char CLKPR @ 0x108;
+[; ;yn8p520.h: 847: volatile bit CLKPS0 @ ((unsigned)&CLKPR*8)+0;
+[; ;yn8p520.h: 848: volatile bit CLKPS1 @ ((unsigned)&CLKPR*8)+1;
+[; ;yn8p520.h: 849: volatile bit CLKPCE @ ((unsigned)&CLKPR*8)+7;
+[; ;yn8p520.h: 852: volatile unsigned char SMCR @ 0x109;
+[; ;yn8p520.h: 854: volatile bit SE @ ((unsigned)&SMCR*8)+0;
+[; ;yn8p520.h: 855: volatile bit SM0 @ ((unsigned)&SMCR*8)+1;
+[; ;yn8p520.h: 856: volatile bit SM1 @ ((unsigned)&SMCR*8)+2;
+[; ;yn8p520.h: 857: volatile bit SM2 @ ((unsigned)&SMCR*8)+3;
+[; ;yn8p520.h: 860: volatile unsigned char ALG0 @ 0x10C;
+[; ;yn8p520.h: 863: volatile bit DACBIASEN @ ((unsigned)&ALG0*8)+4;
+[; ;yn8p520.h: 864: volatile bit IOVCCEN @ ((unsigned)&ALG0*8)+5;
+[; ;yn8p520.h: 865: volatile bit BIASEN @ ((unsigned)&ALG0*8)+6;
+[; ;yn8p520.h: 866: volatile bit LDO2P0EN @ ((unsigned)&ALG0*8)+7;
+[; ;yn8p520.h: 869: volatile unsigned char ALG1 @ 0x10D;
+[; ;yn8p520.h: 873: volatile unsigned char ALG2 @ 0x10E;
+[; ;yn8p520.h: 877: volatile unsigned char ALG3 @ 0x10F;
+[; ;yn8p520.h: 885: volatile unsigned char PAPD @ 0x185;
+[; ;yn8p520.h: 889: volatile unsigned char PBPD @ 0x186;
+[; ;yn8p520.h: 893: volatile unsigned char PAOD @ 0x187;
+[; ;yn8p520.h: 897: volatile unsigned char PBOD @ 0x188;
+[; ;yn8p520.h: 901: volatile unsigned char ALG4 @ 0x18C;
+[; ;yn8p520.h: 905: volatile unsigned char ALG5 @ 0x18D;
+[; ;yn8p520.h: 909: volatile unsigned char ALG6 @ 0x18E;
+[; ;yn8p520.h: 913: volatile unsigned char ALG7 @ 0x18F;
+[; ;common.h: 21: void clock_config();
+[; ;common.h: 22: void timer1_config();
+[; ;common.h: 23: void timer1_interrupt_config();
+[; ;common.h: 25: void adConverter_config();
+[; ;common.h: 27: void setAdcSampleChannel(unsigned char ucChannel);
+[; ;common.h: 30: unsigned int getAdOriginalValue();
+[; ;common.h: 32: void process_AD_Converter_Value();
+[; ;common.h: 34: unsigned int getAdCh12Value();
+[; ;common.h: 36: unsigned int getAdCh13Value();
+[; ;common.h: 39: unsigned int getAdOriginalCh12Value();
+[; ;common.h: 41: unsigned int getAdOriginalCh13Value();
+[; ;common.h: 43: unsigned char isPermitSampleTime();
+[; ;common.h: 45: void clrSampeTime();
+[; ;common.h: 47: void setDAC0_ChannelValue(unsigned char ucValue);
+[; ;common.h: 49: void startBigTimer();
+[; ;common.h: 50: void startSmallTimer();
+[; ;common.h: 52: void clearBigTimer();
+[; ;common.h: 53: void clearSmallTimer();
+[; ;common.h: 55: unsigned char isFinishedBigTimer();
+[; ;common.h: 56: unsigned char isFinishedSmallTimer();
+[; ;common.h: 58: unsigned char getAD_ConvertFlag();
+[; ;common.h: 59: void setAD_ConvertFlag(unsigned char flag);
+[; ;periph.h: 13: void dac_init();
+[; ;periph.h: 14: void op1_init();
+[; ;periph.h: 15: void op2_init();
+[; ;periph.h: 16: void int_enable(unsigned char mode);
+[; ;periph.h: 18: void adc_test_init(unsigned char channel,unsigned char ref);
+[; ;periph.h: 20: void adc_start();
+[; ;periph.h: 21: unsigned int adc_get(void);
+[; ;main.c: 27: extern void _delay(unsigned long);
+"70 D:\111\AK7030-OTP\main.c
+[; ;main.c: 70: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x2FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
+[; 	psect config,class=CONFIG,delta=2 ;#
+[; 	dw 0x2FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF ;#
+"71
+[; ;main.c: 71: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
+[; 	psect config,class=CONFIG,delta=2 ;#
+[; 	dw 0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE ;#
+"72
+[; ;main.c: 72: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
+[; 	psect config,class=CONFIG,delta=2 ;#
+[; 	dw 0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8 ;#
+"84
+[v _main `(v  1 ef ]
+{
+[; ;main.c: 83: void main (void)
+[; ;main.c: 84: {
+[e :U _main ]
+[f ]
+"97
+[c E813 0 1 2 3 4 5 6 7 8 9 .. ]
+[n E813 step SENSE_PB2_INPUT_VOLTAGE SENSE_PB2_DURATION_ONE_SECOND SENSE_PB2_INPUT_VOLTAGE__AGAIN SENSE_PB2_DURATION__SECOND SET_PA2_VALUE PROCESS_AD_VALUE WAIT_SET_TIME_FINISHED SET_TIME_BE_FINISHED CHECKING_PULL_OUT_BATTERY CHECKING_INSTALLED_BATTERY  ]
+"103
+[c E824 0 1 .. ]
+[n E824 workTimerType BIG_TIMER_WORK SMALL_TIMER_WORK  ]
+"105
+[v F827 `E813  1 s ampStep ]
+"107
+[v F828 `E824  1 s tDA_timer ]
+[; ;main.c: 85: enum step
+[; ;main.c: 86: {
+[; ;main.c: 87: SENSE_PB2_INPUT_VOLTAGE = 0,
+[; ;main.c: 88: SENSE_PB2_DURATION_ONE_SECOND,
+[; ;main.c: 89: SENSE_PB2_INPUT_VOLTAGE__AGAIN,
+[; ;main.c: 90: SENSE_PB2_DURATION__SECOND,
+[; ;main.c: 91: SET_PA2_VALUE,
+[; ;main.c: 92: PROCESS_AD_VALUE,
+[; ;main.c: 93: WAIT_SET_TIME_FINISHED,
+[; ;main.c: 94: SET_TIME_BE_FINISHED,
+[; ;main.c: 95: CHECKING_PULL_OUT_BATTERY,
+[; ;main.c: 96: CHECKING_INSTALLED_BATTERY,
+[; ;main.c: 97: };
+[; ;main.c: 99: enum workTimerType
+[; ;main.c: 100: {
+[; ;main.c: 101: BIG_TIMER_WORK = 0,
+[; ;main.c: 102: SMALL_TIMER_WORK,
+[; ;main.c: 103: };
+[; ;main.c: 105: static enum step ampStep;
+[; ;main.c: 107: static enum workTimerType tDA_timer;
+[; ;main.c: 109: TRISA0 = 0;
+"109
+[e = _TRISA0 -> -> 0 `i `b ]
+[; ;main.c: 110: TRISA1 = 0;
+"110
+[e = _TRISA1 -> -> 0 `i `b ]
+[; ;main.c: 111: TRISA3 = 0;
+"111
+[e = _TRISA3 -> -> 0 `i `b ]
+[; ;main.c: 112: TRISA2 = 0;
+"112
+[e = _TRISA2 -> -> 0 `i `b ]
+[; ;main.c: 113: PA2 = 1;
+"113
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 114: PA0 = 1;
+"114
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 116: TRISB2 = 1;
+"116
+[e = _TRISB2 -> -> 1 `i `b ]
+[; ;main.c: 118: TRISB1 = 1;
+"118
+[e = _TRISB1 -> -> 1 `i `b ]
+[; ;main.c: 119: TRISB0 = 1;
+"119
+[e = _TRISB0 -> -> 1 `i `b ]
+[; ;main.c: 121: clock_config();
+"121
+[e ( _clock_config ..  ]
+[; ;main.c: 122: timer1_config();
+"122
+[e ( _timer1_config ..  ]
+[; ;main.c: 123: timer1_interrupt_config();
+"123
+[e ( _timer1_interrupt_config ..  ]
+[; ;main.c: 125: adc_test_init(13,3);
+"125
+[e ( _adc_test_init (2 , -> -> 13 `i `uc -> -> 3 `i `uc ]
+[; ;main.c: 127: dac_init();
+"127
+[e ( _dac_init ..  ]
+[; ;main.c: 128: op1_init();
+"128
+[e ( _op1_init ..  ]
+[; ;main.c: 129: op2_init();
+"129
+[e ( _op2_init ..  ]
+[; ;main.c: 132: adc_start();
+"132
+[e ( _adc_start ..  ]
+"135
+[v F829 `uc  1 s testStep ]
+"136
+[v F830 `uc  1 s ucBigTimerActionFlag ]
+[i F830
+-> -> 0 `i `uc
+]
+[; ;main.c: 135: static unsigned char testStep;
+[; ;main.c: 136: static unsigned char ucBigTimerActionFlag = 0;
+[; ;main.c: 137: while(1)
+"137
+[e :U 43 ]
+[; ;main.c: 138: {
+"138
+{
+[; ;main.c: 139: asm(" clrwdt");
+"139
+[;  clrwdt ;#
+[; ;main.c: 140: if(isPermitSampleTime())
+"140
+[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 45  ]
+[; ;main.c: 141: {
+"141
+{
+[; ;main.c: 142: clrSampeTime();
+"142
+[e ( _clrSampeTime ..  ]
+[; ;main.c: 143: process_AD_Converter_Value();
+"143
+[e ( _process_AD_Converter_Value ..  ]
+[; ;main.c: 145: switch(ampStep)
+"145
+[e $U 47  ]
+[; ;main.c: 146: {
+"146
+{
+[; ;main.c: 147: case SENSE_PB2_INPUT_VOLTAGE:
+"147
+[e :U 48 ]
+[; ;main.c: 148: {
+"148
+{
+[; ;main.c: 149: ucBigTimerActionFlag = 0;
+"149
+[e = F830 -> -> 0 `i `uc ]
+[; ;main.c: 150: clearBigTimer();
+"150
+[e ( _clearBigTimer ..  ]
+[; ;main.c: 151: clearSmallTimer();
+"151
+[e ( _clearSmallTimer ..  ]
+[; ;main.c: 152: if(!PB2)
+"152
+[e $ ! ! _PB2 49  ]
+[; ;main.c: 153: ampStep++;
+"153
+[e ++ F827 -> -> 1 `i `E813 ]
+[e :U 49 ]
+[; ;main.c: 154: break;
+"154
+[e $U 46  ]
+"155
+}
+[; ;main.c: 155: }
+[; ;main.c: 157: case SENSE_PB2_DURATION_ONE_SECOND:
+"157
+[e :U 50 ]
+[; ;main.c: 158: {
+"158
+{
+"159
+[v F831 `uc  1 s ucConfirmTimer1S ]
+[i F831
+-> -> 0 `i `uc
+]
+[; ;main.c: 159: static unsigned char ucConfirmTimer1S = 0;
+[; ;main.c: 160: if(!PB2)
+"160
+[e $ ! ! _PB2 51  ]
+[; ;main.c: 161: {
+"161
+{
+[; ;main.c: 162: ucConfirmTimer1S++;
+"162
+[e ++ F831 -> -> 1 `i `uc ]
+"163
+}
+[; ;main.c: 163: }
+[e $U 52  ]
+"164
+[e :U 51 ]
+[; ;main.c: 164: else
+[; ;main.c: 165: {
+"165
+{
+[; ;main.c: 166: ucConfirmTimer1S = 0;
+"166
+[e = F831 -> -> 0 `i `uc ]
+"167
+}
+[e :U 52 ]
+[; ;main.c: 167: }
+[; ;main.c: 169: if(ucConfirmTimer1S >= 10)
+"169
+[e $ ! >= -> F831 `i -> 10 `i 53  ]
+[; ;main.c: 170: {
+"170
+{
+[; ;main.c: 171: ucConfirmTimer1S = 0;
+"171
+[e = F831 -> -> 0 `i `uc ]
+[; ;main.c: 172: ampStep++;
+"172
+[e ++ F827 -> -> 1 `i `E813 ]
+"173
+}
+[e :U 53 ]
+[; ;main.c: 173: }
+[; ;main.c: 175: break;
+"175
+[e $U 46  ]
+"176
+}
+[; ;main.c: 176: }
+[; ;main.c: 178: case SENSE_PB2_INPUT_VOLTAGE__AGAIN:
+"178
+[e :U 54 ]
+[; ;main.c: 179: {
+"179
+{
+[; ;main.c: 180: if(!PB2)
+"180
+[e $ ! ! _PB2 55  ]
+[; ;main.c: 181: ampStep++;
+"181
+[e ++ F827 -> -> 1 `i `E813 ]
+[e :U 55 ]
+[; ;main.c: 182: break;
+"182
+[e $U 46  ]
+"183
+}
+[; ;main.c: 183: }
+[; ;main.c: 185: case SENSE_PB2_DURATION__SECOND:
+"185
+[e :U 56 ]
+[; ;main.c: 186: {
+"186
+{
+"187
+[v F832 `uc  1 s ucConfirmTimerZptS ]
+[i F832
+-> -> 0 `i `uc
+]
+[; ;main.c: 187: static unsigned char ucConfirmTimerZptS = 0;
+[; ;main.c: 188: if(!PB2)
+"188
+[e $ ! ! _PB2 57  ]
+[; ;main.c: 189: {
+"189
+{
+[; ;main.c: 190: ucConfirmTimerZptS++;
+"190
+[e ++ F832 -> -> 1 `i `uc ]
+"191
+}
+[; ;main.c: 191: }
+[e $U 58  ]
+"192
+[e :U 57 ]
+[; ;main.c: 192: else
+[; ;main.c: 193: {
+"193
+{
+[; ;main.c: 194: ucConfirmTimerZptS = 0;
+"194
+[e = F832 -> -> 0 `i `uc ]
+"195
+}
+[e :U 58 ]
+[; ;main.c: 195: }
+[; ;main.c: 197: if(ucConfirmTimerZptS >= 3)
+"197
+[e $ ! >= -> F832 `i -> 3 `i 59  ]
+[; ;main.c: 198: {
+"198
+{
+[; ;main.c: 199: ucConfirmTimerZptS = 0;
+"199
+[e = F832 -> -> 0 `i `uc ]
+[; ;main.c: 200: ampStep++;
+"200
+[e ++ F827 -> -> 1 `i `E813 ]
+"201
+}
+[e :U 59 ]
+[; ;main.c: 201: }
+[; ;main.c: 203: break;
+"203
+[e $U 46  ]
+"204
+}
+[; ;main.c: 204: }
+[; ;main.c: 206: case SET_PA2_VALUE:
+"206
+[e :U 60 ]
+[; ;main.c: 207: {
+"207
+{
+[; ;main.c: 208: PA2 = 0;
+"208
+[e = _PA2 -> -> 0 `i `b ]
+[; ;main.c: 209: ampStep++;
+"209
+[e ++ F827 -> -> 1 `i `E813 ]
+[; ;main.c: 210: break;
+"210
+[e $U 46  ]
+"211
+}
+[; ;main.c: 211: }
+[; ;main.c: 213: case PROCESS_AD_VALUE:
+"213
+[e :U 61 ]
+[; ;main.c: 214: {
+"214
+{
+"215
+[v F833 `uc  1 s ucInit ]
+[i F833
+-> -> 0 `i `uc
+]
+[; ;main.c: 215: static unsigned char ucInit = 0;
+[; ;main.c: 216: if(getAdOriginalCh13Value() > 40)
+"216
+[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 40 `i `ui 62  ]
+[; ;main.c: 217: {
+"217
+{
+[; ;main.c: 218: ucInit = 1;
+"218
+[e = F833 -> -> 1 `i `uc ]
+[; ;main.c: 219: PA0 = 0;
+"219
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 220: PA1 = 1;
+"220
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 221: PA3 = 1;
+"221
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 222: tDA_timer = BIG_TIMER_WORK;
+"222
+[e = F828 . `E824 0 ]
+[; ;main.c: 223: setDAC0_ChannelValue(27);
+"223
+[e ( _setDAC0_ChannelValue (1 -> -> 27 `i `uc ]
+[; ;main.c: 224: if(!ucBigTimerActionFlag)
+"224
+[e $ ! ! != -> F830 `i -> -> -> 0 `i `uc `i 63  ]
+[; ;main.c: 225: {
+"225
+{
+[; ;main.c: 226: startBigTimer();
+"226
+[e ( _startBigTimer ..  ]
+[; ;main.c: 227: ucBigTimerActionFlag = 1;
+"227
+[e = F830 -> -> 1 `i `uc ]
+"228
+}
+[e :U 63 ]
+"229
+}
+[; ;main.c: 228: }
+[; ;main.c: 229: }
+[e $U 64  ]
+"230
+[e :U 62 ]
+[; ;main.c: 230: else if(getAdOriginalCh13Value() <35)
+[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 35 `i `ui 65  ]
+[; ;main.c: 231: {
+"231
+{
+[; ;main.c: 232: ucInit = 1;
+"232
+[e = F833 -> -> 1 `i `uc ]
+[; ;main.c: 233: PA0 = 1;
+"233
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 234: PA1 = 0;
+"234
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 235: PA3 = 0;
+"235
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 236: tDA_timer = SMALL_TIMER_WORK;
+"236
+[e = F828 . `E824 1 ]
+[; ;main.c: 237: setDAC0_ChannelValue(25);
+"237
+[e ( _setDAC0_ChannelValue (1 -> -> 25 `i `uc ]
+[; ;main.c: 238: startSmallTimer();
+"238
+[e ( _startSmallTimer ..  ]
+"239
+}
+[; ;main.c: 239: }
+[e $U 66  ]
+"240
+[e :U 65 ]
+[; ;main.c: 240: else
+[; ;main.c: 241: {
+"241
+{
+[; ;main.c: 242: if(!ucInit)
+"242
+[e $ ! ! != -> F833 `i -> -> -> 0 `i `uc `i 67  ]
+[; ;main.c: 243: {
+"243
+{
+[; ;main.c: 244: ucInit = 1;
+"244
+[e = F833 -> -> 1 `i `uc ]
+[; ;main.c: 245: PA0 = 0;
+"245
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 246: PA1 = 1;
+"246
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 247: PA3 = 1;
+"247
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 248: tDA_timer = BIG_TIMER_WORK;
+"248
+[e = F828 . `E824 0 ]
+[; ;main.c: 249: setDAC0_ChannelValue(27);
+"249
+[e ( _setDAC0_ChannelValue (1 -> -> 27 `i `uc ]
+[; ;main.c: 250: if(!ucBigTimerActionFlag)
+"250
+[e $ ! ! != -> F830 `i -> -> -> 0 `i `uc `i 68  ]
+[; ;main.c: 251: {
+"251
+{
+[; ;main.c: 252: startBigTimer();
+"252
+[e ( _startBigTimer ..  ]
+[; ;main.c: 253: ucBigTimerActionFlag = 1;
+"253
+[e = F830 -> -> 1 `i `uc ]
+"254
+}
+[e :U 68 ]
+"255
+}
+[e :U 67 ]
+"256
+}
+[e :U 66 ]
+[e :U 64 ]
+[; ;main.c: 254: }
+[; ;main.c: 255: }
+[; ;main.c: 256: }
+[; ;main.c: 258: ampStep++;
+"258
+[e ++ F827 -> -> 1 `i `E813 ]
+[; ;main.c: 259: break;
+"259
+[e $U 46  ]
+"260
+}
+[; ;main.c: 260: }
+[; ;main.c: 262: case WAIT_SET_TIME_FINISHED:
+"262
+[e :U 69 ]
+[; ;main.c: 263: {
+"263
+{
+[; ;main.c: 264: switch(tDA_timer)
+"264
+[e $U 71  ]
+[; ;main.c: 265: {
+"265
+{
+[; ;main.c: 266: case BIG_TIMER_WORK:
+"266
+[e :U 72 ]
+[; ;main.c: 267: {
+"267
+{
+[; ;main.c: 268: if(!isFinishedBigTimer())
+"268
+[e $ ! ! != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 73  ]
+[; ;main.c: 269: {
+"269
+{
+[; ;main.c: 270: ampStep = PROCESS_AD_VALUE;
+"270
+[e = F827 . `E813 5 ]
+"271
+}
+[; ;main.c: 271: }
+[e $U 74  ]
+"272
+[e :U 73 ]
+[; ;main.c: 272: else
+[; ;main.c: 273: {
+"273
+{
+[; ;main.c: 274: ampStep++;
+"274
+[e ++ F827 -> -> 1 `i `E813 ]
+"275
+}
+[e :U 74 ]
+[; ;main.c: 275: }
+[; ;main.c: 276: break;
+"276
+[e $U 70  ]
+"277
+}
+[; ;main.c: 277: }
+[; ;main.c: 279: case SMALL_TIMER_WORK:
+"279
+[e :U 75 ]
+[; ;main.c: 280: {
+"280
+{
+[; ;main.c: 281: if((ucBigTimerActionFlag == 1) && isFinishedBigTimer())
+"281
+[e $ ! && == -> F830 `i -> 1 `i != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 76  ]
+[; ;main.c: 282: {
+"282
+{
+[; ;main.c: 283: ampStep++;
+"283
+[e ++ F827 -> -> 1 `i `E813 ]
+"284
+}
+[; ;main.c: 284: }
+[e $U 77  ]
+"285
+[e :U 76 ]
+[; ;main.c: 285: else if(!isFinishedSmallTimer())
+[e $ ! ! != -> ( _isFinishedSmallTimer ..  `i -> -> -> 0 `i `uc `i 78  ]
+[; ;main.c: 286: {
+"286
+{
+[; ;main.c: 287: if(getAdOriginalCh13Value() > 40)
+"287
+[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 40 `i `ui 79  ]
+[; ;main.c: 288: ampStep = PROCESS_AD_VALUE;
+"288
+[e = F827 . `E813 5 ]
+[e :U 79 ]
+"289
+}
+[; ;main.c: 289: }
+[e $U 80  ]
+"290
+[e :U 78 ]
+[; ;main.c: 290: else
+[; ;main.c: 291: {
+"291
+{
+[; ;main.c: 292: ampStep++;
+"292
+[e ++ F827 -> -> 1 `i `E813 ]
+"293
+}
+[e :U 80 ]
+[e :U 77 ]
+[; ;main.c: 293: }
+[; ;main.c: 294: break;
+"294
+[e $U 70  ]
+"295
+}
+[; ;main.c: 295: }
+[; ;main.c: 297: default:
+"297
+[e :U 81 ]
+[; ;main.c: 298: break;
+"298
+[e $U 70  ]
+"299
+}
+[; ;main.c: 299: }
+[e $U 70  ]
+"264
+[e :U 71 ]
+[e [\ F828 , $ . `E824 0 72
+ , $ . `E824 1 75
+ 81 ]
+"299
+[e :U 70 ]
+[; ;main.c: 301: break;
+"301
+[e $U 46  ]
+"302
+}
+[; ;main.c: 302: }
+[; ;main.c: 304: case SET_TIME_BE_FINISHED:
+"304
+[e :U 82 ]
+[; ;main.c: 305: {
+"305
+{
+[; ;main.c: 306: PA2 = 1;
+"306
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 307: PA0 = 0;
+"307
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 308: PA1 = 0;
+"308
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 309: PA3 = 0;
+"309
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 310: setDAC0_ChannelValue(25);
+"310
+[e ( _setDAC0_ChannelValue (1 -> -> 25 `i `uc ]
+[; ;main.c: 311: ampStep++;
+"311
+[e ++ F827 -> -> 1 `i `E813 ]
+[; ;main.c: 312: break;
+"312
+[e $U 46  ]
+"313
+}
+[; ;main.c: 313: }
+[; ;main.c: 315: case CHECKING_PULL_OUT_BATTERY:
+"315
+[e :U 83 ]
+[; ;main.c: 316: {
+"316
+{
+"317
+[v F834 `uc  1 s ucCheckBatteryCnt ]
+[i F834
+-> -> 0 `i `uc
+]
+[; ;main.c: 317: static unsigned char ucCheckBatteryCnt = 0;
+[; ;main.c: 318: if(PB2)
+"318
+[e $ ! _PB2 84  ]
+[; ;main.c: 319: ucCheckBatteryCnt++;
+"319
+[e ++ F834 -> -> 1 `i `uc ]
+[e $U 85  ]
+"320
+[e :U 84 ]
+[; ;main.c: 320: else
+[; ;main.c: 321: ucCheckBatteryCnt = 0;
+"321
+[e = F834 -> -> 0 `i `uc ]
+[e :U 85 ]
+[; ;main.c: 323: if(ucCheckBatteryCnt > 2)
+"323
+[e $ ! > -> F834 `i -> 2 `i 86  ]
+[; ;main.c: 324: {
+"324
+{
+[; ;main.c: 325: ucCheckBatteryCnt = 0;
+"325
+[e = F834 -> -> 0 `i `uc ]
+[; ;main.c: 326: ampStep++;
+"326
+[e ++ F827 -> -> 1 `i `E813 ]
+"327
+}
+[e :U 86 ]
+[; ;main.c: 327: }
+[; ;main.c: 328: break;
+"328
+[e $U 46  ]
+"329
+}
+[; ;main.c: 329: }
+[; ;main.c: 331: case CHECKING_INSTALLED_BATTERY:
+"331
+[e :U 87 ]
+[; ;main.c: 332: {
+"332
+{
+"333
+[v F835 `uc  1 s ucInstalledBatteryCnt ]
+[i F835
+-> -> 0 `i `uc
+]
+[; ;main.c: 333: static unsigned char ucInstalledBatteryCnt = 0;
+[; ;main.c: 334: if(!PB2)
+"334
+[e $ ! ! _PB2 88  ]
+[; ;main.c: 335: ucInstalledBatteryCnt++;
+"335
+[e ++ F835 -> -> 1 `i `uc ]
+[e $U 89  ]
+"336
+[e :U 88 ]
+[; ;main.c: 336: else
+[; ;main.c: 337: ucInstalledBatteryCnt = 0;
+"337
+[e = F835 -> -> 0 `i `uc ]
+[e :U 89 ]
+[; ;main.c: 339: if(ucInstalledBatteryCnt > 10)
+"339
+[e $ ! > -> F835 `i -> 10 `i 90  ]
+[; ;main.c: 340: {
+"340
+{
+[; ;main.c: 341: ucInstalledBatteryCnt = 0;
+"341
+[e = F835 -> -> 0 `i `uc ]
+[; ;main.c: 342: ampStep = SENSE_PB2_INPUT_VOLTAGE;
+"342
+[e = F827 . `E813 0 ]
+"343
+}
+[e :U 90 ]
+[; ;main.c: 343: }
+[; ;main.c: 344: break;
+"344
+[e $U 46  ]
+"345
+}
+[; ;main.c: 345: }
+[; ;main.c: 347: default:
+"347
+[e :U 91 ]
+[; ;main.c: 348: break;
+"348
+[e $U 46  ]
+"350
+}
+[; ;main.c: 350: }
+[e $U 46  ]
+"145
+[e :U 47 ]
+[e [\ F827 , $ . `E813 0 48
+ , $ . `E813 1 50
+ , $ . `E813 2 54
+ , $ . `E813 3 56
+ , $ . `E813 4 60
+ , $ . `E813 5 61
+ , $ . `E813 6 69
+ , $ . `E813 7 82
+ , $ . `E813 8 83
+ , $ . `E813 9 87
+ 91 ]
+"350
+[e :U 46 ]
+"351
+}
+[e :U 45 ]
+"352
+}
+[e :U 42 ]
+"137
+[e $U 43  ]
+[e :U 44 ]
+[; ;main.c: 351: }
+[; ;main.c: 352: }
+[; ;main.c: 353: }
+"353
+[e :UE 41 ]
+}
