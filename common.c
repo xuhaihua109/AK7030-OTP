@@ -186,12 +186,21 @@ void startBigTimer()
 {
 	uiBigTimer = 34200; //34200s = 9.5h
 
-	uiBigTimer = 70;
-
 #ifdef DEBUG_FUNCITON
 
-	uiBigTimer = 60;// 34200 / 60 = 570;
+	uiBigTimer = 570;
 #endif
+}
+
+void clearBigTimer()
+{
+	uiBigTimer = 0;
+}
+
+
+void clearSmallTimer()
+{
+	uiSmallTimer = 0;
 }
 
 

@@ -842,6 +842,9 @@ void setDAC0_ChannelValue(unsigned char ucValue);
 void startBigTimer();
 void startSmallTimer();
 
+void clearBigTimer();
+void clearSmallTimer();
+
 unsigned char isFinishedBigTimer();
 unsigned char isFinishedSmallTimer();
 

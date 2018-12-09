@@ -49,6 +49,9 @@ void setDAC0_ChannelValue(unsigned char ucValue);
 void startBigTimer(); //9.5 hours
 void startSmallTimer();// 3 hours
 
+void clearBigTimer();
+void clearSmallTimer();
+
 unsigned char isFinishedBigTimer();
 unsigned char isFinishedSmallTimer();
 

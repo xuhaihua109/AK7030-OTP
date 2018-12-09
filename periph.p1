@@ -1243,10 +1243,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 47: void setDAC0_ChannelValue(unsigned char ucValue);
 [; ;common.h: 49: void startBigTimer();
 [; ;common.h: 50: void startSmallTimer();
-[; ;common.h: 52: unsigned char isFinishedBigTimer();
-[; ;common.h: 53: unsigned char isFinishedSmallTimer();
-[; ;common.h: 55: unsigned char getAD_ConvertFlag();
-[; ;common.h: 56: void setAD_ConvertFlag(unsigned char flag);
+[; ;common.h: 52: void clearBigTimer();
+[; ;common.h: 53: void clearSmallTimer();
+[; ;common.h: 55: unsigned char isFinishedBigTimer();
+[; ;common.h: 56: unsigned char isFinishedSmallTimer();
+[; ;common.h: 58: unsigned char getAD_ConvertFlag();
+[; ;common.h: 59: void setAD_ConvertFlag(unsigned char flag);
 "14 C:\dev\AK7030-OTP\periph.c
 [v _dac_init `(v  1 ef ]
 {

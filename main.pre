@@ -831,6 +831,9 @@ void setDAC0_ChannelValue(unsigned char ucValue);
 void startBigTimer();
 void startSmallTimer();
 
+void clearBigTimer();
+void clearSmallTimer();
+
 unsigned char isFinishedBigTimer();
 unsigned char isFinishedSmallTimer();
 
@@ -912,7 +915,7 @@ adc_start();
 
 
 static unsigned char testStep;
-
+static unsigned char ucBigTimerActionFlag = 0;
 while(1)
 {
 asm(" clrwdt");
@@ -925,6 +928,9 @@ switch(ampStep)
 {
 case SENSE_PB2_INPUT_VOLTAGE:
 {
+ucBigTimerActionFlag = 0;
+clearBigTimer();
+clearSmallTimer();
 if(!PB2)
 ampStep++;
 break;
@@ -991,15 +997,21 @@ case PROCESS_AD_VALUE:
 static unsigned char ucInit = 0;
 if(getAdOriginalCh13Value() > 40)
 {
+ucInit = 1;
 PA0 = 0;
 PA1 = 1;
 PA3 = 1;
 tDA_timer = BIG_TIMER_WORK;
 setDAC0_ChannelValue(27);
+if(!ucBigTimerActionFlag)
+{
 startBigTimer();
+ucBigTimerActionFlag = 1;
+}
 }
 else if(getAdOriginalCh13Value() <35)
 {
+ucInit = 1;
 PA0 = 1;
 PA1 = 0;
 PA3 = 0;
@@ -1017,7 +1029,11 @@ PA1 = 1;
 PA3 = 1;
 tDA_timer = BIG_TIMER_WORK;
 setDAC0_ChannelValue(27);
+if(!ucBigTimerActionFlag)
+{
 startBigTimer();
+ucBigTimerActionFlag = 1;
+}
 }
 }
 
@@ -1031,19 +1047,9 @@ switch(tDA_timer)
 {
 case BIG_TIMER_WORK:
 {
-static unsigned char ucConfrimeCnt = 0;
 if(!isFinishedBigTimer())
 {
-if(!PB2)
-ucConfrimeCnt++;
-else
-ucConfrimeCnt = 0;
-
-if(ucConfrimeCnt >=3)
-{
-ucConfrimeCnt = 0;
-ampStep = SET_PA2_VALUE;
-}
+ampStep = PROCESS_AD_VALUE;
 }
 else
 {
@@ -1054,7 +1060,11 @@ break;
 
 case SMALL_TIMER_WORK:
 {
-if(!isFinishedSmallTimer())
+if((ucBigTimerActionFlag == 1) && isFinishedBigTimer())
+{
+ampStep++;
+}
+else if(!isFinishedSmallTimer())
 {
 if(getAdOriginalCh13Value() > 40)
 ampStep = PROCESS_AD_VALUE;
