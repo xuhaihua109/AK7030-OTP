@@ -1,5 +1,5 @@
 
-# 1 "C:\AK7030-OTP\main.c"
+# 1 "C:\dev\AK7030-OTP\main.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\AK7030-OTP\yn8p520.h"
+# 164 "C:\dev\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,29 +799,28 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 21 "C:\AK7030-OTP\common.h"
+# 21 "C:\dev\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
-void start_timer1();
 
 void adConverter_config();
 
-void start_AD_Converter();
+void setAdcSampleChannel(unsigned char ucChannel);
 
-void stop_AD_Converter();
 
-unsigned char isAD_Completed();
-
-void clearAdCompleteFalg();
-
-unsigned int getAdValue();
+unsigned int getAdOriginalValue();
 
 void process_AD_Converter_Value();
 
 unsigned int getAdCh12Value();
 
 unsigned int getAdCh13Value();
+
+
+unsigned int getAdOriginalCh12Value();
+
+unsigned int getAdOriginalCh13Value();
 
 unsigned char isPermitSampleTime();
 
@@ -835,14 +834,22 @@ void startSmallTimer();
 unsigned char isFinishedBigTimer();
 unsigned char isFinishedSmallTimer();
 
-# 6 "C:\AK7030-OTP\periph.h"
+unsigned char getAD_ConvertFlag();
+void setAD_ConvertFlag(unsigned char flag);
+
+# 13 "C:\dev\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
 void int_enable(unsigned char mode);
 
+void adc_test_init(unsigned char channel,unsigned char ref);
 
-# 26 "C:\AK7030-OTP\main.c"
+void adc_start();
+unsigned int adc_get(void);
+
+
+# 26 "C:\dev\AK7030-OTP\main.c"
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
@@ -878,38 +885,34 @@ static enum step ampStep;
 
 static enum workTimerType tDA_timer;
 
-clock_config();
-timer1_interrupt_config();
-timer1_config();
-
-adConverter_config();
-
-
-
-TRISB3=1;
-TRISB4=1;
-TRISB5=0;
-
-
-TRISA7=0;
-TRISB6=1;
-
 TRISA0 = 0;
 TRISA1 = 0;
 TRISA3 = 0;
 TRISA2 = 0;
 PA2 = 1;
+PA0 = 1;
 
 TRISB2 = 1;
 
+TRISB1 = 1;
+TRISB0 = 1;
+
+clock_config();
+timer1_config();
+timer1_interrupt_config();
+
+adc_test_init(13,3);
 
 dac_init();
 op1_init();
 op2_init();
 
-start_timer1();
+
+adc_start();
+
 
 static unsigned char testStep;
+
 while(1)
 {
 asm(" clrwdt");
@@ -986,7 +989,7 @@ break;
 case PROCESS_AD_VALUE:
 {
 static unsigned char ucInit = 0;
-if(getAdCh13Value() > 40)
+if(getAdOriginalCh13Value() > 40)
 {
 PA0 = 0;
 PA1 = 1;
@@ -995,7 +998,7 @@ tDA_timer = BIG_TIMER_WORK;
 setDAC0_ChannelValue(27);
 startBigTimer();
 }
-else if(getAdCh13Value() <35)
+else if(getAdOriginalCh13Value() <35)
 {
 PA0 = 1;
 PA1 = 0;
@@ -1075,7 +1078,7 @@ case SET_TIME_BE_FINISHED:
 PA2 = 1;
 PA0 = 0;
 PA1 = 0;
-PA2 = 0;
+PA3 = 0;
 setDAC0_ChannelValue(25);
 ampStep++;
 break;

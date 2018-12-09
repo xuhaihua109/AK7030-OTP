@@ -1,9 +1,9 @@
 
 	; HI-TECH C Compiler for PIC10/12/16 MCUs V9.83
 	; Copyright (C) 1984-2011 HI-TECH Software
-	;Serial no. HCPICP-11111
+	;Serial no. HCPICP-12345
 
-	; Auto-generated runtime startup code for prelink stage.
+	; Auto-generated runtime startup code for final link stage.
 
 	;
 	; Compiler options:
@@ -55,7 +55,11 @@ intlevel5:
 	psect	reset_vec
 reset_vec:
 	; No powerup routine
-	; No interrupt routine
+	global start
+
+; jump to start
+	goto	start & 0x7FF | (reset_vec & not 0x7FF)
+
 
 
 	psect	init

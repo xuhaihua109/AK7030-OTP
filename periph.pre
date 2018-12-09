@@ -1,5 +1,5 @@
 
-# 1 "C:\AK7030-OTP\periph.c"
+# 1 "C:\dev\AK7030-OTP\periph.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\AK7030-OTP\yn8p520.h"
+# 164 "C:\dev\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,35 +799,39 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 6 "C:\AK7030-OTP\periph.h"
+# 13 "C:\dev\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
 void int_enable(unsigned char mode);
 
-# 21 "C:\AK7030-OTP\common.h"
+void adc_test_init(unsigned char channel,unsigned char ref);
+
+void adc_start();
+unsigned int adc_get(void);
+
+# 21 "C:\dev\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
-void start_timer1();
 
 void adConverter_config();
 
-void start_AD_Converter();
+void setAdcSampleChannel(unsigned char ucChannel);
 
-void stop_AD_Converter();
 
-unsigned char isAD_Completed();
-
-void clearAdCompleteFalg();
-
-unsigned int getAdValue();
+unsigned int getAdOriginalValue();
 
 void process_AD_Converter_Value();
 
 unsigned int getAdCh12Value();
 
 unsigned int getAdCh13Value();
+
+
+unsigned int getAdOriginalCh12Value();
+
+unsigned int getAdOriginalCh13Value();
 
 unsigned char isPermitSampleTime();
 
@@ -841,7 +845,10 @@ void startSmallTimer();
 unsigned char isFinishedBigTimer();
 unsigned char isFinishedSmallTimer();
 
-# 13 "C:\AK7030-OTP\periph.c"
+unsigned char getAD_ConvertFlag();
+void setAD_ConvertFlag(unsigned char flag);
+
+# 13 "C:\dev\AK7030-OTP\periph.c"
 void dac_init()
 {
 DACCON|=2;
@@ -849,8 +856,8 @@ DACCON|=2;
 DACR0=0x19;
 DACCON|=(1)<<2;
 
-DACR1=0x06;
-DACCON|=(1)<<3;
+
+
 }
 
 
@@ -861,20 +868,30 @@ void op1_init()
 OP1CON1=0x02;
 OP1CON2=0xA0;
 OP1CON0=0x80;
+
+
+TRISB3=1;
+TRISB4=1;
+TRISB5=0;
 }
 
 
 void op2_init()
 {
 
-# 47
-OP2CON1=0x03;
+# 52
+OP2CON1=0x00;
 
-OP2CON2=0xB0;
+OP2CON2=0xA0;
 OP2CON0=0x80;
+
+
+TRISA7=0;
+TRISB6=1;
+TRISB7 = 1;
 }
 
-# 59
+# 69
 void int_enable(unsigned char mode)
 {
 if(mode)
@@ -887,4 +904,31 @@ else
 PEIE=0;
 GIE=0;
 }
+}
+
+
+void adc_test_init(unsigned char channel,unsigned char ref)
+{
+ADCON0|=channel<<2;
+ADCON1|=ref<<6;
+ADON=1;
+ADIE=1;
+}
+
+
+void setAdcSampleChannel(unsigned char ucChannel)
+{
+ADCON0|=ucChannel<<2;
+}
+
+void adc_start()
+{
+GO=1;
+}
+
+unsigned int adc_get(void)
+{
+unsigned int val;
+val = (ADRESH<<8) | ADRESL;
+return val;
 }
