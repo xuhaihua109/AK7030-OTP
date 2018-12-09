@@ -803,13 +803,19 @@ volatile unsigned char ALG7 @ 0x18F;
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
+void start_timer1();
 
 void adConverter_config();
 
-void setAdcSampleChannel(unsigned char ucChannel);
+void start_AD_Converter();
 
+void stop_AD_Converter();
 
-unsigned int getAdOriginalValue();
+unsigned char isAD_Completed();
+
+void clearAdCompleteFalg();
+
+unsigned int getAdValue();
 
 void process_AD_Converter_Value();
 
@@ -817,58 +823,16 @@ unsigned int getAdCh12Value();
 
 unsigned int getAdCh13Value();
 
-
-unsigned int getAdOriginalCh12Value();
-
-unsigned int getAdOriginalCh13Value();
-
-unsigned char isPermitSampleTime();
-
-void clrSampeTime();
-
-void setDAC0_ChannelValue(unsigned char ucValue);
-
-void startBigTimer();
-void startSmallTimer();
-
-unsigned char isFinishedBigTimer();
-unsigned char isFinishedSmallTimer();
-
-unsigned char getAD_ConvertFlag();
-void setAD_ConvertFlag(unsigned char flag);
-
-# 13 "C:\dev\AK7030-OTP\periph.h"
-void dac_init();
-void op1_init();
-void op2_init();
-void int_enable(unsigned char mode);
-
-void adc_test_init(unsigned char channel,unsigned char ref);
-
-void adc_start();
-unsigned int adc_get(void);
-
-# 12 "C:\dev\AK7030-OTP\common.c"
-static unsigned char adc_convert_flag = 0;
-
-static unsigned int adc_original_value = 0, adc_original_CH12_value = 0,adc_original_CH13_value = 0;
-
-static unsigned int buffer_Sample_AD_Value[6];
+# 11 "C:\dev\AK7030-OTP\common.c"
+static unsigned int buffer_Sample_AD_Value[10];
 static unsigned char sampleTimes;
 static unsigned char sampleChannelSelect = 13;
 static unsigned int multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
+static unsigned char sampleCount;
 static unsigned int sampleCH13Value,sampleCH12Value;
 
-typedef struct
-{
-unsigned char timer10msStopWatch;
 
-}TimeStopWatch;
-
-static TimeStopWatch timer;
-
-static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
-
+static void SetTempThermistorChannel(void);
 
 static void AD_Sample(void);
 
@@ -882,79 +846,126 @@ while(CLKPCE);
 
 void timer1_config()
 {
-
-TMR1H=0xCF;
-TMR1L=0x2C;
-T1CON=0xE1;
-TMR1IE=1;
+T1CON = 0xC4;
+TMR1H = 0xC3;
+TMR1L = 0x50;
 
 }
 
-
+void start_timer1()
+{
+TMR1ON = 1;
+}
 
 void timer1_interrupt_config()
 {
 GIE = 1;
 PEIE = 1;
+TMR1IE = 1;
 }
 
-
-
-unsigned char getAD_ConvertFlag()
+void adConverter_config()
 {
-return adc_convert_flag;
+TRISB0 = 1;
+TRISB2 = 1;
+ADCON0 = 0xC4;
+ADCON1 = 0xFE;
+ADIE = 0;
 }
 
 
-void setAD_ConvertFlag(unsigned char flag)
+void start_AD_Converter()
 {
-adc_convert_flag = flag;
+ADON = 1;
 }
 
-
-unsigned int getAdOriginalValue()
+void stop_AD_Converter()
 {
-return adc_original_value;
+ADON = 0;
 }
 
-unsigned int getAdOriginalCh12Value()
+unsigned char isAD_Completed()
 {
-return adc_original_CH12_value;
+if(ADIF)
+return 1;
+else
+return 0;
 }
 
-
-unsigned int getAdOriginalCh13Value()
+void clearAdCompleteFalg()
 {
-return adc_original_CH13_value;
+ADIF = 0;
 }
 
+unsigned int getAdValue()
+{
+unsigned int AdValue = 0,AdHighValue = 0;
+if(isAD_Completed()!=0)
+{
+ADIF = 0;
+AdValue = ADRESL;
+AdHighValue = ADRESH;
+AdHighValue = AdHighValue << 8;
+AdValue = AdValue | AdHighValue;
+}
 
+return AdValue;
+}
 
 void process_AD_Converter_Value()
 {
-if(getAD_ConvertFlag())
-{
-setAD_ConvertFlag(0);
 AD_Sample();
-
-adc_start();
-}
 }
 
 # 113
 static void AD_Sample(void)
 {
-if(sampleTimes < 6)
+if(sampleTimes == 0)
 {
+SetTempThermistorChannel();
+multiFilterMaxValue = 0;
+multiFilterMinValue = 0;
+multiFilterSumValue = 0;
+sampleCount = 1;
+start_AD_Converter();
+}
 
-buffer_Sample_AD_Value[sampleTimes] = getAdOriginalValue();
+if(sampleTimes < 10)
+{
+while(isAD_Completed() == 0)
+{
+if(sampleCount <= 10)
+{
+sampleCount ++;
+if(isAD_Completed())
+{
+clearAdCompleteFalg();
+stop_AD_Converter();
+break;
+}
+}
+else
+{
+sampleCount = 0;
+sampleTimes = 0;
+break;
+}
+}
+
+if(sampleCount != 0)
+{
+buffer_Sample_AD_Value[sampleTimes] = getAdValue();
+}
+else
+{
+buffer_Sample_AD_Value[sampleTimes] = 2048;
+}
 
 if(sampleTimes == 0)
 {
 multiFilterMaxValue = buffer_Sample_AD_Value[0];
 multiFilterMinValue = buffer_Sample_AD_Value[0];
 }
-
 if(multiFilterMaxValue < buffer_Sample_AD_Value[sampleTimes])
 {
 multiFilterMaxValue = buffer_Sample_AD_Value[sampleTimes];
@@ -963,39 +974,64 @@ if(multiFilterMinValue > buffer_Sample_AD_Value[sampleTimes])
 {
 multiFilterMinValue = buffer_Sample_AD_Value[sampleTimes];
 }
-
 multiFilterSumValue = multiFilterSumValue + buffer_Sample_AD_Value[sampleTimes];
 
 sampleTimes++;
 
-if(sampleTimes >= 6)
+if(sampleTimes < 10)
+{
+start_AD_Converter();
+}
+}
+else
 {
 sampleTimes = 0;
+
+stop_AD_Converter();
 
 if(sampleChannelSelect == 13)
 {
 
-sampleCH13Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> 2;
-sampleChannelSelect = 13;
+sampleCH13Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> 3;
 }
 else if(sampleChannelSelect == 12)
 {
-sampleCH12Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> 2;
-sampleChannelSelect = 13;
+sampleCH12Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> 3;
+}
+
+
+if(sampleChannelSelect == 13)
+{
+sampleChannelSelect = 12;
 }
 else
 {
-sampleCH13Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> 2;
 sampleChannelSelect = 13;
 }
-
-for(unsigned char index = 0; index < 6;index++)
-buffer_Sample_AD_Value[index] = 0;
-
-}
 }
 }
 
+# 216
+static void SetTempThermistorChannel(void)
+{
+
+
+if(sampleChannelSelect == 12)
+{
+CHS3 = 1;
+CHS2 = 1;
+CHS1 = 0;
+CHS0 = 0;
+}
+else
+{
+CHS3 = 1;
+CHS2 = 1;
+CHS1 = 0;
+CHS0 = 1;
+}
+
+}
 
 
 unsigned int getAdCh12Value()
@@ -1007,97 +1043,4 @@ return sampleCH12Value;
 unsigned int getAdCh13Value()
 {
 return sampleCH13Value;
-}
-
-void setDAC0_ChannelValue(unsigned char ucValue)
-{
-DACR0=ucValue;
-}
-
-void startBigTimer()
-{
-uiBigTimer = 34200;
-
-uiBigTimer = 70;
-
-
-
-uiBigTimer = 60;
-
-}
-
-
-void startSmallTimer()
-{
-uiSmallTimer = 10800;
-
-
-uiSmallTimer = 180;
-
-}
-
-
-unsigned char isFinishedBigTimer()
-{
-if(uiBigTimer == 0)
-return 1;
-else
-return 0;
-}
-
-unsigned char isFinishedSmallTimer()
-{
-if(uiSmallTimer == 0)
-return 1;
-else
-return 0;
-}
-
-unsigned char isPermitSampleTime()
-{
-if(timer.timer10msStopWatch > 10)
-{
-return 1;
-}
-else
-return 0;
-}
-
-void clrSampeTime()
-{
-timer.timer10msStopWatch = 0;
-}
-
-void interrupt ISR(void)
-{
-static unsigned char ucTimer1sCnt = 0;
-
-if(TMR1IF == 1)
-{
-TMR1IF = 0 ;
-timer.timer10msStopWatch++;
-ucTimer1sCnt++;
-
-if(ucTimer1sCnt >= 100)
-{
-ucTimer1sCnt = 0;
-if(uiBigTimer > 0)
-uiBigTimer--;
-
-if(uiSmallTimer)
-uiSmallTimer--;
-}
-}
-
-if(ADIF)
-{
-ADIF=0;
-setAD_ConvertFlag(1);
-adc_original_value = adc_get();
-if(sampleChannelSelect == 12)
-adc_original_CH12_value = adc_get();
-else
-adc_original_CH13_value = adc_get();
-
-}
 }

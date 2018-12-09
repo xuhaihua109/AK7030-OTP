@@ -1,0 +1,467 @@
+HI-TECH Software C Compiler 
+
+Linker command line:
+
+--edf=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\dat\en_msgs.txt -cs \
+  -h+ProjTest.sym -z -Q16C77 -ol.obj -MProjTest.map -E1 -ACONST=00h-0FFhx16 \
+  -ACODE=00h-07FFhx2 -ASTRCODE=00h-0FFFh -AENTRY=00h-0FFhx16 \
+  -ASTRING=00h-0FFhx16 -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh \
+  -ABANK2=0110h-016Fh -ABANK3=0190h-01EFh \
+  -ARAM=020h-06Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh \
+  -AABS1=020h-07Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh -ACOMMON=070h-07Fh \
+  -ASFR0=00h-01Fh -ASFR1=080h-09Fh -ASFR2=0100h-010Fh -ASFR3=0180h-018Fh \
+  -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pfunctab=CODE \
+  -ACONFIG=02000h-02007h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02008h-0200Bh \
+  -pidloc=IDLOC -DIDLOC=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
+  -DENTRY=2 -k startup.obj ProjTest.obj 
+
+Object code version is 3.10
+
+Machine type is 16C77
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+startup.obj     end_init                              B        B        2        8       0
+                reset_vec                             0        0        2        0       0
+ProjTest.obj    intentry                              4        4        7        8       0
+                config                             2000     2000        3     4000       0
+                text577                              FE       FE       1B        8       0
+                text576                             15A      15A        7        8       0
+                text575                             152      152        8        8       0
+                text574                             167      167        3        8       0
+                text573                             161      161        6        8       0
+                text572                             127      127        B        8       0
+                text566                             14A      14A        8        8       0
+                text565                             142      142        8        8       0
+                text564                             13A      13A        8        8       0
+                text561                               D        D       C7        8       0
+                maintext                             D4       D4       2A        8       0
+                cstackBANK0                          3A       3A        2       20       1
+                cstackCOMMON                         70       70        8       70       1
+                clrtext                             132      132        8        8       0
+                bssBANK0                             20       20       1A       20       1
+                dataCOMMON                           7B       7B        1       70       1
+                bssCOMMON                            78       78        3       70       1
+                cinit                               119      119        E        8       0
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   CONST          
+
+        CLASS   CODE           
+                end_init                              B        B        2         0
+                intentry                              4        4        7         0
+                reset_vec                             0        0        2         0
+                text577                              FE       FE       1B         0
+                text576                             15A      15A        7         0
+                text575                             152      152        8         0
+                text574                             167      167        3         0
+                text573                             161      161        6         0
+                text572                             127      127        B         0
+                text566                             14A      14A        8         0
+                text565                             142      142        8         0
+                text564                             13A      13A        8         0
+                text561                               D        D       C7         0
+                maintext                             D4       D4       2A         0
+                clrtext                             132      132        8         0
+                cinit                               119      119        E         0
+
+        CLASS   STRCODE        
+
+        CLASS   ENTRY          
+
+        CLASS   STRING         
+
+        CLASS   BANK0          
+                cstackBANK0                          3A       3A        2         1
+                bssBANK0                             20       20       1A         1
+
+        CLASS   BANK1          
+
+        CLASS   BANK2          
+
+        CLASS   BANK3          
+
+        CLASS   RAM            
+
+        CLASS   ABS1           
+                abs_s1                               7E       7E        2         1
+
+        CLASS   COMMON         
+                cstackCOMMON                         70       70        8         1
+                dataCOMMON                           7B       7B        1         1
+                bssCOMMON                            78       78        3         1
+
+        CLASS   SFR0           
+
+        CLASS   SFR1           
+
+        CLASS   SFR2           
+
+        CLASS   SFR3           
+
+        CLASS   CONFIG         
+                config                             2000     2000        3         0
+
+        CLASS   IDLOC          
+
+        CLASS   EEDATA         
+
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
+
+                reset_vec                      000000  000002  000002         0       0  CODE        2
+                intentry                       000004  000166  00016A         8       0  CODE        2
+                bssBANK0                       000020  00001C  00003C        20       1  BANK0       1
+                cstackCOMMON                   000070  00000C  00007C        70       1  COMMON      1
+                config                         002000  000003  002003      4000       0  CONFIG      2
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            003C-006F             34           1
+        BANK1            00A0-00EF             50           1
+        BANK2            0110-016F             60           1
+        BANK3            0190-01EF             60           1
+        CODE             0002-0003              2           2
+                         016A-0FFF            696
+        COMMON           007C-007D              2           1
+        CONFIG           2003-2007              5           2
+        CONST            0002-0003              2           2
+                         016A-0FFF            100
+        ENTRY            0002-0003              2           2
+                         016A-0FFF            100
+        IDLOC            2008-200B              4           2
+        RAM              003C-006F             34           1
+                         00A0-00EF             50
+                         0110-016F             60
+                         0190-01EF             60
+        SFR0             0000-001F             20           1
+        SFR1             0080-009F             20           1
+        SFR2             0100-010F             10           1
+        SFR3             0180-018F             10           1
+        STRCODE          0002-0003              2           2
+                         016A-0FFF            E96
+        STRING           0002-0003              2           2
+                         016A-0FFF            100
+
+                                  Symbol Table
+
+??_AD_Sample                         cstackBANK0  003A
+??_ISR                               cstackCOMMON 0070
+??_SetTempThermistorChannel          cstackCOMMON 0072
+??_adConverter_config                cstackCOMMON 0072
+??_clearAdCompleteFalg               cstackCOMMON 0072
+??_clock_config                      cstackCOMMON 0072
+??_dac_init                          cstackCOMMON 0072
+??_getAdValue                        cstackCOMMON 0074
+??_isAD_Completed                    cstackCOMMON 0072
+??_main                              cstackCOMMON 0078
+??_op1_init                          cstackCOMMON 0072
+??_op2_init                          cstackCOMMON 0072
+??_process_AD_Converter_Value        cstackCOMMON 0078
+??_start_AD_Converter                cstackCOMMON 0072
+??_start_timer1                      cstackCOMMON 0072
+??_stop_AD_Converter                 cstackCOMMON 0072
+??_timer1_config                     cstackCOMMON 0072
+??_timer1_interrupt_config           cstackCOMMON 0072
+?_AD_Sample                          cstackCOMMON 0070
+?_ISR                                cstackCOMMON 0070
+?_SetTempThermistorChannel           cstackCOMMON 0070
+?_adConverter_config                 cstackCOMMON 0070
+?_clearAdCompleteFalg                cstackCOMMON 0070
+?_clock_config                       cstackCOMMON 0070
+?_dac_init                           cstackCOMMON 0070
+?_getAdValue                         cstackCOMMON 0072
+?_isAD_Completed                     cstackCOMMON 0070
+?_main                               cstackCOMMON 0070
+?_op1_init                           cstackCOMMON 0070
+?_op2_init                           cstackCOMMON 0070
+?_process_AD_Converter_Value         cstackCOMMON 0070
+?_start_AD_Converter                 cstackCOMMON 0070
+?_start_timer1                       cstackCOMMON 0070
+?_stop_AD_Converter                  cstackCOMMON 0070
+?_timer1_config                      cstackCOMMON 0070
+?_timer1_interrupt_config            cstackCOMMON 0070
+ISR@flashCnt                         bssBANK0     0034
+_ADCON0                              (abs)        001F
+_ADCON1                              (abs)        009F
+_ADIE                                (abs)        046A
+_ADIF                                (abs)        006A
+_ADON                                (abs)        00F8
+_ADRESH                              (abs)        001E
+_ADRESL                              (abs)        009E
+_AD_Sample                           text561      000E
+_CHS0                                (abs)        00FA
+_CHS1                                (abs)        00FB
+_CHS2                                (abs)        00FC
+_CHS3                                (abs)        00FD
+_CLKPCE                              (abs)        0847
+_CLKPR                               (abs)        0108
+_DACCON                              (abs)        0087
+_DACR0                               (abs)        0088
+_DACR1                               (abs)        0089
+_GIE                                 (abs)        005F
+_ISR                                 text577      00FE
+_OP1CON0                             (abs)        001B
+_OP1CON1                             (abs)        001C
+_OP1CON2                             (abs)        001D
+_OP2CON0                             (abs)        009B
+_OP2CON1                             (abs)        009C
+_OP2CON2                             (abs)        009D
+_PA0                                 (abs)        0028
+_PEIE                                (abs)        005E
+_SetTempThermistorChannel            text561      009D
+_T1CON                               (abs)        0010
+_TMR1H                               (abs)        000F
+_TMR1IE                              (abs)        0460
+_TMR1IF                              (abs)        0060
+_TMR1L                               (abs)        000E
+_TMR1ON                              (abs)        0080
+_TRISA0                              (abs)        0428
+_TRISA1                              (abs)        0429
+_TRISA3                              (abs)        042B
+_TRISA7                              (abs)        042F
+_TRISB0                              (abs)        0430
+_TRISB2                              (abs)        0432
+_TRISB3                              (abs)        0433
+_TRISB4                              (abs)        0434
+_TRISB5                              (abs)        0435
+_TRISB6                              (abs)        0436
+__Habs1                              abs1         0000
+__Hbank0                             bank0        0000
+__Hbank1                             bank1        0000
+__Hbank2                             bank2        0000
+__Hbank3                             bank3        0000
+__HbssBANK0                          bssBANK0     0000
+__HbssCOMMON                         bssCOMMON    0000
+__Hcinit                             cinit        0000
+__Hclrtext                           clrtext      0000
+__Hcode                              code         0000
+__Hcommon                            common       0000
+__Hconfig                            config       2003
+__HcstackBANK0                       cstackBANK0  0000
+__HcstackCOMMON                      cstackCOMMON 0000
+__HdataCOMMON                        dataCOMMON   0000
+__Heeprom_data                       eeprom_data  0000
+__Hend_init                          end_init     000D
+__Hfunctab                           functab      0000
+__HidataCOMMON                       idataCOMMON  0000
+__Hidloc                             idloc        0000
+__Hinit                              init         000B
+__Hintentry                          intentry     000B
+__Hmaintext                          maintext     0000
+__Hpa_nodes                          pa_nodes     0000
+__Hpowerup                           powerup      0000
+__Hram                               ram          0000
+__Hreset_vec                         reset_vec    0002
+__Hsfr0                              sfr0         0000
+__Hsfr1                              sfr1         0000
+__Hsfr2                              sfr2         0000
+__Hsfr3                              sfr3         0000
+__Hstrings                           strings      0000
+__Htext                              text         0000
+__Labs1                              abs1         0000
+__Lbank0                             bank0        0000
+__Lbank1                             bank1        0000
+__Lbank2                             bank2        0000
+__Lbank3                             bank3        0000
+__LbssBANK0                          bssBANK0     0000
+__LbssCOMMON                         bssCOMMON    0000
+__Lcinit                             cinit        0000
+__Lclrtext                           clrtext      0000
+__Lcode                              code         0000
+__Lcommon                            common       0000
+__Lconfig                            config       2000
+__LcstackBANK0                       cstackBANK0  0000
+__LcstackCOMMON                      cstackCOMMON 0000
+__LdataCOMMON                        dataCOMMON   0000
+__Leeprom_data                       eeprom_data  0000
+__Lend_init                          end_init     000B
+__Lfunctab                           functab      0000
+__LidataCOMMON                       idataCOMMON  0000
+__Lidloc                             idloc        0000
+__Linit                              init         000B
+__Lintentry                          intentry     0004
+__Lmaintext                          maintext     0000
+__Lpa_nodes                          pa_nodes     0000
+__Lpowerup                           powerup      0000
+__Lram                               ram          0000
+__Lreset_vec                         reset_vec    0000
+__Lsfr0                              sfr0         0000
+__Lsfr1                              sfr1         0000
+__Lsfr2                              sfr2         0000
+__Lsfr3                              sfr3         0000
+__Lstrings                           strings      0000
+__Ltext                              text         0000
+__S0                                 (abs)        2003
+__S1                                 (abs)        007C
+__end_of_AD_Sample                   text561      0090
+__end_of_ISR                         text577      0119
+__end_of_SetTempThermistorChannel    text561      00AF
+__end_of_adConverter_config          text572      0132
+__end_of_clearAdCompleteFalg         text561      009D
+__end_of_clock_config                text576      0161
+__end_of_dac_init                    text566      0152
+__end_of_getAdValue                  text561      00CA
+__end_of_isAD_Completed              text561      0099
+__end_of_main                        maintext     00FE
+__end_of_op1_init                    text565      014A
+__end_of_op2_init                    text564      0142
+__end_of_process_AD_Converter_Value  text561      000E
+__end_of_start_AD_Converter          text561      009B
+__end_of_start_timer1                text574      016A
+__end_of_stop_AD_Converter           text561      0094
+__end_of_timer1_config               text575      015A
+__end_of_timer1_interrupt_config     text573      0167
+__pbssBANK0                          bssBANK0     0020
+__pbssCOMMON                         bssCOMMON    0078
+__pcstackBANK0                       cstackBANK0  003A
+__pcstackCOMMON                      cstackCOMMON 0070
+__pdataCOMMON                        dataCOMMON   007B
+__pidataCOMMON                       idataCOMMON  0000
+__pintentry                          intentry     0004
+__pmaintext                          maintext     00D4
+__ptext561                           text561      000D
+__ptext562                           text561      000E
+__ptext563                           text561      00AF
+__ptext564                           text564      013A
+__ptext565                           text565      0142
+__ptext566                           text566      014A
+__ptext567                           text561      009D
+__ptext568                           text561      009B
+__ptext569                           text561      0094
+__ptext570                           text561      0090
+__ptext571                           text561      0099
+__ptext572                           text572      0127
+__ptext573                           text573      0161
+__ptext574                           text574      0167
+__ptext575                           text575      0152
+__ptext576                           text576      015A
+__ptext577                           text577      00FE
+__ptext578                           text578      0000
+__size_of_AD_Sample                  (abs)        0000
+__size_of_ISR                        (abs)        0000
+__size_of_SetTempThermistorChannel   (abs)        0000
+__size_of_adConverter_config         (abs)        0000
+__size_of_clearAdCompleteFalg        (abs)        0000
+__size_of_clock_config               (abs)        0000
+__size_of_dac_init                   (abs)        0000
+__size_of_getAdValue                 (abs)        0000
+__size_of_isAD_Completed             (abs)        0000
+__size_of_main                       (abs)        0000
+__size_of_op1_init                   (abs)        0000
+__size_of_op2_init                   (abs)        0000
+__size_of_process_AD_Converter_Value (abs)        0000
+__size_of_start_AD_Converter         (abs)        0000
+__size_of_start_timer1               (abs)        0000
+__size_of_stop_AD_Converter          (abs)        0000
+__size_of_timer1_config              (abs)        0000
+__size_of_timer1_interrupt_config    (abs)        0000
+_adConverter_config                  text572      0127
+_buffer_Sample_AD_Value              bssBANK0     0020
+_clearAdCompleteFalg                 text561      009B
+_clock_config                        text576      015A
+_dac_init                            text566      014A
+_exit                                init         000B
+_getAdValue                          text561      00AF
+_isAD_Completed                      text561      0094
+_main                                maintext     00D4
+_multiFilterMaxValue                 bssBANK0     0036
+_multiFilterMinValue                 bssBANK0     0038
+_op1_init                            text565      0142
+_op2_init                            text564      013A
+_process_AD_Converter_Value          text561      000D
+_sampleChannelSelect                 dataCOMMON   007B
+_sampleCount                         bssCOMMON    0078
+_sampleTimes                         bssCOMMON    0079
+_start_AD_Converter                  text561      0099
+_start_timer1                        text574      0167
+_stop_AD_Converter                   text561      0090
+_timer10msCnt                        bssCOMMON    007A
+_timer1_config                       text575      0152
+_timer1_interrupt_config             text573      0161
+btemp                                (abs)        007E
+clear_ram                            clrtext      0132
+end_of_initialization                cinit        0124
+getAdValue@AdHighValue               cstackCOMMON 0076
+getAdValue@AdValue                   cstackCOMMON 0074
+i1l2576                                               
+i1l2580                                               
+i1l2582                                               
+i1l2586                                               
+interrupt_function                   intentry     0004
+intlevel0                            functab      0000
+intlevel1                            functab      0000
+intlevel2                            functab      0000
+intlevel3                            functab      0000
+intlevel4                            functab      0000
+intlevel5                            functab      0000
+l1998                                                 
+l2001                                                 
+l2004                                                 
+l2378                                                 
+l2380                                                 
+l2382                                                 
+l2384                                                 
+l2386                                                 
+l2388                                                 
+l2390                                                 
+l2392                                                 
+l2416                                                 
+l2418                                                 
+l2420                                                 
+l2422                                                 
+l2424                                                 
+l2426                                                 
+l2556                                                 
+l2558                                                 
+l2570                                                 
+l2572                                                 
+l2588                                                 
+l2590                                                 
+l2594                                                 
+l2706                                                 
+l2708                                                 
+l2710                                                 
+l2712                                                 
+l2720                                                 
+l2730                                                 
+l2746                                                 
+l2752                                                 
+l2760                                                 
+l2766                                                 
+l2768                                                 
+l2770                                                 
+l2772                                                 
+l2774                                                 
+l2776                                                 
+l2778                                                 
+l2780                                                 
+l2782                                                 
+l2784                                                 
+l2786                                                 
+l2788                                                 
+l2790                                                 
+l2792                                                 
+l2794                                                 
+l2796                                                 
+l2800                                                 
+l2804                                                 
+l650                                                  
+l653                                                  
+l656                                                  
+l659                                                  
+l662                                                  
+l665                                                  
+l668                                                  
+l676                                                  
+l680                                                  
+l683                                                  
+reset_vec                            reset_vec    0000
+saved_w                              (abs)        007E
+start                                init         000B
+start_initialization                 cinit        0119
+wtemp0                               (abs)        007E

@@ -277,7 +277,7 @@ void main (void)
 					   {
 						   if(!isFinishedSmallTimer())
 						   {
-							   if(getAdCh13Value() > 40)
+							   if(getAdOriginalCh13Value() > 40)
 								   ampStep = PROCESS_AD_VALUE;
 						   }
 						   else

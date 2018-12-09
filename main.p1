@@ -734,8 +734,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _isFinishedBigTimer `(uc  0 ef ]
 "53 C:\dev\AK7030-OTP\common.h
 [v _isFinishedSmallTimer `(uc  0 ef ]
-"36 C:\dev\AK7030-OTP\common.h
-[v _getAdCh13Value `(ui  0 ef ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
 [; ;stdio.h: 14: typedef unsigned short wchar_t;
@@ -1806,9 +1804,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 279: {
 "279
 {
-[; ;main.c: 280: if(getAdCh13Value() > 40)
+[; ;main.c: 280: if(getAdOriginalCh13Value() > 40)
 "280
-[e $ ! > ( _getAdCh13Value ..  -> -> 40 `i `ui 78  ]
+[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 40 `i `ui 78  ]
 [; ;main.c: 281: ampStep = PROCESS_AD_VALUE;
 "281
 [e = F825 . `E811 5 ]

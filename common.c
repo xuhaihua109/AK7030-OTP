@@ -186,12 +186,12 @@ void startBigTimer()
 {
 	uiBigTimer = 34200; //34200s = 9.5h
 
+	uiBigTimer = 70;
+
 #ifdef DEBUG_FUNCITON
 
-	uiBigTimer = 570;
+	uiBigTimer = 60;// 34200 / 60 = 570;
 #endif
-
-
 }
 
 
@@ -255,6 +255,7 @@ void interrupt ISR(void)
 			if(uiSmallTimer)
 				uiSmallTimer--;
 		}
+    }
 
 	if(ADIF)
 	   {
@@ -267,6 +268,4 @@ void interrupt ISR(void)
 			adc_original_CH13_value = adc_get();
 
 	   }
-
-    }
 }

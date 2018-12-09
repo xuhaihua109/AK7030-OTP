@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.83 build 10920 
-                                                                                                           Sun Dec 09 15:15:09 2018
+                                                                                                           Tue Nov 27 23:00:26 2018
 
 
      1                           
@@ -15,7 +15,7 @@ HI-TECH Software PIC Macro Assembler V9.83 build 10920
      9                           	; Compiler options:
     10                           	;
     11                           	; -oProjTest.cof -mProjTest.map --summary=default --output=default \
-    12                           	; main.p1 common.p1 periph.p1 --chip=16C77 -P --runtime=default \
+    12                           	; common.p1 main.p1 periph.p1 --chip=16C77 -P --runtime=default \
     13                           	; --opt=default -D__DEBUG=1 -g --asmlist \
     14                           	; --errformat=Error   [%n] %f; %l.%c %s --msgformat=Advisory[%n] %s \
     15                           	; --warnformat=Warning [%n] %f; %l.%c %s
@@ -73,12 +73,12 @@ HI-TECH Software PIC Macro Assembler V9.83 build 10920
     67  000B                     _exit
     68                           	psect	end_init
     69                           	global start_initialization
-    70  000B  118A  29E1         	ljmp start_initialization	;jump to C runtime clear & initialization
+    70  000B  118A  2919         	ljmp start_initialization	;jump to C runtime clear & initialization
 
 
 HI-TECH Software PICC Macro Assembler V9.83 build 10920 
-Symbol Table                                                                                               Sun Dec 09 15:15:09 2018
+Symbol Table                                                                                               Tue Nov 27 23:00:26 2018
 
-               _main 000D                 _exit 000B                 start 000B  start_initialization 01E1  
+               _main 00D4                 _exit 000B                 start 000B  start_initialization 0119  
            intlevel0 0000             intlevel1 0000             intlevel2 0000             intlevel3 0000  
            intlevel4 0000             intlevel5 0000             reset_vec 0000  
