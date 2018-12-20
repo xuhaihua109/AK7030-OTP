@@ -1,7 +1,7 @@
 
 	; HI-TECH C Compiler for PIC10/12/16 MCUs V9.83
 	; Copyright (C) 1984-2011 HI-TECH Software
-	;Serial no. HCPICP-12345
+	;Serial no. HCPICP-11111
 
 	; Auto-generated runtime startup code for final link stage.
 

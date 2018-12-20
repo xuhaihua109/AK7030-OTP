@@ -11,7 +11,7 @@
 #define ON  1
 #define OFF	0
 
-#define DEBUG_FUNCITON  1
+//#define DEBUG_FUNCITON  1
 
 #define AD_CHANNEL_13_CHANNEL            13
 

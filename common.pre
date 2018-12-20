@@ -1,5 +1,5 @@
 
-# 1 "D:\111\AK7030-OTP\common.c"
+# 1 "C:\sw_dev\AK7030-OTP\common.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "D:\111\AK7030-OTP\yn8p520.h"
+# 164 "C:\sw_dev\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,7 +799,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 21 "D:\111\AK7030-OTP\common.h"
+# 21 "C:\sw_dev\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -840,7 +840,7 @@ unsigned char isFinishedSmallTimer();
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
 
-# 13 "D:\111\AK7030-OTP\periph.h"
+# 13 "C:\sw_dev\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
@@ -851,7 +851,7 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 void adc_start();
 unsigned int adc_get(void);
 
-# 12 "D:\111\AK7030-OTP\common.c"
+# 12 "C:\sw_dev\AK7030-OTP\common.c"
 static unsigned char adc_convert_flag = 0;
 
 static unsigned int adc_original_value = 0, adc_original_CH12_value = 0,adc_original_CH13_value = 0;
@@ -1021,10 +1021,7 @@ void startBigTimer()
 {
 uiBigTimer = 34200;
 
-
-
-uiBigTimer = 570;
-
+# 193
 }
 
 void clearBigTimer()
@@ -1043,9 +1040,7 @@ void startSmallTimer()
 {
 uiSmallTimer = 10800;
 
-
-uiSmallTimer = 180;
-
+# 214
 }
 
 
