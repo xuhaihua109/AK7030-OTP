@@ -106,6 +106,8 @@ void main (void)
 
 	static enum workTimerType tDA_timer;
 
+	static unsigned char ucWaitTime1S = 0;
+
 	TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
 	TRISA1 = 0;
 	TRISA3 = 0;
@@ -218,7 +220,7 @@ void main (void)
 					   ucInit = 1;
 					   PA0 = 0;
 					   PA1 = 1;
-					   PA3 = 1;
+					   PA3 = 0;
 					   tDA_timer = BIG_TIMER_WORK;
 					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
 					   if(!ucBigTimerActionFlag)
@@ -244,7 +246,7 @@ void main (void)
 						   ucInit = 1;
 						   PA0 = 0;
 						   PA1 = 1;
-						   PA3 = 1;
+						   PA3 = 0;
 						   tDA_timer = BIG_TIMER_WORK;
 						   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
 						   if(!ucBigTimerActionFlag)
@@ -265,6 +267,13 @@ void main (void)
 				   {
 					   case BIG_TIMER_WORK:
 					   {
+							if(!PA3)
+							{
+								ucWaitTime1S++;
+								if(ucWaitTime1S >= 10)
+								PA3 = 1;
+							}
+
 						   if(!isFinishedBigTimer())
 						   {
 							   ampStep = PROCESS_AD_VALUE;
@@ -285,7 +294,10 @@ void main (void)
 						   else if(!isFinishedSmallTimer())
 						   {
 							   if(getAdOriginalCh13Value() > 40)
+								{
+									ucWaitTime1S = 0;
 								   ampStep = PROCESS_AD_VALUE;
+								}
 						   }
 						   else
 						   {
@@ -307,6 +319,7 @@ void main (void)
 				   PA0 = 0;
 				   PA1 = 0;
 				   PA3 = 0;
+				   ucWaitTime1S = 0;
 				   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
 				   ampStep++;
 				   break;
