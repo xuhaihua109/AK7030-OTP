@@ -1002,7 +1002,7 @@ if(getAdOriginalCh13Value() > 40)
 ucInit = 1;
 PA0 = 0;
 PA1 = 1;
-PA3 = 0;
+
 tDA_timer = BIG_TIMER_WORK;
 setDAC0_ChannelValue(27);
 if(!ucBigTimerActionFlag)
@@ -1028,7 +1028,7 @@ if(!ucInit)
 ucInit = 1;
 PA0 = 0;
 PA1 = 1;
-PA3 = 0;
+
 tDA_timer = BIG_TIMER_WORK;
 setDAC0_ChannelValue(27);
 if(!ucBigTimerActionFlag)
@@ -1037,6 +1037,24 @@ startBigTimer();
 ucBigTimerActionFlag = 1;
 }
 }
+}
+
+if(BIG_TIMER_WORK == tDA_timer)
+{
+if(!PA3)
+{
+ucWaitTime1S++;
+if(ucWaitTime1S >= 5)
+{
+PA3 = 1;
+ucWaitTime1S = 0;
+}
+}
+}
+else
+{
+PA3 = 0;
+ucWaitTime1S = 0;
 }
 
 ampStep++;
@@ -1049,13 +1067,6 @@ switch(tDA_timer)
 {
 case BIG_TIMER_WORK:
 {
-if(!PA3)
-{
-ucWaitTime1S++;
-if(ucWaitTime1S >= 10)
-PA3 = 1;
-}
-
 if(!isFinishedBigTimer())
 {
 ampStep = PROCESS_AD_VALUE;

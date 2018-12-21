@@ -1316,11 +1316,11 @@ SMALL_TIMER_WORK 1
 [v main@ucConfirmTimerZptS `uc  1 s 1 ucConfirmTimerZptS ]
 "217
 [v main@ucInit `uc  1 s 1 ucInit ]
-"330
+"341
 [v main@ucCheckBatteryCnt `uc  1 s 1 ucCheckBatteryCnt ]
-"346
+"357
 [v main@ucInstalledBatteryCnt `uc  1 s 1 ucInstalledBatteryCnt ]
-"366
+"377
 } 0
 "94 C:\sw_dev\AK7030-OTP\common.c
 [v _process_AD_Converter_Value `(v  1 e 0 0 ]

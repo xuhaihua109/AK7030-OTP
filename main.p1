@@ -1643,9 +1643,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 222: PA1 = 1;
 "222
 [e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 223: PA3 = 0;
-"223
-[e = _PA3 -> -> 0 `i `b ]
 [; ;main.c: 224: tDA_timer = BIG_TIMER_WORK;
 "224
 [e = F828 . `E824 0 ]
@@ -1725,9 +1722,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 248: PA1 = 1;
 "248
 [e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 249: PA3 = 0;
-"249
-[e = _PA3 -> -> 0 `i `b ]
 [; ;main.c: 250: tDA_timer = BIG_TIMER_WORK;
 "250
 [e = F828 . `E824 0 ]
@@ -1759,312 +1753,347 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 256: }
 [; ;main.c: 257: }
 [; ;main.c: 258: }
-[; ;main.c: 260: ampStep++;
+[; ;main.c: 260: if(BIG_TIMER_WORK == tDA_timer)
 "260
-[e ++ F827 -> -> 1 `i `E813 ]
-[; ;main.c: 261: break;
+[e $ ! == -> . `E824 0 `i -> F828 `i 69  ]
+[; ;main.c: 261: {
 "261
-[e $U 46  ]
+{
+[; ;main.c: 262: if(!PA3)
 "262
-}
-[; ;main.c: 262: }
-[; ;main.c: 264: case WAIT_SET_TIME_FINISHED:
+[e $ ! ! _PA3 70  ]
+[; ;main.c: 263: {
+"263
+{
+[; ;main.c: 264: ucWaitTime1S++;
 "264
-[e :U 69 ]
-[; ;main.c: 265: {
-"265
-{
-[; ;main.c: 266: switch(tDA_timer)
-"266
-[e $U 71  ]
-[; ;main.c: 267: {
-"267
-{
-[; ;main.c: 268: case BIG_TIMER_WORK:
-"268
-[e :U 72 ]
-[; ;main.c: 269: {
-"269
-{
-[; ;main.c: 270: if(!PA3)
-"270
-[e $ ! ! _PA3 73  ]
-[; ;main.c: 271: {
-"271
-{
-[; ;main.c: 272: ucWaitTime1S++;
-"272
 [e ++ F829 -> -> 1 `i `uc ]
-[; ;main.c: 273: if(ucWaitTime1S >= 10)
-"273
-[e $ ! >= -> F829 `i -> 10 `i 74  ]
-[; ;main.c: 274: PA3 = 1;
-"274
-[e = _PA3 -> -> 1 `i `b ]
-[e :U 74 ]
-"275
-}
-[e :U 73 ]
-[; ;main.c: 275: }
-[; ;main.c: 277: if(!isFinishedBigTimer())
-"277
-[e $ ! ! != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 75  ]
-[; ;main.c: 278: {
-"278
+[; ;main.c: 265: if(ucWaitTime1S >= 5)
+"265
+[e $ ! >= -> F829 `i -> 5 `i 71  ]
+[; ;main.c: 266: {
+"266
 {
-[; ;main.c: 279: ampStep = PROCESS_AD_VALUE;
+[; ;main.c: 267: PA3 = 1;
+"267
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 268: ucWaitTime1S = 0;
+"268
+[e = F829 -> -> 0 `i `uc ]
+"269
+}
+[e :U 71 ]
+"270
+}
+[e :U 70 ]
+"271
+}
+[; ;main.c: 269: }
+[; ;main.c: 270: }
+[; ;main.c: 271: }
+[e $U 72  ]
+"272
+[e :U 69 ]
+[; ;main.c: 272: else
+[; ;main.c: 273: {
+"273
+{
+[; ;main.c: 274: PA3 = 0;
+"274
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 275: ucWaitTime1S = 0;
+"275
+[e = F829 -> -> 0 `i `uc ]
+"276
+}
+[e :U 72 ]
+[; ;main.c: 276: }
+[; ;main.c: 278: ampStep++;
+"278
+[e ++ F827 -> -> 1 `i `E813 ]
+[; ;main.c: 279: break;
 "279
-[e = F827 . `E813 5 ]
+[e $U 46  ]
 "280
 }
 [; ;main.c: 280: }
-[e $U 76  ]
-"281
-[e :U 75 ]
-[; ;main.c: 281: else
-[; ;main.c: 282: {
+[; ;main.c: 282: case WAIT_SET_TIME_FINISHED:
 "282
-{
-[; ;main.c: 283: ampStep++;
+[e :U 73 ]
+[; ;main.c: 283: {
 "283
-[e ++ F827 -> -> 1 `i `E813 ]
+{
+[; ;main.c: 284: switch(tDA_timer)
 "284
-}
-[e :U 76 ]
-[; ;main.c: 284: }
-[; ;main.c: 285: break;
+[e $U 75  ]
+[; ;main.c: 285: {
 "285
-[e $U 70  ]
+{
+[; ;main.c: 286: case BIG_TIMER_WORK:
 "286
-}
-[; ;main.c: 286: }
-[; ;main.c: 288: case SMALL_TIMER_WORK:
+[e :U 76 ]
+[; ;main.c: 287: {
+"287
+{
+[; ;main.c: 288: if(!isFinishedBigTimer())
 "288
-[e :U 77 ]
+[e $ ! ! != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 77  ]
 [; ;main.c: 289: {
 "289
 {
-[; ;main.c: 290: if((ucBigTimerActionFlag == 1) && isFinishedBigTimer())
+[; ;main.c: 290: ampStep = PROCESS_AD_VALUE;
 "290
-[e $ ! && == -> F831 `i -> 1 `i != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 78  ]
-[; ;main.c: 291: {
-"291
-{
-[; ;main.c: 292: ampStep++;
-"292
-[e ++ F827 -> -> 1 `i `E813 ]
-"293
-}
-[; ;main.c: 293: }
-[e $U 79  ]
-"294
-[e :U 78 ]
-[; ;main.c: 294: else if(!isFinishedSmallTimer())
-[e $ ! ! != -> ( _isFinishedSmallTimer ..  `i -> -> -> 0 `i `uc `i 80  ]
-[; ;main.c: 295: {
-"295
-{
-[; ;main.c: 296: if(getAdOriginalCh13Value() > 40)
-"296
-[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 40 `i `ui 81  ]
-[; ;main.c: 297: {
-"297
-{
-[; ;main.c: 298: ucWaitTime1S = 0;
-"298
-[e = F829 -> -> 0 `i `uc ]
-[; ;main.c: 299: ampStep = PROCESS_AD_VALUE;
-"299
 [e = F827 . `E813 5 ]
-"300
+"291
 }
-[e :U 81 ]
-"301
-}
-[; ;main.c: 300: }
-[; ;main.c: 301: }
-[e $U 82  ]
-"302
-[e :U 80 ]
-[; ;main.c: 302: else
-[; ;main.c: 303: {
-"303
+[; ;main.c: 291: }
+[e $U 78  ]
+"292
+[e :U 77 ]
+[; ;main.c: 292: else
+[; ;main.c: 293: {
+"293
 {
-[; ;main.c: 304: ampStep++;
-"304
+[; ;main.c: 294: ampStep++;
+"294
 [e ++ F827 -> -> 1 `i `E813 ]
-"305
+"295
 }
-[e :U 82 ]
+[e :U 78 ]
+[; ;main.c: 295: }
+[; ;main.c: 296: break;
+"296
+[e $U 74  ]
+"297
+}
+[; ;main.c: 297: }
+[; ;main.c: 299: case SMALL_TIMER_WORK:
+"299
 [e :U 79 ]
-[; ;main.c: 305: }
-[; ;main.c: 306: break;
-"306
-[e $U 70  ]
-"307
+[; ;main.c: 300: {
+"300
+{
+[; ;main.c: 301: if((ucBigTimerActionFlag == 1) && isFinishedBigTimer())
+"301
+[e $ ! && == -> F831 `i -> 1 `i != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 80  ]
+[; ;main.c: 302: {
+"302
+{
+[; ;main.c: 303: ampStep++;
+"303
+[e ++ F827 -> -> 1 `i `E813 ]
+"304
 }
-[; ;main.c: 307: }
-[; ;main.c: 309: default:
+[; ;main.c: 304: }
+[e $U 81  ]
+"305
+[e :U 80 ]
+[; ;main.c: 305: else if(!isFinishedSmallTimer())
+[e $ ! ! != -> ( _isFinishedSmallTimer ..  `i -> -> -> 0 `i `uc `i 82  ]
+[; ;main.c: 306: {
+"306
+{
+[; ;main.c: 307: if(getAdOriginalCh13Value() > 40)
+"307
+[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 40 `i `ui 83  ]
+[; ;main.c: 308: {
+"308
+{
+[; ;main.c: 309: ucWaitTime1S = 0;
 "309
-[e :U 83 ]
-[; ;main.c: 310: break;
+[e = F829 -> -> 0 `i `uc ]
+[; ;main.c: 310: ampStep = PROCESS_AD_VALUE;
 "310
-[e $U 70  ]
+[e = F827 . `E813 5 ]
 "311
+}
+[e :U 83 ]
+"312
 }
 [; ;main.c: 311: }
-[e $U 70  ]
-"266
-[e :U 71 ]
-[e [\ F828 , $ . `E824 0 72
- , $ . `E824 1 77
- 83 ]
-"311
-[e :U 70 ]
-[; ;main.c: 313: break;
+[; ;main.c: 312: }
+[e $U 84  ]
 "313
-[e $U 46  ]
+[e :U 82 ]
+[; ;main.c: 313: else
+[; ;main.c: 314: {
 "314
-}
-[; ;main.c: 314: }
-[; ;main.c: 316: case SET_TIME_BE_FINISHED:
-"316
-[e :U 84 ]
-[; ;main.c: 317: {
-"317
 {
-[; ;main.c: 318: PA2 = 1;
-"318
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 319: PA0 = 0;
-"319
-[e = _PA0 -> -> 0 `i `b ]
-[; ;main.c: 320: PA1 = 0;
-"320
-[e = _PA1 -> -> 0 `i `b ]
-[; ;main.c: 321: PA3 = 0;
-"321
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 322: ucWaitTime1S = 0;
-"322
-[e = F829 -> -> 0 `i `uc ]
-[; ;main.c: 323: setDAC0_ChannelValue(25);
-"323
-[e ( _setDAC0_ChannelValue (1 -> -> 25 `i `uc ]
-[; ;main.c: 324: ampStep++;
-"324
+[; ;main.c: 315: ampStep++;
+"315
 [e ++ F827 -> -> 1 `i `E813 ]
-[; ;main.c: 325: break;
-"325
-[e $U 46  ]
-"326
+"316
 }
-[; ;main.c: 326: }
-[; ;main.c: 328: case CHECKING_PULL_OUT_BATTERY:
-"328
+[e :U 84 ]
+[e :U 81 ]
+[; ;main.c: 316: }
+[; ;main.c: 317: break;
+"317
+[e $U 74  ]
+"318
+}
+[; ;main.c: 318: }
+[; ;main.c: 320: default:
+"320
 [e :U 85 ]
-[; ;main.c: 329: {
-"329
+[; ;main.c: 321: break;
+"321
+[e $U 74  ]
+"322
+}
+[; ;main.c: 322: }
+[e $U 74  ]
+"284
+[e :U 75 ]
+[e [\ F828 , $ . `E824 0 76
+ , $ . `E824 1 79
+ 85 ]
+"322
+[e :U 74 ]
+[; ;main.c: 324: break;
+"324
+[e $U 46  ]
+"325
+}
+[; ;main.c: 325: }
+[; ;main.c: 327: case SET_TIME_BE_FINISHED:
+"327
+[e :U 86 ]
+[; ;main.c: 328: {
+"328
 {
+[; ;main.c: 329: PA2 = 1;
+"329
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 330: PA0 = 0;
 "330
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 331: PA1 = 0;
+"331
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 332: PA3 = 0;
+"332
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 333: ucWaitTime1S = 0;
+"333
+[e = F829 -> -> 0 `i `uc ]
+[; ;main.c: 334: setDAC0_ChannelValue(25);
+"334
+[e ( _setDAC0_ChannelValue (1 -> -> 25 `i `uc ]
+[; ;main.c: 335: ampStep++;
+"335
+[e ++ F827 -> -> 1 `i `E813 ]
+[; ;main.c: 336: break;
+"336
+[e $U 46  ]
+"337
+}
+[; ;main.c: 337: }
+[; ;main.c: 339: case CHECKING_PULL_OUT_BATTERY:
+"339
+[e :U 87 ]
+[; ;main.c: 340: {
+"340
+{
+"341
 [v F835 `uc  1 s ucCheckBatteryCnt ]
 [i F835
 -> -> 0 `i `uc
 ]
-[; ;main.c: 330: static unsigned char ucCheckBatteryCnt = 0;
-[; ;main.c: 331: if(PB2)
-"331
-[e $ ! _PB2 86  ]
-[; ;main.c: 332: ucCheckBatteryCnt++;
-"332
-[e ++ F835 -> -> 1 `i `uc ]
-[e $U 87  ]
-"333
-[e :U 86 ]
-[; ;main.c: 333: else
-[; ;main.c: 334: ucCheckBatteryCnt = 0;
-"334
-[e = F835 -> -> 0 `i `uc ]
-[e :U 87 ]
-[; ;main.c: 336: if(ucCheckBatteryCnt > 2)
-"336
-[e $ ! > -> F835 `i -> 2 `i 88  ]
-[; ;main.c: 337: {
-"337
-{
-[; ;main.c: 338: ucCheckBatteryCnt = 0;
-"338
-[e = F835 -> -> 0 `i `uc ]
-[; ;main.c: 339: ampStep++;
-"339
-[e ++ F827 -> -> 1 `i `E813 ]
-"340
-}
-[e :U 88 ]
-[; ;main.c: 340: }
-[; ;main.c: 341: break;
-"341
-[e $U 46  ]
+[; ;main.c: 341: static unsigned char ucCheckBatteryCnt = 0;
+[; ;main.c: 342: if(PB2)
 "342
-}
-[; ;main.c: 342: }
-[; ;main.c: 344: case CHECKING_INSTALLED_BATTERY:
+[e $ ! _PB2 88  ]
+[; ;main.c: 343: ucCheckBatteryCnt++;
+"343
+[e ++ F835 -> -> 1 `i `uc ]
+[e $U 89  ]
 "344
-[e :U 89 ]
-[; ;main.c: 345: {
+[e :U 88 ]
+[; ;main.c: 344: else
+[; ;main.c: 345: ucCheckBatteryCnt = 0;
 "345
+[e = F835 -> -> 0 `i `uc ]
+[e :U 89 ]
+[; ;main.c: 347: if(ucCheckBatteryCnt > 2)
+"347
+[e $ ! > -> F835 `i -> 2 `i 90  ]
+[; ;main.c: 348: {
+"348
 {
-"346
+[; ;main.c: 349: ucCheckBatteryCnt = 0;
+"349
+[e = F835 -> -> 0 `i `uc ]
+[; ;main.c: 350: ampStep++;
+"350
+[e ++ F827 -> -> 1 `i `E813 ]
+"351
+}
+[e :U 90 ]
+[; ;main.c: 351: }
+[; ;main.c: 352: break;
+"352
+[e $U 46  ]
+"353
+}
+[; ;main.c: 353: }
+[; ;main.c: 355: case CHECKING_INSTALLED_BATTERY:
+"355
+[e :U 91 ]
+[; ;main.c: 356: {
+"356
+{
+"357
 [v F836 `uc  1 s ucInstalledBatteryCnt ]
 [i F836
 -> -> 0 `i `uc
 ]
-[; ;main.c: 346: static unsigned char ucInstalledBatteryCnt = 0;
-[; ;main.c: 347: if(!PB2)
-"347
-[e $ ! ! _PB2 90  ]
-[; ;main.c: 348: ucInstalledBatteryCnt++;
-"348
-[e ++ F836 -> -> 1 `i `uc ]
-[e $U 91  ]
-"349
-[e :U 90 ]
-[; ;main.c: 349: else
-[; ;main.c: 350: ucInstalledBatteryCnt = 0;
-"350
-[e = F836 -> -> 0 `i `uc ]
-[e :U 91 ]
-[; ;main.c: 352: if(ucInstalledBatteryCnt > 10)
-"352
-[e $ ! > -> F836 `i -> 10 `i 92  ]
-[; ;main.c: 353: {
-"353
-{
-[; ;main.c: 354: ucInstalledBatteryCnt = 0;
-"354
-[e = F836 -> -> 0 `i `uc ]
-[; ;main.c: 355: ampStep = SENSE_PB2_INPUT_VOLTAGE;
-"355
-[e = F827 . `E813 0 ]
-"356
-}
-[e :U 92 ]
-[; ;main.c: 356: }
-[; ;main.c: 357: break;
-"357
-[e $U 46  ]
+[; ;main.c: 357: static unsigned char ucInstalledBatteryCnt = 0;
+[; ;main.c: 358: if(!PB2)
 "358
-}
-[; ;main.c: 358: }
-[; ;main.c: 360: default:
+[e $ ! ! _PB2 92  ]
+[; ;main.c: 359: ucInstalledBatteryCnt++;
+"359
+[e ++ F836 -> -> 1 `i `uc ]
+[e $U 93  ]
 "360
-[e :U 93 ]
-[; ;main.c: 361: break;
+[e :U 92 ]
+[; ;main.c: 360: else
+[; ;main.c: 361: ucInstalledBatteryCnt = 0;
 "361
-[e $U 46  ]
+[e = F836 -> -> 0 `i `uc ]
+[e :U 93 ]
+[; ;main.c: 363: if(ucInstalledBatteryCnt > 10)
 "363
+[e $ ! > -> F836 `i -> 10 `i 94  ]
+[; ;main.c: 364: {
+"364
+{
+[; ;main.c: 365: ucInstalledBatteryCnt = 0;
+"365
+[e = F836 -> -> 0 `i `uc ]
+[; ;main.c: 366: ampStep = SENSE_PB2_INPUT_VOLTAGE;
+"366
+[e = F827 . `E813 0 ]
+"367
 }
-[; ;main.c: 363: }
+[e :U 94 ]
+[; ;main.c: 367: }
+[; ;main.c: 368: break;
+"368
+[e $U 46  ]
+"369
+}
+[; ;main.c: 369: }
+[; ;main.c: 371: default:
+"371
+[e :U 95 ]
+[; ;main.c: 372: break;
+"372
+[e $U 46  ]
+"374
+}
+[; ;main.c: 374: }
 [e $U 46  ]
 "147
 [e :U 47 ]
@@ -2074,25 +2103,25 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E813 3 56
  , $ . `E813 4 60
  , $ . `E813 5 61
- , $ . `E813 6 69
- , $ . `E813 7 84
- , $ . `E813 8 85
- , $ . `E813 9 89
- 93 ]
-"363
+ , $ . `E813 6 73
+ , $ . `E813 7 86
+ , $ . `E813 8 87
+ , $ . `E813 9 91
+ 95 ]
+"374
 [e :U 46 ]
-"364
+"375
 }
 [e :U 45 ]
-"365
+"376
 }
 [e :U 42 ]
 "139
 [e $U 43  ]
 [e :U 44 ]
-[; ;main.c: 364: }
-[; ;main.c: 365: }
-[; ;main.c: 366: }
-"366
+[; ;main.c: 375: }
+[; ;main.c: 376: }
+[; ;main.c: 377: }
+"377
 [e :UE 41 ]
 }

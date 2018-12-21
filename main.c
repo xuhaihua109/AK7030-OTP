@@ -220,7 +220,7 @@ void main (void)
 					   ucInit = 1;
 					   PA0 = 0;
 					   PA1 = 1;
-					   PA3 = 0;
+	//				   PA3 = 0;
 					   tDA_timer = BIG_TIMER_WORK;
 					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
 					   if(!ucBigTimerActionFlag)
@@ -246,7 +246,7 @@ void main (void)
 						   ucInit = 1;
 						   PA0 = 0;
 						   PA1 = 1;
-						   PA3 = 0;
+	//					   PA3 = 0;
 						   tDA_timer = BIG_TIMER_WORK;
 						   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
 						   if(!ucBigTimerActionFlag)
@@ -255,6 +255,24 @@ void main (void)
 							   ucBigTimerActionFlag = 1;
 						   }
 					   }
+				   }
+
+				   if(BIG_TIMER_WORK == tDA_timer)
+				   {
+					   if(!PA3)
+					   {
+						   ucWaitTime1S++;
+						   if(ucWaitTime1S >= 5) // 5 *2 *100ms = 1s, because entry PROCESS_AD_VALUE and WATI_SET_TIME_FINISHED case in big timer work mode.
+						   {
+							   PA3 = 1;
+							   ucWaitTime1S = 0;
+						   }
+					   }
+				   }
+				   else
+				   {
+					   PA3 = 0;
+					   ucWaitTime1S = 0;
 				   }
 
 				   ampStep++;
@@ -267,13 +285,6 @@ void main (void)
 				   {
 					   case BIG_TIMER_WORK:
 					   {
-							if(!PA3)
-							{
-								ucWaitTime1S++;
-								if(ucWaitTime1S >= 10)
-								PA3 = 1;
-							}
-
 						   if(!isFinishedBigTimer())
 						   {
 							   ampStep = PROCESS_AD_VALUE;
