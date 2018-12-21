@@ -108,6 +108,12 @@ void main (void)
 
 	static unsigned char ucWaitTime1S = 0;
 
+	static unsigned char ucWaitTimeO3s = 0;
+
+	static unsigned char ucSmallTimerActionFlag = 0;
+
+	static unsigned char ucSetSmallActionFlag = 0;
+
 	TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
 	TRISA1 = 0;
 	TRISA3 = 0;
@@ -232,11 +238,14 @@ void main (void)
 				   else if(getAdOriginalCh13Value() <35)
 				   {
 					   ucInit = 1;
-					   PA0 = 1;
-					   PA1 = 0;
+		//			   PA0 = 1;
+		//			   PA1 = 0;
 					   PA3 = 0;
 					   tDA_timer = SMALL_TIMER_WORK;
-					   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+					   ucSmallTimerActionFlag = 1;
+					   ucWaitTimeO3s = 0;
+					   ucSetSmallActionFlag = 1;
+		//			   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
 					   startSmallTimer();
 				   }
 				   else
@@ -307,13 +316,30 @@ void main (void)
 							   if(getAdOriginalCh13Value() > 40)
 								{
 									ucWaitTime1S = 0;
-								   ampStep = PROCESS_AD_VALUE;
+									ucSmallTimerActionFlag = 0;
+									ucSetSmallActionFlag = 0;
+								    ampStep = PROCESS_AD_VALUE;
 								}
 						   }
 						   else
 						   {
 							   ampStep++;
 						   }
+
+						   if((ucSmallTimerActionFlag)&&(ucSetSmallActionFlag))
+						   {
+							   ucWaitTimeO3s++;
+							   if(ucWaitTimeO3s >= 3)
+							   {
+								   ucWaitTimeO3s = 0;
+								   ucSetSmallActionFlag = 0;
+								   PA0 = 1;
+								   PA1 = 0;
+								   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+							   }
+
+						   }
+
 						   break;
 					   }
 
@@ -331,6 +357,8 @@ void main (void)
 				   PA1 = 0;
 				   PA3 = 0;
 				   ucWaitTime1S = 0;
+				   ucSmallTimerActionFlag = 0;
+				   ucSetSmallActionFlag = 0;
 				   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
 				   ampStep++;
 				   break;
