@@ -884,6 +884,25 @@ BIG_TIMER_WORK = 0,
 SMALL_TIMER_WORK,
 };
 
+enum bigOutputStep
+{
+BIG_TIMER_OUTPUT_FIRST_STEP = 0,
+BIG_TIMER_OUTPUT_SECOND_STEP,
+BIG_TIMER_OUTPUT_THIRD_STEP,
+BIG_TIMER_OUTPUT_FOURTH_STEP,
+};
+
+enum smallOutputStep
+{
+SMALL_TIMER_OUTPUT_FIRST_STEP = 0,
+SMALL_TIMER_OUTPUT_SECOND_STEP,
+SMALL_TIMER_OUTPUT_THIRD_STEP,
+SMALL_TIMER_OUTPUT_FOURTH_STEP,
+SMALL_TIMER_OUTPUT_FIFTH_STEP,
+SMALL_TIMER_OUTPUT_SIXTH_STEP,
+SMALL_TIMER_OUTPUT_SEVENTH_STEP,
+};
+
 static enum step ampStep;
 
 static enum workTimerType tDA_timer;
@@ -895,6 +914,10 @@ static unsigned char ucWaitTimeO3s = 0;
 static unsigned char ucSmallTimerActionFlag = 0;
 
 static unsigned char ucSetSmallActionFlag = 0;
+
+static enum bigOutputStep bigTimerOutputStep;
+
+static enum smallOutputStep smallTimerOutputStep;
 
 TRISA0 = 0;
 TRISA1 = 0;
@@ -937,6 +960,8 @@ switch(ampStep)
 case SENSE_PB2_INPUT_VOLTAGE:
 {
 ucBigTimerActionFlag = 0;
+smallTimerOutputStep = SMALL_TIMER_OUTPUT_FIRST_STEP;
+bigTimerOutputStep = BIG_TIMER_OUTPUT_FIRST_STEP;
 clearBigTimer();
 clearSmallTimer();
 if(!PB2)
@@ -1006,44 +1031,145 @@ static unsigned char ucInit = 0;
 if(getAdOriginalCh13Value() > 40)
 {
 ucInit = 1;
-PA0 = 0;
-PA1 = 1;
-
 tDA_timer = BIG_TIMER_WORK;
-setDAC0_ChannelValue(27);
+smallTimerOutputStep = SMALL_TIMER_OUTPUT_FIRST_STEP;
 if(!ucBigTimerActionFlag)
 {
 startBigTimer();
 ucBigTimerActionFlag = 1;
+}
+
+switch(bigTimerOutputStep)
+{
+case BIG_TIMER_OUTPUT_FIRST_STEP:
+{
+setDAC0_ChannelValue(25);
+bigTimerOutputStep++;
+ucWaitTime1S = 0;
+break;
+}
+
+case BIG_TIMER_OUTPUT_SECOND_STEP:
+{
+setDAC0_ChannelValue(26);
+bigTimerOutputStep++;
+ucWaitTime1S = 0;
+break;
+}
+
+case BIG_TIMER_OUTPUT_THIRD_STEP:
+{
+setDAC0_ChannelValue(27);
+PA0 = 0;
+PA1 = 1;
+ampStep++;
+
+break;
+}
+
+default:
+break;
+
 }
 }
 else if(getAdOriginalCh13Value() <35)
 {
 ucInit = 1;
-
-
-PA3 = 0;
+bigTimerOutputStep = BIG_TIMER_OUTPUT_FIRST_STEP;
 tDA_timer = SMALL_TIMER_WORK;
 ucSmallTimerActionFlag = 1;
 ucWaitTimeO3s = 0;
 ucSetSmallActionFlag = 1;
-
 startSmallTimer();
+
+switch(smallTimerOutputStep)
+{
+case SMALL_TIMER_OUTPUT_FIRST_STEP:
+{
+PA3 = 0;
+smallTimerOutputStep++;
+break;
+}
+
+case SMALL_TIMER_OUTPUT_SECOND_STEP:
+{
+smallTimerOutputStep++;
+break;
+}
+
+case SMALL_TIMER_OUTPUT_THIRD_STEP:
+{
+setDAC0_ChannelValue(27);
+smallTimerOutputStep++;
+break;
+}
+
+case SMALL_TIMER_OUTPUT_FOURTH_STEP:
+{
+setDAC0_ChannelValue(26);
+smallTimerOutputStep++;
+break;
+}
+
+case SMALL_TIMER_OUTPUT_FIFTH_STEP:
+{
+setDAC0_ChannelValue(25);
+smallTimerOutputStep++;
+PA0 = 1;
+PA1 = 0;
+ampStep++;
+break;
+}
+
+default:
+break;
+}
 }
 else
 {
 if(!ucInit)
 {
-ucInit = 1;
-PA0 = 0;
-PA1 = 1;
 
 tDA_timer = BIG_TIMER_WORK;
-setDAC0_ChannelValue(27);
+smallTimerOutputStep = SMALL_TIMER_OUTPUT_FIRST_STEP;
 if(!ucBigTimerActionFlag)
 {
 startBigTimer();
 ucBigTimerActionFlag = 1;
+}
+
+switch(bigTimerOutputStep)
+{
+case BIG_TIMER_OUTPUT_FIRST_STEP:
+{
+setDAC0_ChannelValue(25);
+bigTimerOutputStep++;
+ucWaitTime1S = 0;
+break;
+}
+
+case BIG_TIMER_OUTPUT_SECOND_STEP:
+{
+setDAC0_ChannelValue(26);
+bigTimerOutputStep++;
+ucWaitTime1S = 0;
+break;
+}
+
+case BIG_TIMER_OUTPUT_THIRD_STEP:
+{
+ucInit = 1;
+setDAC0_ChannelValue(27);
+PA0 = 0;
+PA1 = 1;
+ampStep++;
+
+break;
+}
+
+default:
+break;
+
 }
 }
 }
@@ -1066,7 +1192,7 @@ PA3 = 0;
 ucWaitTime1S = 0;
 }
 
-ampStep++;
+
 break;
 }
 
@@ -1108,20 +1234,7 @@ else
 ampStep++;
 }
 
-if((ucSmallTimerActionFlag)&&(ucSetSmallActionFlag))
-{
-ucWaitTimeO3s++;
-if(ucWaitTimeO3s >= 3)
-{
-ucWaitTimeO3s = 0;
-ucSetSmallActionFlag = 0;
-PA0 = 1;
-PA1 = 0;
-setDAC0_ChannelValue(25);
-}
-
-}
-
+# 469
 break;
 }
 

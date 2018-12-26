@@ -102,6 +102,25 @@ void main (void)
 		SMALL_TIMER_WORK,
 	};
 
+	enum bigOutputStep
+	{
+		BIG_TIMER_OUTPUT_FIRST_STEP = 0,
+		BIG_TIMER_OUTPUT_SECOND_STEP,
+		BIG_TIMER_OUTPUT_THIRD_STEP,
+		BIG_TIMER_OUTPUT_FOURTH_STEP,
+	};
+
+	enum smallOutputStep
+	{
+		SMALL_TIMER_OUTPUT_FIRST_STEP = 0,
+		SMALL_TIMER_OUTPUT_SECOND_STEP,
+		SMALL_TIMER_OUTPUT_THIRD_STEP,
+		SMALL_TIMER_OUTPUT_FOURTH_STEP,
+		SMALL_TIMER_OUTPUT_FIFTH_STEP,
+		SMALL_TIMER_OUTPUT_SIXTH_STEP,
+		SMALL_TIMER_OUTPUT_SEVENTH_STEP,
+	};
+
 	static enum step ampStep;
 
 	static enum workTimerType tDA_timer;
@@ -113,6 +132,10 @@ void main (void)
 	static unsigned char ucSmallTimerActionFlag = 0;
 
 	static unsigned char ucSetSmallActionFlag = 0;
+
+	static enum bigOutputStep bigTimerOutputStep;
+
+	static enum smallOutputStep smallTimerOutputStep;
 
 	TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
 	TRISA1 = 0;
@@ -155,6 +178,8 @@ void main (void)
     	   	   case SENSE_PB2_INPUT_VOLTAGE:
     	   	   {
     	   		   ucBigTimerActionFlag = 0;
+    	   		smallTimerOutputStep = SMALL_TIMER_OUTPUT_FIRST_STEP;
+    	   		bigTimerOutputStep = BIG_TIMER_OUTPUT_FIRST_STEP;
     	   		   clearBigTimer();
     	   		   clearSmallTimer();
     	   		   if(!PB2)
@@ -224,44 +249,145 @@ void main (void)
 				   if(getAdOriginalCh13Value() > 40)
 				   {
 					   ucInit = 1;
-					   PA0 = 0;
-					   PA1 = 1;
-	//				   PA3 = 0;
 					   tDA_timer = BIG_TIMER_WORK;
-					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+					   smallTimerOutputStep = SMALL_TIMER_OUTPUT_FIRST_STEP;
 					   if(!ucBigTimerActionFlag)
 					   {
 						   startBigTimer();
 						   ucBigTimerActionFlag = 1;
 					   }
+
+					   switch(bigTimerOutputStep)
+					   {
+					   	   case BIG_TIMER_OUTPUT_FIRST_STEP:
+					   	   {
+					   		   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+					   		   bigTimerOutputStep++;
+					   		   ucWaitTime1S = 0;
+					   		   break;
+					   	   }
+
+					   	 case BIG_TIMER_OUTPUT_SECOND_STEP:
+						   {
+							   setDAC0_ChannelValue(26);// (26/64)*5v = 2.03v
+							   bigTimerOutputStep++;
+							   ucWaitTime1S = 0;
+							   break;
+						   }
+
+					   	case BIG_TIMER_OUTPUT_THIRD_STEP:
+						   {
+							   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+							   PA0 = 0;
+							   PA1 = 1;
+							   ampStep++;
+							//   bigTimerOutputStep++; to keep this phase, not add by self
+							   break;
+						   }
+
+					   	default:
+						   break;
+
+					   }
 				   }
 				   else if(getAdOriginalCh13Value() <35)
 				   {
 					   ucInit = 1;
-		//			   PA0 = 1;
-		//			   PA1 = 0;
-					   PA3 = 0;
+					   bigTimerOutputStep = BIG_TIMER_OUTPUT_FIRST_STEP;
 					   tDA_timer = SMALL_TIMER_WORK;
 					   ucSmallTimerActionFlag = 1;
 					   ucWaitTimeO3s = 0;
 					   ucSetSmallActionFlag = 1;
-		//			   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
 					   startSmallTimer();
+
+					   switch(smallTimerOutputStep)
+					   {
+					   	   case SMALL_TIMER_OUTPUT_FIRST_STEP:
+					   	   {
+					   		   PA3 = 0;
+					   		   smallTimerOutputStep++;
+					   		   break;
+					   	   }
+
+					   	 case SMALL_TIMER_OUTPUT_SECOND_STEP:
+						   {
+							   smallTimerOutputStep++;
+							   break;
+						   }
+
+					   	 case SMALL_TIMER_OUTPUT_THIRD_STEP:
+						   {
+							   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+							   smallTimerOutputStep++;
+							   break;
+						   }
+
+					   	case SMALL_TIMER_OUTPUT_FOURTH_STEP:
+						   {
+							   setDAC0_ChannelValue(26);// (26/64)*5v = 2.03v
+							   smallTimerOutputStep++;
+							   break;
+						   }
+
+						case SMALL_TIMER_OUTPUT_FIFTH_STEP:
+						   {
+							   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+							   smallTimerOutputStep++;
+							   PA0 = 1;
+							   PA1 = 0;
+							   ampStep++;
+							   break;
+						   }
+
+						   default:
+							   break;
+					   }
 				   }
 				   else
 				   {
 					   if(!ucInit)
 					   {
-						   ucInit = 1;
-						   PA0 = 0;
-						   PA1 = 1;
-	//					   PA3 = 0;
+
 						   tDA_timer = BIG_TIMER_WORK;
-						   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+						   smallTimerOutputStep = SMALL_TIMER_OUTPUT_FIRST_STEP;
 						   if(!ucBigTimerActionFlag)
 						   {
 							   startBigTimer();
 							   ucBigTimerActionFlag = 1;
+						   }
+
+						   switch(bigTimerOutputStep)
+						   {
+							   case BIG_TIMER_OUTPUT_FIRST_STEP:
+							   {
+								   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+								   bigTimerOutputStep++;
+								   ucWaitTime1S = 0;
+								   break;
+							   }
+
+							 case BIG_TIMER_OUTPUT_SECOND_STEP:
+							   {
+								   setDAC0_ChannelValue(26);// (26/64)*5v = 2.03v
+								   bigTimerOutputStep++;
+								   ucWaitTime1S = 0;
+								   break;
+							   }
+
+							case BIG_TIMER_OUTPUT_THIRD_STEP:
+							   {
+								   ucInit = 1;
+								   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+								   PA0 = 0;
+								   PA1 = 1;
+								   ampStep++;
+								//   bigTimerOutputStep++; to keep this phase, not add by self
+								   break;
+							   }
+
+							default:
+							   break;
+
 						   }
 					   }
 				   }
@@ -284,7 +410,7 @@ void main (void)
 					   ucWaitTime1S = 0;
 				   }
 
-				   ampStep++;
+				//   ampStep++;
 				   break;
 			   }
 
@@ -326,19 +452,19 @@ void main (void)
 							   ampStep++;
 						   }
 
-						   if((ucSmallTimerActionFlag)&&(ucSetSmallActionFlag))
-						   {
-							   ucWaitTimeO3s++;
-							   if(ucWaitTimeO3s >= 3)
-							   {
-								   ucWaitTimeO3s = 0;
-								   ucSetSmallActionFlag = 0;
-								   PA0 = 1;
-								   PA1 = 0;
-								   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
-							   }
-
-						   }
+//						   if((ucSmallTimerActionFlag)&&(ucSetSmallActionFlag))
+//						   {
+//							   ucWaitTimeO3s++;
+//							   if(ucWaitTimeO3s >= 3)
+//							   {
+//								   ucWaitTimeO3s = 0;
+//								   ucSetSmallActionFlag = 0;
+//								   PA0 = 1;
+//								   PA1 = 0;
+//								   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+//							   }
+//
+//						   }
 
 						   break;
 					   }
