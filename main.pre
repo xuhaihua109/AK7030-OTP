@@ -1,5 +1,5 @@
 
-# 1 "C:\sw_dev\AK7030-OTP\main.c"
+# 1 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\main.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\sw_dev\AK7030-OTP\yn8p520.h"
+# 164 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,7 +799,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 21 "C:\sw_dev\AK7030-OTP\common.h"
+# 21 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -840,7 +840,7 @@ unsigned char isFinishedSmallTimer();
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
 
-# 13 "C:\sw_dev\AK7030-OTP\periph.h"
+# 13 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
@@ -852,7 +852,7 @@ void adc_start();
 unsigned int adc_get(void);
 
 
-# 26 "C:\sw_dev\AK7030-OTP\main.c"
+# 26 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\main.c"
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
@@ -871,6 +871,7 @@ SENSE_PB2_DURATION_ONE_SECOND,
 SENSE_PB2_INPUT_VOLTAGE__AGAIN,
 SENSE_PB2_DURATION__SECOND,
 SET_PA2_VALUE,
+ADC1_VALUE_MEET_CONDITION,
 PROCESS_AD_VALUE,
 WAIT_SET_TIME_FINISHED,
 SET_TIME_BE_FINISHED,
@@ -900,6 +901,7 @@ TRISA0 = 0;
 TRISA1 = 0;
 TRISA3 = 0;
 TRISA2 = 0;
+TRISA6 = 0;
 PA2 = 1;
 PA0 = 1;
 
@@ -984,7 +986,7 @@ else
 ucConfirmTimerZptS = 0;
 }
 
-if(ucConfirmTimerZptS >= 3)
+if(ucConfirmTimerZptS >= 10)
 {
 ucConfirmTimerZptS = 0;
 ampStep++;
@@ -1000,28 +1002,38 @@ ampStep++;
 break;
 }
 
+case ADC1_VALUE_MEET_CONDITION:
+{
+static unsigned char ucConFirmationTime = 0;
+if(getAdOriginalCh12Value() >= 2341)
+ucConFirmationTime++;
+else
+ucConFirmationTime = 0;
+break;
+}
+
 case PROCESS_AD_VALUE:
 {
 static unsigned char ucInit = 0;
-if(getAdOriginalCh13Value() > 40)
+if(getAdOriginalCh13Value() > 36)
 {
 ucInit = 1;
 PA0 = 0;
 PA1 = 1;
-
+PA3 = 1;
 tDA_timer = BIG_TIMER_WORK;
-setDAC0_ChannelValue(27);
+
 if(!ucBigTimerActionFlag)
 {
 startBigTimer();
 ucBigTimerActionFlag = 1;
 }
 }
-else if(getAdOriginalCh13Value() <35)
+else if(getAdOriginalCh13Value() <31)
 {
 ucInit = 1;
-
-
+PA0 = 1;
+PA1 = 0;
 PA3 = 0;
 tDA_timer = SMALL_TIMER_WORK;
 ucSmallTimerActionFlag = 1;
@@ -1037,9 +1049,9 @@ if(!ucInit)
 ucInit = 1;
 PA0 = 0;
 PA1 = 1;
-
+PA3 = 1;
 tDA_timer = BIG_TIMER_WORK;
-setDAC0_ChannelValue(27);
+
 if(!ucBigTimerActionFlag)
 {
 startBigTimer();
@@ -1048,23 +1060,6 @@ ucBigTimerActionFlag = 1;
 }
 }
 
-if(BIG_TIMER_WORK == tDA_timer)
-{
-if(!PA3)
-{
-ucWaitTime1S++;
-if(ucWaitTime1S >= 5)
-{
-PA3 = 1;
-ucWaitTime1S = 0;
-}
-}
-}
-else
-{
-PA3 = 0;
-ucWaitTime1S = 0;
-}
 
 ampStep++;
 break;
@@ -1078,7 +1073,7 @@ case BIG_TIMER_WORK:
 {
 if(!isFinishedBigTimer())
 {
-ampStep = PROCESS_AD_VALUE;
+ampStep = ADC1_VALUE_MEET_CONDITION;
 }
 else
 {
@@ -1095,31 +1090,17 @@ ampStep++;
 }
 else if(!isFinishedSmallTimer())
 {
-if(getAdOriginalCh13Value() > 40)
+if(getAdOriginalCh13Value() > 36)
 {
 ucWaitTime1S = 0;
 ucSmallTimerActionFlag = 0;
 ucSetSmallActionFlag = 0;
-ampStep = PROCESS_AD_VALUE;
+ampStep = ADC1_VALUE_MEET_CONDITION;
 }
 }
 else
 {
 ampStep++;
-}
-
-if((ucSmallTimerActionFlag)&&(ucSetSmallActionFlag))
-{
-ucWaitTimeO3s++;
-if(ucWaitTimeO3s >= 3)
-{
-ucWaitTimeO3s = 0;
-ucSetSmallActionFlag = 0;
-PA0 = 1;
-PA1 = 0;
-setDAC0_ChannelValue(25);
-}
-
 }
 
 break;
@@ -1141,7 +1122,7 @@ PA3 = 0;
 ucWaitTime1S = 0;
 ucSmallTimerActionFlag = 0;
 ucSetSmallActionFlag = 0;
-setDAC0_ChannelValue(25);
+
 ampStep++;
 break;
 }

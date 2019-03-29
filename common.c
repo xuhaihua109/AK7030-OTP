@@ -96,7 +96,7 @@ void process_AD_Converter_Value()
 	{
 		setAD_ConvertFlag(0);
 		AD_Sample();
-//		setAdcSampleChannel(sampleChannelSelect);
+		setAdcSampleChannel(sampleChannelSelect);
 		adc_start();	//ADCÆô¶¯
 	}
 }
@@ -144,9 +144,9 @@ static void AD_Sample(void)
 			{
 				  //filter max and min value,then calculate average value
 				sampleCH13Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_1_CHANNEL;
 			}
-			else if(sampleChannelSelect == AD_CHANNEL_12_CHANNEL)
+			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
 			{
 				sampleCH12Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
 				sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
@@ -184,7 +184,7 @@ void setDAC0_ChannelValue(unsigned char ucValue)
 
 void startBigTimer()
 {
-	uiBigTimer = 34200; //34200s = 9.5h
+	uiBigTimer = 32400; //34200s = 9.5h
 
 #ifdef DEBUG_FUNCITON
 
@@ -206,7 +206,7 @@ void clearSmallTimer()
 
 void startSmallTimer()
 {
-	uiSmallTimer = 10800; //10800 = 3h
+	uiSmallTimer = 3600; //3600 = 1h
 #ifdef DEBUG_FUNCITON
 
 	uiSmallTimer = 180;
@@ -271,7 +271,7 @@ void interrupt ISR(void)
 		ADIF=0;
 		setAD_ConvertFlag(1);
 		adc_original_value = adc_get();
-		if(sampleChannelSelect == AD_CHANNEL_12_CHANNEL)
+		if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
 			adc_original_CH12_value = adc_get();
 		else
 			adc_original_CH13_value = adc_get();

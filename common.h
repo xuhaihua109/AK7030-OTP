@@ -15,7 +15,7 @@
 
 #define AD_CHANNEL_13_CHANNEL            13
 
-#define AD_CHANNEL_12_CHANNEL            12
+#define AD_CHANNEL_1_CHANNEL            1
 
 
 void clock_config();

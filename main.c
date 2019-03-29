@@ -89,6 +89,7 @@ void main (void)
 		SENSE_PB2_INPUT_VOLTAGE__AGAIN,
 		SENSE_PB2_DURATION__SECOND,
 		SET_PA2_VALUE,
+		ADC1_VALUE_MEET_CONDITION,
 		PROCESS_AD_VALUE,
 		WAIT_SET_TIME_FINISHED,
 		SET_TIME_BE_FINISHED,
@@ -118,6 +119,7 @@ void main (void)
 	TRISA1 = 0;
 	TRISA3 = 0;
 	TRISA2 = 0;
+	TRISA6 = 0;
 	PA2 = 1;
 	PA0 = 1;
 
@@ -202,7 +204,7 @@ void main (void)
 						 ucConfirmTimerZptS = 0;
 					 }
 
-					 if(ucConfirmTimerZptS >= 3) //100ms*3 = 0.3s
+					 if(ucConfirmTimerZptS >= 10) //100ms*3 = 0.3s
 					 {
 						 ucConfirmTimerZptS = 0;
 						 ampStep++;
@@ -218,28 +220,38 @@ void main (void)
 				   break;
 			   }
 
+			   case ADC1_VALUE_MEET_CONDITION:
+			   {
+				   static unsigned char ucConFirmationTime = 0;
+				   if(getAdOriginalCh12Value() >= 2341)
+					   ucConFirmationTime++;
+				   else
+					   ucConFirmationTime = 0;
+				   break;
+			   }
+
 			   case PROCESS_AD_VALUE:
 			   {
 				   static unsigned char ucInit = 0;
-				   if(getAdOriginalCh13Value() > 40)
+				   if(getAdOriginalCh13Value() > 36)
 				   {
 					   ucInit = 1;
 					   PA0 = 0;
 					   PA1 = 1;
-	//				   PA3 = 0;
+					   PA3 = 1;
 					   tDA_timer = BIG_TIMER_WORK;
-					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+					//   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
 					   if(!ucBigTimerActionFlag)
 					   {
 						   startBigTimer();
 						   ucBigTimerActionFlag = 1;
 					   }
 				   }
-				   else if(getAdOriginalCh13Value() <35)
+				   else if(getAdOriginalCh13Value() <31)
 				   {
 					   ucInit = 1;
-		//			   PA0 = 1;
-		//			   PA1 = 0;
+					   PA0 = 1;
+					   PA1 = 0;
 					   PA3 = 0;
 					   tDA_timer = SMALL_TIMER_WORK;
 					   ucSmallTimerActionFlag = 1;
@@ -255,9 +267,9 @@ void main (void)
 						   ucInit = 1;
 						   PA0 = 0;
 						   PA1 = 1;
-	//					   PA3 = 0;
+						   PA3 = 1;
 						   tDA_timer = BIG_TIMER_WORK;
-						   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
+	//					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
 						   if(!ucBigTimerActionFlag)
 						   {
 							   startBigTimer();
@@ -266,23 +278,6 @@ void main (void)
 					   }
 				   }
 
-				   if(BIG_TIMER_WORK == tDA_timer)
-				   {
-					   if(!PA3)
-					   {
-						   ucWaitTime1S++;
-						   if(ucWaitTime1S >= 5) // 5 *2 *100ms = 1s, because entry PROCESS_AD_VALUE and WATI_SET_TIME_FINISHED case in big timer work mode.
-						   {
-							   PA3 = 1;
-							   ucWaitTime1S = 0;
-						   }
-					   }
-				   }
-				   else
-				   {
-					   PA3 = 0;
-					   ucWaitTime1S = 0;
-				   }
 
 				   ampStep++;
 				   break;
@@ -296,7 +291,7 @@ void main (void)
 					   {
 						   if(!isFinishedBigTimer())
 						   {
-							   ampStep = PROCESS_AD_VALUE;
+							   ampStep = ADC1_VALUE_MEET_CONDITION;
 						   }
 						   else
 						   {
@@ -313,31 +308,17 @@ void main (void)
 						   }
 						   else if(!isFinishedSmallTimer())
 						   {
-							   if(getAdOriginalCh13Value() > 40)
+							   if(getAdOriginalCh13Value() > 36)
 								{
 									ucWaitTime1S = 0;
 									ucSmallTimerActionFlag = 0;
 									ucSetSmallActionFlag = 0;
-								    ampStep = PROCESS_AD_VALUE;
+								    ampStep = ADC1_VALUE_MEET_CONDITION;
 								}
 						   }
 						   else
 						   {
 							   ampStep++;
-						   }
-
-						   if((ucSmallTimerActionFlag)&&(ucSetSmallActionFlag))
-						   {
-							   ucWaitTimeO3s++;
-							   if(ucWaitTimeO3s >= 3)
-							   {
-								   ucWaitTimeO3s = 0;
-								   ucSetSmallActionFlag = 0;
-								   PA0 = 1;
-								   PA1 = 0;
-								   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
-							   }
-
 						   }
 
 						   break;
@@ -359,7 +340,7 @@ void main (void)
 				   ucWaitTime1S = 0;
 				   ucSmallTimerActionFlag = 0;
 				   ucSetSmallActionFlag = 0;
-				   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
+//				   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
 				   ampStep++;
 				   break;
 			   }

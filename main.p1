@@ -1,27 +1,27 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"164 C:\sw_dev\AK7030-OTP\yn8p520.h
+"164 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INDF `Vuc  1 e@0 ]
-"168 C:\sw_dev\AK7030-OTP\yn8p520.h
+"168 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _LVDCON `Vuc  1 e@1 ]
-"171 C:\sw_dev\AK7030-OTP\yn8p520.h
+"171 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PCL `Vuc  1 e@2 ]
-"175 C:\sw_dev\AK7030-OTP\yn8p520.h
+"175 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _STATUS `Vuc  1 e@3 ]
-"177 C:\sw_dev\AK7030-OTP\yn8p520.h
+"177 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CARRY `Vb  1 e@24 ]
-"178 C:\sw_dev\AK7030-OTP\yn8p520.h
+"178 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _DC `Vb  1 e@25 ]
-"179 C:\sw_dev\AK7030-OTP\yn8p520.h
+"179 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ZERO `Vb  1 e@26 ]
-"180 C:\sw_dev\AK7030-OTP\yn8p520.h
+"180 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nPD `Vb  1 e@27 ]
-"181 C:\sw_dev\AK7030-OTP\yn8p520.h
+"181 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nTO `Vb  1 e@28 ]
-"182 C:\sw_dev\AK7030-OTP\yn8p520.h
+"182 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _IRP `Vb  1 e@31 ]
-"183 C:\sw_dev\AK7030-OTP\yn8p520.h
+"183 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RP0 `Vb  1 e@29 ]
-"184 C:\sw_dev\AK7030-OTP\yn8p520.h
+"184 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RP1 `Vb  1 e@30 ]
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
 [n S3 . C DC Z nPD nTO RP IRP ]
@@ -29,99 +29,99 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S4 . . RP0 RP1 ]
 [u S2 `S3 1 `S4 1 ]
 [n S2 . . . ]
-"201 C:\sw_dev\AK7030-OTP\yn8p520.h
+"201 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _STATUSbits `VS2  1 e@3 ]
-"205 C:\sw_dev\AK7030-OTP\yn8p520.h
+"205 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _FSR `Vuc  1 e@4 ]
-"209 C:\sw_dev\AK7030-OTP\yn8p520.h
+"209 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PORTA `Vuc  1 e@5 ]
-"211 C:\sw_dev\AK7030-OTP\yn8p520.h
+"211 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PA0 `Vb  1 e@40 ]
-"212 C:\sw_dev\AK7030-OTP\yn8p520.h
+"212 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PA1 `Vb  1 e@41 ]
-"213 C:\sw_dev\AK7030-OTP\yn8p520.h
+"213 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PA2 `Vb  1 e@42 ]
-"214 C:\sw_dev\AK7030-OTP\yn8p520.h
+"214 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PA3 `Vb  1 e@43 ]
-"215 C:\sw_dev\AK7030-OTP\yn8p520.h
+"215 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PA4 `Vb  1 e@44 ]
-"216 C:\sw_dev\AK7030-OTP\yn8p520.h
+"216 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PA5 `Vb  1 e@45 ]
-"217 C:\sw_dev\AK7030-OTP\yn8p520.h
+"217 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PA6 `Vb  1 e@46 ]
-"218 C:\sw_dev\AK7030-OTP\yn8p520.h
+"218 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PA7 `Vb  1 e@47 ]
-"221 C:\sw_dev\AK7030-OTP\yn8p520.h
+"221 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PORTB `Vuc  1 e@6 ]
-"223 C:\sw_dev\AK7030-OTP\yn8p520.h
+"223 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PB0 `Vb  1 e@48 ]
-"224 C:\sw_dev\AK7030-OTP\yn8p520.h
+"224 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PB1 `Vb  1 e@49 ]
-"225 C:\sw_dev\AK7030-OTP\yn8p520.h
+"225 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PB2 `Vb  1 e@50 ]
-"226 C:\sw_dev\AK7030-OTP\yn8p520.h
+"226 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PB3 `Vb  1 e@51 ]
-"227 C:\sw_dev\AK7030-OTP\yn8p520.h
+"227 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PB4 `Vb  1 e@52 ]
-"228 C:\sw_dev\AK7030-OTP\yn8p520.h
+"228 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PB5 `Vb  1 e@53 ]
-"229 C:\sw_dev\AK7030-OTP\yn8p520.h
+"229 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PB6 `Vb  1 e@54 ]
-"230 C:\sw_dev\AK7030-OTP\yn8p520.h
+"230 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PB7 `Vb  1 e@55 ]
-"233 C:\sw_dev\AK7030-OTP\yn8p520.h
+"233 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR0L `Vuc  1 e@7 ]
-"234 C:\sw_dev\AK7030-OTP\yn8p520.h
+"234 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR0H `Vuc  1 e@8 ]
-"238 C:\sw_dev\AK7030-OTP\yn8p520.h
+"238 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR0 `Vui  1 e@7 ]
-"241 C:\sw_dev\AK7030-OTP\yn8p520.h
+"241 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T0CON `Vui  1 e@9 ]
-"244 C:\sw_dev\AK7030-OTP\yn8p520.h
+"244 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T0PS0 `Vb  1 e@72 ]
-"245 C:\sw_dev\AK7030-OTP\yn8p520.h
+"245 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T0PS1 `Vb  1 e@73 ]
-"246 C:\sw_dev\AK7030-OTP\yn8p520.h
+"246 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T0PS2 `Vb  1 e@74 ]
-"247 C:\sw_dev\AK7030-OTP\yn8p520.h
+"247 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PSA `Vb  1 e@75 ]
-"248 C:\sw_dev\AK7030-OTP\yn8p520.h
+"248 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T0SE `Vb  1 e@76 ]
-"249 C:\sw_dev\AK7030-OTP\yn8p520.h
+"249 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T0CS `Vb  1 e@77 ]
-"250 C:\sw_dev\AK7030-OTP\yn8p520.h
+"250 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T08BIT `Vb  1 e@78 ]
-"251 C:\sw_dev\AK7030-OTP\yn8p520.h
+"251 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR0ON `Vb  1 e@79 ]
-"254 C:\sw_dev\AK7030-OTP\yn8p520.h
+"254 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PCLATH `Vuc  1 e@10 ]
 [s S6 :4 `uc 1 ]
 [n S6 . . ]
 [u S5 `S6 1 ]
 [n S5 . . ]
-"261 C:\sw_dev\AK7030-OTP\yn8p520.h
+"261 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PCLATHbits `VS5  1 e@10 ]
-"265 C:\sw_dev\AK7030-OTP\yn8p520.h
+"265 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INTCON `Vuc  1 e@11 ]
-"267 C:\sw_dev\AK7030-OTP\yn8p520.h
+"267 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RBIF `Vb  1 e@88 ]
-"268 C:\sw_dev\AK7030-OTP\yn8p520.h
+"268 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INT0IF `Vb  1 e@89 ]
-"269 C:\sw_dev\AK7030-OTP\yn8p520.h
+"269 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T0IF `Vb  1 e@90 ]
-"270 C:\sw_dev\AK7030-OTP\yn8p520.h
+"270 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RBIE `Vb  1 e@91 ]
-"271 C:\sw_dev\AK7030-OTP\yn8p520.h
+"271 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INT0IE `Vb  1 e@92 ]
-"272 C:\sw_dev\AK7030-OTP\yn8p520.h
+"272 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T0IE `Vb  1 e@93 ]
-"273 C:\sw_dev\AK7030-OTP\yn8p520.h
+"273 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PEIE `Vb  1 e@94 ]
-"274 C:\sw_dev\AK7030-OTP\yn8p520.h
+"274 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _GIE `Vb  1 e@95 ]
-"275 C:\sw_dev\AK7030-OTP\yn8p520.h
+"275 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR0IF `Vb  1 e@90 ]
-"276 C:\sw_dev\AK7030-OTP\yn8p520.h
+"276 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR0IE `Vb  1 e@93 ]
 [s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S8 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
@@ -129,121 +129,121 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S9 . . TMR0IF . TMR0IE ]
 [u S7 `S8 1 `S9 1 ]
 [n S7 . . . ]
-"295 C:\sw_dev\AK7030-OTP\yn8p520.h
+"295 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INTCONbits `VS7  1 e@11 ]
-"300 C:\sw_dev\AK7030-OTP\yn8p520.h
+"300 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PIR1 `Vuc  1 e@12 ]
-"302 C:\sw_dev\AK7030-OTP\yn8p520.h
+"302 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR1IF `Vb  1 e@96 ]
-"303 C:\sw_dev\AK7030-OTP\yn8p520.h
+"303 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR2IF `Vb  1 e@97 ]
-"304 C:\sw_dev\AK7030-OTP\yn8p520.h
+"304 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1IF `Vb  1 e@98 ]
-"305 C:\sw_dev\AK7030-OTP\yn8p520.h
+"305 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPIF `Vb  1 e@99 ]
-"306 C:\sw_dev\AK7030-OTP\yn8p520.h
+"306 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TXIF `Vb  1 e@100 ]
-"307 C:\sw_dev\AK7030-OTP\yn8p520.h
+"307 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RCIF `Vb  1 e@101 ]
-"308 C:\sw_dev\AK7030-OTP\yn8p520.h
+"308 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INT1IF `Vb  1 e@102 ]
-"309 C:\sw_dev\AK7030-OTP\yn8p520.h
+"309 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INT2IF `Vb  1 e@103 ]
-"312 C:\sw_dev\AK7030-OTP\yn8p520.h
+"312 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PIR2 `Vuc  1 e@13 ]
-"314 C:\sw_dev\AK7030-OTP\yn8p520.h
+"314 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP1IF `Vb  1 e@104 ]
-"315 C:\sw_dev\AK7030-OTP\yn8p520.h
+"315 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP2IF `Vb  1 e@105 ]
-"316 C:\sw_dev\AK7030-OTP\yn8p520.h
+"316 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADIF `Vb  1 e@106 ]
-"317 C:\sw_dev\AK7030-OTP\yn8p520.h
+"317 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _LVDIF `Vb  1 e@107 ]
-"318 C:\sw_dev\AK7030-OTP\yn8p520.h
+"318 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWMIF `Vb  1 e@108 ]
-"319 C:\sw_dev\AK7030-OTP\yn8p520.h
+"319 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _BCLIF `Vb  1 e@109 ]
-"323 C:\sw_dev\AK7030-OTP\yn8p520.h
+"323 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR1L `Vuc  1 e@14 ]
-"327 C:\sw_dev\AK7030-OTP\yn8p520.h
+"327 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR1H `Vuc  1 e@15 ]
-"331 C:\sw_dev\AK7030-OTP\yn8p520.h
+"331 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR1 `Vui  1 e@14 ]
-"334 C:\sw_dev\AK7030-OTP\yn8p520.h
+"334 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T1CON `Vuc  1 e@16 ]
-"336 C:\sw_dev\AK7030-OTP\yn8p520.h
+"336 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR1ON `Vb  1 e@128 ]
-"337 C:\sw_dev\AK7030-OTP\yn8p520.h
+"337 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR1CS `Vb  1 e@129 ]
-"338 C:\sw_dev\AK7030-OTP\yn8p520.h
+"338 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nT1SYNC `Vb  1 e@130 ]
-"339 C:\sw_dev\AK7030-OTP\yn8p520.h
+"339 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T1OSCEN `Vb  1 e@131 ]
-"340 C:\sw_dev\AK7030-OTP\yn8p520.h
+"340 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T1INSYNC `Vb  1 e@130 ]
-"341 C:\sw_dev\AK7030-OTP\yn8p520.h
+"341 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T1CKPS0 `Vb  1 e@132 ]
-"342 C:\sw_dev\AK7030-OTP\yn8p520.h
+"342 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T1CKPS1 `Vb  1 e@133 ]
-"343 C:\sw_dev\AK7030-OTP\yn8p520.h
+"343 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RD16 `Vb  1 e@135 ]
-"346 C:\sw_dev\AK7030-OTP\yn8p520.h
+"346 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR2 `Vuc  1 e@17 ]
-"350 C:\sw_dev\AK7030-OTP\yn8p520.h
+"350 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T2CON `Vuc  1 e@18 ]
-"353 C:\sw_dev\AK7030-OTP\yn8p520.h
+"353 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T2CKPS0 `Vb  1 e@144 ]
-"354 C:\sw_dev\AK7030-OTP\yn8p520.h
+"354 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _T2CKPS1 `Vb  1 e@145 ]
-"355 C:\sw_dev\AK7030-OTP\yn8p520.h
+"355 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR2ON `Vb  1 e@146 ]
-"356 C:\sw_dev\AK7030-OTP\yn8p520.h
+"356 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TOUTPS0 `Vb  1 e@147 ]
-"357 C:\sw_dev\AK7030-OTP\yn8p520.h
+"357 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TOUTPS1 `Vb  1 e@148 ]
-"358 C:\sw_dev\AK7030-OTP\yn8p520.h
+"358 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TOUTPS2 `Vb  1 e@149 ]
-"359 C:\sw_dev\AK7030-OTP\yn8p520.h
+"359 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TOUTPS3 `Vb  1 e@150 ]
-"362 C:\sw_dev\AK7030-OTP\yn8p520.h
+"362 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPBUF `Vuc  1 e@19 ]
-"366 C:\sw_dev\AK7030-OTP\yn8p520.h
+"366 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPCON `Vuc  1 e@20 ]
-"368 C:\sw_dev\AK7030-OTP\yn8p520.h
+"368 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CKP `Vb  1 e@164 ]
-"369 C:\sw_dev\AK7030-OTP\yn8p520.h
+"369 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPEN `Vb  1 e@165 ]
-"370 C:\sw_dev\AK7030-OTP\yn8p520.h
+"370 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPOV `Vb  1 e@166 ]
-"371 C:\sw_dev\AK7030-OTP\yn8p520.h
+"371 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _WCOL `Vb  1 e@167 ]
-"372 C:\sw_dev\AK7030-OTP\yn8p520.h
+"372 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPM0 `Vb  1 e@160 ]
-"373 C:\sw_dev\AK7030-OTP\yn8p520.h
+"373 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPM1 `Vb  1 e@161 ]
-"374 C:\sw_dev\AK7030-OTP\yn8p520.h
+"374 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPM2 `Vb  1 e@162 ]
-"375 C:\sw_dev\AK7030-OTP\yn8p520.h
+"375 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPM3 `Vb  1 e@163 ]
-"378 C:\sw_dev\AK7030-OTP\yn8p520.h
+"378 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCPR1L `Vuc  1 e@21 ]
-"382 C:\sw_dev\AK7030-OTP\yn8p520.h
+"382 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCPR1H `Vuc  1 e@22 ]
-"386 C:\sw_dev\AK7030-OTP\yn8p520.h
+"386 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCPR1 `Vui  1 e@21 ]
-"389 C:\sw_dev\AK7030-OTP\yn8p520.h
+"389 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1CON `Vuc  1 e@23 ]
-"391 C:\sw_dev\AK7030-OTP\yn8p520.h
+"391 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1M0 `Vb  1 e@184 ]
-"392 C:\sw_dev\AK7030-OTP\yn8p520.h
+"392 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1M1 `Vb  1 e@185 ]
-"393 C:\sw_dev\AK7030-OTP\yn8p520.h
+"393 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1M2 `Vb  1 e@186 ]
-"394 C:\sw_dev\AK7030-OTP\yn8p520.h
+"394 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1M3 `Vb  1 e@187 ]
-"395 C:\sw_dev\AK7030-OTP\yn8p520.h
+"395 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1Y `Vb  1 e@188 ]
-"396 C:\sw_dev\AK7030-OTP\yn8p520.h
+"396 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1X `Vb  1 e@189 ]
 [s S11 :4 `uc 1 :2 `uc 1 ]
 [n S11 . CCP1M DC1B ]
@@ -251,39 +251,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S12 . CCP1M0 CCP1M1 CCP1M2 CCP1M3 CCP1Y CCP1X ]
 [u S10 `S11 1 `S12 1 ]
 [n S10 . . . ]
-"411 C:\sw_dev\AK7030-OTP\yn8p520.h
+"411 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1CONbits `VS10  1 e@23 ]
-"415 C:\sw_dev\AK7030-OTP\yn8p520.h
+"415 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RCSTA `Vuc  1 e@24 ]
-"417 C:\sw_dev\AK7030-OTP\yn8p520.h
+"417 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RX9D `Vb  1 e@192 ]
-"418 C:\sw_dev\AK7030-OTP\yn8p520.h
+"418 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OERR `Vb  1 e@193 ]
-"419 C:\sw_dev\AK7030-OTP\yn8p520.h
+"419 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _FERR `Vb  1 e@194 ]
-"420 C:\sw_dev\AK7030-OTP\yn8p520.h
+"420 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RXPARITY `Vb  1 e@195 ]
-"421 C:\sw_dev\AK7030-OTP\yn8p520.h
+"421 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CREN `Vb  1 e@196 ]
-"422 C:\sw_dev\AK7030-OTP\yn8p520.h
+"422 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SREN `Vb  1 e@197 ]
-"423 C:\sw_dev\AK7030-OTP\yn8p520.h
+"423 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RX9 `Vb  1 e@198 ]
-"424 C:\sw_dev\AK7030-OTP\yn8p520.h
+"424 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SPEN `Vb  1 e@199 ]
-"425 C:\sw_dev\AK7030-OTP\yn8p520.h
+"425 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RCD8 `Vb  1 e@192 ]
-"426 C:\sw_dev\AK7030-OTP\yn8p520.h
+"426 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RC9 `Vb  1 e@198 ]
-"427 C:\sw_dev\AK7030-OTP\yn8p520.h
+"427 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nRC8 `Vb  1 e@198 ]
-"428 C:\sw_dev\AK7030-OTP\yn8p520.h
+"428 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RC8_9 `Vb  1 e@198 ]
-"431 C:\sw_dev\AK7030-OTP\yn8p520.h
+"431 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TXREG `Vuc  1 e@25 ]
-"435 C:\sw_dev\AK7030-OTP\yn8p520.h
+"435 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RCREG `Vuc  1 e@26 ]
-"439 C:\sw_dev\AK7030-OTP\yn8p520.h
+"439 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP1CON0 `Vuc  1 e@27 ]
 [s S14 :4 `uc 1 ]
 [n S14 . OP1F ]
@@ -291,9 +291,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S15 . OP1F0 OP1F1 OP1F2 OP1F3 OP1ZLF OP1POL OP1OUT OP1ON ]
 [u S13 `S14 1 `S15 1 ]
 [n S13 . . . ]
-"456 C:\sw_dev\AK7030-OTP\yn8p520.h
+"456 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP1CON0bits `VS13  1 e@27 ]
-"460 C:\sw_dev\AK7030-OTP\yn8p520.h
+"460 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP1CON1 `Vuc  1 e@28 ]
 [s S17 :2 `uc 1 :2 `uc 1 :2 `uc 1 ]
 [n S17 . OP1NCH RSV OP1PCH ]
@@ -301,37 +301,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S18 . OP1NCH0 OP1NCH1 RSV0 RSV1 OP1PCH0 OP1PCH1 OP1INTN OP1INTP ]
 [u S16 `S17 1 `S18 1 ]
 [n S16 . . . ]
-"479 C:\sw_dev\AK7030-OTP\yn8p520.h
+"479 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP1CON1bits `VS16  1 e@28 ]
-"483 C:\sw_dev\AK7030-OTP\yn8p520.h
+"483 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP1CON2 `Vuc  1 e@29 ]
 [s S20 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S20 . RSV0 RSV1 RSV2 RSV3 A1O2N A1NS OP1A2DEN OP1OUTEN ]
 [u S19 `S20 1 ]
 [n S19 . . ]
-"497 C:\sw_dev\AK7030-OTP\yn8p520.h
+"497 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP1CON2bits `VS19  1 e@29 ]
-"501 C:\sw_dev\AK7030-OTP\yn8p520.h
+"501 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADRESH `Vuc  1 e@30 ]
-"505 C:\sw_dev\AK7030-OTP\yn8p520.h
+"505 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADCON0 `Vuc  1 e@31 ]
-"507 C:\sw_dev\AK7030-OTP\yn8p520.h
+"507 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADON `Vb  1 e@248 ]
-"508 C:\sw_dev\AK7030-OTP\yn8p520.h
+"508 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _GO_nDONE `Vb  1 e@249 ]
-"509 C:\sw_dev\AK7030-OTP\yn8p520.h
+"509 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _GO `Vb  1 e@249 ]
-"510 C:\sw_dev\AK7030-OTP\yn8p520.h
+"510 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CHS0 `Vb  1 e@250 ]
-"511 C:\sw_dev\AK7030-OTP\yn8p520.h
+"511 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CHS1 `Vb  1 e@251 ]
-"512 C:\sw_dev\AK7030-OTP\yn8p520.h
+"512 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CHS2 `Vb  1 e@252 ]
-"513 C:\sw_dev\AK7030-OTP\yn8p520.h
+"513 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CHS3 `Vb  1 e@253 ]
-"514 C:\sw_dev\AK7030-OTP\yn8p520.h
+"514 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nDONE `Vb  1 e@250 ]
-"515 C:\sw_dev\AK7030-OTP\yn8p520.h
+"515 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _GO_DONE `Vb  1 e@250 ]
 [s S22 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
 [n S22 . ADON G0 CHS ]
@@ -339,55 +339,55 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S23 . ADON GO CHS0 CHS1 CHS2 CHS3 ]
 [u S21 `S22 1 `S23 1 ]
 [n S21 . . . ]
-"531 C:\sw_dev\AK7030-OTP\yn8p520.h
+"531 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADCON0bits `VS21  1 e@31 ]
-"541 C:\sw_dev\AK7030-OTP\yn8p520.h
+"541 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _WDTCON `Vuc  1 e@129 ]
-"543 C:\sw_dev\AK7030-OTP\yn8p520.h
+"543 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SWDTEN `Vb  1 e@1032 ]
 [s S25 :1 `uc 1 ]
 [n S25 . SWDTEN ]
 [u S24 `S25 1 ]
 [n S24 . . ]
-"549 C:\sw_dev\AK7030-OTP\yn8p520.h
+"549 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _WDTCONbits `VS24  1 e@129 ]
-"553 C:\sw_dev\AK7030-OTP\yn8p520.h
+"553 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA `Vuc  1 e@133 ]
-"555 C:\sw_dev\AK7030-OTP\yn8p520.h
+"555 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA0 `Vb  1 e@1064 ]
-"556 C:\sw_dev\AK7030-OTP\yn8p520.h
+"556 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA1 `Vb  1 e@1065 ]
-"557 C:\sw_dev\AK7030-OTP\yn8p520.h
+"557 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA2 `Vb  1 e@1066 ]
-"558 C:\sw_dev\AK7030-OTP\yn8p520.h
+"558 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA3 `Vb  1 e@1067 ]
-"559 C:\sw_dev\AK7030-OTP\yn8p520.h
+"559 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA4 `Vb  1 e@1068 ]
-"560 C:\sw_dev\AK7030-OTP\yn8p520.h
+"560 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA5 `Vb  1 e@1069 ]
-"561 C:\sw_dev\AK7030-OTP\yn8p520.h
+"561 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA6 `Vb  1 e@1070 ]
-"562 C:\sw_dev\AK7030-OTP\yn8p520.h
+"562 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISA7 `Vb  1 e@1071 ]
-"565 C:\sw_dev\AK7030-OTP\yn8p520.h
+"565 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB `Vuc  1 e@134 ]
-"567 C:\sw_dev\AK7030-OTP\yn8p520.h
+"567 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB0 `Vb  1 e@1072 ]
-"568 C:\sw_dev\AK7030-OTP\yn8p520.h
+"568 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB1 `Vb  1 e@1073 ]
-"569 C:\sw_dev\AK7030-OTP\yn8p520.h
+"569 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB2 `Vb  1 e@1074 ]
-"570 C:\sw_dev\AK7030-OTP\yn8p520.h
+"570 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB3 `Vb  1 e@1075 ]
-"571 C:\sw_dev\AK7030-OTP\yn8p520.h
+"571 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB4 `Vb  1 e@1076 ]
-"572 C:\sw_dev\AK7030-OTP\yn8p520.h
+"572 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB5 `Vb  1 e@1077 ]
-"573 C:\sw_dev\AK7030-OTP\yn8p520.h
+"573 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB6 `Vb  1 e@1078 ]
-"574 C:\sw_dev\AK7030-OTP\yn8p520.h
+"574 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRISB7 `Vb  1 e@1079 ]
-"576 C:\sw_dev\AK7030-OTP\yn8p520.h
+"576 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _DACCON `Vuc  1 e@135 ]
 [s S27 :2 `uc 1 ]
 [n S27 . DACCH ]
@@ -395,197 +395,197 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S28 . DACCH0 DACCH1 DAC0EN DAC1EN ]
 [u S26 `S27 1 `S28 1 ]
 [n S26 . . . ]
-"589 C:\sw_dev\AK7030-OTP\yn8p520.h
+"589 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _DACCONbits `VS26  1 e@135 ]
-"592 C:\sw_dev\AK7030-OTP\yn8p520.h
+"592 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _DACR0 `Vuc  1 e@136 ]
-"593 C:\sw_dev\AK7030-OTP\yn8p520.h
+"593 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _DACR1 `Vuc  1 e@137 ]
-"596 C:\sw_dev\AK7030-OTP\yn8p520.h
+"596 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PIE1 `Vuc  1 e@140 ]
-"598 C:\sw_dev\AK7030-OTP\yn8p520.h
+"598 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR1IE `Vb  1 e@1120 ]
-"599 C:\sw_dev\AK7030-OTP\yn8p520.h
+"599 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TMR2IE `Vb  1 e@1121 ]
-"600 C:\sw_dev\AK7030-OTP\yn8p520.h
+"600 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CCP1IE `Vb  1 e@1122 ]
-"601 C:\sw_dev\AK7030-OTP\yn8p520.h
+"601 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPIE `Vb  1 e@1123 ]
-"602 C:\sw_dev\AK7030-OTP\yn8p520.h
+"602 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TXIE `Vb  1 e@1124 ]
-"603 C:\sw_dev\AK7030-OTP\yn8p520.h
+"603 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RCIE `Vb  1 e@1125 ]
-"604 C:\sw_dev\AK7030-OTP\yn8p520.h
+"604 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INT1IE `Vb  1 e@1126 ]
-"605 C:\sw_dev\AK7030-OTP\yn8p520.h
+"605 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INT2IE `Vb  1 e@1127 ]
-"608 C:\sw_dev\AK7030-OTP\yn8p520.h
+"608 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PIE2 `Vuc  1 e@141 ]
-"610 C:\sw_dev\AK7030-OTP\yn8p520.h
+"610 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP1IE `Vb  1 e@1128 ]
-"611 C:\sw_dev\AK7030-OTP\yn8p520.h
+"611 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP2IE `Vb  1 e@1129 ]
-"612 C:\sw_dev\AK7030-OTP\yn8p520.h
+"612 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADIE `Vb  1 e@1130 ]
-"613 C:\sw_dev\AK7030-OTP\yn8p520.h
+"613 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _LVDIE `Vb  1 e@1131 ]
-"614 C:\sw_dev\AK7030-OTP\yn8p520.h
+"614 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWMIE `Vb  1 e@1132 ]
-"615 C:\sw_dev\AK7030-OTP\yn8p520.h
+"615 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _BCLIE `Vb  1 e@1133 ]
-"619 C:\sw_dev\AK7030-OTP\yn8p520.h
+"619 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PCON `Vuc  1 e@142 ]
-"621 C:\sw_dev\AK7030-OTP\yn8p520.h
+"621 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nBOR `Vb  1 e@1136 ]
-"622 C:\sw_dev\AK7030-OTP\yn8p520.h
+"622 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nPOR `Vb  1 e@1137 ]
-"623 C:\sw_dev\AK7030-OTP\yn8p520.h
+"623 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INTEDG2 `Vb  1 e@1138 ]
-"624 C:\sw_dev\AK7030-OTP\yn8p520.h
+"624 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INTEDG1 `Vb  1 e@1139 ]
-"625 C:\sw_dev\AK7030-OTP\yn8p520.h
+"625 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INTEDG0 `Vb  1 e@1140 ]
-"626 C:\sw_dev\AK7030-OTP\yn8p520.h
+"626 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CKOE `Vb  1 e@1141 ]
-"627 C:\sw_dev\AK7030-OTP\yn8p520.h
+"627 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _I2C_AUX `Vb  1 e@1142 ]
-"628 C:\sw_dev\AK7030-OTP\yn8p520.h
+"628 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nBO `Vb  1 e@1136 ]
-"632 C:\sw_dev\AK7030-OTP\yn8p520.h
+"632 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWST `Vuc  1 e@143 ]
-"635 C:\sw_dev\AK7030-OTP\yn8p520.h
+"635 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPADD2 `Vuc  1 e@144 ]
-"638 C:\sw_dev\AK7030-OTP\yn8p520.h
+"638 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPCON2 `Vuc  1 e@145 ]
-"639 C:\sw_dev\AK7030-OTP\yn8p520.h
+"639 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SEN `Vb  1 e@1160 ]
-"640 C:\sw_dev\AK7030-OTP\yn8p520.h
+"640 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RSEN `Vb  1 e@1161 ]
-"641 C:\sw_dev\AK7030-OTP\yn8p520.h
+"641 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PEN `Vb  1 e@1162 ]
-"642 C:\sw_dev\AK7030-OTP\yn8p520.h
+"642 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RCEN `Vb  1 e@1163 ]
-"643 C:\sw_dev\AK7030-OTP\yn8p520.h
+"643 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ACKEN `Vb  1 e@1164 ]
-"644 C:\sw_dev\AK7030-OTP\yn8p520.h
+"644 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ACKDT `Vb  1 e@1165 ]
-"645 C:\sw_dev\AK7030-OTP\yn8p520.h
+"645 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ACKSTAT `Vb  1 e@1166 ]
-"646 C:\sw_dev\AK7030-OTP\yn8p520.h
+"646 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _GCEN `Vb  1 e@1167 ]
-"649 C:\sw_dev\AK7030-OTP\yn8p520.h
+"649 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PR2 `Vuc  1 e@146 ]
-"652 C:\sw_dev\AK7030-OTP\yn8p520.h
+"652 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPADD `Vuc  1 e@147 ]
-"655 C:\sw_dev\AK7030-OTP\yn8p520.h
+"655 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SSPSTAT `Vuc  1 e@148 ]
-"657 C:\sw_dev\AK7030-OTP\yn8p520.h
+"657 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _BF `Vb  1 e@1184 ]
-"658 C:\sw_dev\AK7030-OTP\yn8p520.h
+"658 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _UA `Vb  1 e@1185 ]
-"659 C:\sw_dev\AK7030-OTP\yn8p520.h
+"659 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _R_nW `Vb  1 e@1186 ]
-"660 C:\sw_dev\AK7030-OTP\yn8p520.h
+"660 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _S `Vb  1 e@1187 ]
-"661 C:\sw_dev\AK7030-OTP\yn8p520.h
+"661 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _P `Vb  1 e@1188 ]
-"662 C:\sw_dev\AK7030-OTP\yn8p520.h
+"662 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _D_nA `Vb  1 e@1189 ]
-"663 C:\sw_dev\AK7030-OTP\yn8p520.h
+"663 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CKE `Vb  1 e@1190 ]
-"664 C:\sw_dev\AK7030-OTP\yn8p520.h
+"664 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SMP `Vb  1 e@1191 ]
-"665 C:\sw_dev\AK7030-OTP\yn8p520.h
+"665 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _R `Vb  1 e@1186 ]
-"666 C:\sw_dev\AK7030-OTP\yn8p520.h
+"666 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _D `Vb  1 e@1189 ]
-"667 C:\sw_dev\AK7030-OTP\yn8p520.h
+"667 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _I2C_READ `Vb  1 e@1186 ]
-"668 C:\sw_dev\AK7030-OTP\yn8p520.h
+"668 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _I2C_START `Vb  1 e@1187 ]
-"669 C:\sw_dev\AK7030-OTP\yn8p520.h
+"669 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _I2C_STOP `Vb  1 e@1188 ]
-"670 C:\sw_dev\AK7030-OTP\yn8p520.h
+"670 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _I2C_DATA `Vb  1 e@1189 ]
-"671 C:\sw_dev\AK7030-OTP\yn8p520.h
+"671 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _R_W `Vb  1 e@1186 ]
-"672 C:\sw_dev\AK7030-OTP\yn8p520.h
+"672 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _D_A `Vb  1 e@1189 ]
-"673 C:\sw_dev\AK7030-OTP\yn8p520.h
+"673 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _READ_WRITE `Vb  1 e@1186 ]
-"674 C:\sw_dev\AK7030-OTP\yn8p520.h
+"674 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _DATA_ADDRESS `Vb  1 e@1189 ]
-"675 C:\sw_dev\AK7030-OTP\yn8p520.h
+"675 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nW `Vb  1 e@1186 ]
-"676 C:\sw_dev\AK7030-OTP\yn8p520.h
+"676 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nA `Vb  1 e@1189 ]
-"677 C:\sw_dev\AK7030-OTP\yn8p520.h
+"677 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nWRITE `Vb  1 e@1186 ]
-"678 C:\sw_dev\AK7030-OTP\yn8p520.h
+"678 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nADDRESS `Vb  1 e@1189 ]
-"681 C:\sw_dev\AK7030-OTP\yn8p520.h
+"681 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWMCON1 `Vuc  1 e@150 ]
-"683 C:\sw_dev\AK7030-OTP\yn8p520.h
+"683 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWM1ASE `Vb  1 e@1200 ]
-"684 C:\sw_dev\AK7030-OTP\yn8p520.h
+"684 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWM1OP2ASEN `Vb  1 e@1201 ]
-"685 C:\sw_dev\AK7030-OTP\yn8p520.h
+"685 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWM1OP1ASEN `Vb  1 e@1202 ]
-"686 C:\sw_dev\AK7030-OTP\yn8p520.h
+"686 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWM1RSE `Vb  1 e@1204 ]
-"687 C:\sw_dev\AK7030-OTP\yn8p520.h
+"687 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWM1OP2RSEN `Vb  1 e@1205 ]
-"688 C:\sw_dev\AK7030-OTP\yn8p520.h
+"688 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWM1OP1RSEN `Vb  1 e@1206 ]
-"692 C:\sw_dev\AK7030-OTP\yn8p520.h
+"692 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWMCON0 `Vuc  1 e@151 ]
-"694 C:\sw_dev\AK7030-OTP\yn8p520.h
+"694 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PWM1S `Vb  1 e@1214 ]
-"698 C:\sw_dev\AK7030-OTP\yn8p520.h
+"698 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TXSTA `Vuc  1 e@152 ]
-"700 C:\sw_dev\AK7030-OTP\yn8p520.h
+"700 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TX9D `Vb  1 e@1216 ]
-"701 C:\sw_dev\AK7030-OTP\yn8p520.h
+"701 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TRMT `Vb  1 e@1217 ]
-"702 C:\sw_dev\AK7030-OTP\yn8p520.h
+"702 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _BRGH `Vb  1 e@1218 ]
-"703 C:\sw_dev\AK7030-OTP\yn8p520.h
+"703 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TXPARITY `Vb  1 e@1219 ]
-"704 C:\sw_dev\AK7030-OTP\yn8p520.h
+"704 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SYNC `Vb  1 e@1220 ]
-"705 C:\sw_dev\AK7030-OTP\yn8p520.h
+"705 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TXEN `Vb  1 e@1221 ]
-"706 C:\sw_dev\AK7030-OTP\yn8p520.h
+"706 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TX9 `Vb  1 e@1222 ]
-"707 C:\sw_dev\AK7030-OTP\yn8p520.h
+"707 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CSRC `Vb  1 e@1223 ]
-"708 C:\sw_dev\AK7030-OTP\yn8p520.h
+"708 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TXD8 `Vb  1 e@1216 ]
-"709 C:\sw_dev\AK7030-OTP\yn8p520.h
+"709 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _nTX8 `Vb  1 e@1222 ]
-"710 C:\sw_dev\AK7030-OTP\yn8p520.h
+"710 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _TX8_9 `Vb  1 e@1222 ]
-"713 C:\sw_dev\AK7030-OTP\yn8p520.h
+"713 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SPBRG `Vuc  1 e@153 ]
-"717 C:\sw_dev\AK7030-OTP\yn8p520.h
+"717 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _UARTCON `Vuc  1 e@154 ]
-"719 C:\sw_dev\AK7030-OTP\yn8p520.h
+"719 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _INVMODE `Vb  1 e@1232 ]
-"720 C:\sw_dev\AK7030-OTP\yn8p520.h
+"720 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PARITY `Vb  1 e@1233 ]
-"721 C:\sw_dev\AK7030-OTP\yn8p520.h
+"721 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _RXODD_EVEN `Vb  1 e@1234 ]
-"722 C:\sw_dev\AK7030-OTP\yn8p520.h
+"722 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _BOUD_CLK `Vb  1 e@1235 ]
-"723 C:\sw_dev\AK7030-OTP\yn8p520.h
+"723 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _HALF_DUPLEX `Vb  1 e@1236 ]
-"724 C:\sw_dev\AK7030-OTP\yn8p520.h
+"724 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _DLSB `Vb  1 e@1237 ]
-"725 C:\sw_dev\AK7030-OTP\yn8p520.h
+"725 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _STOP_BIT1 `Vb  1 e@1238 ]
-"726 C:\sw_dev\AK7030-OTP\yn8p520.h
+"726 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _STOP_BIT0 `Vb  1 e@1239 ]
-"729 C:\sw_dev\AK7030-OTP\yn8p520.h
+"729 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP2CON0 `Vuc  1 e@155 ]
 [s S30 :4 `uc 1 ]
 [n S30 . OP2F ]
@@ -593,9 +593,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S31 . OP2F0 OP2F1 OP2F2 OP2F3 OP2ZLF OP2POL OP2OUT OP2ON ]
 [u S29 `S30 1 `S31 1 ]
 [n S29 . . . ]
-"746 C:\sw_dev\AK7030-OTP\yn8p520.h
+"746 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP2CON0bits `VS29  1 e@155 ]
-"750 C:\sw_dev\AK7030-OTP\yn8p520.h
+"750 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP2CON1 `Vuc  1 e@156 ]
 [s S33 :3 `uc 1 :3 `uc 1 ]
 [n S33 . OP2NCH OP2PCH ]
@@ -603,9 +603,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S34 . OP2NCH0 OP2NCH1 OP2NCH2 OP2PCH0 OP2PCH1 OP2PCH2 OP2INTN OP2INTP ]
 [u S32 `S33 1 `S34 1 ]
 [n S32 . . . ]
-"768 C:\sw_dev\AK7030-OTP\yn8p520.h
+"768 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP2CON1bits `VS32  1 e@156 ]
-"772 C:\sw_dev\AK7030-OTP\yn8p520.h
+"772 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP2CON2 `Vuc  1 e@157 ]
 [s S36 :3 `uc 1 ]
 [n S36 . PGA ]
@@ -613,27 +613,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S37 . PGA0 PGA1 PGA2 PGAEN A2O2N A2NS OP2A2DEN OP2OUTEN ]
 [u S35 `S36 1 `S37 1 ]
 [n S35 . . . ]
-"789 C:\sw_dev\AK7030-OTP\yn8p520.h
+"789 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _OP2CON2bits `VS35  1 e@157 ]
-"793 C:\sw_dev\AK7030-OTP\yn8p520.h
+"793 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADRESL `Vuc  1 e@158 ]
-"797 C:\sw_dev\AK7030-OTP\yn8p520.h
+"797 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADCON1 `Vuc  1 e@159 ]
-"799 C:\sw_dev\AK7030-OTP\yn8p520.h
+"799 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADCS0 `Vb  1 e@1272 ]
-"800 C:\sw_dev\AK7030-OTP\yn8p520.h
+"800 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADCS1 `Vb  1 e@1273 ]
-"801 C:\sw_dev\AK7030-OTP\yn8p520.h
+"801 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADCS2 `Vb  1 e@1274 ]
-"802 C:\sw_dev\AK7030-OTP\yn8p520.h
+"802 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ACQT0 `Vb  1 e@1275 ]
-"803 C:\sw_dev\AK7030-OTP\yn8p520.h
+"803 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ACQT1 `Vb  1 e@1276 ]
-"804 C:\sw_dev\AK7030-OTP\yn8p520.h
+"804 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ACQT2 `Vb  1 e@1277 ]
-"805 C:\sw_dev\AK7030-OTP\yn8p520.h
+"805 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADVREF0 `Vb  1 e@1276 ]
-"806 C:\sw_dev\AK7030-OTP\yn8p520.h
+"806 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADVERF1 `Vb  1 e@1277 ]
 [s S39 :3 `uc 1 :3 `uc 1 :2 `uc 1 ]
 [n S39 . ADCS ACQT ADVREF ]
@@ -641,102 +641,102 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S40 . ADCS0 ADCS1 ADCS2 ACQT0 ACQT1 ACOT2 ADVREF0 ADVREF1 ]
 [u S38 `S39 1 `S40 1 ]
 [n S38 . . . ]
-"824 C:\sw_dev\AK7030-OTP\yn8p520.h
+"824 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ADCON1bits `VS38  1 e@159 ]
-"833 C:\sw_dev\AK7030-OTP\yn8p520.h
+"833 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PAPU `Vuc  1 e@261 ]
-"837 C:\sw_dev\AK7030-OTP\yn8p520.h
+"837 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PBPU `Vuc  1 e@262 ]
-"841 C:\sw_dev\AK7030-OTP\yn8p520.h
+"841 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PBMASK `Vuc  1 e@263 ]
-"845 C:\sw_dev\AK7030-OTP\yn8p520.h
+"845 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CLKPR `Vuc  1 e@264 ]
-"847 C:\sw_dev\AK7030-OTP\yn8p520.h
+"847 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CLKPS0 `Vb  1 e@2112 ]
-"848 C:\sw_dev\AK7030-OTP\yn8p520.h
+"848 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CLKPS1 `Vb  1 e@2113 ]
-"849 C:\sw_dev\AK7030-OTP\yn8p520.h
+"849 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _CLKPCE `Vb  1 e@2119 ]
-"852 C:\sw_dev\AK7030-OTP\yn8p520.h
+"852 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SMCR `Vuc  1 e@265 ]
-"854 C:\sw_dev\AK7030-OTP\yn8p520.h
+"854 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SE `Vb  1 e@2120 ]
-"855 C:\sw_dev\AK7030-OTP\yn8p520.h
+"855 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SM0 `Vb  1 e@2121 ]
-"856 C:\sw_dev\AK7030-OTP\yn8p520.h
+"856 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SM1 `Vb  1 e@2122 ]
-"857 C:\sw_dev\AK7030-OTP\yn8p520.h
+"857 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _SM2 `Vb  1 e@2123 ]
-"860 C:\sw_dev\AK7030-OTP\yn8p520.h
+"860 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG0 `Vuc  1 e@268 ]
-"863 C:\sw_dev\AK7030-OTP\yn8p520.h
+"863 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _DACBIASEN `Vb  1 e@2148 ]
-"864 C:\sw_dev\AK7030-OTP\yn8p520.h
+"864 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _IOVCCEN `Vb  1 e@2149 ]
-"865 C:\sw_dev\AK7030-OTP\yn8p520.h
+"865 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _BIASEN `Vb  1 e@2150 ]
-"866 C:\sw_dev\AK7030-OTP\yn8p520.h
+"866 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _LDO2P0EN `Vb  1 e@2151 ]
-"869 C:\sw_dev\AK7030-OTP\yn8p520.h
+"869 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG1 `Vuc  1 e@269 ]
-"873 C:\sw_dev\AK7030-OTP\yn8p520.h
+"873 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG2 `Vuc  1 e@270 ]
-"877 C:\sw_dev\AK7030-OTP\yn8p520.h
+"877 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG3 `Vuc  1 e@271 ]
-"885 C:\sw_dev\AK7030-OTP\yn8p520.h
+"885 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PAPD `Vuc  1 e@389 ]
-"889 C:\sw_dev\AK7030-OTP\yn8p520.h
+"889 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PBPD `Vuc  1 e@390 ]
-"893 C:\sw_dev\AK7030-OTP\yn8p520.h
+"893 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PAOD `Vuc  1 e@391 ]
-"897 C:\sw_dev\AK7030-OTP\yn8p520.h
+"897 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PBOD `Vuc  1 e@392 ]
-"901 C:\sw_dev\AK7030-OTP\yn8p520.h
+"901 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG4 `Vuc  1 e@396 ]
-"905 C:\sw_dev\AK7030-OTP\yn8p520.h
+"905 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG5 `Vuc  1 e@397 ]
-"909 C:\sw_dev\AK7030-OTP\yn8p520.h
+"909 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG6 `Vuc  1 e@398 ]
-"913 C:\sw_dev\AK7030-OTP\yn8p520.h
+"913 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
 [p mainexit ]
-"21 C:\sw_dev\AK7030-OTP\common.h
+"21 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _clock_config `(v  0 ef ]
-"22 C:\sw_dev\AK7030-OTP\common.h
+"22 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _timer1_config `(v  0 ef ]
-"23 C:\sw_dev\AK7030-OTP\common.h
+"23 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _timer1_interrupt_config `(v  0 ef ]
-"18 C:\sw_dev\AK7030-OTP\periph.h
+"18 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.h
 [v _adc_test_init `(v  0 ef2`uc`uc ]
-"13 C:\sw_dev\AK7030-OTP\periph.h
+"13 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.h
 [v _dac_init `(v  0 ef ]
-"14 C:\sw_dev\AK7030-OTP\periph.h
+"14 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.h
 [v _op1_init `(v  0 ef ]
-"15 C:\sw_dev\AK7030-OTP\periph.h
+"15 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.h
 [v _op2_init `(v  0 ef ]
-"20 C:\sw_dev\AK7030-OTP\periph.h
+"20 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.h
 [v _adc_start `(v  0 ef ]
-"43 C:\sw_dev\AK7030-OTP\common.h
+"43 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _isPermitSampleTime `(uc  0 ef ]
-"45 C:\sw_dev\AK7030-OTP\common.h
+"45 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _clrSampeTime `(v  0 ef ]
-"32 C:\sw_dev\AK7030-OTP\common.h
+"32 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _process_AD_Converter_Value `(v  0 ef ]
-"52 C:\sw_dev\AK7030-OTP\common.h
+"52 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _clearBigTimer `(v  0 ef ]
-"53 C:\sw_dev\AK7030-OTP\common.h
+"53 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _clearSmallTimer `(v  0 ef ]
-"41 C:\sw_dev\AK7030-OTP\common.h
+"39 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
+[v _getAdOriginalCh12Value `(ui  0 ef ]
+"41 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _getAdOriginalCh13Value `(ui  0 ef ]
-"47 C:\sw_dev\AK7030-OTP\common.h
-[v _setDAC0_ChannelValue `(v  0 ef1`uc ]
-"49 C:\sw_dev\AK7030-OTP\common.h
+"49 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _startBigTimer `(v  0 ef ]
-"50 C:\sw_dev\AK7030-OTP\common.h
+"50 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _startSmallTimer `(v  0 ef ]
-"55 C:\sw_dev\AK7030-OTP\common.h
+"55 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _isFinishedBigTimer `(uc  0 ef ]
-"56 C:\sw_dev\AK7030-OTP\common.h
+"56 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h
 [v _isFinishedSmallTimer `(uc  0 ef ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
@@ -1289,7 +1289,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.h: 20: void adc_start();
 [; ;periph.h: 21: unsigned int adc_get(void);
 [; ;main.c: 27: extern void _delay(unsigned long);
-"70 C:\sw_dev\AK7030-OTP\main.c
+"70 C:\dev1\AK730_Second_PRJ\AK7030-OTP\main.c
 [; ;main.c: 70: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x2FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
 [; 	psect config,class=CONFIG,delta=2 ;#
 [; 	dw 0x2FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF ;#
@@ -1308,34 +1308,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 84: {
 [e :U _main ]
 [f ]
-"97
-[c E813 0 1 2 3 4 5 6 7 8 9 .. ]
-[n E813 step SENSE_PB2_INPUT_VOLTAGE SENSE_PB2_DURATION_ONE_SECOND SENSE_PB2_INPUT_VOLTAGE__AGAIN SENSE_PB2_DURATION__SECOND SET_PA2_VALUE PROCESS_AD_VALUE WAIT_SET_TIME_FINISHED SET_TIME_BE_FINISHED CHECKING_PULL_OUT_BATTERY CHECKING_INSTALLED_BATTERY  ]
-"103
-[c E824 0 1 .. ]
-[n E824 workTimerType BIG_TIMER_WORK SMALL_TIMER_WORK  ]
-"105
-[v F827 `E813  1 s ampStep ]
-"107
-[v F828 `E824  1 s tDA_timer ]
-"109
-[v F829 `uc  1 s ucWaitTime1S ]
-[i F829
--> -> 0 `i `uc
-]
-"111
-[v F830 `uc  1 s ucWaitTimeO3s ]
+"98
+[c E813 0 1 2 3 4 5 6 7 8 9 10 .. ]
+[n E813 step SENSE_PB2_INPUT_VOLTAGE SENSE_PB2_DURATION_ONE_SECOND SENSE_PB2_INPUT_VOLTAGE__AGAIN SENSE_PB2_DURATION__SECOND SET_PA2_VALUE ADC1_VALUE_MEET_CONDITION PROCESS_AD_VALUE WAIT_SET_TIME_FINISHED SET_TIME_BE_FINISHED CHECKING_PULL_OUT_BATTERY CHECKING_INSTALLED_BATTERY  ]
+"104
+[c E825 0 1 .. ]
+[n E825 workTimerType BIG_TIMER_WORK SMALL_TIMER_WORK  ]
+"106
+[v F828 `E813  1 s ampStep ]
+"108
+[v F829 `E825  1 s tDA_timer ]
+"110
+[v F830 `uc  1 s ucWaitTime1S ]
 [i F830
 -> -> 0 `i `uc
 ]
-"113
-[v F831 `uc  1 s ucSmallTimerActionFlag ]
+"112
+[v F831 `uc  1 s ucWaitTimeO3s ]
 [i F831
 -> -> 0 `i `uc
 ]
-"115
-[v F832 `uc  1 s ucSetSmallActionFlag ]
+"114
+[v F832 `uc  1 s ucSmallTimerActionFlag ]
 [i F832
+-> -> 0 `i `uc
+]
+"116
+[v F833 `uc  1 s ucSetSmallActionFlag ]
+[i F833
 -> -> 0 `i `uc
 ]
 [; ;main.c: 85: enum step
@@ -1345,851 +1345,798 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 89: SENSE_PB2_INPUT_VOLTAGE__AGAIN,
 [; ;main.c: 90: SENSE_PB2_DURATION__SECOND,
 [; ;main.c: 91: SET_PA2_VALUE,
-[; ;main.c: 92: PROCESS_AD_VALUE,
-[; ;main.c: 93: WAIT_SET_TIME_FINISHED,
-[; ;main.c: 94: SET_TIME_BE_FINISHED,
-[; ;main.c: 95: CHECKING_PULL_OUT_BATTERY,
-[; ;main.c: 96: CHECKING_INSTALLED_BATTERY,
-[; ;main.c: 97: };
-[; ;main.c: 99: enum workTimerType
-[; ;main.c: 100: {
-[; ;main.c: 101: BIG_TIMER_WORK = 0,
-[; ;main.c: 102: SMALL_TIMER_WORK,
-[; ;main.c: 103: };
-[; ;main.c: 105: static enum step ampStep;
-[; ;main.c: 107: static enum workTimerType tDA_timer;
-[; ;main.c: 109: static unsigned char ucWaitTime1S = 0;
-[; ;main.c: 111: static unsigned char ucWaitTimeO3s = 0;
-[; ;main.c: 113: static unsigned char ucSmallTimerActionFlag = 0;
-[; ;main.c: 115: static unsigned char ucSetSmallActionFlag = 0;
-[; ;main.c: 117: TRISA0 = 0;
-"117
-[e = _TRISA0 -> -> 0 `i `b ]
-[; ;main.c: 118: TRISA1 = 0;
+[; ;main.c: 92: ADC1_VALUE_MEET_CONDITION,
+[; ;main.c: 93: PROCESS_AD_VALUE,
+[; ;main.c: 94: WAIT_SET_TIME_FINISHED,
+[; ;main.c: 95: SET_TIME_BE_FINISHED,
+[; ;main.c: 96: CHECKING_PULL_OUT_BATTERY,
+[; ;main.c: 97: CHECKING_INSTALLED_BATTERY,
+[; ;main.c: 98: };
+[; ;main.c: 100: enum workTimerType
+[; ;main.c: 101: {
+[; ;main.c: 102: BIG_TIMER_WORK = 0,
+[; ;main.c: 103: SMALL_TIMER_WORK,
+[; ;main.c: 104: };
+[; ;main.c: 106: static enum step ampStep;
+[; ;main.c: 108: static enum workTimerType tDA_timer;
+[; ;main.c: 110: static unsigned char ucWaitTime1S = 0;
+[; ;main.c: 112: static unsigned char ucWaitTimeO3s = 0;
+[; ;main.c: 114: static unsigned char ucSmallTimerActionFlag = 0;
+[; ;main.c: 116: static unsigned char ucSetSmallActionFlag = 0;
+[; ;main.c: 118: TRISA0 = 0;
 "118
-[e = _TRISA1 -> -> 0 `i `b ]
-[; ;main.c: 119: TRISA3 = 0;
+[e = _TRISA0 -> -> 0 `i `b ]
+[; ;main.c: 119: TRISA1 = 0;
 "119
-[e = _TRISA3 -> -> 0 `i `b ]
-[; ;main.c: 120: TRISA2 = 0;
+[e = _TRISA1 -> -> 0 `i `b ]
+[; ;main.c: 120: TRISA3 = 0;
 "120
-[e = _TRISA2 -> -> 0 `i `b ]
-[; ;main.c: 121: PA2 = 1;
+[e = _TRISA3 -> -> 0 `i `b ]
+[; ;main.c: 121: TRISA2 = 0;
 "121
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 122: PA0 = 1;
+[e = _TRISA2 -> -> 0 `i `b ]
+[; ;main.c: 122: TRISA6 = 0;
 "122
-[e = _PA0 -> -> 1 `i `b ]
-[; ;main.c: 124: TRISB2 = 1;
+[e = _TRISA6 -> -> 0 `i `b ]
+[; ;main.c: 123: PA2 = 1;
+"123
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 124: PA0 = 1;
 "124
-[e = _TRISB2 -> -> 1 `i `b ]
-[; ;main.c: 126: TRISB1 = 1;
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 126: TRISB2 = 1;
 "126
+[e = _TRISB2 -> -> 1 `i `b ]
+[; ;main.c: 128: TRISB1 = 1;
+"128
 [e = _TRISB1 -> -> 1 `i `b ]
-[; ;main.c: 127: TRISB0 = 1;
-"127
-[e = _TRISB0 -> -> 1 `i `b ]
-[; ;main.c: 129: clock_config();
+[; ;main.c: 129: TRISB0 = 1;
 "129
-[e ( _clock_config ..  ]
-[; ;main.c: 130: timer1_config();
-"130
-[e ( _timer1_config ..  ]
-[; ;main.c: 131: timer1_interrupt_config();
+[e = _TRISB0 -> -> 1 `i `b ]
+[; ;main.c: 131: clock_config();
 "131
-[e ( _timer1_interrupt_config ..  ]
-[; ;main.c: 133: adc_test_init(13,3);
+[e ( _clock_config ..  ]
+[; ;main.c: 132: timer1_config();
+"132
+[e ( _timer1_config ..  ]
+[; ;main.c: 133: timer1_interrupt_config();
 "133
-[e ( _adc_test_init (2 , -> -> 13 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 135: dac_init();
+[e ( _timer1_interrupt_config ..  ]
+[; ;main.c: 135: adc_test_init(13,3);
 "135
-[e ( _dac_init ..  ]
-[; ;main.c: 136: op1_init();
-"136
-[e ( _op1_init ..  ]
-[; ;main.c: 137: op2_init();
+[e ( _adc_test_init (2 , -> -> 13 `i `uc -> -> 3 `i `uc ]
+[; ;main.c: 137: dac_init();
 "137
+[e ( _dac_init ..  ]
+[; ;main.c: 138: op1_init();
+"138
+[e ( _op1_init ..  ]
+[; ;main.c: 139: op2_init();
+"139
 [e ( _op2_init ..  ]
-[; ;main.c: 140: adc_start();
-"140
+[; ;main.c: 142: adc_start();
+"142
 [e ( _adc_start ..  ]
-"143
-[v F833 `uc  1 s testStep ]
-"144
-[v F834 `uc  1 s ucBigTimerActionFlag ]
-[i F834
--> -> 0 `i `uc
-]
-[; ;main.c: 143: static unsigned char testStep;
-[; ;main.c: 144: static unsigned char ucBigTimerActionFlag = 0;
-[; ;main.c: 145: while(1)
 "145
-[e :U 43 ]
-[; ;main.c: 146: {
+[v F834 `uc  1 s testStep ]
 "146
-{
-[; ;main.c: 147: asm(" clrwdt");
-"147
-[;  clrwdt ;#
-[; ;main.c: 148: if(isPermitSampleTime())
-"148
-[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 45  ]
-[; ;main.c: 149: {
-"149
-{
-[; ;main.c: 150: clrSampeTime();
-"150
-[e ( _clrSampeTime ..  ]
-[; ;main.c: 151: process_AD_Converter_Value();
-"151
-[e ( _process_AD_Converter_Value ..  ]
-[; ;main.c: 153: switch(ampStep)
-"153
-[e $U 47  ]
-[; ;main.c: 154: {
-"154
-{
-[; ;main.c: 155: case SENSE_PB2_INPUT_VOLTAGE:
-"155
-[e :U 48 ]
-[; ;main.c: 156: {
-"156
-{
-[; ;main.c: 157: ucBigTimerActionFlag = 0;
-"157
-[e = F834 -> -> 0 `i `uc ]
-[; ;main.c: 158: clearBigTimer();
-"158
-[e ( _clearBigTimer ..  ]
-[; ;main.c: 159: clearSmallTimer();
-"159
-[e ( _clearSmallTimer ..  ]
-[; ;main.c: 160: if(!PB2)
-"160
-[e $ ! ! _PB2 49  ]
-[; ;main.c: 161: ampStep++;
-"161
-[e ++ F827 -> -> 1 `i `E813 ]
-[e :U 49 ]
-[; ;main.c: 162: break;
-"162
-[e $U 46  ]
-"163
-}
-[; ;main.c: 163: }
-[; ;main.c: 165: case SENSE_PB2_DURATION_ONE_SECOND:
-"165
-[e :U 50 ]
-[; ;main.c: 166: {
-"166
-{
-"167
-[v F835 `uc  1 s ucConfirmTimer1S ]
+[v F835 `uc  1 s ucBigTimerActionFlag ]
 [i F835
 -> -> 0 `i `uc
 ]
-[; ;main.c: 167: static unsigned char ucConfirmTimer1S = 0;
-[; ;main.c: 168: if(!PB2)
+[; ;main.c: 145: static unsigned char testStep;
+[; ;main.c: 146: static unsigned char ucBigTimerActionFlag = 0;
+[; ;main.c: 147: while(1)
+"147
+[e :U 43 ]
+[; ;main.c: 148: {
+"148
+{
+[; ;main.c: 149: asm(" clrwdt");
+"149
+[;  clrwdt ;#
+[; ;main.c: 150: if(isPermitSampleTime())
+"150
+[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 45  ]
+[; ;main.c: 151: {
+"151
+{
+[; ;main.c: 152: clrSampeTime();
+"152
+[e ( _clrSampeTime ..  ]
+[; ;main.c: 153: process_AD_Converter_Value();
+"153
+[e ( _process_AD_Converter_Value ..  ]
+[; ;main.c: 155: switch(ampStep)
+"155
+[e $U 47  ]
+[; ;main.c: 156: {
+"156
+{
+[; ;main.c: 157: case SENSE_PB2_INPUT_VOLTAGE:
+"157
+[e :U 48 ]
+[; ;main.c: 158: {
+"158
+{
+[; ;main.c: 159: ucBigTimerActionFlag = 0;
+"159
+[e = F835 -> -> 0 `i `uc ]
+[; ;main.c: 160: clearBigTimer();
+"160
+[e ( _clearBigTimer ..  ]
+[; ;main.c: 161: clearSmallTimer();
+"161
+[e ( _clearSmallTimer ..  ]
+[; ;main.c: 162: if(!PB2)
+"162
+[e $ ! ! _PB2 49  ]
+[; ;main.c: 163: ampStep++;
+"163
+[e ++ F828 -> -> 1 `i `E813 ]
+[e :U 49 ]
+[; ;main.c: 164: break;
+"164
+[e $U 46  ]
+"165
+}
+[; ;main.c: 165: }
+[; ;main.c: 167: case SENSE_PB2_DURATION_ONE_SECOND:
+"167
+[e :U 50 ]
+[; ;main.c: 168: {
 "168
-[e $ ! ! _PB2 51  ]
-[; ;main.c: 169: {
+{
 "169
-{
-[; ;main.c: 170: ucConfirmTimer1S++;
-"170
-[e ++ F835 -> -> 1 `i `uc ]
-"171
-}
-[; ;main.c: 171: }
-[e $U 52  ]
-"172
-[e :U 51 ]
-[; ;main.c: 172: else
-[; ;main.c: 173: {
-"173
-{
-[; ;main.c: 174: ucConfirmTimer1S = 0;
-"174
-[e = F835 -> -> 0 `i `uc ]
-"175
-}
-[e :U 52 ]
-[; ;main.c: 175: }
-[; ;main.c: 177: if(ucConfirmTimer1S >= 10)
-"177
-[e $ ! >= -> F835 `i -> 10 `i 53  ]
-[; ;main.c: 178: {
-"178
-{
-[; ;main.c: 179: ucConfirmTimer1S = 0;
-"179
-[e = F835 -> -> 0 `i `uc ]
-[; ;main.c: 180: ampStep++;
-"180
-[e ++ F827 -> -> 1 `i `E813 ]
-"181
-}
-[e :U 53 ]
-[; ;main.c: 181: }
-[; ;main.c: 183: break;
-"183
-[e $U 46  ]
-"184
-}
-[; ;main.c: 184: }
-[; ;main.c: 186: case SENSE_PB2_INPUT_VOLTAGE__AGAIN:
-"186
-[e :U 54 ]
-[; ;main.c: 187: {
-"187
-{
-[; ;main.c: 188: if(!PB2)
-"188
-[e $ ! ! _PB2 55  ]
-[; ;main.c: 189: ampStep++;
-"189
-[e ++ F827 -> -> 1 `i `E813 ]
-[e :U 55 ]
-[; ;main.c: 190: break;
-"190
-[e $U 46  ]
-"191
-}
-[; ;main.c: 191: }
-[; ;main.c: 193: case SENSE_PB2_DURATION__SECOND:
-"193
-[e :U 56 ]
-[; ;main.c: 194: {
-"194
-{
-"195
-[v F836 `uc  1 s ucConfirmTimerZptS ]
+[v F836 `uc  1 s ucConfirmTimer1S ]
 [i F836
 -> -> 0 `i `uc
 ]
-[; ;main.c: 195: static unsigned char ucConfirmTimerZptS = 0;
-[; ;main.c: 196: if(!PB2)
-"196
-[e $ ! ! _PB2 57  ]
-[; ;main.c: 197: {
-"197
+[; ;main.c: 169: static unsigned char ucConfirmTimer1S = 0;
+[; ;main.c: 170: if(!PB2)
+"170
+[e $ ! ! _PB2 51  ]
+[; ;main.c: 171: {
+"171
 {
-[; ;main.c: 198: ucConfirmTimerZptS++;
-"198
+[; ;main.c: 172: ucConfirmTimer1S++;
+"172
 [e ++ F836 -> -> 1 `i `uc ]
-"199
+"173
 }
-[; ;main.c: 199: }
-[e $U 58  ]
-"200
-[e :U 57 ]
-[; ;main.c: 200: else
-[; ;main.c: 201: {
-"201
+[; ;main.c: 173: }
+[e $U 52  ]
+"174
+[e :U 51 ]
+[; ;main.c: 174: else
+[; ;main.c: 175: {
+"175
 {
-[; ;main.c: 202: ucConfirmTimerZptS = 0;
-"202
+[; ;main.c: 176: ucConfirmTimer1S = 0;
+"176
 [e = F836 -> -> 0 `i `uc ]
-"203
+"177
 }
-[e :U 58 ]
-[; ;main.c: 203: }
-[; ;main.c: 205: if(ucConfirmTimerZptS >= 3)
-"205
-[e $ ! >= -> F836 `i -> 3 `i 59  ]
-[; ;main.c: 206: {
-"206
+[e :U 52 ]
+[; ;main.c: 177: }
+[; ;main.c: 179: if(ucConfirmTimer1S >= 10)
+"179
+[e $ ! >= -> F836 `i -> 10 `i 53  ]
+[; ;main.c: 180: {
+"180
 {
-[; ;main.c: 207: ucConfirmTimerZptS = 0;
-"207
+[; ;main.c: 181: ucConfirmTimer1S = 0;
+"181
 [e = F836 -> -> 0 `i `uc ]
-[; ;main.c: 208: ampStep++;
-"208
-[e ++ F827 -> -> 1 `i `E813 ]
-"209
+[; ;main.c: 182: ampStep++;
+"182
+[e ++ F828 -> -> 1 `i `E813 ]
+"183
 }
-[e :U 59 ]
-[; ;main.c: 209: }
-[; ;main.c: 211: break;
-"211
+[e :U 53 ]
+[; ;main.c: 183: }
+[; ;main.c: 185: break;
+"185
 [e $U 46  ]
-"212
+"186
 }
-[; ;main.c: 212: }
-[; ;main.c: 214: case SET_PA2_VALUE:
-"214
-[e :U 60 ]
-[; ;main.c: 215: {
-"215
+[; ;main.c: 186: }
+[; ;main.c: 188: case SENSE_PB2_INPUT_VOLTAGE__AGAIN:
+"188
+[e :U 54 ]
+[; ;main.c: 189: {
+"189
 {
-[; ;main.c: 216: PA2 = 0;
-"216
-[e = _PA2 -> -> 0 `i `b ]
-[; ;main.c: 217: ampStep++;
-"217
-[e ++ F827 -> -> 1 `i `E813 ]
-[; ;main.c: 218: break;
-"218
+[; ;main.c: 190: if(!PB2)
+"190
+[e $ ! ! _PB2 55  ]
+[; ;main.c: 191: ampStep++;
+"191
+[e ++ F828 -> -> 1 `i `E813 ]
+[e :U 55 ]
+[; ;main.c: 192: break;
+"192
 [e $U 46  ]
-"219
+"193
 }
-[; ;main.c: 219: }
-[; ;main.c: 221: case PROCESS_AD_VALUE:
-"221
-[e :U 61 ]
-[; ;main.c: 222: {
-"222
+[; ;main.c: 193: }
+[; ;main.c: 195: case SENSE_PB2_DURATION__SECOND:
+"195
+[e :U 56 ]
+[; ;main.c: 196: {
+"196
 {
-"223
-[v F837 `uc  1 s ucInit ]
+"197
+[v F837 `uc  1 s ucConfirmTimerZptS ]
 [i F837
 -> -> 0 `i `uc
 ]
-[; ;main.c: 223: static unsigned char ucInit = 0;
-[; ;main.c: 224: if(getAdOriginalCh13Value() > 40)
+[; ;main.c: 197: static unsigned char ucConfirmTimerZptS = 0;
+[; ;main.c: 198: if(!PB2)
+"198
+[e $ ! ! _PB2 57  ]
+[; ;main.c: 199: {
+"199
+{
+[; ;main.c: 200: ucConfirmTimerZptS++;
+"200
+[e ++ F837 -> -> 1 `i `uc ]
+"201
+}
+[; ;main.c: 201: }
+[e $U 58  ]
+"202
+[e :U 57 ]
+[; ;main.c: 202: else
+[; ;main.c: 203: {
+"203
+{
+[; ;main.c: 204: ucConfirmTimerZptS = 0;
+"204
+[e = F837 -> -> 0 `i `uc ]
+"205
+}
+[e :U 58 ]
+[; ;main.c: 205: }
+[; ;main.c: 207: if(ucConfirmTimerZptS >= 10)
+"207
+[e $ ! >= -> F837 `i -> 10 `i 59  ]
+[; ;main.c: 208: {
+"208
+{
+[; ;main.c: 209: ucConfirmTimerZptS = 0;
+"209
+[e = F837 -> -> 0 `i `uc ]
+[; ;main.c: 210: ampStep++;
+"210
+[e ++ F828 -> -> 1 `i `E813 ]
+"211
+}
+[e :U 59 ]
+[; ;main.c: 211: }
+[; ;main.c: 213: break;
+"213
+[e $U 46  ]
+"214
+}
+[; ;main.c: 214: }
+[; ;main.c: 216: case SET_PA2_VALUE:
+"216
+[e :U 60 ]
+[; ;main.c: 217: {
+"217
+{
+[; ;main.c: 218: PA2 = 0;
+"218
+[e = _PA2 -> -> 0 `i `b ]
+[; ;main.c: 219: ampStep++;
+"219
+[e ++ F828 -> -> 1 `i `E813 ]
+[; ;main.c: 220: break;
+"220
+[e $U 46  ]
+"221
+}
+[; ;main.c: 221: }
+[; ;main.c: 223: case ADC1_VALUE_MEET_CONDITION:
+"223
+[e :U 61 ]
+[; ;main.c: 224: {
 "224
-[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 40 `i `ui 62  ]
-[; ;main.c: 225: {
+{
 "225
-{
-[; ;main.c: 226: ucInit = 1;
-"226
-[e = F837 -> -> 1 `i `uc ]
-[; ;main.c: 227: PA0 = 0;
-"227
-[e = _PA0 -> -> 0 `i `b ]
-[; ;main.c: 228: PA1 = 1;
-"228
-[e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 230: tDA_timer = BIG_TIMER_WORK;
-"230
-[e = F828 . `E824 0 ]
-[; ;main.c: 231: setDAC0_ChannelValue(27);
-"231
-[e ( _setDAC0_ChannelValue (1 -> -> 27 `i `uc ]
-[; ;main.c: 232: if(!ucBigTimerActionFlag)
-"232
-[e $ ! ! != -> F834 `i -> -> -> 0 `i `uc `i 63  ]
-[; ;main.c: 233: {
-"233
-{
-[; ;main.c: 234: startBigTimer();
-"234
-[e ( _startBigTimer ..  ]
-[; ;main.c: 235: ucBigTimerActionFlag = 1;
-"235
-[e = F834 -> -> 1 `i `uc ]
-"236
-}
-[e :U 63 ]
-"237
-}
-[; ;main.c: 236: }
-[; ;main.c: 237: }
-[e $U 64  ]
-"238
-[e :U 62 ]
-[; ;main.c: 238: else if(getAdOriginalCh13Value() <35)
-[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 35 `i `ui 65  ]
-[; ;main.c: 239: {
-"239
-{
-[; ;main.c: 240: ucInit = 1;
-"240
-[e = F837 -> -> 1 `i `uc ]
-[; ;main.c: 243: PA3 = 0;
-"243
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 244: tDA_timer = SMALL_TIMER_WORK;
-"244
-[e = F828 . `E824 1 ]
-[; ;main.c: 245: ucSmallTimerActionFlag = 1;
-"245
-[e = F831 -> -> 1 `i `uc ]
-[; ;main.c: 246: ucWaitTimeO3s = 0;
-"246
-[e = F830 -> -> 0 `i `uc ]
-[; ;main.c: 247: ucSetSmallActionFlag = 1;
-"247
-[e = F832 -> -> 1 `i `uc ]
-[; ;main.c: 249: startSmallTimer();
-"249
-[e ( _startSmallTimer ..  ]
-"250
-}
-[; ;main.c: 250: }
-[e $U 66  ]
-"251
-[e :U 65 ]
-[; ;main.c: 251: else
-[; ;main.c: 252: {
-"252
-{
-[; ;main.c: 253: if(!ucInit)
-"253
-[e $ ! ! != -> F837 `i -> -> -> 0 `i `uc `i 67  ]
-[; ;main.c: 254: {
-"254
-{
-[; ;main.c: 255: ucInit = 1;
-"255
-[e = F837 -> -> 1 `i `uc ]
-[; ;main.c: 256: PA0 = 0;
-"256
-[e = _PA0 -> -> 0 `i `b ]
-[; ;main.c: 257: PA1 = 1;
-"257
-[e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 259: tDA_timer = BIG_TIMER_WORK;
-"259
-[e = F828 . `E824 0 ]
-[; ;main.c: 260: setDAC0_ChannelValue(27);
-"260
-[e ( _setDAC0_ChannelValue (1 -> -> 27 `i `uc ]
-[; ;main.c: 261: if(!ucBigTimerActionFlag)
-"261
-[e $ ! ! != -> F834 `i -> -> -> 0 `i `uc `i 68  ]
-[; ;main.c: 262: {
-"262
-{
-[; ;main.c: 263: startBigTimer();
-"263
-[e ( _startBigTimer ..  ]
-[; ;main.c: 264: ucBigTimerActionFlag = 1;
-"264
-[e = F834 -> -> 1 `i `uc ]
-"265
-}
-[e :U 68 ]
-"266
-}
-[e :U 67 ]
-"267
-}
-[e :U 66 ]
-[e :U 64 ]
-[; ;main.c: 265: }
-[; ;main.c: 266: }
-[; ;main.c: 267: }
-[; ;main.c: 269: if(BIG_TIMER_WORK == tDA_timer)
-"269
-[e $ ! == -> . `E824 0 `i -> F828 `i 69  ]
-[; ;main.c: 270: {
-"270
-{
-[; ;main.c: 271: if(!PA3)
-"271
-[e $ ! ! _PA3 70  ]
-[; ;main.c: 272: {
-"272
-{
-[; ;main.c: 273: ucWaitTime1S++;
-"273
-[e ++ F829 -> -> 1 `i `uc ]
-[; ;main.c: 274: if(ucWaitTime1S >= 5)
-"274
-[e $ ! >= -> F829 `i -> 5 `i 71  ]
-[; ;main.c: 275: {
-"275
-{
-[; ;main.c: 276: PA3 = 1;
-"276
-[e = _PA3 -> -> 1 `i `b ]
-[; ;main.c: 277: ucWaitTime1S = 0;
-"277
-[e = F829 -> -> 0 `i `uc ]
-"278
-}
-[e :U 71 ]
-"279
-}
-[e :U 70 ]
-"280
-}
-[; ;main.c: 278: }
-[; ;main.c: 279: }
-[; ;main.c: 280: }
-[e $U 72  ]
-"281
-[e :U 69 ]
-[; ;main.c: 281: else
-[; ;main.c: 282: {
-"282
-{
-[; ;main.c: 283: PA3 = 0;
-"283
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 284: ucWaitTime1S = 0;
-"284
-[e = F829 -> -> 0 `i `uc ]
-"285
-}
-[e :U 72 ]
-[; ;main.c: 285: }
-[; ;main.c: 287: ampStep++;
-"287
-[e ++ F827 -> -> 1 `i `E813 ]
-[; ;main.c: 288: break;
-"288
-[e $U 46  ]
-"289
-}
-[; ;main.c: 289: }
-[; ;main.c: 291: case WAIT_SET_TIME_FINISHED:
-"291
-[e :U 73 ]
-[; ;main.c: 292: {
-"292
-{
-[; ;main.c: 293: switch(tDA_timer)
-"293
-[e $U 75  ]
-[; ;main.c: 294: {
-"294
-{
-[; ;main.c: 295: case BIG_TIMER_WORK:
-"295
-[e :U 76 ]
-[; ;main.c: 296: {
-"296
-{
-[; ;main.c: 297: if(!isFinishedBigTimer())
-"297
-[e $ ! ! != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 77  ]
-[; ;main.c: 298: {
-"298
-{
-[; ;main.c: 299: ampStep = PROCESS_AD_VALUE;
-"299
-[e = F827 . `E813 5 ]
-"300
-}
-[; ;main.c: 300: }
-[e $U 78  ]
-"301
-[e :U 77 ]
-[; ;main.c: 301: else
-[; ;main.c: 302: {
-"302
-{
-[; ;main.c: 303: ampStep++;
-"303
-[e ++ F827 -> -> 1 `i `E813 ]
-"304
-}
-[e :U 78 ]
-[; ;main.c: 304: }
-[; ;main.c: 305: break;
-"305
-[e $U 74  ]
-"306
-}
-[; ;main.c: 306: }
-[; ;main.c: 308: case SMALL_TIMER_WORK:
-"308
-[e :U 79 ]
-[; ;main.c: 309: {
-"309
-{
-[; ;main.c: 310: if((ucBigTimerActionFlag == 1) && isFinishedBigTimer())
-"310
-[e $ ! && == -> F834 `i -> 1 `i != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 80  ]
-[; ;main.c: 311: {
-"311
-{
-[; ;main.c: 312: ampStep++;
-"312
-[e ++ F827 -> -> 1 `i `E813 ]
-"313
-}
-[; ;main.c: 313: }
-[e $U 81  ]
-"314
-[e :U 80 ]
-[; ;main.c: 314: else if(!isFinishedSmallTimer())
-[e $ ! ! != -> ( _isFinishedSmallTimer ..  `i -> -> -> 0 `i `uc `i 82  ]
-[; ;main.c: 315: {
-"315
-{
-[; ;main.c: 316: if(getAdOriginalCh13Value() > 40)
-"316
-[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 40 `i `ui 83  ]
-[; ;main.c: 317: {
-"317
-{
-[; ;main.c: 318: ucWaitTime1S = 0;
-"318
-[e = F829 -> -> 0 `i `uc ]
-[; ;main.c: 319: ucSmallTimerActionFlag = 0;
-"319
-[e = F831 -> -> 0 `i `uc ]
-[; ;main.c: 320: ucSetSmallActionFlag = 0;
-"320
-[e = F832 -> -> 0 `i `uc ]
-[; ;main.c: 321: ampStep = PROCESS_AD_VALUE;
-"321
-[e = F827 . `E813 5 ]
-"322
-}
-[e :U 83 ]
-"323
-}
-[; ;main.c: 322: }
-[; ;main.c: 323: }
-[e $U 84  ]
-"324
-[e :U 82 ]
-[; ;main.c: 324: else
-[; ;main.c: 325: {
-"325
-{
-[; ;main.c: 326: ampStep++;
-"326
-[e ++ F827 -> -> 1 `i `E813 ]
-"327
-}
-[e :U 84 ]
-[e :U 81 ]
-[; ;main.c: 327: }
-[; ;main.c: 329: if((ucSmallTimerActionFlag)&&(ucSetSmallActionFlag))
-"329
-[e $ ! && != -> F831 `i -> -> -> 0 `i `uc `i != -> F832 `i -> -> -> 0 `i `uc `i 85  ]
-[; ;main.c: 330: {
-"330
-{
-[; ;main.c: 331: ucWaitTimeO3s++;
-"331
-[e ++ F830 -> -> 1 `i `uc ]
-[; ;main.c: 332: if(ucWaitTimeO3s >= 3)
-"332
-[e $ ! >= -> F830 `i -> 3 `i 86  ]
-[; ;main.c: 333: {
-"333
-{
-[; ;main.c: 334: ucWaitTimeO3s = 0;
-"334
-[e = F830 -> -> 0 `i `uc ]
-[; ;main.c: 335: ucSetSmallActionFlag = 0;
-"335
-[e = F832 -> -> 0 `i `uc ]
-[; ;main.c: 336: PA0 = 1;
-"336
-[e = _PA0 -> -> 1 `i `b ]
-[; ;main.c: 337: PA1 = 0;
-"337
-[e = _PA1 -> -> 0 `i `b ]
-[; ;main.c: 338: setDAC0_ChannelValue(25);
-"338
-[e ( _setDAC0_ChannelValue (1 -> -> 25 `i `uc ]
-"339
-}
-[e :U 86 ]
-"341
-}
-[e :U 85 ]
-[; ;main.c: 339: }
-[; ;main.c: 341: }
-[; ;main.c: 343: break;
-"343
-[e $U 74  ]
-"344
-}
-[; ;main.c: 344: }
-[; ;main.c: 346: default:
-"346
-[e :U 87 ]
-[; ;main.c: 347: break;
-"347
-[e $U 74  ]
-"348
-}
-[; ;main.c: 348: }
-[e $U 74  ]
-"293
-[e :U 75 ]
-[e [\ F828 , $ . `E824 0 76
- , $ . `E824 1 79
- 87 ]
-"348
-[e :U 74 ]
-[; ;main.c: 350: break;
-"350
-[e $U 46  ]
-"351
-}
-[; ;main.c: 351: }
-[; ;main.c: 353: case SET_TIME_BE_FINISHED:
-"353
-[e :U 88 ]
-[; ;main.c: 354: {
-"354
-{
-[; ;main.c: 355: PA2 = 1;
-"355
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 356: PA0 = 0;
-"356
-[e = _PA0 -> -> 0 `i `b ]
-[; ;main.c: 357: PA1 = 0;
-"357
-[e = _PA1 -> -> 0 `i `b ]
-[; ;main.c: 358: PA3 = 0;
-"358
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 359: ucWaitTime1S = 0;
-"359
-[e = F829 -> -> 0 `i `uc ]
-[; ;main.c: 360: ucSmallTimerActionFlag = 0;
-"360
-[e = F831 -> -> 0 `i `uc ]
-[; ;main.c: 361: ucSetSmallActionFlag = 0;
-"361
-[e = F832 -> -> 0 `i `uc ]
-[; ;main.c: 362: setDAC0_ChannelValue(25);
-"362
-[e ( _setDAC0_ChannelValue (1 -> -> 25 `i `uc ]
-[; ;main.c: 363: ampStep++;
-"363
-[e ++ F827 -> -> 1 `i `E813 ]
-[; ;main.c: 364: break;
-"364
-[e $U 46  ]
-"365
-}
-[; ;main.c: 365: }
-[; ;main.c: 367: case CHECKING_PULL_OUT_BATTERY:
-"367
-[e :U 89 ]
-[; ;main.c: 368: {
-"368
-{
-"369
-[v F838 `uc  1 s ucCheckBatteryCnt ]
+[v F838 `uc  1 s ucConFirmationTime ]
 [i F838
 -> -> 0 `i `uc
 ]
-[; ;main.c: 369: static unsigned char ucCheckBatteryCnt = 0;
-[; ;main.c: 370: if(PB2)
-"370
-[e $ ! _PB2 90  ]
-[; ;main.c: 371: ucCheckBatteryCnt++;
-"371
+[; ;main.c: 225: static unsigned char ucConFirmationTime = 0;
+[; ;main.c: 226: if(getAdOriginalCh12Value() >= 2341)
+"226
+[e $ ! >= ( _getAdOriginalCh12Value ..  -> -> 2341 `i `ui 62  ]
+[; ;main.c: 227: ucConFirmationTime++;
+"227
 [e ++ F838 -> -> 1 `i `uc ]
-[e $U 91  ]
-"372
-[e :U 90 ]
-[; ;main.c: 372: else
-[; ;main.c: 373: ucCheckBatteryCnt = 0;
-"373
+[e $U 63  ]
+"228
+[e :U 62 ]
+[; ;main.c: 228: else
+[; ;main.c: 229: ucConFirmationTime = 0;
+"229
 [e = F838 -> -> 0 `i `uc ]
-[e :U 91 ]
-[; ;main.c: 375: if(ucCheckBatteryCnt > 2)
-"375
-[e $ ! > -> F838 `i -> 2 `i 92  ]
-[; ;main.c: 376: {
-"376
-{
-[; ;main.c: 377: ucCheckBatteryCnt = 0;
-"377
-[e = F838 -> -> 0 `i `uc ]
-[; ;main.c: 378: ampStep++;
-"378
-[e ++ F827 -> -> 1 `i `E813 ]
-"379
-}
-[e :U 92 ]
-[; ;main.c: 379: }
-[; ;main.c: 380: break;
-"380
+[e :U 63 ]
+[; ;main.c: 230: break;
+"230
 [e $U 46  ]
-"381
+"231
 }
-[; ;main.c: 381: }
-[; ;main.c: 383: case CHECKING_INSTALLED_BATTERY:
-"383
-[e :U 93 ]
-[; ;main.c: 384: {
-"384
+[; ;main.c: 231: }
+[; ;main.c: 233: case PROCESS_AD_VALUE:
+"233
+[e :U 64 ]
+[; ;main.c: 234: {
+"234
 {
-"385
-[v F839 `uc  1 s ucInstalledBatteryCnt ]
+"235
+[v F839 `uc  1 s ucInit ]
 [i F839
 -> -> 0 `i `uc
 ]
-[; ;main.c: 385: static unsigned char ucInstalledBatteryCnt = 0;
-[; ;main.c: 386: if(!PB2)
-"386
-[e $ ! ! _PB2 94  ]
-[; ;main.c: 387: ucInstalledBatteryCnt++;
-"387
-[e ++ F839 -> -> 1 `i `uc ]
-[e $U 95  ]
-"388
-[e :U 94 ]
-[; ;main.c: 388: else
-[; ;main.c: 389: ucInstalledBatteryCnt = 0;
-"389
-[e = F839 -> -> 0 `i `uc ]
-[e :U 95 ]
-[; ;main.c: 391: if(ucInstalledBatteryCnt > 10)
-"391
-[e $ ! > -> F839 `i -> 10 `i 96  ]
-[; ;main.c: 392: {
-"392
+[; ;main.c: 235: static unsigned char ucInit = 0;
+[; ;main.c: 236: if(getAdOriginalCh13Value() > 36)
+"236
+[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 36 `i `ui 65  ]
+[; ;main.c: 237: {
+"237
 {
-[; ;main.c: 393: ucInstalledBatteryCnt = 0;
-"393
-[e = F839 -> -> 0 `i `uc ]
-[; ;main.c: 394: ampStep = SENSE_PB2_INPUT_VOLTAGE;
-"394
-[e = F827 . `E813 0 ]
-"395
+[; ;main.c: 238: ucInit = 1;
+"238
+[e = F839 -> -> 1 `i `uc ]
+[; ;main.c: 239: PA0 = 0;
+"239
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 240: PA1 = 1;
+"240
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 241: PA3 = 1;
+"241
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 242: tDA_timer = BIG_TIMER_WORK;
+"242
+[e = F829 . `E825 0 ]
+[; ;main.c: 244: if(!ucBigTimerActionFlag)
+"244
+[e $ ! ! != -> F835 `i -> -> -> 0 `i `uc `i 66  ]
+[; ;main.c: 245: {
+"245
+{
+[; ;main.c: 246: startBigTimer();
+"246
+[e ( _startBigTimer ..  ]
+[; ;main.c: 247: ucBigTimerActionFlag = 1;
+"247
+[e = F835 -> -> 1 `i `uc ]
+"248
 }
-[e :U 96 ]
-[; ;main.c: 395: }
-[; ;main.c: 396: break;
-"396
-[e $U 46  ]
-"397
+[e :U 66 ]
+"249
 }
-[; ;main.c: 397: }
-[; ;main.c: 399: default:
-"399
-[e :U 97 ]
-[; ;main.c: 400: break;
-"400
-[e $U 46  ]
-"402
+[; ;main.c: 248: }
+[; ;main.c: 249: }
+[e $U 67  ]
+"250
+[e :U 65 ]
+[; ;main.c: 250: else if(getAdOriginalCh13Value() <31)
+[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 31 `i `ui 68  ]
+[; ;main.c: 251: {
+"251
+{
+[; ;main.c: 252: ucInit = 1;
+"252
+[e = F839 -> -> 1 `i `uc ]
+[; ;main.c: 253: PA0 = 1;
+"253
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 254: PA1 = 0;
+"254
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 255: PA3 = 0;
+"255
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 256: tDA_timer = SMALL_TIMER_WORK;
+"256
+[e = F829 . `E825 1 ]
+[; ;main.c: 257: ucSmallTimerActionFlag = 1;
+"257
+[e = F832 -> -> 1 `i `uc ]
+[; ;main.c: 258: ucWaitTimeO3s = 0;
+"258
+[e = F831 -> -> 0 `i `uc ]
+[; ;main.c: 259: ucSetSmallActionFlag = 1;
+"259
+[e = F833 -> -> 1 `i `uc ]
+[; ;main.c: 261: startSmallTimer();
+"261
+[e ( _startSmallTimer ..  ]
+"262
 }
-[; ;main.c: 402: }
+[; ;main.c: 262: }
+[e $U 69  ]
+"263
+[e :U 68 ]
+[; ;main.c: 263: else
+[; ;main.c: 264: {
+"264
+{
+[; ;main.c: 265: if(!ucInit)
+"265
+[e $ ! ! != -> F839 `i -> -> -> 0 `i `uc `i 70  ]
+[; ;main.c: 266: {
+"266
+{
+[; ;main.c: 267: ucInit = 1;
+"267
+[e = F839 -> -> 1 `i `uc ]
+[; ;main.c: 268: PA0 = 0;
+"268
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 269: PA1 = 1;
+"269
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 270: PA3 = 1;
+"270
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 271: tDA_timer = BIG_TIMER_WORK;
+"271
+[e = F829 . `E825 0 ]
+[; ;main.c: 273: if(!ucBigTimerActionFlag)
+"273
+[e $ ! ! != -> F835 `i -> -> -> 0 `i `uc `i 71  ]
+[; ;main.c: 274: {
+"274
+{
+[; ;main.c: 275: startBigTimer();
+"275
+[e ( _startBigTimer ..  ]
+[; ;main.c: 276: ucBigTimerActionFlag = 1;
+"276
+[e = F835 -> -> 1 `i `uc ]
+"277
+}
+[e :U 71 ]
+"278
+}
+[e :U 70 ]
+"279
+}
+[e :U 69 ]
+[e :U 67 ]
+[; ;main.c: 277: }
+[; ;main.c: 278: }
+[; ;main.c: 279: }
+[; ;main.c: 282: ampStep++;
+"282
+[e ++ F828 -> -> 1 `i `E813 ]
+[; ;main.c: 283: break;
+"283
 [e $U 46  ]
-"153
+"284
+}
+[; ;main.c: 284: }
+[; ;main.c: 286: case WAIT_SET_TIME_FINISHED:
+"286
+[e :U 72 ]
+[; ;main.c: 287: {
+"287
+{
+[; ;main.c: 288: switch(tDA_timer)
+"288
+[e $U 74  ]
+[; ;main.c: 289: {
+"289
+{
+[; ;main.c: 290: case BIG_TIMER_WORK:
+"290
+[e :U 75 ]
+[; ;main.c: 291: {
+"291
+{
+[; ;main.c: 292: if(!isFinishedBigTimer())
+"292
+[e $ ! ! != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 76  ]
+[; ;main.c: 293: {
+"293
+{
+[; ;main.c: 294: ampStep = ADC1_VALUE_MEET_CONDITION;
+"294
+[e = F828 . `E813 5 ]
+"295
+}
+[; ;main.c: 295: }
+[e $U 77  ]
+"296
+[e :U 76 ]
+[; ;main.c: 296: else
+[; ;main.c: 297: {
+"297
+{
+[; ;main.c: 298: ampStep++;
+"298
+[e ++ F828 -> -> 1 `i `E813 ]
+"299
+}
+[e :U 77 ]
+[; ;main.c: 299: }
+[; ;main.c: 300: break;
+"300
+[e $U 73  ]
+"301
+}
+[; ;main.c: 301: }
+[; ;main.c: 303: case SMALL_TIMER_WORK:
+"303
+[e :U 78 ]
+[; ;main.c: 304: {
+"304
+{
+[; ;main.c: 305: if((ucBigTimerActionFlag == 1) && isFinishedBigTimer())
+"305
+[e $ ! && == -> F835 `i -> 1 `i != -> ( _isFinishedBigTimer ..  `i -> -> -> 0 `i `uc `i 79  ]
+[; ;main.c: 306: {
+"306
+{
+[; ;main.c: 307: ampStep++;
+"307
+[e ++ F828 -> -> 1 `i `E813 ]
+"308
+}
+[; ;main.c: 308: }
+[e $U 80  ]
+"309
+[e :U 79 ]
+[; ;main.c: 309: else if(!isFinishedSmallTimer())
+[e $ ! ! != -> ( _isFinishedSmallTimer ..  `i -> -> -> 0 `i `uc `i 81  ]
+[; ;main.c: 310: {
+"310
+{
+[; ;main.c: 311: if(getAdOriginalCh13Value() > 36)
+"311
+[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 36 `i `ui 82  ]
+[; ;main.c: 312: {
+"312
+{
+[; ;main.c: 313: ucWaitTime1S = 0;
+"313
+[e = F830 -> -> 0 `i `uc ]
+[; ;main.c: 314: ucSmallTimerActionFlag = 0;
+"314
+[e = F832 -> -> 0 `i `uc ]
+[; ;main.c: 315: ucSetSmallActionFlag = 0;
+"315
+[e = F833 -> -> 0 `i `uc ]
+[; ;main.c: 316: ampStep = ADC1_VALUE_MEET_CONDITION;
+"316
+[e = F828 . `E813 5 ]
+"317
+}
+[e :U 82 ]
+"318
+}
+[; ;main.c: 317: }
+[; ;main.c: 318: }
+[e $U 83  ]
+"319
+[e :U 81 ]
+[; ;main.c: 319: else
+[; ;main.c: 320: {
+"320
+{
+[; ;main.c: 321: ampStep++;
+"321
+[e ++ F828 -> -> 1 `i `E813 ]
+"322
+}
+[e :U 83 ]
+[e :U 80 ]
+[; ;main.c: 322: }
+[; ;main.c: 324: break;
+"324
+[e $U 73  ]
+"325
+}
+[; ;main.c: 325: }
+[; ;main.c: 327: default:
+"327
+[e :U 84 ]
+[; ;main.c: 328: break;
+"328
+[e $U 73  ]
+"329
+}
+[; ;main.c: 329: }
+[e $U 73  ]
+"288
+[e :U 74 ]
+[e [\ F829 , $ . `E825 0 75
+ , $ . `E825 1 78
+ 84 ]
+"329
+[e :U 73 ]
+[; ;main.c: 331: break;
+"331
+[e $U 46  ]
+"332
+}
+[; ;main.c: 332: }
+[; ;main.c: 334: case SET_TIME_BE_FINISHED:
+"334
+[e :U 85 ]
+[; ;main.c: 335: {
+"335
+{
+[; ;main.c: 336: PA2 = 1;
+"336
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 337: PA0 = 0;
+"337
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 338: PA1 = 0;
+"338
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 339: PA3 = 0;
+"339
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 340: ucWaitTime1S = 0;
+"340
+[e = F830 -> -> 0 `i `uc ]
+[; ;main.c: 341: ucSmallTimerActionFlag = 0;
+"341
+[e = F832 -> -> 0 `i `uc ]
+[; ;main.c: 342: ucSetSmallActionFlag = 0;
+"342
+[e = F833 -> -> 0 `i `uc ]
+[; ;main.c: 344: ampStep++;
+"344
+[e ++ F828 -> -> 1 `i `E813 ]
+[; ;main.c: 345: break;
+"345
+[e $U 46  ]
+"346
+}
+[; ;main.c: 346: }
+[; ;main.c: 348: case CHECKING_PULL_OUT_BATTERY:
+"348
+[e :U 86 ]
+[; ;main.c: 349: {
+"349
+{
+"350
+[v F840 `uc  1 s ucCheckBatteryCnt ]
+[i F840
+-> -> 0 `i `uc
+]
+[; ;main.c: 350: static unsigned char ucCheckBatteryCnt = 0;
+[; ;main.c: 351: if(PB2)
+"351
+[e $ ! _PB2 87  ]
+[; ;main.c: 352: ucCheckBatteryCnt++;
+"352
+[e ++ F840 -> -> 1 `i `uc ]
+[e $U 88  ]
+"353
+[e :U 87 ]
+[; ;main.c: 353: else
+[; ;main.c: 354: ucCheckBatteryCnt = 0;
+"354
+[e = F840 -> -> 0 `i `uc ]
+[e :U 88 ]
+[; ;main.c: 356: if(ucCheckBatteryCnt > 2)
+"356
+[e $ ! > -> F840 `i -> 2 `i 89  ]
+[; ;main.c: 357: {
+"357
+{
+[; ;main.c: 358: ucCheckBatteryCnt = 0;
+"358
+[e = F840 -> -> 0 `i `uc ]
+[; ;main.c: 359: ampStep++;
+"359
+[e ++ F828 -> -> 1 `i `E813 ]
+"360
+}
+[e :U 89 ]
+[; ;main.c: 360: }
+[; ;main.c: 361: break;
+"361
+[e $U 46  ]
+"362
+}
+[; ;main.c: 362: }
+[; ;main.c: 364: case CHECKING_INSTALLED_BATTERY:
+"364
+[e :U 90 ]
+[; ;main.c: 365: {
+"365
+{
+"366
+[v F841 `uc  1 s ucInstalledBatteryCnt ]
+[i F841
+-> -> 0 `i `uc
+]
+[; ;main.c: 366: static unsigned char ucInstalledBatteryCnt = 0;
+[; ;main.c: 367: if(!PB2)
+"367
+[e $ ! ! _PB2 91  ]
+[; ;main.c: 368: ucInstalledBatteryCnt++;
+"368
+[e ++ F841 -> -> 1 `i `uc ]
+[e $U 92  ]
+"369
+[e :U 91 ]
+[; ;main.c: 369: else
+[; ;main.c: 370: ucInstalledBatteryCnt = 0;
+"370
+[e = F841 -> -> 0 `i `uc ]
+[e :U 92 ]
+[; ;main.c: 372: if(ucInstalledBatteryCnt > 10)
+"372
+[e $ ! > -> F841 `i -> 10 `i 93  ]
+[; ;main.c: 373: {
+"373
+{
+[; ;main.c: 374: ucInstalledBatteryCnt = 0;
+"374
+[e = F841 -> -> 0 `i `uc ]
+[; ;main.c: 375: ampStep = SENSE_PB2_INPUT_VOLTAGE;
+"375
+[e = F828 . `E813 0 ]
+"376
+}
+[e :U 93 ]
+[; ;main.c: 376: }
+[; ;main.c: 377: break;
+"377
+[e $U 46  ]
+"378
+}
+[; ;main.c: 378: }
+[; ;main.c: 380: default:
+"380
+[e :U 94 ]
+[; ;main.c: 381: break;
+"381
+[e $U 46  ]
+"383
+}
+[; ;main.c: 383: }
+[e $U 46  ]
+"155
 [e :U 47 ]
-[e [\ F827 , $ . `E813 0 48
+[e [\ F828 , $ . `E813 0 48
  , $ . `E813 1 50
  , $ . `E813 2 54
  , $ . `E813 3 56
  , $ . `E813 4 60
  , $ . `E813 5 61
- , $ . `E813 6 73
- , $ . `E813 7 88
- , $ . `E813 8 89
- , $ . `E813 9 93
- 97 ]
-"402
+ , $ . `E813 6 64
+ , $ . `E813 7 72
+ , $ . `E813 8 85
+ , $ . `E813 9 86
+ , $ . `E813 10 90
+ 94 ]
+"383
 [e :U 46 ]
-"403
+"384
 }
 [e :U 45 ]
-"404
+"385
 }
 [e :U 42 ]
-"145
+"147
 [e $U 43  ]
 [e :U 44 ]
-[; ;main.c: 403: }
-[; ;main.c: 404: }
-[; ;main.c: 405: }
-"405
+[; ;main.c: 384: }
+[; ;main.c: 385: }
+[; ;main.c: 386: }
+"386
 [e :UE 41 ]
 }

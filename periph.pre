@@ -1,5 +1,5 @@
 
-# 1 "C:\sw_dev\AK7030-OTP\periph.c"
+# 1 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\sw_dev\AK7030-OTP\yn8p520.h"
+# 164 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -799,7 +799,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 13 "C:\sw_dev\AK7030-OTP\periph.h"
+# 13 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
@@ -810,7 +810,7 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 void adc_start();
 unsigned int adc_get(void);
 
-# 21 "C:\sw_dev\AK7030-OTP\common.h"
+# 21 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -851,7 +851,7 @@ unsigned char isFinishedSmallTimer();
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
 
-# 13 "C:\sw_dev\AK7030-OTP\periph.c"
+# 13 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c"
 void dac_init()
 {
 DACCON|=2;
