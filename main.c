@@ -126,7 +126,7 @@ void main (void)
 	TRISB2 = 1;//SET PB2 as input
 
 	TRISB1 = 1;// set AD sample Channel 13
-	TRISB0 = 1;// set AD sample Channel 12
+	TRISB4 = 1;// set AD sample Channel 1
 
 	clock_config();	//使系统时钟稳定
 	timer1_config();
