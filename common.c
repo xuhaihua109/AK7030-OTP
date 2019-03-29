@@ -96,7 +96,11 @@ void process_AD_Converter_Value()
 	{
 		setAD_ConvertFlag(0);
 		AD_Sample();
-		setAdcSampleChannel(sampleChannelSelect);
+		if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
+			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
+		else
+			adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);
+//		setAdcSampleChannel(sampleChannelSelect);
 		adc_start();	//ADCÆô¶¯
 	}
 }

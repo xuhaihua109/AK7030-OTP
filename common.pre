@@ -939,12 +939,16 @@ if(getAD_ConvertFlag())
 {
 setAD_ConvertFlag(0);
 AD_Sample();
-setAdcSampleChannel(sampleChannelSelect);
+if(1 == sampleChannelSelect)
+adc_test_init(1,3);
+else
+adc_test_init(13,3);
+
 adc_start();
 }
 }
 
-# 113
+# 117
 static void AD_Sample(void)
 {
 if(sampleTimes < 6)
@@ -1021,7 +1025,7 @@ void startBigTimer()
 {
 uiBigTimer = 32400;
 
-# 193
+# 197
 }
 
 void clearBigTimer()
@@ -1040,7 +1044,7 @@ void startSmallTimer()
 {
 uiSmallTimer = 3600;
 
-# 214
+# 218
 }
 
 
