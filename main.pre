@@ -908,7 +908,7 @@ PA0 = 1;
 TRISB2 = 1;
 
 TRISB1 = 1;
-TRISB0 = 1;
+TRISB4 = 1;
 
 clock_config();
 timer1_config();

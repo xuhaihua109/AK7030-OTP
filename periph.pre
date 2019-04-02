@@ -912,6 +912,7 @@ GIE=0;
 
 void adc_test_init(unsigned char channel,unsigned char ref)
 {
+ADCON0 = 0x00;
 ADCON0|=channel<<2;
 ADCON1|=ref<<6;
 ADON=1;

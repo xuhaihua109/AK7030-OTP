@@ -1390,9 +1390,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 128: TRISB1 = 1;
 "128
 [e = _TRISB1 -> -> 1 `i `b ]
-[; ;main.c: 129: TRISB0 = 1;
+[; ;main.c: 129: TRISB4 = 1;
 "129
-[e = _TRISB0 -> -> 1 `i `b ]
+[e = _TRISB4 -> -> 1 `i `b ]
 [; ;main.c: 131: clock_config();
 "131
 [e ( _clock_config ..  ]

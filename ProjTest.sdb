@@ -583,11 +583,11 @@ SMALL_TIMER_WORK 1
 [v _int_enable `(v  1 e 0 0 ]
 "85
 [v _adc_test_init `(v  1 e 0 0 ]
-"94
+"95
 [v _setAdcSampleChannel `(v  1 e 0 0 ]
-"99
+"100
 [v _adc_start `(v  1 e 0 0 ]
-"104
+"105
 [v _adc_get `(ui  1 e 2 0 ]
 "5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\abdiv.c
 [v ___abdiv `(c  1 e 1 0 ]
@@ -1401,10 +1401,10 @@ SMALL_TIMER_WORK 1
 {
 "245
 } 0
-"99 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c
+"100 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c
 [v _adc_start `(v  1 e 0 0 ]
 {
-"101
+"102
 } 0
 "45
 [v _op2_init `(v  1 e 0 0 ]
@@ -1427,7 +1427,7 @@ SMALL_TIMER_WORK 1
 [v adc_test_init@channel `uc  1 a 1 wreg ]
 [v adc_test_init@channel `uc  1 a 1 wreg ]
 [v adc_test_init@ref `uc  1 p 1 0 ]
-"90
+"91
 } 0
 "56 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
 [v _timer1_interrupt_config `(v  1 e 0 0 ]
@@ -1458,10 +1458,10 @@ SMALL_TIMER_WORK 1
 [v i1setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
 "72
 } 0
-"104 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c
+"105 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c
 [v _adc_get `(ui  1 e 2 0 ]
 {
-"105
+"106
 [v adc_get@val `ui  1 a 2 2 ]
-"108
+"109
 } 0

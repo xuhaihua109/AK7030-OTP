@@ -83,6 +83,7 @@ void int_enable(uchar mode)
 
 void adc_test_init(uchar channel,uchar ref)
 {
+	ADCON0 = 0x00;
 	ADCON0|=channel<<2;//通道号
 	ADCON1|=ref<<6;	//参考电压 0-OP1 1-VCC 2-PB5 3-2.1v
 	ADON=1;	//启动ADC

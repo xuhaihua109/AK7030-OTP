@@ -1380,69 +1380,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _channel `uc  1 r1 ]
 [v _ref `uc  1 r2 ]
 [f ]
-[; ;periph.c: 86: ADCON0|=channel<<2;
+[; ;periph.c: 86: ADCON0 = 0x00;
 "86
-[e =| _ADCON0 -> << -> _channel `i -> 2 `i `uc ]
-[; ;periph.c: 87: ADCON1|=ref<<6;
+[e = _ADCON0 -> -> 0 `i `uc ]
+[; ;periph.c: 87: ADCON0|=channel<<2;
 "87
-[e =| _ADCON1 -> << -> _ref `i -> 6 `i `uc ]
-[; ;periph.c: 88: ADON=1;
+[e =| _ADCON0 -> << -> _channel `i -> 2 `i `uc ]
+[; ;periph.c: 88: ADCON1|=ref<<6;
 "88
-[e = _ADON -> -> 1 `i `b ]
-[; ;periph.c: 89: ADIE=1;
+[e =| _ADCON1 -> << -> _ref `i -> 6 `i `uc ]
+[; ;periph.c: 89: ADON=1;
 "89
-[e = _ADIE -> -> 1 `i `b ]
-[; ;periph.c: 90: }
+[e = _ADON -> -> 1 `i `b ]
+[; ;periph.c: 90: ADIE=1;
 "90
+[e = _ADIE -> -> 1 `i `b ]
+[; ;periph.c: 91: }
+"91
 [e :UE 47 ]
 }
-"94
+"95
 [v _setAdcSampleChannel `(v  1 ef1`uc ]
 {
-[; ;periph.c: 93: void setAdcSampleChannel(unsigned char ucChannel)
-[; ;periph.c: 94: {
+[; ;periph.c: 94: void setAdcSampleChannel(unsigned char ucChannel)
+[; ;periph.c: 95: {
 [e :U _setAdcSampleChannel ]
 [v _ucChannel `uc  1 r1 ]
 [f ]
-[; ;periph.c: 95: ADCON0|=ucChannel<<2;
-"95
-[e =| _ADCON0 -> << -> _ucChannel `i -> 2 `i `uc ]
-[; ;periph.c: 96: }
+[; ;periph.c: 96: ADCON0|=ucChannel<<2;
 "96
+[e =| _ADCON0 -> << -> _ucChannel `i -> 2 `i `uc ]
+[; ;periph.c: 97: }
+"97
 [e :UE 48 ]
 }
-"99
+"100
 [v _adc_start `(v  1 ef ]
 {
-[; ;periph.c: 98: void adc_start()
-[; ;periph.c: 99: {
+[; ;periph.c: 99: void adc_start()
+[; ;periph.c: 100: {
 [e :U _adc_start ]
 [f ]
-[; ;periph.c: 100: GO=1;
-"100
-[e = _GO -> -> 1 `i `b ]
-[; ;periph.c: 101: }
+[; ;periph.c: 101: GO=1;
 "101
+[e = _GO -> -> 1 `i `b ]
+[; ;periph.c: 102: }
+"102
 [e :UE 49 ]
 }
-"104
+"105
 [v _adc_get `(ui  1 ef ]
 {
-[; ;periph.c: 103: unsigned int adc_get(void)
-[; ;periph.c: 104: {
+[; ;periph.c: 104: unsigned int adc_get(void)
+[; ;periph.c: 105: {
 [e :U _adc_get ]
 [f ]
-"105
-[v _val `ui  1 a ]
-[; ;periph.c: 105: unsigned int val;
-[; ;periph.c: 106: val = (ADRESH<<8) | ADRESL;
 "106
-[e = _val -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
-[; ;periph.c: 107: return val;
+[v _val `ui  1 a ]
+[; ;periph.c: 106: unsigned int val;
+[; ;periph.c: 107: val = (ADRESH<<8) | ADRESL;
 "107
+[e = _val -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
+[; ;periph.c: 108: return val;
+"108
 [e ) _val ]
 [e $UE 50  ]
-[; ;periph.c: 108: }
-"108
+[; ;periph.c: 109: }
+"109
 [e :UE 50 ]
 }
