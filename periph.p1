@@ -685,19 +685,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ALG3 `Vuc  1 e@271 ]
 "885 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PAPD `Vuc  1 e@389 ]
-"889 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"890 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PBPD `Vuc  1 e@390 ]
-"893 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"894 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PAOD `Vuc  1 e@391 ]
-"897 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"895 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+[v _PAOD6 `Vb  1 e@3134 ]
+"899 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PBOD `Vuc  1 e@392 ]
-"901 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"903 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG4 `Vuc  1 e@396 ]
-"905 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"907 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG5 `Vuc  1 e@397 ]
-"909 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"911 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG6 `Vuc  1 e@398 ]
-"913 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"915 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
@@ -1213,13 +1215,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 873: volatile unsigned char ALG2 @ 0x10E;
 [; ;yn8p520.h: 877: volatile unsigned char ALG3 @ 0x10F;
 [; ;yn8p520.h: 885: volatile unsigned char PAPD @ 0x185;
-[; ;yn8p520.h: 889: volatile unsigned char PBPD @ 0x186;
-[; ;yn8p520.h: 893: volatile unsigned char PAOD @ 0x187;
-[; ;yn8p520.h: 897: volatile unsigned char PBOD @ 0x188;
-[; ;yn8p520.h: 901: volatile unsigned char ALG4 @ 0x18C;
-[; ;yn8p520.h: 905: volatile unsigned char ALG5 @ 0x18D;
-[; ;yn8p520.h: 909: volatile unsigned char ALG6 @ 0x18E;
-[; ;yn8p520.h: 913: volatile unsigned char ALG7 @ 0x18F;
+[; ;yn8p520.h: 890: volatile unsigned char PBPD @ 0x186;
+[; ;yn8p520.h: 894: volatile unsigned char PAOD @ 0x187;
+[; ;yn8p520.h: 895: volatile bit PAOD6 @ ((unsigned)&PAOD*8)+6;
+[; ;yn8p520.h: 899: volatile unsigned char PBOD @ 0x188;
+[; ;yn8p520.h: 903: volatile unsigned char ALG4 @ 0x18C;
+[; ;yn8p520.h: 907: volatile unsigned char ALG5 @ 0x18D;
+[; ;yn8p520.h: 911: volatile unsigned char ALG6 @ 0x18E;
+[; ;yn8p520.h: 915: volatile unsigned char ALG7 @ 0x18F;
 [; ;periph.h: 13: void dac_init();
 [; ;periph.h: 14: void op1_init();
 [; ;periph.h: 15: void op2_init();
@@ -1236,7 +1239,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 32: void process_AD_Converter_Value();
 [; ;common.h: 34: unsigned int getAdCh12Value();
 [; ;common.h: 36: unsigned int getAdCh13Value();
-[; ;common.h: 39: unsigned int getAdOriginalCh12Value();
+[; ;common.h: 39: unsigned int getAdOriginalCh1Value();
 [; ;common.h: 41: unsigned int getAdOriginalCh13Value();
 [; ;common.h: 43: unsigned char isPermitSampleTime();
 [; ;common.h: 45: void clrSampeTime();

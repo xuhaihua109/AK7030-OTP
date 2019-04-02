@@ -773,11 +773,13 @@ volatile unsigned char PAPD @ 0x185;
 
 
 
+
 volatile unsigned char PBPD @ 0x186;
 
 
 
 volatile unsigned char PAOD @ 0x187;
+volatile bit PAOD6 @ ((unsigned)&PAOD*8)+6;
 
 
 
@@ -818,7 +820,7 @@ unsigned int getAdCh12Value();
 unsigned int getAdCh13Value();
 
 
-unsigned int getAdOriginalCh12Value();
+unsigned int getAdOriginalCh1Value();
 
 unsigned int getAdOriginalCh13Value();
 
@@ -1005,10 +1007,24 @@ break;
 case ADC1_VALUE_MEET_CONDITION:
 {
 static unsigned char ucConFirmationTime = 0;
-if(getAdOriginalCh12Value() >= 2341)
+if(getAdOriginalCh1Value() >= 2341)
+{
+if(ucConFirmationTime < 5)
 ucConFirmationTime++;
 else
+{
+PAOD6 = 1;
+PA6 = 1;
+}
+}
+else
+{
 ucConFirmationTime = 0;
+PAOD6 = 0;
+PA6 = 0;
+}
+
+ampStep++;
 break;
 }
 

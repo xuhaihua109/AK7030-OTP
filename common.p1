@@ -685,26 +685,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ALG3 `Vuc  1 e@271 ]
 "885 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PAPD `Vuc  1 e@389 ]
-"889 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"890 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PBPD `Vuc  1 e@390 ]
-"893 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"894 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PAOD `Vuc  1 e@391 ]
-"897 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"895 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+[v _PAOD6 `Vb  1 e@3134 ]
+"899 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _PBOD `Vuc  1 e@392 ]
-"901 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"903 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG4 `Vuc  1 e@396 ]
-"905 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"907 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG5 `Vuc  1 e@397 ]
-"909 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"911 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG6 `Vuc  1 e@398 ]
-"913 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"915 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
 "12 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
 [v _adc_convert_flag `uc  1 s ]
 "14 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
 [v _adc_original_value `ui  1 s ]
 "14 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
-[v _adc_original_CH12_value `ui  1 s ]
+[v _adc_original_CH1_value `ui  1 s ]
 "14 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
 [v _adc_original_CH13_value `ui  1 s ]
 "16 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
@@ -1253,13 +1255,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 873: volatile unsigned char ALG2 @ 0x10E;
 [; ;yn8p520.h: 877: volatile unsigned char ALG3 @ 0x10F;
 [; ;yn8p520.h: 885: volatile unsigned char PAPD @ 0x185;
-[; ;yn8p520.h: 889: volatile unsigned char PBPD @ 0x186;
-[; ;yn8p520.h: 893: volatile unsigned char PAOD @ 0x187;
-[; ;yn8p520.h: 897: volatile unsigned char PBOD @ 0x188;
-[; ;yn8p520.h: 901: volatile unsigned char ALG4 @ 0x18C;
-[; ;yn8p520.h: 905: volatile unsigned char ALG5 @ 0x18D;
-[; ;yn8p520.h: 909: volatile unsigned char ALG6 @ 0x18E;
-[; ;yn8p520.h: 913: volatile unsigned char ALG7 @ 0x18F;
+[; ;yn8p520.h: 890: volatile unsigned char PBPD @ 0x186;
+[; ;yn8p520.h: 894: volatile unsigned char PAOD @ 0x187;
+[; ;yn8p520.h: 895: volatile bit PAOD6 @ ((unsigned)&PAOD*8)+6;
+[; ;yn8p520.h: 899: volatile unsigned char PBOD @ 0x188;
+[; ;yn8p520.h: 903: volatile unsigned char ALG4 @ 0x18C;
+[; ;yn8p520.h: 907: volatile unsigned char ALG5 @ 0x18D;
+[; ;yn8p520.h: 911: volatile unsigned char ALG6 @ 0x18E;
+[; ;yn8p520.h: 915: volatile unsigned char ALG7 @ 0x18F;
 [; ;common.h: 21: void clock_config();
 [; ;common.h: 22: void timer1_config();
 [; ;common.h: 23: void timer1_interrupt_config();
@@ -1269,7 +1272,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 32: void process_AD_Converter_Value();
 [; ;common.h: 34: unsigned int getAdCh12Value();
 [; ;common.h: 36: unsigned int getAdCh13Value();
-[; ;common.h: 39: unsigned int getAdOriginalCh12Value();
+[; ;common.h: 39: unsigned int getAdOriginalCh1Value();
 [; ;common.h: 41: unsigned int getAdOriginalCh13Value();
 [; ;common.h: 43: unsigned char isPermitSampleTime();
 [; ;common.h: 45: void clrSampeTime();
@@ -1298,13 +1301,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _adc_original_value
 -> -> 0 `i `ui
 ]
-[i _adc_original_CH12_value
+[i _adc_original_CH1_value
 -> -> 0 `i `ui
 ]
 [i _adc_original_CH13_value
 -> -> 0 `i `ui
 ]
-[; ;common.c: 14: static unsigned int adc_original_value = 0, adc_original_CH12_value = 0,adc_original_CH13_value = 0;
+[; ;common.c: 14: static unsigned int adc_original_value = 0, adc_original_CH1_value = 0,adc_original_CH13_value = 0;
 [; ;common.c: 16: static unsigned int buffer_Sample_AD_Value[6];
 [; ;common.c: 17: static unsigned char sampleTimes;
 "18
@@ -1438,15 +1441,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 50 ]
 }
 "81
-[v _getAdOriginalCh12Value `(ui  1 ef ]
+[v _getAdOriginalCh1Value `(ui  1 ef ]
 {
-[; ;common.c: 80: unsigned int getAdOriginalCh12Value()
+[; ;common.c: 80: unsigned int getAdOriginalCh1Value()
 [; ;common.c: 81: {
-[e :U _getAdOriginalCh12Value ]
+[e :U _getAdOriginalCh1Value ]
 [f ]
-[; ;common.c: 82: return adc_original_CH12_value;
+[; ;common.c: 82: return adc_original_CH1_value;
 "82
-[e ) _adc_original_CH12_value ]
+[e ) _adc_original_CH1_value ]
 [e $UE 51  ]
 [; ;common.c: 83: }
 "83
@@ -1866,16 +1869,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 86 ]
 }
 "253
-[v F835 `(v  1 tf ]
-[v _ISR `IF835  1 e ]
+[v F837 `(v  1 tf ]
+[v _ISR `IF837  1 e ]
 {
 [; ;common.c: 252: void interrupt ISR(void)
 [; ;common.c: 253: {
 [e :U _ISR ]
 [f ]
 "254
-[v F836 `uc  1 s ucTimer1sCnt ]
-[i F836
+[v F838 `uc  1 s ucTimer1sCnt ]
+[i F838
 -> -> 0 `i `uc
 ]
 [; ;common.c: 254: static unsigned char ucTimer1sCnt = 0;
@@ -1893,16 +1896,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . _timer 0 -> -> 1 `i `uc ]
 [; ;common.c: 260: ucTimer1sCnt++;
 "260
-[e ++ F836 -> -> 1 `i `uc ]
+[e ++ F838 -> -> 1 `i `uc ]
 [; ;common.c: 262: if(ucTimer1sCnt >= 100)
 "262
-[e $ ! >= -> F836 `i -> 100 `i 89  ]
+[e $ ! >= -> F838 `i -> 100 `i 89  ]
 [; ;common.c: 263: {
 "263
 {
 [; ;common.c: 264: ucTimer1sCnt = 0;
 "264
-[e = F836 -> -> 0 `i `uc ]
+[e = F838 -> -> 0 `i `uc ]
 [; ;common.c: 265: if(uiBigTimer > 0)
 "265
 [e $ ! > _uiBigTimer -> -> 0 `i `ui 90  ]
@@ -1943,9 +1946,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 278: if(sampleChannelSelect == 1)
 "278
 [e $ ! == -> _sampleChannelSelect `i -> 1 `i 93  ]
-[; ;common.c: 279: adc_original_CH12_value = adc_get();
+[; ;common.c: 279: adc_original_CH1_value = adc_get();
 "279
-[e = _adc_original_CH12_value ( _adc_get ..  ]
+[e = _adc_original_CH1_value ( _adc_get ..  ]
 [e $U 94  ]
 "280
 [e :U 93 ]

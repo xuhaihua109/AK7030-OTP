@@ -11,7 +11,7 @@
 
 static uchar adc_convert_flag = 0;
 
-static uint adc_original_value = 0, adc_original_CH12_value = 0,adc_original_CH13_value = 0;
+static uint adc_original_value = 0, adc_original_CH1_value = 0,adc_original_CH13_value = 0;
 
 static uint buffer_Sample_AD_Value[TEMP_MAX_CONTINOUS_SAMPLE_TIMES];
 static uchar sampleTimes;
@@ -77,9 +77,9 @@ unsigned int getAdOriginalValue()
 	return adc_original_value;
 }
 
-unsigned int getAdOriginalCh12Value()
+unsigned int getAdOriginalCh1Value()
 {
-	return adc_original_CH12_value;
+	return adc_original_CH1_value;
 }
 
 
@@ -276,7 +276,7 @@ void interrupt ISR(void)
 		setAD_ConvertFlag(1);
 		adc_original_value = adc_get();
 		if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
-			adc_original_CH12_value = adc_get();
+			adc_original_CH1_value = adc_get();
 		else
 			adc_original_CH13_value = adc_get();
 

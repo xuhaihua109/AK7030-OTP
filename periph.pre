@@ -773,11 +773,13 @@ volatile unsigned char PAPD @ 0x185;
 
 
 
+
 volatile unsigned char PBPD @ 0x186;
 
 
 
 volatile unsigned char PAOD @ 0x187;
+volatile bit PAOD6 @ ((unsigned)&PAOD*8)+6;
 
 
 
@@ -829,7 +831,7 @@ unsigned int getAdCh12Value();
 unsigned int getAdCh13Value();
 
 
-unsigned int getAdOriginalCh12Value();
+unsigned int getAdOriginalCh1Value();
 
 unsigned int getAdOriginalCh13Value();
 

@@ -883,6 +883,7 @@ volatile unsigned char           ALG3                @ 0x10F;
 //
 // Register: PAPD
 volatile unsigned char           PAPD                @ 0x185;
+
 // bit and bitfield definitions
 
 // Register: PBPD
@@ -891,6 +892,7 @@ volatile unsigned char           PBPD                @ 0x186;
 
 // Register: PAPD
 volatile unsigned char           PAOD                @ 0x187;
+volatile bit PAOD6               @ ((unsigned)&PAOD*8)+6;
 // bit and bitfield definitions
 
 // Register: PBPD

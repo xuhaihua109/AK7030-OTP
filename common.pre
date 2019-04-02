@@ -773,11 +773,13 @@ volatile unsigned char PAPD @ 0x185;
 
 
 
+
 volatile unsigned char PBPD @ 0x186;
 
 
 
 volatile unsigned char PAOD @ 0x187;
+volatile bit PAOD6 @ ((unsigned)&PAOD*8)+6;
 
 
 
@@ -818,7 +820,7 @@ unsigned int getAdCh12Value();
 unsigned int getAdCh13Value();
 
 
-unsigned int getAdOriginalCh12Value();
+unsigned int getAdOriginalCh1Value();
 
 unsigned int getAdOriginalCh13Value();
 
@@ -854,7 +856,7 @@ unsigned int adc_get(void);
 # 12 "C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c"
 static unsigned char adc_convert_flag = 0;
 
-static unsigned int adc_original_value = 0, adc_original_CH12_value = 0,adc_original_CH13_value = 0;
+static unsigned int adc_original_value = 0, adc_original_CH1_value = 0,adc_original_CH13_value = 0;
 
 static unsigned int buffer_Sample_AD_Value[6];
 static unsigned char sampleTimes;
@@ -920,9 +922,9 @@ unsigned int getAdOriginalValue()
 return adc_original_value;
 }
 
-unsigned int getAdOriginalCh12Value()
+unsigned int getAdOriginalCh1Value()
 {
-return adc_original_CH12_value;
+return adc_original_CH1_value;
 }
 
 
@@ -1106,7 +1108,7 @@ ADIF=0;
 setAD_ConvertFlag(1);
 adc_original_value = adc_get();
 if(sampleChannelSelect == 1)
-adc_original_CH12_value = adc_get();
+adc_original_CH1_value = adc_get();
 else
 adc_original_CH13_value = adc_get();
 

@@ -36,7 +36,7 @@ unsigned int getAdCh12Value();
 unsigned int getAdCh13Value();
 
 
-unsigned int getAdOriginalCh12Value();
+unsigned int getAdOriginalCh1Value();
 
 unsigned int getAdOriginalCh13Value();
 

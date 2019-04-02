@@ -223,10 +223,24 @@ void main (void)
 			   case ADC1_VALUE_MEET_CONDITION:
 			   {
 				   static unsigned char ucConFirmationTime = 0;
-				   if(getAdOriginalCh12Value() >= 2341)
-					   ucConFirmationTime++;
+				   if(getAdOriginalCh1Value() >= 2341)
+				   {
+					   if(ucConFirmationTime < 5)
+						   ucConFirmationTime++;
+					   else
+					   {
+						   PAOD6 = 1;
+						   PA6 = 1;
+					   }
+				   }
 				   else
+				   {
 					   ucConFirmationTime = 0;
+					   PAOD6 = 0;
+					   PA6 = 0;
+				   }
+
+				   ampStep++;
 				   break;
 			   }
 
