@@ -2,7 +2,7 @@
 [d version 1.1 ]
 [d edition pro ]
 [d chip 16C77 ]
-"184 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"184 C:\test__190531\AK7030-OTP\yn8p520.h
 [s S31 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
@@ -168,7 +168,7 @@
 `uc 1 ADVREF1 1 0 :1:7 
 ]
 [u S600 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
-"98 C:\dev1\AK730_Second_PRJ\AK7030-OTP\main.c
+"98 C:\test__190531\AK7030-OTP\main.c
 [e E815 step `uc
 SENSE_PB2_INPUT_VOLTAGE 0
 SENSE_PB2_DURATION_ONE_SECOND 1
@@ -187,8 +187,8 @@ CHECKING_INSTALLED_BATTERY 10
 BIG_TIMER_WORK 0
 SMALL_TIMER_WORK 1
 ]
-"184 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
-[s S766 . 1 `uc 1 C 1 0 :1:0 
+"184 C:\test__190531\AK7030-OTP\yn8p520.h
+[s S716 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
 `uc 1 nPD 1 0 :1:3 
@@ -196,17 +196,17 @@ SMALL_TIMER_WORK 1
 `uc 1 RP 1 0 :2:5 
 `uc 1 IRP 1 0 :1:7 
 ]
-[s S774 . 1 `uc 1 . 1 0 :5:0 
+[s S724 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RP0 1 0 :1:5 
 `uc 1 RP1 1 0 :1:6 
 ]
-[u S778 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
+[u S728 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
 "254
-[s S814 . 1 `uc 1 . 1 0 :4:0 
+[s S764 . 1 `uc 1 . 1 0 :4:0 
 ]
-[u S816 . 1 `S91 1 . 1 0 ]
+[u S766 . 1 `S91 1 . 1 0 ]
 "276
-[s S830 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S780 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -215,28 +215,28 @@ SMALL_TIMER_WORK 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S839 . 1 `uc 1 . 1 0 :2:0 
+[s S789 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S844 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
+[u S794 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
 "396
-[s S905 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S855 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 ]
-[s S908 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S858 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
 `uc 1 CCP1Y 1 0 :1:4 
 `uc 1 CCP1X 1 0 :1:5 
 ]
-[u S915 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
+[u S865 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
 "439
-[s S935 . 1 `uc 1 OP1F 1 0 :4:0 
+[s S885 . 1 `uc 1 OP1F 1 0 :4:0 
 ]
-[s S937 . 1 `uc 1 OP1F0 1 0 :1:0 
+[s S887 . 1 `uc 1 OP1F0 1 0 :1:0 
 `uc 1 OP1F1 1 0 :1:1 
 `uc 1 OP1F2 1 0 :1:2 
 `uc 1 OP1F3 1 0 :1:3 
@@ -245,13 +245,13 @@ SMALL_TIMER_WORK 1
 `uc 1 OP1OUT 1 0 :1:6 
 `uc 1 OP1ON 1 0 :1:7 
 ]
-[u S946 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
+[u S896 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
 "460
-[s S951 . 1 `uc 1 OP1NCH 1 0 :2:0 
+[s S901 . 1 `uc 1 OP1NCH 1 0 :2:0 
 `uc 1 RSV 1 0 :2:2 
 `uc 1 OP1PCH 1 0 :2:4 
 ]
-[s S955 . 1 `uc 1 OP1NCH0 1 0 :1:0 
+[s S905 . 1 `uc 1 OP1NCH0 1 0 :1:0 
 `uc 1 OP1NCH1 1 0 :1:1 
 `uc 1 RSV0 1 0 :1:2 
 `uc 1 RSV1 1 0 :1:3 
@@ -260,9 +260,9 @@ SMALL_TIMER_WORK 1
 `uc 1 OP1INTN 1 0 :1:6 
 `uc 1 OP1INTP 1 0 :1:7 
 ]
-[u S964 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
+[u S914 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
 "483
-[s S969 . 1 `uc 1 RSV0 1 0 :1:0 
+[s S919 . 1 `uc 1 RSV0 1 0 :1:0 
 `uc 1 RSV1 1 0 :1:1 
 `uc 1 RSV2 1 0 :1:2 
 `uc 1 RSV3 1 0 :1:3 
@@ -271,37 +271,37 @@ SMALL_TIMER_WORK 1
 `uc 1 OP1A2DEN 1 0 :1:6 
 `uc 1 OP1OUTEN 1 0 :1:7 
 ]
-[u S978 . 1 `S296 1 . 1 0 ]
+[u S928 . 1 `S296 1 . 1 0 ]
 "515
-[s S992 . 1 `uc 1 ADON 1 0 :1:0 
+[s S942 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 G0 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S996 . 1 `uc 1 ADON 1 0 :1:0 
+[s S946 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[u S1003 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
+[u S953 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
 "543
-[s S1009 . 1 `uc 1 SWDTEN 1 0 :1:0 
+[s S959 . 1 `uc 1 SWDTEN 1 0 :1:0 
 ]
-[u S1011 . 1 `S356 1 . 1 0 ]
+[u S961 . 1 `S356 1 . 1 0 ]
 "576
-[s S1033 . 1 `uc 1 DACCH 1 0 :2:0 
+[s S983 . 1 `uc 1 DACCH 1 0 :2:0 
 ]
-[s S1035 . 1 `uc 1 DACCH0 1 0 :1:0 
+[s S985 . 1 `uc 1 DACCH0 1 0 :1:0 
 `uc 1 DACCH1 1 0 :1:1 
 `uc 1 DAC0EN 1 0 :1:2 
 `uc 1 DAC1EN 1 0 :1:3 
 ]
-[u S1040 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
+[u S990 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
 "729
-[s S1139 . 1 `uc 1 OP2F 1 0 :4:0 
+[s S1089 . 1 `uc 1 OP2F 1 0 :4:0 
 ]
-[s S1141 . 1 `uc 1 OP2F0 1 0 :1:0 
+[s S1091 . 1 `uc 1 OP2F0 1 0 :1:0 
 `uc 1 OP2F1 1 0 :1:1 
 `uc 1 OP2F2 1 0 :1:2 
 `uc 1 OP2F3 1 0 :1:3 
@@ -310,12 +310,12 @@ SMALL_TIMER_WORK 1
 `uc 1 OP2OUT 1 0 :1:6 
 `uc 1 OP2ON 1 0 :1:7 
 ]
-[u S1150 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
+[u S1100 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
 "750
-[s S1155 . 1 `uc 1 OP2NCH 1 0 :3:0 
+[s S1105 . 1 `uc 1 OP2NCH 1 0 :3:0 
 `uc 1 OP2PCH 1 0 :3:3 
 ]
-[s S1158 . 1 `uc 1 OP2NCH0 1 0 :1:0 
+[s S1108 . 1 `uc 1 OP2NCH0 1 0 :1:0 
 `uc 1 OP2NCH1 1 0 :1:1 
 `uc 1 OP2NCH2 1 0 :1:2 
 `uc 1 OP2PCH0 1 0 :1:3 
@@ -324,11 +324,11 @@ SMALL_TIMER_WORK 1
 `uc 1 OP2INTN 1 0 :1:6 
 `uc 1 OP2INTP 1 0 :1:7 
 ]
-[u S1167 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
+[u S1117 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
 "772
-[s S1172 . 1 `uc 1 PGA 1 0 :3:0 
+[s S1122 . 1 `uc 1 PGA 1 0 :3:0 
 ]
-[s S1174 . 1 `uc 1 PGA0 1 0 :1:0 
+[s S1124 . 1 `uc 1 PGA0 1 0 :1:0 
 `uc 1 PGA1 1 0 :1:1 
 `uc 1 PGA2 1 0 :1:2 
 `uc 1 PGAEN 1 0 :1:3 
@@ -337,13 +337,13 @@ SMALL_TIMER_WORK 1
 `uc 1 OP2A2DEN 1 0 :1:6 
 `uc 1 OP2OUTEN 1 0 :1:7 
 ]
-[u S1183 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
+[u S1133 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
 "806
-[s S1197 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S1147 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 ADVREF 1 0 :2:6 
 ]
-[s S1201 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S1151 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
@@ -352,13 +352,13 @@ SMALL_TIMER_WORK 1
 `uc 1 ADVREF0 1 0 :1:6 
 `uc 1 ADVREF1 1 0 :1:7 
 ]
-[u S1210 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
-"20 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
-[s S1255 . 1 `uc 1 timer10msStopWatch 1 0 ]
+[u S1160 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
+"20 C:\test__190531\AK7030-OTP\common.c
+[s S1205 . 1 `uc 1 timer10msStopWatch 1 0 ]
 "253
 [v common@F837 `(v  1 t 0 ]
-"184 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
-[s S1310 . 1 `uc 1 C 1 0 :1:0 
+"184 C:\test__190531\AK7030-OTP\yn8p520.h
+[s S1260 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
 `uc 1 nPD 1 0 :1:3 
@@ -366,17 +366,17 @@ SMALL_TIMER_WORK 1
 `uc 1 RP 1 0 :2:5 
 `uc 1 IRP 1 0 :1:7 
 ]
-[s S1318 . 1 `uc 1 . 1 0 :5:0 
+[s S1268 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RP0 1 0 :1:5 
 `uc 1 RP1 1 0 :1:6 
 ]
-[u S1322 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
+[u S1272 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
 "254
-[s S1358 . 1 `uc 1 . 1 0 :4:0 
+[s S1308 . 1 `uc 1 . 1 0 :4:0 
 ]
-[u S1360 . 1 `S91 1 . 1 0 ]
+[u S1310 . 1 `S91 1 . 1 0 ]
 "276
-[s S1374 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S1324 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -385,28 +385,28 @@ SMALL_TIMER_WORK 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S1383 . 1 `uc 1 . 1 0 :2:0 
+[s S1333 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S1388 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
+[u S1338 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
 "396
-[s S1449 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S1399 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 ]
-[s S1452 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S1402 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
 `uc 1 CCP1Y 1 0 :1:4 
 `uc 1 CCP1X 1 0 :1:5 
 ]
-[u S1459 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
+[u S1409 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
 "439
-[s S1479 . 1 `uc 1 OP1F 1 0 :4:0 
+[s S1429 . 1 `uc 1 OP1F 1 0 :4:0 
 ]
-[s S1481 . 1 `uc 1 OP1F0 1 0 :1:0 
+[s S1431 . 1 `uc 1 OP1F0 1 0 :1:0 
 `uc 1 OP1F1 1 0 :1:1 
 `uc 1 OP1F2 1 0 :1:2 
 `uc 1 OP1F3 1 0 :1:3 
@@ -415,13 +415,13 @@ SMALL_TIMER_WORK 1
 `uc 1 OP1OUT 1 0 :1:6 
 `uc 1 OP1ON 1 0 :1:7 
 ]
-[u S1490 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
+[u S1440 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
 "460
-[s S1495 . 1 `uc 1 OP1NCH 1 0 :2:0 
+[s S1445 . 1 `uc 1 OP1NCH 1 0 :2:0 
 `uc 1 RSV 1 0 :2:2 
 `uc 1 OP1PCH 1 0 :2:4 
 ]
-[s S1499 . 1 `uc 1 OP1NCH0 1 0 :1:0 
+[s S1449 . 1 `uc 1 OP1NCH0 1 0 :1:0 
 `uc 1 OP1NCH1 1 0 :1:1 
 `uc 1 RSV0 1 0 :1:2 
 `uc 1 RSV1 1 0 :1:3 
@@ -430,9 +430,9 @@ SMALL_TIMER_WORK 1
 `uc 1 OP1INTN 1 0 :1:6 
 `uc 1 OP1INTP 1 0 :1:7 
 ]
-[u S1508 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
+[u S1458 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
 "483
-[s S1513 . 1 `uc 1 RSV0 1 0 :1:0 
+[s S1463 . 1 `uc 1 RSV0 1 0 :1:0 
 `uc 1 RSV1 1 0 :1:1 
 `uc 1 RSV2 1 0 :1:2 
 `uc 1 RSV3 1 0 :1:3 
@@ -441,37 +441,37 @@ SMALL_TIMER_WORK 1
 `uc 1 OP1A2DEN 1 0 :1:6 
 `uc 1 OP1OUTEN 1 0 :1:7 
 ]
-[u S1522 . 1 `S296 1 . 1 0 ]
+[u S1472 . 1 `S296 1 . 1 0 ]
 "515
-[s S1536 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1486 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 G0 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S1540 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1490 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[u S1547 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
+[u S1497 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
 "543
-[s S1553 . 1 `uc 1 SWDTEN 1 0 :1:0 
+[s S1503 . 1 `uc 1 SWDTEN 1 0 :1:0 
 ]
-[u S1555 . 1 `S356 1 . 1 0 ]
+[u S1505 . 1 `S356 1 . 1 0 ]
 "576
-[s S1577 . 1 `uc 1 DACCH 1 0 :2:0 
+[s S1527 . 1 `uc 1 DACCH 1 0 :2:0 
 ]
-[s S1579 . 1 `uc 1 DACCH0 1 0 :1:0 
+[s S1529 . 1 `uc 1 DACCH0 1 0 :1:0 
 `uc 1 DACCH1 1 0 :1:1 
 `uc 1 DAC0EN 1 0 :1:2 
 `uc 1 DAC1EN 1 0 :1:3 
 ]
-[u S1584 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
+[u S1534 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
 "729
-[s S1683 . 1 `uc 1 OP2F 1 0 :4:0 
+[s S1633 . 1 `uc 1 OP2F 1 0 :4:0 
 ]
-[s S1685 . 1 `uc 1 OP2F0 1 0 :1:0 
+[s S1635 . 1 `uc 1 OP2F0 1 0 :1:0 
 `uc 1 OP2F1 1 0 :1:1 
 `uc 1 OP2F2 1 0 :1:2 
 `uc 1 OP2F3 1 0 :1:3 
@@ -480,12 +480,12 @@ SMALL_TIMER_WORK 1
 `uc 1 OP2OUT 1 0 :1:6 
 `uc 1 OP2ON 1 0 :1:7 
 ]
-[u S1694 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
+[u S1644 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
 "750
-[s S1699 . 1 `uc 1 OP2NCH 1 0 :3:0 
+[s S1649 . 1 `uc 1 OP2NCH 1 0 :3:0 
 `uc 1 OP2PCH 1 0 :3:3 
 ]
-[s S1702 . 1 `uc 1 OP2NCH0 1 0 :1:0 
+[s S1652 . 1 `uc 1 OP2NCH0 1 0 :1:0 
 `uc 1 OP2NCH1 1 0 :1:1 
 `uc 1 OP2NCH2 1 0 :1:2 
 `uc 1 OP2PCH0 1 0 :1:3 
@@ -494,11 +494,11 @@ SMALL_TIMER_WORK 1
 `uc 1 OP2INTN 1 0 :1:6 
 `uc 1 OP2INTP 1 0 :1:7 
 ]
-[u S1711 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
+[u S1661 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
 "772
-[s S1716 . 1 `uc 1 PGA 1 0 :3:0 
+[s S1666 . 1 `uc 1 PGA 1 0 :3:0 
 ]
-[s S1718 . 1 `uc 1 PGA0 1 0 :1:0 
+[s S1668 . 1 `uc 1 PGA0 1 0 :1:0 
 `uc 1 PGA1 1 0 :1:1 
 `uc 1 PGA2 1 0 :1:2 
 `uc 1 PGAEN 1 0 :1:3 
@@ -507,13 +507,13 @@ SMALL_TIMER_WORK 1
 `uc 1 OP2A2DEN 1 0 :1:6 
 `uc 1 OP2OUTEN 1 0 :1:7 
 ]
-[u S1727 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
+[u S1677 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
 "806
-[s S1741 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S1691 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 ADVREF 1 0 :2:6 
 ]
-[s S1745 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S1695 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
@@ -522,73 +522,9 @@ SMALL_TIMER_WORK 1
 `uc 1 ADVREF0 1 0 :1:6 
 `uc 1 ADVREF1 1 0 :1:7 
 ]
-[u S1754 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
+[u S1704 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
 "3 bmul.c
 [v ___bmul `(uc  1 e 1 0 ]
-"36 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
-[v _clock_config `(v  1 e 0 0 ]
-"44
-[v _timer1_config `(v  1 e 0 0 ]
-"56
-[v _timer1_interrupt_config `(v  1 e 0 0 ]
-"64
-[v _getAD_ConvertFlag `(uc  1 e 1 0 ]
-"70
-[v _setAD_ConvertFlag `(v  1 e 0 0 ]
-[v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
-[v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
-"76
-[v _getAdOriginalValue `(ui  1 e 2 0 ]
-"81
-[v _getAdOriginalCh1Value `(ui  1 e 2 0 ]
-"87
-[v _getAdOriginalCh13Value `(ui  1 e 2 0 ]
-"94
-[v _process_AD_Converter_Value `(v  1 e 0 0 ]
-"118
-[v _AD_Sample `(v  1 s 0 AD_Sample ]
-"174
-[v _getAdCh12Value `(ui  1 e 2 0 ]
-"180
-[v _getAdCh13Value `(ui  1 e 2 0 ]
-"185
-[v _setDAC0_ChannelValue `(v  1 e 0 0 ]
-"190
-[v _startBigTimer `(v  1 e 0 0 ]
-"200
-[v _clearBigTimer `(v  1 e 0 0 ]
-"206
-[v _clearSmallTimer `(v  1 e 0 0 ]
-"212
-[v _startSmallTimer `(v  1 e 0 0 ]
-"222
-[v _isFinishedBigTimer `(uc  1 e 1 0 ]
-"230
-[v _isFinishedSmallTimer `(uc  1 e 1 0 ]
-"238
-[v _isPermitSampleTime `(uc  1 e 1 0 ]
-"248
-[v _clrSampeTime `(v  1 e 0 0 ]
-"253
-[v _ISR `I(v  1 e 0 0 ]
-"84 C:\dev1\AK730_Second_PRJ\AK7030-OTP\main.c
-[v _main `(v  1 e 0 0 ]
-"14 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c
-[v _dac_init `(v  1 e 0 0 ]
-"26
-[v _op1_init `(v  1 e 0 0 ]
-"45
-[v _op2_init `(v  1 e 0 0 ]
-"70
-[v _int_enable `(v  1 e 0 0 ]
-"85
-[v _adc_test_init `(v  1 e 0 0 ]
-"95
-[v _setAdcSampleChannel `(v  1 e 0 0 ]
-"100
-[v _adc_start `(v  1 e 0 0 ]
-"105
-[v _adc_get `(ui  1 e 2 0 ]
 "5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\abdiv.c
 [v ___abdiv `(c  1 e 1 0 ]
 "5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\abmod.c
@@ -659,27 +595,74 @@ SMALL_TIMER_WORK 1
 [v ___tmul `(um  1 e 3 0 ]
 "3 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\wmul.c
 [v ___wmul `(ui  1 e 2 0 ]
-"12 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
-[v _adc_convert_flag `uc  1 s 1 adc_convert_flag ]
-"14
-[v _adc_original_value `ui  1 s 2 adc_original_value ]
-[v _adc_original_CH1_value `ui  1 s 2 adc_original_CH1_value ]
-[v _adc_original_CH13_value `ui  1 s 2 adc_original_CH13_value ]
-"16
-[v _buffer_Sample_AD_Value `[6]ui  1 s 12 buffer_Sample_AD_Value ]
-"17
-[v _sampleTimes `uc  1 s 1 sampleTimes ]
-"18
+"36 C:\test__190531\AK7030-OTP\common.c
+[v _clock_config `(v  1 e 0 0 ]
+"44
+[v _timer1_config `(v  1 e 0 0 ]
+"56
+[v _timer1_interrupt_config `(v  1 e 0 0 ]
+"64
+[v _getAD_ConvertFlag `(uc  1 e 1 0 ]
+"70
+[v _setAD_ConvertFlag `(v  1 e 0 0 ]
+"76
+[v _getAdOriginalValue `(ui  1 e 2 0 ]
+"81
+[v _getAdOriginalCh1Value `(ui  1 e 2 0 ]
+"87
+[v _getAdOriginalCh13Value `(ui  1 e 2 0 ]
+"94
+[v _process_AD_Converter_Value `(v  1 e 0 0 ]
+"118
+[v _AD_Sample `(v  1 s 0 AD_Sample ]
+"174
+[v _getAdCh12Value `(ui  1 e 2 0 ]
+"180
+[v _getAdCh13Value `(ui  1 e 2 0 ]
+"185
+[v _setDAC0_ChannelValue `(v  1 e 0 0 ]
+"190
+[v _startBigTimer `(v  1 e 0 0 ]
+"200
+[v _clearBigTimer `(v  1 e 0 0 ]
+"206
+[v _clearSmallTimer `(v  1 e 0 0 ]
+"212
+[v _startSmallTimer `(v  1 e 0 0 ]
+"222
+[v _isFinishedBigTimer `(uc  1 e 1 0 ]
+"230
+[v _isFinishedSmallTimer `(uc  1 e 1 0 ]
+"238
+[v _isPermitSampleTime `(uc  1 e 1 0 ]
+"248
+[v _clrSampeTime `(v  1 e 0 0 ]
+"253
+[v _ISR `I(v  1 e 0 0 ]
+"84 C:\test__190531\AK7030-OTP\main.c
+[v _main `(v  1 e 0 0 ]
+"14 C:\test__190531\AK7030-OTP\periph.c
+[v _dac_init `(v  1 e 0 0 ]
+"26
+[v _op1_init `(v  1 e 0 0 ]
+"45
+[v _op2_init `(v  1 e 0 0 ]
+"70
+[v _int_enable `(v  1 e 0 0 ]
+"85
+[v _adc_test_init `(v  1 e 0 0 ]
+"95
+[v _setAdcSampleChannel `(v  1 e 0 0 ]
+"100
+[v _adc_start `(v  1 e 0 0 ]
+"105
+[v _adc_get `(ui  1 e 2 0 ]
+"18 C:\test__190531\AK7030-OTP\common.c
 [v _sampleChannelSelect `uc  1 s 1 sampleChannelSelect ]
-"19
-[v _multiFilterMaxValue `ui  1 s 2 multiFilterMaxValue ]
-[v _multiFilterMinValue `ui  1 s 2 multiFilterMinValue ]
-"28
-[v _timer `S1255  1 s 1 timer ]
 "30
 [v _uiBigTimer `ui  1 s 2 uiBigTimer ]
 [v _uiSmallTimer `ui  1 s 2 uiSmallTimer ]
-"164 C:\dev1\AK730_Second_PRJ\AK7030-OTP\yn8p520.h
+"164 C:\test__190531\AK7030-OTP\yn8p520.h
 [v _INDF `VEuc  1 e 1 @0 ]
 "168
 [v _LVDCON `VEuc  1 e 1 @1 ]
@@ -1303,109 +1286,12 @@ SMALL_TIMER_WORK 1
 [v _ALG6 `VEuc  1 e 1 @398 ]
 "915
 [v _ALG7 `VEuc  1 e 1 @399 ]
-"84 C:\dev1\AK730_Second_PRJ\AK7030-OTP\main.c
+"84 C:\test__190531\AK7030-OTP\main.c
 [v _main `(v  1 e 0 0 ]
 {
-"106
-[v main@ampStep `E815  1 s 1 ampStep ]
-"108
-[v main@tDA_timer `E827  1 s 1 tDA_timer ]
-"146
-[v main@ucBigTimerActionFlag `uc  1 s 1 ucBigTimerActionFlag ]
-"169
-[v main@ucConfirmTimer1S `uc  1 s 1 ucConfirmTimer1S ]
-"197
-[v main@ucConfirmTimerZptS `uc  1 s 1 ucConfirmTimerZptS ]
-"225
-[v main@ucConFirmationTime `uc  1 s 1 ucConFirmationTime ]
-"249
-[v main@ucInit `uc  1 s 1 ucInit ]
-"364
-[v main@ucCheckBatteryCnt `uc  1 s 1 ucCheckBatteryCnt ]
-"380
-[v main@ucInstalledBatteryCnt `uc  1 s 1 ucInstalledBatteryCnt ]
-"400
+"406
 } 0
-"94 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
-[v _process_AD_Converter_Value `(v  1 e 0 0 ]
-{
-"106
-} 0
-"118
-[v _AD_Sample `(v  1 s 0 AD_Sample ]
-{
-"164
-[v AD_Sample@index `uc  1 a 1 4 ]
-"169
-} 0
-"76
-[v _getAdOriginalValue `(ui  1 e 2 0 ]
-{
-"78
-} 0
-"70
-[v _setAD_ConvertFlag `(v  1 e 0 0 ]
-{
-[v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
-[v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
-"72
-} 0
-"64
-[v _getAD_ConvertFlag `(uc  1 e 1 0 ]
-{
-"66
-} 0
-"230
-[v _isFinishedSmallTimer `(uc  1 e 1 0 ]
-{
-"235
-} 0
-"222
-[v _isFinishedBigTimer `(uc  1 e 1 0 ]
-{
-"227
-} 0
-"212
-[v _startSmallTimer `(v  1 e 0 0 ]
-{
-"218
-} 0
-"190
-[v _startBigTimer `(v  1 e 0 0 ]
-{
-"197
-} 0
-"87
-[v _getAdOriginalCh13Value `(ui  1 e 2 0 ]
-{
-"89
-} 0
-"81
-[v _getAdOriginalCh1Value `(ui  1 e 2 0 ]
-{
-"83
-} 0
-"206
-[v _clearSmallTimer `(v  1 e 0 0 ]
-{
-"208
-} 0
-"200
-[v _clearBigTimer `(v  1 e 0 0 ]
-{
-"202
-} 0
-"248
-[v _clrSampeTime `(v  1 e 0 0 ]
-{
-"250
-} 0
-"238
-[v _isPermitSampleTime `(uc  1 e 1 0 ]
-{
-"245
-} 0
-"100 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c
+"100 C:\test__190531\AK7030-OTP\periph.c
 [v _adc_start `(v  1 e 0 0 ]
 {
 "102
@@ -1433,7 +1319,7 @@ SMALL_TIMER_WORK 1
 [v adc_test_init@ref `uc  1 p 1 0 ]
 "91
 } 0
-"56 C:\dev1\AK730_Second_PRJ\AK7030-OTP\common.c
+"56 C:\test__190531\AK7030-OTP\common.c
 [v _timer1_interrupt_config `(v  1 e 0 0 ]
 {
 "59
@@ -1453,19 +1339,19 @@ SMALL_TIMER_WORK 1
 {
 "254
 [v ISR@ucTimer1sCnt `uc  1 s 1 ucTimer1sCnt ]
-"284
+"285
 } 0
-"70
-[v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
-{
-[v i1setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
-[v i1setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
-"72
-} 0
-"105 C:\dev1\AK730_Second_PRJ\AK7030-OTP\periph.c
+"105 C:\test__190531\AK7030-OTP\periph.c
 [v _adc_get `(ui  1 e 2 0 ]
 {
 "106
 [v adc_get@val `ui  1 a 2 2 ]
 "109
+} 0
+"70 C:\test__190531\AK7030-OTP\common.c
+[v _setAD_ConvertFlag `(v  1 e 0 0 ]
+{
+[v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
+[v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
+"72
 } 0

@@ -12,9 +12,9 @@
 ///////////////////////////////////////////////////////////////////
 void dac_init()
 {
-	DACCON|=2;      //参考电压选择VCC  00-VSS 01-OP2OUT 10-VCC 11-PB5
+	DACCON|=1;     //选择OP2 的输出作为参考电压 2019/06/01 //参考电压选择VCC  00-VSS 01-OP2OUT 10-VCC 11-PB5
 	
-	DACR0=0x19;     //DAC0输出VCC*25/64=1.3V通过OP1缓冲从PB5输出	
+	DACR0=0x0F;     //DAC0输出VCC*25/64=1.3V通过OP1缓冲从PB5输出	
 	DACCON|=(1)<<2; //使能DAC0
 
 //	DACR1=0x06;     //DAC1输出VCC*6/64=0.3V通过OP1缓冲从PA7输出
@@ -49,9 +49,9 @@ void op2_init()
 	//OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B   
     
     //配置：OP2负端选择DAC1=0.3V(内部管脚) , OP2正端选择A2P(PB6)引脚
-    OP2CON1=0x00; // set PB6 as A2P, set PB7 as A2N
+    OP2CON1=0x10; // set PB6 as A2P, set PB7 as A2N
 	//OP2CON2=0xA0; //A2E(PA7)输出 负端MUX连接 其他用途 增益放大使能 放大1倍                    10100000B
-    OP2CON2=0xA0; //A2E(PA7)输出 ,负端MUX连接, 其他用途 增益放大使能 放大1倍                    10100000B
+    OP2CON2=0x90; //A2E(PA7)输出 ,负端MUX连接, OP2 作为BUFFER      10010000B
 	OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B 
 
 	//OP2配置

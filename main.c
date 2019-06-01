@@ -144,9 +144,13 @@ void main (void)
 
 	static unsigned char testStep;
 	static unsigned char ucBigTimerActionFlag = 0;
+	
+	while(1) CLRWDT();
+	/*
 	while(1)
     {	
        CLRWDT();//feed watch dog
+
        if(isPermitSampleTime())   // this function is called every 100ms
 		{
     	   clrSampeTime();
@@ -397,5 +401,7 @@ void main (void)
 		   }
 		}
 	}
+	*/
+
 }
 
