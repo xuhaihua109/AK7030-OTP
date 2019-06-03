@@ -702,11 +702,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "915 C:\test__190531\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
 [p mainexit ]
-"21 C:\test__190531\AK7030-OTP\common.h
-[v _clock_config `(v  0 ef ]
-"22 C:\test__190531\AK7030-OTP\common.h
-[v _timer1_config `(v  0 ef ]
 "23 C:\test__190531\AK7030-OTP\common.h
+[v _clock_config `(v  0 ef ]
+"24 C:\test__190531\AK7030-OTP\common.h
+[v _timer1_config `(v  0 ef ]
+"25 C:\test__190531\AK7030-OTP\common.h
 [v _timer1_interrupt_config `(v  0 ef ]
 "18 C:\test__190531\AK7030-OTP\periph.h
 [v _adc_test_init `(v  0 ef2`uc`uc ]
@@ -718,6 +718,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _op2_init `(v  0 ef ]
 "20 C:\test__190531\AK7030-OTP\periph.h
 [v _adc_start `(v  0 ef ]
+"45 C:\test__190531\AK7030-OTP\common.h
+[v _isPermitSampleTime `(uc  0 ef ]
+"47 C:\test__190531\AK7030-OTP\common.h
+[v _clrSampeTime `(v  0 ef ]
+"34 C:\test__190531\AK7030-OTP\common.h
+[v _process_AD_Converter_Value `(v  0 ef ]
+"38 C:\test__190531\AK7030-OTP\common.h
+[v _getAdCh14Value `(ui  0 ef ]
+"36 C:\test__190531\AK7030-OTP\common.h
+[v _getAdCh4Value `(ui  0 ef ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
 [; ;stdio.h: 14: typedef unsigned short wchar_t;
@@ -1240,28 +1250,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 907: volatile unsigned char ALG5 @ 0x18D;
 [; ;yn8p520.h: 911: volatile unsigned char ALG6 @ 0x18E;
 [; ;yn8p520.h: 915: volatile unsigned char ALG7 @ 0x18F;
-[; ;common.h: 21: void clock_config();
-[; ;common.h: 22: void timer1_config();
-[; ;common.h: 23: void timer1_interrupt_config();
-[; ;common.h: 25: void adConverter_config();
-[; ;common.h: 27: void setAdcSampleChannel(unsigned char ucChannel);
-[; ;common.h: 30: unsigned int getAdOriginalValue();
-[; ;common.h: 32: void process_AD_Converter_Value();
-[; ;common.h: 34: unsigned int getAdCh12Value();
-[; ;common.h: 36: unsigned int getAdCh13Value();
-[; ;common.h: 39: unsigned int getAdOriginalCh1Value();
-[; ;common.h: 41: unsigned int getAdOriginalCh13Value();
-[; ;common.h: 43: unsigned char isPermitSampleTime();
-[; ;common.h: 45: void clrSampeTime();
-[; ;common.h: 47: void setDAC0_ChannelValue(unsigned char ucValue);
-[; ;common.h: 49: void startBigTimer();
-[; ;common.h: 50: void startSmallTimer();
-[; ;common.h: 52: void clearBigTimer();
-[; ;common.h: 53: void clearSmallTimer();
-[; ;common.h: 55: unsigned char isFinishedBigTimer();
-[; ;common.h: 56: unsigned char isFinishedSmallTimer();
-[; ;common.h: 58: unsigned char getAD_ConvertFlag();
-[; ;common.h: 59: void setAD_ConvertFlag(unsigned char flag);
+[; ;common.h: 23: void clock_config();
+[; ;common.h: 24: void timer1_config();
+[; ;common.h: 25: void timer1_interrupt_config();
+[; ;common.h: 27: void adConverter_config();
+[; ;common.h: 29: void setAdcSampleChannel(unsigned char ucChannel);
+[; ;common.h: 32: unsigned int getAdOriginalValue();
+[; ;common.h: 34: void process_AD_Converter_Value();
+[; ;common.h: 36: unsigned int getAdCh4Value();
+[; ;common.h: 38: unsigned int getAdCh14Value();
+[; ;common.h: 41: unsigned int getAdOriginalCh4Value();
+[; ;common.h: 43: unsigned int getAdOriginalCh14Value();
+[; ;common.h: 45: unsigned char isPermitSampleTime();
+[; ;common.h: 47: void clrSampeTime();
+[; ;common.h: 49: void setDAC0_ChannelValue(unsigned char ucValue);
+[; ;common.h: 51: void startBigTimer();
+[; ;common.h: 52: void startSmallTimer();
+[; ;common.h: 54: void clearBigTimer();
+[; ;common.h: 55: void clearSmallTimer();
+[; ;common.h: 57: unsigned char isFinishedBigTimer();
+[; ;common.h: 58: unsigned char isFinishedSmallTimer();
+[; ;common.h: 60: unsigned char getAD_ConvertFlag();
+[; ;common.h: 61: void setAD_ConvertFlag(unsigned char flag);
 [; ;periph.h: 13: void dac_init();
 [; ;periph.h: 14: void op1_init();
 [; ;periph.h: 15: void op2_init();
@@ -1383,9 +1393,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 133: timer1_interrupt_config();
 "133
 [e ( _timer1_interrupt_config ..  ]
-[; ;main.c: 135: adc_test_init(13,3);
+[; ;main.c: 135: adc_test_init(14,3);
 "135
-[e ( _adc_test_init (2 , -> -> 13 `i `uc -> -> 3 `i `uc ]
+[e ( _adc_test_init (2 , -> -> 14 `i `uc -> -> 3 `i `uc ]
 [; ;main.c: 137: dac_init();
 "137
 [e ( _dac_init ..  ]
@@ -1405,16 +1415,1573 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i F837
 -> -> 0 `i `uc
 ]
+"148
+[v F838 `uc  1 s AD_sample_process_step ]
+[i F838
+-> -> 0 `i `uc
+]
+[v F839 `uc  1 s ucChannel4Step ]
+[i F839
+-> -> 0 `i `uc
+]
+"150
+[v F840 `uc  1 s ucChannel4Type ]
+[i F840
+-> -> 0 `i `uc
+]
 [; ;main.c: 145: static unsigned char testStep;
 [; ;main.c: 146: static unsigned char ucBigTimerActionFlag = 0;
-[; ;main.c: 148: while(1) asm(" clrwdt");
-"148
+[; ;main.c: 148: static unsigned char AD_sample_process_step = 0, ucChannel4Step = 0;
+[; ;main.c: 150: static unsigned char ucChannel4Type = 0;
+[; ;main.c: 152: while(1)
+"152
 [e :U 43 ]
+[; ;main.c: 153: {
+"153
+{
+[; ;main.c: 154: asm(" clrwdt");
+"154
 [;  clrwdt ;#
+[; ;main.c: 156: if(isPermitSampleTime())
+"156
+[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 45  ]
+[; ;main.c: 157: {
+"157
+{
+[; ;main.c: 158: clrSampeTime();
+"158
+[e ( _clrSampeTime ..  ]
+[; ;main.c: 159: process_AD_Converter_Value();
+"159
+[e ( _process_AD_Converter_Value ..  ]
+[; ;main.c: 161: switch(AD_sample_process_step)
+"161
+[e $U 47  ]
+[; ;main.c: 162: {
+"162
+{
+[; ;main.c: 163: case 0:
+"163
+[e :U 48 ]
+[; ;main.c: 164: {
+"164
+{
+"165
+[v F841 `ui  1 s ucTimerCount ]
+[i F841
+-> -> 0 `i `ui
+]
+[; ;main.c: 165: static unsigned ucTimerCount = 0;
+[; ;main.c: 166: if(getAdCh14Value() > 1951)
+"166
+[e $ ! > ( _getAdCh14Value ..  -> -> 1951 `i `ui 49  ]
+[; ;main.c: 167: {
+"167
+{
+[; ;main.c: 168: ucTimerCount++;
+"168
+[e ++ F841 -> -> 1 `i `ui ]
+"169
+}
+[; ;main.c: 169: }
+[e $U 50  ]
+"170
+[e :U 49 ]
+[; ;main.c: 170: else
+[; ;main.c: 171: ucTimerCount = 0;
+"171
+[e = F841 -> -> 0 `i `ui ]
+[e :U 50 ]
+[; ;main.c: 173: if(ucTimerCount >= 10)
+"173
+[e $ ! >= F841 -> -> 10 `i `ui 51  ]
+[; ;main.c: 174: AD_sample_process_step++;
+"174
+[e ++ F838 -> -> 1 `i `uc ]
+[e :U 51 ]
+[; ;main.c: 176: break;
+"176
+[e $U 46  ]
+"177
+}
+[; ;main.c: 177: }
+[; ;main.c: 179: case 1:
+"179
+[e :U 52 ]
+[; ;main.c: 180: {
+"180
+{
+[; ;main.c: 182: PA6 = 1;
+"182
+[e = _PA6 -> -> 1 `i `b ]
+[; ;main.c: 183: AD_sample_process_step++;
+"183
+[e ++ F838 -> -> 1 `i `uc ]
+[; ;main.c: 185: break;
+"185
+[e $U 46  ]
+"186
+}
+[; ;main.c: 186: }
+[; ;main.c: 188: case 2:
+"188
+[e :U 53 ]
+[; ;main.c: 189: {
+"189
+{
+[; ;main.c: 191: if(getAdCh4Value() < 1911)
+"191
+[e $ ! < ( _getAdCh4Value ..  -> -> 1911 `i `ui 54  ]
+[; ;main.c: 192: {
+"192
+{
+[; ;main.c: 193: ucChannel4Type = 0;
+"193
+[e = F840 -> -> 0 `i `uc ]
+"195
+}
+[; ;main.c: 195: }
+[e $U 55  ]
+"196
+[e :U 54 ]
+[; ;main.c: 196: else if(getAdCh4Value() < 2067)
+[e $ ! < ( _getAdCh4Value ..  -> -> 2067 `i `ui 56  ]
+[; ;main.c: 197: {
+"197
+{
+[; ;main.c: 198: ucChannel4Type = 1;
+"198
+[e = F840 -> -> 1 `i `uc ]
+"199
+}
+[; ;main.c: 199: }
+[e $U 57  ]
+"200
+[e :U 56 ]
+[; ;main.c: 200: else if(getAdCh4Value() < 2204)
+[e $ ! < ( _getAdCh4Value ..  -> -> 2204 `i `ui 58  ]
+[; ;main.c: 201: {
+"201
+{
+[; ;main.c: 202: ucChannel4Type = 2;
+"202
+[e = F840 -> -> 2 `i `uc ]
+"203
+}
+[; ;main.c: 203: }
+[e $U 59  ]
+"204
+[e :U 58 ]
+[; ;main.c: 204: else if(getAdCh4Value() < 2340)
+[e $ ! < ( _getAdCh4Value ..  -> -> 2340 `i `ui 60  ]
+[; ;main.c: 205: {
+"205
+{
+[; ;main.c: 206: ucChannel4Type = 3;
+"206
+[e = F840 -> -> 3 `i `uc ]
+"207
+}
+[; ;main.c: 207: }
+[e $U 61  ]
+"208
+[e :U 60 ]
+[; ;main.c: 208: else
+[; ;main.c: 209: {
+"209
+{
+[; ;main.c: 210: ucChannel4Type = 4;
+"210
+[e = F840 -> -> 4 `i `uc ]
+"211
+}
+[e :U 61 ]
+[e :U 59 ]
+[e :U 57 ]
+[e :U 55 ]
+[; ;main.c: 211: }
+[; ;main.c: 213: AD_sample_process_step++;
+"213
+[e ++ F838 -> -> 1 `i `uc ]
+[; ;main.c: 215: break;
+"215
+[e $U 46  ]
+"216
+}
+[; ;main.c: 216: }
+[; ;main.c: 218: case 3:
+"218
+[e :U 62 ]
+[; ;main.c: 219: {
+"219
+{
+[; ;main.c: 220: switch(ucChannel4Type)
+"220
+[e $U 64  ]
+[; ;main.c: 221: {
+"221
+{
+[; ;main.c: 223: case 0:
+"223
+[e :U 65 ]
+[; ;main.c: 224: {
+"224
+{
+"225
+[v F842 `uc  1 s ucTimerDelay ]
+[i F842
+-> -> 0 `i `uc
+]
+"226
+[v F843 `uc  1 s ucLoaderStep ]
+[i F843
+-> -> 0 `i `uc
+]
+[; ;main.c: 225: static unsigned char ucTimerDelay = 0;
+[; ;main.c: 226: static unsigned char ucLoaderStep = 0;
+[; ;main.c: 227: switch(ucLoaderStep)
+"227
+[e $U 67  ]
+[; ;main.c: 228: {
+"228
+{
+[; ;main.c: 229: case 0:
+"229
+[e :U 68 ]
+[; ;main.c: 230: {
+"230
+{
+[; ;main.c: 231: PA2 = 1;
+"231
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 232: ucLoaderStep++;
+"232
+[e ++ F843 -> -> 1 `i `uc ]
+[; ;main.c: 233: break;
+"233
+[e $U 66  ]
+"234
+}
+[; ;main.c: 234: }
+[; ;main.c: 236: case 1:
+"236
+[e :U 69 ]
+[; ;main.c: 237: {
+"237
+{
+[; ;main.c: 238: if(ucTimerDelay >= 5)
+"238
+[e $ ! >= -> F842 `i -> 5 `i 70  ]
+[; ;main.c: 239: {
+"239
+{
+[; ;main.c: 240: PA1 = 1;
+"240
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 241: ucTimerDelay = 0;
+"241
+[e = F842 -> -> 0 `i `uc ]
+[; ;main.c: 242: ucLoaderStep++;
+"242
+[e ++ F843 -> -> 1 `i `uc ]
+"243
+}
+[; ;main.c: 243: }
+[e $U 71  ]
+"244
+[e :U 70 ]
+[; ;main.c: 244: else
+[; ;main.c: 245: ucTimerDelay++;
+"245
+[e ++ F842 -> -> 1 `i `uc ]
+[e :U 71 ]
+[; ;main.c: 246: break;
+"246
+[e $U 66  ]
+"247
+}
+[; ;main.c: 247: }
+[; ;main.c: 249: case 2:
+"249
+[e :U 72 ]
+[; ;main.c: 250: {
+"250
+{
+[; ;main.c: 251: if(ucTimerDelay >= 5)
+"251
+[e $ ! >= -> F842 `i -> 5 `i 73  ]
+[; ;main.c: 252: {
+"252
+{
+[; ;main.c: 253: PA0= 1;
+"253
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 254: ucTimerDelay = 0;
+"254
+[e = F842 -> -> 0 `i `uc ]
+[; ;main.c: 255: ucLoaderStep++;
+"255
+[e ++ F843 -> -> 1 `i `uc ]
+"256
+}
+[; ;main.c: 256: }
+[e $U 74  ]
+"257
+[e :U 73 ]
+[; ;main.c: 257: else
+[; ;main.c: 258: ucTimerDelay++;
+"258
+[e ++ F842 -> -> 1 `i `uc ]
+[e :U 74 ]
+[; ;main.c: 259: break;
+"259
+[e $U 66  ]
+"260
+}
+[; ;main.c: 260: }
+[; ;main.c: 264: case 3:
+"264
+[e :U 75 ]
+[; ;main.c: 265: {
+"265
+{
+[; ;main.c: 266: if(ucTimerDelay >= 5)
+"266
+[e $ ! >= -> F842 `i -> 5 `i 76  ]
+[; ;main.c: 267: {
+"267
+{
+[; ;main.c: 268: PB0 = 1;
+"268
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 269: ucTimerDelay = 0;
+"269
+[e = F842 -> -> 0 `i `uc ]
+[; ;main.c: 270: ucLoaderStep++;
+"270
+[e ++ F843 -> -> 1 `i `uc ]
+"271
+}
+[; ;main.c: 271: }
+[e $U 77  ]
+"272
+[e :U 76 ]
+[; ;main.c: 272: else
+[; ;main.c: 273: ucTimerDelay++;
+"273
+[e ++ F842 -> -> 1 `i `uc ]
+[e :U 77 ]
+[; ;main.c: 274: break;
+"274
+[e $U 66  ]
+"275
+}
+[; ;main.c: 275: }
+[; ;main.c: 277: case 4:
+"277
+[e :U 78 ]
+[; ;main.c: 278: {
+"278
+{
+[; ;main.c: 279: if(ucTimerDelay >= 5)
+"279
+[e $ ! >= -> F842 `i -> 5 `i 79  ]
+[; ;main.c: 280: {
+"280
+{
+[; ;main.c: 281: PB1 = 1;
+"281
+[e = _PB1 -> -> 1 `i `b ]
+[; ;main.c: 282: ucTimerDelay = 0;
+"282
+[e = F842 -> -> 0 `i `uc ]
+[; ;main.c: 283: ucLoaderStep++;
+"283
+[e ++ F843 -> -> 1 `i `uc ]
+"284
+}
+[; ;main.c: 284: }
+[e $U 80  ]
+"285
+[e :U 79 ]
+[; ;main.c: 285: else
+[; ;main.c: 286: ucTimerDelay++;
+"286
+[e ++ F842 -> -> 1 `i `uc ]
+[e :U 80 ]
+[; ;main.c: 287: break;
+"287
+[e $U 66  ]
+"288
+}
+[; ;main.c: 288: }
+[; ;main.c: 290: case 5:
+"290
+[e :U 81 ]
+[; ;main.c: 291: {
+"291
+{
+[; ;main.c: 292: if(ucTimerDelay >= 5)
+"292
+[e $ ! >= -> F842 `i -> 5 `i 82  ]
+[; ;main.c: 293: {
+"293
+{
+[; ;main.c: 294: PA2 = 0;
+"294
+[e = _PA2 -> -> 0 `i `b ]
+[; ;main.c: 295: PA1 = 0;
+"295
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 296: PA0 = 0;
+"296
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 297: PB0 = 0;
+"297
+[e = _PB0 -> -> 0 `i `b ]
+[; ;main.c: 298: PB1 = 0;
+"298
+[e = _PB1 -> -> 0 `i `b ]
+[; ;main.c: 299: ucTimerDelay = 0;
+"299
+[e = F842 -> -> 0 `i `uc ]
+[; ;main.c: 300: ucLoaderStep++;
+"300
+[e ++ F843 -> -> 1 `i `uc ]
+"301
+}
+[; ;main.c: 301: }
+[e $U 83  ]
+"302
+[e :U 82 ]
+[; ;main.c: 302: else
+[; ;main.c: 303: ucTimerDelay++;
+"303
+[e ++ F842 -> -> 1 `i `uc ]
+[e :U 83 ]
+[; ;main.c: 304: break;
+"304
+[e $U 66  ]
+"305
+}
+[; ;main.c: 305: }
+[; ;main.c: 307: case 6:
+"307
+[e :U 84 ]
+[; ;main.c: 308: {
+"308
+{
+[; ;main.c: 309: if(ucTimerDelay >= 5)
+"309
+[e $ ! >= -> F842 `i -> 5 `i 85  ]
+[; ;main.c: 310: {
+"310
+{
+[; ;main.c: 311: ucTimerDelay = 0;
+"311
+[e = F842 -> -> 0 `i `uc ]
+[; ;main.c: 312: AD_sample_process_step = 2;
+"312
+[e = F838 -> -> 2 `i `uc ]
+[; ;main.c: 313: ucLoaderStep = 0;
+"313
+[e = F843 -> -> 0 `i `uc ]
+"314
+}
+[; ;main.c: 314: }
+[e $U 86  ]
+"315
+[e :U 85 ]
+[; ;main.c: 315: else
+[; ;main.c: 316: ucTimerDelay++;
+"316
+[e ++ F842 -> -> 1 `i `uc ]
+[e :U 86 ]
+[; ;main.c: 317: break;
+"317
+[e $U 66  ]
+"318
+}
+[; ;main.c: 318: }
+[; ;main.c: 321: default:
+"321
+[e :U 87 ]
+[; ;main.c: 322: break;
+"322
+[e $U 66  ]
+"323
+}
+[; ;main.c: 323: }
+[e $U 66  ]
+"227
+[e :U 67 ]
+[e [\ F843 , $ -> -> 0 `i `uc 68
+ , $ -> -> 1 `i `uc 69
+ , $ -> -> 2 `i `uc 72
+ , $ -> -> 3 `i `uc 75
+ , $ -> -> 4 `i `uc 78
+ , $ -> -> 5 `i `uc 81
+ , $ -> -> 6 `i `uc 84
+ 87 ]
+"323
+[e :U 66 ]
+[; ;main.c: 325: break;
+"325
+[e $U 63  ]
+"326
+}
+[; ;main.c: 326: }
+[; ;main.c: 328: case 1:
+"328
+[e :U 88 ]
+[; ;main.c: 329: {
+"329
+{
+"330
+[v F844 `uc  1 s ucTimerDelay1 ]
+[i F844
+-> -> 0 `i `uc
+]
+"331
+[v F845 `uc  1 s ucLoaderStep1 ]
+[i F845
+-> -> 0 `i `uc
+]
+[; ;main.c: 330: static unsigned char ucTimerDelay1 = 0;
+[; ;main.c: 331: static unsigned char ucLoaderStep1 = 0;
+[; ;main.c: 332: switch(ucLoaderStep1)
+"332
+[e $U 90  ]
+[; ;main.c: 333: {
+"333
+{
+[; ;main.c: 334: case 0:
+"334
+[e :U 91 ]
+[; ;main.c: 335: {
+"335
+{
+[; ;main.c: 336: PA2 = 1;
+"336
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 337: ucLoaderStep1++;
+"337
+[e ++ F845 -> -> 1 `i `uc ]
+[; ;main.c: 338: break;
+"338
+[e $U 89  ]
+"339
+}
+[; ;main.c: 339: }
+[; ;main.c: 341: case 1:
+"341
+[e :U 92 ]
+[; ;main.c: 342: {
+"342
+{
+[; ;main.c: 343: if(ucTimerDelay1 >= 5)
+"343
+[e $ ! >= -> F844 `i -> 5 `i 93  ]
+[; ;main.c: 344: {
+"344
+{
+[; ;main.c: 345: PA1 = 1;
+"345
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 346: ucTimerDelay1 = 0;
+"346
+[e = F844 -> -> 0 `i `uc ]
+[; ;main.c: 347: ucLoaderStep1++;
+"347
+[e ++ F845 -> -> 1 `i `uc ]
+"348
+}
+[; ;main.c: 348: }
+[e $U 94  ]
+"349
+[e :U 93 ]
+[; ;main.c: 349: else
+[; ;main.c: 350: ucTimerDelay1++;
+"350
+[e ++ F844 -> -> 1 `i `uc ]
+[e :U 94 ]
+[; ;main.c: 351: break;
+"351
+[e $U 89  ]
+"352
+}
+[; ;main.c: 352: }
+[; ;main.c: 354: case 2:
+"354
+[e :U 95 ]
+[; ;main.c: 355: {
+"355
+{
+[; ;main.c: 356: if(ucTimerDelay1 >= 5)
+"356
+[e $ ! >= -> F844 `i -> 5 `i 96  ]
+[; ;main.c: 357: {
+"357
+{
+[; ;main.c: 358: PA0 = 1;
+"358
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 359: ucTimerDelay1 = 0;
+"359
+[e = F844 -> -> 0 `i `uc ]
+[; ;main.c: 360: ucLoaderStep1++;
+"360
+[e ++ F845 -> -> 1 `i `uc ]
+"361
+}
+[; ;main.c: 361: }
+[e $U 97  ]
+"362
+[e :U 96 ]
+[; ;main.c: 362: else
+[; ;main.c: 363: ucTimerDelay1++;
+"363
+[e ++ F844 -> -> 1 `i `uc ]
+[e :U 97 ]
+[; ;main.c: 364: break;
+"364
+[e $U 89  ]
+"365
+}
+[; ;main.c: 365: }
+[; ;main.c: 367: case 3:
+"367
+[e :U 98 ]
+[; ;main.c: 368: {
+"368
+{
+[; ;main.c: 369: if(ucTimerDelay1 >= 5)
+"369
+[e $ ! >= -> F844 `i -> 5 `i 99  ]
+[; ;main.c: 370: {
+"370
+{
+[; ;main.c: 371: PB0 = 1;
+"371
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 372: ucTimerDelay1 = 0;
+"372
+[e = F844 -> -> 0 `i `uc ]
+[; ;main.c: 373: ucLoaderStep1++;
+"373
+[e ++ F845 -> -> 1 `i `uc ]
+"374
+}
+[; ;main.c: 374: }
+[e $U 100  ]
+"375
+[e :U 99 ]
+[; ;main.c: 375: else
+[; ;main.c: 376: ucTimerDelay1++;
+"376
+[e ++ F844 -> -> 1 `i `uc ]
+[e :U 100 ]
+[; ;main.c: 377: break;
+"377
+[e $U 89  ]
+"378
+}
+[; ;main.c: 378: }
+[; ;main.c: 380: case 4:
+"380
+[e :U 101 ]
+[; ;main.c: 381: {
+"381
+{
+[; ;main.c: 382: if(ucTimerDelay1 >= 5)
+"382
+[e $ ! >= -> F844 `i -> 5 `i 102  ]
+[; ;main.c: 383: {
+"383
+{
+[; ;main.c: 384: PB1 = 1;
+"384
+[e = _PB1 -> -> 1 `i `b ]
+[; ;main.c: 385: ucTimerDelay1 = 0;
+"385
+[e = F844 -> -> 0 `i `uc ]
+[; ;main.c: 386: ucLoaderStep1++;
+"386
+[e ++ F845 -> -> 1 `i `uc ]
+"387
+}
+[; ;main.c: 387: }
+[e $U 103  ]
+"388
+[e :U 102 ]
+[; ;main.c: 388: else
+[; ;main.c: 389: ucTimerDelay1++;
+"389
+[e ++ F844 -> -> 1 `i `uc ]
+[e :U 103 ]
+[; ;main.c: 390: break;
+"390
+[e $U 89  ]
+"391
+}
+[; ;main.c: 391: }
+[; ;main.c: 393: case 5:
+"393
+[e :U 104 ]
+[; ;main.c: 394: {
+"394
+{
+[; ;main.c: 395: if(ucTimerDelay1 >= 5)
+"395
+[e $ ! >= -> F844 `i -> 5 `i 105  ]
+[; ;main.c: 396: {
+"396
+{
+[; ;main.c: 397: PA1 = 0;
+"397
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 398: PA0 = 0;
+"398
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 399: PB0 = 0;
+"399
+[e = _PB0 -> -> 0 `i `b ]
+[; ;main.c: 400: PB1 = 0;
+"400
+[e = _PB1 -> -> 0 `i `b ]
+[; ;main.c: 401: ucTimerDelay1 = 0;
+"401
+[e = F844 -> -> 0 `i `uc ]
+[; ;main.c: 402: ucLoaderStep1++;
+"402
+[e ++ F845 -> -> 1 `i `uc ]
+"403
+}
+[; ;main.c: 403: }
+[e $U 106  ]
+"404
+[e :U 105 ]
+[; ;main.c: 404: else
+[; ;main.c: 405: ucTimerDelay1++;
+"405
+[e ++ F844 -> -> 1 `i `uc ]
+[e :U 106 ]
+[; ;main.c: 406: break;
+"406
+[e $U 89  ]
+"407
+}
+[; ;main.c: 407: }
+[; ;main.c: 409: case 6:
+"409
+[e :U 107 ]
+[; ;main.c: 410: {
+"410
+{
+[; ;main.c: 411: if(ucTimerDelay1 >= 5)
+"411
+[e $ ! >= -> F844 `i -> 5 `i 108  ]
+[; ;main.c: 412: {
+"412
+{
+[; ;main.c: 413: ucTimerDelay1 = 0;
+"413
+[e = F844 -> -> 0 `i `uc ]
+[; ;main.c: 414: AD_sample_process_step = 2;
+"414
+[e = F838 -> -> 2 `i `uc ]
+[; ;main.c: 415: ucLoaderStep1 = 0;
+"415
+[e = F845 -> -> 0 `i `uc ]
+"416
+}
+[; ;main.c: 416: }
+[e $U 109  ]
+"417
+[e :U 108 ]
+[; ;main.c: 417: else
+[; ;main.c: 418: ucTimerDelay1++;
+"418
+[e ++ F844 -> -> 1 `i `uc ]
+[e :U 109 ]
+[; ;main.c: 419: break;
+"419
+[e $U 89  ]
+"420
+}
+[; ;main.c: 420: }
+[; ;main.c: 423: default:
+"423
+[e :U 110 ]
+[; ;main.c: 424: break;
+"424
+[e $U 89  ]
+"425
+}
+[; ;main.c: 425: }
+[e $U 89  ]
+"332
+[e :U 90 ]
+[e [\ F845 , $ -> -> 0 `i `uc 91
+ , $ -> -> 1 `i `uc 92
+ , $ -> -> 2 `i `uc 95
+ , $ -> -> 3 `i `uc 98
+ , $ -> -> 4 `i `uc 101
+ , $ -> -> 5 `i `uc 104
+ , $ -> -> 6 `i `uc 107
+ 110 ]
+"425
+[e :U 89 ]
+[; ;main.c: 427: break;
+"427
+[e $U 63  ]
+"428
+}
+[; ;main.c: 428: }
+[; ;main.c: 431: case 2:
+"431
+[e :U 111 ]
+[; ;main.c: 432: {
+"432
+{
+"433
+[v F846 `uc  1 s ucTimerDelay2 ]
+[i F846
+-> -> 0 `i `uc
+]
+"434
+[v F847 `uc  1 s ucLoaderStep2 ]
+[i F847
+-> -> 0 `i `uc
+]
+[; ;main.c: 433: static unsigned char ucTimerDelay2 = 0;
+[; ;main.c: 434: static unsigned char ucLoaderStep2 = 0;
+[; ;main.c: 435: switch(ucLoaderStep2)
+"435
+[e $U 113  ]
+[; ;main.c: 436: {
+"436
+{
+[; ;main.c: 437: case 0:
+"437
+[e :U 114 ]
+[; ;main.c: 438: {
+"438
+{
+[; ;main.c: 439: PA2 = 1;
+"439
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 440: PA1 = 1;
+"440
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 441: ucLoaderStep2++;
+"441
+[e ++ F847 -> -> 1 `i `uc ]
+[; ;main.c: 442: break;
+"442
+[e $U 112  ]
+"443
+}
+[; ;main.c: 443: }
+[; ;main.c: 445: case 1:
+"445
+[e :U 115 ]
+[; ;main.c: 446: {
+"446
+{
+[; ;main.c: 447: if(ucTimerDelay2 >= 5)
+"447
+[e $ ! >= -> F846 `i -> 5 `i 116  ]
+[; ;main.c: 448: {
+"448
+{
+[; ;main.c: 449: PA0 = 1;
+"449
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 450: ucTimerDelay2 = 0;
+"450
+[e = F846 -> -> 0 `i `uc ]
+[; ;main.c: 451: ucLoaderStep2++;
+"451
+[e ++ F847 -> -> 1 `i `uc ]
+"452
+}
+[; ;main.c: 452: }
+[e $U 117  ]
+"453
+[e :U 116 ]
+[; ;main.c: 453: else
+[; ;main.c: 454: ucTimerDelay2++;
+"454
+[e ++ F846 -> -> 1 `i `uc ]
+[e :U 117 ]
+[; ;main.c: 455: break;
+"455
+[e $U 112  ]
+"456
+}
+[; ;main.c: 456: }
+[; ;main.c: 458: case 2:
+"458
+[e :U 118 ]
+[; ;main.c: 459: {
+"459
+{
+[; ;main.c: 460: if(ucTimerDelay2 >= 5)
+"460
+[e $ ! >= -> F846 `i -> 5 `i 119  ]
+[; ;main.c: 461: {
+"461
+{
+[; ;main.c: 462: PB0 = 1;
+"462
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 463: ucTimerDelay2 = 0;
+"463
+[e = F846 -> -> 0 `i `uc ]
+[; ;main.c: 464: ucLoaderStep2++;
+"464
+[e ++ F847 -> -> 1 `i `uc ]
+"465
+}
+[; ;main.c: 465: }
+[e $U 120  ]
+"466
+[e :U 119 ]
+[; ;main.c: 466: else
+[; ;main.c: 467: ucTimerDelay2++;
+"467
+[e ++ F846 -> -> 1 `i `uc ]
+[e :U 120 ]
+[; ;main.c: 468: break;
+"468
+[e $U 112  ]
+"469
+}
+[; ;main.c: 469: }
+[; ;main.c: 471: case 3:
+"471
+[e :U 121 ]
+[; ;main.c: 472: {
+"472
+{
+[; ;main.c: 473: if(ucTimerDelay2 >= 5)
+"473
+[e $ ! >= -> F846 `i -> 5 `i 122  ]
+[; ;main.c: 474: {
+"474
+{
+[; ;main.c: 475: PB1 = 1;
+"475
+[e = _PB1 -> -> 1 `i `b ]
+[; ;main.c: 476: ucTimerDelay2 = 0;
+"476
+[e = F846 -> -> 0 `i `uc ]
+[; ;main.c: 477: ucLoaderStep2++;
+"477
+[e ++ F847 -> -> 1 `i `uc ]
+"478
+}
+[; ;main.c: 478: }
+[e $U 123  ]
+"479
+[e :U 122 ]
+[; ;main.c: 479: else
+[; ;main.c: 480: ucTimerDelay2++;
+"480
+[e ++ F846 -> -> 1 `i `uc ]
+[e :U 123 ]
+[; ;main.c: 481: break;
+"481
+[e $U 112  ]
+"482
+}
+[; ;main.c: 482: }
+[; ;main.c: 484: case 4:
+"484
+[e :U 124 ]
+[; ;main.c: 485: {
+"485
+{
+[; ;main.c: 486: if(ucTimerDelay2 >= 5)
+"486
+[e $ ! >= -> F846 `i -> 5 `i 125  ]
+[; ;main.c: 487: {
+"487
+{
+[; ;main.c: 489: PA0 = 0;
+"489
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 490: PB0 = 0;
+"490
+[e = _PB0 -> -> 0 `i `b ]
+[; ;main.c: 491: PB1 = 0;
+"491
+[e = _PB1 -> -> 0 `i `b ]
+[; ;main.c: 492: ucTimerDelay2 = 0;
+"492
+[e = F846 -> -> 0 `i `uc ]
+[; ;main.c: 493: ucLoaderStep2++;
+"493
+[e ++ F847 -> -> 1 `i `uc ]
+"494
+}
+[; ;main.c: 494: }
+[e $U 126  ]
+"495
+[e :U 125 ]
+[; ;main.c: 495: else
+[; ;main.c: 496: ucTimerDelay2++;
+"496
+[e ++ F846 -> -> 1 `i `uc ]
+[e :U 126 ]
+[; ;main.c: 497: break;
+"497
+[e $U 112  ]
+"498
+}
+[; ;main.c: 498: }
+[; ;main.c: 500: case 5:
+"500
+[e :U 127 ]
+[; ;main.c: 501: {
+"501
+{
+[; ;main.c: 502: if(ucTimerDelay2 >= 5)
+"502
+[e $ ! >= -> F846 `i -> 5 `i 128  ]
+[; ;main.c: 503: {
+"503
+{
+[; ;main.c: 504: ucTimerDelay2 = 0;
+"504
+[e = F846 -> -> 0 `i `uc ]
+[; ;main.c: 505: AD_sample_process_step = 2;
+"505
+[e = F838 -> -> 2 `i `uc ]
+[; ;main.c: 506: ucLoaderStep2 = 0;
+"506
+[e = F847 -> -> 0 `i `uc ]
+"507
+}
+[; ;main.c: 507: }
+[e $U 129  ]
+"508
+[e :U 128 ]
+[; ;main.c: 508: else
+[; ;main.c: 509: ucTimerDelay2++;
+"509
+[e ++ F846 -> -> 1 `i `uc ]
+[e :U 129 ]
+[; ;main.c: 510: break;
+"510
+[e $U 112  ]
+"511
+}
+[; ;main.c: 511: }
+[; ;main.c: 514: default:
+"514
+[e :U 130 ]
+[; ;main.c: 515: break;
+"515
+[e $U 112  ]
+"516
+}
+[; ;main.c: 516: }
+[e $U 112  ]
+"435
+[e :U 113 ]
+[e [\ F847 , $ -> -> 0 `i `uc 114
+ , $ -> -> 1 `i `uc 115
+ , $ -> -> 2 `i `uc 118
+ , $ -> -> 3 `i `uc 121
+ , $ -> -> 4 `i `uc 124
+ , $ -> -> 5 `i `uc 127
+ 130 ]
+"516
+[e :U 112 ]
+[; ;main.c: 518: break;
+"518
+[e $U 63  ]
+"519
+}
+[; ;main.c: 519: }
+[; ;main.c: 522: case 3:
+"522
+[e :U 131 ]
+[; ;main.c: 523: {
+"523
+{
+"524
+[v F848 `uc  1 s ucTimerDelay3 ]
+[i F848
+-> -> 0 `i `uc
+]
+"525
+[v F849 `uc  1 s ucLoaderStep3 ]
+[i F849
+-> -> 0 `i `uc
+]
+[; ;main.c: 524: static unsigned char ucTimerDelay3 = 0;
+[; ;main.c: 525: static unsigned char ucLoaderStep3 = 0;
+[; ;main.c: 526: switch(ucLoaderStep3)
+"526
+[e $U 133  ]
+[; ;main.c: 527: {
+"527
+{
+[; ;main.c: 528: case 0:
+"528
+[e :U 134 ]
+[; ;main.c: 529: {
+"529
+{
+[; ;main.c: 530: PA2 = 1;
+"530
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 531: PA1 = 1;
+"531
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 532: PA0 = 1;
+"532
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 533: ucLoaderStep3++;
+"533
+[e ++ F849 -> -> 1 `i `uc ]
+[; ;main.c: 534: break;
+"534
+[e $U 132  ]
+"535
+}
+[; ;main.c: 535: }
+[; ;main.c: 537: case 1:
+"537
+[e :U 135 ]
+[; ;main.c: 538: {
+"538
+{
+[; ;main.c: 539: if(ucTimerDelay3 >= 5)
+"539
+[e $ ! >= -> F848 `i -> 5 `i 136  ]
+[; ;main.c: 540: {
+"540
+{
+[; ;main.c: 541: PB0 = 1;
+"541
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 542: ucTimerDelay3 = 0;
+"542
+[e = F848 -> -> 0 `i `uc ]
+[; ;main.c: 543: ucLoaderStep3++;
+"543
+[e ++ F849 -> -> 1 `i `uc ]
+"544
+}
+[; ;main.c: 544: }
+[e $U 137  ]
+"545
+[e :U 136 ]
+[; ;main.c: 545: else
+[; ;main.c: 546: ucTimerDelay3++;
+"546
+[e ++ F848 -> -> 1 `i `uc ]
+[e :U 137 ]
+[; ;main.c: 547: break;
+"547
+[e $U 132  ]
+"548
+}
+[; ;main.c: 548: }
+[; ;main.c: 550: case 2:
+"550
+[e :U 138 ]
+[; ;main.c: 551: {
+"551
+{
+[; ;main.c: 552: if(ucTimerDelay3 >= 5)
+"552
+[e $ ! >= -> F848 `i -> 5 `i 139  ]
+[; ;main.c: 553: {
+"553
+{
+[; ;main.c: 554: PB1 = 1;
+"554
+[e = _PB1 -> -> 1 `i `b ]
+[; ;main.c: 555: ucTimerDelay3 = 0;
+"555
+[e = F848 -> -> 0 `i `uc ]
+[; ;main.c: 556: ucLoaderStep3++;
+"556
+[e ++ F849 -> -> 1 `i `uc ]
+"557
+}
+[; ;main.c: 557: }
+[e $U 140  ]
+"558
+[e :U 139 ]
+[; ;main.c: 558: else
+[; ;main.c: 559: ucTimerDelay3++;
+"559
+[e ++ F848 -> -> 1 `i `uc ]
+[e :U 140 ]
+[; ;main.c: 560: break;
+"560
+[e $U 132  ]
+"561
+}
+[; ;main.c: 561: }
+[; ;main.c: 564: case 3:
+"564
+[e :U 141 ]
+[; ;main.c: 565: {
+"565
+{
+[; ;main.c: 566: if(ucTimerDelay3 >= 5)
+"566
+[e $ ! >= -> F848 `i -> 5 `i 142  ]
+[; ;main.c: 567: {
+"567
+{
+[; ;main.c: 569: PB0 = 0;
+"569
+[e = _PB0 -> -> 0 `i `b ]
+[; ;main.c: 570: PB1 = 0;
+"570
+[e = _PB1 -> -> 0 `i `b ]
+[; ;main.c: 571: ucTimerDelay3 = 0;
+"571
+[e = F848 -> -> 0 `i `uc ]
+[; ;main.c: 572: ucLoaderStep3++;
+"572
+[e ++ F849 -> -> 1 `i `uc ]
+"573
+}
+[; ;main.c: 573: }
+[e $U 143  ]
+"574
+[e :U 142 ]
+[; ;main.c: 574: else
+[; ;main.c: 575: ucTimerDelay3++;
+"575
+[e ++ F848 -> -> 1 `i `uc ]
+[e :U 143 ]
+[; ;main.c: 576: break;
+"576
+[e $U 132  ]
+"577
+}
+[; ;main.c: 577: }
+[; ;main.c: 579: case 4:
+"579
+[e :U 144 ]
+[; ;main.c: 580: {
+"580
+{
+[; ;main.c: 581: if(ucTimerDelay3 >= 5)
+"581
+[e $ ! >= -> F848 `i -> 5 `i 145  ]
+[; ;main.c: 582: {
+"582
+{
+[; ;main.c: 583: ucTimerDelay3 = 0;
+"583
+[e = F848 -> -> 0 `i `uc ]
+[; ;main.c: 584: AD_sample_process_step = 2;
+"584
+[e = F838 -> -> 2 `i `uc ]
+[; ;main.c: 585: ucLoaderStep3 = 0;
+"585
+[e = F849 -> -> 0 `i `uc ]
+"586
+}
+[; ;main.c: 586: }
+[e $U 146  ]
+"587
+[e :U 145 ]
+[; ;main.c: 587: else
+[; ;main.c: 588: ucTimerDelay3++;
+"588
+[e ++ F848 -> -> 1 `i `uc ]
+[e :U 146 ]
+[; ;main.c: 589: break;
+"589
+[e $U 132  ]
+"590
+}
+[; ;main.c: 590: }
+[; ;main.c: 593: default:
+"593
+[e :U 147 ]
+[; ;main.c: 594: break;
+"594
+[e $U 132  ]
+"595
+}
+[; ;main.c: 595: }
+[e $U 132  ]
+"526
+[e :U 133 ]
+[e [\ F849 , $ -> -> 0 `i `uc 134
+ , $ -> -> 1 `i `uc 135
+ , $ -> -> 2 `i `uc 138
+ , $ -> -> 3 `i `uc 141
+ , $ -> -> 4 `i `uc 144
+ 147 ]
+"595
+[e :U 132 ]
+[; ;main.c: 597: break;
+"597
+[e $U 63  ]
+"598
+}
+[; ;main.c: 598: }
+[; ;main.c: 601: case 4:
+"601
+[e :U 148 ]
+[; ;main.c: 602: {
+"602
+{
+"603
+[v F850 `uc  1 s ucTimerDelay4 ]
+[i F850
+-> -> 0 `i `uc
+]
+"604
+[v F851 `uc  1 s ucLoaderStep4 ]
+[i F851
+-> -> 0 `i `uc
+]
+[; ;main.c: 603: static unsigned char ucTimerDelay4 = 0;
+[; ;main.c: 604: static unsigned char ucLoaderStep4 = 0;
+[; ;main.c: 605: switch(ucLoaderStep4)
+"605
+[e $U 150  ]
+[; ;main.c: 606: {
+"606
+{
+[; ;main.c: 607: case 0:
+"607
+[e :U 151 ]
+[; ;main.c: 608: {
+"608
+{
+[; ;main.c: 609: PA2 = 1;
+"609
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 610: PA1 = 1;
+"610
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 611: PA0 = 1;
+"611
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 612: PB0 = 1;
+"612
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 613: ucLoaderStep4++;
+"613
+[e ++ F851 -> -> 1 `i `uc ]
+[; ;main.c: 614: break;
+"614
+[e $U 149  ]
+"615
+}
+[; ;main.c: 615: }
+[; ;main.c: 617: case 1:
+"617
+[e :U 152 ]
+[; ;main.c: 618: {
+"618
+{
+[; ;main.c: 619: if(ucTimerDelay4 >= 5)
+"619
+[e $ ! >= -> F850 `i -> 5 `i 153  ]
+[; ;main.c: 620: {
+"620
+{
+[; ;main.c: 621: PB1 = 1;
+"621
+[e = _PB1 -> -> 1 `i `b ]
+[; ;main.c: 622: ucTimerDelay4 = 0;
+"622
+[e = F850 -> -> 0 `i `uc ]
+[; ;main.c: 623: ucLoaderStep4++;
+"623
+[e ++ F851 -> -> 1 `i `uc ]
+"624
+}
+[; ;main.c: 624: }
+[e $U 154  ]
+"625
+[e :U 153 ]
+[; ;main.c: 625: else
+[; ;main.c: 626: ucTimerDelay4++;
+"626
+[e ++ F850 -> -> 1 `i `uc ]
+[e :U 154 ]
+[; ;main.c: 627: break;
+"627
+[e $U 149  ]
+"628
+}
+[; ;main.c: 628: }
+[; ;main.c: 630: case 2:
+"630
+[e :U 155 ]
+[; ;main.c: 631: {
+"631
+{
+[; ;main.c: 632: if(ucTimerDelay4 >= 5)
+"632
+[e $ ! >= -> F850 `i -> 5 `i 156  ]
+[; ;main.c: 633: {
+"633
+{
+[; ;main.c: 634: PB1 = 0;
+"634
+[e = _PB1 -> -> 0 `i `b ]
+[; ;main.c: 635: ucTimerDelay4 = 0;
+"635
+[e = F850 -> -> 0 `i `uc ]
+[; ;main.c: 636: ucLoaderStep4++;
+"636
+[e ++ F851 -> -> 1 `i `uc ]
+"637
+}
+[; ;main.c: 637: }
+[e $U 157  ]
+"638
+[e :U 156 ]
+[; ;main.c: 638: else
+[; ;main.c: 639: ucTimerDelay4++;
+"639
+[e ++ F850 -> -> 1 `i `uc ]
+[e :U 157 ]
+[; ;main.c: 640: break;
+"640
+[e $U 149  ]
+"641
+}
+[; ;main.c: 641: }
+[; ;main.c: 643: case 3:
+"643
+[e :U 158 ]
+[; ;main.c: 644: {
+"644
+{
+[; ;main.c: 645: if(ucTimerDelay4 >= 5)
+"645
+[e $ ! >= -> F850 `i -> 5 `i 159  ]
+[; ;main.c: 646: {
+"646
+{
+[; ;main.c: 647: ucTimerDelay4 = 0;
+"647
+[e = F850 -> -> 0 `i `uc ]
+[; ;main.c: 648: AD_sample_process_step = 2;
+"648
+[e = F838 -> -> 2 `i `uc ]
+[; ;main.c: 649: ucLoaderStep4 = 0;
+"649
+[e = F851 -> -> 0 `i `uc ]
+"650
+}
+[; ;main.c: 650: }
+[e $U 160  ]
+"651
+[e :U 159 ]
+[; ;main.c: 651: else
+[; ;main.c: 652: ucTimerDelay4++;
+"652
+[e ++ F850 -> -> 1 `i `uc ]
+[e :U 160 ]
+[; ;main.c: 653: break;
+"653
+[e $U 149  ]
+"654
+}
+[; ;main.c: 654: }
+[; ;main.c: 657: default:
+"657
+[e :U 161 ]
+[; ;main.c: 658: break;
+"658
+[e $U 149  ]
+"659
+}
+[; ;main.c: 659: }
+[e $U 149  ]
+"605
+[e :U 150 ]
+[e [\ F851 , $ -> -> 0 `i `uc 151
+ , $ -> -> 1 `i `uc 152
+ , $ -> -> 2 `i `uc 155
+ , $ -> -> 3 `i `uc 158
+ 161 ]
+"659
+[e :U 149 ]
+[; ;main.c: 661: break;
+"661
+[e $U 63  ]
+"662
+}
+[; ;main.c: 662: }
+[; ;main.c: 664: default:
+"664
+[e :U 162 ]
+[; ;main.c: 665: break;
+"665
+[e $U 63  ]
+"666
+}
+[; ;main.c: 666: }
+[e $U 63  ]
+"220
+[e :U 64 ]
+[e [\ F840 , $ -> -> 0 `i `uc 65
+ , $ -> -> 1 `i `uc 88
+ , $ -> -> 2 `i `uc 111
+ , $ -> -> 3 `i `uc 131
+ , $ -> -> 4 `i `uc 148
+ 162 ]
+"666
+[e :U 63 ]
+[; ;main.c: 667: break;
+"667
+[e $U 46  ]
+"668
+}
+[; ;main.c: 668: }
+[; ;main.c: 671: default:
+"671
+[e :U 163 ]
+[; ;main.c: 672: break;
+"672
+[e $U 46  ]
+"673
+}
+[; ;main.c: 673: }
+[e $U 46  ]
+"161
+[e :U 47 ]
+[e [\ F838 , $ -> -> 0 `i `uc 48
+ , $ -> -> 1 `i `uc 52
+ , $ -> -> 2 `i `uc 53
+ , $ -> -> 3 `i `uc 62
+ 163 ]
+"673
+[e :U 46 ]
+"919
+}
+[e :U 45 ]
+"920
+}
 [e :U 42 ]
+"152
 [e $U 43  ]
 [e :U 44 ]
-[; ;main.c: 406: }
-"406
+[; ;main.c: 919: }
+[; ;main.c: 920: }
+[; ;main.c: 923: }
+"923
 [e :UE 41 ]
 }

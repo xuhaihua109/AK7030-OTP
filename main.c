@@ -132,7 +132,7 @@ void main (void)
 	timer1_config();
 	timer1_interrupt_config();
 	
-	adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
+	adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
 
 	dac_init(); //DAC0/1初始化
 	op1_init(); //OP1初始化
@@ -145,8 +145,10 @@ void main (void)
 	static unsigned char testStep;
 	static unsigned char ucBigTimerActionFlag = 0;
 	
-	while(1) CLRWDT();
-	/*
+	static unsigned char AD_sample_process_step = 0, ucChannel4Step = 0;
+	
+	static unsigned char ucChannel4Type = 0;
+	
 	while(1)
     {	
        CLRWDT();//feed watch dog
@@ -155,7 +157,521 @@ void main (void)
 		{
     	   clrSampeTime();
     	   process_AD_Converter_Value();
-
+		   
+		   switch(AD_sample_process_step)
+		   {
+			   case 0:
+				{	
+					static unsigned  ucTimerCount = 0;
+			   		if(getAdCh14Value() > 1951)//  AD value -> 2v
+					{
+						ucTimerCount++;
+					}
+					else
+						ucTimerCount = 0;	
+					
+					if(ucTimerCount >= 10)
+						AD_sample_process_step++;
+					
+			   		break;
+				}
+				
+				case 1:
+				{	
+					
+			   		PA6 = 1;
+					AD_sample_process_step++;
+					
+			   		break;
+				}
+				
+				case 2:
+				{	
+					
+			   		if(getAdCh4Value() < 1911)
+					{
+						ucChannel4Type = 0;
+						
+					}
+					else if(getAdCh4Value() < 2067)
+					{
+						ucChannel4Type = 1;
+					}
+					else if(getAdCh4Value() < 2204)
+					{
+						ucChannel4Type = 2;
+					}
+					else if(getAdCh4Value() < 2340)
+					{
+						ucChannel4Type = 3;
+					}
+					else
+					{
+						ucChannel4Type = 4;
+					}	
+					
+					AD_sample_process_step++;
+					
+			   		break;
+				}
+				
+				case 3:
+				{
+					switch(ucChannel4Type)
+					{
+								
+						case 0:
+						{
+							static unsigned char ucTimerDelay = 0;
+							static unsigned char ucLoaderStep = 0;
+							switch(ucLoaderStep)
+							{
+								case 0:
+								{
+									PA2 = 1;
+									ucLoaderStep++;
+									break;
+								}
+								
+								case 1:
+								{								
+									if(ucTimerDelay >= 5)
+									{	
+										PA1 = 1;
+										ucTimerDelay = 0;
+										ucLoaderStep++;
+									}
+									else
+										ucTimerDelay++;										
+									break;
+								}
+								
+								case 2:
+								{								
+									if(ucTimerDelay >= 5)
+									{	
+										PA0= 1;
+										ucTimerDelay = 0;
+										ucLoaderStep++;
+									}
+									else
+										ucTimerDelay++;										
+									break;
+								}
+								
+								
+								
+								case 3:
+								{								
+									if(ucTimerDelay >= 5)
+									{	
+										PB0 = 1;
+										ucTimerDelay = 0;
+										ucLoaderStep++;
+									}
+									else
+										ucTimerDelay++;										
+									break;
+								}
+								
+								case 4:
+								{								
+									if(ucTimerDelay >= 5)
+									{	
+										PB1 = 1;
+										ucTimerDelay = 0;
+										ucLoaderStep++;
+									}
+									else
+										ucTimerDelay++;										
+									break;
+								}
+								
+								case 5:
+								{								
+									if(ucTimerDelay >= 5)
+									{	
+										PA2 = 0;
+										PA1 = 0;
+										PA0 = 0;
+										PB0 = 0;
+										PB1 = 0;
+										ucTimerDelay = 0;
+										ucLoaderStep++;
+									}
+									else
+										ucTimerDelay++;										
+									break;
+								}
+								
+								case 6:
+								{								
+									if(ucTimerDelay >= 5)
+									{	
+										ucTimerDelay = 0;
+										AD_sample_process_step = 2;
+										ucLoaderStep = 0;
+									}
+									else
+										ucTimerDelay++;										
+									break;
+								}
+								
+								
+								default:
+								break;
+							}
+							
+						     break;	
+						}
+						
+						case 1:
+						{
+							static unsigned char ucTimerDelay1 = 0;
+							static unsigned char ucLoaderStep1 = 0;
+							switch(ucLoaderStep1)
+							{
+								case 0:
+								{
+									PA2 = 1;
+									ucLoaderStep1++;
+									break;
+								}
+								
+								case 1:
+								{								
+									if(ucTimerDelay1 >= 5)
+									{	
+										PA1 = 1;
+										ucTimerDelay1 = 0;
+										ucLoaderStep1++;
+									}
+									else
+										ucTimerDelay1++;										
+									break;
+								}
+								
+								case 2:
+								{								
+									if(ucTimerDelay1 >= 5)
+									{	
+										PA0 = 1;
+										ucTimerDelay1 = 0;
+										ucLoaderStep1++;
+									}
+									else
+										ucTimerDelay1++;										
+									break;
+								}
+								
+								case 3:
+								{								
+									if(ucTimerDelay1 >= 5)
+									{	
+										PB0 = 1;
+										ucTimerDelay1 = 0;
+										ucLoaderStep1++;
+									}
+									else
+										ucTimerDelay1++;										
+									break;
+								}
+								
+								case 4:
+								{								
+									if(ucTimerDelay1 >= 5)
+									{	
+										PB1 = 1;
+										ucTimerDelay1 = 0;
+										ucLoaderStep1++;
+									}
+									else
+										ucTimerDelay1++;										
+									break;
+								}
+								
+								case 5:
+								{								
+									if(ucTimerDelay1 >= 5)
+									{	
+										PA1 = 0;
+										PA0 = 0;
+										PB0 = 0;
+										PB1 = 0;
+										ucTimerDelay1 = 0;
+										ucLoaderStep1++;
+									}
+									else
+										ucTimerDelay1++;										
+									break;
+								}
+								
+								case 6:
+								{								
+									if(ucTimerDelay1 >= 5)
+									{	
+										ucTimerDelay1 = 0;
+										AD_sample_process_step = 2;
+										ucLoaderStep1 = 0;
+									}
+									else
+										ucTimerDelay1++;										
+									break;
+								}
+								
+								
+								default:
+								break;
+							}
+							
+						     break;	
+						}
+						
+						
+						case 2:
+						{
+							static unsigned char ucTimerDelay2 = 0;
+							static unsigned char ucLoaderStep2 = 0;
+							switch(ucLoaderStep2)
+							{
+								case 0:
+								{
+									PA2 = 1;
+									PA1 = 1;
+									ucLoaderStep2++;
+									break;
+								}
+								
+								case 1:
+								{								
+									if(ucTimerDelay2 >= 5)
+									{	
+										PA0 = 1;
+										ucTimerDelay2 = 0;
+										ucLoaderStep2++;
+									}
+									else
+										ucTimerDelay2++;										
+									break;
+								}
+								
+								case 2:
+								{								
+									if(ucTimerDelay2 >= 5)
+									{	
+										PB0 = 1;
+										ucTimerDelay2 = 0;
+										ucLoaderStep2++;
+									}
+									else
+										ucTimerDelay2++;										
+									break;
+								}
+								
+								case 3:
+								{								
+									if(ucTimerDelay2 >= 5)
+									{	
+										PB1 = 1;
+										ucTimerDelay2 = 0;
+										ucLoaderStep2++;
+									}
+									else
+										ucTimerDelay2++;										
+									break;
+								}
+								
+								case 4:
+								{								
+									if(ucTimerDelay2 >= 5)
+									{	
+			
+										PA0 = 0;
+										PB0 = 0;
+										PB1 = 0;
+										ucTimerDelay2 = 0;
+										ucLoaderStep2++;
+									}
+									else
+										ucTimerDelay2++;										
+									break;
+								}
+								
+								case 5:
+								{								
+									if(ucTimerDelay2 >= 5)
+									{	
+										ucTimerDelay2 = 0;
+										AD_sample_process_step = 2;
+										ucLoaderStep2 = 0;
+									}
+									else
+										ucTimerDelay2++;										
+									break;
+								}
+								
+								
+								default:
+								break;
+							}
+							
+						     break;	
+						}
+						
+						
+						case 3:
+						{
+							static unsigned char ucTimerDelay3 = 0;
+							static unsigned char ucLoaderStep3 = 0;
+							switch(ucLoaderStep3)
+							{
+								case 0:
+								{
+									PA2 = 1;
+									PA1 = 1;
+									PA0 = 1;
+									ucLoaderStep3++;
+									break;
+								}
+								
+								case 1:
+								{								
+									if(ucTimerDelay3 >= 5)
+									{	
+										PB0 = 1;
+										ucTimerDelay3 = 0;
+										ucLoaderStep3++;
+									}
+									else
+										ucTimerDelay3++;										
+									break;
+								}
+								
+								case 2:
+								{								
+									if(ucTimerDelay3 >= 5)
+									{	
+										PB1 = 1;
+										ucTimerDelay3 = 0;
+										ucLoaderStep3++;
+									}
+									else
+										ucTimerDelay3++;										
+									break;
+								}
+								
+								
+								case 3:
+								{								
+									if(ucTimerDelay3 >= 5)
+									{	
+			
+										PB0 = 0;
+										PB1 = 0;
+										ucTimerDelay3 = 0;
+										ucLoaderStep3++;
+									}
+									else
+										ucTimerDelay3++;										
+									break;
+								}
+								
+								case 4:
+								{								
+									if(ucTimerDelay3 >= 5)
+									{	
+										ucTimerDelay3 = 0;
+										AD_sample_process_step = 2;
+										ucLoaderStep3 = 0;
+									}
+									else
+										ucTimerDelay3++;										
+									break;
+								}
+								
+								
+								default:
+								break;
+							}
+							
+						     break;	
+						}
+						
+						
+						case 4:
+						{
+							static unsigned char ucTimerDelay4 = 0;
+							static unsigned char ucLoaderStep4 = 0;
+							switch(ucLoaderStep4)
+							{
+								case 0:
+								{
+									PA2 = 1;
+									PA1 = 1;
+									PA0 = 1;
+									PB0 = 1;
+									ucLoaderStep4++;
+									break;
+								}
+								
+								case 1:
+								{								
+									if(ucTimerDelay4 >= 5)
+									{	
+										PB1 = 1;
+										ucTimerDelay4 = 0;
+										ucLoaderStep4++;
+									}
+									else
+										ucTimerDelay4++;										
+									break;
+								}
+								
+								case 2:
+								{								
+									if(ucTimerDelay4 >= 5)
+									{	
+										PB1 = 0;
+										ucTimerDelay4 = 0;
+										ucLoaderStep4++;
+									}
+									else
+										ucTimerDelay4++;										
+									break;
+								}
+								
+								case 3:
+								{								
+									if(ucTimerDelay4 >= 5)
+									{	
+										ucTimerDelay4 = 0;
+										AD_sample_process_step = 2;
+										ucLoaderStep4 = 0;
+									}
+									else
+										ucTimerDelay4++;										
+									break;
+								}
+								
+								
+								default:
+								break;
+							}
+							
+						     break;	
+						}
+						
+						default:
+						break;
+					}
+					break;
+				}
+				
+				
+				default:
+					break;
+		   }
+		/*
     	   switch(ampStep)
 		   {
     	   	   case SENSE_PB2_INPUT_VOLTAGE:
@@ -399,9 +915,10 @@ void main (void)
 				   break;
 
 		   }
+		  */ 
 		}
 	}
-	*/
+	
 
 }
 

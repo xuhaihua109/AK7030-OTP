@@ -1,13 +1,22 @@
-_op1_init: CODE, 146 0 12
-_adc_start: CODE, 201 0 3
-_op2_init: CODE, 168 0 10
-_ISR: CODE, 19 0 50
-_main: CODE, 82 0 43
-_adc_test_init: CODE, 125 0 21
-_setAD_ConvertFlag: CODE, 81 0 1
-_dac_init: CODE, 196 0 5
-_timer1_config: CODE, 178 0 10
-_timer1_interrupt_config: CODE, 204 0 3
-_adc_get: CODE, 69 0 12
-_clock_config: CODE, 188 0 8
-Total: 178
+i1_setAD_ConvertFlag: CODE, 752 0 3
+_op1_init: CODE, 811 0 12
+_adc_start: CODE, 644 0 3
+_op2_init: CODE, 823 0 10
+_ISR: CODE, 688 0 53
+_getAdOriginalValue: CODE, 618 0 5
+_main: CODE, 13 0 440
+_isPermitSampleTime: CODE, 869 0 5
+_getAD_ConvertFlag: CODE, 474 0 2
+_adc_test_init: CODE, 623 0 21
+_setAD_ConvertFlag: CODE, 476 0 5
+_AD_Sample: CODE, 481 0 137
+_process_AD_Converter_Value: CODE, 453 0 21
+_clrSampeTime: CODE, 882 0 2
+_dac_init: CODE, 874 0 5
+_getAdCh4Value: CODE, 859 0 5
+_timer1_config: CODE, 833 0 10
+_timer1_interrupt_config: CODE, 879 0 3
+_adc_get: CODE, 741 0 11
+_getAdCh14Value: CODE, 864 0 5
+_clock_config: CODE, 851 0 8
+Total: 766

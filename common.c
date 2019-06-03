@@ -11,13 +11,13 @@
 
 static uchar adc_convert_flag = 0;
 
-static uint adc_original_value = 0, adc_original_CH1_value = 0,adc_original_CH13_value = 0;
+static uint adc_original_value = 0, adc_original_CH1_value = 0,adc_original_CH14_value = 0,adc_original_CH4_value = 0;
 
 static uint buffer_Sample_AD_Value[TEMP_MAX_CONTINOUS_SAMPLE_TIMES];
 static uchar sampleTimes;
-static uchar sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
+static uchar sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
 static uint multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
-static uint sampleCH13Value,sampleCH12Value;
+static uint sampleCH14Value,sampleCH4Value;
 
 typedef struct
 {
@@ -83,9 +83,15 @@ unsigned int getAdOriginalCh1Value()
 }
 
 
-unsigned int getAdOriginalCh13Value()
+unsigned int getAdOriginaCh4Value()
 {
-	return adc_original_CH13_value;
+	return adc_original_CH4_value;
+}
+
+
+unsigned int getAdOriginalCh14Value()
+{
+	return adc_original_CH14_value;
 }
 
 
@@ -96,10 +102,10 @@ void process_AD_Converter_Value()
 	{
 		setAD_ConvertFlag(0);
 		AD_Sample();
-		if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
-			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
+		if(AD_CHANNEL_4_CHANNEL == sampleChannelSelect)
+			adc_test_init(AD_CHANNEL_4_CHANNEL,ADC_REF_2P1);
 		else
-			adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);
+			adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);
 //		setAdcSampleChannel(sampleChannelSelect);
 		adc_start();	//ADCÆô¶¯
 	}
@@ -144,21 +150,21 @@ static void AD_Sample(void)
 		{
 			sampleTimes = 0;
 
-			if(sampleChannelSelect == AD_CHANNEL_13_CHANNEL)
+			if(sampleChannelSelect == AD_CHANNEL_14_CHANNEL)
 			{
 				  //filter max and min value,then calculate average value
-				sampleCH13Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_1_CHANNEL;
+				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
+				sampleChannelSelect = AD_CHANNEL_4_CHANNEL;
 			}
-			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
+			else if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
 			{
-				sampleCH12Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
+				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
+				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
 			}
 			else
 			{
-				sampleCH13Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
+				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
+				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
 			}
 
 			for(uchar index = 0; index < TEMP_MAX_CONTINOUS_SAMPLE_TIMES;index++)
@@ -170,15 +176,15 @@ static void AD_Sample(void)
 
 
 
-unsigned int getAdCh12Value()
+unsigned int getAdCh4Value()
 {
-	return sampleCH12Value;
+	return sampleCH4Value;
 }
 
 
-unsigned int getAdCh13Value()
+unsigned int getAdCh14Value()
 {
-	return sampleCH13Value;
+	return sampleCH14Value;
 }
 
 void setDAC0_ChannelValue(unsigned char ucValue)
@@ -261,7 +267,6 @@ void interrupt ISR(void)
 
 		if(ucTimer1sCnt >= 100)// 100*10ms = 1s
 		{
-			PA0 = ~PA0;
 			ucTimer1sCnt = 0;
 			if(uiBigTimer > 0)
 				uiBigTimer--;
@@ -276,10 +281,10 @@ void interrupt ISR(void)
 		ADIF=0;
 		setAD_ConvertFlag(1);
 		adc_original_value = adc_get();
-		if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
-			adc_original_CH1_value = adc_get();
+		if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
+			adc_original_CH4_value = adc_get();//getAdCh4Value();
 		else
-			adc_original_CH13_value = adc_get();
+			adc_original_CH14_value = adc_get();//getAdCh14Value();
 
 	   }
 }

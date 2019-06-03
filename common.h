@@ -13,9 +13,11 @@
 
 //#define DEBUG_FUNCITON  1
 
-#define AD_CHANNEL_13_CHANNEL            13
+#define AD_CHANNEL_14_CHANNEL            14
 
 #define AD_CHANNEL_1_CHANNEL            1
+
+#define AD_CHANNEL_4_CHANNEL            4
 
 
 void clock_config();
@@ -31,14 +33,14 @@ unsigned int getAdOriginalValue();
 
 void process_AD_Converter_Value();
 
-unsigned int getAdCh12Value();
+unsigned int getAdCh4Value();
 
-unsigned int getAdCh13Value();
+unsigned int getAdCh14Value();
 
 
-unsigned int getAdOriginalCh1Value();
+unsigned int getAdOriginalCh4Value();
 
-unsigned int getAdOriginalCh13Value();
+unsigned int getAdOriginalCh14Value();
 
 unsigned char isPermitSampleTime();
 

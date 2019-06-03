@@ -812,7 +812,7 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 void adc_start();
 unsigned int adc_get(void);
 
-# 21 "C:\test__190531\AK7030-OTP\common.h"
+# 23 "C:\test__190531\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -826,14 +826,14 @@ unsigned int getAdOriginalValue();
 
 void process_AD_Converter_Value();
 
-unsigned int getAdCh12Value();
+unsigned int getAdCh4Value();
 
-unsigned int getAdCh13Value();
+unsigned int getAdCh14Value();
 
 
-unsigned int getAdOriginalCh1Value();
+unsigned int getAdOriginalCh4Value();
 
-unsigned int getAdOriginalCh13Value();
+unsigned int getAdOriginalCh14Value();
 
 unsigned char isPermitSampleTime();
 
