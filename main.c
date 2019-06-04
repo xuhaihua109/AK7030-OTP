@@ -117,15 +117,27 @@ void main (void)
 
 	TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
 	TRISA1 = 0;
-	TRISA3 = 0;
 	TRISA2 = 0;
+	TRISA3 = 0;
+	TRISB0 = 0;
+	TRISB1 = 0;
 	TRISA6 = 0;
-	PA2 = 1;
-	PA0 = 1;
+	TRISA7 = 0;
 
-	TRISB2 = 1;//SET PB2 as input
+	PBOD6 = 1; //set PB6 as high resistance
 
-	TRISB1 = 1;// set AD sample Channel 13
+	PA0 = 0;
+	PA1 = 0;
+	PA2 = 0;
+	PA3 = 1;
+	PB0 = 0;
+	PB1 = 0;
+	PA6 = 0;
+	PA7 = 0;
+
+	TRISB2 = 1;//SET AD sample Channel 14
+
+	TRISB7 = 1;// set AD sample Channel 4
 	TRISB4 = 1;// set AD sample Channel 1
 
 	clock_config();	//使系统时钟稳定

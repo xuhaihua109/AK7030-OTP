@@ -1,13 +1,13 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.83 build 10920 
-                                                                                                           Sun Jun 02 08:34:35 2019
+                                                                                                           Tue Jun 04 11:37:20 2019
 
 
      1                           
      2                           	; HI-TECH C Compiler for PIC10/12/16 MCUs V9.83
      3                           	; Copyright (C) 1984-2011 HI-TECH Software
-     4                           	;Serial no. HCPICP-12345
+     4                           	;Serial no. HCPICP-11111
      5                           
      6                           	; Auto-generated runtime startup code for final link stage.
      7                           
@@ -73,12 +73,12 @@ HI-TECH Software PIC Macro Assembler V9.83 build 10920
     67  000B                     _exit
     68                           	psect	end_init
     69                           	global start_initialization
-    70  000B  118A  2AF3         	ljmp start_initialization	;jump to C runtime clear & initialization
+    70  000B  118A  2AFF         	ljmp start_initialization	;jump to C runtime clear & initialization
 
 
 HI-TECH Software PICC Macro Assembler V9.83 build 10920 
-Symbol Table                                                                                               Sun Jun 02 08:34:35 2019
+Symbol Table                                                                                               Tue Jun 04 11:37:20 2019
 
-               _main 000D                 _exit 000B                 start 000B  start_initialization 02F3  
+               _main 000D                 _exit 000B                 start 000B  start_initialization 02FF  
            intlevel0 0000             intlevel1 0000             intlevel2 0000             intlevel3 0000  
            intlevel4 0000             intlevel5 0000             reset_vec 0000  

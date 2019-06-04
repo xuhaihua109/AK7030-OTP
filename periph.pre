@@ -1,5 +1,5 @@
 
-# 1 "C:\test__190531\AK7030-OTP\periph.c"
+# 1 "C:\190604\AK7030-OTP\periph.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\test__190531\AK7030-OTP\yn8p520.h"
+# 164 "C:\190604\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -784,6 +784,7 @@ volatile bit PAOD6 @ ((unsigned)&PAOD*8)+6;
 
 
 volatile unsigned char PBOD @ 0x188;
+volatile bit PBOD6 @ ((unsigned)&PBOD*8)+6;
 
 
 
@@ -801,7 +802,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 13 "C:\test__190531\AK7030-OTP\periph.h"
+# 13 "C:\190604\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
@@ -812,7 +813,7 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 void adc_start();
 unsigned int adc_get(void);
 
-# 23 "C:\test__190531\AK7030-OTP\common.h"
+# 23 "C:\190604\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -853,7 +854,7 @@ unsigned char isFinishedSmallTimer();
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
 
-# 13 "C:\test__190531\AK7030-OTP\periph.c"
+# 13 "C:\190604\AK7030-OTP\periph.c"
 void dac_init()
 {
 DACCON|=1;
@@ -876,7 +877,7 @@ OP1CON0=0x80;
 
 
 TRISB3=1;
-TRISB4=1;
+
 TRISB5=0;
 }
 
@@ -887,12 +888,12 @@ void op2_init()
 # 52
 OP2CON1=0x10;
 
-OP2CON2=0x90;
+OP2CON2=0x10;
 OP2CON0=0x80;
 
 
 TRISA7=0;
-TRISB6=1;
+
 TRISB7 = 1;
 }
 

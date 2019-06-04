@@ -242,7 +242,7 @@ unsigned char isFinishedSmallTimer()
 
 unsigned char isPermitSampleTime()
 {
-	if(timer.timer10msStopWatch > 10) //10*10ms = 100ms
+	if(timer.timer10msStopWatch >= 10) //10*10ms = 100ms
 	{
 		return 1;
 	}

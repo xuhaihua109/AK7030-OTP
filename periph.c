@@ -36,7 +36,7 @@ void op1_init()
 
 	//OP1配置
 	TRISB3=1;	//PB3（A1P）输入
-	TRISB4=1;	//PB4（A1N）输入
+//	TRISB4=1;	//PB4（A1N）输入
 	TRISB5=0;	//PB5（A1E）输出  DAC0信号输出Pin
 }
 
@@ -51,12 +51,12 @@ void op2_init()
     //配置：OP2负端选择DAC1=0.3V(内部管脚) , OP2正端选择A2P(PB6)引脚
     OP2CON1=0x10; // set PB6 as A2P, set PB7 as A2N
 	//OP2CON2=0xA0; //A2E(PA7)输出 负端MUX连接 其他用途 增益放大使能 放大1倍                    10100000B
-    OP2CON2=0x90; //A2E(PA7)输出 ,负端MUX连接, OP2 作为BUFFER      10010000B
+    OP2CON2=0x10; //disable A2E(PA7)输出 ,负端MUX连接, OP2 作为BUFFER      10010000B
 	OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B 
 
 	//OP2配置
 	TRISA7=0;	//PA7（A2E）输出	  DAC1信号输出Pin
-	TRISB6=1;	//PB6(A2P)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
+//	TRISB6=1;	//PB6(A2P)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
 	TRISB7 = 1; //PB7(A2N)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
 }
 
