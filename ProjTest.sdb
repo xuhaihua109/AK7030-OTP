@@ -356,7 +356,7 @@ SMALL_TIMER_WORK 1
 "20 C:\190604\AK7030-OTP\common.c
 [s S1242 . 1 `uc 1 timer10msStopWatch 1 0 ]
 "259
-[v common@F842 `(v  1 t 0 ]
+[v common@F841 `(v  1 t 0 ]
 "184 C:\190604\AK7030-OTP\yn8p520.h
 [s S1298 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
@@ -665,6 +665,8 @@ SMALL_TIMER_WORK 1
 [v _adc_convert_flag `uc  1 s 1 adc_convert_flag ]
 "14
 [v _adc_original_value `ui  1 s 2 adc_original_value ]
+[v _adc_original_CH14_value `ui  1 s 2 adc_original_CH14_value ]
+[v _adc_original_CH4_value `ui  1 s 2 adc_original_CH4_value ]
 "16
 [v _buffer_Sample_AD_Value `[6]ui  1 s 12 buffer_Sample_AD_Value ]
 "17
@@ -674,10 +676,6 @@ SMALL_TIMER_WORK 1
 "19
 [v _multiFilterMaxValue `ui  1 s 2 multiFilterMaxValue ]
 [v _multiFilterMinValue `ui  1 s 2 multiFilterMinValue ]
-[v _multiFilterSumValue `ui  1 s 2 multiFilterSumValue ]
-"20
-[v _sampleCH14Value `ui  1 s 2 sampleCH14Value ]
-[v _sampleCH4Value `ui  1 s 2 sampleCH4Value ]
 "28
 [v _timer `S1242  1 s 1 timer ]
 "30
@@ -1338,7 +1336,7 @@ SMALL_TIMER_WORK 1
 [v main@ucTimerDelay4 `uc  1 s 1 ucTimerDelay4 ]
 "616
 [v main@ucLoaderStep4 `uc  1 s 1 ucLoaderStep4 ]
-"935
+"691
 } 0
 "100 C:\190604\AK7030-OTP\common.c
 [v _process_AD_Converter_Value `(v  1 e 0 0 ]
@@ -1369,15 +1367,15 @@ SMALL_TIMER_WORK 1
 {
 "66
 } 0
-"180
-[v _getAdCh4Value `(ui  1 e 2 0 ]
+"87
+[v _getAdOriginaCh4Value `(ui  1 e 2 0 ]
 {
-"182
+"89
 } 0
-"186
-[v _getAdCh14Value `(ui  1 e 2 0 ]
+"93
+[v _getAdOriginalCh14Value `(ui  1 e 2 0 ]
 {
-"188
+"95
 } 0
 "254
 [v _clrSampeTime `(v  1 e 0 0 ]

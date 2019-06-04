@@ -821,7 +821,7 @@ unsigned int getAdCh4Value();
 unsigned int getAdCh14Value();
 
 
-unsigned int getAdOriginalCh4Value();
+unsigned int getAdOriginaCh4Value();
 
 unsigned int getAdOriginalCh14Value();
 
@@ -960,7 +960,7 @@ switch(AD_sample_process_step)
 case 0:
 {
 static unsigned ucTimerCount = 0;
-if(getAdCh14Value() > 1951)
+if(getAdOriginalCh14Value() > 1951)
 {
 ucTimerCount++;
 }
@@ -985,20 +985,20 @@ break;
 case 2:
 {
 
-if(getAdCh4Value() < 1911)
+if(getAdOriginaCh4Value() < 1911)
 {
 ucChannel4Type = 0;
 
 }
-else if(getAdCh4Value() < 2067)
+else if(getAdOriginaCh4Value() < 2067)
 {
 ucChannel4Type = 1;
 }
-else if(getAdCh4Value() < 2204)
+else if(getAdOriginaCh4Value() < 2204)
 {
 ucChannel4Type = 2;
 }
-else if(getAdCh4Value() < 2340)
+else if(getAdOriginaCh4Value() < 2340)
 {
 ucChannel4Type = 3;
 }
@@ -1469,7 +1469,6 @@ default:
 break;
 }
 
-# 931
 }
 }
 

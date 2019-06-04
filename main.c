@@ -175,7 +175,7 @@ void main (void)
 			   case 0:
 				{	
 					static unsigned  ucTimerCount = 0;
-			   		if(getAdCh14Value() > 1951)//  AD value -> 2v
+			   		if(getAdOriginalCh14Value() > 1951)//  AD value -> 2v
 					{
 						ucTimerCount++;
 					}
@@ -200,20 +200,20 @@ void main (void)
 				case 2:
 				{	
 					
-			   		if(getAdCh4Value() < 1911)
+			   		if(getAdOriginaCh4Value() < 1911)
 					{
 						ucChannel4Type = 0;
 						
 					}
-					else if(getAdCh4Value() < 2067)
+					else if(getAdOriginaCh4Value() < 2067)
 					{
 						ucChannel4Type = 1;
 					}
-					else if(getAdCh4Value() < 2204)
+					else if(getAdOriginaCh4Value() < 2204)
 					{
 						ucChannel4Type = 2;
 					}
-					else if(getAdCh4Value() < 2340)
+					else if(getAdOriginaCh4Value() < 2340)
 					{
 						ucChannel4Type = 3;
 					}
@@ -683,251 +683,7 @@ void main (void)
 				default:
 					break;
 		   }
-		/*
-    	   switch(ampStep)
-		   {
-    	   	   case SENSE_PB2_INPUT_VOLTAGE:
-    	   	   {
-    	   		   ucBigTimerActionFlag = 0;
-    	   		   clearBigTimer();
-    	   		   clearSmallTimer();
-    	   		   if(!PB2)
-    	   			ampStep++;
-    	   			break;
-    	   	   }
 
-			   case SENSE_PB2_DURATION_ONE_SECOND:
-			   {
-				   static unsigned char ucConfirmTimer1S = 0;
-					 if(!PB2)
-					 {
-						 ucConfirmTimer1S++;
-					 }
-					 else
-					 {
-						 ucConfirmTimer1S = 0;
-					 }
-
-					 if(ucConfirmTimer1S >= 10) //100ms*10 = 1s
-					 {
-						 ucConfirmTimer1S = 0;
-						 ampStep++;
-					 }
-
-					 break;
-			   }
-
-			   case SENSE_PB2_INPUT_VOLTAGE__AGAIN:
-			   {
-				   if(!PB2)
-					ampStep++;
-					break;
-			   }
-
-			   case SENSE_PB2_DURATION__SECOND:
-			   {
-				   	 static unsigned char ucConfirmTimerZptS = 0;//ZptS = zero point three second
-					 if(!PB2)
-					 {
-						 ucConfirmTimerZptS++;
-					 }
-					 else
-					 {
-						 ucConfirmTimerZptS = 0;
-					 }
-
-					 if(ucConfirmTimerZptS >= 10) //100ms*3 = 0.3s
-					 {
-						 ucConfirmTimerZptS = 0;
-						 ampStep++;
-					 }
-
-					 break;
-			   }
-
-			   case SET_PA2_VALUE:
-			   {
-				   PA2 = 0;
-				   ampStep++;
-				   break;
-			   }
-
-			   case ADC1_VALUE_MEET_CONDITION:
-			   {
-				   static unsigned char ucConFirmationTime = 0;
-				   if(getAdOriginalCh1Value() >= 2341)
-				   {
-					   if(ucConFirmationTime < 5)
-						   ucConFirmationTime++;
-					   else
-					   {
-						   PAOD6 = 1;
-						   PA6 = 1;
-					   }
-				   }
-				   else
-				   {
-					   ucConFirmationTime = 0;
-					   PAOD6 = 0;
-					   PA6 = 0;
-				   }
-
-				   ampStep++;
-				   break;
-			   }
-
-			   case PROCESS_AD_VALUE:
-			   {
-				   static unsigned char ucInit = 0;
-				   if(getAdOriginalCh13Value() > 36)
-				   {
-					   ucInit = 1;
-					   PA0 = 0;
-					   PA1 = 1;
-					   PA3 = 1;
-					   tDA_timer = BIG_TIMER_WORK;
-					//   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
-					   if(!ucBigTimerActionFlag)
-					   {
-						   startBigTimer();
-						   ucBigTimerActionFlag = 1;
-					   }
-				   }
-				   else if(getAdOriginalCh13Value() <31)
-				   {
-					   ucInit = 1;
-					   PA0 = 1;
-					   PA1 = 0;
-					   PA3 = 0;
-					   tDA_timer = SMALL_TIMER_WORK;
-					   ucSmallTimerActionFlag = 1;
-					   ucWaitTimeO3s = 0;
-					   ucSetSmallActionFlag = 1;
-		//			   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
-					   startSmallTimer();
-				   }
-				   else
-				   {
-					   if(!ucInit)
-					   {
-						   ucInit = 1;
-						   PA0 = 0;
-						   PA1 = 1;
-						   PA3 = 1;
-						   tDA_timer = BIG_TIMER_WORK;
-	//					   setDAC0_ChannelValue(27);// (27/64)*5v = 2.109v
-						   if(!ucBigTimerActionFlag)
-						   {
-							   startBigTimer();
-							   ucBigTimerActionFlag = 1;
-						   }
-					   }
-				   }
-
-
-				   ampStep++;
-				   break;
-			   }
-
-			   case WAIT_SET_TIME_FINISHED:
-			   {
-				   switch(tDA_timer)
-				   {
-					   case BIG_TIMER_WORK:
-					   {
-						   if(!isFinishedBigTimer())
-						   {
-							   ampStep = ADC1_VALUE_MEET_CONDITION;
-						   }
-						   else
-						   {
-							   ampStep++;
-						   }
-						   break;
-					   }
-
-					   case SMALL_TIMER_WORK:
-					   {
-						   if((ucBigTimerActionFlag == 1) && isFinishedBigTimer())
-						   {
-							   ampStep++;
-						   }
-						   else if(!isFinishedSmallTimer())
-						   {
-							   if(getAdOriginalCh13Value() > 36)
-								{
-									ucWaitTime1S = 0;
-									ucSmallTimerActionFlag = 0;
-									ucSetSmallActionFlag = 0;
-								    ampStep = ADC1_VALUE_MEET_CONDITION;
-								}
-						   }
-						   else
-						   {
-							   ampStep++;
-						   }
-
-						   break;
-					   }
-
-					   default:
-						   break;
-				   }
-
-				   break;
-			   }
-
-			   case SET_TIME_BE_FINISHED:
-			   {
-				   PA2 = 1;
-				   PA0 = 0;
-				   PA1 = 0;
-				   PA3 = 0;
-				   ucWaitTime1S = 0;
-				   ucSmallTimerActionFlag = 0;
-				   ucSetSmallActionFlag = 0;
-//				   setDAC0_ChannelValue(25);// (25/64)*5v = 1.95v
-				   ampStep++;
-				   break;
-			   }
-
-			   case CHECKING_PULL_OUT_BATTERY:
-			   {
-				   static unsigned char ucCheckBatteryCnt = 0;
-				   if(PB2)
-					   ucCheckBatteryCnt++;
-				   else
-					   ucCheckBatteryCnt = 0;
-
-				   if(ucCheckBatteryCnt > 2)
-				   {
-					   ucCheckBatteryCnt = 0;
-					   ampStep++;
-				   }
-				   break;
-			   }
-
-			   case CHECKING_INSTALLED_BATTERY:
-			   {
-				   static unsigned char ucInstalledBatteryCnt = 0;
-				   if(!PB2)
-					   ucInstalledBatteryCnt++;
-				   else
-					   ucInstalledBatteryCnt = 0;
-
-				   if(ucInstalledBatteryCnt > 10) //1s
-				   {
-					   ucInstalledBatteryCnt = 0;
-					   ampStep = SENSE_PB2_INPUT_VOLTAGE;
-				   }
-				   break;
-			   }
-
-			   default:
-				   break;
-
-		   }
-		  */ 
 		}
 	}
 	

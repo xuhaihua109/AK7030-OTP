@@ -1277,7 +1277,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 34: void process_AD_Converter_Value();
 [; ;common.h: 36: unsigned int getAdCh4Value();
 [; ;common.h: 38: unsigned int getAdCh14Value();
-[; ;common.h: 41: unsigned int getAdOriginalCh4Value();
+[; ;common.h: 41: unsigned int getAdOriginaCh4Value();
 [; ;common.h: 43: unsigned int getAdOriginalCh14Value();
 [; ;common.h: 45: unsigned char isPermitSampleTime();
 [; ;common.h: 47: void clrSampeTime();
@@ -1892,16 +1892,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 87 ]
 }
 "259
-[v F842 `(v  1 tf ]
-[v _ISR `IF842  1 e ]
+[v F841 `(v  1 tf ]
+[v _ISR `IF841  1 e ]
 {
 [; ;common.c: 258: void interrupt ISR(void)
 [; ;common.c: 259: {
 [e :U _ISR ]
 [f ]
 "260
-[v F843 `uc  1 s ucTimer1sCnt ]
-[i F843
+[v F842 `uc  1 s ucTimer1sCnt ]
+[i F842
 -> -> 0 `i `uc
 ]
 [; ;common.c: 260: static unsigned char ucTimer1sCnt = 0;
@@ -1919,16 +1919,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . _timer 0 -> -> 1 `i `uc ]
 [; ;common.c: 266: ucTimer1sCnt++;
 "266
-[e ++ F843 -> -> 1 `i `uc ]
+[e ++ F842 -> -> 1 `i `uc ]
 [; ;common.c: 268: if(ucTimer1sCnt >= 100)
 "268
-[e $ ! >= -> F843 `i -> 100 `i 90  ]
+[e $ ! >= -> F842 `i -> 100 `i 90  ]
 [; ;common.c: 269: {
 "269
 {
 [; ;common.c: 270: ucTimer1sCnt = 0;
 "270
-[e = F843 -> -> 0 `i `uc ]
+[e = F842 -> -> 0 `i `uc ]
 [; ;common.c: 271: if(uiBigTimer > 0)
 "271
 [e $ ! > _uiBigTimer -> -> 0 `i `ui 91  ]

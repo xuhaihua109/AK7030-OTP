@@ -726,10 +726,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _clrSampeTime `(v  0 ef ]
 "34 C:\190604\AK7030-OTP\common.h
 [v _process_AD_Converter_Value `(v  0 ef ]
-"38 C:\190604\AK7030-OTP\common.h
-[v _getAdCh14Value `(ui  0 ef ]
-"36 C:\190604\AK7030-OTP\common.h
-[v _getAdCh4Value `(ui  0 ef ]
+"43 C:\190604\AK7030-OTP\common.h
+[v _getAdOriginalCh14Value `(ui  0 ef ]
+"41 C:\190604\AK7030-OTP\common.h
+[v _getAdOriginaCh4Value `(ui  0 ef ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
 [; ;stdio.h: 14: typedef unsigned short wchar_t;
@@ -1262,7 +1262,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 34: void process_AD_Converter_Value();
 [; ;common.h: 36: unsigned int getAdCh4Value();
 [; ;common.h: 38: unsigned int getAdCh14Value();
-[; ;common.h: 41: unsigned int getAdOriginalCh4Value();
+[; ;common.h: 41: unsigned int getAdOriginaCh4Value();
 [; ;common.h: 43: unsigned int getAdOriginalCh14Value();
 [; ;common.h: 45: unsigned char isPermitSampleTime();
 [; ;common.h: 47: void clrSampeTime();
@@ -1505,9 +1505,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ]
 [; ;main.c: 177: static unsigned ucTimerCount = 0;
-[; ;main.c: 178: if(getAdCh14Value() > 1951)
+[; ;main.c: 178: if(getAdOriginalCh14Value() > 1951)
 "178
-[e $ ! > ( _getAdCh14Value ..  -> -> 1951 `i `ui 49  ]
+[e $ ! > ( _getAdOriginalCh14Value ..  -> -> 1951 `i `ui 49  ]
 [; ;main.c: 179: {
 "179
 {
@@ -1562,9 +1562,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 201: {
 "201
 {
-[; ;main.c: 203: if(getAdCh4Value() < 1911)
+[; ;main.c: 203: if(getAdOriginaCh4Value() < 1911)
 "203
-[e $ ! < ( _getAdCh4Value ..  -> -> 1911 `i `ui 54  ]
+[e $ ! < ( _getAdOriginaCh4Value ..  -> -> 1911 `i `ui 54  ]
 [; ;main.c: 204: {
 "204
 {
@@ -1577,8 +1577,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 55  ]
 "208
 [e :U 54 ]
-[; ;main.c: 208: else if(getAdCh4Value() < 2067)
-[e $ ! < ( _getAdCh4Value ..  -> -> 2067 `i `ui 56  ]
+[; ;main.c: 208: else if(getAdOriginaCh4Value() < 2067)
+[e $ ! < ( _getAdOriginaCh4Value ..  -> -> 2067 `i `ui 56  ]
 [; ;main.c: 209: {
 "209
 {
@@ -1591,8 +1591,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 57  ]
 "212
 [e :U 56 ]
-[; ;main.c: 212: else if(getAdCh4Value() < 2204)
-[e $ ! < ( _getAdCh4Value ..  -> -> 2204 `i `ui 58  ]
+[; ;main.c: 212: else if(getAdOriginaCh4Value() < 2204)
+[e $ ! < ( _getAdOriginaCh4Value ..  -> -> 2204 `i `ui 58  ]
 [; ;main.c: 213: {
 "213
 {
@@ -1605,8 +1605,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 59  ]
 "216
 [e :U 58 ]
-[; ;main.c: 216: else if(getAdCh4Value() < 2340)
-[e $ ! < ( _getAdCh4Value ..  -> -> 2340 `i `ui 60  ]
+[; ;main.c: 216: else if(getAdOriginaCh4Value() < 2340)
+[e $ ! < ( _getAdOriginaCh4Value ..  -> -> 2340 `i `ui 60  ]
 [; ;main.c: 217: {
 "217
 {
@@ -3003,18 +3003,18 @@ Version 3.2 HI-TECH Software Intermediate Code
  163 ]
 "685
 [e :U 46 ]
-"931
+"687
 }
 [e :U 45 ]
-"932
+"688
 }
 [e :U 42 ]
 "164
 [e $U 43  ]
 [e :U 44 ]
-[; ;main.c: 931: }
-[; ;main.c: 932: }
-[; ;main.c: 935: }
-"935
+[; ;main.c: 687: }
+[; ;main.c: 688: }
+[; ;main.c: 691: }
+"691
 [e :UE 41 ]
 }

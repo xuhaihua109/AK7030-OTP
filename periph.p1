@@ -1242,7 +1242,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 34: void process_AD_Converter_Value();
 [; ;common.h: 36: unsigned int getAdCh4Value();
 [; ;common.h: 38: unsigned int getAdCh14Value();
-[; ;common.h: 41: unsigned int getAdOriginalCh4Value();
+[; ;common.h: 41: unsigned int getAdOriginaCh4Value();
 [; ;common.h: 43: unsigned int getAdOriginalCh14Value();
 [; ;common.h: 45: unsigned char isPermitSampleTime();
 [; ;common.h: 47: void clrSampeTime();

@@ -821,7 +821,7 @@ unsigned int getAdCh4Value();
 unsigned int getAdCh14Value();
 
 
-unsigned int getAdOriginalCh4Value();
+unsigned int getAdOriginaCh4Value();
 
 unsigned int getAdOriginalCh14Value();
 
