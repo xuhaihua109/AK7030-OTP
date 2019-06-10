@@ -17,7 +17,7 @@ static uint buffer_Sample_AD_Value[TEMP_MAX_CONTINOUS_SAMPLE_TIMES];
 static uchar sampleTimes;
 static uchar sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
 static uint multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
-static uint sampleCH14Value,sampleCH4Value;
+static uint sampleCH14Value,sampleCH4Value,sampleCH1Value;
 
 typedef struct
 {
@@ -28,6 +28,8 @@ typedef struct
 static  TimeStopWatch timer;
 
 static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
+
+static unsigned int uiTwentySecondsTimer = 0;
 
 
 static void AD_Sample(void);
@@ -104,6 +106,8 @@ void process_AD_Converter_Value()
 		AD_Sample();
 		if(AD_CHANNEL_4_CHANNEL == sampleChannelSelect)
 			adc_test_init(AD_CHANNEL_4_CHANNEL,ADC_REF_2P1);
+		else if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
+			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
 		else
 			adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);
 //		setAdcSampleChannel(sampleChannelSelect);
@@ -159,6 +163,11 @@ static void AD_Sample(void)
 			else if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
 			{
 				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
+				sampleChannelSelect = AD_CHANNEL_1_CHANNEL;
+			}
+			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
+			{
+				sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
 				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
 			}
 			else
@@ -194,7 +203,7 @@ void setDAC0_ChannelValue(unsigned char ucValue)
 
 void startBigTimer()
 {
-	uiBigTimer = 32400; //34200s = 9.5h
+	uiBigTimer = 43200; // 43200s = 12h
 
 #ifdef DEBUG_FUNCITON
 
@@ -221,6 +230,21 @@ void startSmallTimer()
 
 	uiSmallTimer = 180;
 #endif
+}
+
+
+void startTwentySecondsTimer()
+{
+	uiTwentySecondsTimer = 20;
+}
+
+
+unsigned char isFinishedTwentySecondsTimer()
+{
+	if(0 == uiTwentySecondsTimer)
+		return 1;
+	else
+		return 0;
 }
 
 
@@ -283,6 +307,8 @@ void interrupt ISR(void)
 		adc_original_value = adc_get();
 		if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
 			adc_original_CH4_value = adc_get();//getAdCh4Value();
+		else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
+			adc_original_CH1_value = adc_get();//getAdCh4Value();
 		else
 			adc_original_CH14_value = adc_get();//getAdCh14Value();
 
