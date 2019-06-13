@@ -201,7 +201,7 @@ void setDAC0_ChannelValue(unsigned char ucValue)
 	DACR0=ucValue;
 }
 
-void startBigTimer()
+void startTwelveHourTimer()
 {
 	uiBigTimer = 43200; // 43200s = 12h
 
@@ -211,21 +211,26 @@ void startBigTimer()
 #endif
 }
 
-void clearBigTimer()
+void clearTwelveHoursTimer()
 {
 	uiBigTimer = 0;
 }
 
 
-void clearSmallTimer()
+void clearThreeHoursTimer()
 {
 	uiSmallTimer = 0;
 }
 
-
-void startSmallTimer()
+void clearTwentySecondsTimer()
 {
-	uiSmallTimer = 3600; //3600 = 1h
+	uiTwentySecondsTimer = 0;
+}
+
+
+void startThreeHoursTimer()
+{
+	uiSmallTimer = 10800; //3600*3 = 3h
 #ifdef DEBUG_FUNCITON
 
 	uiSmallTimer = 180;
@@ -248,7 +253,7 @@ unsigned char isFinishedTwentySecondsTimer()
 }
 
 
-unsigned char isFinishedBigTimer()
+unsigned char isFinishedTwelveHoursTimer()
 {
 	if(uiBigTimer == 0)
 		return 1;
@@ -256,7 +261,7 @@ unsigned char isFinishedBigTimer()
 		return 0;
 }
 
-unsigned char isFinishedSmallTimer()
+unsigned char isFinishedThreeHoursTimer()
 {
 	if(uiSmallTimer == 0)
 		return 1;

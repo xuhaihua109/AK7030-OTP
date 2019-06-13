@@ -38,6 +38,7 @@ unsigned int getAdCh4Value();
 unsigned int getAdCh14Value();
 
 
+unsigned int getAdOriginalCh1Value();
 unsigned int getAdOriginaCh4Value();
 
 unsigned int getAdOriginalCh14Value();
@@ -48,19 +49,20 @@ void clrSampeTime();
 
 void setDAC0_ChannelValue(unsigned char ucValue);
 
-void startBigTimer(); //9.5 hours
-void startSmallTimer();// 3 hours
+void startTwelveHourTimer(); //12 hours
+void startThreeHoursTimer();// 3 hours
 
 
 void startTwentySecondsTimer();//20s
 unsigned char isFinishedTwentySecondsTimer();
 
 
-void clearBigTimer();
-void clearSmallTimer();
+void clearTwelveHoursTimer();
+void clearThreeHoursTimer();
+void clearTwentySecondsTimer();
 
-unsigned char isFinishedBigTimer();
-unsigned char isFinishedSmallTimer();
+unsigned char isFinishedTwelveHoursTimer();
+unsigned char isFinishedThreeHoursTimer();
 
 uchar getAD_ConvertFlag();
 void  setAD_ConvertFlag(uchar flag);

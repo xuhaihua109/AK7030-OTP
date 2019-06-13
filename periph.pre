@@ -780,6 +780,7 @@ volatile unsigned char PBPD @ 0x186;
 
 volatile unsigned char PAOD @ 0x187;
 volatile bit PAOD6 @ ((unsigned)&PAOD*8)+6;
+volatile bit PAOD7 @ ((unsigned)&PAOD*8)+7;
 
 
 
@@ -832,6 +833,7 @@ unsigned int getAdCh4Value();
 unsigned int getAdCh14Value();
 
 
+unsigned int getAdOriginalCh1Value();
 unsigned int getAdOriginaCh4Value();
 
 unsigned int getAdOriginalCh14Value();
@@ -842,14 +844,20 @@ void clrSampeTime();
 
 void setDAC0_ChannelValue(unsigned char ucValue);
 
-void startBigTimer();
-void startSmallTimer();
+void startTwelveHourTimer();
+void startThreeHoursTimer();
 
-void clearBigTimer();
-void clearSmallTimer();
 
-unsigned char isFinishedBigTimer();
-unsigned char isFinishedSmallTimer();
+void startTwentySecondsTimer();
+unsigned char isFinishedTwentySecondsTimer();
+
+
+void clearTwelveHoursTimer();
+void clearThreeHoursTimer();
+void clearTwentySecondsTimer();
+
+unsigned char isFinishedTwelveHoursTimer();
+unsigned char isFinishedThreeHoursTimer();
 
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);

@@ -14,7 +14,7 @@ void dac_init()
 {
 	DACCON|=1;     //选择OP2 的输出作为参考电压 2019/06/01 //参考电压选择VCC  00-VSS 01-OP2OUT 10-VCC 11-PB5
 	
-	DACR0=0x0F;     //DAC0输出VCC*25/64=1.3V通过OP1缓冲从PB5输出	
+	DACR0=0x0F;     //DAC0输出OP2OUT(1.3V)*15/64=0.3V通过OP1缓冲从PB5输出
 	DACCON|=(1)<<2; //使能DAC0
 
 //	DACR1=0x06;     //DAC1输出VCC*6/64=0.3V通过OP1缓冲从PA7输出
