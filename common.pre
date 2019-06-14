@@ -1143,6 +1143,9 @@ uiBigTimer--;
 
 if(uiSmallTimer)
 uiSmallTimer--;
+
+if(uiTwentySecondsTimer)
+uiTwentySecondsTimer--;
 }
 }
 

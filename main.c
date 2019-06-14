@@ -137,9 +137,9 @@ void main (void)
 	PA0 = 0;
 	PA1 = 0;
 	PA2 = 0;
-	PA3 = 1;
+	PA3 = 0;
 	PB0 = 0;
-	PB1 = 0;
+	PB1 = 1;
 	PA6 = 0;
 	PA7 = 0;
 

@@ -302,6 +302,9 @@ void interrupt ISR(void)
 
 			if(uiSmallTimer)
 				uiSmallTimer--;
+
+			if(uiTwentySecondsTimer)
+				uiTwentySecondsTimer--;
 		}
     }
 

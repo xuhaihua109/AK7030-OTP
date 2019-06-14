@@ -2041,57 +2041,64 @@ Version 3.2 HI-TECH Software Intermediate Code
 "304
 [e -- _uiSmallTimer -> -> 1 `i `ui ]
 [e :U 101 ]
-"305
+[; ;common.c: 306: if(uiTwentySecondsTimer)
+"306
+[e $ ! != _uiTwentySecondsTimer -> -> 0 `i `ui 102  ]
+[; ;common.c: 307: uiTwentySecondsTimer--;
+"307
+[e -- _uiTwentySecondsTimer -> -> 1 `i `ui ]
+[e :U 102 ]
+"308
 }
 [e :U 99 ]
-"306
+"309
 }
 [e :U 98 ]
-[; ;common.c: 305: }
-[; ;common.c: 306: }
-[; ;common.c: 308: if(ADIF)
-"308
-[e $ ! _ADIF 102  ]
-[; ;common.c: 309: {
-"309
-{
-[; ;common.c: 310: ADIF=0;
-"310
-[e = _ADIF -> -> 0 `i `b ]
-[; ;common.c: 311: setAD_ConvertFlag(1);
+[; ;common.c: 308: }
+[; ;common.c: 309: }
+[; ;common.c: 311: if(ADIF)
 "311
-[e ( _setAD_ConvertFlag (1 -> -> 1 `i `uc ]
-[; ;common.c: 312: adc_original_value = adc_get();
+[e $ ! _ADIF 103  ]
+[; ;common.c: 312: {
 "312
-[e = _adc_original_value ( _adc_get ..  ]
-[; ;common.c: 313: if(sampleChannelSelect == 4)
+{
+[; ;common.c: 313: ADIF=0;
 "313
-[e $ ! == -> _sampleChannelSelect `i -> 4 `i 103  ]
-[; ;common.c: 314: adc_original_CH4_value = adc_get();
+[e = _ADIF -> -> 0 `i `b ]
+[; ;common.c: 314: setAD_ConvertFlag(1);
 "314
-[e = _adc_original_CH4_value ( _adc_get ..  ]
-[e $U 104  ]
+[e ( _setAD_ConvertFlag (1 -> -> 1 `i `uc ]
+[; ;common.c: 315: adc_original_value = adc_get();
 "315
-[e :U 103 ]
-[; ;common.c: 315: else if(sampleChannelSelect == 1)
-[e $ ! == -> _sampleChannelSelect `i -> 1 `i 105  ]
-[; ;common.c: 316: adc_original_CH1_value = adc_get();
+[e = _adc_original_value ( _adc_get ..  ]
+[; ;common.c: 316: if(sampleChannelSelect == 4)
 "316
-[e = _adc_original_CH1_value ( _adc_get ..  ]
-[e $U 106  ]
+[e $ ! == -> _sampleChannelSelect `i -> 4 `i 104  ]
+[; ;common.c: 317: adc_original_CH4_value = adc_get();
 "317
-[e :U 105 ]
-[; ;common.c: 317: else
-[; ;common.c: 318: adc_original_CH14_value = adc_get();
+[e = _adc_original_CH4_value ( _adc_get ..  ]
+[e $U 105  ]
 "318
-[e = _adc_original_CH14_value ( _adc_get ..  ]
-[e :U 106 ]
 [e :U 104 ]
+[; ;common.c: 318: else if(sampleChannelSelect == 1)
+[e $ ! == -> _sampleChannelSelect `i -> 1 `i 106  ]
+[; ;common.c: 319: adc_original_CH1_value = adc_get();
+"319
+[e = _adc_original_CH1_value ( _adc_get ..  ]
+[e $U 107  ]
 "320
-}
-[e :U 102 ]
-[; ;common.c: 320: }
-[; ;common.c: 321: }
+[e :U 106 ]
+[; ;common.c: 320: else
+[; ;common.c: 321: adc_original_CH14_value = adc_get();
 "321
+[e = _adc_original_CH14_value ( _adc_get ..  ]
+[e :U 107 ]
+[e :U 105 ]
+"323
+}
+[e :U 103 ]
+[; ;common.c: 323: }
+[; ;common.c: 324: }
+"324
 [e :UE 97 ]
 }

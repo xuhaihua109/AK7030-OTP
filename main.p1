@@ -1454,15 +1454,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 139: PA2 = 0;
 "139
 [e = _PA2 -> -> 0 `i `b ]
-[; ;main.c: 140: PA3 = 1;
+[; ;main.c: 140: PA3 = 0;
 "140
-[e = _PA3 -> -> 1 `i `b ]
+[e = _PA3 -> -> 0 `i `b ]
 [; ;main.c: 141: PB0 = 0;
 "141
 [e = _PB0 -> -> 0 `i `b ]
-[; ;main.c: 142: PB1 = 0;
+[; ;main.c: 142: PB1 = 1;
 "142
-[e = _PB1 -> -> 0 `i `b ]
+[e = _PB1 -> -> 1 `i `b ]
 [; ;main.c: 143: PA6 = 0;
 "143
 [e = _PA6 -> -> 0 `i `b ]
