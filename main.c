@@ -222,21 +222,24 @@ void main (void)
 			   case MAIN_LOOP_STEP_FIRST:
 				{
 					static unsigned char ucTimerZeroPoint3s = 0;
-					if(getAdOriginalCh14Value() > 1950)//  AD value -> 2v
+
+					if(ucTimerZeroPoint3s < 3)
 					{
 						ucTimerZeroPoint3s++;
 					}
 					else
+					{
 						ucTimerZeroPoint3s = 0;
 
-					if(ucTimerZeroPoint3s >= 3) //3*100ms = 0.3s
-					{
-						ucTimerZeroPoint3s = 0;
-						enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
-					}
-					else
-					{
-						clearPinPortAndTimer();
+						if(getAdOriginalCh14Value() > 1950)//  AD value -> 2v
+						{
+
+							enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
+						}
+						else
+						{
+							clearPinPortAndTimer();
+						}
 					}
 					break;
 				}
