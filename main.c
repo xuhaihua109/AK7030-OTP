@@ -273,7 +273,7 @@ void main (void)
 					{
 						static unsigned char ucTimerRightP5s = 0;
 
-						if(getAdOriginalCh1Value() < 0x0075)//????// wait to be determined.
+						if(getAdOriginalCh1Value() < 117)//????// wait to be determined.
 						{
 							ucTimerRightP5s++;
 						}
@@ -806,11 +806,11 @@ void main (void)
 								{
 									PB6 = 1;// how make PB6 ouput high level
 									PA6 = 0;
-								    PB0 = 0;
-									PA0 = 0;
-									PA1 = 0;
-									PA2 = 0;
-									PA3 = 0;
+//								    PB0 = 0;
+//									PA0 = 0;
+//									PA1 = 0;
+//									PA2 = 0;
+//									PA3 = 0;
 
 									if((getAdOriginalCh14Value() > 3900))
 										DACR0=0x0F;//set OP1 input 0.3v
@@ -872,6 +872,26 @@ void main (void)
 						}
 
 						case HOUR_3_BRANCH_STEP_SECOND:
+						{
+							static unsigned char ucTimer20s = 0;
+
+							if(ucTimer20s < 20)
+								ucTimer20s++;
+							else
+							{
+								ucTimer20s = 0;
+								PB0 = 1;
+								PA0 = 1;
+								PA1 = 1;
+								PA2 = 1;
+								PA3 = 1;
+								PA6 = 0;
+
+								enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
+							}
+						}
+
+						case HOUR_3_BRANCH_STEP_THIRD:
 						{
 							if(isFinishedThreeHoursTimer())
 							{
