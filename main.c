@@ -421,7 +421,7 @@ void main (void)
 											{
 												if(ucTimerDelay >= 5)
 												{
-													PB2 = 0;
+													PB0 = 0;
 													PA0 = 0;
 													PA1 = 0;
 													PA2 = 0;
@@ -807,6 +807,7 @@ void main (void)
 							{
 								if(isFinishedTwentySecondsTimer())
 								{
+									PBOD6 =0;
 									PB6 = 1;// how make PB6 ouput high level
 									PA6 = 0;
 //								    PB0 = 0;
@@ -832,7 +833,10 @@ void main (void)
 							{
 								static unsigned char ucTimer1s = 0;
 								if(ucTimer1s < 10)
+								{
 									ucTimer1s++;
+									PB6 = 1;
+								}
 								else
 								{
 									ucTimer1s = 0;

@@ -1215,7 +1215,7 @@ case 5:
 {
 if(ucTimerDelay >= 5)
 {
-PB2 = 0;
+PB0 = 0;
 PA0 = 0;
 PA1 = 0;
 PA2 = 0;
@@ -1601,10 +1601,11 @@ case ADC4_STEP_THIRD:
 {
 if(isFinishedTwentySecondsTimer())
 {
+PBOD6 =0;
 PB6 = 1;
 PA6 = 0;
 
-# 818
+# 819
 if((getAdOriginalCh14Value() > 3900))
 DACR0=0x0F;
 else
@@ -1622,7 +1623,10 @@ case ADC4_STEP_FOURTH:
 {
 static unsigned char ucTimer1s = 0;
 if(ucTimer1s < 10)
+{
 ucTimer1s++;
+PB6 = 1;
+}
 else
 {
 ucTimer1s = 0;
