@@ -168,7 +168,7 @@
 `uc 1 ADVREF1 1 0 :1:7 
 ]
 [u S600 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
-"115 C:\190604\AK7030-OTP\main.c
+"116 C:\190604\AK7030-OTP\main.c
 [e E827 setp_Adc4 `uc
 ADC4_STEP_INIT 0
 ADC4_STEP_FIRST 1
@@ -178,7 +178,7 @@ ADC4_STEP_FOURTH 4
 ADC4_STEP_FIFTH 5
 ADC4_STEP_SIXTH 6
 ]
-"173
+"175
 [e E839 AD_CHANNEL_4_VALUE_PATH `uc
 LESS_THAN_1911 0
 BETWEEN_1911_AND_2067 1
@@ -186,7 +186,7 @@ BETWEEN_2067_AND_2204 2
 BETWEEN_2204_AND_2340 3
 MORE_THAN_2340 4
 ]
-"187
+"189
 [e E845 MAIN_LOOP_STEP `uc
 MAIN_LOOP_STEP_INIT 0
 MAIN_LOOP_STEP_FIRST 1
@@ -199,13 +199,13 @@ MAIN_LOOP_STEP_SEVENTH 7
 MAIN_LOOP_STEP_3_HOUR_BRANCH 8
 MAIN_LOOP_STEP_12_HOUR_END 9
 ]
-"867
+"868
 [e E874 hour_3_branch_step `uc
 HOUR_3_BRANCH_STEP_FIRST 0
 HOUR_3_BRANCH_STEP_SECOND 1
 HOUR_3_BRANCH_STEP_THIRD 2
 ]
-"977
+"979
 [e E882 INTERNAL_STEP `uc
 INTERNAL_FIRST_STEP 0
 INTERNAL_SECOND_STEP 1
@@ -608,7 +608,7 @@ INTERNAL_FOUTTH_STEP 3
 [v _clearAllTimer `(v  1 s 0 clearAllTimer ]
 "92
 [v _clearPinPortAndTimer `(v  1 s 0 clearPinPortAndTimer ]
-"105
+"106
 [v _main `(v  1 e 0 0 ]
 "14 C:\190604\AK7030-OTP\periph.c
 [v _dac_init `(v  1 e 0 0 ]
@@ -1347,60 +1347,60 @@ INTERNAL_FOUTTH_STEP 3
 [v _ALG6 `VEuc  1 e 1 @398 ]
 "917
 [v _ALG7 `VEuc  1 e 1 @399 ]
-"105 C:\190604\AK7030-OTP\main.c
+"106 C:\190604\AK7030-OTP\main.c
 [v _main `(v  1 e 0 0 ]
 {
-"190
-[v main@enumMainLoopStep `E845  1 s 1 enumMainLoopStep ]
 "192
+[v main@enumMainLoopStep `E845  1 s 1 enumMainLoopStep ]
+"194
 [v main@ucChannel4Type `E839  1 s 1 ucChannel4Type ]
-"207
+"209
 [v main@ucTimerZeroPoint5s `uc  1 s 1 ucTimerZeroPoint5s ]
-"225
+"227
 [v main@ucTimerZeroPoint3s `uc  1 s 1 ucTimerZeroPoint3s ]
-"259
+"261
 [v main@ucTimerADC1ZeroP5s `uc  1 s 1 ucTimerADC1ZeroP5s ]
-"278
+"280
 [v main@ucTimerRightP5s `uc  1 s 1 ucTimerRightP5s ]
-"321
+"323
 [v main@ucADC4_Step `E827  1 s 1 ucADC4_Step ]
-"356
+"358
 [v main@ucTimerDelay `uc  1 s 1 ucTimerDelay ]
-"357
+"359
 [v main@ucLoaderStep `uc  1 s 1 ucLoaderStep ]
-"462
+"464
 [v main@ucTimerDelay1 `uc  1 s 1 ucTimerDelay1 ]
-"463
+"465
 [v main@ucLoaderStep1 `uc  1 s 1 ucLoaderStep1 ]
-"566
+"568
 [v main@ucTimerDelay2 `uc  1 s 1 ucTimerDelay2 ]
-"567
+"569
 [v main@ucLoaderStep2 `uc  1 s 1 ucLoaderStep2 ]
-"658
+"660
 [v main@ucTimerDelay3 `uc  1 s 1 ucTimerDelay3 ]
-"659
+"661
 [v main@ucLoaderStep3 `uc  1 s 1 ucLoaderStep3 ]
-"738
+"740
 [v main@ucTimerDelay4 `uc  1 s 1 ucTimerDelay4 ]
-"739
+"741
 [v main@ucLoaderStep4 `uc  1 s 1 ucLoaderStep4 ]
-"835
+"837
 [v main@ucTimer1s `uc  1 s 1 ucTimer1s ]
-"869
+"870
 [v main@enumBranchStep `E874  1 s 1 enumBranchStep ]
-"884
+"885
 [v main@ucTimer20s `uc  1 s 1 ucTimer20s ]
-"911
+"913
 [v main@ucTimerX1P5s `uc  1 s 1 ucTimerX1P5s ]
-"935
+"937
 [v main@ucTimerX2P5s `uc  1 s 1 ucTimerX2P5s ]
-"979
+"981
 [v main@enumInteralStep `E882  1 s 1 enumInteralStep ]
-"1000
+"1003
 [v main@cTimer1s_806 `uc  1 s 1 ucTimer1s ]
-"1019
+"1022
 [v main@ucTimerP3s `uc  1 s 1 ucTimerP3s ]
-"1068
+"1072
 } 0
 "102 C:\190604\AK7030-OTP\common.c
 [v _process_AD_Converter_Value `(v  1 e 0 0 ]
@@ -1410,7 +1410,7 @@ INTERNAL_FOUTTH_STEP 3
 "92 C:\190604\AK7030-OTP\main.c
 [v _clearPinPortAndTimer `(v  1 s 0 clearPinPortAndTimer ]
 {
-"100
+"101
 } 0
 "128 C:\190604\AK7030-OTP\common.c
 [v _AD_Sample `(v  1 s 0 AD_Sample ]

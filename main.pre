@@ -889,6 +889,7 @@ PA0 = 0;
 PA1 = 0;
 PA2 = 0;
 PA3 = 0;
+PAOD7 = 0;
 PA7 = 0;
 clearAllTimer();
 }
@@ -937,6 +938,7 @@ PB0 = 0;
 PB1 = 1;
 PA6 = 0;
 PA7 = 0;
+
 
 TRISB2 = 1;
 
@@ -1606,7 +1608,7 @@ PBOD6 =0;
 PB6 = 1;
 PA6 = 0;
 
-# 820
+# 822
 if((getAdOriginalCh14Value() > 3900))
 DACR0=0x0F;
 else
@@ -1626,7 +1628,6 @@ static unsigned char ucTimer1s = 0;
 if(ucTimer1s < 10)
 {
 ucTimer1s++;
-PB6 = 1;
 }
 else
 {
@@ -1673,20 +1674,21 @@ case HOUR_3_BRANCH_STEP_SECOND:
 {
 static unsigned char ucTimer20s = 0;
 
+if(ucTimer20s < 200)
+ucTimer20s++;
+else
+{
+
+ucTimer20s = 0;
 PB0 = 1;
 PA0 = 1;
 PA1 = 1;
 PA2 = 1;
 PA3 = 1;
 PA6 = 0;
-
-if(ucTimer20s < 20)
-ucTimer20s++;
-else
-{
-ucTimer20s = 0;
 enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
 }
+break;
 }
 
 case HOUR_3_BRANCH_STEP_THIRD:
@@ -1700,7 +1702,7 @@ else
 {
 static unsigned char ucTimerX1P5s = 0;
 
-if(getAdOriginalCh1Value() < 0x0082)
+if(getAdOriginalCh1Value() < 130)
 {
 ucTimerX1P5s = 0;
 }
@@ -1778,6 +1780,7 @@ PA0 = 0;
 PA1 = 0;
 PA2 = 0;
 PA3 = 0;
+PBOD6 = 0;
 PB6 = 1;
 PA6 =0;
 
@@ -1831,6 +1834,7 @@ PA3 = 1;
 PB0 = 0;
 PB1 = 0;
 PA6 = 0;
+PAOD7 = 0;
 PA7 = 0;
 
 

@@ -95,6 +95,7 @@ static void clearPinPortAndTimer(void)
 	PA1 = 0;
 	PA2 = 0;
 	PA3 = 0;
+	PAOD7 = 0;
 	PA7 = 0;
 	clearAllTimer();
 }
@@ -143,6 +144,7 @@ void main (void)
 	PB1 = 1;
 	PA6 = 0;
 	PA7 = 0;
+//	PB6 - 0;
 
 	TRISB2 = 1;//SET AD sample Channel 14
 
@@ -836,7 +838,6 @@ void main (void)
 								if(ucTimer1s < 10)
 								{
 									ucTimer1s++;
-									PB6 = 1;
 								}
 								else
 								{
@@ -883,20 +884,21 @@ void main (void)
 						{
 							static unsigned char ucTimer20s = 0;
 
-							PB0 = 1;
-							PA0 = 1;
-							PA1 = 1;
-							PA2 = 1;
-							PA3 = 1;
-							PA6 = 0;
-
-							if(ucTimer20s < 20)
+							if(ucTimer20s < 200)
 								ucTimer20s++;
 							else
 							{
+
 								ucTimer20s = 0;
+								PB0 = 1;
+								PA0 = 1;
+								PA1 = 1;
+								PA2 = 1;
+								PA3 = 1;
+								PA6 = 0;
 								enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
 							}
+							break;
 						}
 
 						case HOUR_3_BRANCH_STEP_THIRD:
@@ -910,7 +912,7 @@ void main (void)
 							{
 								static unsigned char ucTimerX1P5s = 0;
 
-								if(getAdOriginalCh1Value() < 0x0082)
+								if(getAdOriginalCh1Value() < 130)
 								{
 									ucTimerX1P5s = 0;
 								}
@@ -988,6 +990,7 @@ void main (void)
 							PA1 = 0;
 							PA2 = 0;
 							PA3 = 0;
+							PBOD6 = 0;
 							PB6 = 1;
 							PA6 =0;
 
@@ -1041,6 +1044,7 @@ void main (void)
 								PB0 = 0;
 								PB1 = 0;
 								PA6 = 0;
+								PAOD7 = 0;
 								PA7 = 0;
 
 
