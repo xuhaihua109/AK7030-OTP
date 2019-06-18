@@ -131,6 +131,7 @@ void main (void)
 	TRISB1 = 0;
 	TRISA6 = 0;
 	TRISA7 = 0;
+	TRISB6 = 0;
 
 	PBOD6 = 1; //set PB6 as high resistance
 
@@ -882,18 +883,18 @@ void main (void)
 						{
 							static unsigned char ucTimer20s = 0;
 
+							PB0 = 1;
+							PA0 = 1;
+							PA1 = 1;
+							PA2 = 1;
+							PA3 = 1;
+							PA6 = 0;
+
 							if(ucTimer20s < 20)
 								ucTimer20s++;
 							else
 							{
 								ucTimer20s = 0;
-								PB0 = 1;
-								PA0 = 1;
-								PA1 = 1;
-								PA2 = 1;
-								PA3 = 1;
-								PA6 = 0;
-
 								enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
 							}
 						}
@@ -921,6 +922,7 @@ void main (void)
 								if(ucTimerX1P5s >= 1)
 								{
 									ucTimerX1P5s = 0;
+									PAOD7 = 0;
 									PA7 = 0;
 									clearThreeHoursTimer();
 
