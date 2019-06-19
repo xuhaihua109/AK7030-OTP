@@ -833,8 +833,8 @@ void clrSampeTime();
 
 void setDAC0_ChannelValue(unsigned char ucValue);
 
-void startTwelveHourTimer();
-void startThreeHoursTimer();
+void startTwelveHourTimer(unsigned int uiSetTime);
+void startThreeHoursTimer(unsigned int uiSetTime);
 
 
 void startTwentySecondsTimer();
@@ -895,7 +895,26 @@ clearAllTimer();
 }
 
 
+static void initPin(void)
+{
+PB6 = 1;
+PBOD6 = 1;
 
+
+
+PA0 = 0;
+PA1 = 0;
+PA2 = 0;
+PA3 = 0;
+PB0 = 0;
+PB1 = 1;
+PA6 = 0;
+PA7 = 0;
+PAOD7 = 0;
+
+}
+
+# 128
 void main (void)
 {
 enum setp_Adc4
@@ -928,16 +947,8 @@ TRISA6 = 0;
 TRISA7 = 0;
 TRISB6 = 0;
 
-PBOD6 = 1;
 
-PA0 = 0;
-PA1 = 0;
-PA2 = 0;
-PA3 = 0;
-PB0 = 0;
-PB1 = 1;
-PA6 = 0;
-PA7 = 0;
+initPin();
 
 
 TRISB2 = 1;
@@ -1099,7 +1110,7 @@ break;
 case MAIN_LOOP_STEP_FOURTH:
 {
 
-startTwelveHourTimer();
+startTwelveHourTimer(180);
 enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 
 break;
@@ -1608,8 +1619,8 @@ PBOD6 =0;
 PB6 = 1;
 PA6 = 0;
 
-# 822
-if((getAdOriginalCh14Value() > 3900))
+# 837
+if((getAdOriginalCh14Value() > 2800))
 DACR0=0x0F;
 else
 DACR0=0x07;
@@ -1625,13 +1636,14 @@ break;
 case ADC4_STEP_FOURTH:
 {
 static unsigned char ucTimer1s = 0;
-if(ucTimer1s < 10)
+if(ucTimer1s < 5)
 {
 ucTimer1s++;
 }
 else
 {
 ucTimer1s = 0;
+PB6 = 1;
 PBOD6 = 1;
 enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 ucADC4_Step = ADC4_STEP_INIT;
@@ -1663,8 +1675,9 @@ switch(enumBranchStep)
 {
 case HOUR_3_BRANCH_STEP_FIRST:
 {
+PA7 = 1;
 PAOD7 = 1;
-startThreeHoursTimer();
+startThreeHoursTimer(60);
 
 enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
 break;
@@ -1675,17 +1688,20 @@ case HOUR_3_BRANCH_STEP_SECOND:
 static unsigned char ucTimer20s = 0;
 
 if(ucTimer20s < 200)
-ucTimer20s++;
-else
 {
-
-ucTimer20s = 0;
+ucTimer20s++;
 PB0 = 1;
 PA0 = 1;
 PA1 = 1;
 PA2 = 1;
 PA3 = 1;
-PA6 = 0;
+}
+else
+{
+
+ucTimer20s = 0;
+
+
 enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
 }
 break;
@@ -1693,6 +1709,8 @@ break;
 
 case HOUR_3_BRANCH_STEP_THIRD:
 {
+PA6 = 0;
+
 if(isFinishedThreeHoursTimer())
 {
 enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
@@ -1825,17 +1843,7 @@ ucTimerP3s = 0;
 clearAllTimer();
 
 DACR0=0x0F;
-PBOD6 = 1;
-
-PA0 = 0;
-PA1 = 0;
-PA2 = 0;
-PA3 = 1;
-PB0 = 0;
-PB1 = 0;
-PA6 = 0;
-PAOD7 = 0;
-PA7 = 0;
+initPin();
 
 
 enumMainLoopStep = MAIN_LOOP_STEP_INIT;

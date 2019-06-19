@@ -1251,8 +1251,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 46: unsigned char isPermitSampleTime();
 [; ;common.h: 48: void clrSampeTime();
 [; ;common.h: 50: void setDAC0_ChannelValue(unsigned char ucValue);
-[; ;common.h: 52: void startTwelveHourTimer();
-[; ;common.h: 53: void startThreeHoursTimer();
+[; ;common.h: 52: void startTwelveHourTimer(unsigned int uiSetTime);
+[; ;common.h: 53: void startThreeHoursTimer(unsigned int uiSetTime);
 [; ;common.h: 56: void startTwentySecondsTimer();
 [; ;common.h: 57: unsigned char isFinishedTwentySecondsTimer();
 [; ;common.h: 60: void clearTwelveHoursTimer();

@@ -833,8 +833,8 @@ void clrSampeTime();
 
 void setDAC0_ChannelValue(unsigned char ucValue);
 
-void startTwelveHourTimer();
-void startThreeHoursTimer();
+void startTwelveHourTimer(unsigned int uiSetTime);
+void startThreeHoursTimer(unsigned int uiSetTime);
 
 
 void startTwentySecondsTimer();
@@ -1047,11 +1047,12 @@ void setDAC0_ChannelValue(unsigned char ucValue)
 DACR0=ucValue;
 }
 
-void startTwelveHourTimer()
+void startTwelveHourTimer(unsigned int uiSetTime )
 {
-uiBigTimer = 43200;
+if(0 == uiBigTimer)
+uiBigTimer = uiSetTime;
 
-# 212
+# 213
 }
 
 void clearTwelveHoursTimer()
@@ -1071,11 +1072,12 @@ uiTwentySecondsTimer = 0;
 }
 
 
-void startThreeHoursTimer()
+void startThreeHoursTimer(unsigned int uiSetTime)
 {
-uiSmallTimer = 10800;
+if(0 == uiSmallTimer)
+uiSmallTimer = uiSetTime;
 
-# 238
+# 240
 }
 
 

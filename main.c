@@ -101,6 +101,29 @@ static void clearPinPortAndTimer(void)
 }
 
 
+static void initPin(void)
+{
+	PB6 = 1;
+	PBOD6 = 1; //set PB6 as high resistance
+
+
+
+	PA0 = 0;
+	PA1 = 0;
+	PA2 = 0;
+	PA3 = 0;
+	PB0 = 0;
+	PB1 = 1;
+	PA6 = 0;
+	PA7 = 0;
+	PAOD7 = 0;
+
+}
+
+
+#define   BIG_TIME_SECONDS   180
+#define   SMALL_TIME_SECONDS  60
+
 
 void main (void)
 {	
@@ -134,17 +157,9 @@ void main (void)
 	TRISA7 = 0;
 	TRISB6 = 0;
 
-	PBOD6 = 1; //set PB6 as high resistance
 
-	PA0 = 0;
-	PA1 = 0;
-	PA2 = 0;
-	PA3 = 0;
-	PB0 = 0;
-	PB1 = 1;
-	PA6 = 0;
-	PA7 = 0;
-//	PB6 - 0;
+	initPin();
+
 
 	TRISB2 = 1;//SET AD sample Channel 14
 
@@ -305,7 +320,7 @@ void main (void)
 				case MAIN_LOOP_STEP_FOURTH:
 				{
 
-					startTwelveHourTimer();
+					startTwelveHourTimer(BIG_TIME_SECONDS);
 					enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 
 					break;
@@ -819,7 +834,7 @@ void main (void)
 //									PA2 = 0;
 //									PA3 = 0;
 
-									if((getAdOriginalCh14Value() > 3900))
+									if((getAdOriginalCh14Value() > 2800))
 										DACR0=0x0F;//set OP1 input 0.3v
 									else
 										DACR0=0x07;//set op1 input 0.14
@@ -835,13 +850,14 @@ void main (void)
 							case ADC4_STEP_FOURTH:
 							{
 								static unsigned char ucTimer1s = 0;
-								if(ucTimer1s < 10)
+								if(ucTimer1s < 5)
 								{
 									ucTimer1s++;
 								}
 								else
 								{
 									ucTimer1s = 0;
+									PB6 = 1; // make sure PB6 can output Hign resistance
 									PBOD6 = 1; //set PB6 as high resistance
 									enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 									ucADC4_Step = ADC4_STEP_INIT;
@@ -873,8 +889,9 @@ void main (void)
 					{
 						case HOUR_3_BRANCH_STEP_FIRST:
 						{
+							PA7 = 1;
 							PAOD7 = 1; //set PA7 AS hign resistence
-							startThreeHoursTimer();
+							startThreeHoursTimer(SMALL_TIME_SECONDS);
 
 							enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
 							break;
@@ -885,17 +902,20 @@ void main (void)
 							static unsigned char ucTimer20s = 0;
 
 							if(ucTimer20s < 200)
-								ucTimer20s++;
-							else
 							{
-
-								ucTimer20s = 0;
+								ucTimer20s++;
 								PB0 = 1;
 								PA0 = 1;
 								PA1 = 1;
 								PA2 = 1;
 								PA3 = 1;
-								PA6 = 0;
+							}
+							else
+							{
+
+								ucTimer20s = 0;
+
+
 								enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
 							}
 							break;
@@ -903,6 +923,8 @@ void main (void)
 
 						case HOUR_3_BRANCH_STEP_THIRD:
 						{
+							PA6 = 0;
+
 							if(isFinishedThreeHoursTimer())
 							{
 								enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
@@ -1035,17 +1057,7 @@ void main (void)
 								clearAllTimer();
 
 								DACR0=0x0F;//set OP1 input 0.3v
-								PBOD6 = 1; //set PB6 as high resistance
-
-								PA0 = 0;
-								PA1 = 0;
-								PA2 = 0;
-								PA3 = 1;
-								PB0 = 0;
-								PB1 = 0;
-								PA6 = 0;
-								PAOD7 = 0;
-								PA7 = 0;
+								initPin();
 
 
 								enumMainLoopStep =  MAIN_LOOP_STEP_INIT;

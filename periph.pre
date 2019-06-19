@@ -844,8 +844,8 @@ void clrSampeTime();
 
 void setDAC0_ChannelValue(unsigned char ucValue);
 
-void startTwelveHourTimer();
-void startThreeHoursTimer();
+void startTwelveHourTimer(unsigned int uiSetTime);
+void startThreeHoursTimer(unsigned int uiSetTime);
 
 
 void startTwentySecondsTimer();
