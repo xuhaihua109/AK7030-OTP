@@ -103,7 +103,7 @@ void process_AD_Converter_Value()
 	if(getAD_ConvertFlag())
 	{
 		setAD_ConvertFlag(0);
-		AD_Sample();
+//		AD_Sample();
 		if(AD_CHANNEL_4_CHANNEL == sampleChannelSelect)
 			adc_test_init(AD_CHANNEL_4_CHANNEL,ADC_REF_2P1);
 		else if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
