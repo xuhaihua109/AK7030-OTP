@@ -3,6 +3,10 @@
 #include "common.h"
 #include "periph.h"
 
+
+
+
+
 #define TEMP_MAX_CONTINOUS_SAMPLE_TIMES 6
 
 #define TEMP_MAX_CONVERT_MACHINE_CYCLE  10
@@ -33,6 +37,134 @@ static unsigned int uiTwentySecondsTimer = 0;
 
 
 static void AD_Sample(void);
+
+
+
+
+
+#define FILTER_N   20
+
+
+ unsigned int Filter(int *tmpValue)
+ {
+
+   unsigned char i = 0, j = 0;
+
+   unsigned  int filter_temp = 0, filter_sum = 0;
+
+   unsigned int filter_buf[FILTER_N];
+
+   for(int cir = 0;cir < FILTER_N; cir++)
+	   filter_buf[cir] = *tmpValue++;
+
+
+  for(j = 0; j < FILTER_N - 1; j++)
+  {
+     for(i = 0; i < FILTER_N - 1 - j; i++)
+     {
+       if(filter_buf[i] > filter_buf[i + 1])
+       {
+
+         filter_temp = filter_buf[i];
+
+         filter_buf[i] = filter_buf[i + 1];
+
+         filter_buf[i + 1] = filter_temp;
+       }
+     }
+   }
+
+  for(i = 2; i < FILTER_N - 2; i++)
+  {
+	  filter_sum += filter_buf[i];
+  }
+
+   return (filter_sum >> 4);
+
+ }
+
+
+ static  int uiSampleChannelFirst[FILTER_N];
+
+ static  int uiSampleChannelFourth[FILTER_N];
+
+ static  int uiSampleChannelFourteenth[FILTER_N];
+
+
+ void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
+ {
+
+	 static unsigned char ucChannelFirstLength = 0;
+
+	 static unsigned char ucChannelFourthLength = 0;
+
+	 static unsigned char ucChannelFourteenthLength = 0;
+
+	 if(channel == AD_CHANNEL_1_CHANNEL)
+	 {
+		 if(ucChannelFirstLength < FILTER_N)
+		 {
+			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
+
+			 ucChannelFirstLength++;
+		 }
+		 else
+		 {
+			 ucChannelFirstLength = 0;
+
+			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
+		 }
+	 }
+	 else if(channel == AD_CHANNEL_4_CHANNEL)
+	 {
+		 if(ucChannelFourthLength < FILTER_N)
+		 {
+			 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
+
+			ucChannelFourthLength++;
+		 }
+		 else
+		 {
+			ucChannelFourthLength = 0;
+
+			 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
+		 }
+	 }
+	 else if(channel == AD_CHANNEL_14_CHANNEL)
+	 {
+		 if(ucChannelFourteenthLength < FILTER_N)
+		 {
+			 uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
+
+			 ucChannelFourteenthLength++;
+		 }
+		 else
+		 {
+			 ucChannelFourteenthLength = 0;
+
+			 uiSampleChannelFourth[ucChannelFourteenthLength] = uiSampleData;
+		 }
+	 }
+	 else
+	 {
+		 ucChannelFirstLength = 0;
+
+		 ucChannelFourthLength = 0;
+
+		 ucChannelFourteenthLength = 0;
+
+		 for(int i = 0;i < FILTER_N; i++)
+		 {
+			 uiSampleChannelFirst[i] = 0;
+
+			 uiSampleChannelFourth[i] = 0;
+
+			 uiSampleChannelFourth[i] = 0;
+
+		 }
+	 }
+ }
+
 
 void clock_config()
 {
@@ -81,19 +213,34 @@ unsigned int getAdOriginalValue()
 
 unsigned int getAdOriginalCh1Value()
 {
-	return adc_original_CH1_value;
+
+#ifdef USING_AD_FILGER_ALGORITHMN
+	return Filter(uiSampleChannelFirst);
+
+#else
+	return  adc_original_CH1_value;
+#endif
 }
 
 
 unsigned int getAdOriginaCh4Value()
 {
+#ifdef USING_AD_FILGER_ALGORITHMN
+	return Filter(uiSampleChannelFourth);
+
+#else
 	return adc_original_CH4_value;
+#endif
 }
 
 
 unsigned int getAdOriginalCh14Value()
 {
+#ifdef USING_AD_FILGER_ALGORITHMN
+	return Filter(uiSampleChannelFourteenth);
+#else
 	return adc_original_CH14_value;
+#endif
 }
 
 
@@ -110,7 +257,7 @@ void process_AD_Converter_Value()
 			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
 		else
 			adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);
-//		setAdcSampleChannel(sampleChannelSelect);
+		setAdcSampleChannel(sampleChannelSelect);
 		adc_start();	//ADCÆô¶¯
 	}
 }
@@ -316,11 +463,21 @@ void interrupt ISR(void)
 		setAD_ConvertFlag(1);
 		adc_original_value = adc_get();
 		if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
+		{
 			adc_original_CH4_value = adc_get();//getAdCh4Value();
+			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_4_CHANNEL);
+
+		}
 		else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
+		{
 			adc_original_CH1_value = adc_get();//getAdCh4Value();
+			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_1_CHANNEL);
+		}
 		else
+		{
 			adc_original_CH14_value = adc_get();//getAdCh14Value();
+			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_14_CHANNEL);
+		}
 
 	   }
 }

@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.83 build 10920 
-                                                                                                           Wed Jun 19 11:50:06 2019
+                                                                                                           Fri Jun 21 13:40:13 2019
 
 
      1                           
@@ -64,21 +64,21 @@ HI-TECH Software PIC Macro Assembler V9.83 build 10920
     58                           	global start
     59                           
     60                           ; jump to start
-    61  0000  118A  280B         	goto	start & 0x7FF | (reset_vec & not 0x7FF)
+    61  0000  118A  2811         	goto	start & 0x7FF | (reset_vec & not 0x7FF)
     62                           
     63                           
     64                           
     65                           	psect	init
-    66  000B                     start
-    67  000B                     _exit
+    66  0011                     start
+    67  0011                     _exit
     68                           	psect	end_init
     69                           	global start_initialization
-    70  000B  118A  2C58         	ljmp start_initialization	;jump to C runtime clear & initialization
+    70  0011  118A  2DCF         	ljmp start_initialization	;jump to C runtime clear & initialization
 
 
 HI-TECH Software PICC Macro Assembler V9.83 build 10920 
-Symbol Table                                                                                               Wed Jun 19 11:50:06 2019
+Symbol Table                                                                                               Fri Jun 21 13:40:13 2019
 
-               _main 000D                 _exit 000B                 start 000B  start_initialization 0458  
+               _main 0013                 _exit 0011                 start 0011  start_initialization 05CF  
            intlevel0 0000             intlevel1 0000             intlevel2 0000             intlevel3 0000  
            intlevel4 0000             intlevel5 0000             reset_vec 0000  

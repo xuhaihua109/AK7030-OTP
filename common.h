@@ -13,6 +13,9 @@
 
 //#define DEBUG_FUNCITON  1
 
+
+#define USING_AD_FILGER_ALGORITHMN
+
 #define AD_CHANNEL_14_CHANNEL            14
 
 #define AD_CHANNEL_1_CHANNEL            1

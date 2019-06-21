@@ -803,7 +803,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 23 "C:\190604\AK7030-OTP\common.h"
+# 26 "C:\190604\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();

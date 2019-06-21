@@ -814,7 +814,7 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 void adc_start();
 unsigned int adc_get(void);
 
-# 23 "C:\190604\AK7030-OTP\common.h"
+# 26 "C:\190604\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
