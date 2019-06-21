@@ -707,7 +707,7 @@ INTERNAL_FOUTTH_STEP 3
 "18
 [v _adc_original_value `ui  1 s 2 adc_original_value ]
 "20
-[v _buffer_Sample_AD_Value `[6]ui  1 s 12 buffer_Sample_AD_Value ]
+[v _buffer_Sample_AD_Value `[12]ui  1 s 24 buffer_Sample_AD_Value ]
 "21
 [v _sampleTimes `uc  1 s 1 sampleTimes ]
 "22
@@ -723,11 +723,11 @@ INTERNAL_FOUTTH_STEP 3
 "36
 [v _uiTwentySecondsTimer `ui  1 s 2 uiTwentySecondsTimer ]
 "87
-[v _uiSampleChannelFirst `[20]i  1 s 40 uiSampleChannelFirst ]
+[v _uiSampleChannelFirst `[12]i  1 s 24 uiSampleChannelFirst ]
 "89
-[v _uiSampleChannelFourth `[20]i  1 s 40 uiSampleChannelFourth ]
+[v _uiSampleChannelFourth `[12]i  1 s 24 uiSampleChannelFourth ]
 "91
-[v _uiSampleChannelFourteenth `[20]i  1 s 40 uiSampleChannelFourteenth ]
+[v _uiSampleChannelFourteenth `[12]i  1 s 24 uiSampleChannelFourteenth ]
 "164 C:\190604\AK7030-OTP\yn8p520.h
 [v _INDF `VEuc  1 e 1 @0 ]
 "168
@@ -1478,15 +1478,15 @@ INTERNAL_FOUTTH_STEP 3
 [v _Filter `(ui  1 e 2 0 ]
 {
 "57
-[v Filter@cir `i  1 a 2 50 ]
+[v Filter@cir `i  1 a 2 34 ]
 "55
-[v Filter@filter_buf `[20]ui  1 a 40 6 ]
+[v Filter@filter_buf `[12]ui  1 a 24 6 ]
 "53
-[v Filter@filter_sum `ui  1 a 2 48 ]
-[v Filter@filter_temp `ui  1 a 2 46 ]
+[v Filter@filter_sum `ui  1 a 2 32 ]
+[v Filter@filter_temp `ui  1 a 2 30 ]
 "51
-[v Filter@i `uc  1 a 1 53 ]
-[v Filter@j `uc  1 a 1 52 ]
+[v Filter@i `uc  1 a 1 37 ]
+[v Filter@j `uc  1 a 1 36 ]
 "49
 [v Filter@tmpValue `*i  1 p 2 0 ]
 "84

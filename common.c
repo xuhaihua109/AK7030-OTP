@@ -7,7 +7,7 @@
 
 
 
-#define TEMP_MAX_CONTINOUS_SAMPLE_TIMES 6
+#define TEMP_MAX_CONTINOUS_SAMPLE_TIMES 12
 
 #define TEMP_MAX_CONVERT_MACHINE_CYCLE  10
 
@@ -42,7 +42,7 @@ static void AD_Sample(void);
 
 
 
-#define FILTER_N   20
+#define FILTER_N   12
 
 
  unsigned int Filter(int *tmpValue)
@@ -79,7 +79,7 @@ static void AD_Sample(void);
 	  filter_sum += filter_buf[i];
   }
 
-   return (filter_sum >> 4);
+   return (filter_sum >> 3);
 
  }
 

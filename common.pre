@@ -867,7 +867,7 @@ static unsigned char adc_convert_flag = 0;
 
 static unsigned int adc_original_value = 0, adc_original_CH1_value = 0,adc_original_CH14_value = 0,adc_original_CH4_value = 0;
 
-static unsigned int buffer_Sample_AD_Value[6];
+static unsigned int buffer_Sample_AD_Value[12];
 static unsigned char sampleTimes;
 static unsigned char sampleChannelSelect = 14;
 static unsigned int multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
@@ -896,15 +896,15 @@ unsigned char i = 0, j = 0;
 
 unsigned int filter_temp = 0, filter_sum = 0;
 
-unsigned int filter_buf[20];
+unsigned int filter_buf[12];
 
-for(int cir = 0;cir < 20; cir++)
+for(int cir = 0;cir < 12; cir++)
 filter_buf[cir] = *tmpValue++;
 
 
-for(j = 0; j < 20 - 1; j++)
+for(j = 0; j < 12 - 1; j++)
 {
-for(i = 0; i < 20 - 1 - j; i++)
+for(i = 0; i < 12 - 1 - j; i++)
 {
 if(filter_buf[i] > filter_buf[i + 1])
 {
@@ -918,21 +918,21 @@ filter_buf[i + 1] = filter_temp;
 }
 }
 
-for(i = 2; i < 20 - 2; i++)
+for(i = 2; i < 12 - 2; i++)
 {
 filter_sum += filter_buf[i];
 }
 
-return (filter_sum >> 4);
+return (filter_sum >> 3);
 
 }
 
 
-static int uiSampleChannelFirst[20];
+static int uiSampleChannelFirst[12];
 
-static int uiSampleChannelFourth[20];
+static int uiSampleChannelFourth[12];
 
-static int uiSampleChannelFourteenth[20];
+static int uiSampleChannelFourteenth[12];
 
 
 void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
@@ -946,7 +946,7 @@ static unsigned char ucChannelFourteenthLength = 0;
 
 if(channel == 1)
 {
-if(ucChannelFirstLength < 20)
+if(ucChannelFirstLength < 12)
 {
 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 
@@ -961,7 +961,7 @@ uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 }
 else if(channel == 4)
 {
-if(ucChannelFourthLength < 20)
+if(ucChannelFourthLength < 12)
 {
 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 
@@ -976,7 +976,7 @@ uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 }
 else if(channel == 14)
 {
-if(ucChannelFourteenthLength < 20)
+if(ucChannelFourteenthLength < 12)
 {
 uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
 
@@ -997,7 +997,7 @@ ucChannelFourthLength = 0;
 
 ucChannelFourteenthLength = 0;
 
-for(int i = 0;i < 20; i++)
+for(int i = 0;i < 12; i++)
 {
 uiSampleChannelFirst[i] = 0;
 
@@ -1104,7 +1104,7 @@ adc_start();
 # 274
 static void AD_Sample(void)
 {
-if(sampleTimes < 6)
+if(sampleTimes < 12)
 {
 
 buffer_Sample_AD_Value[sampleTimes] = getAdOriginalValue();
@@ -1128,7 +1128,7 @@ multiFilterSumValue = multiFilterSumValue + buffer_Sample_AD_Value[sampleTimes];
 
 sampleTimes++;
 
-if(sampleTimes >= 6)
+if(sampleTimes >= 12)
 {
 sampleTimes = 0;
 
@@ -1154,7 +1154,7 @@ sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinVa
 sampleChannelSelect = 14;
 }
 
-for(unsigned char index = 0; index < 6;index++)
+for(unsigned char index = 0; index < 12;index++)
 buffer_Sample_AD_Value[index] = 0;
 
 }
