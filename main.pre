@@ -1019,7 +1019,7 @@ ucTimerZeroPoint5s++;
 else
 ucTimerZeroPoint5s = 0;
 
-if(ucTimerZeroPoint5s >= 5)
+if(ucTimerZeroPoint5s >= 1)
 {
 ucTimerZeroPoint5s = 0;
 enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
@@ -1031,7 +1031,7 @@ case MAIN_LOOP_STEP_FIRST:
 {
 static unsigned char ucTimerZeroPoint3s = 0;
 
-if(ucTimerZeroPoint3s < 3)
+if(ucTimerZeroPoint3s < 1)
 {
 ucTimerZeroPoint3s++;
 }
@@ -1054,9 +1054,18 @@ break;
 
 case MAIN_LOOP_STEP_SECOND:
 {
+static unsigned char ucTimerP5s = 0;
 
 PA6 = 1;
+
+if(ucTimerP5s < 5)
+ucTimerP5s++;
+else
+{
+ucTimerP5s = 0;
+
 enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+}
 
 break;
 }
@@ -1619,7 +1628,7 @@ PBOD6 =0;
 PB6 = 1;
 PA6 = 0;
 
-# 837
+# 846
 if((getAdOriginalCh14Value() > 2800))
 DACR0=0x0F;
 else
