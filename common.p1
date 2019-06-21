@@ -1994,9 +1994,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 307: sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> 2;
 "307
 [e = _sampleCH14Value >> - - _multiFilterSumValue _multiFilterMaxValue _multiFilterMinValue -> 2 `i ]
-[; ;common.c: 308: sampleChannelSelect = 4;
+[; ;common.c: 308: sampleChannelSelect = 1;
 "308
-[e = _sampleChannelSelect -> -> 4 `i `uc ]
+[e = _sampleChannelSelect -> -> 1 `i `uc ]
 "309
 }
 [; ;common.c: 309: }
@@ -2028,9 +2028,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 317: sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> 2;
 "317
 [e = _sampleCH1Value >> - - _multiFilterSumValue _multiFilterMaxValue _multiFilterMinValue -> 2 `i ]
-[; ;common.c: 318: sampleChannelSelect = 14;
+[; ;common.c: 318: sampleChannelSelect = 4;
 "318
-[e = _sampleChannelSelect -> -> 14 `i `uc ]
+[e = _sampleChannelSelect -> -> 4 `i `uc ]
 "319
 }
 [; ;common.c: 319: }

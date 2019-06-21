@@ -1149,11 +1149,11 @@ l4226:
 	fcall	_isPermitSampleTime
 	xorlw	0
 	skipnz
-	goto	u1291
-	goto	u1290
-u1291:
+	goto	u1311
+	goto	u1310
+u1311:
 	goto	l4224
-u1290:
+u1310:
 	line	217
 	
 l4228:	
@@ -1181,11 +1181,11 @@ l4232:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1301
-	goto	u1300
-u1301:
+	goto	u1321
+	goto	u1320
+u1321:
 	goto	l4236
-u1300:
+u1320:
 	line	227
 	
 l4234:	
@@ -1207,9 +1207,9 @@ l4238:
 ;main.c: 232: if(ucTimerZeroPoint5s >= 1)
 	movf	(main@ucTimerZeroPoint5s),w
 	skipz
-	goto	u1310
+	goto	u1330
 	goto	l4224
-u1310:
+u1330:
 	line	234
 	
 l4240:	
@@ -1238,11 +1238,11 @@ l4244:
 ;main.c: 244: if(ucTimerZeroPoint3s < 1)
 	movf	(main@ucTimerZeroPoint3s),f
 	skipz
-	goto	u1321
-	goto	u1320
-u1321:
+	goto	u1341
+	goto	u1340
+u1341:
 	goto	l4248
-u1320:
+u1340:
 	line	246
 	
 l4246:	
@@ -1270,11 +1270,11 @@ l4250:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1331
-	goto	u1330
-u1331:
+	goto	u1351
+	goto	u1350
+u1351:
 	goto	l4254
-u1330:
+u1350:
 	line	255
 	
 l4252:	
@@ -1310,11 +1310,11 @@ l4256:
 	movlw	(05h)
 	subwf	(main@ucTimerP5s),w
 	skipnc
-	goto	u1341
-	goto	u1340
-u1341:
+	goto	u1361
+	goto	u1360
+u1361:
 	goto	l4260
-u1340:
+u1360:
 	line	272
 	
 l4258:	
@@ -1348,11 +1348,11 @@ l4264:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh1Value)),w
 	skipnc
-	goto	u1351
-	goto	u1350
-u1351:
+	goto	u1371
+	goto	u1370
+u1371:
 	goto	l4268
-u1350:
+u1370:
 	line	289
 	
 l4266:	
@@ -1376,9 +1376,9 @@ l4270:
 ;main.c: 297: if(ucTimerADC1ZeroP5s >= 1)
 	movf	(main@ucTimerADC1ZeroP5s),w
 	skipz
-	goto	u1360
+	goto	u1380
 	goto	l4276
-u1360:
+u1380:
 	line	299
 	
 l4272:	
@@ -1408,11 +1408,11 @@ l4276:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh1Value)),w
 	skipnc
-	goto	u1371
-	goto	u1370
-u1371:
+	goto	u1391
+	goto	u1390
+u1391:
 	goto	l4280
-u1370:
+u1390:
 	line	308
 	
 l4278:	
@@ -1436,9 +1436,9 @@ l4282:
 ;main.c: 315: if(ucTimerRightP5s >= 1)
 	movf	(main@ucTimerRightP5s),w
 	skipz
-	goto	u1380
+	goto	u1400
 	goto	l706
-u1380:
+u1400:
 	line	317
 	
 l4284:	
@@ -1480,11 +1480,11 @@ l4292:
 	fcall	_isFinishedTwelveHoursTimer
 	xorlw	0
 	skipnz
-	goto	u1391
-	goto	u1390
-u1391:
+	goto	u1411
+	goto	u1410
+u1411:
 	goto	l4606
-u1390:
+u1410:
 	line	343
 	
 l4294:	
@@ -1522,11 +1522,11 @@ l4300:
 	skipnz
 	subwf	(0+(?_getAdOriginaCh4Value)),w
 	skipnc
-	goto	u1401
-	goto	u1400
-u1401:
+	goto	u1421
+	goto	u1420
+u1421:
 	goto	l4304
-u1400:
+u1420:
 	line	361
 	
 l4302:	
@@ -1544,11 +1544,11 @@ l4304:
 	skipnz
 	subwf	(0+(?_getAdOriginaCh4Value)),w
 	skipnc
-	goto	u1411
-	goto	u1410
-u1411:
+	goto	u1431
+	goto	u1430
+u1431:
 	goto	l4308
-u1410:
+u1430:
 	line	363
 	
 l4306:	
@@ -1567,11 +1567,11 @@ l4308:
 	skipnz
 	subwf	(0+(?_getAdOriginaCh4Value)),w
 	skipnc
-	goto	u1421
-	goto	u1420
-u1421:
+	goto	u1441
+	goto	u1440
+u1441:
 	goto	l4312
-u1420:
+u1440:
 	line	365
 	
 l4310:	
@@ -1590,11 +1590,11 @@ l4312:
 	skipnz
 	subwf	(0+(?_getAdOriginaCh4Value)),w
 	skipnc
-	goto	u1431
-	goto	u1430
-u1431:
+	goto	u1451
+	goto	u1450
+u1451:
 	goto	l4316
-u1430:
+u1450:
 	line	367
 	
 l4314:	
@@ -1643,11 +1643,11 @@ l4320:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
-	goto	u1441
-	goto	u1440
-u1441:
+	goto	u1461
+	goto	u1460
+u1461:
 	goto	l4328
-u1440:
+u1460:
 	line	398
 	
 l4322:	
@@ -1675,11 +1675,11 @@ l4330:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
-	goto	u1451
-	goto	u1450
-u1451:
+	goto	u1471
+	goto	u1470
+u1471:
 	goto	l4328
-u1450:
+u1470:
 	line	411
 	
 l4332:	
@@ -1695,11 +1695,11 @@ l4340:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
-	goto	u1461
-	goto	u1460
-u1461:
+	goto	u1481
+	goto	u1480
+u1481:
 	goto	l4328
-u1460:
+u1480:
 	line	425
 	
 l4342:	
@@ -1715,11 +1715,11 @@ l4350:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
-	goto	u1471
-	goto	u1470
-u1471:
+	goto	u1491
+	goto	u1490
+u1491:
 	goto	l4328
-u1470:
+u1490:
 	line	438
 	
 l4352:	
@@ -1735,11 +1735,11 @@ l4360:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
-	goto	u1481
-	goto	u1480
-u1481:
+	goto	u1501
+	goto	u1500
+u1501:
 	goto	l4328
-u1480:
+u1500:
 	line	451
 	
 l4362:	
@@ -1767,11 +1767,11 @@ l4370:
 	movlw	(02h)
 	subwf	(main@ucTimerDelay),w
 	skipc
-	goto	u1491
-	goto	u1490
-u1491:
+	goto	u1511
+	goto	u1510
+u1511:
 	goto	l4328
-u1490:
+u1510:
 	line	468
 	
 l4372:	
@@ -1855,11 +1855,11 @@ l4384:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
-	goto	u1501
-	goto	u1500
-u1501:
+	goto	u1521
+	goto	u1520
+u1521:
 	goto	l4392
-u1500:
+u1520:
 	line	503
 	
 l4386:	
@@ -1887,11 +1887,11 @@ l4394:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
-	goto	u1511
-	goto	u1510
-u1511:
+	goto	u1531
+	goto	u1530
+u1531:
 	goto	l4392
-u1510:
+u1530:
 	line	516
 	
 l4396:	
@@ -1907,11 +1907,11 @@ l4404:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
-	goto	u1521
-	goto	u1520
-u1521:
+	goto	u1541
+	goto	u1540
+u1541:
 	goto	l4392
-u1520:
+u1540:
 	line	529
 	
 l4406:	
@@ -1927,11 +1927,11 @@ l4414:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
-	goto	u1531
-	goto	u1530
-u1531:
+	goto	u1551
+	goto	u1550
+u1551:
 	goto	l4392
-u1530:
+u1550:
 	line	542
 	
 l4416:	
@@ -1947,11 +1947,11 @@ l4424:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
-	goto	u1541
-	goto	u1540
-u1541:
+	goto	u1561
+	goto	u1560
+u1561:
 	goto	l4392
-u1540:
+u1560:
 	line	555
 	
 l4426:	
@@ -1976,11 +1976,11 @@ l4434:
 	movlw	(02h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
-	goto	u1551
-	goto	u1550
-u1551:
+	goto	u1571
+	goto	u1570
+u1571:
 	goto	l4392
-u1550:
+u1570:
 	line	571
 	
 l4436:	
@@ -2059,11 +2059,11 @@ l4448:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
-	goto	u1561
-	goto	u1560
-u1561:
+	goto	u1581
+	goto	u1580
+u1581:
 	goto	l4456
-u1560:
+u1580:
 	line	608
 	
 l4450:	
@@ -2091,11 +2091,11 @@ l4458:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
-	goto	u1571
-	goto	u1570
-u1571:
+	goto	u1591
+	goto	u1590
+u1591:
 	goto	l4456
-u1570:
+u1590:
 	line	621
 	
 l4460:	
@@ -2111,11 +2111,11 @@ l4468:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
-	goto	u1581
-	goto	u1580
-u1581:
+	goto	u1601
+	goto	u1600
+u1601:
 	goto	l4456
-u1580:
+u1600:
 	line	634
 	
 l4470:	
@@ -2131,11 +2131,11 @@ l4478:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
-	goto	u1591
-	goto	u1590
-u1591:
+	goto	u1611
+	goto	u1610
+u1611:
 	goto	l4456
-u1590:
+u1610:
 	line	648
 	
 l4480:	
@@ -2157,11 +2157,11 @@ l4488:
 	movlw	(02h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
-	goto	u1601
-	goto	u1600
-u1601:
+	goto	u1621
+	goto	u1620
+u1621:
 	goto	l4456
-u1600:
+u1620:
 	line	663
 	
 l4490:	
@@ -2242,11 +2242,11 @@ l4502:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay3),w
 	skipc
-	goto	u1611
-	goto	u1610
-u1611:
+	goto	u1631
+	goto	u1630
+u1631:
 	goto	l4510
-u1610:
+u1630:
 	line	701
 	
 l4504:	
@@ -2274,11 +2274,11 @@ l4512:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay3),w
 	skipc
-	goto	u1621
-	goto	u1620
-u1621:
+	goto	u1641
+	goto	u1640
+u1641:
 	goto	l4510
-u1620:
+u1640:
 	line	714
 	
 l4514:	
@@ -2294,11 +2294,11 @@ l4522:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay3),w
 	skipc
-	goto	u1631
-	goto	u1630
-u1631:
+	goto	u1651
+	goto	u1650
+u1651:
 	goto	l4510
-u1630:
+u1650:
 	line	729
 	
 l4524:	
@@ -2317,11 +2317,11 @@ l4532:
 	movlw	(02h)
 	subwf	(main@ucTimerDelay3),w
 	skipc
-	goto	u1641
-	goto	u1640
-u1641:
+	goto	u1661
+	goto	u1660
+u1661:
 	goto	l4510
-u1640:
+u1660:
 	line	743
 	
 l4534:	
@@ -2401,11 +2401,11 @@ l4546:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay4),w
 	skipc
-	goto	u1651
-	goto	u1650
-u1651:
+	goto	u1671
+	goto	u1670
+u1671:
 	goto	l4554
-u1650:
+u1670:
 	line	782
 	
 l4548:	
@@ -2433,11 +2433,11 @@ l4556:
 	movlw	(05h)
 	subwf	(main@ucTimerDelay4),w
 	skipc
-	goto	u1661
-	goto	u1660
-u1661:
+	goto	u1681
+	goto	u1680
+u1681:
 	goto	l4554
-u1660:
+u1680:
 	line	795
 	
 l4558:	
@@ -2453,11 +2453,11 @@ l4566:
 	movlw	(02h)
 	subwf	(main@ucTimerDelay4),w
 	skipc
-	goto	u1671
-	goto	u1670
-u1671:
+	goto	u1691
+	goto	u1690
+u1691:
 	goto	l4554
-u1670:
+u1690:
 	line	808
 	
 l4568:	
@@ -2543,11 +2543,11 @@ l4582:
 	fcall	_isFinishedTwentySecondsTimer
 	xorlw	0
 	skipnz
-	goto	u1681
-	goto	u1680
-u1681:
+	goto	u1701
+	goto	u1700
+u1701:
 	goto	l4298
-u1680:
+u1700:
 	line	837
 	
 l4584:	
@@ -2575,11 +2575,11 @@ l4586:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1691
-	goto	u1690
-u1691:
+	goto	u1711
+	goto	u1710
+u1711:
 	goto	l4590
-u1690:
+u1710:
 	line	847
 	
 l4588:	
@@ -2615,11 +2615,11 @@ l4592:
 	movlw	(05h)
 	subwf	(main@ucTimer1s),w
 	skipnc
-	goto	u1701
-	goto	u1700
-u1701:
+	goto	u1721
+	goto	u1720
+u1721:
 	goto	l4596
-u1700:
+u1720:
 	line	864
 	
 l4594:	
@@ -2737,11 +2737,11 @@ l4612:
 	movlw	(0C8h)
 	subwf	(main@ucTimer20s),w
 	skipnc
-	goto	u1711
-	goto	u1710
-u1711:
+	goto	u1731
+	goto	u1730
+u1731:
 	goto	l4626
-u1710:
+u1730:
 	line	915
 	
 l4614:	
@@ -2806,11 +2806,11 @@ l4630:
 	fcall	_isFinishedThreeHoursTimer
 	xorlw	0
 	skipnz
-	goto	u1721
-	goto	u1720
-u1721:
+	goto	u1741
+	goto	u1740
+u1741:
 	goto	l4636
-u1720:
+u1740:
 	line	939
 	
 l4632:	
@@ -2832,11 +2832,11 @@ l4636:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh1Value)),w
 	skipnc
-	goto	u1731
-	goto	u1730
-u1731:
+	goto	u1751
+	goto	u1750
+u1751:
 	goto	l4640
-u1730:
+u1750:
 	line	948
 	
 l4638:	
@@ -2860,9 +2860,9 @@ l4642:
 ;main.c: 955: if(ucTimerX1P5s >= 1)
 	movf	(main@ucTimerX1P5s),w
 	skipz
-	goto	u1740
+	goto	u1760
 	goto	l4656
-u1740:
+u1760:
 	line	957
 	
 l4644:	
@@ -2908,11 +2908,11 @@ l4656:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1751
-	goto	u1750
-u1751:
+	goto	u1771
+	goto	u1770
+u1771:
 	goto	l4660
-u1750:
+u1770:
 	line	972
 	
 l4658:	
@@ -2936,9 +2936,9 @@ l4662:
 ;main.c: 979: if(ucTimerX2P5s >= 1)
 	movf	(main@ucTimerX2P5s),w
 	skipz
-	goto	u1760
+	goto	u1780
 	goto	l4666
-u1760:
+u1780:
 	line	981
 	
 l4664:	
@@ -3042,11 +3042,11 @@ l4674:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipnc
-	goto	u1771
-	goto	u1770
-u1771:
+	goto	u1791
+	goto	u1790
+u1791:
 	goto	l4678
-u1770:
+u1790:
 	line	1038
 	
 l4676:	
@@ -3069,11 +3069,11 @@ l4680:
 	movlw	(0Ah)
 	subwf	(main@cTimer1s_810),w
 	skipc
-	goto	u1781
-	goto	u1780
-u1781:
+	goto	u1801
+	goto	u1800
+u1801:
 	goto	l706
-u1780:
+u1800:
 	line	1045
 	
 l4682:	
@@ -3100,11 +3100,11 @@ l4686:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1791
-	goto	u1790
-u1791:
+	goto	u1811
+	goto	u1810
+u1811:
 	goto	l4690
-u1790:
+u1810:
 	line	1057
 	
 l4688:	
@@ -3127,11 +3127,11 @@ l4692:
 	movlw	(03h)
 	subwf	(main@ucTimerP3s),w
 	skipc
-	goto	u1801
-	goto	u1800
-u1801:
+	goto	u1821
+	goto	u1820
+u1821:
 	goto	l706
-u1800:
+u1820:
 	line	1064
 	
 l4694:	
@@ -3250,9 +3250,9 @@ GLOBAL	__end_of_main
 
 	signat	_main,88
 	global	_process_AD_Converter_Value
-psect	text714,local,class=CODE,delta=2
-global __ptext714
-__ptext714:
+psect	text726,local,class=CODE,delta=2
+global __ptext726
+__ptext726:
 
 ;; *************** function _process_AD_Converter_Value *****************
 ;; Defined at:
@@ -3288,7 +3288,7 @@ __ptext714:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text714
+psect	text726
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	249
 	global	__size_of_process_AD_Converter_Value
@@ -3304,11 +3304,11 @@ l4184:
 	fcall	_getAD_ConvertFlag
 	xorlw	0
 	skipnz
-	goto	u1261
-	goto	u1260
-u1261:
+	goto	u1281
+	goto	u1280
+u1281:
 	goto	l1686
-u1260:
+u1280:
 	line	252
 	
 l4186:	
@@ -3328,11 +3328,11 @@ l4190:
 	movf	(_sampleChannelSelect),w
 	xorlw	04h
 	skipz
-	goto	u1271
-	goto	u1270
-u1271:
+	goto	u1291
+	goto	u1290
+u1291:
 	goto	l4194
-u1270:
+u1290:
 	line	255
 	
 l4192:	
@@ -3348,11 +3348,11 @@ l4194:
 ;common.c: 256: else if(1 == sampleChannelSelect)
 	decf	(_sampleChannelSelect),w
 	skipz
-	goto	u1281
-	goto	u1280
-u1281:
+	goto	u1301
+	goto	u1300
+u1301:
 	goto	l4198
-u1280:
+u1300:
 	line	257
 	
 l4196:	
@@ -3394,9 +3394,9 @@ GLOBAL	__end_of_process_AD_Converter_Value
 
 	signat	_process_AD_Converter_Value,88
 	global	_clearPinPortAndTimer
-psect	text715,local,class=CODE,delta=2
-global __ptext715
-__ptext715:
+psect	text727,local,class=CODE,delta=2
+global __ptext727
+__ptext727:
 
 ;; *************** function _clearPinPortAndTimer *****************
 ;; Defined at:
@@ -3427,7 +3427,7 @@ __ptext715:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text715
+psect	text727
 	file	"C:\190604\AK7030-OTP\main.c"
 	line	92
 	global	__size_of_clearPinPortAndTimer
@@ -3479,9 +3479,9 @@ GLOBAL	__end_of_clearPinPortAndTimer
 
 	signat	_clearPinPortAndTimer,88
 	global	_AD_Sample
-psect	text716,local,class=CODE,delta=2
-global __ptext716
-__ptext716:
+psect	text728,local,class=CODE,delta=2
+global __ptext728
+__ptext728:
 
 ;; *************** function _AD_Sample *****************
 ;; Defined at:
@@ -3512,7 +3512,7 @@ __ptext716:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text716
+psect	text728
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	275
 	global	__size_of_AD_Sample
@@ -3528,11 +3528,11 @@ l4134:
 	movlw	(0Ch)
 	subwf	(_sampleTimes),w
 	skipnc
-	goto	u1181
-	goto	u1180
-u1181:
+	goto	u1191
+	goto	u1190
+u1191:
 	goto	l1702
-u1180:
+u1190:
 	line	279
 	
 l4136:	
@@ -3555,11 +3555,11 @@ l4138:
 ;common.c: 281: if(sampleTimes == 0)
 	movf	(_sampleTimes),f
 	skipz
-	goto	u1191
-	goto	u1190
-u1191:
+	goto	u1201
+	goto	u1200
+u1201:
 	goto	l4142
-u1190:
+u1200:
 	line	283
 	
 l4140:	
@@ -3595,18 +3595,18 @@ l4142:
 	bsf	status, 5	;RP0=1, select bank1
 	subwf	(_multiFilterMaxValue+1)^080h,w
 	skipz
-	goto	u1205
+	goto	u1215
 	bcf	status, 5	;RP0=0, select bank0
 	movf	0+(??_AD_Sample+0)+0,w
 	bsf	status, 5	;RP0=1, select bank1
 	subwf	(_multiFilterMaxValue)^080h,w
-u1205:
+u1215:
 	skipnc
-	goto	u1201
-	goto	u1200
-u1201:
+	goto	u1211
+	goto	u1210
+u1211:
 	goto	l1691
-u1200:
+u1210:
 	line	289
 	
 l4144:	
@@ -3644,18 +3644,18 @@ l1691:
 	bcf	status, 5	;RP0=0, select bank0
 	subwf	1+(??_AD_Sample+0)+0,w
 	skipz
-	goto	u1215
+	goto	u1225
 	bsf	status, 5	;RP0=1, select bank1
 	movf	(_multiFilterMinValue)^080h,w
 	bcf	status, 5	;RP0=0, select bank0
 	subwf	0+(??_AD_Sample+0)+0,w
-u1215:
+u1225:
 	skipnc
-	goto	u1211
-	goto	u1210
-u1211:
+	goto	u1221
+	goto	u1220
+u1221:
 	goto	l4148
-u1210:
+u1220:
 	line	293
 	
 l4146:	
@@ -3684,11 +3684,11 @@ l4150:
 	movlw	(0Ch)
 	subwf	(_sampleTimes),w
 	skipc
-	goto	u1221
-	goto	u1220
-u1221:
+	goto	u1231
+	goto	u1230
+u1231:
 	goto	l1702
-u1220:
+u1230:
 	line	302
 	
 l4152:	
@@ -3703,17 +3703,17 @@ l4154:
 	movf	(_sampleChannelSelect),w
 	xorlw	0Eh
 	skipz
-	goto	u1231
-	goto	u1230
-u1231:
+	goto	u1241
+	goto	u1240
+u1241:
 	goto	l4158
-u1230:
+u1240:
 	line	308
 	
 l4156:	
-;common.c: 308: sampleChannelSelect = 4;
-	movlw	(04h)
-	movwf	(_sampleChannelSelect)
+;common.c: 308: sampleChannelSelect = 1;
+	clrf	(_sampleChannelSelect)
+	incf	(_sampleChannelSelect),f
 	line	309
 ;common.c: 309: }
 	goto	l4168
@@ -3725,31 +3725,40 @@ l4158:
 	movf	(_sampleChannelSelect),w
 	xorlw	04h
 	skipz
-	goto	u1241
-	goto	u1240
-u1241:
+	goto	u1251
+	goto	u1250
+u1251:
 	goto	l4162
-u1240:
-	line	313
-	
-l4160:	
-;common.c: 313: sampleChannelSelect = 1;
-	clrf	(_sampleChannelSelect)
-	incf	(_sampleChannelSelect),f
-	line	314
-;common.c: 314: }
-	goto	l4168
+u1250:
+	goto	l4156
 	line	315
 	
 l4162:	
+;common.c: 316: {
+;common.c: 317: sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> 2;
+	decf	(_sampleChannelSelect),w
+	skipz
+	goto	u1261
+	goto	u1260
+u1261:
+	goto	l4166
+u1260:
 	line	318
 	
 l4164:	
-;common.c: 318: sampleChannelSelect = 14;
+;common.c: 318: sampleChannelSelect = 4;
+	movlw	(04h)
+	movwf	(_sampleChannelSelect)
+	line	319
+;common.c: 319: }
+	goto	l4168
+	line	323
+	
+l4166:	
+;common.c: 323: sampleChannelSelect = 14;
 	movlw	(0Eh)
 	movwf	(_sampleChannelSelect)
 	line	326
-;common.c: 319: }
 	
 l4168:	
 ;common.c: 324: }
@@ -3775,11 +3784,11 @@ l4178:
 	movlw	(0Ch)
 	subwf	(AD_Sample@index),w
 	skipc
-	goto	u1251
-	goto	u1250
-u1251:
+	goto	u1271
+	goto	u1270
+u1271:
 	goto	l4174
-u1250:
+u1270:
 	line	331
 	
 l1702:	
@@ -3791,9 +3800,9 @@ GLOBAL	__end_of_AD_Sample
 
 	signat	_AD_Sample,88
 	global	_getAdOriginaCh4Value
-psect	text717,local,class=CODE,delta=2
-global __ptext717
-__ptext717:
+psect	text729,local,class=CODE,delta=2
+global __ptext729
+__ptext729:
 
 ;; *************** function _getAdOriginaCh4Value *****************
 ;; Defined at:
@@ -3824,7 +3833,7 @@ __ptext717:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text717
+psect	text729
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	227
 	global	__size_of_getAdOriginaCh4Value
@@ -3857,9 +3866,9 @@ GLOBAL	__end_of_getAdOriginaCh4Value
 
 	signat	_getAdOriginaCh4Value,90
 	global	_getAdOriginalCh1Value
-psect	text718,local,class=CODE,delta=2
-global __ptext718
-__ptext718:
+psect	text730,local,class=CODE,delta=2
+global __ptext730
+__ptext730:
 
 ;; *************** function _getAdOriginalCh1Value *****************
 ;; Defined at:
@@ -3890,7 +3899,7 @@ __ptext718:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text718
+psect	text730
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	215
 	global	__size_of_getAdOriginalCh1Value
@@ -3923,9 +3932,9 @@ GLOBAL	__end_of_getAdOriginalCh1Value
 
 	signat	_getAdOriginalCh1Value,90
 	global	_getAdOriginalCh14Value
-psect	text719,local,class=CODE,delta=2
-global __ptext719
-__ptext719:
+psect	text731,local,class=CODE,delta=2
+global __ptext731
+__ptext731:
 
 ;; *************** function _getAdOriginalCh14Value *****************
 ;; Defined at:
@@ -3956,7 +3965,7 @@ __ptext719:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text719
+psect	text731
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	238
 	global	__size_of_getAdOriginalCh14Value
@@ -3989,9 +3998,9 @@ GLOBAL	__end_of_getAdOriginalCh14Value
 
 	signat	_getAdOriginalCh14Value,90
 	global	_clearAllTimer
-psect	text720,local,class=CODE,delta=2
-global __ptext720
-__ptext720:
+psect	text732,local,class=CODE,delta=2
+global __ptext732
+__ptext732:
 
 ;; *************** function _clearAllTimer *****************
 ;; Defined at:
@@ -4025,7 +4034,7 @@ __ptext720:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text720
+psect	text732
 	file	"C:\190604\AK7030-OTP\main.c"
 	line	83
 	global	__size_of_clearAllTimer
@@ -4056,9 +4065,9 @@ GLOBAL	__end_of_clearAllTimer
 
 	signat	_clearAllTimer,88
 	global	_setAdcSampleChannel
-psect	text721,local,class=CODE,delta=2
-global __ptext721
-__ptext721:
+psect	text733,local,class=CODE,delta=2
+global __ptext733
+__ptext733:
 
 ;; *************** function _setAdcSampleChannel *****************
 ;; Defined at:
@@ -4089,7 +4098,7 @@ __ptext721:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text721
+psect	text733
 	file	"C:\190604\AK7030-OTP\periph.c"
 	line	95
 	global	__size_of_setAdcSampleChannel
@@ -4122,9 +4131,9 @@ GLOBAL	__end_of_setAdcSampleChannel
 
 	signat	_setAdcSampleChannel,4216
 	global	_getAdOriginalValue
-psect	text722,local,class=CODE,delta=2
-global __ptext722
-__ptext722:
+psect	text734,local,class=CODE,delta=2
+global __ptext734
+__ptext734:
 
 ;; *************** function _getAdOriginalValue *****************
 ;; Defined at:
@@ -4155,7 +4164,7 @@ __ptext722:
 ;;		_AD_Sample
 ;; This function uses a non-reentrant model
 ;;
-psect	text722
+psect	text734
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	210
 	global	__size_of_getAdOriginalValue
@@ -4187,9 +4196,9 @@ GLOBAL	__end_of_getAdOriginalValue
 
 	signat	_getAdOriginalValue,90
 	global	_setAD_ConvertFlag
-psect	text723,local,class=CODE,delta=2
-global __ptext723
-__ptext723:
+psect	text735,local,class=CODE,delta=2
+global __ptext735
+__ptext735:
 
 ;; *************** function _setAD_ConvertFlag *****************
 ;; Defined at:
@@ -4220,7 +4229,7 @@ __ptext723:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text723
+psect	text735
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	204
 	global	__size_of_setAD_ConvertFlag
@@ -4248,9 +4257,9 @@ GLOBAL	__end_of_setAD_ConvertFlag
 
 	signat	_setAD_ConvertFlag,4216
 	global	_getAD_ConvertFlag
-psect	text724,local,class=CODE,delta=2
-global __ptext724
-__ptext724:
+psect	text736,local,class=CODE,delta=2
+global __ptext736
+__ptext736:
 
 ;; *************** function _getAD_ConvertFlag *****************
 ;; Defined at:
@@ -4281,7 +4290,7 @@ __ptext724:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text724
+psect	text736
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	198
 	global	__size_of_getAD_ConvertFlag
@@ -4306,9 +4315,9 @@ GLOBAL	__end_of_getAD_ConvertFlag
 
 	signat	_getAD_ConvertFlag,89
 	global	_Filter
-psect	text725,local,class=CODE,delta=2
-global __ptext725
-__ptext725:
+psect	text737,local,class=CODE,delta=2
+global __ptext737
+__ptext737:
 
 ;; *************** function _Filter *****************
 ;; Defined at:
@@ -4347,7 +4356,7 @@ __ptext725:
 ;;		_getAdOriginalCh14Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text725
+psect	text737
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	49
 	global	__size_of_Filter
@@ -4417,17 +4426,17 @@ l3974:
 	movlw	(high(0Ch))^80h
 	subwf	btemp+1,w
 	skipz
-	goto	u985
+	goto	u995
 	movlw	low(0Ch)
 	subwf	(Filter@cir),w
-u985:
+u995:
 
 	skipc
-	goto	u981
-	goto	u980
-u981:
+	goto	u991
+	goto	u990
+u991:
 	goto	l3968
-u980:
+u990:
 	line	61
 	
 l3976:	
@@ -4472,16 +4481,16 @@ l3984:
 	movf	1+(??_Filter+0)+0,w
 	subwf	1+(??_Filter+2)+0,w
 	skipz
-	goto	u995
+	goto	u1005
 	movf	0+(??_Filter+0)+0,w
 	subwf	0+(??_Filter+2)+0,w
-u995:
+u1005:
 	skipnc
-	goto	u991
-	goto	u990
-u991:
+	goto	u1001
+	goto	u1000
+u1001:
 	goto	l3988
-u990:
+u1000:
 	line	68
 	
 l3986:	
@@ -4546,17 +4555,17 @@ l3990:
 	xorlw	80h
 	sublw	080h
 	skipz
-	goto	u1005
+	goto	u1015
 	movf	0+(??_Filter+0)+0,w
 	subwf	(Filter@i),w
-u1005:
+u1015:
 
 	skipc
-	goto	u1001
-	goto	u1000
-u1001:
+	goto	u1011
+	goto	u1010
+u1011:
 	goto	l3984
-u1000:
+u1010:
 	line	61
 	
 l3992:	
@@ -4568,11 +4577,11 @@ l3994:
 	movlw	(0Bh)
 	subwf	(Filter@j),w
 	skipc
-	goto	u1011
-	goto	u1010
-u1011:
+	goto	u1021
+	goto	u1020
+u1021:
 	goto	l3982
-u1010:
+u1020:
 	line	77
 	
 l3996:	
@@ -4612,11 +4621,11 @@ l4004:
 	movlw	(0Ah)
 	subwf	(Filter@i),w
 	skipc
-	goto	u1021
-	goto	u1020
-u1021:
+	goto	u1031
+	goto	u1030
+u1031:
 	goto	l4000
-u1020:
+u1030:
 	line	82
 	
 l4006:	
@@ -4648,9 +4657,9 @@ GLOBAL	__end_of_Filter
 
 	signat	_Filter,4218
 	global	_isFinishedThreeHoursTimer
-psect	text726,local,class=CODE,delta=2
-global __ptext726
-__ptext726:
+psect	text738,local,class=CODE,delta=2
+global __ptext738
+__ptext738:
 
 ;; *************** function _isFinishedThreeHoursTimer *****************
 ;; Defined at:
@@ -4681,7 +4690,7 @@ __ptext726:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text726
+psect	text738
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	414
 	global	__size_of_isFinishedThreeHoursTimer
@@ -4697,11 +4706,11 @@ l3950:
 	movf	((_uiSmallTimer+1)),w
 	iorwf	((_uiSmallTimer)),w
 	skipz
-	goto	u971
-	goto	u970
-u971:
+	goto	u981
+	goto	u980
+u981:
 	goto	l3958
-u970:
+u980:
 	line	416
 	
 l3952:	
@@ -4725,9 +4734,9 @@ GLOBAL	__end_of_isFinishedThreeHoursTimer
 
 	signat	_isFinishedThreeHoursTimer,89
 	global	_startThreeHoursTimer
-psect	text727,local,class=CODE,delta=2
-global __ptext727
-__ptext727:
+psect	text739,local,class=CODE,delta=2
+global __ptext739
+__ptext739:
 
 ;; *************** function _startThreeHoursTimer *****************
 ;; Defined at:
@@ -4758,7 +4767,7 @@ __ptext727:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text727
+psect	text739
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	380
 	global	__size_of_startThreeHoursTimer
@@ -4774,11 +4783,11 @@ l3946:
 	movf	((_uiSmallTimer+1)),w
 	iorwf	((_uiSmallTimer)),w
 	skipz
-	goto	u961
-	goto	u960
-u961:
+	goto	u971
+	goto	u970
+u971:
 	goto	l1728
-u960:
+u970:
 	line	382
 	
 l3948:	
@@ -4798,9 +4807,9 @@ GLOBAL	__end_of_startThreeHoursTimer
 
 	signat	_startThreeHoursTimer,4216
 	global	_isFinishedTwentySecondsTimer
-psect	text728,local,class=CODE,delta=2
-global __ptext728
-__ptext728:
+psect	text740,local,class=CODE,delta=2
+global __ptext740
+__ptext740:
 
 ;; *************** function _isFinishedTwentySecondsTimer *****************
 ;; Defined at:
@@ -4831,7 +4840,7 @@ __ptext728:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text728
+psect	text740
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	397
 	global	__size_of_isFinishedTwentySecondsTimer
@@ -4847,11 +4856,11 @@ l3934:
 	movf	((_uiTwentySecondsTimer+1)),w
 	iorwf	((_uiTwentySecondsTimer)),w
 	skipz
-	goto	u951
-	goto	u950
-u951:
+	goto	u961
+	goto	u960
+u961:
 	goto	l3942
-u950:
+u960:
 	line	399
 	
 l3936:	
@@ -4875,9 +4884,9 @@ GLOBAL	__end_of_isFinishedTwentySecondsTimer
 
 	signat	_isFinishedTwentySecondsTimer,89
 	global	_startTwentySecondsTimer
-psect	text729,local,class=CODE,delta=2
-global __ptext729
-__ptext729:
+psect	text741,local,class=CODE,delta=2
+global __ptext741
+__ptext741:
 
 ;; *************** function _startTwentySecondsTimer *****************
 ;; Defined at:
@@ -4908,7 +4917,7 @@ __ptext729:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text729
+psect	text741
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	391
 	global	__size_of_startTwentySecondsTimer
@@ -4935,9 +4944,9 @@ GLOBAL	__end_of_startTwentySecondsTimer
 
 	signat	_startTwentySecondsTimer,88
 	global	_isFinishedTwelveHoursTimer
-psect	text730,local,class=CODE,delta=2
-global __ptext730
-__ptext730:
+psect	text742,local,class=CODE,delta=2
+global __ptext742
+__ptext742:
 
 ;; *************** function _isFinishedTwelveHoursTimer *****************
 ;; Defined at:
@@ -4968,7 +4977,7 @@ __ptext730:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text730
+psect	text742
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	406
 	global	__size_of_isFinishedTwelveHoursTimer
@@ -4984,11 +4993,11 @@ l3920:
 	movf	((_uiBigTimer+1)),w
 	iorwf	((_uiBigTimer)),w
 	skipz
-	goto	u941
-	goto	u940
-u941:
+	goto	u951
+	goto	u950
+u951:
 	goto	l3928
-u940:
+u950:
 	line	408
 	
 l3922:	
@@ -5012,9 +5021,9 @@ GLOBAL	__end_of_isFinishedTwelveHoursTimer
 
 	signat	_isFinishedTwelveHoursTimer,89
 	global	_startTwelveHourTimer
-psect	text731,local,class=CODE,delta=2
-global __ptext731
-__ptext731:
+psect	text743,local,class=CODE,delta=2
+global __ptext743
+__ptext743:
 
 ;; *************** function _startTwelveHourTimer *****************
 ;; Defined at:
@@ -5045,7 +5054,7 @@ __ptext731:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text731
+psect	text743
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	352
 	global	__size_of_startTwelveHourTimer
@@ -5061,11 +5070,11 @@ l3916:
 	movf	((_uiBigTimer+1)),w
 	iorwf	((_uiBigTimer)),w
 	skipz
-	goto	u931
-	goto	u930
-u931:
+	goto	u941
+	goto	u940
+u941:
 	goto	l1715
-u930:
+u940:
 	line	354
 	
 l3918:	
@@ -5085,9 +5094,9 @@ GLOBAL	__end_of_startTwelveHourTimer
 
 	signat	_startTwelveHourTimer,4216
 	global	_clrSampeTime
-psect	text732,local,class=CODE,delta=2
-global __ptext732
-__ptext732:
+psect	text744,local,class=CODE,delta=2
+global __ptext744
+__ptext744:
 
 ;; *************** function _clrSampeTime *****************
 ;; Defined at:
@@ -5118,7 +5127,7 @@ __ptext732:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text732
+psect	text744
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	432
 	global	__size_of_clrSampeTime
@@ -5143,9 +5152,9 @@ GLOBAL	__end_of_clrSampeTime
 
 	signat	_clrSampeTime,88
 	global	_isPermitSampleTime
-psect	text733,local,class=CODE,delta=2
-global __ptext733
-__ptext733:
+psect	text745,local,class=CODE,delta=2
+global __ptext745
+__ptext745:
 
 ;; *************** function _isPermitSampleTime *****************
 ;; Defined at:
@@ -5176,7 +5185,7 @@ __ptext733:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text733
+psect	text745
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	422
 	global	__size_of_isPermitSampleTime
@@ -5194,11 +5203,11 @@ l3902:
 	bcf	status, 6	;RP1=0, select bank0
 	subwf	(_timer),w
 	skipc
-	goto	u921
-	goto	u920
-u921:
+	goto	u931
+	goto	u930
+u931:
 	goto	l3910
-u920:
+u930:
 	line	425
 	
 l3904:	
@@ -5223,9 +5232,9 @@ GLOBAL	__end_of_isPermitSampleTime
 
 	signat	_isPermitSampleTime,89
 	global	_adc_start
-psect	text734,local,class=CODE,delta=2
-global __ptext734
-__ptext734:
+psect	text746,local,class=CODE,delta=2
+global __ptext746
+__ptext746:
 
 ;; *************** function _adc_start *****************
 ;; Defined at:
@@ -5257,7 +5266,7 @@ __ptext734:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text734
+psect	text746
 	file	"C:\190604\AK7030-OTP\periph.c"
 	line	100
 	global	__size_of_adc_start
@@ -5283,9 +5292,9 @@ GLOBAL	__end_of_adc_start
 
 	signat	_adc_start,88
 	global	_op2_init
-psect	text735,local,class=CODE,delta=2
-global __ptext735
-__ptext735:
+psect	text747,local,class=CODE,delta=2
+global __ptext747
+__ptext747:
 
 ;; *************** function _op2_init *****************
 ;; Defined at:
@@ -5316,7 +5325,7 @@ __ptext735:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text735
+psect	text747
 	file	"C:\190604\AK7030-OTP\periph.c"
 	line	45
 	global	__size_of_op2_init
@@ -5360,9 +5369,9 @@ GLOBAL	__end_of_op2_init
 
 	signat	_op2_init,88
 	global	_op1_init
-psect	text736,local,class=CODE,delta=2
-global __ptext736
-__ptext736:
+psect	text748,local,class=CODE,delta=2
+global __ptext748
+__ptext748:
 
 ;; *************** function _op1_init *****************
 ;; Defined at:
@@ -5393,7 +5402,7 @@ __ptext736:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text736
+psect	text748
 	file	"C:\190604\AK7030-OTP\periph.c"
 	line	26
 	global	__size_of_op1_init
@@ -5439,9 +5448,9 @@ GLOBAL	__end_of_op1_init
 
 	signat	_op1_init,88
 	global	_dac_init
-psect	text737,local,class=CODE,delta=2
-global __ptext737
-__ptext737:
+psect	text749,local,class=CODE,delta=2
+global __ptext749
+__ptext749:
 
 ;; *************** function _dac_init *****************
 ;; Defined at:
@@ -5472,7 +5481,7 @@ __ptext737:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text737
+psect	text749
 	file	"C:\190604\AK7030-OTP\periph.c"
 	line	14
 	global	__size_of_dac_init
@@ -5508,9 +5517,9 @@ GLOBAL	__end_of_dac_init
 
 	signat	_dac_init,88
 	global	_adc_test_init
-psect	text738,local,class=CODE,delta=2
-global __ptext738
-__ptext738:
+psect	text750,local,class=CODE,delta=2
+global __ptext750
+__ptext750:
 
 ;; *************** function _adc_test_init *****************
 ;; Defined at:
@@ -5543,7 +5552,7 @@ __ptext738:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text738
+psect	text750
 	file	"C:\190604\AK7030-OTP\periph.c"
 	line	85
 	global	__size_of_adc_test_init
@@ -5605,9 +5614,9 @@ GLOBAL	__end_of_adc_test_init
 
 	signat	_adc_test_init,8312
 	global	_timer1_interrupt_config
-psect	text739,local,class=CODE,delta=2
-global __ptext739
-__ptext739:
+psect	text751,local,class=CODE,delta=2
+global __ptext751
+__ptext751:
 
 ;; *************** function _timer1_interrupt_config *****************
 ;; Defined at:
@@ -5638,7 +5647,7 @@ __ptext739:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text739
+psect	text751
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	190
 	global	__size_of_timer1_interrupt_config
@@ -5666,9 +5675,9 @@ GLOBAL	__end_of_timer1_interrupt_config
 
 	signat	_timer1_interrupt_config,88
 	global	_timer1_config
-psect	text740,local,class=CODE,delta=2
-global __ptext740
-__ptext740:
+psect	text752,local,class=CODE,delta=2
+global __ptext752
+__ptext752:
 
 ;; *************** function _timer1_config *****************
 ;; Defined at:
@@ -5699,7 +5708,7 @@ __ptext740:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text740
+psect	text752
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	178
 	global	__size_of_timer1_config
@@ -5740,9 +5749,9 @@ GLOBAL	__end_of_timer1_config
 
 	signat	_timer1_config,88
 	global	_clock_config
-psect	text741,local,class=CODE,delta=2
-global __ptext741
-__ptext741:
+psect	text753,local,class=CODE,delta=2
+global __ptext753
+__ptext753:
 
 ;; *************** function _clock_config *****************
 ;; Defined at:
@@ -5773,7 +5782,7 @@ __ptext741:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text741
+psect	text753
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	170
 	global	__size_of_clock_config
@@ -5800,11 +5809,11 @@ l3864:
 	
 l1651:	
 	btfsc	(2119/8)^0100h,(2119)&7
-	goto	u911
-	goto	u910
-u911:
+	goto	u921
+	goto	u920
+u921:
 	goto	l1651
-u910:
+u920:
 	line	175
 	
 l1654:	
@@ -5816,9 +5825,9 @@ GLOBAL	__end_of_clock_config
 
 	signat	_clock_config,88
 	global	_initPin
-psect	text742,local,class=CODE,delta=2
-global __ptext742
-__ptext742:
+psect	text754,local,class=CODE,delta=2
+global __ptext754
+__ptext754:
 
 ;; *************** function _initPin *****************
 ;; Defined at:
@@ -5849,7 +5858,7 @@ __ptext742:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text742
+psect	text754
 	file	"C:\190604\AK7030-OTP\main.c"
 	line	105
 	global	__size_of_initPin
@@ -5911,9 +5920,9 @@ GLOBAL	__end_of_initPin
 
 	signat	_initPin,88
 	global	_clearTwentySecondsTimer
-psect	text743,local,class=CODE,delta=2
-global __ptext743
-__ptext743:
+psect	text755,local,class=CODE,delta=2
+global __ptext755
+__ptext755:
 
 ;; *************** function _clearTwentySecondsTimer *****************
 ;; Defined at:
@@ -5944,7 +5953,7 @@ __ptext743:
 ;;		_clearAllTimer
 ;; This function uses a non-reentrant model
 ;;
-psect	text743
+psect	text755
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	374
 	global	__size_of_clearTwentySecondsTimer
@@ -5970,9 +5979,9 @@ GLOBAL	__end_of_clearTwentySecondsTimer
 
 	signat	_clearTwentySecondsTimer,88
 	global	_clearThreeHoursTimer
-psect	text744,local,class=CODE,delta=2
-global __ptext744
-__ptext744:
+psect	text756,local,class=CODE,delta=2
+global __ptext756
+__ptext756:
 
 ;; *************** function _clearThreeHoursTimer *****************
 ;; Defined at:
@@ -6004,7 +6013,7 @@ __ptext744:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text744
+psect	text756
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	369
 	global	__size_of_clearThreeHoursTimer
@@ -6030,9 +6039,9 @@ GLOBAL	__end_of_clearThreeHoursTimer
 
 	signat	_clearThreeHoursTimer,88
 	global	_clearTwelveHoursTimer
-psect	text745,local,class=CODE,delta=2
-global __ptext745
-__ptext745:
+psect	text757,local,class=CODE,delta=2
+global __ptext757
+__ptext757:
 
 ;; *************** function _clearTwelveHoursTimer *****************
 ;; Defined at:
@@ -6063,7 +6072,7 @@ __ptext745:
 ;;		_clearAllTimer
 ;; This function uses a non-reentrant model
 ;;
-psect	text745
+psect	text757
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	363
 	global	__size_of_clearTwelveHoursTimer
@@ -6089,9 +6098,9 @@ GLOBAL	__end_of_clearTwelveHoursTimer
 
 	signat	_clearTwelveHoursTimer,88
 	global	_ISR
-psect	text746,local,class=CODE,delta=2
-global __ptext746
-__ptext746:
+psect	text758,local,class=CODE,delta=2
+global __ptext758
+__ptext758:
 
 ;; *************** function _ISR *****************
 ;; Defined at:
@@ -6124,7 +6133,7 @@ __ptext746:
 ;;		Interrupt level 1
 ;; This function uses a non-reentrant model
 ;;
-psect	text746
+psect	text758
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	437
 	global	__size_of_ISR
@@ -6152,18 +6161,18 @@ interrupt_function:
 	movf	btemp+1,w
 	movwf	(??_ISR+3)
 	ljmp	_ISR
-psect	text746
+psect	text758
 	line	440
 	
 i1l4072:	
 ;common.c: 438: static unsigned char ucTimer1sCnt = 0;
 ;common.c: 440: if(TMR1IF == 1)
 	btfss	(96/8),(96)&7
-	goto	u110_21
-	goto	u110_20
-u110_21:
+	goto	u111_21
+	goto	u111_20
+u111_21:
 	goto	i1l4090
-u110_20:
+u111_20:
 	line	442
 	
 i1l4074:	
@@ -6185,11 +6194,11 @@ i1l4078:
 	movlw	(064h)
 	subwf	(ISR@ucTimer1sCnt),w
 	skipc
-	goto	u111_21
-	goto	u111_20
-u111_21:
+	goto	u112_21
+	goto	u112_20
+u112_21:
 	goto	i1l4090
-u111_20:
+u112_20:
 	line	448
 	
 i1l4080:	
@@ -6203,11 +6212,11 @@ i1l4082:
 	movf	(_uiBigTimer+1),w
 	iorwf	(_uiBigTimer),w
 	skipnz
-	goto	u112_21
-	goto	u112_20
-u112_21:
+	goto	u113_21
+	goto	u113_20
+u113_21:
 	goto	i1l1761
-u112_20:
+u113_20:
 	line	450
 	
 i1l4084:	
@@ -6225,11 +6234,11 @@ i1l1761:
 	movf	(_uiSmallTimer+1),w
 	iorwf	(_uiSmallTimer),w
 	skipnz
-	goto	u113_21
-	goto	u113_20
-u113_21:
+	goto	u114_21
+	goto	u114_20
+u114_21:
 	goto	i1l1762
-u113_20:
+u114_20:
 	line	453
 	
 i1l4086:	
@@ -6247,11 +6256,11 @@ i1l1762:
 	movf	(_uiTwentySecondsTimer+1),w
 	iorwf	(_uiTwentySecondsTimer),w
 	skipnz
-	goto	u114_21
-	goto	u114_20
-u114_21:
+	goto	u115_21
+	goto	u115_20
+u115_21:
 	goto	i1l4090
-u114_20:
+u115_20:
 	line	456
 	
 i1l4088:	
@@ -6269,11 +6278,11 @@ i1l4090:
 ;common.c: 458: }
 ;common.c: 460: if(ADIF)
 	btfss	(106/8),(106)&7
-	goto	u115_21
-	goto	u115_20
-u115_21:
+	goto	u116_21
+	goto	u116_20
+u116_21:
 	goto	i1l1769
-u115_20:
+u116_20:
 	line	462
 	
 i1l4092:	
@@ -6303,11 +6312,11 @@ i1l4098:
 	movf	(_sampleChannelSelect),w
 	xorlw	04h
 	skipz
-	goto	u116_21
-	goto	u116_20
-u116_21:
+	goto	u117_21
+	goto	u117_20
+u117_21:
 	goto	i1l4104
-u116_20:
+u117_20:
 	line	467
 	
 i1l4100:	
@@ -6335,11 +6344,11 @@ i1l4104:
 ;common.c: 471: else if(sampleChannelSelect == 1)
 	decf	(_sampleChannelSelect),w
 	skipz
-	goto	u117_21
-	goto	u117_20
-u117_21:
+	goto	u118_21
+	goto	u118_20
+u118_21:
 	goto	i1l4110
-u117_20:
+u118_20:
 	line	473
 	
 i1l4106:	
@@ -6403,9 +6412,9 @@ GLOBAL	__end_of_ISR
 
 	signat	_ISR,88
 	global	i1_setAD_ConvertFlag
-psect	text747,local,class=CODE,delta=2
-global __ptext747
-__ptext747:
+psect	text759,local,class=CODE,delta=2
+global __ptext759
+__ptext759:
 
 ;; *************** function i1_setAD_ConvertFlag *****************
 ;; Defined at:
@@ -6435,7 +6444,7 @@ __ptext747:
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text747
+psect	text759
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	204
 	global	__size_ofi1_setAD_ConvertFlag
@@ -6463,9 +6472,9 @@ GLOBAL	__end_ofi1_setAD_ConvertFlag
 
 	signat	i1_setAD_ConvertFlag,88
 	global	_adc_get
-psect	text748,local,class=CODE,delta=2
-global __ptext748
-__ptext748:
+psect	text760,local,class=CODE,delta=2
+global __ptext760
+__ptext760:
 
 ;; *************** function _adc_get *****************
 ;; Defined at:
@@ -6495,7 +6504,7 @@ __ptext748:
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text748
+psect	text760
 	file	"C:\190604\AK7030-OTP\periph.c"
 	line	105
 	global	__size_of_adc_get
@@ -6533,9 +6542,9 @@ GLOBAL	__end_of_adc_get
 
 	signat	_adc_get,90
 	global	_vPutSampleDataIntoTable
-psect	text749,local,class=CODE,delta=2
-global __ptext749
-__ptext749:
+psect	text761,local,class=CODE,delta=2
+global __ptext761
+__ptext761:
 
 ;; *************** function _vPutSampleDataIntoTable *****************
 ;; Defined at:
@@ -6566,7 +6575,7 @@ __ptext749:
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text749
+psect	text761
 	file	"C:\190604\AK7030-OTP\common.c"
 	line	95
 	global	__size_of_vPutSampleDataIntoTable
@@ -6584,11 +6593,11 @@ i1l4012:
 ;common.c: 103: if(channel == 1)
 	decf	(vPutSampleDataIntoTable@channel),w
 	skipz
-	goto	u103_21
-	goto	u103_20
-u103_21:
+	goto	u104_21
+	goto	u104_20
+u104_21:
 	goto	i1l4024
-u103_20:
+u104_20:
 	line	105
 	
 i1l4014:	
@@ -6597,11 +6606,11 @@ i1l4014:
 	movlw	(0Ch)
 	subwf	(vPutSampleDataIntoTable@ucChannelFirstLength),w
 	skipnc
-	goto	u104_21
-	goto	u104_20
-u104_21:
+	goto	u105_21
+	goto	u105_20
+u105_21:
 	goto	i1l4020
-u104_20:
+u105_20:
 	line	107
 	
 i1l4016:	
@@ -6654,11 +6663,11 @@ i1l4024:
 	movf	(vPutSampleDataIntoTable@channel),w
 	xorlw	04h
 	skipz
-	goto	u105_21
-	goto	u105_20
-u105_21:
+	goto	u106_21
+	goto	u106_20
+u106_21:
 	goto	i1l4036
-u105_20:
+u106_20:
 	line	120
 	
 i1l4026:	
@@ -6668,11 +6677,11 @@ i1l4026:
 	bcf	status, 5	;RP0=0, select bank0
 	subwf	(vPutSampleDataIntoTable@ucChannelFourthLength),w
 	skipnc
-	goto	u106_21
-	goto	u106_20
-u106_21:
+	goto	u107_21
+	goto	u107_20
+u107_21:
 	goto	i1l4032
-u106_20:
+u107_20:
 	line	122
 	
 i1l4028:	
@@ -6725,11 +6734,11 @@ i1l4036:
 	movf	(vPutSampleDataIntoTable@channel),w
 	xorlw	0Eh
 	skipz
-	goto	u107_21
-	goto	u107_20
-u107_21:
+	goto	u108_21
+	goto	u108_20
+u108_21:
 	goto	i1l4048
-u107_20:
+u108_20:
 	line	135
 	
 i1l4038:	
@@ -6739,11 +6748,11 @@ i1l4038:
 	bcf	status, 5	;RP0=0, select bank0
 	subwf	(vPutSampleDataIntoTable@ucChannelFourteenthLength),w
 	skipnc
-	goto	u108_21
-	goto	u108_20
-u108_21:
+	goto	u109_21
+	goto	u109_20
+u109_21:
 	goto	i1l4044
-u108_20:
+u109_20:
 	line	137
 	
 i1l4040:	
@@ -6852,17 +6861,17 @@ i1l4058:
 	movlw	(high(0Ch))^80h
 	subwf	btemp+1,w
 	skipz
-	goto	u109_25
+	goto	u110_25
 	movlw	low(0Ch)
 	subwf	(vPutSampleDataIntoTable@i),w
-u109_25:
+u110_25:
 
 	skipc
-	goto	u109_21
-	goto	u109_20
-u109_21:
+	goto	u110_21
+	goto	u110_20
+u110_21:
 	goto	i1l4054
-u109_20:
+u110_20:
 	line	166
 	
 i1l1648:	
@@ -6873,9 +6882,9 @@ GLOBAL	__end_of_vPutSampleDataIntoTable
 ;; =============== function _vPutSampleDataIntoTable ends ============
 
 	signat	_vPutSampleDataIntoTable,8312
-psect	text750,local,class=CODE,delta=2
-global __ptext750
-__ptext750:
+psect	text762,local,class=CODE,delta=2
+global __ptext762
+__ptext762:
 	global	btemp
 	btemp set 07Eh
 

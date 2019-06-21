@@ -305,7 +305,7 @@ static void AD_Sample(void)
 			{
 				  //filter max and min value,then calculate average value
 				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_4_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_1_CHANNEL;
 			}
 			else if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
 			{
@@ -315,7 +315,7 @@ static void AD_Sample(void)
 			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
 			{
 				sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_4_CHANNEL;
 			}
 			else
 			{
