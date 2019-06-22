@@ -212,10 +212,11 @@ void main (void)
     {	
        CLRWDT();//feed watch dog
 
+       process_AD_Converter_Value();
+
        if(isPermitSampleTime())   // this function is called every 100ms
 		{
     	   clrSampeTime();
-    	   process_AD_Converter_Value();
 		   
 		   switch(enumMainLoopStep)
 		   {
@@ -229,7 +230,7 @@ void main (void)
 					else
 						ucTimerZeroPoint5s = 0;
 					
-					if(ucTimerZeroPoint5s >= 5) //5*100ms = 0.5s
+					if(ucTimerZeroPoint5s >= 1) //5*100ms = 0.5s
 					{
 						ucTimerZeroPoint5s = 0;
 						enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
@@ -241,7 +242,7 @@ void main (void)
 				{
 					static unsigned char ucTimerZeroPoint3s = 0;
 
-					if(ucTimerZeroPoint3s < 3)
+					if(ucTimerZeroPoint3s < 1)
 					{
 						ucTimerZeroPoint3s++;
 					}
@@ -264,9 +265,18 @@ void main (void)
 
 				case MAIN_LOOP_STEP_SECOND:
 				{	
-					
+					static unsigned char ucTimerP5s = 0;
+
 			   		PA6 = 1;
-			   		enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+
+					if(ucTimerP5s < 5)
+						ucTimerP5s++;
+					else
+					{
+						ucTimerP5s = 0;
+
+			   			enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+					}
 					
 			   		break;
 				}

@@ -803,7 +803,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 23 "D:\develop\ATK\AK7030-OTP\common.h"
+# 26 "D:\develop\ATK\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -813,15 +813,11 @@ void adConverter_config();
 void setAdcSampleChannel(unsigned char ucChannel);
 
 
-unsigned int getAdOriginalValue();
+
 
 void process_AD_Converter_Value();
 
-unsigned int getAdCh4Value();
-
-unsigned int getAdCh14Value();
-
-
+# 44
 unsigned int getAdOriginalCh1Value();
 unsigned int getAdOriginaCh4Value();
 
@@ -1002,10 +998,11 @@ while(1)
 {
 asm(" clrwdt");
 
+process_AD_Converter_Value();
+
 if(isPermitSampleTime())
 {
 clrSampeTime();
-process_AD_Converter_Value();
 
 switch(enumMainLoopStep)
 {
@@ -1019,7 +1016,7 @@ ucTimerZeroPoint5s++;
 else
 ucTimerZeroPoint5s = 0;
 
-if(ucTimerZeroPoint5s >= 5)
+if(ucTimerZeroPoint5s >= 1)
 {
 ucTimerZeroPoint5s = 0;
 enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
@@ -1031,7 +1028,7 @@ case MAIN_LOOP_STEP_FIRST:
 {
 static unsigned char ucTimerZeroPoint3s = 0;
 
-if(ucTimerZeroPoint3s < 3)
+if(ucTimerZeroPoint3s < 1)
 {
 ucTimerZeroPoint3s++;
 }
@@ -1054,9 +1051,18 @@ break;
 
 case MAIN_LOOP_STEP_SECOND:
 {
+static unsigned char ucTimerP5s = 0;
 
 PA6 = 1;
+
+if(ucTimerP5s < 5)
+ucTimerP5s++;
+else
+{
+ucTimerP5s = 0;
+
 enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+}
 
 break;
 }
@@ -1619,7 +1625,7 @@ PBOD6 =0;
 PB6 = 1;
 PA6 = 0;
 
-# 837
+# 847
 if((getAdOriginalCh14Value() > 2800))
 DACR0=0x0F;
 else
