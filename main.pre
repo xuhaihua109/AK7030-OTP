@@ -1116,7 +1116,7 @@ break;
 case MAIN_LOOP_STEP_FOURTH:
 {
 
-startTwelveHourTimer(180);
+startTwelveHourTimer(600);
 enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 
 break;

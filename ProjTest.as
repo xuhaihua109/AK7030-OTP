@@ -1409,10 +1409,11 @@ l4184:
 	
 l4186:	
 ;main.c: 331: {
-;main.c: 333: startTwelveHourTimer(180);
-	movlw	0B4h
+;main.c: 333: startTwelveHourTimer(600);
+	movlw	low(0258h)
 	movwf	(?_startTwelveHourTimer)
-	clrf	(?_startTwelveHourTimer+1)
+	movlw	high(0258h)
+	movwf	((?_startTwelveHourTimer))+1
 	fcall	_startTwelveHourTimer
 	line	334
 	

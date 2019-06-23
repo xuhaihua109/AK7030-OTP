@@ -1894,9 +1894,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 331: {
 "331
 {
-[; ;main.c: 333: startTwelveHourTimer(180);
+[; ;main.c: 333: startTwelveHourTimer(600);
 "333
-[e ( _startTwelveHourTimer (1 -> -> 180 `i `ui ]
+[e ( _startTwelveHourTimer (1 -> -> 600 `i `ui ]
 [; ;main.c: 334: enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 "334
 [e = F857 . `E846 5 ]

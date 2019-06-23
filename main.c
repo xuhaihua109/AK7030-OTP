@@ -121,7 +121,7 @@ static void initPin(void)
 }
 
 
-#define   BIG_TIME_SECONDS   180
+#define   BIG_TIME_SECONDS   600
 #define   SMALL_TIME_SECONDS  60
 
 
@@ -285,7 +285,7 @@ void main (void)
 				{
 					static unsigned char ucTimerADC1ZeroP5s = 0;
 
-					if(getAdOriginalCh1Value() < 130)
+					if(0)//(getAdOriginalCh1Value() < 130)
 					{
 						ucTimerADC1ZeroP5s = 0;
 
@@ -304,7 +304,7 @@ void main (void)
 					{
 						static unsigned char ucTimerRightP5s = 0;
 
-						if(getAdOriginalCh1Value() < 117)//????// wait to be determined.
+						if(1)//(getAdOriginalCh1Value() < 117)//????// wait to be determined.
 						{
 							ucTimerRightP5s++;
 						}
@@ -846,22 +846,22 @@ void main (void)
 //									PA2 = 0;
 //									PA3 = 0;
 
-								if(ucTimerDelayP5s < 5)
-								{
-									ucTimerDelayP5s++;
-								}
-								else
-								{
-
-									ucTimerDelayP5s = 0;
-
-									if((getAdOriginalCh14Value() > 2800))
-										DACR0=0x0F;//set OP1 input 0.3v
+									if(ucTimerDelayP5s < 5)
+									{
+										ucTimerDelayP5s++;
+									}
 									else
-										DACR0=0x07;//set op1 input 0.14
+									{
 
-									ucADC4_Step = ADC4_STEP_FOURTH;
-								}
+										ucTimerDelayP5s = 0;
+
+										if((getAdOriginalCh14Value() > 2800))
+											DACR0=0x0F;//set OP1 input 0.3v
+										else
+											DACR0=0x07;//set op1 input 0.14
+
+										ucADC4_Step = ADC4_STEP_FOURTH;
+									}
 								}
 								else
 									ucADC4_Step = ADC4_STEP_FIRST;
