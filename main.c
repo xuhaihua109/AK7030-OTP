@@ -833,6 +833,8 @@ void main (void)
 
 							case ADC4_STEP_THIRD:
 							{
+								static unsigned char ucTimerDelayP5s = 0;
+
 								if(isFinishedTwentySecondsTimer())
 								{
 									PBOD6 =0;
@@ -844,12 +846,22 @@ void main (void)
 //									PA2 = 0;
 //									PA3 = 0;
 
+								if(ucTimerDelayP5s < 5)
+								{
+									ucTimerDelayP5s++;
+								}
+								else
+								{
+
+									ucTimerDelayP5s = 0;
+
 									if((getAdOriginalCh14Value() > 2800))
 										DACR0=0x0F;//set OP1 input 0.3v
 									else
 										DACR0=0x07;//set op1 input 0.14
 
 									ucADC4_Step = ADC4_STEP_FOURTH;
+								}
 								}
 								else
 									ucADC4_Step = ADC4_STEP_FIRST;

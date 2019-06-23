@@ -1619,19 +1619,31 @@ break;
 
 case ADC4_STEP_THIRD:
 {
+static unsigned char ucTimerDelayP5s = 0;
+
 if(isFinishedTwentySecondsTimer())
 {
 PBOD6 =0;
 PB6 = 1;
 PA6 = 0;
 
-# 847
+# 849
+if(ucTimerDelayP5s < 5)
+{
+ucTimerDelayP5s++;
+}
+else
+{
+
+ucTimerDelayP5s = 0;
+
 if((getAdOriginalCh14Value() > 2800))
 DACR0=0x0F;
 else
 DACR0=0x07;
 
 ucADC4_Step = ADC4_STEP_FOURTH;
+}
 }
 else
 ucADC4_Step = ADC4_STEP_FIRST;

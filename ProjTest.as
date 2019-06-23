@@ -105,12 +105,11 @@ __pidataBANK0:
 	retlw	0Eh
 	global	_uiBigTimer
 	global	_uiSmallTimer
-	global	_uiTwentySecondsTimer
 	global	ISR@ucTimer1sCnt
 	global	_adc_convert_flag
 	global	_sampleTimes
 	global	_timer
-	global	main@cTimer1s_810
+	global	main@cTimer1s_811
 	global	main@enumBranchStep
 	global	main@enumInteralStep
 	global	main@enumMainLoopStep
@@ -129,6 +128,7 @@ __pidataBANK0:
 	global	main@ucTimerDelay2
 	global	main@ucTimerDelay3
 	global	main@ucTimerDelay4
+	global	main@ucTimerDelayP5s
 	global	main@ucTimerP3s
 	global	main@ucTimerP5s
 	global	main@ucTimerRightP5s
@@ -139,6 +139,7 @@ __pidataBANK0:
 	global	vPutSampleDataIntoTable@ucChannelFourteenthLength
 	global	vPutSampleDataIntoTable@ucChannelFourthLength
 	global	vPutSampleDataIntoTable@ucChannelFirstLength
+	global	_uiTwentySecondsTimer
 	global	_uiSampleChannelFirst
 	global	_uiSampleChannelFourteenth
 	global	_uiSampleChannelFourth
@@ -263,9 +264,6 @@ _uiBigTimer:
 _uiSmallTimer:
        ds      2
 
-_uiTwentySecondsTimer:
-       ds      2
-
 ISR@ucTimer1sCnt:
        ds      1
 
@@ -278,7 +276,7 @@ _sampleTimes:
 _timer:
        ds      1
 
-main@cTimer1s_810:
+main@cTimer1s_811:
        ds      1
 
 main@enumBranchStep:
@@ -335,6 +333,9 @@ main@ucTimerDelay3:
 main@ucTimerDelay4:
        ds      1
 
+main@ucTimerDelayP5s:
+       ds      1
+
 main@ucTimerP3s:
        ds      1
 
@@ -372,6 +373,9 @@ _sampleChannelSelect:
 psect	bssBANK1,class=BANK1,space=1
 global __pbssBANK1
 __pbssBANK1:
+_uiTwentySecondsTimer:
+       ds      2
+
 _uiSampleChannelFirst:
        ds      24
 
@@ -404,13 +408,13 @@ psect cinit,class=CODE,delta=2
 	bcf	status, 7	;select IRP bank0
 	movlw	low(__pbssBANK0)
 	movwf	fsr
-	movlw	low((__pbssBANK0)+026h)
+	movlw	low((__pbssBANK0)+025h)
 	fcall	clear_ram
 ; Clear objects allocated to BANK1
 psect cinit,class=CODE,delta=2
 	movlw	low(__pbssBANK1)
 	movwf	fsr
-	movlw	low((__pbssBANK1)+048h)
+	movlw	low((__pbssBANK1)+04Ah)
 	fcall	clear_ram
 ; Initialize objects allocated to BANK0
 	global __pidataBANK0
@@ -623,11 +627,11 @@ Filter@i:	; 1 bytes @ 0x26
 ??_getAdOriginaCh4Value:	; 0 bytes @ 0x29
 	global	??_main
 ??_main:	; 0 bytes @ 0x29
-;;Data sizes: Strings 0, constant 0, data 1, bss 111, persistent 0 stack 0
+;;Data sizes: Strings 0, constant 0, data 1, bss 112, persistent 0 stack 0
 ;;Auto spaces:   Size  Autos    Used
 ;; COMMON          14     13      14
-;; BANK0           80     41      80
-;; BANK1           80      0      72
+;; BANK0           80     41      79
+;; BANK1           80      0      74
 ;; BANK3           96      0       0
 ;; BANK2           96      0       0
 
@@ -899,14 +903,14 @@ Filter@i:	; 1 bytes @ 0x26
 ;;BITSFR2              0      0       0       5        0.0%
 ;;SFR1                 0      0       0       2        0.0%
 ;;BITSFR1              0      0       0       2        0.0%
-;;BANK1               50      0      48       8       90.0%
+;;BANK1               50      0      4A       8       92.5%
 ;;BITBANK1            50      0       0       7        0.0%
 ;;CODE                 0      0       0       0        0.0%
-;;DATA                 0      0      AD       6        0.0%
-;;ABS                  0      0      A6       3        0.0%
+;;DATA                 0      0      AE       6        0.0%
+;;ABS                  0      0      A7       3        0.0%
 ;;NULL                 0      0       0       0        0.0%
 ;;STACK                0      0       7       2        0.0%
-;;BANK0               50     29      50       5      100.0%
+;;BANK0               50     29      4F       5       98.8%
 ;;BITBANK0            50      0       0       4        0.0%
 ;;SFR0                 0      0       0       1        0.0%
 ;;BITSFR0              0      0       0       1        0.0%
@@ -980,7 +984,7 @@ _main:
 ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	150
 	
-l4090:	
+l4100:	
 ;main.c: 130: enum setp_Adc4
 ;main.c: 131: {
 ;main.c: 132: ADC4_STEP_INIT = 0,
@@ -1023,33 +1027,33 @@ l4090:
 	bcf	(1078/8)^080h,(1078)&7
 	line	161
 	
-l4092:	
+l4102:	
 ;main.c: 161: initPin();
 	fcall	_initPin
 	line	164
 	
-l4094:	
+l4104:	
 ;main.c: 164: TRISB2 = 1;
 	bcf	status, 6	;RP1=0, select bank1
 	bsf	(1074/8)^080h,(1074)&7
 	line	166
 	
-l4096:	
+l4106:	
 ;main.c: 166: TRISB7 = 1;
 	bsf	(1079/8)^080h,(1079)&7
 	line	167
 	
-l4098:	
+l4108:	
 ;main.c: 167: TRISB4 = 1;
 	bsf	(1076/8)^080h,(1076)&7
 	line	169
 	
-l4100:	
+l4110:	
 ;main.c: 169: clock_config();
 	fcall	_clock_config
 	line	170
 	
-l4102:	
+l4112:	
 ;main.c: 170: timer1_config();
 	fcall	_timer1_config
 	line	171
@@ -1057,7 +1061,7 @@ l4102:
 	fcall	_timer1_interrupt_config
 	line	173
 	
-l4104:	
+l4114:	
 ;main.c: 173: adc_test_init(14,3);
 	movlw	(03h)
 	bcf	status, 5	;RP0=0, select bank0
@@ -1066,17 +1070,17 @@ l4104:
 	fcall	_adc_test_init
 	line	175
 	
-l4106:	
+l4116:	
 ;main.c: 175: dac_init();
 	fcall	_dac_init
 	line	176
 	
-l4108:	
+l4118:	
 ;main.c: 176: op1_init();
 	fcall	_op1_init
 	line	177
 	
-l4110:	
+l4120:	
 ;main.c: 177: op2_init();
 	fcall	_op2_init
 	line	180
@@ -1084,39 +1088,39 @@ l4110:
 	fcall	_adc_start
 	line	213
 	
-l4112:	
+l4122:	
 # 213 "D:\develop\ATK\AK7030-OTP\main.c"
  clrwdt ;#
 psect	maintext
 	line	215
 	
-l4114:	
+l4124:	
 ;main.c: 215: process_AD_Converter_Value();
 	fcall	_process_AD_Converter_Value
 	line	217
 	
-l4116:	
+l4126:	
 ;main.c: 217: if(isPermitSampleTime())
 	fcall	_isPermitSampleTime
 	xorlw	0
 	skipnz
-	goto	u1231
-	goto	u1230
-u1231:
-	goto	l4112
-u1230:
+	goto	u1241
+	goto	u1240
+u1241:
+	goto	l4122
+u1240:
 	line	219
 	
-l4118:	
+l4128:	
 ;main.c: 218: {
 ;main.c: 219: clrSampeTime();
 	fcall	_clrSampeTime
 	line	221
 ;main.c: 221: switch(enumMainLoopStep)
-	goto	l4598
+	goto	l4614
 	line	226
 	
-l4120:	
+l4130:	
 ;main.c: 224: {
 ;main.c: 225: static unsigned char ucTimerZeroPoint5s = 0;
 ;main.c: 226: if(getAdOriginalCh14Value() > 1950)
@@ -1127,87 +1131,88 @@ l4120:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1241
-	goto	u1240
-u1241:
-	goto	l4124
-u1240:
+	goto	u1251
+	goto	u1250
+u1251:
+	goto	l4134
+u1250:
 	line	228
 	
-l4122:	
+l4132:	
 ;main.c: 227: {
 ;main.c: 228: ucTimerZeroPoint5s++;
 	incf	(main@ucTimerZeroPoint5s),f
 	line	229
 ;main.c: 229: }
-	goto	l4126
+	goto	l4136
 	line	231
 	
-l4124:	
+l4134:	
 ;main.c: 230: else
 ;main.c: 231: ucTimerZeroPoint5s = 0;
 	clrf	(main@ucTimerZeroPoint5s)
 	line	233
 	
-l4126:	
+l4136:	
 ;main.c: 233: if(ucTimerZeroPoint5s >= 1)
 	movf	(main@ucTimerZeroPoint5s),w
 	skipz
-	goto	u1250
-	goto	l4112
-u1250:
+	goto	u1260
+	goto	l4122
+u1260:
 	line	235
 	
-l4128:	
+l4138:	
 ;main.c: 234: {
 ;main.c: 235: ucTimerZeroPoint5s = 0;
 	clrf	(main@ucTimerZeroPoint5s)
 	line	236
 	
-l4130:	
+l4140:	
 ;main.c: 236: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+	bcf	status, 5	;RP0=0, select bank0
 	clrf	(main@enumMainLoopStep)
 	incf	(main@enumMainLoopStep),f
-	goto	l4112
+	goto	l4122
 	line	237
 	
 l706:	
 	line	238
 ;main.c: 237: }
 ;main.c: 238: break;
-	goto	l4112
+	goto	l4122
 	line	245
 	
-l4132:	
+l4142:	
 ;main.c: 242: {
 ;main.c: 243: static unsigned char ucTimerZeroPoint3s = 0;
 ;main.c: 245: if(ucTimerZeroPoint3s < 1)
 	movf	(main@ucTimerZeroPoint3s),f
 	skipz
-	goto	u1261
-	goto	u1260
-u1261:
-	goto	l4136
-u1260:
+	goto	u1271
+	goto	u1270
+u1271:
+	goto	l4146
+u1270:
 	line	247
 	
-l4134:	
+l4144:	
 ;main.c: 246: {
 ;main.c: 247: ucTimerZeroPoint3s++;
 	incf	(main@ucTimerZeroPoint3s),f
 	line	248
 ;main.c: 248: }
-	goto	l4112
+	goto	l4122
 	line	251
 	
-l4136:	
+l4146:	
 ;main.c: 249: else
 ;main.c: 250: {
 ;main.c: 251: ucTimerZeroPoint3s = 0;
 	clrf	(main@ucTimerZeroPoint3s)
 	line	253
 	
-l4138:	
+l4148:	
 ;main.c: 253: if(getAdOriginalCh14Value() > 1950)
 	fcall	_getAdOriginalCh14Value
 	movlw	high(079Fh)
@@ -1216,29 +1221,29 @@ l4138:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1271
-	goto	u1270
-u1271:
-	goto	l4142
-u1270:
+	goto	u1281
+	goto	u1280
+u1281:
+	goto	l4152
+u1280:
 	line	256
 	
-l4140:	
+l4150:	
 ;main.c: 254: {
 ;main.c: 256: enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
 	movlw	(02h)
 	movwf	(main@enumMainLoopStep)
 	line	257
 ;main.c: 257: }
-	goto	l4112
+	goto	l4122
 	line	260
 	
-l4142:	
+l4152:	
 ;main.c: 258: else
 ;main.c: 259: {
 ;main.c: 260: clearPinPortAndTimer();
 	fcall	_clearPinPortAndTimer
-	goto	l4112
+	goto	l4122
 	line	266
 ;main.c: 264: }
 ;main.c: 266: case MAIN_LOOP_STEP_SECOND:
@@ -1251,39 +1256,39 @@ l715:
 	bsf	(46/8),(46)&7
 	line	272
 	
-l4144:	
+l4154:	
 ;main.c: 272: if(ucTimerP5s < 5)
 	movlw	(05h)
 	subwf	(main@ucTimerP5s),w
 	skipnc
-	goto	u1281
-	goto	u1280
-u1281:
-	goto	l4148
-u1280:
+	goto	u1291
+	goto	u1290
+u1291:
+	goto	l4158
+u1290:
 	line	273
 	
-l4146:	
+l4156:	
 ;main.c: 273: ucTimerP5s++;
 	incf	(main@ucTimerP5s),f
-	goto	l4112
+	goto	l4122
 	line	276
 	
-l4148:	
+l4158:	
 ;main.c: 274: else
 ;main.c: 275: {
 ;main.c: 276: ucTimerP5s = 0;
 	clrf	(main@ucTimerP5s)
 	line	278
 	
-l4150:	
+l4160:	
 ;main.c: 278: enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
 	movlw	(03h)
 	movwf	(main@enumMainLoopStep)
-	goto	l4112
+	goto	l4122
 	line	288
 	
-l4152:	
+l4162:	
 ;main.c: 285: {
 ;main.c: 286: static unsigned char ucTimerADC1ZeroP5s = 0;
 ;main.c: 288: if(getAdOriginalCh1Value() < 130)
@@ -1294,55 +1299,55 @@ l4152:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh1Value)),w
 	skipnc
-	goto	u1291
-	goto	u1290
-u1291:
-	goto	l4156
-u1290:
+	goto	u1301
+	goto	u1300
+u1301:
+	goto	l4166
+u1300:
 	line	290
 	
-l4154:	
+l4164:	
 ;main.c: 289: {
 ;main.c: 290: ucTimerADC1ZeroP5s = 0;
 	clrf	(main@ucTimerADC1ZeroP5s)
 	line	292
 ;main.c: 292: }
-	goto	l4158
+	goto	l4168
 	line	295
 	
-l4156:	
+l4166:	
 ;main.c: 293: else
 ;main.c: 294: {
 ;main.c: 295: ucTimerADC1ZeroP5s++;
 	incf	(main@ucTimerADC1ZeroP5s),f
 	line	298
 	
-l4158:	
+l4168:	
 ;main.c: 296: }
 ;main.c: 298: if(ucTimerADC1ZeroP5s >= 1)
 	movf	(main@ucTimerADC1ZeroP5s),w
 	skipz
-	goto	u1300
-	goto	l4164
-u1300:
+	goto	u1310
+	goto	l4174
+u1310:
 	line	300
 	
-l4160:	
+l4170:	
 ;main.c: 299: {
 ;main.c: 300: ucTimerADC1ZeroP5s = 0;
 	clrf	(main@ucTimerADC1ZeroP5s)
 	line	301
 	
-l4162:	
+l4172:	
 ;main.c: 301: enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
 	movlw	(04h)
 	movwf	(main@enumMainLoopStep)
 	line	302
 ;main.c: 302: }
-	goto	l4112
+	goto	l4122
 	line	307
 	
-l4164:	
+l4174:	
 ;main.c: 303: else
 ;main.c: 304: {
 ;main.c: 305: static unsigned char ucTimerRightP5s = 0;
@@ -1354,55 +1359,55 @@ l4164:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh1Value)),w
 	skipnc
-	goto	u1311
-	goto	u1310
-u1311:
-	goto	l4168
-u1310:
+	goto	u1321
+	goto	u1320
+u1321:
+	goto	l4178
+u1320:
 	line	309
 	
-l4166:	
+l4176:	
 ;main.c: 308: {
 ;main.c: 309: ucTimerRightP5s++;
 	incf	(main@ucTimerRightP5s),f
 	line	310
 ;main.c: 310: }
-	goto	l4170
+	goto	l4180
 	line	313
 	
-l4168:	
+l4178:	
 ;main.c: 311: else
 ;main.c: 312: {
 ;main.c: 313: ucTimerRightP5s = 0;
 	clrf	(main@ucTimerRightP5s)
 	line	316
 	
-l4170:	
+l4180:	
 ;main.c: 314: }
 ;main.c: 316: if(ucTimerRightP5s >= 1)
 	movf	(main@ucTimerRightP5s),w
 	skipz
-	goto	u1320
+	goto	u1330
 	goto	l706
-u1320:
+u1330:
 	line	318
 	
-l4172:	
+l4182:	
 ;main.c: 317: {
 ;main.c: 318: ucTimerRightP5s = 0;
 	clrf	(main@ucTimerRightP5s)
 	line	319
 	
-l4174:	
+l4184:	
 ;main.c: 319: enumMainLoopStep = MAIN_LOOP_STEP_3_HOUR_BRANCH;
 	movlw	(08h)
 	movwf	(main@enumMainLoopStep)
 	line	320
 ;main.c: 320: }
-	goto	l4112
+	goto	l4122
 	line	333
 	
-l4176:	
+l4186:	
 ;main.c: 331: {
 ;main.c: 333: startTwelveHourTimer(180);
 	movlw	0B4h
@@ -1411,54 +1416,55 @@ l4176:
 	fcall	_startTwelveHourTimer
 	line	334
 	
-l4178:	
+l4188:	
 ;main.c: 334: enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 	movlw	(05h)
 	movwf	(main@enumMainLoopStep)
 	line	336
 ;main.c: 336: break;
-	goto	l4112
+	goto	l4122
 	line	342
 	
-l4180:	
+l4190:	
 ;main.c: 340: {
 ;main.c: 342: if(isFinishedTwelveHoursTimer())
 	fcall	_isFinishedTwelveHoursTimer
 	xorlw	0
 	skipnz
-	goto	u1331
-	goto	u1330
-u1331:
-	goto	l4494
-u1330:
+	goto	u1341
+	goto	u1340
+u1341:
+	goto	l4510
+u1340:
 	line	344
 	
-l4182:	
+l4192:	
 ;main.c: 343: {
 ;main.c: 344: enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
 	movlw	(09h)
 	movwf	(main@enumMainLoopStep)
 	line	345
 ;main.c: 345: }
-	goto	l4112
+	goto	l4122
 	line	354
 	
-l4184:	
+l4194:	
 ;main.c: 353: {
 ;main.c: 354: startTwentySecondsTimer();
 	fcall	_startTwentySecondsTimer
 	line	355
 	
-l4186:	
+l4196:	
 ;main.c: 355: ucADC4_Step = ADC4_STEP_FIRST;
+	bcf	status, 5	;RP0=0, select bank0
 	clrf	(main@ucADC4_Step)
 	incf	(main@ucADC4_Step),f
 	line	356
 ;main.c: 356: break;
-	goto	l4112
+	goto	l4122
 	line	361
 	
-l4188:	
+l4198:	
 ;main.c: 360: {
 ;main.c: 361: if(getAdOriginaCh4Value() < 1911)
 	fcall	_getAdOriginaCh4Value
@@ -1468,20 +1474,20 @@ l4188:
 	skipnz
 	subwf	(0+(?_getAdOriginaCh4Value)),w
 	skipnc
-	goto	u1341
-	goto	u1340
-u1341:
-	goto	l4192
-u1340:
+	goto	u1351
+	goto	u1350
+u1351:
+	goto	l4202
+u1350:
 	line	362
 	
-l4190:	
+l4200:	
 ;main.c: 362: ucChannel4Type = LESS_THAN_1911;
 	clrf	(main@ucChannel4Type)
 	goto	l744
 	line	363
 	
-l4192:	
+l4202:	
 ;main.c: 363: else if(getAdOriginaCh4Value() < 2067)
 	fcall	_getAdOriginaCh4Value
 	movlw	high(0813h)
@@ -1490,21 +1496,21 @@ l4192:
 	skipnz
 	subwf	(0+(?_getAdOriginaCh4Value)),w
 	skipnc
-	goto	u1351
-	goto	u1350
-u1351:
-	goto	l4196
-u1350:
+	goto	u1361
+	goto	u1360
+u1361:
+	goto	l4206
+u1360:
 	line	364
 	
-l4194:	
+l4204:	
 ;main.c: 364: ucChannel4Type = BETWEEN_1911_AND_2067;
 	clrf	(main@ucChannel4Type)
 	incf	(main@ucChannel4Type),f
 	goto	l744
 	line	365
 	
-l4196:	
+l4206:	
 ;main.c: 365: else if(getAdOriginaCh4Value() < 2204)
 	fcall	_getAdOriginaCh4Value
 	movlw	high(089Ch)
@@ -1513,21 +1519,21 @@ l4196:
 	skipnz
 	subwf	(0+(?_getAdOriginaCh4Value)),w
 	skipnc
-	goto	u1361
-	goto	u1360
-u1361:
-	goto	l4200
-u1360:
+	goto	u1371
+	goto	u1370
+u1371:
+	goto	l4210
+u1370:
 	line	366
 	
-l4198:	
+l4208:	
 ;main.c: 366: ucChannel4Type = BETWEEN_2067_AND_2204;
 	movlw	(02h)
 	movwf	(main@ucChannel4Type)
 	goto	l744
 	line	367
 	
-l4200:	
+l4210:	
 ;main.c: 367: else if(getAdOriginaCh4Value() < 2340)
 	fcall	_getAdOriginaCh4Value
 	movlw	high(0924h)
@@ -1536,21 +1542,21 @@ l4200:
 	skipnz
 	subwf	(0+(?_getAdOriginaCh4Value)),w
 	skipnc
-	goto	u1371
-	goto	u1370
-u1371:
-	goto	l4204
-u1370:
+	goto	u1381
+	goto	u1380
+u1381:
+	goto	l4214
+u1380:
 	line	368
 	
-l4202:	
+l4212:	
 ;main.c: 368: ucChannel4Type = BETWEEN_2204_AND_2340;
 	movlw	(03h)
 	movwf	(main@ucChannel4Type)
 	goto	l744
 	line	370
 	
-l4204:	
+l4214:	
 ;main.c: 369: else
 ;main.c: 370: ucChannel4Type = MORE_THAN_2340;
 	movlw	(04h)
@@ -1563,7 +1569,7 @@ l744:
 	movwf	(main@ucADC4_Step)
 	line	373
 ;main.c: 373: break;
-	goto	l4112
+	goto	l4122
 	line	388
 ;main.c: 387: {
 ;main.c: 388: case 0:
@@ -1575,120 +1581,120 @@ l759:
 	bsf	(48/8),(48)&7
 	line	391
 	
-l4206:	
+l4216:	
 ;main.c: 391: ucLoaderStep++;
 	incf	(main@ucLoaderStep),f
 	line	392
 ;main.c: 392: break;
-	goto	l4112
+	goto	l4122
 	line	397
 	
-l4208:	
+l4218:	
 ;main.c: 396: {
 ;main.c: 397: if(ucTimerDelay >= 5)
-	movlw	(05h)
-	subwf	(main@ucTimerDelay),w
-	skipc
-	goto	u1381
-	goto	u1380
-u1381:
-	goto	l4216
-u1380:
-	line	399
-	
-l4210:	
-;main.c: 398: {
-;main.c: 399: PA0 = 1;
-	bsf	(40/8),(40)&7
-	line	400
-	
-l4212:	
-;main.c: 400: ucTimerDelay = 0;
-	clrf	(main@ucTimerDelay)
-	goto	l4206
-	line	404
-	
-l4216:	
-;main.c: 403: else
-;main.c: 404: ucTimerDelay++;
-	incf	(main@ucTimerDelay),f
-	goto	l4112
-	line	410
-	
-l4218:	
-;main.c: 409: {
-;main.c: 410: if(ucTimerDelay >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
 	goto	u1391
 	goto	u1390
 u1391:
-	goto	l4216
+	goto	l4226
 u1390:
-	line	412
+	line	399
 	
 l4220:	
-;main.c: 411: {
-;main.c: 412: PA1= 1;
-	bsf	(41/8),(41)&7
-	goto	l4212
-	line	424
+;main.c: 398: {
+;main.c: 399: PA0 = 1;
+	bsf	(40/8),(40)&7
+	line	400
+	
+l4222:	
+;main.c: 400: ucTimerDelay = 0;
+	clrf	(main@ucTimerDelay)
+	goto	l4216
+	line	404
+	
+l4226:	
+;main.c: 403: else
+;main.c: 404: ucTimerDelay++;
+	incf	(main@ucTimerDelay),f
+	goto	l4122
+	line	410
 	
 l4228:	
-;main.c: 423: {
-;main.c: 424: if(ucTimerDelay >= 5)
+;main.c: 409: {
+;main.c: 410: if(ucTimerDelay >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
 	goto	u1401
 	goto	u1400
 u1401:
-	goto	l4216
+	goto	l4226
 u1400:
-	line	426
+	line	412
 	
 l4230:	
-;main.c: 425: {
-;main.c: 426: PA2= 1;
-	bsf	(42/8),(42)&7
-	goto	l4212
-	line	437
+;main.c: 411: {
+;main.c: 412: PA1= 1;
+	bsf	(41/8),(41)&7
+	goto	l4222
+	line	424
 	
 l4238:	
-;main.c: 436: {
-;main.c: 437: if(ucTimerDelay >= 5)
+;main.c: 423: {
+;main.c: 424: if(ucTimerDelay >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
 	goto	u1411
 	goto	u1410
 u1411:
-	goto	l4216
+	goto	l4226
 u1410:
-	line	439
+	line	426
 	
 l4240:	
-;main.c: 438: {
-;main.c: 439: PA3 = 1;
-	bsf	(43/8),(43)&7
-	goto	l4212
-	line	450
+;main.c: 425: {
+;main.c: 426: PA2= 1;
+	bsf	(42/8),(42)&7
+	goto	l4222
+	line	437
 	
 l4248:	
-;main.c: 449: {
-;main.c: 450: if(ucTimerDelay >= 5)
+;main.c: 436: {
+;main.c: 437: if(ucTimerDelay >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay),w
 	skipc
 	goto	u1421
 	goto	u1420
 u1421:
-	goto	l4216
+	goto	l4226
 u1420:
-	line	452
+	line	439
 	
 l4250:	
+;main.c: 438: {
+;main.c: 439: PA3 = 1;
+	bsf	(43/8),(43)&7
+	goto	l4222
+	line	450
+	
+l4258:	
+;main.c: 449: {
+;main.c: 450: if(ucTimerDelay >= 5)
+	movlw	(05h)
+	subwf	(main@ucTimerDelay),w
+	skipc
+	goto	u1431
+	goto	u1430
+u1431:
+	goto	l4226
+u1430:
+	line	452
+	
+l4260:	
 ;main.c: 451: {
 ;main.c: 452: PB0 = 0;
 	bcf	(48/8),(48)&7
@@ -1704,23 +1710,23 @@ l4250:
 	line	456
 ;main.c: 456: PA3 = 0;
 	bcf	(43/8),(43)&7
-	goto	l4212
+	goto	l4222
 	line	467
 	
-l4258:	
+l4268:	
 ;main.c: 466: {
 ;main.c: 467: if(ucTimerDelay >= 2)
 	movlw	(02h)
 	subwf	(main@ucTimerDelay),w
 	skipc
-	goto	u1431
-	goto	u1430
-u1431:
-	goto	l4216
-u1430:
+	goto	u1441
+	goto	u1440
+u1441:
+	goto	l4226
+u1440:
 	line	469
 	
-l4260:	
+l4270:	
 ;main.c: 468: {
 ;main.c: 469: ucTimerDelay = 0;
 	clrf	(main@ucTimerDelay)
@@ -1729,16 +1735,16 @@ l4260:
 	clrf	(main@ucLoaderStep)
 	line	472
 	
-l4262:	
+l4272:	
 ;main.c: 472: ucADC4_Step = ADC4_STEP_THIRD;
 	movlw	(03h)
 	movwf	(main@ucADC4_Step)
 	line	473
 ;main.c: 473: }
-	goto	l4112
+	goto	l4122
 	line	386
 	
-l4268:	
+l4278:	
 	movf	(main@ucLoaderStep),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 7, Range of values is 0 to 6
@@ -1757,23 +1763,23 @@ l4268:
 	subwf	fsr,w
 skipnc
 goto l706
-movlw high(S4816)
+movlw high(S4832)
 movwf pclath
 	clrc
 	rlf fsr,w
-	addlw low(S4816)
+	addlw low(S4832)
 	movwf pc
 psect	swtext1,local,class=CONST,delta=2
 global __pswtext1
 __pswtext1:
-S4816:
+S4832:
 	ljmp	l759
-	ljmp	l4208
 	ljmp	l4218
 	ljmp	l4228
 	ljmp	l4238
 	ljmp	l4248
 	ljmp	l4258
+	ljmp	l4268
 psect	maintext
 
 	line	493
@@ -1787,120 +1793,120 @@ l787:
 	bsf	(48/8),(48)&7
 	line	496
 	
-l4270:	
+l4280:	
 ;main.c: 496: ucLoaderStep1++;
 	incf	(main@ucLoaderStep1),f
 	line	497
 ;main.c: 497: break;
-	goto	l4112
+	goto	l4122
 	line	502
 	
-l4272:	
+l4282:	
 ;main.c: 501: {
 ;main.c: 502: if(ucTimerDelay1 >= 5)
-	movlw	(05h)
-	subwf	(main@ucTimerDelay1),w
-	skipc
-	goto	u1441
-	goto	u1440
-u1441:
-	goto	l4280
-u1440:
-	line	504
-	
-l4274:	
-;main.c: 503: {
-;main.c: 504: PA0 = 1;
-	bsf	(40/8),(40)&7
-	line	505
-	
-l4276:	
-;main.c: 505: ucTimerDelay1 = 0;
-	clrf	(main@ucTimerDelay1)
-	goto	l4270
-	line	509
-	
-l4280:	
-;main.c: 508: else
-;main.c: 509: ucTimerDelay1++;
-	incf	(main@ucTimerDelay1),f
-	goto	l4112
-	line	515
-	
-l4282:	
-;main.c: 514: {
-;main.c: 515: if(ucTimerDelay1 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
 	goto	u1451
 	goto	u1450
 u1451:
-	goto	l4280
+	goto	l4290
 u1450:
-	line	517
+	line	504
 	
 l4284:	
-;main.c: 516: {
-;main.c: 517: PA1= 1;
-	bsf	(41/8),(41)&7
-	goto	l4276
-	line	528
+;main.c: 503: {
+;main.c: 504: PA0 = 1;
+	bsf	(40/8),(40)&7
+	line	505
+	
+l4286:	
+;main.c: 505: ucTimerDelay1 = 0;
+	clrf	(main@ucTimerDelay1)
+	goto	l4280
+	line	509
+	
+l4290:	
+;main.c: 508: else
+;main.c: 509: ucTimerDelay1++;
+	incf	(main@ucTimerDelay1),f
+	goto	l4122
+	line	515
 	
 l4292:	
-;main.c: 527: {
-;main.c: 528: if(ucTimerDelay1 >= 5)
+;main.c: 514: {
+;main.c: 515: if(ucTimerDelay1 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
 	goto	u1461
 	goto	u1460
 u1461:
-	goto	l4280
+	goto	l4290
 u1460:
-	line	530
+	line	517
 	
 l4294:	
-;main.c: 529: {
-;main.c: 530: PA2 = 1;
-	bsf	(42/8),(42)&7
-	goto	l4276
-	line	541
+;main.c: 516: {
+;main.c: 517: PA1= 1;
+	bsf	(41/8),(41)&7
+	goto	l4286
+	line	528
 	
 l4302:	
-;main.c: 540: {
-;main.c: 541: if(ucTimerDelay1 >= 5)
+;main.c: 527: {
+;main.c: 528: if(ucTimerDelay1 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
 	goto	u1471
 	goto	u1470
 u1471:
-	goto	l4280
+	goto	l4290
 u1470:
-	line	543
+	line	530
 	
 l4304:	
-;main.c: 542: {
-;main.c: 543: PA3 = 1;
-	bsf	(43/8),(43)&7
-	goto	l4276
-	line	554
+;main.c: 529: {
+;main.c: 530: PA2 = 1;
+	bsf	(42/8),(42)&7
+	goto	l4286
+	line	541
 	
 l4312:	
-;main.c: 553: {
-;main.c: 554: if(ucTimerDelay1 >= 5)
+;main.c: 540: {
+;main.c: 541: if(ucTimerDelay1 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
 	goto	u1481
 	goto	u1480
 u1481:
-	goto	l4280
+	goto	l4290
 u1480:
-	line	556
+	line	543
 	
 l4314:	
+;main.c: 542: {
+;main.c: 543: PA3 = 1;
+	bsf	(43/8),(43)&7
+	goto	l4286
+	line	554
+	
+l4322:	
+;main.c: 553: {
+;main.c: 554: if(ucTimerDelay1 >= 5)
+	movlw	(05h)
+	subwf	(main@ucTimerDelay1),w
+	skipc
+	goto	u1491
+	goto	u1490
+u1491:
+	goto	l4290
+u1490:
+	line	556
+	
+l4324:	
 ;main.c: 555: {
 ;main.c: 556: PA0 = 0;
 	bcf	(40/8),(40)&7
@@ -1913,33 +1919,33 @@ l4314:
 	line	559
 ;main.c: 559: PA3 = 0;
 	bcf	(43/8),(43)&7
-	goto	l4276
+	goto	l4286
 	line	570
 	
-l4322:	
+l4332:	
 ;main.c: 569: {
 ;main.c: 570: if(ucTimerDelay1 >= 2)
 	movlw	(02h)
 	subwf	(main@ucTimerDelay1),w
 	skipc
-	goto	u1491
-	goto	u1490
-u1491:
-	goto	l4280
-u1490:
+	goto	u1501
+	goto	u1500
+u1501:
+	goto	l4290
+u1500:
 	line	572
 	
-l4324:	
+l4334:	
 ;main.c: 571: {
 ;main.c: 572: ucTimerDelay1 = 0;
 	clrf	(main@ucTimerDelay1)
 	line	574
 ;main.c: 574: ucLoaderStep1 = 0;
 	clrf	(main@ucLoaderStep1)
-	goto	l4262
+	goto	l4272
 	line	491
 	
-l4332:	
+l4342:	
 	movf	(main@ucLoaderStep1),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 7, Range of values is 0 to 6
@@ -1958,23 +1964,23 @@ l4332:
 	subwf	fsr,w
 skipnc
 goto l706
-movlw high(S4818)
+movlw high(S4834)
 movwf pclath
 	clrc
 	rlf fsr,w
-	addlw low(S4818)
+	addlw low(S4834)
 	movwf pc
 psect	swtext2,local,class=CONST,delta=2
 global __pswtext2
 __pswtext2:
-S4818:
+S4834:
 	ljmp	l787
-	ljmp	l4272
 	ljmp	l4282
 	ljmp	l4292
 	ljmp	l4302
 	ljmp	l4312
 	ljmp	l4322
+	ljmp	l4332
 psect	maintext
 
 	line	597
@@ -1991,100 +1997,100 @@ l814:
 	bsf	(40/8),(40)&7
 	line	601
 	
-l4334:	
+l4344:	
 ;main.c: 601: ucLoaderStep2++;
 	incf	(main@ucLoaderStep2),f
 	line	602
 ;main.c: 602: break;
-	goto	l4112
+	goto	l4122
 	line	607
 	
-l4336:	
+l4346:	
 ;main.c: 606: {
 ;main.c: 607: if(ucTimerDelay2 >= 5)
-	movlw	(05h)
-	subwf	(main@ucTimerDelay2),w
-	skipc
-	goto	u1501
-	goto	u1500
-u1501:
-	goto	l4344
-u1500:
-	line	609
-	
-l4338:	
-;main.c: 608: {
-;main.c: 609: PA1 = 1;
-	bsf	(41/8),(41)&7
-	line	610
-	
-l4340:	
-;main.c: 610: ucTimerDelay2 = 0;
-	clrf	(main@ucTimerDelay2)
-	goto	l4334
-	line	614
-	
-l4344:	
-;main.c: 613: else
-;main.c: 614: ucTimerDelay2++;
-	incf	(main@ucTimerDelay2),f
-	goto	l4112
-	line	620
-	
-l4346:	
-;main.c: 619: {
-;main.c: 620: if(ucTimerDelay2 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
 	goto	u1511
 	goto	u1510
 u1511:
-	goto	l4344
+	goto	l4354
 u1510:
-	line	622
+	line	609
 	
 l4348:	
-;main.c: 621: {
-;main.c: 622: PA2 = 1;
-	bsf	(42/8),(42)&7
-	goto	l4340
-	line	633
+;main.c: 608: {
+;main.c: 609: PA1 = 1;
+	bsf	(41/8),(41)&7
+	line	610
+	
+l4350:	
+;main.c: 610: ucTimerDelay2 = 0;
+	clrf	(main@ucTimerDelay2)
+	goto	l4344
+	line	614
+	
+l4354:	
+;main.c: 613: else
+;main.c: 614: ucTimerDelay2++;
+	incf	(main@ucTimerDelay2),f
+	goto	l4122
+	line	620
 	
 l4356:	
-;main.c: 632: {
-;main.c: 633: if(ucTimerDelay2 >= 5)
+;main.c: 619: {
+;main.c: 620: if(ucTimerDelay2 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
 	goto	u1521
 	goto	u1520
 u1521:
-	goto	l4344
+	goto	l4354
 u1520:
-	line	635
+	line	622
 	
 l4358:	
-;main.c: 634: {
-;main.c: 635: PA3 = 1;
-	bsf	(43/8),(43)&7
-	goto	l4340
-	line	646
+;main.c: 621: {
+;main.c: 622: PA2 = 1;
+	bsf	(42/8),(42)&7
+	goto	l4350
+	line	633
 	
 l4366:	
-;main.c: 645: {
-;main.c: 646: if(ucTimerDelay2 >= 5)
+;main.c: 632: {
+;main.c: 633: if(ucTimerDelay2 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
 	goto	u1531
 	goto	u1530
 u1531:
-	goto	l4344
+	goto	l4354
 u1530:
-	line	649
+	line	635
 	
 l4368:	
+;main.c: 634: {
+;main.c: 635: PA3 = 1;
+	bsf	(43/8),(43)&7
+	goto	l4350
+	line	646
+	
+l4376:	
+;main.c: 645: {
+;main.c: 646: if(ucTimerDelay2 >= 5)
+	movlw	(05h)
+	subwf	(main@ucTimerDelay2),w
+	skipc
+	goto	u1541
+	goto	u1540
+u1541:
+	goto	l4354
+u1540:
+	line	649
+	
+l4378:	
 ;main.c: 647: {
 ;main.c: 649: PA1 = 0;
 	bcf	(41/8),(41)&7
@@ -2094,33 +2100,33 @@ l4368:
 	line	651
 ;main.c: 651: PA3 = 0;
 	bcf	(43/8),(43)&7
-	goto	l4340
+	goto	l4350
 	line	662
 	
-l4376:	
+l4386:	
 ;main.c: 661: {
 ;main.c: 662: if(ucTimerDelay2 >= 2)
 	movlw	(02h)
 	subwf	(main@ucTimerDelay2),w
 	skipc
-	goto	u1541
-	goto	u1540
-u1541:
-	goto	l4344
-u1540:
+	goto	u1551
+	goto	u1550
+u1551:
+	goto	l4354
+u1550:
 	line	664
 	
-l4378:	
+l4388:	
 ;main.c: 663: {
 ;main.c: 664: ucTimerDelay2 = 0;
 	clrf	(main@ucTimerDelay2)
 	line	666
 ;main.c: 666: ucLoaderStep2 = 0;
 	clrf	(main@ucLoaderStep2)
-	goto	l4262
+	goto	l4272
 	line	595
 	
-l4386:	
+l4396:	
 	movf	(main@ucLoaderStep2),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 6, Range of values is 0 to 5
@@ -2139,22 +2145,22 @@ l4386:
 	subwf	fsr,w
 skipnc
 goto l706
-movlw high(S4820)
+movlw high(S4836)
 movwf pclath
 	clrc
 	rlf fsr,w
-	addlw low(S4820)
+	addlw low(S4836)
 	movwf pc
 psect	swtext3,local,class=CONST,delta=2
 global __pswtext3
 __pswtext3:
-S4820:
+S4836:
 	ljmp	l814
-	ljmp	l4336
 	ljmp	l4346
 	ljmp	l4356
 	ljmp	l4366
 	ljmp	l4376
+	ljmp	l4386
 psect	maintext
 
 	line	689
@@ -2174,113 +2180,113 @@ l838:
 	bsf	(41/8),(41)&7
 	line	694
 	
-l4388:	
+l4398:	
 ;main.c: 694: ucLoaderStep3++;
 	incf	(main@ucLoaderStep3),f
 	line	695
 ;main.c: 695: break;
-	goto	l4112
+	goto	l4122
 	line	700
 	
-l4390:	
+l4400:	
 ;main.c: 699: {
 ;main.c: 700: if(ucTimerDelay3 >= 5)
-	movlw	(05h)
-	subwf	(main@ucTimerDelay3),w
-	skipc
-	goto	u1551
-	goto	u1550
-u1551:
-	goto	l4398
-u1550:
-	line	702
-	
-l4392:	
-;main.c: 701: {
-;main.c: 702: PA2 = 1;
-	bsf	(42/8),(42)&7
-	line	703
-	
-l4394:	
-;main.c: 703: ucTimerDelay3 = 0;
-	clrf	(main@ucTimerDelay3)
-	goto	l4388
-	line	707
-	
-l4398:	
-;main.c: 706: else
-;main.c: 707: ucTimerDelay3++;
-	incf	(main@ucTimerDelay3),f
-	goto	l4112
-	line	713
-	
-l4400:	
-;main.c: 712: {
-;main.c: 713: if(ucTimerDelay3 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay3),w
 	skipc
 	goto	u1561
 	goto	u1560
 u1561:
-	goto	l4398
+	goto	l4408
 u1560:
-	line	715
+	line	702
 	
 l4402:	
-;main.c: 714: {
-;main.c: 715: PA3 = 1;
-	bsf	(43/8),(43)&7
-	goto	l4394
-	line	727
+;main.c: 701: {
+;main.c: 702: PA2 = 1;
+	bsf	(42/8),(42)&7
+	line	703
+	
+l4404:	
+;main.c: 703: ucTimerDelay3 = 0;
+	clrf	(main@ucTimerDelay3)
+	goto	l4398
+	line	707
+	
+l4408:	
+;main.c: 706: else
+;main.c: 707: ucTimerDelay3++;
+	incf	(main@ucTimerDelay3),f
+	goto	l4122
+	line	713
 	
 l4410:	
-;main.c: 726: {
-;main.c: 727: if(ucTimerDelay3 >= 5)
+;main.c: 712: {
+;main.c: 713: if(ucTimerDelay3 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay3),w
 	skipc
 	goto	u1571
 	goto	u1570
 u1571:
-	goto	l4398
+	goto	l4408
 u1570:
-	line	730
+	line	715
 	
 l4412:	
+;main.c: 714: {
+;main.c: 715: PA3 = 1;
+	bsf	(43/8),(43)&7
+	goto	l4404
+	line	727
+	
+l4420:	
+;main.c: 726: {
+;main.c: 727: if(ucTimerDelay3 >= 5)
+	movlw	(05h)
+	subwf	(main@ucTimerDelay3),w
+	skipc
+	goto	u1581
+	goto	u1580
+u1581:
+	goto	l4408
+u1580:
+	line	730
+	
+l4422:	
 ;main.c: 728: {
 ;main.c: 730: PA2 = 0;
 	bcf	(42/8),(42)&7
 	line	731
 ;main.c: 731: PA3 = 0;
 	bcf	(43/8),(43)&7
-	goto	l4394
+	goto	l4404
 	line	742
 	
-l4420:	
+l4430:	
 ;main.c: 741: {
 ;main.c: 742: if(ucTimerDelay3 >= 2)
 	movlw	(02h)
 	subwf	(main@ucTimerDelay3),w
 	skipc
-	goto	u1581
-	goto	u1580
-u1581:
-	goto	l4398
-u1580:
+	goto	u1591
+	goto	u1590
+u1591:
+	goto	l4408
+u1590:
 	line	744
 	
-l4422:	
+l4432:	
 ;main.c: 743: {
 ;main.c: 744: ucTimerDelay3 = 0;
 	clrf	(main@ucTimerDelay3)
 	line	746
 ;main.c: 746: ucLoaderStep3 = 0;
 	clrf	(main@ucLoaderStep3)
-	goto	l4262
+	goto	l4272
 	line	687
 	
-l4430:	
+l4440:	
 	movf	(main@ucLoaderStep3),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 5, Range of values is 0 to 4
@@ -2300,16 +2306,16 @@ l4430:
 	goto	l838
 	xorlw	1^0	; case 1
 	skipnz
-	goto	l4390
+	goto	l4400
 	xorlw	2^1	; case 2
 	skipnz
-	goto	l4400
+	goto	l4410
 	xorlw	3^2	; case 3
 	skipnz
-	goto	l4410
+	goto	l4420
 	xorlw	4^3	; case 4
 	skipnz
-	goto	l4420
+	goto	l4430
 	goto	l706
 	opt asmopt_on
 
@@ -2333,90 +2339,90 @@ l859:
 	bsf	(42/8),(42)&7
 	line	775
 	
-l4432:	
+l4442:	
 ;main.c: 775: ucLoaderStep4++;
 	incf	(main@ucLoaderStep4),f
 	line	776
 ;main.c: 776: break;
-	goto	l4112
+	goto	l4122
 	line	781
 	
-l4434:	
+l4444:	
 ;main.c: 780: {
 ;main.c: 781: if(ucTimerDelay4 >= 5)
-	movlw	(05h)
-	subwf	(main@ucTimerDelay4),w
-	skipc
-	goto	u1591
-	goto	u1590
-u1591:
-	goto	l4442
-u1590:
-	line	783
-	
-l4436:	
-;main.c: 782: {
-;main.c: 783: PA3 = 1;
-	bsf	(43/8),(43)&7
-	line	784
-	
-l4438:	
-;main.c: 784: ucTimerDelay4 = 0;
-	clrf	(main@ucTimerDelay4)
-	goto	l4432
-	line	788
-	
-l4442:	
-;main.c: 787: else
-;main.c: 788: ucTimerDelay4++;
-	incf	(main@ucTimerDelay4),f
-	goto	l4112
-	line	794
-	
-l4444:	
-;main.c: 793: {
-;main.c: 794: if(ucTimerDelay4 >= 5)
 	movlw	(05h)
 	subwf	(main@ucTimerDelay4),w
 	skipc
 	goto	u1601
 	goto	u1600
 u1601:
-	goto	l4442
+	goto	l4452
 u1600:
-	line	796
+	line	783
 	
 l4446:	
-;main.c: 795: {
-;main.c: 796: PA3 = 0;
-	bcf	(43/8),(43)&7
-	goto	l4438
-	line	807
+;main.c: 782: {
+;main.c: 783: PA3 = 1;
+	bsf	(43/8),(43)&7
+	line	784
+	
+l4448:	
+;main.c: 784: ucTimerDelay4 = 0;
+	clrf	(main@ucTimerDelay4)
+	goto	l4442
+	line	788
+	
+l4452:	
+;main.c: 787: else
+;main.c: 788: ucTimerDelay4++;
+	incf	(main@ucTimerDelay4),f
+	goto	l4122
+	line	794
 	
 l4454:	
-;main.c: 806: {
-;main.c: 807: if(ucTimerDelay4 >= 2)
-	movlw	(02h)
+;main.c: 793: {
+;main.c: 794: if(ucTimerDelay4 >= 5)
+	movlw	(05h)
 	subwf	(main@ucTimerDelay4),w
 	skipc
 	goto	u1611
 	goto	u1610
 u1611:
-	goto	l4442
+	goto	l4452
 u1610:
-	line	809
+	line	796
 	
 l4456:	
+;main.c: 795: {
+;main.c: 796: PA3 = 0;
+	bcf	(43/8),(43)&7
+	goto	l4448
+	line	807
+	
+l4464:	
+;main.c: 806: {
+;main.c: 807: if(ucTimerDelay4 >= 2)
+	movlw	(02h)
+	subwf	(main@ucTimerDelay4),w
+	skipc
+	goto	u1621
+	goto	u1620
+u1621:
+	goto	l4452
+u1620:
+	line	809
+	
+l4466:	
 ;main.c: 808: {
 ;main.c: 809: ucTimerDelay4 = 0;
 	clrf	(main@ucTimerDelay4)
 	line	811
 ;main.c: 811: ucLoaderStep4 = 0;
 	clrf	(main@ucLoaderStep4)
-	goto	l4262
+	goto	l4272
 	line	767
 	
-l4464:	
+l4474:	
 	movf	(main@ucLoaderStep4),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 4, Range of values is 0 to 3
@@ -2436,19 +2442,19 @@ l4464:
 	goto	l859
 	xorlw	1^0	; case 1
 	skipnz
-	goto	l4434
+	goto	l4444
 	xorlw	2^1	; case 2
 	skipnz
-	goto	l4444
+	goto	l4454
 	xorlw	3^2	; case 3
 	skipnz
-	goto	l4454
+	goto	l4464
 	goto	l706
 	opt asmopt_on
 
 	line	378
 	
-l4468:	
+l4478:	
 	movf	(main@ucChannel4Type),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 5, Range of values is 0 to 4
@@ -2465,55 +2471,83 @@ l4468:
 	opt asmopt_off
 	xorlw	0^0	; case 0
 	skipnz
-	goto	l4268
+	goto	l4278
 	xorlw	1^0	; case 1
 	skipnz
-	goto	l4332
+	goto	l4342
 	xorlw	2^1	; case 2
 	skipnz
-	goto	l4386
+	goto	l4396
 	xorlw	3^2	; case 3
 	skipnz
-	goto	l4430
+	goto	l4440
 	xorlw	4^3	; case 4
 	skipnz
-	goto	l4464
+	goto	l4474
 	goto	l706
 	opt asmopt_on
 
-	line	836
+	line	838
 	
-l4470:	
+l4480:	
 ;main.c: 835: {
-;main.c: 836: if(isFinishedTwentySecondsTimer())
+;main.c: 836: static unsigned char ucTimerDelayP5s = 0;
+;main.c: 838: if(isFinishedTwentySecondsTimer())
 	fcall	_isFinishedTwentySecondsTimer
 	xorlw	0
 	skipnz
-	goto	u1621
-	goto	u1620
-u1621:
-	goto	l4186
-u1620:
-	line	838
+	goto	u1631
+	goto	u1630
+u1631:
+	goto	l4196
+u1630:
+	line	840
 	
-l4472:	
-;main.c: 837: {
-;main.c: 838: PBOD6 =0;
-	bsf	status, 5	;RP0=1, select bank3
+l4482:	
+;main.c: 839: {
+;main.c: 840: PBOD6 =0;
 	bsf	status, 6	;RP1=1, select bank3
 	bcf	(3142/8)^0180h,(3142)&7
-	line	839
-;main.c: 839: PB6 = 1;
+	line	841
+;main.c: 841: PB6 = 1;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(54/8),(54)&7
-	line	840
-;main.c: 840: PA6 = 0;
+	line	842
+;main.c: 842: PA6 = 0;
 	bcf	(46/8),(46)&7
-	line	847
+	line	849
 	
-l4474:	
-;main.c: 847: if((getAdOriginalCh14Value() > 2800))
+l4484:	
+;main.c: 849: if(ucTimerDelayP5s < 5)
+	movlw	(05h)
+	subwf	(main@ucTimerDelayP5s),w
+	skipnc
+	goto	u1641
+	goto	u1640
+u1641:
+	goto	l4488
+u1640:
+	line	851
+	
+l4486:	
+;main.c: 850: {
+;main.c: 851: ucTimerDelayP5s++;
+	incf	(main@ucTimerDelayP5s),f
+	line	852
+;main.c: 852: }
+	goto	l4122
+	line	856
+	
+l4488:	
+;main.c: 853: else
+;main.c: 854: {
+;main.c: 856: ucTimerDelayP5s = 0;
+	clrf	(main@ucTimerDelayP5s)
+	line	858
+	
+l4490:	
+;main.c: 858: if((getAdOriginalCh14Value() > 2800))
 	fcall	_getAdOriginalCh14Value
 	movlw	high(0AF1h)
 	subwf	(1+(?_getAdOriginalCh14Value)),w
@@ -2521,94 +2555,92 @@ l4474:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1631
-	goto	u1630
-u1631:
-	goto	l4478
-u1630:
-	line	848
+	goto	u1651
+	goto	u1650
+u1651:
+	goto	l4494
+u1650:
+	line	859
 	
-l4476:	
-;main.c: 848: DACR0=0x0F;
+l4492:	
+;main.c: 859: DACR0=0x0F;
 	movlw	(0Fh)
 	bsf	status, 5	;RP0=1, select bank1
 	movwf	(136)^080h	;volatile
-	goto	l875
-	line	850
+	goto	l879
+	line	861
 	
-l4478:	
-;main.c: 849: else
-;main.c: 850: DACR0=0x07;
+l4494:	
+;main.c: 860: else
+;main.c: 861: DACR0=0x07;
 	movlw	(07h)
 	bsf	status, 5	;RP0=1, select bank1
 	movwf	(136)^080h	;volatile
 	
-l875:	
-	line	852
-;main.c: 852: ucADC4_Step = ADC4_STEP_FOURTH;
+l879:	
+	line	863
+;main.c: 863: ucADC4_Step = ADC4_STEP_FOURTH;
 	movlw	(04h)
 	bcf	status, 5	;RP0=0, select bank0
 	movwf	(main@ucADC4_Step)
-	line	853
-;main.c: 853: }
-	goto	l4112
-	line	863
+	goto	l4122
+	line	875
 	
-l4480:	
-;main.c: 861: {
-;main.c: 862: static unsigned char ucTimer1s = 0;
-;main.c: 863: if(ucTimer1s < 5)
+l4496:	
+;main.c: 873: {
+;main.c: 874: static unsigned char ucTimer1s = 0;
+;main.c: 875: if(ucTimer1s < 5)
 	movlw	(05h)
 	subwf	(main@ucTimer1s),w
 	skipnc
-	goto	u1641
-	goto	u1640
-u1641:
-	goto	l4484
-u1640:
-	line	865
+	goto	u1661
+	goto	u1660
+u1661:
+	goto	l4500
+u1660:
+	line	877
 	
-l4482:	
-;main.c: 864: {
-;main.c: 865: ucTimer1s++;
+l4498:	
+;main.c: 876: {
+;main.c: 877: ucTimer1s++;
 	incf	(main@ucTimer1s),f
-	line	866
-;main.c: 866: }
-	goto	l4112
-	line	869
+	line	878
+;main.c: 878: }
+	goto	l4122
+	line	881
 	
-l4484:	
-;main.c: 867: else
-;main.c: 868: {
-;main.c: 869: ucTimer1s = 0;
+l4500:	
+;main.c: 879: else
+;main.c: 880: {
+;main.c: 881: ucTimer1s = 0;
 	clrf	(main@ucTimer1s)
-	line	870
+	line	882
 	
-l4486:	
-;main.c: 870: PB6 = 1;
+l4502:	
+;main.c: 882: PB6 = 1;
 	bsf	(54/8),(54)&7
-	line	871
+	line	883
 	
-l4488:	
-;main.c: 871: PBOD6 = 1;
+l4504:	
+;main.c: 883: PBOD6 = 1;
 	bsf	status, 5	;RP0=1, select bank3
 	bsf	status, 6	;RP1=1, select bank3
 	bsf	(3142/8)^0180h,(3142)&7
-	line	872
+	line	884
 	
-l4490:	
-;main.c: 872: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+l4506:	
+;main.c: 884: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	clrf	(main@enumMainLoopStep)
 	incf	(main@enumMainLoopStep),f
-	line	873
-;main.c: 873: ucADC4_Step = ADC4_STEP_INIT;
+	line	885
+;main.c: 885: ucADC4_Step = ADC4_STEP_INIT;
 	clrf	(main@ucADC4_Step)
-	goto	l4112
+	goto	l4122
 	line	350
 	
-l4494:	
+l4510:	
 	movf	(main@ucADC4_Step),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 5, Range of values is 0 to 4
@@ -2625,152 +2657,152 @@ l4494:
 	opt asmopt_off
 	xorlw	0^0	; case 0
 	skipnz
-	goto	l4184
+	goto	l4194
 	xorlw	1^0	; case 1
 	skipnz
-	goto	l4188
+	goto	l4198
 	xorlw	2^1	; case 2
 	skipnz
-	goto	l4468
+	goto	l4478
 	xorlw	3^2	; case 3
 	skipnz
-	goto	l4470
+	goto	l4480
 	xorlw	4^3	; case 4
 	skipnz
-	goto	l4480
+	goto	l4496
 	goto	l706
 	opt asmopt_on
 
-	line	900
-;main.c: 899: {
-;main.c: 900: case HOUR_3_BRANCH_STEP_FIRST:
+	line	912
+;main.c: 911: {
+;main.c: 912: case HOUR_3_BRANCH_STEP_FIRST:
 	
-l887:	
-	line	902
-;main.c: 901: {
-;main.c: 902: PA7 = 1;
+l891:	
+	line	914
+;main.c: 913: {
+;main.c: 914: PA7 = 1;
 	bsf	(47/8),(47)&7
-	line	903
-;main.c: 903: PAOD7 = 1;
+	line	915
+;main.c: 915: PAOD7 = 1;
 	bsf	status, 5	;RP0=1, select bank3
 	bsf	status, 6	;RP1=1, select bank3
 	bsf	(3135/8)^0180h,(3135)&7
-	line	904
+	line	916
 	
-l4496:	
-;main.c: 904: startThreeHoursTimer(60);
+l4512:	
+;main.c: 916: startThreeHoursTimer(60);
 	movlw	03Ch
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(?_startThreeHoursTimer)
 	clrf	(?_startThreeHoursTimer+1)
 	fcall	_startThreeHoursTimer
-	line	906
+	line	918
 	
-l4498:	
-;main.c: 906: enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
+l4514:	
+;main.c: 918: enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
 	clrf	(main@enumBranchStep)
 	incf	(main@enumBranchStep),f
-	line	907
-;main.c: 907: break;
-	goto	l4112
-	line	914
+	line	919
+;main.c: 919: break;
+	goto	l4122
+	line	926
 	
-l4500:	
-;main.c: 911: {
-;main.c: 912: static unsigned char ucTimer20s = 0;
-;main.c: 914: if(ucTimer20s < 200)
+l4516:	
+;main.c: 923: {
+;main.c: 924: static unsigned char ucTimer20s = 0;
+;main.c: 926: if(ucTimer20s < 200)
 	movlw	(0C8h)
 	subwf	(main@ucTimer20s),w
 	skipnc
-	goto	u1651
-	goto	u1650
-u1651:
-	goto	l4514
-u1650:
-	line	916
-	
-l4502:	
-;main.c: 915: {
-;main.c: 916: ucTimer20s++;
-	incf	(main@ucTimer20s),f
-	line	917
-	
-l4504:	
-;main.c: 917: PB0 = 1;
-	bsf	(48/8),(48)&7
-	line	918
-	
-l4506:	
-;main.c: 918: PA0 = 1;
-	bsf	(40/8),(40)&7
-	line	919
-	
-l4508:	
-;main.c: 919: PA1 = 1;
-	bsf	(41/8),(41)&7
-	line	920
-	
-l4510:	
-;main.c: 920: PA2 = 1;
-	bsf	(42/8),(42)&7
-	line	921
-	
-l4512:	
-;main.c: 921: PA3 = 1;
-	bsf	(43/8),(43)&7
-	line	922
-;main.c: 922: }
-	goto	l4112
-	line	926
-	
-l4514:	
-;main.c: 923: else
-;main.c: 924: {
-;main.c: 926: ucTimer20s = 0;
-	clrf	(main@ucTimer20s)
-	line	929
-	
-l4516:	
-;main.c: 929: enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
-	movlw	(02h)
-	movwf	(main@enumBranchStep)
-	goto	l4112
-	line	934
-;main.c: 932: }
-;main.c: 934: case HOUR_3_BRANCH_STEP_THIRD:
-	
-l894:	
-	line	936
-;main.c: 935: {
-;main.c: 936: PA6 = 0;
-	bcf	(46/8),(46)&7
-	line	938
+	goto	u1671
+	goto	u1670
+u1671:
+	goto	l4530
+u1670:
+	line	928
 	
 l4518:	
-;main.c: 938: if(isFinishedThreeHoursTimer())
+;main.c: 927: {
+;main.c: 928: ucTimer20s++;
+	incf	(main@ucTimer20s),f
+	line	929
+	
+l4520:	
+;main.c: 929: PB0 = 1;
+	bsf	(48/8),(48)&7
+	line	930
+	
+l4522:	
+;main.c: 930: PA0 = 1;
+	bsf	(40/8),(40)&7
+	line	931
+	
+l4524:	
+;main.c: 931: PA1 = 1;
+	bsf	(41/8),(41)&7
+	line	932
+	
+l4526:	
+;main.c: 932: PA2 = 1;
+	bsf	(42/8),(42)&7
+	line	933
+	
+l4528:	
+;main.c: 933: PA3 = 1;
+	bsf	(43/8),(43)&7
+	line	934
+;main.c: 934: }
+	goto	l4122
+	line	938
+	
+l4530:	
+;main.c: 935: else
+;main.c: 936: {
+;main.c: 938: ucTimer20s = 0;
+	clrf	(main@ucTimer20s)
+	line	941
+	
+l4532:	
+;main.c: 941: enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
+	movlw	(02h)
+	movwf	(main@enumBranchStep)
+	goto	l4122
+	line	946
+;main.c: 944: }
+;main.c: 946: case HOUR_3_BRANCH_STEP_THIRD:
+	
+l898:	
+	line	948
+;main.c: 947: {
+;main.c: 948: PA6 = 0;
+	bcf	(46/8),(46)&7
+	line	950
+	
+l4534:	
+;main.c: 950: if(isFinishedThreeHoursTimer())
 	fcall	_isFinishedThreeHoursTimer
 	xorlw	0
 	skipnz
-	goto	u1661
-	goto	u1660
-u1661:
-	goto	l4524
-u1660:
-	line	940
+	goto	u1681
+	goto	u1680
+u1681:
+	goto	l4540
+u1680:
+	line	952
 	
-l4520:	
-;main.c: 939: {
-;main.c: 940: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+l4536:	
+;main.c: 951: {
+;main.c: 952: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 	clrf	(main@enumBranchStep)
-	goto	l4182
-	line	947
+	goto	l4192
+	line	959
 	
-l4524:	
-;main.c: 943: else
-;main.c: 944: {
-;main.c: 945: static unsigned char ucTimerX1P5s = 0;
-;main.c: 947: if(getAdOriginalCh1Value() < 130)
+l4540:	
+;main.c: 955: else
+;main.c: 956: {
+;main.c: 957: static unsigned char ucTimerX1P5s = 0;
+;main.c: 959: if(getAdOriginalCh1Value() < 130)
 	fcall	_getAdOriginalCh1Value
 	movlw	high(082h)
 	subwf	(1+(?_getAdOriginalCh1Value)),w
@@ -2778,75 +2810,75 @@ l4524:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh1Value)),w
 	skipnc
-	goto	u1671
-	goto	u1670
-u1671:
-	goto	l4528
-u1670:
-	line	949
+	goto	u1691
+	goto	u1690
+u1691:
+	goto	l4544
+u1690:
+	line	961
 	
-l4526:	
-;main.c: 948: {
-;main.c: 949: ucTimerX1P5s = 0;
+l4542:	
+;main.c: 960: {
+;main.c: 961: ucTimerX1P5s = 0;
 	clrf	(main@ucTimerX1P5s)
-	line	950
-;main.c: 950: }
-	goto	l4530
-	line	953
+	line	962
+;main.c: 962: }
+	goto	l4546
+	line	965
 	
-l4528:	
-;main.c: 951: else
-;main.c: 952: {
-;main.c: 953: ucTimerX1P5s++;
+l4544:	
+;main.c: 963: else
+;main.c: 964: {
+;main.c: 965: ucTimerX1P5s++;
 	incf	(main@ucTimerX1P5s),f
-	line	956
+	line	968
 	
-l4530:	
-;main.c: 954: }
-;main.c: 956: if(ucTimerX1P5s >= 1)
+l4546:	
+;main.c: 966: }
+;main.c: 968: if(ucTimerX1P5s >= 1)
 	movf	(main@ucTimerX1P5s),w
 	skipz
-	goto	u1680
-	goto	l4544
-u1680:
-	line	958
+	goto	u1700
+	goto	l4560
+u1700:
+	line	970
 	
-l4532:	
-;main.c: 957: {
-;main.c: 958: ucTimerX1P5s = 0;
+l4548:	
+;main.c: 969: {
+;main.c: 970: ucTimerX1P5s = 0;
 	clrf	(main@ucTimerX1P5s)
-	line	959
+	line	971
 	
-l4534:	
-;main.c: 959: PAOD7 = 0;
+l4550:	
+;main.c: 971: PAOD7 = 0;
 	bsf	status, 5	;RP0=1, select bank3
 	bsf	status, 6	;RP1=1, select bank3
 	bcf	(3135/8)^0180h,(3135)&7
-	line	960
+	line	972
 	
-l4536:	
-;main.c: 960: PA7 = 0;
+l4552:	
+;main.c: 972: PA7 = 0;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(47/8),(47)&7
-	line	961
+	line	973
 	
-l4538:	
-;main.c: 961: clearThreeHoursTimer();
+l4554:	
+;main.c: 973: clearThreeHoursTimer();
 	fcall	_clearThreeHoursTimer
-	line	963
+	line	975
 	
-l4540:	
-;main.c: 963: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+l4556:	
+;main.c: 975: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 	clrf	(main@enumBranchStep)
-	goto	l4140
-	line	971
+	goto	l4150
+	line	983
 	
-l4544:	
-;main.c: 967: else
-;main.c: 968: {
-;main.c: 969: static unsigned char ucTimerX2P5s = 0;
-;main.c: 971: if(getAdOriginalCh14Value() >= 1950)
+l4560:	
+;main.c: 979: else
+;main.c: 980: {
+;main.c: 981: static unsigned char ucTimerX2P5s = 0;
+;main.c: 983: if(getAdOriginalCh14Value() >= 1950)
 	fcall	_getAdOriginalCh14Value
 	movlw	high(079Eh)
 	subwf	(1+(?_getAdOriginalCh14Value)),w
@@ -2854,57 +2886,57 @@ l4544:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1691
-	goto	u1690
-u1691:
-	goto	l4548
-u1690:
-	line	973
+	goto	u1711
+	goto	u1710
+u1711:
+	goto	l4564
+u1710:
+	line	985
 	
-l4546:	
-;main.c: 972: {
-;main.c: 973: ucTimerX2P5s++;
+l4562:	
+;main.c: 984: {
+;main.c: 985: ucTimerX2P5s++;
 	incf	(main@ucTimerX2P5s),f
-	line	974
-;main.c: 974: }
-	goto	l4550
-	line	977
+	line	986
+;main.c: 986: }
+	goto	l4566
+	line	989
 	
-l4548:	
-;main.c: 975: else
-;main.c: 976: {
-;main.c: 977: ucTimerX2P5s = 0;
+l4564:	
+;main.c: 987: else
+;main.c: 988: {
+;main.c: 989: ucTimerX2P5s = 0;
 	clrf	(main@ucTimerX2P5s)
-	line	980
+	line	992
 	
-l4550:	
-;main.c: 978: }
-;main.c: 980: if(ucTimerX2P5s >= 1)
+l4566:	
+;main.c: 990: }
+;main.c: 992: if(ucTimerX2P5s >= 1)
 	movf	(main@ucTimerX2P5s),w
 	skipz
-	goto	u1700
-	goto	l4554
-u1700:
-	line	982
+	goto	u1720
+	goto	l4570
+u1720:
+	line	994
 	
-l4552:	
-;main.c: 981: {
-;main.c: 982: ucTimerX2P5s = 0;
+l4568:	
+;main.c: 993: {
+;main.c: 994: ucTimerX2P5s = 0;
 	clrf	(main@ucTimerX2P5s)
-	line	983
-;main.c: 983: }
-	goto	l4112
-	line	986
+	line	995
+;main.c: 995: }
+	goto	l4122
+	line	998
 	
-l4554:	
-;main.c: 984: else
-;main.c: 985: {
-;main.c: 986: clearPinPortAndTimer();
+l4570:	
+;main.c: 996: else
+;main.c: 997: {
+;main.c: 998: clearPinPortAndTimer();
 	fcall	_clearPinPortAndTimer
-	goto	l4130
-	line	898
+	goto	l4140
+	line	910
 	
-l4560:	
+l4576:	
 	movf	(main@enumBranchStep),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 3, Range of values is 0 to 2
@@ -2921,66 +2953,66 @@ l4560:
 	opt asmopt_off
 	xorlw	0^0	; case 0
 	skipnz
-	goto	l887
+	goto	l891
 	xorlw	1^0	; case 1
 	skipnz
-	goto	l4500
+	goto	l4516
 	xorlw	2^1	; case 2
 	skipnz
-	goto	l894
+	goto	l898
 	goto	l706
 	opt asmopt_on
 
-	line	1017
-;main.c: 1016: {
-;main.c: 1017: case INTERNAL_FIRST_STEP:
+	line	1029
+;main.c: 1028: {
+;main.c: 1029: case INTERNAL_FIRST_STEP:
 	
-l914:	
-	line	1019
-;main.c: 1018: {
-;main.c: 1019: PB0 = 0;
+l918:	
+	line	1031
+;main.c: 1030: {
+;main.c: 1031: PB0 = 0;
 	bcf	(48/8),(48)&7
-	line	1020
-;main.c: 1020: PB1 = 0;
+	line	1032
+;main.c: 1032: PB1 = 0;
 	bcf	(49/8),(49)&7
-	line	1021
-;main.c: 1021: PA0 = 0;
+	line	1033
+;main.c: 1033: PA0 = 0;
 	bcf	(40/8),(40)&7
-	line	1022
-;main.c: 1022: PA1 = 0;
+	line	1034
+;main.c: 1034: PA1 = 0;
 	bcf	(41/8),(41)&7
-	line	1023
-;main.c: 1023: PA2 = 0;
+	line	1035
+;main.c: 1035: PA2 = 0;
 	bcf	(42/8),(42)&7
-	line	1024
-;main.c: 1024: PA3 = 0;
+	line	1036
+;main.c: 1036: PA3 = 0;
 	bcf	(43/8),(43)&7
-	line	1025
-;main.c: 1025: PBOD6 = 0;
+	line	1037
+;main.c: 1037: PBOD6 = 0;
 	bsf	status, 5	;RP0=1, select bank3
 	bsf	status, 6	;RP1=1, select bank3
 	bcf	(3142/8)^0180h,(3142)&7
-	line	1026
-;main.c: 1026: PB6 = 1;
+	line	1038
+;main.c: 1038: PB6 = 1;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(54/8),(54)&7
-	line	1027
-;main.c: 1027: PA6 =0;
+	line	1039
+;main.c: 1039: PA6 =0;
 	bcf	(46/8),(46)&7
-	line	1029
-;main.c: 1029: enumInteralStep = INTERNAL_SECOND_STEP;
+	line	1041
+;main.c: 1041: enumInteralStep = INTERNAL_SECOND_STEP;
 	clrf	(main@enumInteralStep)
 	incf	(main@enumInteralStep),f
-	line	1030
-;main.c: 1030: break;
-	goto	l4112
-	line	1037
+	line	1042
+;main.c: 1042: break;
+	goto	l4122
+	line	1049
 	
-l4562:	
-;main.c: 1034: {
-;main.c: 1035: static unsigned char ucTimer1s = 0;
-;main.c: 1037: if(getAdOriginalCh14Value() <= 1000)
+l4578:	
+;main.c: 1046: {
+;main.c: 1047: static unsigned char ucTimer1s = 0;
+;main.c: 1049: if(getAdOriginalCh14Value() <= 1000)
 	fcall	_getAdOriginalCh14Value
 	movlw	high(03E9h)
 	subwf	(1+(?_getAdOriginalCh14Value)),w
@@ -2988,57 +3020,57 @@ l4562:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipnc
-	goto	u1711
-	goto	u1710
-u1711:
-	goto	l4566
-u1710:
-	line	1039
+	goto	u1731
+	goto	u1730
+u1731:
+	goto	l4582
+u1730:
+	line	1051
 	
-l4564:	
-;main.c: 1038: {
-;main.c: 1039: ucTimer1s++;
-	incf	(main@cTimer1s_810),f
-	line	1040
-;main.c: 1040: }
-	goto	l4568
-	line	1042
+l4580:	
+;main.c: 1050: {
+;main.c: 1051: ucTimer1s++;
+	incf	(main@cTimer1s_811),f
+	line	1052
+;main.c: 1052: }
+	goto	l4584
+	line	1054
 	
-l4566:	
-;main.c: 1041: else
-;main.c: 1042: ucTimer1s = 0;
-	clrf	(main@cTimer1s_810)
-	line	1044
-	
-l4568:	
-;main.c: 1044: if(ucTimer1s >= 10)
-	movlw	(0Ah)
-	subwf	(main@cTimer1s_810),w
-	skipc
-	goto	u1721
-	goto	u1720
-u1721:
-	goto	l706
-u1720:
-	line	1046
-	
-l4570:	
-;main.c: 1045: {
-;main.c: 1046: enumInteralStep = INTERNAL_THIRD_STEP;
-	movlw	(02h)
-	movwf	(main@enumInteralStep)
-	line	1047
-	
-l4572:	
-;main.c: 1047: ucTimer1s = 0;
-	clrf	(main@cTimer1s_810)
-	goto	l4112
+l4582:	
+;main.c: 1053: else
+;main.c: 1054: ucTimer1s = 0;
+	clrf	(main@cTimer1s_811)
 	line	1056
 	
-l4574:	
-;main.c: 1053: {
-;main.c: 1054: static unsigned char ucTimerP3s = 0;
-;main.c: 1056: if(getAdOriginalCh14Value() >= 1950)
+l4584:	
+;main.c: 1056: if(ucTimer1s >= 10)
+	movlw	(0Ah)
+	subwf	(main@cTimer1s_811),w
+	skipc
+	goto	u1741
+	goto	u1740
+u1741:
+	goto	l706
+u1740:
+	line	1058
+	
+l4586:	
+;main.c: 1057: {
+;main.c: 1058: enumInteralStep = INTERNAL_THIRD_STEP;
+	movlw	(02h)
+	movwf	(main@enumInteralStep)
+	line	1059
+	
+l4588:	
+;main.c: 1059: ucTimer1s = 0;
+	clrf	(main@cTimer1s_811)
+	goto	l4122
+	line	1068
+	
+l4590:	
+;main.c: 1065: {
+;main.c: 1066: static unsigned char ucTimerP3s = 0;
+;main.c: 1068: if(getAdOriginalCh14Value() >= 1950)
 	fcall	_getAdOriginalCh14Value
 	movlw	high(079Eh)
 	subwf	(1+(?_getAdOriginalCh14Value)),w
@@ -3046,75 +3078,74 @@ l4574:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh14Value)),w
 	skipc
-	goto	u1731
-	goto	u1730
-u1731:
-	goto	l4578
-u1730:
-	line	1058
+	goto	u1751
+	goto	u1750
+u1751:
+	goto	l4594
+u1750:
+	line	1070
 	
-l4576:	
-;main.c: 1057: {
-;main.c: 1058: ucTimerP3s++;
+l4592:	
+;main.c: 1069: {
+;main.c: 1070: ucTimerP3s++;
 	incf	(main@ucTimerP3s),f
-	line	1059
-;main.c: 1059: }
-	goto	l4580
-	line	1061
+	line	1071
+;main.c: 1071: }
+	goto	l4596
+	line	1073
 	
-l4578:	
-;main.c: 1060: else
-;main.c: 1061: ucTimerP3s = 0;
+l4594:	
+;main.c: 1072: else
+;main.c: 1073: ucTimerP3s = 0;
 	clrf	(main@ucTimerP3s)
-	line	1063
+	line	1075
 	
-l4580:	
-;main.c: 1063: if(ucTimerP3s >= 3)
+l4596:	
+;main.c: 1075: if(ucTimerP3s >= 3)
 	movlw	(03h)
 	subwf	(main@ucTimerP3s),w
 	skipc
-	goto	u1741
-	goto	u1740
-u1741:
+	goto	u1761
+	goto	u1760
+u1761:
 	goto	l706
-u1740:
-	line	1065
+u1760:
+	line	1077
 	
-l4582:	
-;main.c: 1064: {
-;main.c: 1065: enumInteralStep = INTERNAL_FIRST_STEP;
+l4598:	
+;main.c: 1076: {
+;main.c: 1077: enumInteralStep = INTERNAL_FIRST_STEP;
 	clrf	(main@enumInteralStep)
-	line	1066
-;main.c: 1066: ucTimerP3s = 0;
+	line	1078
+;main.c: 1078: ucTimerP3s = 0;
 	clrf	(main@ucTimerP3s)
-	line	1067
+	line	1079
 	
-l4584:	
-;main.c: 1067: clearAllTimer();
+l4600:	
+;main.c: 1079: clearAllTimer();
 	fcall	_clearAllTimer
-	line	1069
+	line	1081
 	
-l4586:	
-;main.c: 1069: DACR0=0x0F;
+l4602:	
+;main.c: 1081: DACR0=0x0F;
 	movlw	(0Fh)
-	bsf	status, 5	;RP0=1, select bank1
 	movwf	(136)^080h	;volatile
-	line	1070
+	line	1082
 	
-l4588:	
-;main.c: 1070: initPin();
+l4604:	
+;main.c: 1082: initPin();
 	fcall	_initPin
-	line	1073
+	line	1085
 	
-l4590:	
-;main.c: 1073: enumMainLoopStep = MAIN_LOOP_STEP_INIT;
+l4606:	
+;main.c: 1085: enumMainLoopStep = MAIN_LOOP_STEP_INIT;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	clrf	(main@enumMainLoopStep)
-	goto	l4112
-	line	1015
+	goto	l4122
+	line	1027
 	
-l4594:	
+l4610:	
 	movf	(main@enumInteralStep),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 3, Range of values is 0 to 2
@@ -3131,19 +3162,19 @@ l4594:
 	opt asmopt_off
 	xorlw	0^0	; case 0
 	skipnz
-	goto	l914
+	goto	l918
 	xorlw	1^0	; case 1
 	skipnz
-	goto	l4562
+	goto	l4578
 	xorlw	2^1	; case 2
 	skipnz
-	goto	l4574
+	goto	l4590
 	goto	l706
 	opt asmopt_on
 
 	line	221
 	
-l4598:	
+l4614:	
 	movf	(main@enumMainLoopStep),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 8, Range of values is 0 to 9
@@ -3160,28 +3191,28 @@ l4598:
 	opt asmopt_off
 	xorlw	0^0	; case 0
 	skipnz
-	goto	l4120
+	goto	l4130
 	xorlw	1^0	; case 1
 	skipnz
-	goto	l4132
+	goto	l4142
 	xorlw	2^1	; case 2
 	skipnz
 	goto	l715
 	xorlw	3^2	; case 3
 	skipnz
-	goto	l4152
+	goto	l4162
 	xorlw	4^3	; case 4
 	skipnz
-	goto	l4176
+	goto	l4186
 	xorlw	5^4	; case 5
 	skipnz
-	goto	l4180
+	goto	l4190
 	xorlw	8^5	; case 8
 	skipnz
-	goto	l4560
+	goto	l4576
 	xorlw	9^8	; case 9
 	skipnz
-	goto	l4594
+	goto	l4610
 	goto	l706
 	opt asmopt_on
 
@@ -3189,16 +3220,16 @@ l4598:
 	ljmp	start
 	opt stack 0
 psect	maintext
-	line	1094
+	line	1106
 GLOBAL	__end_of_main
 	__end_of_main:
 ;; =============== function _main ends ============
 
 	signat	_main,88
 	global	_clearPinPortAndTimer
-psect	text676,local,class=CODE,delta=2
-global __ptext676
-__ptext676:
+psect	text704,local,class=CODE,delta=2
+global __ptext704
+__ptext704:
 
 ;; *************** function _clearPinPortAndTimer *****************
 ;; Defined at:
@@ -3213,7 +3244,7 @@ __ptext676:
 ;;		status,2, status,0, pclath, cstack
 ;; Tracked objects:
 ;;		On entry : 160/0
-;;		On exit  : 160/0
+;;		On exit  : 160/20
 ;;		Unchanged: FFE9F/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
@@ -3229,7 +3260,7 @@ __ptext676:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text676
+psect	text704
 	file	"D:\develop\ATK\AK7030-OTP\main.c"
 	line	92
 	global	__size_of_clearPinPortAndTimer
@@ -3240,7 +3271,7 @@ _clearPinPortAndTimer:
 ; Regs used in _clearPinPortAndTimer: [status,2+status,0+pclath+cstack]
 	line	93
 	
-l4086:	
+l4096:	
 ;main.c: 93: PB0 = 0;
 	bcf	(48/8),(48)&7
 	line	94
@@ -3267,7 +3298,7 @@ l4086:
 	bcf	(47/8),(47)&7
 	line	100
 	
-l4088:	
+l4098:	
 ;main.c: 100: clearAllTimer();
 	fcall	_clearAllTimer
 	line	101
@@ -3281,9 +3312,9 @@ GLOBAL	__end_of_clearPinPortAndTimer
 
 	signat	_clearPinPortAndTimer,88
 	global	_getAdOriginaCh4Value
-psect	text677,local,class=CODE,delta=2
-global __ptext677
-__ptext677:
+psect	text705,local,class=CODE,delta=2
+global __ptext705
+__ptext705:
 
 ;; *************** function _getAdOriginaCh4Value *****************
 ;; Defined at:
@@ -3314,7 +3345,7 @@ __ptext677:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text677
+psect	text705
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	229
 	global	__size_of_getAdOriginaCh4Value
@@ -3325,7 +3356,7 @@ _getAdOriginaCh4Value:
 ; Regs used in _getAdOriginaCh4Value: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	231
 	
-l4082:	
+l4092:	
 ;common.c: 231: return Filter(uiSampleChannelFourth);
 	movlw	(_uiSampleChannelFourth)&0ffh
 	fcall	_Filter
@@ -3335,7 +3366,7 @@ l4082:
 	movwf	(?_getAdOriginaCh4Value)
 	line	236
 	
-l1648:	
+l1652:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getAdOriginaCh4Value
@@ -3344,9 +3375,9 @@ GLOBAL	__end_of_getAdOriginaCh4Value
 
 	signat	_getAdOriginaCh4Value,90
 	global	_getAdOriginalCh1Value
-psect	text678,local,class=CODE,delta=2
-global __ptext678
-__ptext678:
+psect	text706,local,class=CODE,delta=2
+global __ptext706
+__ptext706:
 
 ;; *************** function _getAdOriginalCh1Value *****************
 ;; Defined at:
@@ -3377,7 +3408,7 @@ __ptext678:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text678
+psect	text706
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	217
 	global	__size_of_getAdOriginalCh1Value
@@ -3388,7 +3419,7 @@ _getAdOriginalCh1Value:
 ; Regs used in _getAdOriginalCh1Value: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	220
 	
-l4078:	
+l4088:	
 ;common.c: 220: return Filter(uiSampleChannelFirst);
 	movlw	(_uiSampleChannelFirst)&0ffh
 	fcall	_Filter
@@ -3398,7 +3429,7 @@ l4078:
 	movwf	(?_getAdOriginalCh1Value)
 	line	225
 	
-l1645:	
+l1649:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getAdOriginalCh1Value
@@ -3407,9 +3438,9 @@ GLOBAL	__end_of_getAdOriginalCh1Value
 
 	signat	_getAdOriginalCh1Value,90
 	global	_getAdOriginalCh14Value
-psect	text679,local,class=CODE,delta=2
-global __ptext679
-__ptext679:
+psect	text707,local,class=CODE,delta=2
+global __ptext707
+__ptext707:
 
 ;; *************** function _getAdOriginalCh14Value *****************
 ;; Defined at:
@@ -3440,7 +3471,7 @@ __ptext679:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text679
+psect	text707
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	240
 	global	__size_of_getAdOriginalCh14Value
@@ -3451,7 +3482,7 @@ _getAdOriginalCh14Value:
 ; Regs used in _getAdOriginalCh14Value: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	242
 	
-l4074:	
+l4084:	
 ;common.c: 242: return Filter(uiSampleChannelFourteenth);
 	movlw	(_uiSampleChannelFourteenth)&0ffh
 	fcall	_Filter
@@ -3461,7 +3492,7 @@ l4074:
 	movwf	(?_getAdOriginalCh14Value)
 	line	246
 	
-l1651:	
+l1655:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getAdOriginalCh14Value
@@ -3470,9 +3501,9 @@ GLOBAL	__end_of_getAdOriginalCh14Value
 
 	signat	_getAdOriginalCh14Value,90
 	global	_process_AD_Converter_Value
-psect	text680,local,class=CODE,delta=2
-global __ptext680
-__ptext680:
+psect	text708,local,class=CODE,delta=2
+global __ptext708
+__ptext708:
 
 ;; *************** function _process_AD_Converter_Value *****************
 ;; Defined at:
@@ -3507,7 +3538,7 @@ __ptext680:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text680
+psect	text708
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	251
 	global	__size_of_process_AD_Converter_Value
@@ -3518,19 +3549,19 @@ _process_AD_Converter_Value:
 ; Regs used in _process_AD_Converter_Value: [wreg+status,2+status,0+pclath+cstack]
 	line	252
 	
-l4058:	
+l4068:	
 ;common.c: 252: if(getAD_ConvertFlag())
 	fcall	_getAD_ConvertFlag
 	xorlw	0
 	skipnz
-	goto	u1201
-	goto	u1200
-u1201:
-	goto	l1659
-u1200:
+	goto	u1211
+	goto	u1210
+u1211:
+	goto	l1663
+u1210:
 	line	254
 	
-l4060:	
+l4070:	
 ;common.c: 253: {
 ;common.c: 254: setAD_ConvertFlag(0);
 	movlw	(0)
@@ -3540,48 +3571,48 @@ l4060:
 	fcall	_AD_Sample
 	line	256
 	
-l4062:	
+l4072:	
 ;common.c: 256: if(4 == sampleChannelSelect)
 	movf	(_sampleChannelSelect),w
 	xorlw	04h
 	skipz
-	goto	u1211
-	goto	u1210
-u1211:
-	goto	l4066
-u1210:
+	goto	u1221
+	goto	u1220
+u1221:
+	goto	l4076
+u1220:
 	line	257
 	
-l4064:	
+l4074:	
 ;common.c: 257: adc_test_init(4,3);
 	movlw	(03h)
 	movwf	(?_adc_test_init)
 	movlw	(04h)
 	fcall	_adc_test_init
-	goto	l4072
+	goto	l4082
 	line	258
 	
-l4066:	
+l4076:	
 ;common.c: 258: else if(1 == sampleChannelSelect)
 	decf	(_sampleChannelSelect),w
 	skipz
-	goto	u1221
-	goto	u1220
-u1221:
-	goto	l4070
-u1220:
+	goto	u1231
+	goto	u1230
+u1231:
+	goto	l4080
+u1230:
 	line	259
 	
-l4068:	
+l4078:	
 ;common.c: 259: adc_test_init(1,3);
 	movlw	(03h)
 	movwf	(?_adc_test_init)
 	movlw	(01h)
 	fcall	_adc_test_init
-	goto	l4072
+	goto	l4082
 	line	261
 	
-l4070:	
+l4080:	
 ;common.c: 260: else
 ;common.c: 261: adc_test_init(14,3);
 	movlw	(03h)
@@ -3590,12 +3621,12 @@ l4070:
 	fcall	_adc_test_init
 	line	263
 	
-l4072:	
+l4082:	
 ;common.c: 263: adc_start();
 	fcall	_adc_start
 	line	265
 	
-l1659:	
+l1663:	
 	return
 	opt stack 0
 GLOBAL	__end_of_process_AD_Converter_Value
@@ -3604,9 +3635,9 @@ GLOBAL	__end_of_process_AD_Converter_Value
 
 	signat	_process_AD_Converter_Value,88
 	global	_clearAllTimer
-psect	text681,local,class=CODE,delta=2
-global __ptext681
-__ptext681:
+psect	text709,local,class=CODE,delta=2
+global __ptext709
+__ptext709:
 
 ;; *************** function _clearAllTimer *****************
 ;; Defined at:
@@ -3621,7 +3652,7 @@ __ptext681:
 ;;		status,2, status,0, pclath, cstack
 ;; Tracked objects:
 ;;		On entry : 160/0
-;;		On exit  : 160/0
+;;		On exit  : 160/20
 ;;		Unchanged: FFE9F/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
@@ -3640,7 +3671,7 @@ __ptext681:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text681
+psect	text709
 	file	"D:\develop\ATK\AK7030-OTP\main.c"
 	line	83
 	global	__size_of_clearAllTimer
@@ -3651,7 +3682,7 @@ _clearAllTimer:
 ; Regs used in _clearAllTimer: [status,2+status,0+pclath+cstack]
 	line	84
 	
-l4056:	
+l4066:	
 ;main.c: 84: clearTwelveHoursTimer();
 	fcall	_clearTwelveHoursTimer
 	line	85
@@ -3671,9 +3702,9 @@ GLOBAL	__end_of_clearAllTimer
 
 	signat	_clearAllTimer,88
 	global	_AD_Sample
-psect	text682,local,class=CODE,delta=2
-global __ptext682
-__ptext682:
+psect	text710,local,class=CODE,delta=2
+global __ptext710
+__ptext710:
 
 ;; *************** function _AD_Sample *****************
 ;; Defined at:
@@ -3704,7 +3735,7 @@ __ptext682:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text682
+psect	text710
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	277
 	global	__size_of_AD_Sample
@@ -3715,98 +3746,98 @@ _AD_Sample:
 ; Regs used in _AD_Sample: [wreg+status,2+status,0]
 	line	278
 	
-l3994:	
+l4004:	
 ;common.c: 278: if(sampleTimes < 12)
 	movlw	(0Ch)
 	subwf	(_sampleTimes),w
 	skipnc
-	goto	u1071
-	goto	u1070
-u1071:
-	goto	l1670
-u1070:
+	goto	u1081
+	goto	u1080
+u1081:
+	goto	l1674
+u1080:
 	line	300
 	
-l3996:	
+l4006:	
 ;common.c: 279: {
 ;common.c: 300: sampleTimes++;
 	incf	(_sampleTimes),f
 	line	302
 	
-l3998:	
+l4008:	
 ;common.c: 302: if(sampleTimes >= 12)
 	movlw	(0Ch)
 	subwf	(_sampleTimes),w
 	skipc
-	goto	u1081
-	goto	u1080
-u1081:
-	goto	l1670
-u1080:
+	goto	u1091
+	goto	u1090
+u1091:
+	goto	l1674
+u1090:
 	line	304
 	
-l4000:	
+l4010:	
 ;common.c: 303: {
 ;common.c: 304: sampleTimes = 0;
 	clrf	(_sampleTimes)
 	line	306
 	
-l4002:	
+l4012:	
 ;common.c: 306: if(sampleChannelSelect == 14)
 	movf	(_sampleChannelSelect),w
 	xorlw	0Eh
 	skipz
-	goto	u1091
-	goto	u1090
-u1091:
-	goto	l4006
-u1090:
+	goto	u1101
+	goto	u1100
+u1101:
+	goto	l4016
+u1100:
 	line	310
 	
-l4004:	
+l4014:	
 ;common.c: 307: {
 ;common.c: 310: sampleChannelSelect = 1;
 	clrf	(_sampleChannelSelect)
 	incf	(_sampleChannelSelect),f
 	line	311
 ;common.c: 311: }
-	goto	l1670
+	goto	l1674
 	line	312
 	
-l4006:	
+l4016:	
 ;common.c: 312: else if(sampleChannelSelect == 4)
 	movf	(_sampleChannelSelect),w
 	xorlw	04h
 	skipz
-	goto	u1101
-	goto	u1100
-u1101:
-	goto	l4010
-u1100:
+	goto	u1111
+	goto	u1110
+u1111:
+	goto	l4020
+u1110:
 	line	315
 	
-l4008:	
+l4018:	
 ;common.c: 313: {
 ;common.c: 315: sampleChannelSelect = 14;
 	movlw	(0Eh)
 	movwf	(_sampleChannelSelect)
 	line	316
 ;common.c: 316: }
-	goto	l1670
+	goto	l1674
 	line	317
 	
-l4010:	
+l4020:	
 ;common.c: 317: else if(sampleChannelSelect == 1)
 	decf	(_sampleChannelSelect),w
 	skipz
-	goto	u1111
-	goto	u1110
-u1111:
-	goto	l4008
-u1110:
+	goto	u1121
+	goto	u1120
+u1121:
+	goto	l4018
+u1120:
 	line	320
 	
-l4012:	
+l4022:	
 ;common.c: 318: {
 ;common.c: 320: sampleChannelSelect = 4;
 	movlw	(04h)
@@ -3814,7 +3845,7 @@ l4012:
 	line	333
 ;common.c: 321: }
 	
-l1670:	
+l1674:	
 	return
 	opt stack 0
 GLOBAL	__end_of_AD_Sample
@@ -3823,9 +3854,9 @@ GLOBAL	__end_of_AD_Sample
 
 	signat	_AD_Sample,88
 	global	_setAD_ConvertFlag
-psect	text683,local,class=CODE,delta=2
-global __ptext683
-__ptext683:
+psect	text711,local,class=CODE,delta=2
+global __ptext711
+__ptext711:
 
 ;; *************** function _setAD_ConvertFlag *****************
 ;; Defined at:
@@ -3856,7 +3887,7 @@ __ptext683:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text683
+psect	text711
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	206
 	global	__size_of_setAD_ConvertFlag
@@ -3869,13 +3900,13 @@ _setAD_ConvertFlag:
 	movwf	(setAD_ConvertFlag@flag)
 	line	207
 	
-l3992:	
+l4002:	
 ;common.c: 207: adc_convert_flag = flag;
 	movf	(setAD_ConvertFlag@flag),w
 	movwf	(_adc_convert_flag)
 	line	208
 	
-l1642:	
+l1646:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setAD_ConvertFlag
@@ -3884,9 +3915,9 @@ GLOBAL	__end_of_setAD_ConvertFlag
 
 	signat	_setAD_ConvertFlag,4216
 	global	_getAD_ConvertFlag
-psect	text684,local,class=CODE,delta=2
-global __ptext684
-__ptext684:
+psect	text712,local,class=CODE,delta=2
+global __ptext712
+__ptext712:
 
 ;; *************** function _getAD_ConvertFlag *****************
 ;; Defined at:
@@ -3917,7 +3948,7 @@ __ptext684:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text684
+psect	text712
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	200
 	global	__size_of_getAD_ConvertFlag
@@ -3928,14 +3959,14 @@ _getAD_ConvertFlag:
 ; Regs used in _getAD_ConvertFlag: [wreg]
 	line	201
 	
-l3988:	
+l3998:	
 ;common.c: 201: return adc_convert_flag;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	(_adc_convert_flag),w
 	line	202
 	
-l1639:	
+l1643:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getAD_ConvertFlag
@@ -3944,9 +3975,9 @@ GLOBAL	__end_of_getAD_ConvertFlag
 
 	signat	_getAD_ConvertFlag,89
 	global	_Filter
-psect	text685,local,class=CODE,delta=2
-global __ptext685
-__ptext685:
+psect	text713,local,class=CODE,delta=2
+global __ptext713
+__ptext713:
 
 ;; *************** function _Filter *****************
 ;; Defined at:
@@ -3987,7 +4018,7 @@ __ptext685:
 ;;		_getAdOriginalCh14Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text685
+psect	text713
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	51
 	global	__size_of_Filter
@@ -4000,7 +4031,7 @@ _Filter:
 	line	53
 	movwf	(Filter@tmpValue)
 	
-l3890:	
+l3900:	
 	clrf	(Filter@j)
 	line	55
 ;common.c: 55: unsigned int filter_temp = 0, filter_sum = 0;
@@ -4015,7 +4046,7 @@ l3890:
 	clrf	(Filter@cir+1)
 	line	60
 	
-l3896:	
+l3906:	
 ;common.c: 60: filter_buf[cir] = *tmpValue++;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -4037,51 +4068,51 @@ l3896:
 	movf	1+(??_Filter+0)+0,w
 	movwf	indf
 	
-l3898:	
+l3908:	
 	incf	(Filter@tmpValue),f
 	incf	(Filter@tmpValue),f
 	line	59
 	
-l3900:	
+l3910:	
 	incf	(Filter@cir),f
 	skipnz
 	incf	(Filter@cir+1),f
 	
-l3902:	
+l3912:	
 	movf	(Filter@cir+1),w
 	xorlw	80h
 	movwf	btemp+1
 	movlw	(high(0Ch))^80h
 	subwf	btemp+1,w
 	skipz
-	goto	u955
+	goto	u965
 	movlw	low(0Ch)
 	subwf	(Filter@cir),w
-u955:
+u965:
 
 	skipc
-	goto	u951
-	goto	u950
-u951:
-	goto	l3896
-u950:
+	goto	u961
+	goto	u960
+u961:
+	goto	l3906
+u960:
 	line	63
 	
-l3904:	
+l3914:	
 ;common.c: 63: for(j = 0; j < 12 - 1; j++)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	clrf	(Filter@j)
 	line	65
 	
-l3910:	
+l3920:	
 ;common.c: 64: {
 ;common.c: 65: for(i = 0; i < 12 - 1 - j; i++)
 	clrf	(Filter@i)
-	goto	l3918
+	goto	l3928
 	line	67
 	
-l3912:	
+l3922:	
 ;common.c: 66: {
 ;common.c: 67: if(filter_buf[i] > filter_buf[i + 1])
 	bcf	status, 5	;RP0=0, select bank0
@@ -4109,19 +4140,19 @@ l3912:
 	movf	1+(??_Filter+0)+0,w
 	subwf	1+(??_Filter+2)+0,w
 	skipz
-	goto	u965
+	goto	u975
 	movf	0+(??_Filter+0)+0,w
 	subwf	0+(??_Filter+2)+0,w
-u965:
+u975:
 	skipnc
-	goto	u961
-	goto	u960
-u961:
-	goto	l3916
-u960:
+	goto	u971
+	goto	u970
+u971:
+	goto	l3926
+u970:
 	line	70
 	
-l3914:	
+l3924:	
 ;common.c: 68: {
 ;common.c: 70: filter_temp = filter_buf[i];
 	clrc
@@ -4168,10 +4199,10 @@ l3914:
 	movwf	indf
 	line	65
 	
-l3916:	
+l3926:	
 	incf	(Filter@i),f
 	
-l3918:	
+l3928:	
 	movlw	high(0Bh)
 	movwf	(??_Filter+0)+0+1
 	movf	(Filter@j),w
@@ -4183,36 +4214,36 @@ l3918:
 	xorlw	80h
 	sublw	080h
 	skipz
-	goto	u975
+	goto	u985
 	movf	0+(??_Filter+0)+0,w
 	subwf	(Filter@i),w
-u975:
+u985:
 
-	skipc
-	goto	u971
-	goto	u970
-u971:
-	goto	l3912
-u970:
-	line	63
-	
-l3920:	
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	incf	(Filter@j),f
-	
-l3922:	
-	movlw	(0Bh)
-	subwf	(Filter@j),w
 	skipc
 	goto	u981
 	goto	u980
 u981:
-	goto	l3910
+	goto	l3922
 u980:
+	line	63
+	
+l3930:	
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	incf	(Filter@j),f
+	
+l3932:	
+	movlw	(0Bh)
+	subwf	(Filter@j),w
+	skipc
+	goto	u991
+	goto	u990
+u991:
+	goto	l3920
+u990:
 	line	79
 	
-l3924:	
+l3934:	
 ;common.c: 75: }
 ;common.c: 76: }
 ;common.c: 77: }
@@ -4221,7 +4252,7 @@ l3924:
 	movwf	(Filter@i)
 	line	81
 	
-l3928:	
+l3938:	
 ;common.c: 80: {
 ;common.c: 81: filter_sum += filter_buf[i];
 	clrc
@@ -4242,21 +4273,21 @@ l3928:
 	addwf	(Filter@filter_sum+1),f
 	line	79
 	
-l3930:	
+l3940:	
 	incf	(Filter@i),f
 	
-l3932:	
+l3942:	
 	movlw	(0Ah)
 	subwf	(Filter@i),w
 	skipc
-	goto	u991
-	goto	u990
-u991:
-	goto	l3928
-u990:
+	goto	u1001
+	goto	u1000
+u1001:
+	goto	l3938
+u1000:
 	line	84
 	
-l3934:	
+l3944:	
 ;common.c: 82: }
 ;common.c: 84: return (filter_sum >> 3);
 	movf	(Filter@filter_sum+1),w
@@ -4264,7 +4295,7 @@ l3934:
 	movf	(Filter@filter_sum),w
 	movwf	(?_Filter)
 	
-l3936:	
+l3946:	
 	clrc
 	rrf	(?_Filter+1),f
 	rrf	(?_Filter),f
@@ -4276,7 +4307,7 @@ l3936:
 	rrf	(?_Filter),f
 	line	86
 	
-l1601:	
+l1605:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Filter
@@ -4285,9 +4316,9 @@ GLOBAL	__end_of_Filter
 
 	signat	_Filter,4218
 	global	_isFinishedThreeHoursTimer
-psect	text686,local,class=CODE,delta=2
-global __ptext686
-__ptext686:
+psect	text714,local,class=CODE,delta=2
+global __ptext714
+__ptext714:
 
 ;; *************** function _isFinishedThreeHoursTimer *****************
 ;; Defined at:
@@ -4318,7 +4349,7 @@ __ptext686:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text686
+psect	text714
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	416
 	global	__size_of_isFinishedThreeHoursTimer
@@ -4329,31 +4360,31 @@ _isFinishedThreeHoursTimer:
 ; Regs used in _isFinishedThreeHoursTimer: [wreg+status,2+status,0]
 	line	417
 	
-l3878:	
+l3888:	
 ;common.c: 417: if(uiSmallTimer == 0)
 	movf	((_uiSmallTimer+1)),w
 	iorwf	((_uiSmallTimer)),w
 	skipz
-	goto	u941
-	goto	u940
-u941:
-	goto	l3886
-u940:
+	goto	u951
+	goto	u950
+u951:
+	goto	l3896
+u950:
 	line	418
 	
-l3880:	
+l3890:	
 ;common.c: 418: return 1;
 	movlw	(01h)
-	goto	l1707
+	goto	l1711
 	line	420
 	
-l3886:	
+l3896:	
 ;common.c: 419: else
 ;common.c: 420: return 0;
 	movlw	(0)
 	line	421
 	
-l1707:	
+l1711:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isFinishedThreeHoursTimer
@@ -4362,9 +4393,9 @@ GLOBAL	__end_of_isFinishedThreeHoursTimer
 
 	signat	_isFinishedThreeHoursTimer,89
 	global	_startThreeHoursTimer
-psect	text687,local,class=CODE,delta=2
-global __ptext687
-__ptext687:
+psect	text715,local,class=CODE,delta=2
+global __ptext715
+__ptext715:
 
 ;; *************** function _startThreeHoursTimer *****************
 ;; Defined at:
@@ -4395,7 +4426,7 @@ __ptext687:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text687
+psect	text715
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	382
 	global	__size_of_startThreeHoursTimer
@@ -4406,19 +4437,19 @@ _startThreeHoursTimer:
 ; Regs used in _startThreeHoursTimer: [wreg+status,2+status,0]
 	line	383
 	
-l3874:	
+l3884:	
 ;common.c: 383: if(0 == uiSmallTimer)
 	movf	((_uiSmallTimer+1)),w
 	iorwf	((_uiSmallTimer)),w
 	skipz
-	goto	u931
-	goto	u930
-u931:
-	goto	l1690
-u930:
+	goto	u941
+	goto	u940
+u941:
+	goto	l1694
+u940:
 	line	384
 	
-l3876:	
+l3886:	
 ;common.c: 384: uiSmallTimer = uiSetTime;
 	movf	(startThreeHoursTimer@uiSetTime+1),w
 	movwf	(_uiSmallTimer+1)
@@ -4426,7 +4457,7 @@ l3876:
 	movwf	(_uiSmallTimer)
 	line	389
 	
-l1690:	
+l1694:	
 	return
 	opt stack 0
 GLOBAL	__end_of_startThreeHoursTimer
@@ -4435,9 +4466,9 @@ GLOBAL	__end_of_startThreeHoursTimer
 
 	signat	_startThreeHoursTimer,4216
 	global	_isFinishedTwentySecondsTimer
-psect	text688,local,class=CODE,delta=2
-global __ptext688
-__ptext688:
+psect	text716,local,class=CODE,delta=2
+global __ptext716
+__ptext716:
 
 ;; *************** function _isFinishedTwentySecondsTimer *****************
 ;; Defined at:
@@ -4452,7 +4483,7 @@ __ptext688:
 ;;		wreg, status,2, status,0
 ;; Tracked objects:
 ;;		On entry : 60/0
-;;		On exit  : 60/0
+;;		On exit  : 60/20
 ;;		Unchanged: FFF9F/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
@@ -4468,7 +4499,7 @@ __ptext688:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text688
+psect	text716
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	399
 	global	__size_of_isFinishedTwentySecondsTimer
@@ -4479,31 +4510,32 @@ _isFinishedTwentySecondsTimer:
 ; Regs used in _isFinishedTwentySecondsTimer: [wreg+status,2+status,0]
 	line	400
 	
-l3862:	
+l3872:	
 ;common.c: 400: if(0 == uiTwentySecondsTimer)
-	movf	((_uiTwentySecondsTimer+1)),w
-	iorwf	((_uiTwentySecondsTimer)),w
+	bsf	status, 5	;RP0=1, select bank1
+	movf	((_uiTwentySecondsTimer+1)^080h),w
+	iorwf	((_uiTwentySecondsTimer)^080h),w
 	skipz
-	goto	u921
-	goto	u920
-u921:
-	goto	l3870
-u920:
+	goto	u931
+	goto	u930
+u931:
+	goto	l3880
+u930:
 	line	401
 	
-l3864:	
+l3874:	
 ;common.c: 401: return 1;
 	movlw	(01h)
-	goto	l1697
+	goto	l1701
 	line	403
 	
-l3870:	
+l3880:	
 ;common.c: 402: else
 ;common.c: 403: return 0;
 	movlw	(0)
 	line	404
 	
-l1697:	
+l1701:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isFinishedTwentySecondsTimer
@@ -4512,9 +4544,9 @@ GLOBAL	__end_of_isFinishedTwentySecondsTimer
 
 	signat	_isFinishedTwentySecondsTimer,89
 	global	_startTwentySecondsTimer
-psect	text689,local,class=CODE,delta=2
-global __ptext689
-__ptext689:
+psect	text717,local,class=CODE,delta=2
+global __ptext717
+__ptext717:
 
 ;; *************** function _startTwentySecondsTimer *****************
 ;; Defined at:
@@ -4529,7 +4561,7 @@ __ptext689:
 ;;		wreg
 ;; Tracked objects:
 ;;		On entry : 60/0
-;;		On exit  : 60/0
+;;		On exit  : 60/20
 ;;		Unchanged: FFF9F/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
@@ -4545,7 +4577,7 @@ __ptext689:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text689
+psect	text717
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	393
 	global	__size_of_startTwentySecondsTimer
@@ -4556,14 +4588,15 @@ _startTwentySecondsTimer:
 ; Regs used in _startTwentySecondsTimer: [wreg]
 	line	394
 	
-l3860:	
+l3870:	
 ;common.c: 394: uiTwentySecondsTimer = 20;
 	movlw	014h
-	movwf	(_uiTwentySecondsTimer)
-	clrf	(_uiTwentySecondsTimer+1)
+	bsf	status, 5	;RP0=1, select bank1
+	movwf	(_uiTwentySecondsTimer)^080h
+	clrf	(_uiTwentySecondsTimer+1)^080h
 	line	395
 	
-l1693:	
+l1697:	
 	return
 	opt stack 0
 GLOBAL	__end_of_startTwentySecondsTimer
@@ -4572,9 +4605,9 @@ GLOBAL	__end_of_startTwentySecondsTimer
 
 	signat	_startTwentySecondsTimer,88
 	global	_isFinishedTwelveHoursTimer
-psect	text690,local,class=CODE,delta=2
-global __ptext690
-__ptext690:
+psect	text718,local,class=CODE,delta=2
+global __ptext718
+__ptext718:
 
 ;; *************** function _isFinishedTwelveHoursTimer *****************
 ;; Defined at:
@@ -4605,7 +4638,7 @@ __ptext690:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text690
+psect	text718
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	408
 	global	__size_of_isFinishedTwelveHoursTimer
@@ -4616,31 +4649,31 @@ _isFinishedTwelveHoursTimer:
 ; Regs used in _isFinishedTwelveHoursTimer: [wreg+status,2+status,0]
 	line	409
 	
-l3848:	
+l3858:	
 ;common.c: 409: if(uiBigTimer == 0)
 	movf	((_uiBigTimer+1)),w
 	iorwf	((_uiBigTimer)),w
 	skipz
-	goto	u911
-	goto	u910
-u911:
-	goto	l3856
-u910:
+	goto	u921
+	goto	u920
+u921:
+	goto	l3866
+u920:
 	line	410
 	
-l3850:	
+l3860:	
 ;common.c: 410: return 1;
 	movlw	(01h)
-	goto	l1702
+	goto	l1706
 	line	412
 	
-l3856:	
+l3866:	
 ;common.c: 411: else
 ;common.c: 412: return 0;
 	movlw	(0)
 	line	413
 	
-l1702:	
+l1706:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isFinishedTwelveHoursTimer
@@ -4649,9 +4682,9 @@ GLOBAL	__end_of_isFinishedTwelveHoursTimer
 
 	signat	_isFinishedTwelveHoursTimer,89
 	global	_startTwelveHourTimer
-psect	text691,local,class=CODE,delta=2
-global __ptext691
-__ptext691:
+psect	text719,local,class=CODE,delta=2
+global __ptext719
+__ptext719:
 
 ;; *************** function _startTwelveHourTimer *****************
 ;; Defined at:
@@ -4682,7 +4715,7 @@ __ptext691:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text691
+psect	text719
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	354
 	global	__size_of_startTwelveHourTimer
@@ -4693,19 +4726,19 @@ _startTwelveHourTimer:
 ; Regs used in _startTwelveHourTimer: [wreg+status,2+status,0]
 	line	355
 	
-l3844:	
+l3854:	
 ;common.c: 355: if(0 == uiBigTimer)
 	movf	((_uiBigTimer+1)),w
 	iorwf	((_uiBigTimer)),w
 	skipz
-	goto	u901
-	goto	u900
-u901:
-	goto	l1677
-u900:
+	goto	u911
+	goto	u910
+u911:
+	goto	l1681
+u910:
 	line	356
 	
-l3846:	
+l3856:	
 ;common.c: 356: uiBigTimer = uiSetTime;
 	movf	(startTwelveHourTimer@uiSetTime+1),w
 	movwf	(_uiBigTimer+1)
@@ -4713,7 +4746,7 @@ l3846:
 	movwf	(_uiBigTimer)
 	line	362
 	
-l1677:	
+l1681:	
 	return
 	opt stack 0
 GLOBAL	__end_of_startTwelveHourTimer
@@ -4722,9 +4755,9 @@ GLOBAL	__end_of_startTwelveHourTimer
 
 	signat	_startTwelveHourTimer,4216
 	global	_clrSampeTime
-psect	text692,local,class=CODE,delta=2
-global __ptext692
-__ptext692:
+psect	text720,local,class=CODE,delta=2
+global __ptext720
+__ptext720:
 
 ;; *************** function _clrSampeTime *****************
 ;; Defined at:
@@ -4755,7 +4788,7 @@ __ptext692:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text692
+psect	text720
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	434
 	global	__size_of_clrSampeTime
@@ -4766,12 +4799,12 @@ _clrSampeTime:
 ; Regs used in _clrSampeTime: [status,2]
 	line	435
 	
-l3842:	
+l3852:	
 ;common.c: 435: timer.timer10msStopWatch = 0;
 	clrf	(_timer)
 	line	436
 	
-l1716:	
+l1720:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clrSampeTime
@@ -4780,9 +4813,9 @@ GLOBAL	__end_of_clrSampeTime
 
 	signat	_clrSampeTime,88
 	global	_isPermitSampleTime
-psect	text693,local,class=CODE,delta=2
-global __ptext693
-__ptext693:
+psect	text721,local,class=CODE,delta=2
+global __ptext721
+__ptext721:
 
 ;; *************** function _isPermitSampleTime *****************
 ;; Defined at:
@@ -4813,7 +4846,7 @@ __ptext693:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text693
+psect	text721
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	424
 	global	__size_of_isPermitSampleTime
@@ -4824,32 +4857,32 @@ _isPermitSampleTime:
 ; Regs used in _isPermitSampleTime: [wreg]
 	line	425
 	
-l3830:	
+l3840:	
 ;common.c: 425: if(timer.timer10msStopWatch >= 10)
 	movlw	(0Ah)
 	subwf	(_timer),w
 	skipc
-	goto	u891
-	goto	u890
-u891:
-	goto	l3838
-u890:
+	goto	u901
+	goto	u900
+u901:
+	goto	l3848
+u900:
 	line	427
 	
-l3832:	
+l3842:	
 ;common.c: 426: {
 ;common.c: 427: return 1;
 	movlw	(01h)
-	goto	l1712
+	goto	l1716
 	line	430
 	
-l3838:	
+l3848:	
 ;common.c: 429: else
 ;common.c: 430: return 0;
 	movlw	(0)
 	line	431
 	
-l1712:	
+l1716:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isPermitSampleTime
@@ -4858,9 +4891,9 @@ GLOBAL	__end_of_isPermitSampleTime
 
 	signat	_isPermitSampleTime,89
 	global	_adc_start
-psect	text694,local,class=CODE,delta=2
-global __ptext694
-__ptext694:
+psect	text722,local,class=CODE,delta=2
+global __ptext722
+__ptext722:
 
 ;; *************** function _adc_start *****************
 ;; Defined at:
@@ -4892,7 +4925,7 @@ __ptext694:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text694
+psect	text722
 	file	"D:\develop\ATK\AK7030-OTP\periph.c"
 	line	100
 	global	__size_of_adc_start
@@ -4903,13 +4936,13 @@ _adc_start:
 ; Regs used in _adc_start: []
 	line	101
 	
-l3828:	
+l3838:	
 ;periph.c: 101: GO=1;
 	bcf	status, 5	;RP0=0, select bank0
 	bsf	(249/8),(249)&7
 	line	102
 	
-l2382:	
+l2386:	
 	return
 	opt stack 0
 GLOBAL	__end_of_adc_start
@@ -4918,9 +4951,9 @@ GLOBAL	__end_of_adc_start
 
 	signat	_adc_start,88
 	global	_op2_init
-psect	text695,local,class=CODE,delta=2
-global __ptext695
-__ptext695:
+psect	text723,local,class=CODE,delta=2
+global __ptext723
+__ptext723:
 
 ;; *************** function _op2_init *****************
 ;; Defined at:
@@ -4951,7 +4984,7 @@ __ptext695:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text695
+psect	text723
 	file	"D:\develop\ATK\AK7030-OTP\periph.c"
 	line	45
 	global	__size_of_op2_init
@@ -4962,7 +4995,7 @@ _op2_init:
 ; Regs used in _op2_init: [wreg]
 	line	52
 	
-l3822:	
+l3832:	
 ;periph.c: 52: OP2CON1=0x10;
 	movlw	(010h)
 	movwf	(156)^080h	;volatile
@@ -4976,17 +5009,17 @@ l3822:
 	movwf	(155)^080h	;volatile
 	line	58
 	
-l3824:	
+l3834:	
 ;periph.c: 58: TRISA7=0;
 	bcf	(1071/8)^080h,(1071)&7
 	line	60
 	
-l3826:	
+l3836:	
 ;periph.c: 60: TRISB7 = 1;
 	bsf	(1079/8)^080h,(1079)&7
 	line	61
 	
-l2368:	
+l2372:	
 	return
 	opt stack 0
 GLOBAL	__end_of_op2_init
@@ -4995,9 +5028,9 @@ GLOBAL	__end_of_op2_init
 
 	signat	_op2_init,88
 	global	_op1_init
-psect	text696,local,class=CODE,delta=2
-global __ptext696
-__ptext696:
+psect	text724,local,class=CODE,delta=2
+global __ptext724
+__ptext724:
 
 ;; *************** function _op1_init *****************
 ;; Defined at:
@@ -5028,7 +5061,7 @@ __ptext696:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text696
+psect	text724
 	file	"D:\develop\ATK\AK7030-OTP\periph.c"
 	line	26
 	global	__size_of_op1_init
@@ -5039,7 +5072,7 @@ _op1_init:
 ; Regs used in _op1_init: [wreg]
 	line	33
 	
-l3816:	
+l3826:	
 ;periph.c: 33: OP1CON1=0x02;
 	movlw	(02h)
 	bcf	status, 5	;RP0=0, select bank0
@@ -5054,18 +5087,18 @@ l3816:
 	movwf	(27)	;volatile
 	line	38
 	
-l3818:	
+l3828:	
 ;periph.c: 38: TRISB3=1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1075/8)^080h,(1075)&7
 	line	40
 	
-l3820:	
+l3830:	
 ;periph.c: 40: TRISB5=0;
 	bcf	(1077/8)^080h,(1077)&7
 	line	41
 	
-l2365:	
+l2369:	
 	return
 	opt stack 0
 GLOBAL	__end_of_op1_init
@@ -5074,9 +5107,9 @@ GLOBAL	__end_of_op1_init
 
 	signat	_op1_init,88
 	global	_dac_init
-psect	text697,local,class=CODE,delta=2
-global __ptext697
-__ptext697:
+psect	text725,local,class=CODE,delta=2
+global __ptext725
+__ptext725:
 
 ;; *************** function _dac_init *****************
 ;; Defined at:
@@ -5107,7 +5140,7 @@ __ptext697:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text697
+psect	text725
 	file	"D:\develop\ATK\AK7030-OTP\periph.c"
 	line	14
 	global	__size_of_dac_init
@@ -5118,23 +5151,23 @@ _dac_init:
 ; Regs used in _dac_init: [wreg]
 	line	15
 	
-l3810:	
+l3820:	
 ;periph.c: 15: DACCON|=1;
 	bsf	(135)^080h+(0/8),(0)&7	;volatile
 	line	17
 	
-l3812:	
+l3822:	
 ;periph.c: 17: DACR0=0x0F;
 	movlw	(0Fh)
 	movwf	(136)^080h	;volatile
 	line	18
 	
-l3814:	
+l3824:	
 ;periph.c: 18: DACCON|=(1)<<2;
 	bsf	(135)^080h+(2/8),(2)&7	;volatile
 	line	22
 	
-l2362:	
+l2366:	
 	return
 	opt stack 0
 GLOBAL	__end_of_dac_init
@@ -5143,9 +5176,9 @@ GLOBAL	__end_of_dac_init
 
 	signat	_dac_init,88
 	global	_adc_test_init
-psect	text698,local,class=CODE,delta=2
-global __ptext698
-__ptext698:
+psect	text726,local,class=CODE,delta=2
+global __ptext726
+__ptext726:
 
 ;; *************** function _adc_test_init *****************
 ;; Defined at:
@@ -5178,7 +5211,7 @@ __ptext698:
 ;;		_process_AD_Converter_Value
 ;; This function uses a non-reentrant model
 ;;
-psect	text698
+psect	text726
 	file	"D:\develop\ATK\AK7030-OTP\periph.c"
 	line	85
 	global	__size_of_adc_test_init
@@ -5191,12 +5224,12 @@ _adc_test_init:
 	movwf	(adc_test_init@channel)
 	line	86
 	
-l3800:	
+l3810:	
 ;periph.c: 86: ADCON0 = 0x00;
 	clrf	(31)	;volatile
 	line	87
 	
-l3802:	
+l3812:	
 ;periph.c: 87: ADCON0|=channel<<2;
 	movf	(adc_test_init@channel),w
 	movwf	(??_adc_test_init+0)+0
@@ -5207,7 +5240,7 @@ l3802:
 	iorwf	(31),f	;volatile
 	line	88
 	
-l3804:	
+l3814:	
 ;periph.c: 88: ADCON1|=ref<<6;
 	movf	(adc_test_init@ref),w
 	movwf	(??_adc_test_init+0)+0
@@ -5219,19 +5252,19 @@ l3804:
 	iorwf	(159)^080h,f	;volatile
 	line	89
 	
-l3806:	
+l3816:	
 ;periph.c: 89: ADON=1;
 	bcf	status, 5	;RP0=0, select bank0
 	bsf	(248/8),(248)&7
 	line	90
 	
-l3808:	
+l3818:	
 ;periph.c: 90: ADIE=1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1130/8)^080h,(1130)&7
 	line	91
 	
-l2376:	
+l2380:	
 	return
 	opt stack 0
 GLOBAL	__end_of_adc_test_init
@@ -5240,9 +5273,9 @@ GLOBAL	__end_of_adc_test_init
 
 	signat	_adc_test_init,8312
 	global	_timer1_interrupt_config
-psect	text699,local,class=CODE,delta=2
-global __ptext699
-__ptext699:
+psect	text727,local,class=CODE,delta=2
+global __ptext727
+__ptext727:
 
 ;; *************** function _timer1_interrupt_config *****************
 ;; Defined at:
@@ -5273,7 +5306,7 @@ __ptext699:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text699
+psect	text727
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	192
 	global	__size_of_timer1_interrupt_config
@@ -5284,7 +5317,7 @@ _timer1_interrupt_config:
 ; Regs used in _timer1_interrupt_config: []
 	line	193
 	
-l3798:	
+l3808:	
 ;common.c: 193: GIE = 1;
 	bsf	(95/8),(95)&7
 	line	194
@@ -5292,7 +5325,7 @@ l3798:
 	bsf	(94/8),(94)&7
 	line	195
 	
-l1636:	
+l1640:	
 	return
 	opt stack 0
 GLOBAL	__end_of_timer1_interrupt_config
@@ -5301,9 +5334,9 @@ GLOBAL	__end_of_timer1_interrupt_config
 
 	signat	_timer1_interrupt_config,88
 	global	_timer1_config
-psect	text700,local,class=CODE,delta=2
-global __ptext700
-__ptext700:
+psect	text728,local,class=CODE,delta=2
+global __ptext728
+__ptext728:
 
 ;; *************** function _timer1_config *****************
 ;; Defined at:
@@ -5334,7 +5367,7 @@ __ptext700:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text700
+psect	text728
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	180
 	global	__size_of_timer1_config
@@ -5345,7 +5378,7 @@ _timer1_config:
 ; Regs used in _timer1_config: [wreg]
 	line	182
 	
-l3794:	
+l3804:	
 ;common.c: 182: TMR1H=0xCF;
 	movlw	(0CFh)
 	bcf	status, 6	;RP1=0, select bank0
@@ -5360,13 +5393,13 @@ l3794:
 	movwf	(16)	;volatile
 	line	185
 	
-l3796:	
+l3806:	
 ;common.c: 185: TMR1IE=1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1120/8)^080h,(1120)&7
 	line	187
 	
-l1633:	
+l1637:	
 	return
 	opt stack 0
 GLOBAL	__end_of_timer1_config
@@ -5375,9 +5408,9 @@ GLOBAL	__end_of_timer1_config
 
 	signat	_timer1_config,88
 	global	_clock_config
-psect	text701,local,class=CODE,delta=2
-global __ptext701
-__ptext701:
+psect	text729,local,class=CODE,delta=2
+global __ptext729
+__ptext729:
 
 ;; *************** function _clock_config *****************
 ;; Defined at:
@@ -5408,7 +5441,7 @@ __ptext701:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text701
+psect	text729
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	172
 	global	__size_of_clock_config
@@ -5419,7 +5452,7 @@ _clock_config:
 ; Regs used in _clock_config: [wreg+status,2]
 	line	174
 	
-l3790:	
+l3800:	
 ;common.c: 174: CLKPR = 0x80;
 	movlw	(080h)
 	bcf	status, 5	;RP0=0, select bank2
@@ -5427,22 +5460,22 @@ l3790:
 	movwf	(264)^0100h	;volatile
 	line	175
 	
-l3792:	
+l3802:	
 ;common.c: 175: CLKPR = 0x00;
 	clrf	(264)^0100h	;volatile
 	line	176
 ;common.c: 176: while(CLKPCE);
 	
-l1627:	
+l1631:	
 	btfsc	(2119/8)^0100h,(2119)&7
-	goto	u881
-	goto	u880
-u881:
-	goto	l1627
-u880:
+	goto	u891
+	goto	u890
+u891:
+	goto	l1631
+u890:
 	line	177
 	
-l1630:	
+l1634:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clock_config
@@ -5451,9 +5484,9 @@ GLOBAL	__end_of_clock_config
 
 	signat	_clock_config,88
 	global	_initPin
-psect	text702,local,class=CODE,delta=2
-global __ptext702
-__ptext702:
+psect	text730,local,class=CODE,delta=2
+global __ptext730
+__ptext730:
 
 ;; *************** function _initPin *****************
 ;; Defined at:
@@ -5484,7 +5517,7 @@ __ptext702:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text702
+psect	text730
 	file	"D:\develop\ATK\AK7030-OTP\main.c"
 	line	105
 	global	__size_of_initPin
@@ -5495,7 +5528,7 @@ _initPin:
 ; Regs used in _initPin: []
 	line	106
 	
-l3788:	
+l3798:	
 ;main.c: 106: PB6 = 1;
 	bcf	status, 5	;RP0=0, select bank0
 	bsf	(54/8),(54)&7
@@ -5546,9 +5579,9 @@ GLOBAL	__end_of_initPin
 
 	signat	_initPin,88
 	global	_clearTwentySecondsTimer
-psect	text703,local,class=CODE,delta=2
-global __ptext703
-__ptext703:
+psect	text731,local,class=CODE,delta=2
+global __ptext731
+__ptext731:
 
 ;; *************** function _clearTwentySecondsTimer *****************
 ;; Defined at:
@@ -5563,7 +5596,7 @@ __ptext703:
 ;;		status,2
 ;; Tracked objects:
 ;;		On entry : 160/0
-;;		On exit  : 160/0
+;;		On exit  : 160/20
 ;;		Unchanged: FFE9F/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
@@ -5579,7 +5612,7 @@ __ptext703:
 ;;		_clearAllTimer
 ;; This function uses a non-reentrant model
 ;;
-psect	text703
+psect	text731
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	376
 	global	__size_of_clearTwentySecondsTimer
@@ -5590,13 +5623,14 @@ _clearTwentySecondsTimer:
 ; Regs used in _clearTwentySecondsTimer: [status,2]
 	line	377
 	
-l3786:	
+l3796:	
 ;common.c: 377: uiTwentySecondsTimer = 0;
-	clrf	(_uiTwentySecondsTimer)
-	clrf	(_uiTwentySecondsTimer+1)
+	bsf	status, 5	;RP0=1, select bank1
+	clrf	(_uiTwentySecondsTimer)^080h
+	clrf	(_uiTwentySecondsTimer+1)^080h
 	line	378
 	
-l1686:	
+l1690:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clearTwentySecondsTimer
@@ -5605,9 +5639,9 @@ GLOBAL	__end_of_clearTwentySecondsTimer
 
 	signat	_clearTwentySecondsTimer,88
 	global	_clearThreeHoursTimer
-psect	text704,local,class=CODE,delta=2
-global __ptext704
-__ptext704:
+psect	text732,local,class=CODE,delta=2
+global __ptext732
+__ptext732:
 
 ;; *************** function _clearThreeHoursTimer *****************
 ;; Defined at:
@@ -5639,7 +5673,7 @@ __ptext704:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text704
+psect	text732
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	371
 	global	__size_of_clearThreeHoursTimer
@@ -5650,13 +5684,13 @@ _clearThreeHoursTimer:
 ; Regs used in _clearThreeHoursTimer: [status,2]
 	line	372
 	
-l3784:	
+l3794:	
 ;common.c: 372: uiSmallTimer = 0;
 	clrf	(_uiSmallTimer)
 	clrf	(_uiSmallTimer+1)
 	line	373
 	
-l1683:	
+l1687:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clearThreeHoursTimer
@@ -5665,9 +5699,9 @@ GLOBAL	__end_of_clearThreeHoursTimer
 
 	signat	_clearThreeHoursTimer,88
 	global	_clearTwelveHoursTimer
-psect	text705,local,class=CODE,delta=2
-global __ptext705
-__ptext705:
+psect	text733,local,class=CODE,delta=2
+global __ptext733
+__ptext733:
 
 ;; *************** function _clearTwelveHoursTimer *****************
 ;; Defined at:
@@ -5698,7 +5732,7 @@ __ptext705:
 ;;		_clearAllTimer
 ;; This function uses a non-reentrant model
 ;;
-psect	text705
+psect	text733
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	365
 	global	__size_of_clearTwelveHoursTimer
@@ -5709,13 +5743,13 @@ _clearTwelveHoursTimer:
 ; Regs used in _clearTwelveHoursTimer: [status,2]
 	line	366
 	
-l3782:	
+l3792:	
 ;common.c: 366: uiBigTimer = 0;
 	clrf	(_uiBigTimer)
 	clrf	(_uiBigTimer+1)
 	line	367
 	
-l1680:	
+l1684:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clearTwelveHoursTimer
@@ -5724,9 +5758,9 @@ GLOBAL	__end_of_clearTwelveHoursTimer
 
 	signat	_clearTwelveHoursTimer,88
 	global	_ISR
-psect	text706,local,class=CODE,delta=2
-global __ptext706
-__ptext706:
+psect	text734,local,class=CODE,delta=2
+global __ptext734
+__ptext734:
 
 ;; *************** function _ISR *****************
 ;; Defined at:
@@ -5759,7 +5793,7 @@ __ptext706:
 ;;		Interrupt level 1
 ;; This function uses a non-reentrant model
 ;;
-psect	text706
+psect	text734
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	439
 	global	__size_of_ISR
@@ -5787,27 +5821,27 @@ interrupt_function:
 	movf	btemp+1,w
 	movwf	(??_ISR+3)
 	ljmp	_ISR
-psect	text706
+psect	text734
 	line	442
 	
-i1l4016:	
+i1l4026:	
 ;common.c: 440: static unsigned char ucTimer1sCnt = 0;
 ;common.c: 442: if(TMR1IF == 1)
 	btfss	(96/8),(96)&7
-	goto	u112_21
-	goto	u112_20
-u112_21:
-	goto	i1l4034
-u112_20:
+	goto	u113_21
+	goto	u113_20
+u113_21:
+	goto	i1l4044
+u113_20:
 	line	444
 	
-i1l4018:	
+i1l4028:	
 ;common.c: 443: {
 ;common.c: 444: TMR1IF = 0 ;
 	bcf	(96/8),(96)&7
 	line	445
 	
-i1l4020:	
+i1l4030:	
 ;common.c: 445: timer.timer10msStopWatch++;
 	incf	(_timer),f
 	line	446
@@ -5815,37 +5849,37 @@ i1l4020:
 	incf	(ISR@ucTimer1sCnt),f
 	line	448
 	
-i1l4022:	
+i1l4032:	
 ;common.c: 448: if(ucTimer1sCnt >= 100)
 	movlw	(064h)
 	subwf	(ISR@ucTimer1sCnt),w
 	skipc
-	goto	u113_21
-	goto	u113_20
-u113_21:
-	goto	i1l4034
-u113_20:
+	goto	u114_21
+	goto	u114_20
+u114_21:
+	goto	i1l4044
+u114_20:
 	line	450
 	
-i1l4024:	
+i1l4034:	
 ;common.c: 449: {
 ;common.c: 450: ucTimer1sCnt = 0;
 	clrf	(ISR@ucTimer1sCnt)
 	line	451
 	
-i1l4026:	
+i1l4036:	
 ;common.c: 451: if(uiBigTimer > 0)
 	movf	(_uiBigTimer+1),w
 	iorwf	(_uiBigTimer),w
 	skipnz
-	goto	u114_21
-	goto	u114_20
-u114_21:
-	goto	i1l1723
-u114_20:
+	goto	u115_21
+	goto	u115_20
+u115_21:
+	goto	i1l1727
+u115_20:
 	line	452
 	
-i1l4028:	
+i1l4038:	
 ;common.c: 452: uiBigTimer--;
 	movlw	low(01h)
 	subwf	(_uiBigTimer),f
@@ -5854,20 +5888,20 @@ i1l4028:
 	decf	(_uiBigTimer+1),f
 	subwf	(_uiBigTimer+1),f
 	
-i1l1723:	
+i1l1727:	
 	line	454
 ;common.c: 454: if(uiSmallTimer)
 	movf	(_uiSmallTimer+1),w
 	iorwf	(_uiSmallTimer),w
 	skipnz
-	goto	u115_21
-	goto	u115_20
-u115_21:
-	goto	i1l1724
-u115_20:
+	goto	u116_21
+	goto	u116_20
+u116_21:
+	goto	i1l1728
+u116_20:
 	line	455
 	
-i1l4030:	
+i1l4040:	
 ;common.c: 455: uiSmallTimer--;
 	movlw	low(01h)
 	subwf	(_uiSmallTimer),f
@@ -5876,66 +5910,68 @@ i1l4030:
 	decf	(_uiSmallTimer+1),f
 	subwf	(_uiSmallTimer+1),f
 	
-i1l1724:	
+i1l1728:	
 	line	457
 ;common.c: 457: if(uiTwentySecondsTimer)
-	movf	(_uiTwentySecondsTimer+1),w
-	iorwf	(_uiTwentySecondsTimer),w
+	bsf	status, 5	;RP0=1, select bank1
+	movf	(_uiTwentySecondsTimer+1)^080h,w
+	iorwf	(_uiTwentySecondsTimer)^080h,w
 	skipnz
-	goto	u116_21
-	goto	u116_20
-u116_21:
-	goto	i1l4034
-u116_20:
-	line	458
-	
-i1l4032:	
-;common.c: 458: uiTwentySecondsTimer--;
-	movlw	low(01h)
-	subwf	(_uiTwentySecondsTimer),f
-	movlw	high(01h)
-	skipc
-	decf	(_uiTwentySecondsTimer+1),f
-	subwf	(_uiTwentySecondsTimer+1),f
-	line	462
-	
-i1l4034:	
-;common.c: 459: }
-;common.c: 460: }
-;common.c: 462: if(ADIF)
-	btfss	(106/8),(106)&7
 	goto	u117_21
 	goto	u117_20
 u117_21:
-	goto	i1l1731
+	goto	i1l4044
 u117_20:
+	line	458
+	
+i1l4042:	
+;common.c: 458: uiTwentySecondsTimer--;
+	movlw	low(01h)
+	subwf	(_uiTwentySecondsTimer)^080h,f
+	movlw	high(01h)
+	skipc
+	decf	(_uiTwentySecondsTimer+1)^080h,f
+	subwf	(_uiTwentySecondsTimer+1)^080h,f
+	line	462
+	
+i1l4044:	
+;common.c: 459: }
+;common.c: 460: }
+;common.c: 462: if(ADIF)
+	bcf	status, 5	;RP0=0, select bank0
+	btfss	(106/8),(106)&7
+	goto	u118_21
+	goto	u118_20
+u118_21:
+	goto	i1l1735
+u118_20:
 	line	464
 	
-i1l4036:	
+i1l4046:	
 ;common.c: 463: {
 ;common.c: 464: ADIF=0;
 	bcf	(106/8),(106)&7
 	line	465
 	
-i1l4038:	
+i1l4048:	
 ;common.c: 465: setAD_ConvertFlag(1);
 	movlw	(01h)
 	fcall	i1_setAD_ConvertFlag
 	line	467
 	
-i1l4040:	
+i1l4050:	
 ;common.c: 467: if(sampleChannelSelect == 4)
 	movf	(_sampleChannelSelect),w
 	xorlw	04h
 	skipz
-	goto	u118_21
-	goto	u118_20
-u118_21:
-	goto	i1l4044
-u118_20:
+	goto	u119_21
+	goto	u119_20
+u119_21:
+	goto	i1l4054
+u119_20:
 	line	471
 	
-i1l4042:	
+i1l4052:	
 ;common.c: 468: {
 ;common.c: 471: vPutSampleDataIntoTable(adc_get(),4);
 	fcall	_adc_get
@@ -5948,21 +5984,21 @@ i1l4042:
 	fcall	_vPutSampleDataIntoTable
 	line	475
 ;common.c: 475: }
-	goto	i1l1731
+	goto	i1l1735
 	line	476
 	
-i1l4044:	
+i1l4054:	
 ;common.c: 476: else if(sampleChannelSelect == 1)
 	decf	(_sampleChannelSelect),w
 	skipz
-	goto	u119_21
-	goto	u119_20
-u119_21:
-	goto	i1l4048
-u119_20:
+	goto	u120_21
+	goto	u120_20
+u120_21:
+	goto	i1l4058
+u120_20:
 	line	479
 	
-i1l4046:	
+i1l4056:	
 ;common.c: 477: {
 ;common.c: 479: vPutSampleDataIntoTable(adc_get(),1);
 	fcall	_adc_get
@@ -5975,10 +6011,10 @@ i1l4046:
 	fcall	_vPutSampleDataIntoTable
 	line	484
 ;common.c: 484: }
-	goto	i1l1731
+	goto	i1l1735
 	line	490
 	
-i1l4048:	
+i1l4058:	
 ;common.c: 485: else
 ;common.c: 486: {
 ;common.c: 490: vPutSampleDataIntoTable(adc_get(),14);
@@ -5992,7 +6028,7 @@ i1l4048:
 	fcall	_vPutSampleDataIntoTable
 	line	495
 	
-i1l1731:	
+i1l1735:	
 	movf	(??_ISR+3),w
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -6013,9 +6049,9 @@ GLOBAL	__end_of_ISR
 
 	signat	_ISR,88
 	global	i1_setAD_ConvertFlag
-psect	text707,local,class=CODE,delta=2
-global __ptext707
-__ptext707:
+psect	text735,local,class=CODE,delta=2
+global __ptext735
+__ptext735:
 
 ;; *************** function i1_setAD_ConvertFlag *****************
 ;; Defined at:
@@ -6045,7 +6081,7 @@ __ptext707:
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text707
+psect	text735
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	206
 	global	__size_ofi1_setAD_ConvertFlag
@@ -6058,13 +6094,13 @@ i1_setAD_ConvertFlag:
 	movwf	(i1setAD_ConvertFlag@flag)
 	line	207
 	
-i1l4054:	
+i1l4064:	
 ;common.c: 207: adc_convert_flag = flag;
 	movf	(i1setAD_ConvertFlag@flag),w
 	movwf	(_adc_convert_flag)
 	line	208
 	
-i1l1642:	
+i1l1646:	
 	return
 	opt stack 0
 GLOBAL	__end_ofi1_setAD_ConvertFlag
@@ -6073,9 +6109,9 @@ GLOBAL	__end_ofi1_setAD_ConvertFlag
 
 	signat	i1_setAD_ConvertFlag,88
 	global	_adc_get
-psect	text708,local,class=CODE,delta=2
-global __ptext708
-__ptext708:
+psect	text736,local,class=CODE,delta=2
+global __ptext736
+__ptext736:
 
 ;; *************** function _adc_get *****************
 ;; Defined at:
@@ -6105,7 +6141,7 @@ __ptext708:
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text708
+psect	text736
 	file	"D:\develop\ATK\AK7030-OTP\periph.c"
 	line	105
 	global	__size_of_adc_get
@@ -6116,7 +6152,7 @@ _adc_get:
 ; Regs used in _adc_get: [wreg]
 	line	107
 	
-i1l4050:	
+i1l4060:	
 ;periph.c: 106: unsigned int val;
 ;periph.c: 107: val = (ADRESH<<8) | ADRESL;
 	movf	(30),w	;volatile
@@ -6133,7 +6169,7 @@ i1l4050:
 	movwf	(?_adc_get)
 	line	109
 	
-i1l2385:	
+i1l2389:	
 	return
 	opt stack 0
 GLOBAL	__end_of_adc_get
@@ -6142,9 +6178,9 @@ GLOBAL	__end_of_adc_get
 
 	signat	_adc_get,90
 	global	_vPutSampleDataIntoTable
-psect	text709,local,class=CODE,delta=2
-global __ptext709
-__ptext709:
+psect	text737,local,class=CODE,delta=2
+global __ptext737
+__ptext737:
 
 ;; *************** function _vPutSampleDataIntoTable *****************
 ;; Defined at:
@@ -6175,7 +6211,7 @@ __ptext709:
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text709
+psect	text737
 	file	"D:\develop\ATK\AK7030-OTP\common.c"
 	line	97
 	global	__size_of_vPutSampleDataIntoTable
@@ -6186,34 +6222,34 @@ _vPutSampleDataIntoTable:
 ; Regs used in _vPutSampleDataIntoTable: [wreg-fsr0h+status,2+status,0+btemp+1]
 	line	105
 	
-i1l3940:	
+i1l3950:	
 ;common.c: 99: static unsigned char ucChannelFirstLength = 0;
 ;common.c: 101: static unsigned char ucChannelFourthLength = 0;
 ;common.c: 103: static unsigned char ucChannelFourteenthLength = 0;
 ;common.c: 105: if(channel == 1)
 	decf	(vPutSampleDataIntoTable@channel),w
 	skipz
-	goto	u100_21
-	goto	u100_20
-u100_21:
-	goto	i1l3952
-u100_20:
+	goto	u101_21
+	goto	u101_20
+u101_21:
+	goto	i1l3962
+u101_20:
 	line	107
 	
-i1l3942:	
+i1l3952:	
 ;common.c: 106: {
 ;common.c: 107: if(ucChannelFirstLength < 12)
 	movlw	(0Ch)
 	subwf	(vPutSampleDataIntoTable@ucChannelFirstLength),w
 	skipnc
-	goto	u101_21
-	goto	u101_20
-u101_21:
-	goto	i1l3948
-u101_20:
+	goto	u102_21
+	goto	u102_20
+u102_21:
+	goto	i1l3958
+u102_20:
 	line	109
 	
-i1l3944:	
+i1l3954:	
 ;common.c: 108: {
 ;common.c: 109: uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 	clrc
@@ -6228,22 +6264,22 @@ i1l3944:
 	movwf	indf
 	line	111
 	
-i1l3946:	
+i1l3956:	
 ;common.c: 111: ucChannelFirstLength++;
 	incf	(vPutSampleDataIntoTable@ucChannelFirstLength),f
 	line	112
 ;common.c: 112: }
-	goto	i1l1624
+	goto	i1l1628
 	line	115
 	
-i1l3948:	
+i1l3958:	
 ;common.c: 113: else
 ;common.c: 114: {
 ;common.c: 115: ucChannelFirstLength = 0;
 	clrf	(vPutSampleDataIntoTable@ucChannelFirstLength)
 	line	117
 	
-i1l3950:	
+i1l3960:	
 ;common.c: 117: uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 	clrc
 	rlf	(vPutSampleDataIntoTable@ucChannelFirstLength),w
@@ -6255,36 +6291,36 @@ i1l3950:
 	incf	fsr0,f
 	movf	(vPutSampleDataIntoTable@uiSampleData+1),w
 	movwf	indf
-	goto	i1l1624
+	goto	i1l1628
 	line	120
 	
-i1l3952:	
+i1l3962:	
 ;common.c: 120: else if(channel == 4)
 	movf	(vPutSampleDataIntoTable@channel),w
 	xorlw	04h
 	skipz
-	goto	u102_21
-	goto	u102_20
-u102_21:
-	goto	i1l3964
-u102_20:
+	goto	u103_21
+	goto	u103_20
+u103_21:
+	goto	i1l3974
+u103_20:
 	line	122
 	
-i1l3954:	
+i1l3964:	
 ;common.c: 121: {
 ;common.c: 122: if(ucChannelFourthLength < 12)
 	movlw	(0Ch)
 	bcf	status, 5	;RP0=0, select bank0
 	subwf	(vPutSampleDataIntoTable@ucChannelFourthLength),w
 	skipnc
-	goto	u103_21
-	goto	u103_20
-u103_21:
-	goto	i1l3960
-u103_20:
+	goto	u104_21
+	goto	u104_20
+u104_21:
+	goto	i1l3970
+u104_20:
 	line	124
 	
-i1l3956:	
+i1l3966:	
 ;common.c: 123: {
 ;common.c: 124: uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 	clrc
@@ -6299,22 +6335,22 @@ i1l3956:
 	movwf	indf
 	line	126
 	
-i1l3958:	
+i1l3968:	
 ;common.c: 126: ucChannelFourthLength++;
 	incf	(vPutSampleDataIntoTable@ucChannelFourthLength),f
 	line	127
 ;common.c: 127: }
-	goto	i1l1624
+	goto	i1l1628
 	line	130
 	
-i1l3960:	
+i1l3970:	
 ;common.c: 128: else
 ;common.c: 129: {
 ;common.c: 130: ucChannelFourthLength = 0;
 	clrf	(vPutSampleDataIntoTable@ucChannelFourthLength)
 	line	132
 	
-i1l3962:	
+i1l3972:	
 ;common.c: 132: uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 	clrc
 	rlf	(vPutSampleDataIntoTable@ucChannelFourthLength),w
@@ -6326,36 +6362,36 @@ i1l3962:
 	incf	fsr0,f
 	movf	(vPutSampleDataIntoTable@uiSampleData+1),w
 	movwf	indf
-	goto	i1l1624
+	goto	i1l1628
 	line	135
 	
-i1l3964:	
+i1l3974:	
 ;common.c: 135: else if(channel == 14)
 	movf	(vPutSampleDataIntoTable@channel),w
 	xorlw	0Eh
 	skipz
-	goto	u104_21
-	goto	u104_20
-u104_21:
-	goto	i1l3976
-u104_20:
+	goto	u105_21
+	goto	u105_20
+u105_21:
+	goto	i1l3986
+u105_20:
 	line	137
 	
-i1l3966:	
+i1l3976:	
 ;common.c: 136: {
 ;common.c: 137: if(ucChannelFourteenthLength < 12)
 	movlw	(0Ch)
 	bcf	status, 5	;RP0=0, select bank0
 	subwf	(vPutSampleDataIntoTable@ucChannelFourteenthLength),w
 	skipnc
-	goto	u105_21
-	goto	u105_20
-u105_21:
-	goto	i1l3972
-u105_20:
+	goto	u106_21
+	goto	u106_20
+u106_21:
+	goto	i1l3982
+u106_20:
 	line	139
 	
-i1l3968:	
+i1l3978:	
 ;common.c: 138: {
 ;common.c: 139: uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
 	clrc
@@ -6370,22 +6406,22 @@ i1l3968:
 	movwf	indf
 	line	141
 	
-i1l3970:	
+i1l3980:	
 ;common.c: 141: ucChannelFourteenthLength++;
 	incf	(vPutSampleDataIntoTable@ucChannelFourteenthLength),f
 	line	142
 ;common.c: 142: }
-	goto	i1l1624
+	goto	i1l1628
 	line	145
 	
-i1l3972:	
+i1l3982:	
 ;common.c: 143: else
 ;common.c: 144: {
 ;common.c: 145: ucChannelFourteenthLength = 0;
 	clrf	(vPutSampleDataIntoTable@ucChannelFourteenthLength)
 	line	147
 	
-i1l3974:	
+i1l3984:	
 ;common.c: 147: uiSampleChannelFourth[ucChannelFourteenthLength] = uiSampleData;
 	clrc
 	rlf	(vPutSampleDataIntoTable@ucChannelFourteenthLength),w
@@ -6397,10 +6433,10 @@ i1l3974:
 	incf	fsr0,f
 	movf	(vPutSampleDataIntoTable@uiSampleData+1),w
 	movwf	indf
-	goto	i1l1624
+	goto	i1l1628
 	line	152
 	
-i1l3976:	
+i1l3986:	
 ;common.c: 150: else
 ;common.c: 151: {
 ;common.c: 152: ucChannelFirstLength = 0;
@@ -6418,7 +6454,7 @@ i1l3976:
 	clrf	(vPutSampleDataIntoTable@i+1)
 	line	160
 	
-i1l3982:	
+i1l3992:	
 ;common.c: 159: {
 ;common.c: 160: uiSampleChannelFirst[i] = 0;
 	clrc
@@ -6449,32 +6485,32 @@ i1l3982:
 	clrf	indf
 	line	158
 	
-i1l3984:	
+i1l3994:	
 	incf	(vPutSampleDataIntoTable@i),f
 	skipnz
 	incf	(vPutSampleDataIntoTable@i+1),f
 	
-i1l3986:	
+i1l3996:	
 	movf	(vPutSampleDataIntoTable@i+1),w
 	xorlw	80h
 	movwf	btemp+1
 	movlw	(high(0Ch))^80h
 	subwf	btemp+1,w
 	skipz
-	goto	u106_25
+	goto	u107_25
 	movlw	low(0Ch)
 	subwf	(vPutSampleDataIntoTable@i),w
-u106_25:
+u107_25:
 
 	skipc
-	goto	u106_21
-	goto	u106_20
-u106_21:
-	goto	i1l3982
-u106_20:
+	goto	u107_21
+	goto	u107_20
+u107_21:
+	goto	i1l3992
+u107_20:
 	line	168
 	
-i1l1624:	
+i1l1628:	
 	return
 	opt stack 0
 GLOBAL	__end_of_vPutSampleDataIntoTable
@@ -6482,9 +6518,9 @@ GLOBAL	__end_of_vPutSampleDataIntoTable
 ;; =============== function _vPutSampleDataIntoTable ends ============
 
 	signat	_vPutSampleDataIntoTable,8312
-psect	text710,local,class=CODE,delta=2
-global __ptext710
-__ptext710:
+psect	text738,local,class=CODE,delta=2
+global __ptext738
+__ptext738:
 	global	btemp
 	btemp set 07Eh
 
