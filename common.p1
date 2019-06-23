@@ -1810,6 +1810,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 253: {
 "253
 {
+[; ;common.c: 254: setAD_ConvertFlag(0);
+"254
+[e ( _setAD_ConvertFlag (1 -> -> 0 `i `uc ]
 [; ;common.c: 255: AD_Sample();
 "255
 [e ( _AD_Sample ..  ]
@@ -1892,9 +1895,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 313: {
 "313
 {
-[; ;common.c: 315: sampleChannelSelect = 1;
+[; ;common.c: 315: sampleChannelSelect = 14;
 "315
-[e = _sampleChannelSelect -> -> 1 `i `uc ]
+[e = _sampleChannelSelect -> -> 14 `i `uc ]
 "316
 }
 [; ;common.c: 316: }

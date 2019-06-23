@@ -634,6 +634,8 @@ INTERNAL_FOUTTH_STEP 3
 [v _getAD_ConvertFlag `(uc  1 e 1 0 ]
 "206
 [v _setAD_ConvertFlag `(v  1 e 0 0 ]
+[v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
+[v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
 "217
 [v _getAdOriginalCh1Value `(ui  1 e 2 0 ]
 "229
@@ -1433,6 +1435,13 @@ INTERNAL_FOUTTH_STEP 3
 {
 "333
 } 0
+"206
+[v _setAD_ConvertFlag `(v  1 e 0 0 ]
+{
+[v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
+[v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
+"208
+} 0
 "200
 [v _getAD_ConvertFlag `(uc  1 e 1 0 ]
 {
@@ -1568,6 +1577,13 @@ INTERNAL_FOUTTH_STEP 3
 [v ISR@ucTimer1sCnt `uc  1 s 1 ucTimer1sCnt ]
 "495
 } 0
+"206
+[v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
+{
+[v i1setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
+[v i1setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
+"208
+} 0
 "105 D:\develop\ATK\AK7030-OTP\periph.c
 [v _adc_get `(ui  1 e 2 0 ]
 {
@@ -1575,14 +1591,7 @@ INTERNAL_FOUTTH_STEP 3
 [v adc_get@val `ui  1 a 2 2 ]
 "109
 } 0
-"206 D:\develop\ATK\AK7030-OTP\common.c
-[v _setAD_ConvertFlag `(v  1 e 0 0 ]
-{
-[v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
-[v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
-"208
-} 0
-"97
+"97 D:\develop\ATK\AK7030-OTP\common.c
 [v _vPutSampleDataIntoTable `(v  1 e 0 0 ]
 {
 "158

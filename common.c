@@ -312,7 +312,7 @@ static void AD_Sample(void)
 			else if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
 			{
 //				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_1_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
 			}
 			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
 			{
