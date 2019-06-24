@@ -285,7 +285,7 @@ void main (void)
 				{
 					static unsigned char ucTimerADC1ZeroP5s = 0;
 
-					if(0)//(getAdOriginalCh1Value() < 130)
+					if(getAdOriginalCh1Value() < 130)
 					{
 						ucTimerADC1ZeroP5s = 0;
 
@@ -304,7 +304,7 @@ void main (void)
 					{
 						static unsigned char ucTimerRightP5s = 0;
 
-						if(1)//(getAdOriginalCh1Value() < 117)//????// wait to be determined.
+						if(getAdOriginalCh1Value() < 117)//????// wait to be determined.
 						{
 							ucTimerRightP5s++;
 						}
@@ -855,10 +855,10 @@ void main (void)
 
 										ucTimerDelayP5s = 0;
 
-										if((getAdOriginalCh14Value() > 2800))
+									//	if((getAdOriginalCh14Value() > 2800))
 											DACR0=0x0F;//set OP1 input 0.3v
-										else
-											DACR0=0x07;//set op1 input 0.14
+									//	else
+									//		DACR0=0x07;//set op1 input 0.14
 
 										ucADC4_Step = ADC4_STEP_FOURTH;
 									}
@@ -875,12 +875,14 @@ void main (void)
 								if(ucTimer1s < 5)
 								{
 									ucTimer1s++;
+									PB6 = 1;
+									PBOD6 = 1;
 								}
 								else
 								{
 									ucTimer1s = 0;
-									PB6 = 1; // make sure PB6 can output Hign resistance
-									PBOD6 = 1; //set PB6 as high resistance
+								//	PB6 = 1; // make sure PB6 can output Hign resistance
+								//	PBOD6 = 1; //set PB6 as high resistance
 									enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 									ucADC4_Step = ADC4_STEP_INIT;
 								}

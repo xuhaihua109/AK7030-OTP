@@ -1637,10 +1637,10 @@ else
 
 ucTimerDelayP5s = 0;
 
-if((getAdOriginalCh14Value() > 2800))
+
 DACR0=0x0F;
-else
-DACR0=0x07;
+
+
 
 ucADC4_Step = ADC4_STEP_FOURTH;
 }
@@ -1657,12 +1657,14 @@ static unsigned char ucTimer1s = 0;
 if(ucTimer1s < 5)
 {
 ucTimer1s++;
+PB6 = 1;
+PBOD6 = 1;
 }
 else
 {
 ucTimer1s = 0;
-PB6 = 1;
-PBOD6 = 1;
+
+
 enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 ucADC4_Step = ADC4_STEP_INIT;
 }
