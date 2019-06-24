@@ -868,7 +868,38 @@ asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x2FFF & 0x3FFF & 0x3FFF
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
 
-# 82
+# 86
+static void vSetPA3(unsigned char ucValue)
+{
+
+;
+
+# 98
+}
+
+
+static void vsetPB6HignResistence(unsigned char ucValue)
+{
+if(1 == ucValue )
+{
+
+PB6 = 1;
+PBOD6 = 1;
+
+PA3 = 1;
+
+}
+else
+{
+PB6 = 1;
+PBOD6 = 0;
+
+PA3 = 0;
+
+}
+}
+
+
 static void clearAllTimer(void)
 {
 clearTwelveHoursTimer();
@@ -884,7 +915,8 @@ PB0 = 0;
 PA0 = 0;
 PA1 = 0;
 PA2 = 0;
-PA3 = 0;
+
+vSetPA3(0);
 PAOD7 = 0;
 PA7 = 0;
 clearAllTimer();
@@ -893,15 +925,17 @@ clearAllTimer();
 
 static void initPin(void)
 {
-PB6 = 1;
-PBOD6 = 1;
+
+
+vsetPB6HignResistence(1);
 
 
 
 PA0 = 0;
 PA1 = 0;
 PA2 = 0;
-PA3 = 0;
+
+vSetPA3(0);
 PB0 = 0;
 PB1 = 1;
 PA6 = 0;
@@ -910,7 +944,7 @@ PAOD7 = 0;
 
 }
 
-# 128
+# 172
 void main (void)
 {
 enum setp_Adc4
@@ -1036,7 +1070,7 @@ else
 {
 ucTimerZeroPoint3s = 0;
 
-if(getAdOriginalCh14Value() > 1950)
+if(1)
 {
 
 enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
@@ -1071,7 +1105,7 @@ case MAIN_LOOP_STEP_THIRD:
 {
 static unsigned char ucTimerADC1ZeroP5s = 0;
 
-if(getAdOriginalCh1Value() < 130)
+if(0)
 {
 ucTimerADC1ZeroP5s = 0;
 
@@ -1222,7 +1256,8 @@ case 4:
 {
 if(ucTimerDelay >= 5)
 {
-PA3 = 1;
+
+vSetPA3(1);
 ucTimerDelay = 0;
 ucLoaderStep++;
 }
@@ -1239,7 +1274,8 @@ PB0 = 0;
 PA0 = 0;
 PA1 = 0;
 PA2 = 0;
-PA3 = 0;
+
+vSetPA3(0);
 ucTimerDelay = 0;
 ucLoaderStep++;
 }
@@ -1326,7 +1362,8 @@ case 4:
 {
 if(ucTimerDelay1 >= 5)
 {
-PA3 = 1;
+
+vSetPA3(1);
 ucTimerDelay1 = 0;
 ucLoaderStep1++;
 }
@@ -1342,7 +1379,8 @@ if(ucTimerDelay1 >= 5)
 PA0 = 0;
 PA1 = 0;
 PA2 = 0;
-PA3 = 0;
+
+vSetPA3(0);
 ucTimerDelay1 = 0;
 ucLoaderStep1++;
 }
@@ -1418,7 +1456,8 @@ case 3:
 {
 if(ucTimerDelay2 >= 5)
 {
-PA3 = 1;
+
+vSetPA3(1);
 ucTimerDelay2 = 0;
 ucLoaderStep2++;
 }
@@ -1434,7 +1473,8 @@ if(ucTimerDelay2 >= 5)
 
 PA1 = 0;
 PA2 = 0;
-PA3 = 0;
+
+vSetPA3(0);
 ucTimerDelay2 = 0;
 ucLoaderStep2++;
 }
@@ -1498,7 +1538,8 @@ case 2:
 {
 if(ucTimerDelay3 >= 5)
 {
-PA3 = 1;
+
+vSetPA3(1);
 ucTimerDelay3 = 0;
 ucLoaderStep3++;
 }
@@ -1514,7 +1555,8 @@ if(ucTimerDelay3 >= 5)
 {
 
 PA2 = 0;
-PA3 = 0;
+
+vSetPA3(0);
 ucTimerDelay3 = 0;
 ucLoaderStep3++;
 }
@@ -1566,7 +1608,8 @@ case 1:
 {
 if(ucTimerDelay4 >= 5)
 {
-PA3 = 1;
+
+vSetPA3(1);
 ucTimerDelay4 = 0;
 ucLoaderStep4++;
 }
@@ -1579,7 +1622,8 @@ case 2:
 {
 if(ucTimerDelay4 >= 5)
 {
-PA3 = 0;
+
+vSetPA3(0);
 ucTimerDelay4 = 0;
 ucLoaderStep4++;
 }
@@ -1623,11 +1667,12 @@ static unsigned char ucTimerDelayP5s = 0;
 
 if(isFinishedTwentySecondsTimer())
 {
-PBOD6 =0;
-PB6 = 1;
+
+
+vsetPB6HignResistence(0);
 PA6 = 0;
 
-# 849
+# 904
 if(ucTimerDelayP5s < 5)
 {
 ucTimerDelayP5s++;
@@ -1657,13 +1702,13 @@ static unsigned char ucTimer1s = 0;
 if(ucTimer1s < 5)
 {
 ucTimer1s++;
-PB6 = 1;
-PBOD6 = 1;
+
+
+vsetPB6HignResistence(1);
 }
 else
 {
 ucTimer1s = 0;
-
 
 enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 ucADC4_Step = ADC4_STEP_INIT;
@@ -1714,7 +1759,8 @@ PB0 = 1;
 PA0 = 1;
 PA1 = 1;
 PA2 = 1;
-PA3 = 1;
+
+vSetPA3(1);
 }
 else
 {
@@ -1817,9 +1863,11 @@ PB1 = 0;
 PA0 = 0;
 PA1 = 0;
 PA2 = 0;
-PA3 = 0;
-PBOD6 = 0;
-PB6 = 1;
+
+vSetPA3(0);
+
+
+vsetPB6HignResistence(0);
 PA6 =0;
 
 enumInteralStep = INTERNAL_SECOND_STEP;

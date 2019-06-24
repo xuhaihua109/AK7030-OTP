@@ -76,7 +76,48 @@ __CONFIG(CONFIG3);
 #define SLEEP_PWADC()  SMCR = 0X05; SLEEP()
 #define SLEEP_PWOFF()  SMCR = 0X09; SLEEP()
 
+#define SET_PA3_AS_DEBUG_PIN      5
 
+#define SET_PB6_HIGN_RESISTENCE       1
+
+#define SET_PB6_NORMAL_PIN            0
+
+
+static void vSetPA3(unsigned char ucValue)
+{
+#ifdef SET_PA3_AS_DEBUG_PIN
+	;
+#else
+	if(ucValue)
+		PA3 = 1;
+	else
+		PA3 = 0;
+
+#endif
+
+}
+
+
+static void vsetPB6HignResistence(unsigned char ucValue)
+{
+	if(SET_PB6_HIGN_RESISTENCE == ucValue )
+	{
+
+		PB6 = 1;
+		PBOD6 = 1; //set PB6 as high resistance
+#ifdef SET_PA3_AS_DEBUG_PIN
+		PA3 = 1;
+#endif
+	}
+	else
+	{
+		PB6 = 1;
+		PBOD6 = 0; //set PB6 output high level
+#ifdef SET_PA3_AS_DEBUG_PIN
+		PA3 = 0;
+#endif
+	}
+}
 
 
 static void clearAllTimer(void)
@@ -94,7 +135,8 @@ static void clearPinPortAndTimer(void)
 	PA0 = 0;
 	PA1 = 0;
 	PA2 = 0;
-	PA3 = 0;
+//	PA3 = 0;
+	vSetPA3(0);
 	PAOD7 = 0;
 	PA7 = 0;
 	clearAllTimer();
@@ -103,15 +145,17 @@ static void clearPinPortAndTimer(void)
 
 static void initPin(void)
 {
-	PB6 = 1;
-	PBOD6 = 1; //set PB6 as high resistance
+//	PB6 = 1;
+//	PBOD6 = 1; //set PB6 as high resistance
+	vsetPB6HignResistence(SET_PB6_HIGN_RESISTENCE);
 
 
 
 	PA0 = 0;
 	PA1 = 0;
 	PA2 = 0;
-	PA3 = 0;
+//	PA3 = 0;
+	vSetPA3(0);
 	PB0 = 0;
 	PB1 = 1;
 	PA6 = 0;
@@ -250,7 +294,7 @@ void main (void)
 					{
 						ucTimerZeroPoint3s = 0;
 
-						if(getAdOriginalCh14Value() > 1950)//  AD value -> 2v
+						if(1)//(getAdOriginalCh14Value() > 1950)//  AD value -> 2v
 						{
 
 							enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
@@ -285,7 +329,7 @@ void main (void)
 				{
 					static unsigned char ucTimerADC1ZeroP5s = 0;
 
-					if(getAdOriginalCh1Value() < 130)
+					if(0)//(getAdOriginalCh1Value() < 130)
 					{
 						ucTimerADC1ZeroP5s = 0;
 
@@ -436,7 +480,8 @@ void main (void)
 											{
 												if(ucTimerDelay >= 5)
 												{
-													PA3 = 1;
+												//	PA3 = 1;
+													vSetPA3(1);
 													ucTimerDelay = 0;
 													ucLoaderStep++;
 												}
@@ -453,7 +498,8 @@ void main (void)
 													PA0 = 0;
 													PA1 = 0;
 													PA2 = 0;
-													PA3 = 0;
+												//	PA3 = 0;
+													vSetPA3(0);
 													ucTimerDelay = 0;
 													ucLoaderStep++;
 												}
@@ -540,7 +586,8 @@ void main (void)
 											{
 												if(ucTimerDelay1 >= 5)
 												{
-													PA3 = 1;
+											//		PA3 = 1;
+													vSetPA3(1);
 													ucTimerDelay1 = 0;
 													ucLoaderStep1++;
 												}
@@ -556,7 +603,8 @@ void main (void)
 													PA0 = 0;
 													PA1 = 0;
 													PA2 = 0;
-													PA3 = 0;
+											//		PA3 = 0;
+													vSetPA3(0);
 													ucTimerDelay1 = 0;
 													ucLoaderStep1++;
 												}
@@ -632,7 +680,8 @@ void main (void)
 											{
 												if(ucTimerDelay2 >= 5)
 												{
-													PA3 = 1;
+											//		PA3 = 1;
+													vSetPA3(1);
 													ucTimerDelay2 = 0;
 													ucLoaderStep2++;
 												}
@@ -648,7 +697,8 @@ void main (void)
 
 													PA1 = 0;
 													PA2 = 0;
-													PA3 = 0;
+											//		PA3 = 0;
+													vSetPA3(0);
 													ucTimerDelay2 = 0;
 													ucLoaderStep2++;
 												}
@@ -712,7 +762,8 @@ void main (void)
 											{
 												if(ucTimerDelay3 >= 5)
 												{
-													PA3 = 1;
+												//	PA3 = 1;
+													vSetPA3(1);
 													ucTimerDelay3 = 0;
 													ucLoaderStep3++;
 												}
@@ -728,7 +779,8 @@ void main (void)
 												{
 
 													PA2 = 0;
-													PA3 = 0;
+												//	PA3 = 0;
+													vSetPA3(0);
 													ucTimerDelay3 = 0;
 													ucLoaderStep3++;
 												}
@@ -780,7 +832,8 @@ void main (void)
 											{
 												if(ucTimerDelay4 >= 5)
 												{
-													PA3 = 1;
+												//	PA3 = 1;
+													vSetPA3(1);
 													ucTimerDelay4 = 0;
 													ucLoaderStep4++;
 												}
@@ -793,7 +846,8 @@ void main (void)
 											{
 												if(ucTimerDelay4 >= 5)
 												{
-													PA3 = 0;
+												//	PA3 = 0;
+													vSetPA3(0);
 													ucTimerDelay4 = 0;
 													ucLoaderStep4++;
 												}
@@ -837,8 +891,9 @@ void main (void)
 
 								if(isFinishedTwentySecondsTimer())
 								{
-									PBOD6 =0;
-									PB6 = 1;// how make PB6 ouput high level
+							//		PBOD6 =0;
+							//		PB6 = 1;// how make PB6 ouput high level
+									vsetPB6HignResistence(SET_PB6_NORMAL_PIN);
 									PA6 = 0;
 //								    PB0 = 0;
 //									PA0 = 0;
@@ -875,14 +930,14 @@ void main (void)
 								if(ucTimer1s < 5)
 								{
 									ucTimer1s++;
-									PB6 = 1;
-									PBOD6 = 1;
+								//	PB6 = 1;
+								//	PBOD6 = 1;
+									vsetPB6HignResistence(SET_PB6_HIGN_RESISTENCE);
 								}
 								else
 								{
 									ucTimer1s = 0;
-								//	PB6 = 1; // make sure PB6 can output Hign resistance
-								//	PBOD6 = 1; //set PB6 as high resistance
+
 									enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 									ucADC4_Step = ADC4_STEP_INIT;
 								}
@@ -932,7 +987,8 @@ void main (void)
 								PA0 = 1;
 								PA1 = 1;
 								PA2 = 1;
-								PA3 = 1;
+							//	PA3 = 1;
+								vSetPA3(1);
 							}
 							else
 							{
@@ -1035,9 +1091,11 @@ void main (void)
 							PA0 = 0;
 							PA1 = 0;
 							PA2 = 0;
-							PA3 = 0;
-							PBOD6 = 0;
-							PB6 = 1;
+						//	PA3 = 0;
+							vSetPA3(0);
+						//	PBOD6 = 0;
+					//		PB6 = 1;
+							vsetPB6HignResistence(SET_PB6_NORMAL_PIN);
 							PA6 =0;
 
 							enumInteralStep = INTERNAL_SECOND_STEP;
