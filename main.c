@@ -208,6 +208,8 @@ void main (void)
 	
 	static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = 0;
 
+	static unsigned char ucTimerPowerLed = 0;
+
 	while(1)
     {	
        CLRWDT();//feed watch dog
@@ -217,6 +219,17 @@ void main (void)
        if(isPermitSampleTime())   // this function is called every 100ms
 		{
     	   clrSampeTime();
+
+		if(ucTimerPowerLed < 30)
+		{
+			ucTimerPowerLed ++; 
+		}
+		else
+		{	
+		ucTimerPowerLed = 0;
+		PB1 = 0;
+		}	
+
 		   
 		   switch(enumMainLoopStep)
 		   {
@@ -857,32 +870,47 @@ void main (void)
 							{
 								static unsigned char ucTimerDelayP5s = 0;
 
+								static unsigned char ucTimerPA6DelayP1s = 0;
+
+								static unsigned char ucTimerPB6DelayP1s = 0;
+
 								if(isFinishedTwentySecondsTimer())
 								{
-									PBOD6 =0;
-									PB6 = 1;// how make PB6 ouput high level
-									PA6 = 0;
-//								    PB0 = 0;
-//									PA0 = 0;
-//									PA1 = 0;
-//									PA2 = 0;
-//									PA3 = 0;
-
-									if(ucTimerDelayP5s < 5)
+									if(ucTimerPA6DelayP1s < 1)
 									{
-										ucTimerDelayP5s++;
+										PA6 = 0;
+										ucTimerPA6DelayP1s++;
 									}
 									else
 									{
-
-										ucTimerDelayP5s = 0;
-
-										if((getAdOriginalCh14Value() > 2800))
-											DACR0=0x0F;//set OP1 input 0.3v
+										if(ucTimerPB6DelayP1s < 1)
+										{
+											PBOD6 =0;
+											PB6 = 1;// how make PB6 ouput high level
+											ucTimerPB6DelayP1s++;
+										}
 										else
-											DACR0=0x07;//set op1 input 0.14
+										{
+											if(ucTimerDelayP5s < 5)
+											{
+												ucTimerDelayP5s++;
+											}
+											else
+											{
 
-										ucADC4_Step = ADC4_STEP_FOURTH;
+												ucTimerDelayP5s = 0;
+
+												ucTimerPB6DelayP1s = 0;
+												ucTimerPA6DelayP1s = 0;
+
+												if((getAdOriginalCh14Value() > 2800))
+													DACR0=0x0F;//set OP1 input 0.3v
+												else
+													DACR0=0x07;//set op1 input 0.14
+
+												ucADC4_Step = ADC4_STEP_FOURTH;
+											}
+										}
 									}
 								}
 								else

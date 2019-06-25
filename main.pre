@@ -1,5 +1,5 @@
 
-# 1 "C:\190604\AK7030-OTP\main.c"
+# 1 "D:\develop\190625\AK7030-OTP\main.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "C:\190604\AK7030-OTP\yn8p520.h"
+# 164 "D:\develop\190625\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -803,7 +803,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 26 "C:\190604\AK7030-OTP\common.h"
+# 26 "D:\develop\190625\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -847,7 +847,7 @@ unsigned char isFinishedThreeHoursTimer();
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
 
-# 13 "C:\190604\AK7030-OTP\periph.h"
+# 13 "D:\develop\190625\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
@@ -859,7 +859,7 @@ void adc_start();
 unsigned int adc_get(void);
 
 
-# 26 "C:\190604\AK7030-OTP\main.c"
+# 26 "D:\develop\190625\AK7030-OTP\main.c"
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
@@ -994,6 +994,8 @@ static enum MAIN_LOOP_STEP enumMainLoopStep = MAIN_LOOP_STEP_INIT;
 
 static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = 0;
 
+static unsigned char ucTimerPowerLed = 0;
+
 while(1)
 {
 asm(" clrwdt");
@@ -1003,6 +1005,17 @@ process_AD_Converter_Value();
 if(isPermitSampleTime())
 {
 clrSampeTime();
+
+if(ucTimerPowerLed < 30)
+{
+ucTimerPowerLed ++;
+}
+else
+{
+ucTimerPowerLed = 0;
+PB1 = 0;
+}
+
 
 switch(enumMainLoopStep)
 {
@@ -1643,13 +1656,27 @@ case ADC4_STEP_THIRD:
 {
 static unsigned char ucTimerDelayP5s = 0;
 
+static unsigned char ucTimerPA6DelayP1s = 0;
+
+static unsigned char ucTimerPB6DelayP1s = 0;
+
 if(isFinishedTwentySecondsTimer())
+{
+if(ucTimerPA6DelayP1s < 1)
+{
+PA6 = 0;
+ucTimerPA6DelayP1s++;
+}
+else
+{
+if(ucTimerPB6DelayP1s < 1)
 {
 PBOD6 =0;
 PB6 = 1;
-PA6 = 0;
-
-# 871
+ucTimerPB6DelayP1s++;
+}
+else
+{
 if(ucTimerDelayP5s < 5)
 {
 ucTimerDelayP5s++;
@@ -1659,12 +1686,17 @@ else
 
 ucTimerDelayP5s = 0;
 
+ucTimerPB6DelayP1s = 0;
+ucTimerPA6DelayP1s = 0;
+
 if((getAdOriginalCh14Value() > 2800))
 DACR0=0x0F;
 else
 DACR0=0x07;
 
 ucADC4_Step = ADC4_STEP_FOURTH;
+}
+}
 }
 }
 else
