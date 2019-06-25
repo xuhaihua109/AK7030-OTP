@@ -14,7 +14,7 @@
 //#define DEBUG_FUNCITON  1
 
 
-#define USING_AD_FILGER_ALGORITHMN
+#define USING_AD_FILTER_ALGORITHMN
 
 #define AD_CHANNEL_14_CHANNEL            14
 
@@ -32,13 +32,13 @@ void adConverter_config();
 void setAdcSampleChannel(uchar ucChannel);
 
 
-unsigned int getAdOriginalValue();
+//unsigned int getAdOriginalValue();
 
 void process_AD_Converter_Value();
 
-unsigned int getAdCh4Value();
-
-unsigned int getAdCh14Value();
+//unsigned int getAdCh4Value();
+//
+//unsigned int getAdCh14Value();
 
 
 unsigned int getAdOriginalCh1Value();

@@ -1241,10 +1241,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 28: void timer1_interrupt_config();
 [; ;common.h: 30: void adConverter_config();
 [; ;common.h: 32: void setAdcSampleChannel(unsigned char ucChannel);
-[; ;common.h: 35: unsigned int getAdOriginalValue();
 [; ;common.h: 37: void process_AD_Converter_Value();
-[; ;common.h: 39: unsigned int getAdCh4Value();
-[; ;common.h: 41: unsigned int getAdCh14Value();
 [; ;common.h: 44: unsigned int getAdOriginalCh1Value();
 [; ;common.h: 45: unsigned int getAdOriginaCh4Value();
 [; ;common.h: 47: unsigned int getAdOriginalCh14Value();

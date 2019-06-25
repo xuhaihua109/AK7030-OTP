@@ -121,7 +121,7 @@ static void initPin(void)
 }
 
 
-#define   BIG_TIME_SECONDS   180
+#define   BIG_TIME_SECONDS   600
 #define   SMALL_TIME_SECONDS  60
 
 
@@ -212,10 +212,11 @@ void main (void)
     {	
        CLRWDT();//feed watch dog
 
+       process_AD_Converter_Value();
+
        if(isPermitSampleTime())   // this function is called every 100ms
 		{
     	   clrSampeTime();
-    	   process_AD_Converter_Value();
 		   
 		   switch(enumMainLoopStep)
 		   {
@@ -229,7 +230,7 @@ void main (void)
 					else
 						ucTimerZeroPoint5s = 0;
 					
-					if(ucTimerZeroPoint5s >= 1) //5*100ms = 0.5s
+					if(ucTimerZeroPoint5s >= 5) //5*100ms = 0.5s
 					{
 						ucTimerZeroPoint5s = 0;
 						enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
@@ -241,21 +242,22 @@ void main (void)
 				{
 					static unsigned char ucTimerZeroPoint3s = 0;
 
-					if(ucTimerZeroPoint3s < 1)
+
+					if(getAdOriginalCh14Value() > 1950)// AD value -> 2v
 					{
-						ucTimerZeroPoint3s++;
+
+						enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
+
+						ucTimerZeroPoint3s = 0;
 					}
 					else
 					{
-						ucTimerZeroPoint3s = 0;
+						ucTimerZeroPoint3s++;
 
-						if(getAdOriginalCh14Value() > 1950)//  AD value -> 2v
+						if(ucTimerZeroPoint3s >= 3)//
 						{
+							ucTimerZeroPoint3s = 0;
 
-							enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
-						}
-						else
-						{
 							clearPinPortAndTimer();
 						}
 					}
@@ -284,24 +286,33 @@ void main (void)
 				{
 					static unsigned char ucTimerADC1ZeroP5s = 0;
 
+					static unsigned char ucTimerLessADC1ZeroP5s = 0;
+
+					static unsigned char ucTimerRightP5s = 0;
+
 					if(getAdOriginalCh1Value() < 130)
 					{
 						ucTimerADC1ZeroP5s = 0;
 
+						ucTimerLessADC1ZeroP5s++;
 					}
 					else
 					{
 						ucTimerADC1ZeroP5s++;
+
+						ucTimerLessADC1ZeroP5s = 0;
 					}
 
-					if(ucTimerADC1ZeroP5s >= 1)
+					if(ucTimerADC1ZeroP5s >= 5)
 					{
 						ucTimerADC1ZeroP5s = 0;
 						enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
 					}
-					else
+					else if( ucTimerLessADC1ZeroP5s >= 5)
 					{
-						static unsigned char ucTimerRightP5s = 0;
+
+
+						ucTimerLessADC1ZeroP5s = 0;
 
 						if(getAdOriginalCh1Value() < 117)//????// wait to be determined.
 						{
@@ -312,7 +323,7 @@ void main (void)
 							ucTimerRightP5s = 0;
 						}
 
-						if(ucTimerRightP5s >= 1)
+						if(ucTimerRightP5s >= 5)
 						{
 							ucTimerRightP5s = 0;
 							enumMainLoopStep =  MAIN_LOOP_STEP_3_HOUR_BRANCH;
@@ -322,6 +333,18 @@ void main (void)
 							;// always do the same thing in the MAIN_LOOP_STEP_THIRD
 						}
 					}
+					else
+					{
+						;//do nothing
+					}
+
+					if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_FOURTH == enumMainLoopStep))
+					{  // only to make sure clear timer when exit this case. no other attention
+						ucTimerRightP5s = 0;
+						ucTimerADC1ZeroP5s = 0;
+						ucTimerLessADC1ZeroP5s = 0;
+					}
+
 
 					break;
 				}
@@ -832,6 +855,8 @@ void main (void)
 
 							case ADC4_STEP_THIRD:
 							{
+								static unsigned char ucTimerDelayP5s = 0;
+
 								if(isFinishedTwentySecondsTimer())
 								{
 									PBOD6 =0;
@@ -843,12 +868,22 @@ void main (void)
 //									PA2 = 0;
 //									PA3 = 0;
 
-									if((getAdOriginalCh14Value() > 2800))
-										DACR0=0x0F;//set OP1 input 0.3v
+									if(ucTimerDelayP5s < 5)
+									{
+										ucTimerDelayP5s++;
+									}
 									else
-										DACR0=0x07;//set op1 input 0.14
+									{
 
-									ucADC4_Step = ADC4_STEP_FOURTH;
+										ucTimerDelayP5s = 0;
+
+										if((getAdOriginalCh14Value() > 2800))
+											DACR0=0x0F;//set OP1 input 0.3v
+										else
+											DACR0=0x07;//set op1 input 0.14
+
+										ucADC4_Step = ADC4_STEP_FOURTH;
+									}
 								}
 								else
 									ucADC4_Step = ADC4_STEP_FIRST;
@@ -859,17 +894,30 @@ void main (void)
 							case ADC4_STEP_FOURTH:
 							{
 								static unsigned char ucTimer1s = 0;
-								if(ucTimer1s < 5)
+
+								static unsigned char ucTimerSeond1s = 0;
+
+								if(ucTimerSeond1s < 5)
 								{
-									ucTimer1s++;
+									ucTimerSeond1s++;
 								}
 								else
 								{
-									ucTimer1s = 0;
-									PB6 = 1; // make sure PB6 can output Hign resistance
-									PBOD6 = 1; //set PB6 as high resistance
-									enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-									ucADC4_Step = ADC4_STEP_INIT;
+									ucTimerSeond1s = 0;
+
+									if(ucTimer1s < 5)
+									{
+										ucTimer1s++;
+										PB6 = 1; // make sure PB6 can output Hign resistance
+										PBOD6 = 1; //set PB6 as high resistance
+									}
+									else
+									{
+										ucTimer1s = 0;
+
+										enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+										ucADC4_Step = ADC4_STEP_INIT;
+									}
 								}
 
 								break;
@@ -902,6 +950,12 @@ void main (void)
 							PAOD7 = 1; //set PA7 AS hign resistence
 							startThreeHoursTimer(SMALL_TIME_SECONDS);
 
+							PB0 = 1;
+							PA0 = 1;
+							PA1 = 1;
+							PA2 = 1;
+							PA3 = 1;
+
 							enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
 							break;
 						}
@@ -913,27 +967,22 @@ void main (void)
 							if(ucTimer20s < 200)
 							{
 								ucTimer20s++;
-								PB0 = 1;
-								PA0 = 1;
-								PA1 = 1;
-								PA2 = 1;
-								PA3 = 1;
+
 							}
 							else
 							{
 
 								ucTimer20s = 0;
 
-
 								enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
+
+								PA6 = 0;
 							}
 							break;
 						}
 
 						case HOUR_3_BRANCH_STEP_THIRD:
 						{
-							PA6 = 0;
-
 							if(isFinishedThreeHoursTimer())
 							{
 								enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
@@ -943,16 +992,20 @@ void main (void)
 							{
 								static unsigned char ucTimerX1P5s = 0;
 
+								static unsigned char ucTimerLessX1P5s = 0;
+
 								if(getAdOriginalCh1Value() < 130)
 								{
 									ucTimerX1P5s = 0;
+									ucTimerLessX1P5s++;
 								}
 								else
 								{
 									ucTimerX1P5s++;
+									ucTimerLessX1P5s = 0;
 								}
 
-								if(ucTimerX1P5s >= 1)
+								if(ucTimerX1P5s >= 5)
 								{
 									ucTimerX1P5s = 0;
 									PAOD7 = 0;
@@ -963,28 +1016,40 @@ void main (void)
 
 									enumMainLoopStep =  MAIN_LOOP_STEP_SECOND;
 								}
-								else
+								else if(ucTimerLessX1P5s >= 5)
 								{
 									static unsigned char ucTimerX2P5s = 0;
+
+									static unsigned char ucTimerLessX2P5s = 0;
 
 									if(getAdOriginalCh14Value() >= 1950)
 									{
 										ucTimerX2P5s++;
+										ucTimerLessX2P5s = 0;
 									}
 									else
 									{
 										ucTimerX2P5s = 0;
+										ucTimerLessX2P5s++;
 									}
 
-									if(ucTimerX2P5s >= 1)
+									if(ucTimerX2P5s >= 5)
 									{
 										ucTimerX2P5s = 0;
 									}
-									else
+									else if(ucTimerLessX2P5s >= 5)
 									{
 										clearPinPortAndTimer();
 										enumMainLoopStep =  MAIN_LOOP_STEP_FIRST;
 									}
+									else
+									{
+										;//do thing
+									}
+								}
+								else
+								{
+									;//do nothing
 								}
 
 							}

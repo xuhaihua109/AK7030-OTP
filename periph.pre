@@ -824,15 +824,11 @@ void adConverter_config();
 void setAdcSampleChannel(unsigned char ucChannel);
 
 
-unsigned int getAdOriginalValue();
+
 
 void process_AD_Converter_Value();
 
-unsigned int getAdCh4Value();
-
-unsigned int getAdCh14Value();
-
-
+# 44
 unsigned int getAdOriginalCh1Value();
 unsigned int getAdOriginaCh4Value();
 
