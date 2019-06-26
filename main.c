@@ -210,6 +210,7 @@ void main (void)
 
 	static unsigned char ucTimerPowerLed = 0;
 
+
 	while(1)
     {	
        CLRWDT();//feed watch dog
@@ -262,6 +263,8 @@ void main (void)
 						enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
 
 						ucTimerZeroPoint3s = 0;
+
+
 					}
 					else
 					{
@@ -274,6 +277,8 @@ void main (void)
 							clearPinPortAndTimer();
 						}
 					}
+
+
 					break;
 				}
 
@@ -301,13 +306,15 @@ void main (void)
 
 					static unsigned char ucTimerLessADC1ZeroP5s = 0;
 
+					static unsigned char ucTimerLessADC1ZeroP5sFlag = 0;
+
 					static unsigned char ucTimerRightP5s = 0;
 
-					if(getAdOriginalCh1Value() < 130)
+					if(getAdOriginalCh1Value() < 115)
 					{
 						ucTimerADC1ZeroP5s = 0;
 
-						ucTimerLessADC1ZeroP5s++;
+						ucTimerLessADC1ZeroP5s++;  // looking for questions£¬need consider AD1 value is again more than 130  after less than 130
 					}
 					else
 					{
@@ -324,10 +331,7 @@ void main (void)
 					else if( ucTimerLessADC1ZeroP5s >= 5)
 					{
 
-
-						ucTimerLessADC1ZeroP5s = 0;
-
-						if(getAdOriginalCh1Value() < 117)//????// wait to be determined.
+						if(getAdOriginalCh1Value() < 105)//????// wait to be determined.
 						{
 							ucTimerRightP5s++;
 						}
@@ -338,6 +342,7 @@ void main (void)
 
 						if(ucTimerRightP5s >= 5)
 						{
+							ucTimerLessADC1ZeroP5s = 0; // clear it, make sure this value is always more than 5 before clearing it
 							ucTimerRightP5s = 0;
 							enumMainLoopStep =  MAIN_LOOP_STEP_3_HOUR_BRANCH;
 						}
@@ -891,7 +896,7 @@ void main (void)
 										}
 										else
 										{
-											if(ucTimerDelayP5s < 5)
+											if(ucTimerDelayP5s < 3)
 											{
 												ucTimerDelayP5s++;
 											}
@@ -903,12 +908,49 @@ void main (void)
 												ucTimerPB6DelayP1s = 0;
 												ucTimerPA6DelayP1s = 0;
 
-												if((getAdOriginalCh14Value() > 2800))
-													DACR0=0x0F;//set OP1 input 0.3v
-												else
-													DACR0=0x07;//set op1 input 0.14
+												static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
 
-												ucADC4_Step = ADC4_STEP_FOURTH;
+												static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
+
+												if((getAdOriginalCh14Value() > 2800))
+												{
+													ucTimerForDACR0_CNT1++;
+													ucTimerForDACR0_CNT2 = 0;
+												}
+												else
+												{
+													ucTimerForDACR0_CNT2 = 0;
+													ucTimerForDACR0_CNT1++;
+												}
+
+												if(ucTimerForDACR0_CNT1 >= 3)
+													ucTimerForDACR0_CNT1_f = 1;
+
+												if(ucTimerForDACR0_CNT2 >= 3)
+													ucTimerForDACR0_CNT2_f = 1;
+
+												if(ucTimerForDACR0_CNT1_f)
+												{
+													DACR0=0x0F;//set OP1 input 0.3v
+													ucADC4_Step = ADC4_STEP_FOURTH;
+												}
+												else if(ucTimerForDACR0_CNT2_f)
+												{
+													DACR0=0x07;//set op1 input 0.14
+													ucADC4_Step = ADC4_STEP_FOURTH;
+												}
+												else
+												{
+													;//do nothing, if this AD value vibrate in this scope, consider to alway stay here.
+												}
+
+												if(ADC4_STEP_FOURTH == ucADC4_Step)
+												{
+													ucTimerForDACR0_CNT1 = 0;
+													ucTimerForDACR0_CNT2 = 0;
+													ucTimerForDACR0_CNT1_f = 0;
+													ucTimerForDACR0_CNT2_f = 0;
+												}
 											}
 										}
 									}
@@ -925,7 +967,7 @@ void main (void)
 
 								static unsigned char ucTimerSeond1s = 0;
 
-								if(ucTimerSeond1s < 5)
+								if(ucTimerSeond1s < 3)
 								{
 									ucTimerSeond1s++;
 								}
@@ -933,7 +975,7 @@ void main (void)
 								{
 									ucTimerSeond1s = 0;
 
-									if(ucTimer1s < 5)
+									if(ucTimer1s < 3)
 									{
 										ucTimer1s++;
 										PB6 = 1; // make sure PB6 can output Hign resistance

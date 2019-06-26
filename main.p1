@@ -1570,364 +1570,355 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 207: static enum MAIN_LOOP_STEP enumMainLoopStep = MAIN_LOOP_STEP_INIT;
 [; ;main.c: 209: static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = 0;
 [; ;main.c: 211: static unsigned char ucTimerPowerLed = 0;
-[; ;main.c: 213: while(1)
-"213
-[e :U 46 ]
-[; ;main.c: 214: {
+[; ;main.c: 214: while(1)
 "214
-{
-[; ;main.c: 215: asm(" clrwdt");
+[e :U 46 ]
+[; ;main.c: 215: {
 "215
+{
+[; ;main.c: 216: asm(" clrwdt");
+"216
 [;  clrwdt ;#
-[; ;main.c: 217: process_AD_Converter_Value();
-"217
+[; ;main.c: 218: process_AD_Converter_Value();
+"218
 [e ( _process_AD_Converter_Value ..  ]
-[; ;main.c: 219: if(isPermitSampleTime())
-"219
-[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 48  ]
-[; ;main.c: 220: {
+[; ;main.c: 220: if(isPermitSampleTime())
 "220
-{
-[; ;main.c: 221: clrSampeTime();
+[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 48  ]
+[; ;main.c: 221: {
 "221
+{
+[; ;main.c: 222: clrSampeTime();
+"222
 [e ( _clrSampeTime ..  ]
-[; ;main.c: 223: if(ucTimerPowerLed < 30)
-"223
-[e $ ! < -> F859 `i -> 30 `i 49  ]
-[; ;main.c: 224: {
+[; ;main.c: 224: if(ucTimerPowerLed < 30)
 "224
-{
-[; ;main.c: 225: ucTimerPowerLed ++;
+[e $ ! < -> F859 `i -> 30 `i 49  ]
+[; ;main.c: 225: {
 "225
-[e ++ F859 -> -> 1 `i `uc ]
-"226
-}
-[; ;main.c: 226: }
-[e $U 50  ]
-"227
-[e :U 49 ]
-[; ;main.c: 227: else
-[; ;main.c: 228: {
-"228
 {
-[; ;main.c: 229: ucTimerPowerLed = 0;
+[; ;main.c: 226: ucTimerPowerLed ++;
+"226
+[e ++ F859 -> -> 1 `i `uc ]
+"227
+}
+[; ;main.c: 227: }
+[e $U 50  ]
+"228
+[e :U 49 ]
+[; ;main.c: 228: else
+[; ;main.c: 229: {
 "229
-[e = F859 -> -> 0 `i `uc ]
-[; ;main.c: 230: PB1 = 0;
+{
+[; ;main.c: 230: ucTimerPowerLed = 0;
 "230
-[e = _PB1 -> -> 0 `i `b ]
+[e = F859 -> -> 0 `i `uc ]
+[; ;main.c: 231: PB1 = 0;
 "231
+[e = _PB1 -> -> 0 `i `b ]
+"232
 }
 [e :U 50 ]
-[; ;main.c: 231: }
-[; ;main.c: 234: switch(enumMainLoopStep)
-"234
-[e $U 52  ]
-[; ;main.c: 235: {
+[; ;main.c: 232: }
+[; ;main.c: 235: switch(enumMainLoopStep)
 "235
-{
-[; ;main.c: 236: case MAIN_LOOP_STEP_INIT:
+[e $U 52  ]
+[; ;main.c: 236: {
 "236
-[e :U 53 ]
-[; ;main.c: 237: {
-"237
 {
+[; ;main.c: 237: case MAIN_LOOP_STEP_INIT:
+"237
+[e :U 53 ]
+[; ;main.c: 238: {
 "238
+{
+"239
 [v F860 `uc  1 s ucTimerZeroPoint5s ]
 [i F860
 -> -> 0 `i `uc
 ]
-[; ;main.c: 238: static unsigned char ucTimerZeroPoint5s = 0;
-[; ;main.c: 239: if(getAdOriginalCh14Value() > 1950)
-"239
-[e $ ! > ( _getAdOriginalCh14Value ..  -> -> 1950 `i `ui 54  ]
-[; ;main.c: 240: {
+[; ;main.c: 239: static unsigned char ucTimerZeroPoint5s = 0;
+[; ;main.c: 240: if(getAdOriginalCh14Value() > 1950)
 "240
-{
-[; ;main.c: 241: ucTimerZeroPoint5s++;
+[e $ ! > ( _getAdOriginalCh14Value ..  -> -> 1950 `i `ui 54  ]
+[; ;main.c: 241: {
 "241
-[e ++ F860 -> -> 1 `i `uc ]
+{
+[; ;main.c: 242: ucTimerZeroPoint5s++;
 "242
-}
-[; ;main.c: 242: }
-[e $U 55  ]
+[e ++ F860 -> -> 1 `i `uc ]
 "243
-[e :U 54 ]
-[; ;main.c: 243: else
-[; ;main.c: 244: ucTimerZeroPoint5s = 0;
+}
+[; ;main.c: 243: }
+[e $U 55  ]
 "244
+[e :U 54 ]
+[; ;main.c: 244: else
+[; ;main.c: 245: ucTimerZeroPoint5s = 0;
+"245
 [e = F860 -> -> 0 `i `uc ]
 [e :U 55 ]
-[; ;main.c: 246: if(ucTimerZeroPoint5s >= 5)
-"246
-[e $ ! >= -> F860 `i -> 5 `i 56  ]
-[; ;main.c: 247: {
+[; ;main.c: 247: if(ucTimerZeroPoint5s >= 5)
 "247
-{
-[; ;main.c: 248: ucTimerZeroPoint5s = 0;
+[e $ ! >= -> F860 `i -> 5 `i 56  ]
+[; ;main.c: 248: {
 "248
-[e = F860 -> -> 0 `i `uc ]
-[; ;main.c: 249: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+{
+[; ;main.c: 249: ucTimerZeroPoint5s = 0;
 "249
-[e = F857 . `E846 1 ]
+[e = F860 -> -> 0 `i `uc ]
+[; ;main.c: 250: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 "250
+[e = F857 . `E846 1 ]
+"251
 }
 [e :U 56 ]
-[; ;main.c: 250: }
-[; ;main.c: 251: break;
-"251
-[e $U 51  ]
+[; ;main.c: 251: }
+[; ;main.c: 252: break;
 "252
+[e $U 51  ]
+"253
 }
-[; ;main.c: 252: }
-[; ;main.c: 254: case MAIN_LOOP_STEP_FIRST:
-"254
-[e :U 57 ]
-[; ;main.c: 255: {
+[; ;main.c: 253: }
+[; ;main.c: 255: case MAIN_LOOP_STEP_FIRST:
 "255
-{
+[e :U 57 ]
+[; ;main.c: 256: {
 "256
+{
+"257
 [v F861 `uc  1 s ucTimerZeroPoint3s ]
 [i F861
 -> -> 0 `i `uc
 ]
-[; ;main.c: 256: static unsigned char ucTimerZeroPoint3s = 0;
-[; ;main.c: 259: if(getAdOriginalCh14Value() > 1950)
-"259
-[e $ ! > ( _getAdOriginalCh14Value ..  -> -> 1950 `i `ui 58  ]
-[; ;main.c: 260: {
+[; ;main.c: 257: static unsigned char ucTimerZeroPoint3s = 0;
+[; ;main.c: 260: if(getAdOriginalCh14Value() > 1950)
 "260
+[e $ ! > ( _getAdOriginalCh14Value ..  -> -> 1950 `i `ui 58  ]
+[; ;main.c: 261: {
+"261
 {
-[; ;main.c: 262: enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
-"262
+[; ;main.c: 263: enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
+"263
 [e = F857 . `E846 2 ]
-[; ;main.c: 264: ucTimerZeroPoint3s = 0;
-"264
-[e = F861 -> -> 0 `i `uc ]
+[; ;main.c: 265: ucTimerZeroPoint3s = 0;
 "265
-}
-[; ;main.c: 265: }
-[e $U 59  ]
-"266
-[e :U 58 ]
-[; ;main.c: 266: else
-[; ;main.c: 267: {
-"267
-{
-[; ;main.c: 268: ucTimerZeroPoint3s++;
-"268
-[e ++ F861 -> -> 1 `i `uc ]
-[; ;main.c: 270: if(ucTimerZeroPoint3s >= 3)
-"270
-[e $ ! >= -> F861 `i -> 3 `i 60  ]
-[; ;main.c: 271: {
-"271
-{
-[; ;main.c: 272: ucTimerZeroPoint3s = 0;
-"272
 [e = F861 -> -> 0 `i `uc ]
-[; ;main.c: 274: clearPinPortAndTimer();
+"268
+}
+[; ;main.c: 268: }
+[e $U 59  ]
+"269
+[e :U 58 ]
+[; ;main.c: 269: else
+[; ;main.c: 270: {
+"270
+{
+[; ;main.c: 271: ucTimerZeroPoint3s++;
+"271
+[e ++ F861 -> -> 1 `i `uc ]
+[; ;main.c: 273: if(ucTimerZeroPoint3s >= 3)
+"273
+[e $ ! >= -> F861 `i -> 3 `i 60  ]
+[; ;main.c: 274: {
 "274
-[e ( _clearPinPortAndTimer ..  ]
+{
+[; ;main.c: 275: ucTimerZeroPoint3s = 0;
 "275
-}
-[e :U 60 ]
-"276
-}
-[e :U 59 ]
-[; ;main.c: 275: }
-[; ;main.c: 276: }
-[; ;main.c: 277: break;
+[e = F861 -> -> 0 `i `uc ]
+[; ;main.c: 277: clearPinPortAndTimer();
 "277
-[e $U 51  ]
+[e ( _clearPinPortAndTimer ..  ]
 "278
 }
+[e :U 60 ]
+"279
+}
+[e :U 59 ]
 [; ;main.c: 278: }
-[; ;main.c: 280: case MAIN_LOOP_STEP_SECOND:
-"280
-[e :U 61 ]
-[; ;main.c: 281: {
-"281
-{
+[; ;main.c: 279: }
+[; ;main.c: 282: break;
 "282
+[e $U 51  ]
+"283
+}
+[; ;main.c: 283: }
+[; ;main.c: 285: case MAIN_LOOP_STEP_SECOND:
+"285
+[e :U 61 ]
+[; ;main.c: 286: {
+"286
+{
+"287
 [v F862 `uc  1 s ucTimerP5s ]
 [i F862
 -> -> 0 `i `uc
 ]
-[; ;main.c: 282: static unsigned char ucTimerP5s = 0;
-[; ;main.c: 284: PA6 = 1;
-"284
+[; ;main.c: 287: static unsigned char ucTimerP5s = 0;
+[; ;main.c: 289: PA6 = 1;
+"289
 [e = _PA6 -> -> 1 `i `b ]
-[; ;main.c: 286: if(ucTimerP5s < 5)
-"286
+[; ;main.c: 291: if(ucTimerP5s < 5)
+"291
 [e $ ! < -> F862 `i -> 5 `i 62  ]
-[; ;main.c: 287: ucTimerP5s++;
-"287
+[; ;main.c: 292: ucTimerP5s++;
+"292
 [e ++ F862 -> -> 1 `i `uc ]
 [e $U 63  ]
-"288
-[e :U 62 ]
-[; ;main.c: 288: else
-[; ;main.c: 289: {
-"289
-{
-[; ;main.c: 290: ucTimerP5s = 0;
-"290
-[e = F862 -> -> 0 `i `uc ]
-[; ;main.c: 292: enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
-"292
-[e = F857 . `E846 3 ]
 "293
+[e :U 62 ]
+[; ;main.c: 293: else
+[; ;main.c: 294: {
+"294
+{
+[; ;main.c: 295: ucTimerP5s = 0;
+"295
+[e = F862 -> -> 0 `i `uc ]
+[; ;main.c: 297: enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+"297
+[e = F857 . `E846 3 ]
+"298
 }
 [e :U 63 ]
-[; ;main.c: 293: }
-[; ;main.c: 295: break;
-"295
-[e $U 51  ]
-"296
-}
-[; ;main.c: 296: }
-[; ;main.c: 298: case MAIN_LOOP_STEP_THIRD:
-"298
-[e :U 64 ]
-[; ;main.c: 299: {
-"299
-{
+[; ;main.c: 298: }
+[; ;main.c: 300: break;
 "300
+[e $U 51  ]
+"301
+}
+[; ;main.c: 301: }
+[; ;main.c: 303: case MAIN_LOOP_STEP_THIRD:
+"303
+[e :U 64 ]
+[; ;main.c: 304: {
+"304
+{
+"305
 [v F863 `uc  1 s ucTimerADC1ZeroP5s ]
 [i F863
 -> -> 0 `i `uc
 ]
-"302
+"307
 [v F864 `uc  1 s ucTimerLessADC1ZeroP5s ]
 [i F864
 -> -> 0 `i `uc
 ]
-"304
-[v F865 `uc  1 s ucTimerRightP5s ]
+"309
+[v F865 `uc  1 s ucTimerLessADC1ZeroP5sFlag ]
 [i F865
 -> -> 0 `i `uc
 ]
-[; ;main.c: 300: static unsigned char ucTimerADC1ZeroP5s = 0;
-[; ;main.c: 302: static unsigned char ucTimerLessADC1ZeroP5s = 0;
-[; ;main.c: 304: static unsigned char ucTimerRightP5s = 0;
-[; ;main.c: 306: if(getAdOriginalCh1Value() < 130)
-"306
-[e $ ! < ( _getAdOriginalCh1Value ..  -> -> 130 `i `ui 65  ]
-[; ;main.c: 307: {
-"307
-{
-[; ;main.c: 308: ucTimerADC1ZeroP5s = 0;
-"308
-[e = F863 -> -> 0 `i `uc ]
-[; ;main.c: 310: ucTimerLessADC1ZeroP5s++;
-"310
-[e ++ F864 -> -> 1 `i `uc ]
 "311
-}
-[; ;main.c: 311: }
-[e $U 66  ]
-"312
-[e :U 65 ]
-[; ;main.c: 312: else
-[; ;main.c: 313: {
+[v F866 `uc  1 s ucTimerRightP5s ]
+[i F866
+-> -> 0 `i `uc
+]
+[; ;main.c: 305: static unsigned char ucTimerADC1ZeroP5s = 0;
+[; ;main.c: 307: static unsigned char ucTimerLessADC1ZeroP5s = 0;
+[; ;main.c: 309: static unsigned char ucTimerLessADC1ZeroP5sFlag = 0;
+[; ;main.c: 311: static unsigned char ucTimerRightP5s = 0;
+[; ;main.c: 313: if(getAdOriginalCh1Value() < 115)
 "313
-{
-[; ;main.c: 314: ucTimerADC1ZeroP5s++;
+[e $ ! < ( _getAdOriginalCh1Value ..  -> -> 115 `i `ui 65  ]
+[; ;main.c: 314: {
 "314
-[e ++ F863 -> -> 1 `i `uc ]
-[; ;main.c: 316: ucTimerLessADC1ZeroP5s = 0;
-"316
-[e = F864 -> -> 0 `i `uc ]
+{
+[; ;main.c: 315: ucTimerADC1ZeroP5s = 0;
+"315
+[e = F863 -> -> 0 `i `uc ]
+[; ;main.c: 317: ucTimerLessADC1ZeroP5s++;
 "317
+[e ++ F864 -> -> 1 `i `uc ]
+"318
 }
-[e :U 66 ]
-[; ;main.c: 317: }
-[; ;main.c: 319: if(ucTimerADC1ZeroP5s >= 5)
+[; ;main.c: 318: }
+[e $U 66  ]
 "319
-[e $ ! >= -> F863 `i -> 5 `i 67  ]
+[e :U 65 ]
+[; ;main.c: 319: else
 [; ;main.c: 320: {
 "320
 {
-[; ;main.c: 321: ucTimerADC1ZeroP5s = 0;
+[; ;main.c: 321: ucTimerADC1ZeroP5s++;
 "321
-[e = F863 -> -> 0 `i `uc ]
-[; ;main.c: 322: enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
-"322
-[e = F857 . `E846 4 ]
+[e ++ F863 -> -> 1 `i `uc ]
+[; ;main.c: 323: ucTimerLessADC1ZeroP5s = 0;
 "323
-}
-[; ;main.c: 323: }
-[e $U 68  ]
-"324
-[e :U 67 ]
-[; ;main.c: 324: else if( ucTimerLessADC1ZeroP5s >= 5)
-[e $ ! >= -> F864 `i -> 5 `i 69  ]
-[; ;main.c: 325: {
-"325
-{
-[; ;main.c: 328: ucTimerLessADC1ZeroP5s = 0;
-"328
 [e = F864 -> -> 0 `i `uc ]
-[; ;main.c: 330: if(getAdOriginalCh1Value() < 117)
-"330
-[e $ ! < ( _getAdOriginalCh1Value ..  -> -> 117 `i `ui 70  ]
-[; ;main.c: 331: {
-"331
-{
-[; ;main.c: 332: ucTimerRightP5s++;
-"332
-[e ++ F865 -> -> 1 `i `uc ]
-"333
+"324
 }
-[; ;main.c: 333: }
-[e $U 71  ]
+[e :U 66 ]
+[; ;main.c: 324: }
+[; ;main.c: 326: if(ucTimerADC1ZeroP5s >= 5)
+"326
+[e $ ! >= -> F863 `i -> 5 `i 67  ]
+[; ;main.c: 327: {
+"327
+{
+[; ;main.c: 328: ucTimerADC1ZeroP5s = 0;
+"328
+[e = F863 -> -> 0 `i `uc ]
+[; ;main.c: 329: enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
+"329
+[e = F857 . `E846 4 ]
+"330
+}
+[; ;main.c: 330: }
+[e $U 68  ]
+"331
+[e :U 67 ]
+[; ;main.c: 331: else if( ucTimerLessADC1ZeroP5s >= 5)
+[e $ ! >= -> F864 `i -> 5 `i 69  ]
+[; ;main.c: 332: {
+"332
+{
+[; ;main.c: 334: if(getAdOriginalCh1Value() < 105)
 "334
-[e :U 70 ]
-[; ;main.c: 334: else
+[e $ ! < ( _getAdOriginalCh1Value ..  -> -> 105 `i `ui 70  ]
 [; ;main.c: 335: {
 "335
 {
-[; ;main.c: 336: ucTimerRightP5s = 0;
+[; ;main.c: 336: ucTimerRightP5s++;
 "336
-[e = F865 -> -> 0 `i `uc ]
+[e ++ F866 -> -> 1 `i `uc ]
 "337
 }
-[e :U 71 ]
 [; ;main.c: 337: }
-[; ;main.c: 339: if(ucTimerRightP5s >= 5)
+[e $U 71  ]
+"338
+[e :U 70 ]
+[; ;main.c: 338: else
+[; ;main.c: 339: {
 "339
-[e $ ! >= -> F865 `i -> 5 `i 72  ]
-[; ;main.c: 340: {
+{
+[; ;main.c: 340: ucTimerRightP5s = 0;
 "340
-{
-[; ;main.c: 341: ucTimerRightP5s = 0;
+[e = F866 -> -> 0 `i `uc ]
 "341
-[e = F865 -> -> 0 `i `uc ]
-[; ;main.c: 342: enumMainLoopStep = MAIN_LOOP_STEP_3_HOUR_BRANCH;
-"342
-[e = F857 . `E846 8 ]
+}
+[e :U 71 ]
+[; ;main.c: 341: }
+[; ;main.c: 343: if(ucTimerRightP5s >= 5)
 "343
-}
-[; ;main.c: 343: }
-[e $U 73  ]
+[e $ ! >= -> F866 `i -> 5 `i 72  ]
+[; ;main.c: 344: {
 "344
-[e :U 72 ]
-[; ;main.c: 344: else
-[; ;main.c: 345: {
-"345
 {
-[; ;main.c: 346: ;
+[; ;main.c: 345: ucTimerLessADC1ZeroP5s = 0;
+"345
+[e = F864 -> -> 0 `i `uc ]
+[; ;main.c: 346: ucTimerRightP5s = 0;
+"346
+[e = F866 -> -> 0 `i `uc ]
+[; ;main.c: 347: enumMainLoopStep = MAIN_LOOP_STEP_3_HOUR_BRANCH;
 "347
-}
-[e :U 73 ]
+[e = F857 . `E846 8 ]
 "348
 }
-[; ;main.c: 347: }
 [; ;main.c: 348: }
-[e $U 74  ]
+[e $U 73  ]
 "349
-[e :U 69 ]
+[e :U 72 ]
 [; ;main.c: 349: else
 [; ;main.c: 350: {
 "350
@@ -1935,470 +1926,485 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 351: ;
 "352
 }
-[e :U 74 ]
-[e :U 68 ]
+[e :U 73 ]
+"353
+}
 [; ;main.c: 352: }
-[; ;main.c: 354: if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_FOURTH == enumMainLoopStep))
+[; ;main.c: 353: }
+[e $U 74  ]
 "354
-[e $ ! || == -> . `E846 8 `i -> F857 `i == -> . `E846 4 `i -> F857 `i 75  ]
+[e :U 69 ]
+[; ;main.c: 354: else
 [; ;main.c: 355: {
 "355
 {
-[; ;main.c: 356: ucTimerRightP5s = 0;
-"356
-[e = F865 -> -> 0 `i `uc ]
-[; ;main.c: 357: ucTimerADC1ZeroP5s = 0;
+[; ;main.c: 356: ;
 "357
-[e = F863 -> -> 0 `i `uc ]
-[; ;main.c: 358: ucTimerLessADC1ZeroP5s = 0;
-"358
-[e = F864 -> -> 0 `i `uc ]
+}
+[e :U 74 ]
+[e :U 68 ]
+[; ;main.c: 357: }
+[; ;main.c: 359: if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_FOURTH == enumMainLoopStep))
 "359
+[e $ ! || == -> . `E846 8 `i -> F857 `i == -> . `E846 4 `i -> F857 `i 75  ]
+[; ;main.c: 360: {
+"360
+{
+[; ;main.c: 361: ucTimerRightP5s = 0;
+"361
+[e = F866 -> -> 0 `i `uc ]
+[; ;main.c: 362: ucTimerADC1ZeroP5s = 0;
+"362
+[e = F863 -> -> 0 `i `uc ]
+[; ;main.c: 363: ucTimerLessADC1ZeroP5s = 0;
+"363
+[e = F864 -> -> 0 `i `uc ]
+"364
 }
 [e :U 75 ]
-[; ;main.c: 359: }
-[; ;main.c: 362: break;
-"362
+[; ;main.c: 364: }
+[; ;main.c: 367: break;
+"367
 [e $U 51  ]
-"363
-}
-[; ;main.c: 363: }
-[; ;main.c: 365: case MAIN_LOOP_STEP_FOURTH:
-"365
-[e :U 76 ]
-[; ;main.c: 366: {
-"366
-{
-[; ;main.c: 368: startTwelveHourTimer(600);
 "368
-[e ( _startTwelveHourTimer (1 -> -> 600 `i `ui ]
-[; ;main.c: 369: enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
-"369
-[e = F857 . `E846 5 ]
-[; ;main.c: 371: break;
+}
+[; ;main.c: 368: }
+[; ;main.c: 370: case MAIN_LOOP_STEP_FOURTH:
+"370
+[e :U 76 ]
+[; ;main.c: 371: {
 "371
-[e $U 51  ]
-"372
-}
-[; ;main.c: 372: }
-[; ;main.c: 374: case MAIN_LOOP_STEP_FIFTH:
+{
+[; ;main.c: 373: startTwelveHourTimer(600);
+"373
+[e ( _startTwelveHourTimer (1 -> -> 600 `i `ui ]
+[; ;main.c: 374: enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 "374
-[e :U 77 ]
-[; ;main.c: 375: {
-"375
-{
-[; ;main.c: 377: if(isFinishedTwelveHoursTimer())
+[e = F857 . `E846 5 ]
+[; ;main.c: 376: break;
+"376
+[e $U 51  ]
 "377
-[e $ ! != -> ( _isFinishedTwelveHoursTimer ..  `i -> -> -> 0 `i `uc `i 78  ]
-[; ;main.c: 378: {
-"378
-{
-[; ;main.c: 379: enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
-"379
-[e = F857 . `E846 9 ]
-"380
 }
-[; ;main.c: 380: }
-[e $U 79  ]
-"381
-[e :U 78 ]
-[; ;main.c: 381: else
-[; ;main.c: 382: {
-"382
+[; ;main.c: 377: }
+[; ;main.c: 379: case MAIN_LOOP_STEP_FIFTH:
+"379
+[e :U 77 ]
+[; ;main.c: 380: {
+"380
 {
+[; ;main.c: 382: if(isFinishedTwelveHoursTimer())
+"382
+[e $ ! != -> ( _isFinishedTwelveHoursTimer ..  `i -> -> -> 0 `i `uc `i 78  ]
+[; ;main.c: 383: {
 "383
-[v F866 `E828  1 s ucADC4_Step ]
-[i F866
+{
+[; ;main.c: 384: enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
+"384
+[e = F857 . `E846 9 ]
+"385
+}
+[; ;main.c: 385: }
+[e $U 79  ]
+"386
+[e :U 78 ]
+[; ;main.c: 386: else
+[; ;main.c: 387: {
+"387
+{
+"388
+[v F867 `E828  1 s ucADC4_Step ]
+[i F867
 . `E828 0
 ]
-[; ;main.c: 383: static enum setp_Adc4 ucADC4_Step = ADC4_STEP_INIT;
-[; ;main.c: 385: switch(ucADC4_Step)
-"385
-[e $U 81  ]
-[; ;main.c: 386: {
-"386
-{
-[; ;main.c: 387: case ADC4_STEP_INIT:
-"387
-[e :U 82 ]
-[; ;main.c: 388: {
-"388
-{
-[; ;main.c: 389: startTwentySecondsTimer();
-"389
-[e ( _startTwentySecondsTimer ..  ]
-[; ;main.c: 390: ucADC4_Step = ADC4_STEP_FIRST;
+[; ;main.c: 388: static enum setp_Adc4 ucADC4_Step = ADC4_STEP_INIT;
+[; ;main.c: 390: switch(ucADC4_Step)
 "390
-[e = F866 . `E828 1 ]
-[; ;main.c: 391: break;
+[e $U 81  ]
+[; ;main.c: 391: {
 "391
-[e $U 80  ]
-"392
-}
-[; ;main.c: 392: }
-[; ;main.c: 394: case ADC4_STEP_FIRST:
-"394
-[e :U 83 ]
-[; ;main.c: 395: {
-"395
 {
-[; ;main.c: 396: if(getAdOriginaCh4Value() < 1911)
+[; ;main.c: 392: case ADC4_STEP_INIT:
+"392
+[e :U 82 ]
+[; ;main.c: 393: {
+"393
+{
+[; ;main.c: 394: startTwentySecondsTimer();
+"394
+[e ( _startTwentySecondsTimer ..  ]
+[; ;main.c: 395: ucADC4_Step = ADC4_STEP_FIRST;
+"395
+[e = F867 . `E828 1 ]
+[; ;main.c: 396: break;
 "396
-[e $ ! < ( _getAdOriginaCh4Value ..  -> -> 1911 `i `ui 84  ]
-[; ;main.c: 397: ucChannel4Type = LESS_THAN_1911;
+[e $U 80  ]
 "397
+}
+[; ;main.c: 397: }
+[; ;main.c: 399: case ADC4_STEP_FIRST:
+"399
+[e :U 83 ]
+[; ;main.c: 400: {
+"400
+{
+[; ;main.c: 401: if(getAdOriginaCh4Value() < 1911)
+"401
+[e $ ! < ( _getAdOriginaCh4Value ..  -> -> 1911 `i `ui 84  ]
+[; ;main.c: 402: ucChannel4Type = LESS_THAN_1911;
+"402
 [e = F858 . `E840 0 ]
 [e $U 85  ]
-"398
+"403
 [e :U 84 ]
-[; ;main.c: 398: else if(getAdOriginaCh4Value() < 2067)
+[; ;main.c: 403: else if(getAdOriginaCh4Value() < 2067)
 [e $ ! < ( _getAdOriginaCh4Value ..  -> -> 2067 `i `ui 86  ]
-[; ;main.c: 399: ucChannel4Type = BETWEEN_1911_AND_2067;
-"399
+[; ;main.c: 404: ucChannel4Type = BETWEEN_1911_AND_2067;
+"404
 [e = F858 . `E840 1 ]
 [e $U 87  ]
-"400
+"405
 [e :U 86 ]
-[; ;main.c: 400: else if(getAdOriginaCh4Value() < 2204)
+[; ;main.c: 405: else if(getAdOriginaCh4Value() < 2204)
 [e $ ! < ( _getAdOriginaCh4Value ..  -> -> 2204 `i `ui 88  ]
-[; ;main.c: 401: ucChannel4Type = BETWEEN_2067_AND_2204;
-"401
+[; ;main.c: 406: ucChannel4Type = BETWEEN_2067_AND_2204;
+"406
 [e = F858 . `E840 2 ]
 [e $U 89  ]
-"402
+"407
 [e :U 88 ]
-[; ;main.c: 402: else if(getAdOriginaCh4Value() < 2340)
+[; ;main.c: 407: else if(getAdOriginaCh4Value() < 2340)
 [e $ ! < ( _getAdOriginaCh4Value ..  -> -> 2340 `i `ui 90  ]
-[; ;main.c: 403: ucChannel4Type = BETWEEN_2204_AND_2340;
-"403
+[; ;main.c: 408: ucChannel4Type = BETWEEN_2204_AND_2340;
+"408
 [e = F858 . `E840 3 ]
 [e $U 91  ]
-"404
+"409
 [e :U 90 ]
-[; ;main.c: 404: else
-[; ;main.c: 405: ucChannel4Type = MORE_THAN_2340;
-"405
+[; ;main.c: 409: else
+[; ;main.c: 410: ucChannel4Type = MORE_THAN_2340;
+"410
 [e = F858 . `E840 4 ]
 [e :U 91 ]
 [e :U 89 ]
 [e :U 87 ]
 [e :U 85 ]
-[; ;main.c: 407: ucADC4_Step = ADC4_STEP_SECOND;
-"407
-[e = F866 . `E828 2 ]
-[; ;main.c: 408: break;
-"408
-[e $U 80  ]
-"409
-}
-[; ;main.c: 409: }
-[; ;main.c: 411: case ADC4_STEP_SECOND:
-"411
-[e :U 92 ]
-[; ;main.c: 412: {
+[; ;main.c: 412: ucADC4_Step = ADC4_STEP_SECOND;
 "412
-{
-[; ;main.c: 413: switch(ucChannel4Type)
+[e = F867 . `E828 2 ]
+[; ;main.c: 413: break;
 "413
-[e $U 94  ]
-[; ;main.c: 414: {
+[e $U 80  ]
 "414
-{
-[; ;main.c: 416: case LESS_THAN_1911:
+}
+[; ;main.c: 414: }
+[; ;main.c: 416: case ADC4_STEP_SECOND:
 "416
-[e :U 95 ]
+[e :U 92 ]
 [; ;main.c: 417: {
 "417
 {
+[; ;main.c: 418: switch(ucChannel4Type)
 "418
-[v F867 `uc  1 s ucTimerDelay ]
-[i F867
--> -> 0 `i `uc
-]
+[e $U 94  ]
+[; ;main.c: 419: {
 "419
-[v F868 `uc  1 s ucLoaderStep ]
-[i F868
--> -> 0 `i `uc
-]
-[; ;main.c: 418: static unsigned char ucTimerDelay = 0;
-[; ;main.c: 419: static unsigned char ucLoaderStep = 0;
-[; ;main.c: 421: switch(ucLoaderStep)
+{
+[; ;main.c: 421: case LESS_THAN_1911:
 "421
-[e $U 97  ]
+[e :U 95 ]
 [; ;main.c: 422: {
 "422
 {
-[; ;main.c: 423: case 0:
 "423
-[e :U 98 ]
-[; ;main.c: 424: {
+[v F868 `uc  1 s ucTimerDelay ]
+[i F868
+-> -> 0 `i `uc
+]
 "424
-{
-[; ;main.c: 425: PB0 = 1;
-"425
-[e = _PB0 -> -> 1 `i `b ]
-[; ;main.c: 426: ucLoaderStep++;
+[v F869 `uc  1 s ucLoaderStep ]
+[i F869
+-> -> 0 `i `uc
+]
+[; ;main.c: 423: static unsigned char ucTimerDelay = 0;
+[; ;main.c: 424: static unsigned char ucLoaderStep = 0;
+[; ;main.c: 426: switch(ucLoaderStep)
 "426
-[e ++ F868 -> -> 1 `i `uc ]
-[; ;main.c: 427: break;
+[e $U 97  ]
+[; ;main.c: 427: {
 "427
-[e $U 96  ]
+{
+[; ;main.c: 428: case 0:
 "428
-}
-[; ;main.c: 428: }
-[; ;main.c: 430: case 1:
+[e :U 98 ]
+[; ;main.c: 429: {
+"429
+{
+[; ;main.c: 430: PB0 = 1;
 "430
-[e :U 99 ]
-[; ;main.c: 431: {
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 431: ucLoaderStep++;
 "431
-{
-[; ;main.c: 432: if(ucTimerDelay >= 5)
+[e ++ F869 -> -> 1 `i `uc ]
+[; ;main.c: 432: break;
 "432
-[e $ ! >= -> F867 `i -> 5 `i 100  ]
-[; ;main.c: 433: {
+[e $U 96  ]
 "433
-{
-[; ;main.c: 434: PA0 = 1;
-"434
-[e = _PA0 -> -> 1 `i `b ]
-[; ;main.c: 435: ucTimerDelay = 0;
+}
+[; ;main.c: 433: }
+[; ;main.c: 435: case 1:
 "435
-[e = F867 -> -> 0 `i `uc ]
-[; ;main.c: 436: ucLoaderStep++;
+[e :U 99 ]
+[; ;main.c: 436: {
 "436
-[e ++ F868 -> -> 1 `i `uc ]
+{
+[; ;main.c: 437: if(ucTimerDelay >= 5)
 "437
-}
-[; ;main.c: 437: }
-[e $U 101  ]
+[e $ ! >= -> F868 `i -> 5 `i 100  ]
+[; ;main.c: 438: {
 "438
-[e :U 100 ]
-[; ;main.c: 438: else
-[; ;main.c: 439: ucTimerDelay++;
+{
+[; ;main.c: 439: PA0 = 1;
 "439
-[e ++ F867 -> -> 1 `i `uc ]
-[e :U 101 ]
-[; ;main.c: 440: break;
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 440: ucTimerDelay = 0;
 "440
-[e $U 96  ]
-"441
-}
-[; ;main.c: 441: }
-[; ;main.c: 443: case 2:
-"443
-[e :U 102 ]
-[; ;main.c: 444: {
-"444
-{
-[; ;main.c: 445: if(ucTimerDelay >= 5)
-"445
-[e $ ! >= -> F867 `i -> 5 `i 103  ]
-[; ;main.c: 446: {
-"446
-{
-[; ;main.c: 447: PA1= 1;
-"447
-[e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 448: ucTimerDelay = 0;
-"448
-[e = F867 -> -> 0 `i `uc ]
-[; ;main.c: 449: ucLoaderStep++;
-"449
-[e ++ F868 -> -> 1 `i `uc ]
-"450
-}
-[; ;main.c: 450: }
-[e $U 104  ]
-"451
-[e :U 103 ]
-[; ;main.c: 451: else
-[; ;main.c: 452: ucTimerDelay++;
-"452
-[e ++ F867 -> -> 1 `i `uc ]
-[e :U 104 ]
-[; ;main.c: 453: break;
-"453
-[e $U 96  ]
-"454
-}
-[; ;main.c: 454: }
-[; ;main.c: 457: case 3:
-"457
-[e :U 105 ]
-[; ;main.c: 458: {
-"458
-{
-[; ;main.c: 459: if(ucTimerDelay >= 5)
-"459
-[e $ ! >= -> F867 `i -> 5 `i 106  ]
-[; ;main.c: 460: {
-"460
-{
-[; ;main.c: 461: PA2= 1;
-"461
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 462: ucTimerDelay = 0;
-"462
-[e = F867 -> -> 0 `i `uc ]
-[; ;main.c: 463: ucLoaderStep++;
-"463
-[e ++ F868 -> -> 1 `i `uc ]
-"464
-}
-[; ;main.c: 464: }
-[e $U 107  ]
-"465
-[e :U 106 ]
-[; ;main.c: 465: else
-[; ;main.c: 466: ucTimerDelay++;
-"466
-[e ++ F867 -> -> 1 `i `uc ]
-[e :U 107 ]
-[; ;main.c: 467: break;
-"467
-[e $U 96  ]
-"468
-}
-[; ;main.c: 468: }
-[; ;main.c: 470: case 4:
-"470
-[e :U 108 ]
-[; ;main.c: 471: {
-"471
-{
-[; ;main.c: 472: if(ucTimerDelay >= 5)
-"472
-[e $ ! >= -> F867 `i -> 5 `i 109  ]
-[; ;main.c: 473: {
-"473
-{
-[; ;main.c: 474: PA3 = 1;
-"474
-[e = _PA3 -> -> 1 `i `b ]
-[; ;main.c: 475: ucTimerDelay = 0;
-"475
-[e = F867 -> -> 0 `i `uc ]
-[; ;main.c: 476: ucLoaderStep++;
-"476
-[e ++ F868 -> -> 1 `i `uc ]
-"477
-}
-[; ;main.c: 477: }
-[e $U 110  ]
-"478
-[e :U 109 ]
-[; ;main.c: 478: else
-[; ;main.c: 479: ucTimerDelay++;
-"479
-[e ++ F867 -> -> 1 `i `uc ]
-[e :U 110 ]
-[; ;main.c: 480: break;
-"480
-[e $U 96  ]
-"481
-}
-[; ;main.c: 481: }
-[; ;main.c: 483: case 5:
-"483
-[e :U 111 ]
-[; ;main.c: 484: {
-"484
-{
-[; ;main.c: 485: if(ucTimerDelay >= 5)
-"485
-[e $ ! >= -> F867 `i -> 5 `i 112  ]
-[; ;main.c: 486: {
-"486
-{
-[; ;main.c: 487: PB0 = 0;
-"487
-[e = _PB0 -> -> 0 `i `b ]
-[; ;main.c: 488: PA0 = 0;
-"488
-[e = _PA0 -> -> 0 `i `b ]
-[; ;main.c: 489: PA1 = 0;
-"489
-[e = _PA1 -> -> 0 `i `b ]
-[; ;main.c: 490: PA2 = 0;
-"490
-[e = _PA2 -> -> 0 `i `b ]
-[; ;main.c: 491: PA3 = 0;
-"491
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 492: ucTimerDelay = 0;
-"492
-[e = F867 -> -> 0 `i `uc ]
-[; ;main.c: 493: ucLoaderStep++;
-"493
-[e ++ F868 -> -> 1 `i `uc ]
-"494
-}
-[; ;main.c: 494: }
-[e $U 113  ]
-"495
-[e :U 112 ]
-[; ;main.c: 495: else
-[; ;main.c: 496: ucTimerDelay++;
-"496
-[e ++ F867 -> -> 1 `i `uc ]
-[e :U 113 ]
-[; ;main.c: 497: break;
-"497
-[e $U 96  ]
-"498
-}
-[; ;main.c: 498: }
-[; ;main.c: 500: case 6:
-"500
-[e :U 114 ]
-[; ;main.c: 501: {
-"501
-{
-[; ;main.c: 502: if(ucTimerDelay >= 2)
-"502
-[e $ ! >= -> F867 `i -> 2 `i 115  ]
-[; ;main.c: 503: {
-"503
-{
-[; ;main.c: 504: ucTimerDelay = 0;
-"504
-[e = F867 -> -> 0 `i `uc ]
-[; ;main.c: 506: ucLoaderStep = 0;
-"506
 [e = F868 -> -> 0 `i `uc ]
-[; ;main.c: 507: ucADC4_Step = ADC4_STEP_THIRD;
-"507
-[e = F866 . `E828 3 ]
-"508
+[; ;main.c: 441: ucLoaderStep++;
+"441
+[e ++ F869 -> -> 1 `i `uc ]
+"442
 }
-[; ;main.c: 508: }
-[e $U 116  ]
-"509
-[e :U 115 ]
-[; ;main.c: 509: else
-[; ;main.c: 510: ucTimerDelay++;
-"510
-[e ++ F867 -> -> 1 `i `uc ]
-[e :U 116 ]
-[; ;main.c: 511: break;
-"511
+[; ;main.c: 442: }
+[e $U 101  ]
+"443
+[e :U 100 ]
+[; ;main.c: 443: else
+[; ;main.c: 444: ucTimerDelay++;
+"444
+[e ++ F868 -> -> 1 `i `uc ]
+[e :U 101 ]
+[; ;main.c: 445: break;
+"445
 [e $U 96  ]
-"512
+"446
 }
-[; ;main.c: 512: }
-[; ;main.c: 515: default:
+[; ;main.c: 446: }
+[; ;main.c: 448: case 2:
+"448
+[e :U 102 ]
+[; ;main.c: 449: {
+"449
+{
+[; ;main.c: 450: if(ucTimerDelay >= 5)
+"450
+[e $ ! >= -> F868 `i -> 5 `i 103  ]
+[; ;main.c: 451: {
+"451
+{
+[; ;main.c: 452: PA1= 1;
+"452
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 453: ucTimerDelay = 0;
+"453
+[e = F868 -> -> 0 `i `uc ]
+[; ;main.c: 454: ucLoaderStep++;
+"454
+[e ++ F869 -> -> 1 `i `uc ]
+"455
+}
+[; ;main.c: 455: }
+[e $U 104  ]
+"456
+[e :U 103 ]
+[; ;main.c: 456: else
+[; ;main.c: 457: ucTimerDelay++;
+"457
+[e ++ F868 -> -> 1 `i `uc ]
+[e :U 104 ]
+[; ;main.c: 458: break;
+"458
+[e $U 96  ]
+"459
+}
+[; ;main.c: 459: }
+[; ;main.c: 462: case 3:
+"462
+[e :U 105 ]
+[; ;main.c: 463: {
+"463
+{
+[; ;main.c: 464: if(ucTimerDelay >= 5)
+"464
+[e $ ! >= -> F868 `i -> 5 `i 106  ]
+[; ;main.c: 465: {
+"465
+{
+[; ;main.c: 466: PA2= 1;
+"466
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 467: ucTimerDelay = 0;
+"467
+[e = F868 -> -> 0 `i `uc ]
+[; ;main.c: 468: ucLoaderStep++;
+"468
+[e ++ F869 -> -> 1 `i `uc ]
+"469
+}
+[; ;main.c: 469: }
+[e $U 107  ]
+"470
+[e :U 106 ]
+[; ;main.c: 470: else
+[; ;main.c: 471: ucTimerDelay++;
+"471
+[e ++ F868 -> -> 1 `i `uc ]
+[e :U 107 ]
+[; ;main.c: 472: break;
+"472
+[e $U 96  ]
+"473
+}
+[; ;main.c: 473: }
+[; ;main.c: 475: case 4:
+"475
+[e :U 108 ]
+[; ;main.c: 476: {
+"476
+{
+[; ;main.c: 477: if(ucTimerDelay >= 5)
+"477
+[e $ ! >= -> F868 `i -> 5 `i 109  ]
+[; ;main.c: 478: {
+"478
+{
+[; ;main.c: 479: PA3 = 1;
+"479
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 480: ucTimerDelay = 0;
+"480
+[e = F868 -> -> 0 `i `uc ]
+[; ;main.c: 481: ucLoaderStep++;
+"481
+[e ++ F869 -> -> 1 `i `uc ]
+"482
+}
+[; ;main.c: 482: }
+[e $U 110  ]
+"483
+[e :U 109 ]
+[; ;main.c: 483: else
+[; ;main.c: 484: ucTimerDelay++;
+"484
+[e ++ F868 -> -> 1 `i `uc ]
+[e :U 110 ]
+[; ;main.c: 485: break;
+"485
+[e $U 96  ]
+"486
+}
+[; ;main.c: 486: }
+[; ;main.c: 488: case 5:
+"488
+[e :U 111 ]
+[; ;main.c: 489: {
+"489
+{
+[; ;main.c: 490: if(ucTimerDelay >= 5)
+"490
+[e $ ! >= -> F868 `i -> 5 `i 112  ]
+[; ;main.c: 491: {
+"491
+{
+[; ;main.c: 492: PB0 = 0;
+"492
+[e = _PB0 -> -> 0 `i `b ]
+[; ;main.c: 493: PA0 = 0;
+"493
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 494: PA1 = 0;
+"494
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 495: PA2 = 0;
+"495
+[e = _PA2 -> -> 0 `i `b ]
+[; ;main.c: 496: PA3 = 0;
+"496
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 497: ucTimerDelay = 0;
+"497
+[e = F868 -> -> 0 `i `uc ]
+[; ;main.c: 498: ucLoaderStep++;
+"498
+[e ++ F869 -> -> 1 `i `uc ]
+"499
+}
+[; ;main.c: 499: }
+[e $U 113  ]
+"500
+[e :U 112 ]
+[; ;main.c: 500: else
+[; ;main.c: 501: ucTimerDelay++;
+"501
+[e ++ F868 -> -> 1 `i `uc ]
+[e :U 113 ]
+[; ;main.c: 502: break;
+"502
+[e $U 96  ]
+"503
+}
+[; ;main.c: 503: }
+[; ;main.c: 505: case 6:
+"505
+[e :U 114 ]
+[; ;main.c: 506: {
+"506
+{
+[; ;main.c: 507: if(ucTimerDelay >= 2)
+"507
+[e $ ! >= -> F868 `i -> 2 `i 115  ]
+[; ;main.c: 508: {
+"508
+{
+[; ;main.c: 509: ucTimerDelay = 0;
+"509
+[e = F868 -> -> 0 `i `uc ]
+[; ;main.c: 511: ucLoaderStep = 0;
+"511
+[e = F869 -> -> 0 `i `uc ]
+[; ;main.c: 512: ucADC4_Step = ADC4_STEP_THIRD;
+"512
+[e = F867 . `E828 3 ]
+"513
+}
+[; ;main.c: 513: }
+[e $U 116  ]
+"514
+[e :U 115 ]
+[; ;main.c: 514: else
+[; ;main.c: 515: ucTimerDelay++;
 "515
-[e :U 117 ]
+[e ++ F868 -> -> 1 `i `uc ]
+[e :U 116 ]
 [; ;main.c: 516: break;
 "516
 [e $U 96  ]
 "517
 }
 [; ;main.c: 517: }
+[; ;main.c: 520: default:
+"520
+[e :U 117 ]
+[; ;main.c: 521: break;
+"521
 [e $U 96  ]
-"421
+"522
+}
+[; ;main.c: 522: }
+[e $U 96  ]
+"426
 [e :U 97 ]
-[e [\ F868 , $ -> -> 0 `i `uc 98
+[e [\ F869 , $ -> -> 0 `i `uc 98
  , $ -> -> 1 `i `uc 99
  , $ -> -> 2 `i `uc 102
  , $ -> -> 3 `i `uc 105
@@ -2406,306 +2412,306 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 5 `i `uc 111
  , $ -> -> 6 `i `uc 114
  117 ]
-"517
-[e :U 96 ]
-[; ;main.c: 519: break;
-"519
-[e $U 93  ]
-"520
-}
-[; ;main.c: 520: }
-[; ;main.c: 522: case BETWEEN_1911_AND_2067:
 "522
-[e :U 118 ]
-[; ;main.c: 523: {
-"523
-{
+[e :U 96 ]
+[; ;main.c: 524: break;
 "524
-[v F869 `uc  1 s ucTimerDelay1 ]
-[i F869
--> -> 0 `i `uc
-]
+[e $U 93  ]
 "525
-[v F870 `uc  1 s ucLoaderStep1 ]
+}
+[; ;main.c: 525: }
+[; ;main.c: 527: case BETWEEN_1911_AND_2067:
+"527
+[e :U 118 ]
+[; ;main.c: 528: {
+"528
+{
+"529
+[v F870 `uc  1 s ucTimerDelay1 ]
 [i F870
 -> -> 0 `i `uc
 ]
-[; ;main.c: 524: static unsigned char ucTimerDelay1 = 0;
-[; ;main.c: 525: static unsigned char ucLoaderStep1 = 0;
-[; ;main.c: 526: switch(ucLoaderStep1)
-"526
-[e $U 120  ]
-[; ;main.c: 527: {
-"527
-{
-[; ;main.c: 528: case 0:
-"528
-[e :U 121 ]
-[; ;main.c: 529: {
-"529
-{
-[; ;main.c: 530: PB0 = 1;
 "530
-[e = _PB0 -> -> 1 `i `b ]
-[; ;main.c: 531: ucLoaderStep1++;
+[v F871 `uc  1 s ucLoaderStep1 ]
+[i F871
+-> -> 0 `i `uc
+]
+[; ;main.c: 529: static unsigned char ucTimerDelay1 = 0;
+[; ;main.c: 530: static unsigned char ucLoaderStep1 = 0;
+[; ;main.c: 531: switch(ucLoaderStep1)
 "531
-[e ++ F870 -> -> 1 `i `uc ]
-[; ;main.c: 532: break;
+[e $U 120  ]
+[; ;main.c: 532: {
 "532
-[e $U 119  ]
+{
+[; ;main.c: 533: case 0:
 "533
-}
-[; ;main.c: 533: }
-[; ;main.c: 535: case 1:
+[e :U 121 ]
+[; ;main.c: 534: {
+"534
+{
+[; ;main.c: 535: PB0 = 1;
 "535
-[e :U 122 ]
-[; ;main.c: 536: {
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 536: ucLoaderStep1++;
 "536
-{
-[; ;main.c: 537: if(ucTimerDelay1 >= 5)
+[e ++ F871 -> -> 1 `i `uc ]
+[; ;main.c: 537: break;
 "537
-[e $ ! >= -> F869 `i -> 5 `i 123  ]
-[; ;main.c: 538: {
+[e $U 119  ]
 "538
-{
-[; ;main.c: 539: PA0 = 1;
-"539
-[e = _PA0 -> -> 1 `i `b ]
-[; ;main.c: 540: ucTimerDelay1 = 0;
+}
+[; ;main.c: 538: }
+[; ;main.c: 540: case 1:
 "540
-[e = F869 -> -> 0 `i `uc ]
-[; ;main.c: 541: ucLoaderStep1++;
+[e :U 122 ]
+[; ;main.c: 541: {
 "541
-[e ++ F870 -> -> 1 `i `uc ]
+{
+[; ;main.c: 542: if(ucTimerDelay1 >= 5)
 "542
-}
-[; ;main.c: 542: }
-[e $U 124  ]
+[e $ ! >= -> F870 `i -> 5 `i 123  ]
+[; ;main.c: 543: {
 "543
-[e :U 123 ]
-[; ;main.c: 543: else
-[; ;main.c: 544: ucTimerDelay1++;
+{
+[; ;main.c: 544: PA0 = 1;
 "544
-[e ++ F869 -> -> 1 `i `uc ]
-[e :U 124 ]
-[; ;main.c: 545: break;
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 545: ucTimerDelay1 = 0;
 "545
-[e $U 119  ]
-"546
-}
-[; ;main.c: 546: }
-[; ;main.c: 548: case 2:
-"548
-[e :U 125 ]
-[; ;main.c: 549: {
-"549
-{
-[; ;main.c: 550: if(ucTimerDelay1 >= 5)
-"550
-[e $ ! >= -> F869 `i -> 5 `i 126  ]
-[; ;main.c: 551: {
-"551
-{
-[; ;main.c: 552: PA1= 1;
-"552
-[e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 553: ucTimerDelay1 = 0;
-"553
-[e = F869 -> -> 0 `i `uc ]
-[; ;main.c: 554: ucLoaderStep1++;
-"554
-[e ++ F870 -> -> 1 `i `uc ]
-"555
-}
-[; ;main.c: 555: }
-[e $U 127  ]
-"556
-[e :U 126 ]
-[; ;main.c: 556: else
-[; ;main.c: 557: ucTimerDelay1++;
-"557
-[e ++ F869 -> -> 1 `i `uc ]
-[e :U 127 ]
-[; ;main.c: 558: break;
-"558
-[e $U 119  ]
-"559
-}
-[; ;main.c: 559: }
-[; ;main.c: 561: case 3:
-"561
-[e :U 128 ]
-[; ;main.c: 562: {
-"562
-{
-[; ;main.c: 563: if(ucTimerDelay1 >= 5)
-"563
-[e $ ! >= -> F869 `i -> 5 `i 129  ]
-[; ;main.c: 564: {
-"564
-{
-[; ;main.c: 565: PA2 = 1;
-"565
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 566: ucTimerDelay1 = 0;
-"566
-[e = F869 -> -> 0 `i `uc ]
-[; ;main.c: 567: ucLoaderStep1++;
-"567
-[e ++ F870 -> -> 1 `i `uc ]
-"568
-}
-[; ;main.c: 568: }
-[e $U 130  ]
-"569
-[e :U 129 ]
-[; ;main.c: 569: else
-[; ;main.c: 570: ucTimerDelay1++;
-"570
-[e ++ F869 -> -> 1 `i `uc ]
-[e :U 130 ]
-[; ;main.c: 571: break;
-"571
-[e $U 119  ]
-"572
-}
-[; ;main.c: 572: }
-[; ;main.c: 574: case 4:
-"574
-[e :U 131 ]
-[; ;main.c: 575: {
-"575
-{
-[; ;main.c: 576: if(ucTimerDelay1 >= 5)
-"576
-[e $ ! >= -> F869 `i -> 5 `i 132  ]
-[; ;main.c: 577: {
-"577
-{
-[; ;main.c: 578: PA3 = 1;
-"578
-[e = _PA3 -> -> 1 `i `b ]
-[; ;main.c: 579: ucTimerDelay1 = 0;
-"579
-[e = F869 -> -> 0 `i `uc ]
-[; ;main.c: 580: ucLoaderStep1++;
-"580
-[e ++ F870 -> -> 1 `i `uc ]
-"581
-}
-[; ;main.c: 581: }
-[e $U 133  ]
-"582
-[e :U 132 ]
-[; ;main.c: 582: else
-[; ;main.c: 583: ucTimerDelay1++;
-"583
-[e ++ F869 -> -> 1 `i `uc ]
-[e :U 133 ]
-[; ;main.c: 584: break;
-"584
-[e $U 119  ]
-"585
-}
-[; ;main.c: 585: }
-[; ;main.c: 587: case 5:
-"587
-[e :U 134 ]
-[; ;main.c: 588: {
-"588
-{
-[; ;main.c: 589: if(ucTimerDelay1 >= 5)
-"589
-[e $ ! >= -> F869 `i -> 5 `i 135  ]
-[; ;main.c: 590: {
-"590
-{
-[; ;main.c: 591: PA0 = 0;
-"591
-[e = _PA0 -> -> 0 `i `b ]
-[; ;main.c: 592: PA1 = 0;
-"592
-[e = _PA1 -> -> 0 `i `b ]
-[; ;main.c: 593: PA2 = 0;
-"593
-[e = _PA2 -> -> 0 `i `b ]
-[; ;main.c: 594: PA3 = 0;
-"594
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 595: ucTimerDelay1 = 0;
-"595
-[e = F869 -> -> 0 `i `uc ]
-[; ;main.c: 596: ucLoaderStep1++;
-"596
-[e ++ F870 -> -> 1 `i `uc ]
-"597
-}
-[; ;main.c: 597: }
-[e $U 136  ]
-"598
-[e :U 135 ]
-[; ;main.c: 598: else
-[; ;main.c: 599: ucTimerDelay1++;
-"599
-[e ++ F869 -> -> 1 `i `uc ]
-[e :U 136 ]
-[; ;main.c: 600: break;
-"600
-[e $U 119  ]
-"601
-}
-[; ;main.c: 601: }
-[; ;main.c: 603: case 6:
-"603
-[e :U 137 ]
-[; ;main.c: 604: {
-"604
-{
-[; ;main.c: 605: if(ucTimerDelay1 >= 2)
-"605
-[e $ ! >= -> F869 `i -> 2 `i 138  ]
-[; ;main.c: 606: {
-"606
-{
-[; ;main.c: 607: ucTimerDelay1 = 0;
-"607
-[e = F869 -> -> 0 `i `uc ]
-[; ;main.c: 609: ucLoaderStep1 = 0;
-"609
 [e = F870 -> -> 0 `i `uc ]
-[; ;main.c: 610: ucADC4_Step = ADC4_STEP_THIRD;
-"610
-[e = F866 . `E828 3 ]
-"611
+[; ;main.c: 546: ucLoaderStep1++;
+"546
+[e ++ F871 -> -> 1 `i `uc ]
+"547
 }
-[; ;main.c: 611: }
-[e $U 139  ]
-"612
-[e :U 138 ]
-[; ;main.c: 612: else
-[; ;main.c: 613: ucTimerDelay1++;
-"613
-[e ++ F869 -> -> 1 `i `uc ]
-[e :U 139 ]
-[; ;main.c: 614: break;
-"614
+[; ;main.c: 547: }
+[e $U 124  ]
+"548
+[e :U 123 ]
+[; ;main.c: 548: else
+[; ;main.c: 549: ucTimerDelay1++;
+"549
+[e ++ F870 -> -> 1 `i `uc ]
+[e :U 124 ]
+[; ;main.c: 550: break;
+"550
 [e $U 119  ]
-"615
+"551
 }
-[; ;main.c: 615: }
-[; ;main.c: 618: default:
+[; ;main.c: 551: }
+[; ;main.c: 553: case 2:
+"553
+[e :U 125 ]
+[; ;main.c: 554: {
+"554
+{
+[; ;main.c: 555: if(ucTimerDelay1 >= 5)
+"555
+[e $ ! >= -> F870 `i -> 5 `i 126  ]
+[; ;main.c: 556: {
+"556
+{
+[; ;main.c: 557: PA1= 1;
+"557
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 558: ucTimerDelay1 = 0;
+"558
+[e = F870 -> -> 0 `i `uc ]
+[; ;main.c: 559: ucLoaderStep1++;
+"559
+[e ++ F871 -> -> 1 `i `uc ]
+"560
+}
+[; ;main.c: 560: }
+[e $U 127  ]
+"561
+[e :U 126 ]
+[; ;main.c: 561: else
+[; ;main.c: 562: ucTimerDelay1++;
+"562
+[e ++ F870 -> -> 1 `i `uc ]
+[e :U 127 ]
+[; ;main.c: 563: break;
+"563
+[e $U 119  ]
+"564
+}
+[; ;main.c: 564: }
+[; ;main.c: 566: case 3:
+"566
+[e :U 128 ]
+[; ;main.c: 567: {
+"567
+{
+[; ;main.c: 568: if(ucTimerDelay1 >= 5)
+"568
+[e $ ! >= -> F870 `i -> 5 `i 129  ]
+[; ;main.c: 569: {
+"569
+{
+[; ;main.c: 570: PA2 = 1;
+"570
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 571: ucTimerDelay1 = 0;
+"571
+[e = F870 -> -> 0 `i `uc ]
+[; ;main.c: 572: ucLoaderStep1++;
+"572
+[e ++ F871 -> -> 1 `i `uc ]
+"573
+}
+[; ;main.c: 573: }
+[e $U 130  ]
+"574
+[e :U 129 ]
+[; ;main.c: 574: else
+[; ;main.c: 575: ucTimerDelay1++;
+"575
+[e ++ F870 -> -> 1 `i `uc ]
+[e :U 130 ]
+[; ;main.c: 576: break;
+"576
+[e $U 119  ]
+"577
+}
+[; ;main.c: 577: }
+[; ;main.c: 579: case 4:
+"579
+[e :U 131 ]
+[; ;main.c: 580: {
+"580
+{
+[; ;main.c: 581: if(ucTimerDelay1 >= 5)
+"581
+[e $ ! >= -> F870 `i -> 5 `i 132  ]
+[; ;main.c: 582: {
+"582
+{
+[; ;main.c: 583: PA3 = 1;
+"583
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 584: ucTimerDelay1 = 0;
+"584
+[e = F870 -> -> 0 `i `uc ]
+[; ;main.c: 585: ucLoaderStep1++;
+"585
+[e ++ F871 -> -> 1 `i `uc ]
+"586
+}
+[; ;main.c: 586: }
+[e $U 133  ]
+"587
+[e :U 132 ]
+[; ;main.c: 587: else
+[; ;main.c: 588: ucTimerDelay1++;
+"588
+[e ++ F870 -> -> 1 `i `uc ]
+[e :U 133 ]
+[; ;main.c: 589: break;
+"589
+[e $U 119  ]
+"590
+}
+[; ;main.c: 590: }
+[; ;main.c: 592: case 5:
+"592
+[e :U 134 ]
+[; ;main.c: 593: {
+"593
+{
+[; ;main.c: 594: if(ucTimerDelay1 >= 5)
+"594
+[e $ ! >= -> F870 `i -> 5 `i 135  ]
+[; ;main.c: 595: {
+"595
+{
+[; ;main.c: 596: PA0 = 0;
+"596
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 597: PA1 = 0;
+"597
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 598: PA2 = 0;
+"598
+[e = _PA2 -> -> 0 `i `b ]
+[; ;main.c: 599: PA3 = 0;
+"599
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 600: ucTimerDelay1 = 0;
+"600
+[e = F870 -> -> 0 `i `uc ]
+[; ;main.c: 601: ucLoaderStep1++;
+"601
+[e ++ F871 -> -> 1 `i `uc ]
+"602
+}
+[; ;main.c: 602: }
+[e $U 136  ]
+"603
+[e :U 135 ]
+[; ;main.c: 603: else
+[; ;main.c: 604: ucTimerDelay1++;
+"604
+[e ++ F870 -> -> 1 `i `uc ]
+[e :U 136 ]
+[; ;main.c: 605: break;
+"605
+[e $U 119  ]
+"606
+}
+[; ;main.c: 606: }
+[; ;main.c: 608: case 6:
+"608
+[e :U 137 ]
+[; ;main.c: 609: {
+"609
+{
+[; ;main.c: 610: if(ucTimerDelay1 >= 2)
+"610
+[e $ ! >= -> F870 `i -> 2 `i 138  ]
+[; ;main.c: 611: {
+"611
+{
+[; ;main.c: 612: ucTimerDelay1 = 0;
+"612
+[e = F870 -> -> 0 `i `uc ]
+[; ;main.c: 614: ucLoaderStep1 = 0;
+"614
+[e = F871 -> -> 0 `i `uc ]
+[; ;main.c: 615: ucADC4_Step = ADC4_STEP_THIRD;
+"615
+[e = F867 . `E828 3 ]
+"616
+}
+[; ;main.c: 616: }
+[e $U 139  ]
+"617
+[e :U 138 ]
+[; ;main.c: 617: else
+[; ;main.c: 618: ucTimerDelay1++;
 "618
-[e :U 140 ]
+[e ++ F870 -> -> 1 `i `uc ]
+[e :U 139 ]
 [; ;main.c: 619: break;
 "619
 [e $U 119  ]
 "620
 }
 [; ;main.c: 620: }
+[; ;main.c: 623: default:
+"623
+[e :U 140 ]
+[; ;main.c: 624: break;
+"624
 [e $U 119  ]
-"526
+"625
+}
+[; ;main.c: 625: }
+[e $U 119  ]
+"531
 [e :U 120 ]
-[e [\ F870 , $ -> -> 0 `i `uc 121
+[e [\ F871 , $ -> -> 0 `i `uc 121
  , $ -> -> 1 `i `uc 122
  , $ -> -> 2 `i `uc 125
  , $ -> -> 3 `i `uc 128
@@ -2713,712 +2719,712 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 5 `i `uc 134
  , $ -> -> 6 `i `uc 137
  140 ]
-"620
+"625
 [e :U 119 ]
-[; ;main.c: 622: break;
-"622
-[e $U 93  ]
-"623
-}
-[; ;main.c: 623: }
-[; ;main.c: 626: case BETWEEN_2067_AND_2204:
-"626
-[e :U 141 ]
-[; ;main.c: 627: {
+[; ;main.c: 627: break;
 "627
-{
+[e $U 93  ]
 "628
-[v F871 `uc  1 s ucTimerDelay2 ]
-[i F871
--> -> 0 `i `uc
-]
-"629
-[v F872 `uc  1 s ucLoaderStep2 ]
+}
+[; ;main.c: 628: }
+[; ;main.c: 631: case BETWEEN_2067_AND_2204:
+"631
+[e :U 141 ]
+[; ;main.c: 632: {
+"632
+{
+"633
+[v F872 `uc  1 s ucTimerDelay2 ]
 [i F872
 -> -> 0 `i `uc
 ]
-[; ;main.c: 628: static unsigned char ucTimerDelay2 = 0;
-[; ;main.c: 629: static unsigned char ucLoaderStep2 = 0;
-[; ;main.c: 630: switch(ucLoaderStep2)
-"630
-[e $U 143  ]
-[; ;main.c: 631: {
-"631
-{
-[; ;main.c: 632: case 0:
-"632
-[e :U 144 ]
-[; ;main.c: 633: {
-"633
-{
-[; ;main.c: 634: PB0 = 1;
 "634
-[e = _PB0 -> -> 1 `i `b ]
-[; ;main.c: 635: PA0 = 1;
+[v F873 `uc  1 s ucLoaderStep2 ]
+[i F873
+-> -> 0 `i `uc
+]
+[; ;main.c: 633: static unsigned char ucTimerDelay2 = 0;
+[; ;main.c: 634: static unsigned char ucLoaderStep2 = 0;
+[; ;main.c: 635: switch(ucLoaderStep2)
 "635
-[e = _PA0 -> -> 1 `i `b ]
-[; ;main.c: 636: ucLoaderStep2++;
+[e $U 143  ]
+[; ;main.c: 636: {
 "636
-[e ++ F872 -> -> 1 `i `uc ]
-[; ;main.c: 637: break;
+{
+[; ;main.c: 637: case 0:
 "637
-[e $U 142  ]
+[e :U 144 ]
+[; ;main.c: 638: {
 "638
-}
-[; ;main.c: 638: }
-[; ;main.c: 640: case 1:
+{
+[; ;main.c: 639: PB0 = 1;
+"639
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 640: PA0 = 1;
 "640
-[e :U 145 ]
-[; ;main.c: 641: {
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 641: ucLoaderStep2++;
 "641
-{
-[; ;main.c: 642: if(ucTimerDelay2 >= 5)
+[e ++ F873 -> -> 1 `i `uc ]
+[; ;main.c: 642: break;
 "642
-[e $ ! >= -> F871 `i -> 5 `i 146  ]
-[; ;main.c: 643: {
+[e $U 142  ]
 "643
-{
-[; ;main.c: 644: PA1 = 1;
-"644
-[e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 645: ucTimerDelay2 = 0;
+}
+[; ;main.c: 643: }
+[; ;main.c: 645: case 1:
 "645
-[e = F871 -> -> 0 `i `uc ]
-[; ;main.c: 646: ucLoaderStep2++;
+[e :U 145 ]
+[; ;main.c: 646: {
 "646
-[e ++ F872 -> -> 1 `i `uc ]
+{
+[; ;main.c: 647: if(ucTimerDelay2 >= 5)
 "647
-}
-[; ;main.c: 647: }
-[e $U 147  ]
+[e $ ! >= -> F872 `i -> 5 `i 146  ]
+[; ;main.c: 648: {
 "648
-[e :U 146 ]
-[; ;main.c: 648: else
-[; ;main.c: 649: ucTimerDelay2++;
+{
+[; ;main.c: 649: PA1 = 1;
 "649
-[e ++ F871 -> -> 1 `i `uc ]
-[e :U 147 ]
-[; ;main.c: 650: break;
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 650: ucTimerDelay2 = 0;
 "650
-[e $U 142  ]
-"651
-}
-[; ;main.c: 651: }
-[; ;main.c: 653: case 2:
-"653
-[e :U 148 ]
-[; ;main.c: 654: {
-"654
-{
-[; ;main.c: 655: if(ucTimerDelay2 >= 5)
-"655
-[e $ ! >= -> F871 `i -> 5 `i 149  ]
-[; ;main.c: 656: {
-"656
-{
-[; ;main.c: 657: PA2 = 1;
-"657
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 658: ucTimerDelay2 = 0;
-"658
-[e = F871 -> -> 0 `i `uc ]
-[; ;main.c: 659: ucLoaderStep2++;
-"659
-[e ++ F872 -> -> 1 `i `uc ]
-"660
-}
-[; ;main.c: 660: }
-[e $U 150  ]
-"661
-[e :U 149 ]
-[; ;main.c: 661: else
-[; ;main.c: 662: ucTimerDelay2++;
-"662
-[e ++ F871 -> -> 1 `i `uc ]
-[e :U 150 ]
-[; ;main.c: 663: break;
-"663
-[e $U 142  ]
-"664
-}
-[; ;main.c: 664: }
-[; ;main.c: 666: case 3:
-"666
-[e :U 151 ]
-[; ;main.c: 667: {
-"667
-{
-[; ;main.c: 668: if(ucTimerDelay2 >= 5)
-"668
-[e $ ! >= -> F871 `i -> 5 `i 152  ]
-[; ;main.c: 669: {
-"669
-{
-[; ;main.c: 670: PA3 = 1;
-"670
-[e = _PA3 -> -> 1 `i `b ]
-[; ;main.c: 671: ucTimerDelay2 = 0;
-"671
-[e = F871 -> -> 0 `i `uc ]
-[; ;main.c: 672: ucLoaderStep2++;
-"672
-[e ++ F872 -> -> 1 `i `uc ]
-"673
-}
-[; ;main.c: 673: }
-[e $U 153  ]
-"674
-[e :U 152 ]
-[; ;main.c: 674: else
-[; ;main.c: 675: ucTimerDelay2++;
-"675
-[e ++ F871 -> -> 1 `i `uc ]
-[e :U 153 ]
-[; ;main.c: 676: break;
-"676
-[e $U 142  ]
-"677
-}
-[; ;main.c: 677: }
-[; ;main.c: 679: case 4:
-"679
-[e :U 154 ]
-[; ;main.c: 680: {
-"680
-{
-[; ;main.c: 681: if(ucTimerDelay2 >= 5)
-"681
-[e $ ! >= -> F871 `i -> 5 `i 155  ]
-[; ;main.c: 682: {
-"682
-{
-[; ;main.c: 684: PA1 = 0;
-"684
-[e = _PA1 -> -> 0 `i `b ]
-[; ;main.c: 685: PA2 = 0;
-"685
-[e = _PA2 -> -> 0 `i `b ]
-[; ;main.c: 686: PA3 = 0;
-"686
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 687: ucTimerDelay2 = 0;
-"687
-[e = F871 -> -> 0 `i `uc ]
-[; ;main.c: 688: ucLoaderStep2++;
-"688
-[e ++ F872 -> -> 1 `i `uc ]
-"689
-}
-[; ;main.c: 689: }
-[e $U 156  ]
-"690
-[e :U 155 ]
-[; ;main.c: 690: else
-[; ;main.c: 691: ucTimerDelay2++;
-"691
-[e ++ F871 -> -> 1 `i `uc ]
-[e :U 156 ]
-[; ;main.c: 692: break;
-"692
-[e $U 142  ]
-"693
-}
-[; ;main.c: 693: }
-[; ;main.c: 695: case 5:
-"695
-[e :U 157 ]
-[; ;main.c: 696: {
-"696
-{
-[; ;main.c: 697: if(ucTimerDelay2 >= 2)
-"697
-[e $ ! >= -> F871 `i -> 2 `i 158  ]
-[; ;main.c: 698: {
-"698
-{
-[; ;main.c: 699: ucTimerDelay2 = 0;
-"699
-[e = F871 -> -> 0 `i `uc ]
-[; ;main.c: 701: ucLoaderStep2 = 0;
-"701
 [e = F872 -> -> 0 `i `uc ]
-[; ;main.c: 702: ucADC4_Step = ADC4_STEP_THIRD;;
-"702
-[e = F866 . `E828 3 ]
-"703
+[; ;main.c: 651: ucLoaderStep2++;
+"651
+[e ++ F873 -> -> 1 `i `uc ]
+"652
 }
-[; ;main.c: 703: }
-[e $U 159  ]
-"704
-[e :U 158 ]
-[; ;main.c: 704: else
-[; ;main.c: 705: ucTimerDelay2++;
-"705
-[e ++ F871 -> -> 1 `i `uc ]
-[e :U 159 ]
-[; ;main.c: 706: break;
-"706
+[; ;main.c: 652: }
+[e $U 147  ]
+"653
+[e :U 146 ]
+[; ;main.c: 653: else
+[; ;main.c: 654: ucTimerDelay2++;
+"654
+[e ++ F872 -> -> 1 `i `uc ]
+[e :U 147 ]
+[; ;main.c: 655: break;
+"655
 [e $U 142  ]
-"707
+"656
 }
-[; ;main.c: 707: }
-[; ;main.c: 710: default:
+[; ;main.c: 656: }
+[; ;main.c: 658: case 2:
+"658
+[e :U 148 ]
+[; ;main.c: 659: {
+"659
+{
+[; ;main.c: 660: if(ucTimerDelay2 >= 5)
+"660
+[e $ ! >= -> F872 `i -> 5 `i 149  ]
+[; ;main.c: 661: {
+"661
+{
+[; ;main.c: 662: PA2 = 1;
+"662
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 663: ucTimerDelay2 = 0;
+"663
+[e = F872 -> -> 0 `i `uc ]
+[; ;main.c: 664: ucLoaderStep2++;
+"664
+[e ++ F873 -> -> 1 `i `uc ]
+"665
+}
+[; ;main.c: 665: }
+[e $U 150  ]
+"666
+[e :U 149 ]
+[; ;main.c: 666: else
+[; ;main.c: 667: ucTimerDelay2++;
+"667
+[e ++ F872 -> -> 1 `i `uc ]
+[e :U 150 ]
+[; ;main.c: 668: break;
+"668
+[e $U 142  ]
+"669
+}
+[; ;main.c: 669: }
+[; ;main.c: 671: case 3:
+"671
+[e :U 151 ]
+[; ;main.c: 672: {
+"672
+{
+[; ;main.c: 673: if(ucTimerDelay2 >= 5)
+"673
+[e $ ! >= -> F872 `i -> 5 `i 152  ]
+[; ;main.c: 674: {
+"674
+{
+[; ;main.c: 675: PA3 = 1;
+"675
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 676: ucTimerDelay2 = 0;
+"676
+[e = F872 -> -> 0 `i `uc ]
+[; ;main.c: 677: ucLoaderStep2++;
+"677
+[e ++ F873 -> -> 1 `i `uc ]
+"678
+}
+[; ;main.c: 678: }
+[e $U 153  ]
+"679
+[e :U 152 ]
+[; ;main.c: 679: else
+[; ;main.c: 680: ucTimerDelay2++;
+"680
+[e ++ F872 -> -> 1 `i `uc ]
+[e :U 153 ]
+[; ;main.c: 681: break;
+"681
+[e $U 142  ]
+"682
+}
+[; ;main.c: 682: }
+[; ;main.c: 684: case 4:
+"684
+[e :U 154 ]
+[; ;main.c: 685: {
+"685
+{
+[; ;main.c: 686: if(ucTimerDelay2 >= 5)
+"686
+[e $ ! >= -> F872 `i -> 5 `i 155  ]
+[; ;main.c: 687: {
+"687
+{
+[; ;main.c: 689: PA1 = 0;
+"689
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 690: PA2 = 0;
+"690
+[e = _PA2 -> -> 0 `i `b ]
+[; ;main.c: 691: PA3 = 0;
+"691
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 692: ucTimerDelay2 = 0;
+"692
+[e = F872 -> -> 0 `i `uc ]
+[; ;main.c: 693: ucLoaderStep2++;
+"693
+[e ++ F873 -> -> 1 `i `uc ]
+"694
+}
+[; ;main.c: 694: }
+[e $U 156  ]
+"695
+[e :U 155 ]
+[; ;main.c: 695: else
+[; ;main.c: 696: ucTimerDelay2++;
+"696
+[e ++ F872 -> -> 1 `i `uc ]
+[e :U 156 ]
+[; ;main.c: 697: break;
+"697
+[e $U 142  ]
+"698
+}
+[; ;main.c: 698: }
+[; ;main.c: 700: case 5:
+"700
+[e :U 157 ]
+[; ;main.c: 701: {
+"701
+{
+[; ;main.c: 702: if(ucTimerDelay2 >= 2)
+"702
+[e $ ! >= -> F872 `i -> 2 `i 158  ]
+[; ;main.c: 703: {
+"703
+{
+[; ;main.c: 704: ucTimerDelay2 = 0;
+"704
+[e = F872 -> -> 0 `i `uc ]
+[; ;main.c: 706: ucLoaderStep2 = 0;
+"706
+[e = F873 -> -> 0 `i `uc ]
+[; ;main.c: 707: ucADC4_Step = ADC4_STEP_THIRD;;
+"707
+[e = F867 . `E828 3 ]
+"708
+}
+[; ;main.c: 708: }
+[e $U 159  ]
+"709
+[e :U 158 ]
+[; ;main.c: 709: else
+[; ;main.c: 710: ucTimerDelay2++;
 "710
-[e :U 160 ]
+[e ++ F872 -> -> 1 `i `uc ]
+[e :U 159 ]
 [; ;main.c: 711: break;
 "711
 [e $U 142  ]
 "712
 }
 [; ;main.c: 712: }
+[; ;main.c: 715: default:
+"715
+[e :U 160 ]
+[; ;main.c: 716: break;
+"716
 [e $U 142  ]
-"630
+"717
+}
+[; ;main.c: 717: }
+[e $U 142  ]
+"635
 [e :U 143 ]
-[e [\ F872 , $ -> -> 0 `i `uc 144
+[e [\ F873 , $ -> -> 0 `i `uc 144
  , $ -> -> 1 `i `uc 145
  , $ -> -> 2 `i `uc 148
  , $ -> -> 3 `i `uc 151
  , $ -> -> 4 `i `uc 154
  , $ -> -> 5 `i `uc 157
  160 ]
-"712
+"717
 [e :U 142 ]
-[; ;main.c: 714: break;
-"714
-[e $U 93  ]
-"715
-}
-[; ;main.c: 715: }
-[; ;main.c: 718: case BETWEEN_2204_AND_2340:
-"718
-[e :U 161 ]
-[; ;main.c: 719: {
+[; ;main.c: 719: break;
 "719
-{
+[e $U 93  ]
 "720
-[v F873 `uc  1 s ucTimerDelay3 ]
-[i F873
--> -> 0 `i `uc
-]
-"721
-[v F874 `uc  1 s ucLoaderStep3 ]
+}
+[; ;main.c: 720: }
+[; ;main.c: 723: case BETWEEN_2204_AND_2340:
+"723
+[e :U 161 ]
+[; ;main.c: 724: {
+"724
+{
+"725
+[v F874 `uc  1 s ucTimerDelay3 ]
 [i F874
 -> -> 0 `i `uc
 ]
-[; ;main.c: 720: static unsigned char ucTimerDelay3 = 0;
-[; ;main.c: 721: static unsigned char ucLoaderStep3 = 0;
-[; ;main.c: 722: switch(ucLoaderStep3)
-"722
-[e $U 163  ]
-[; ;main.c: 723: {
-"723
-{
-[; ;main.c: 724: case 0:
-"724
-[e :U 164 ]
-[; ;main.c: 725: {
-"725
-{
-[; ;main.c: 726: PB0 = 1;
 "726
-[e = _PB0 -> -> 1 `i `b ]
-[; ;main.c: 727: PA0 = 1;
+[v F875 `uc  1 s ucLoaderStep3 ]
+[i F875
+-> -> 0 `i `uc
+]
+[; ;main.c: 725: static unsigned char ucTimerDelay3 = 0;
+[; ;main.c: 726: static unsigned char ucLoaderStep3 = 0;
+[; ;main.c: 727: switch(ucLoaderStep3)
 "727
-[e = _PA0 -> -> 1 `i `b ]
-[; ;main.c: 728: PA1 = 1;
+[e $U 163  ]
+[; ;main.c: 728: {
 "728
-[e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 729: ucLoaderStep3++;
+{
+[; ;main.c: 729: case 0:
 "729
-[e ++ F874 -> -> 1 `i `uc ]
-[; ;main.c: 730: break;
+[e :U 164 ]
+[; ;main.c: 730: {
 "730
-[e $U 162  ]
+{
+[; ;main.c: 731: PB0 = 1;
 "731
-}
-[; ;main.c: 731: }
-[; ;main.c: 733: case 1:
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 732: PA0 = 1;
+"732
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 733: PA1 = 1;
 "733
-[e :U 165 ]
-[; ;main.c: 734: {
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 734: ucLoaderStep3++;
 "734
-{
-[; ;main.c: 735: if(ucTimerDelay3 >= 5)
+[e ++ F875 -> -> 1 `i `uc ]
+[; ;main.c: 735: break;
 "735
-[e $ ! >= -> F873 `i -> 5 `i 166  ]
-[; ;main.c: 736: {
+[e $U 162  ]
 "736
-{
-[; ;main.c: 737: PA2 = 1;
-"737
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 738: ucTimerDelay3 = 0;
+}
+[; ;main.c: 736: }
+[; ;main.c: 738: case 1:
 "738
-[e = F873 -> -> 0 `i `uc ]
-[; ;main.c: 739: ucLoaderStep3++;
+[e :U 165 ]
+[; ;main.c: 739: {
 "739
-[e ++ F874 -> -> 1 `i `uc ]
+{
+[; ;main.c: 740: if(ucTimerDelay3 >= 5)
 "740
-}
-[; ;main.c: 740: }
-[e $U 167  ]
+[e $ ! >= -> F874 `i -> 5 `i 166  ]
+[; ;main.c: 741: {
 "741
-[e :U 166 ]
-[; ;main.c: 741: else
-[; ;main.c: 742: ucTimerDelay3++;
+{
+[; ;main.c: 742: PA2 = 1;
 "742
-[e ++ F873 -> -> 1 `i `uc ]
-[e :U 167 ]
-[; ;main.c: 743: break;
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 743: ucTimerDelay3 = 0;
 "743
-[e $U 162  ]
-"744
-}
-[; ;main.c: 744: }
-[; ;main.c: 746: case 2:
-"746
-[e :U 168 ]
-[; ;main.c: 747: {
-"747
-{
-[; ;main.c: 748: if(ucTimerDelay3 >= 5)
-"748
-[e $ ! >= -> F873 `i -> 5 `i 169  ]
-[; ;main.c: 749: {
-"749
-{
-[; ;main.c: 750: PA3 = 1;
-"750
-[e = _PA3 -> -> 1 `i `b ]
-[; ;main.c: 751: ucTimerDelay3 = 0;
-"751
-[e = F873 -> -> 0 `i `uc ]
-[; ;main.c: 752: ucLoaderStep3++;
-"752
-[e ++ F874 -> -> 1 `i `uc ]
-"753
-}
-[; ;main.c: 753: }
-[e $U 170  ]
-"754
-[e :U 169 ]
-[; ;main.c: 754: else
-[; ;main.c: 755: ucTimerDelay3++;
-"755
-[e ++ F873 -> -> 1 `i `uc ]
-[e :U 170 ]
-[; ;main.c: 756: break;
-"756
-[e $U 162  ]
-"757
-}
-[; ;main.c: 757: }
-[; ;main.c: 760: case 3:
-"760
-[e :U 171 ]
-[; ;main.c: 761: {
-"761
-{
-[; ;main.c: 762: if(ucTimerDelay3 >= 5)
-"762
-[e $ ! >= -> F873 `i -> 5 `i 172  ]
-[; ;main.c: 763: {
-"763
-{
-[; ;main.c: 765: PA2 = 0;
-"765
-[e = _PA2 -> -> 0 `i `b ]
-[; ;main.c: 766: PA3 = 0;
-"766
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 767: ucTimerDelay3 = 0;
-"767
-[e = F873 -> -> 0 `i `uc ]
-[; ;main.c: 768: ucLoaderStep3++;
-"768
-[e ++ F874 -> -> 1 `i `uc ]
-"769
-}
-[; ;main.c: 769: }
-[e $U 173  ]
-"770
-[e :U 172 ]
-[; ;main.c: 770: else
-[; ;main.c: 771: ucTimerDelay3++;
-"771
-[e ++ F873 -> -> 1 `i `uc ]
-[e :U 173 ]
-[; ;main.c: 772: break;
-"772
-[e $U 162  ]
-"773
-}
-[; ;main.c: 773: }
-[; ;main.c: 775: case 4:
-"775
-[e :U 174 ]
-[; ;main.c: 776: {
-"776
-{
-[; ;main.c: 777: if(ucTimerDelay3 >= 2)
-"777
-[e $ ! >= -> F873 `i -> 2 `i 175  ]
-[; ;main.c: 778: {
-"778
-{
-[; ;main.c: 779: ucTimerDelay3 = 0;
-"779
-[e = F873 -> -> 0 `i `uc ]
-[; ;main.c: 781: ucLoaderStep3 = 0;
-"781
 [e = F874 -> -> 0 `i `uc ]
-[; ;main.c: 782: ucADC4_Step = ADC4_STEP_THIRD;;
-"782
-[e = F866 . `E828 3 ]
-"783
+[; ;main.c: 744: ucLoaderStep3++;
+"744
+[e ++ F875 -> -> 1 `i `uc ]
+"745
 }
-[; ;main.c: 783: }
-[e $U 176  ]
-"784
-[e :U 175 ]
-[; ;main.c: 784: else
-[; ;main.c: 785: ucTimerDelay3++;
-"785
-[e ++ F873 -> -> 1 `i `uc ]
-[e :U 176 ]
-[; ;main.c: 786: break;
-"786
+[; ;main.c: 745: }
+[e $U 167  ]
+"746
+[e :U 166 ]
+[; ;main.c: 746: else
+[; ;main.c: 747: ucTimerDelay3++;
+"747
+[e ++ F874 -> -> 1 `i `uc ]
+[e :U 167 ]
+[; ;main.c: 748: break;
+"748
 [e $U 162  ]
-"787
+"749
 }
-[; ;main.c: 787: }
-[; ;main.c: 790: default:
+[; ;main.c: 749: }
+[; ;main.c: 751: case 2:
+"751
+[e :U 168 ]
+[; ;main.c: 752: {
+"752
+{
+[; ;main.c: 753: if(ucTimerDelay3 >= 5)
+"753
+[e $ ! >= -> F874 `i -> 5 `i 169  ]
+[; ;main.c: 754: {
+"754
+{
+[; ;main.c: 755: PA3 = 1;
+"755
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 756: ucTimerDelay3 = 0;
+"756
+[e = F874 -> -> 0 `i `uc ]
+[; ;main.c: 757: ucLoaderStep3++;
+"757
+[e ++ F875 -> -> 1 `i `uc ]
+"758
+}
+[; ;main.c: 758: }
+[e $U 170  ]
+"759
+[e :U 169 ]
+[; ;main.c: 759: else
+[; ;main.c: 760: ucTimerDelay3++;
+"760
+[e ++ F874 -> -> 1 `i `uc ]
+[e :U 170 ]
+[; ;main.c: 761: break;
+"761
+[e $U 162  ]
+"762
+}
+[; ;main.c: 762: }
+[; ;main.c: 765: case 3:
+"765
+[e :U 171 ]
+[; ;main.c: 766: {
+"766
+{
+[; ;main.c: 767: if(ucTimerDelay3 >= 5)
+"767
+[e $ ! >= -> F874 `i -> 5 `i 172  ]
+[; ;main.c: 768: {
+"768
+{
+[; ;main.c: 770: PA2 = 0;
+"770
+[e = _PA2 -> -> 0 `i `b ]
+[; ;main.c: 771: PA3 = 0;
+"771
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 772: ucTimerDelay3 = 0;
+"772
+[e = F874 -> -> 0 `i `uc ]
+[; ;main.c: 773: ucLoaderStep3++;
+"773
+[e ++ F875 -> -> 1 `i `uc ]
+"774
+}
+[; ;main.c: 774: }
+[e $U 173  ]
+"775
+[e :U 172 ]
+[; ;main.c: 775: else
+[; ;main.c: 776: ucTimerDelay3++;
+"776
+[e ++ F874 -> -> 1 `i `uc ]
+[e :U 173 ]
+[; ;main.c: 777: break;
+"777
+[e $U 162  ]
+"778
+}
+[; ;main.c: 778: }
+[; ;main.c: 780: case 4:
+"780
+[e :U 174 ]
+[; ;main.c: 781: {
+"781
+{
+[; ;main.c: 782: if(ucTimerDelay3 >= 2)
+"782
+[e $ ! >= -> F874 `i -> 2 `i 175  ]
+[; ;main.c: 783: {
+"783
+{
+[; ;main.c: 784: ucTimerDelay3 = 0;
+"784
+[e = F874 -> -> 0 `i `uc ]
+[; ;main.c: 786: ucLoaderStep3 = 0;
+"786
+[e = F875 -> -> 0 `i `uc ]
+[; ;main.c: 787: ucADC4_Step = ADC4_STEP_THIRD;;
+"787
+[e = F867 . `E828 3 ]
+"788
+}
+[; ;main.c: 788: }
+[e $U 176  ]
+"789
+[e :U 175 ]
+[; ;main.c: 789: else
+[; ;main.c: 790: ucTimerDelay3++;
 "790
-[e :U 177 ]
+[e ++ F874 -> -> 1 `i `uc ]
+[e :U 176 ]
 [; ;main.c: 791: break;
 "791
 [e $U 162  ]
 "792
 }
 [; ;main.c: 792: }
+[; ;main.c: 795: default:
+"795
+[e :U 177 ]
+[; ;main.c: 796: break;
+"796
 [e $U 162  ]
-"722
+"797
+}
+[; ;main.c: 797: }
+[e $U 162  ]
+"727
 [e :U 163 ]
-[e [\ F874 , $ -> -> 0 `i `uc 164
+[e [\ F875 , $ -> -> 0 `i `uc 164
  , $ -> -> 1 `i `uc 165
  , $ -> -> 2 `i `uc 168
  , $ -> -> 3 `i `uc 171
  , $ -> -> 4 `i `uc 174
  177 ]
-"792
+"797
 [e :U 162 ]
-[; ;main.c: 794: break;
-"794
-[e $U 93  ]
-"795
-}
-[; ;main.c: 795: }
-[; ;main.c: 798: case MORE_THAN_2340:
-"798
-[e :U 178 ]
-[; ;main.c: 799: {
+[; ;main.c: 799: break;
 "799
-{
+[e $U 93  ]
 "800
-[v F875 `uc  1 s ucTimerDelay4 ]
-[i F875
--> -> 0 `i `uc
-]
-"801
-[v F876 `uc  1 s ucLoaderStep4 ]
+}
+[; ;main.c: 800: }
+[; ;main.c: 803: case MORE_THAN_2340:
+"803
+[e :U 178 ]
+[; ;main.c: 804: {
+"804
+{
+"805
+[v F876 `uc  1 s ucTimerDelay4 ]
 [i F876
 -> -> 0 `i `uc
 ]
-[; ;main.c: 800: static unsigned char ucTimerDelay4 = 0;
-[; ;main.c: 801: static unsigned char ucLoaderStep4 = 0;
-[; ;main.c: 802: switch(ucLoaderStep4)
-"802
-[e $U 180  ]
-[; ;main.c: 803: {
-"803
-{
-[; ;main.c: 804: case 0:
-"804
-[e :U 181 ]
-[; ;main.c: 805: {
-"805
-{
-[; ;main.c: 806: PB0 = 1;
 "806
-[e = _PB0 -> -> 1 `i `b ]
-[; ;main.c: 807: PA0 = 1;
+[v F877 `uc  1 s ucLoaderStep4 ]
+[i F877
+-> -> 0 `i `uc
+]
+[; ;main.c: 805: static unsigned char ucTimerDelay4 = 0;
+[; ;main.c: 806: static unsigned char ucLoaderStep4 = 0;
+[; ;main.c: 807: switch(ucLoaderStep4)
 "807
-[e = _PA0 -> -> 1 `i `b ]
-[; ;main.c: 808: PA1 = 1;
+[e $U 180  ]
+[; ;main.c: 808: {
 "808
-[e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 809: PA2 = 1;
+{
+[; ;main.c: 809: case 0:
 "809
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 810: ucLoaderStep4++;
+[e :U 181 ]
+[; ;main.c: 810: {
 "810
-[e ++ F876 -> -> 1 `i `uc ]
-[; ;main.c: 811: break;
+{
+[; ;main.c: 811: PB0 = 1;
 "811
-[e $U 179  ]
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 812: PA0 = 1;
 "812
-}
-[; ;main.c: 812: }
-[; ;main.c: 814: case 1:
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 813: PA1 = 1;
+"813
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 814: PA2 = 1;
 "814
-[e :U 182 ]
-[; ;main.c: 815: {
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 815: ucLoaderStep4++;
 "815
-{
-[; ;main.c: 816: if(ucTimerDelay4 >= 5)
+[e ++ F877 -> -> 1 `i `uc ]
+[; ;main.c: 816: break;
 "816
-[e $ ! >= -> F875 `i -> 5 `i 183  ]
-[; ;main.c: 817: {
+[e $U 179  ]
 "817
-{
-[; ;main.c: 818: PA3 = 1;
-"818
-[e = _PA3 -> -> 1 `i `b ]
-[; ;main.c: 819: ucTimerDelay4 = 0;
+}
+[; ;main.c: 817: }
+[; ;main.c: 819: case 1:
 "819
-[e = F875 -> -> 0 `i `uc ]
-[; ;main.c: 820: ucLoaderStep4++;
+[e :U 182 ]
+[; ;main.c: 820: {
 "820
-[e ++ F876 -> -> 1 `i `uc ]
+{
+[; ;main.c: 821: if(ucTimerDelay4 >= 5)
 "821
-}
-[; ;main.c: 821: }
-[e $U 184  ]
+[e $ ! >= -> F876 `i -> 5 `i 183  ]
+[; ;main.c: 822: {
 "822
-[e :U 183 ]
-[; ;main.c: 822: else
-[; ;main.c: 823: ucTimerDelay4++;
+{
+[; ;main.c: 823: PA3 = 1;
 "823
-[e ++ F875 -> -> 1 `i `uc ]
-[e :U 184 ]
-[; ;main.c: 824: break;
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 824: ucTimerDelay4 = 0;
 "824
-[e $U 179  ]
-"825
-}
-[; ;main.c: 825: }
-[; ;main.c: 827: case 2:
-"827
-[e :U 185 ]
-[; ;main.c: 828: {
-"828
-{
-[; ;main.c: 829: if(ucTimerDelay4 >= 5)
-"829
-[e $ ! >= -> F875 `i -> 5 `i 186  ]
-[; ;main.c: 830: {
-"830
-{
-[; ;main.c: 831: PA3 = 0;
-"831
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 832: ucTimerDelay4 = 0;
-"832
-[e = F875 -> -> 0 `i `uc ]
-[; ;main.c: 833: ucLoaderStep4++;
-"833
-[e ++ F876 -> -> 1 `i `uc ]
-"834
-}
-[; ;main.c: 834: }
-[e $U 187  ]
-"835
-[e :U 186 ]
-[; ;main.c: 835: else
-[; ;main.c: 836: ucTimerDelay4++;
-"836
-[e ++ F875 -> -> 1 `i `uc ]
-[e :U 187 ]
-[; ;main.c: 837: break;
-"837
-[e $U 179  ]
-"838
-}
-[; ;main.c: 838: }
-[; ;main.c: 840: case 3:
-"840
-[e :U 188 ]
-[; ;main.c: 841: {
-"841
-{
-[; ;main.c: 842: if(ucTimerDelay4 >= 2)
-"842
-[e $ ! >= -> F875 `i -> 2 `i 189  ]
-[; ;main.c: 843: {
-"843
-{
-[; ;main.c: 844: ucTimerDelay4 = 0;
-"844
-[e = F875 -> -> 0 `i `uc ]
-[; ;main.c: 846: ucLoaderStep4 = 0;
-"846
 [e = F876 -> -> 0 `i `uc ]
-[; ;main.c: 847: ucADC4_Step = ADC4_STEP_THIRD;
-"847
-[e = F866 . `E828 3 ]
-"848
+[; ;main.c: 825: ucLoaderStep4++;
+"825
+[e ++ F877 -> -> 1 `i `uc ]
+"826
 }
-[; ;main.c: 848: }
-[e $U 190  ]
-"849
-[e :U 189 ]
-[; ;main.c: 849: else
-[; ;main.c: 850: ucTimerDelay4++;
-"850
-[e ++ F875 -> -> 1 `i `uc ]
-[e :U 190 ]
-[; ;main.c: 851: break;
-"851
+[; ;main.c: 826: }
+[e $U 184  ]
+"827
+[e :U 183 ]
+[; ;main.c: 827: else
+[; ;main.c: 828: ucTimerDelay4++;
+"828
+[e ++ F876 -> -> 1 `i `uc ]
+[e :U 184 ]
+[; ;main.c: 829: break;
+"829
 [e $U 179  ]
-"852
+"830
 }
-[; ;main.c: 852: }
-[; ;main.c: 855: default:
+[; ;main.c: 830: }
+[; ;main.c: 832: case 2:
+"832
+[e :U 185 ]
+[; ;main.c: 833: {
+"833
+{
+[; ;main.c: 834: if(ucTimerDelay4 >= 5)
+"834
+[e $ ! >= -> F876 `i -> 5 `i 186  ]
+[; ;main.c: 835: {
+"835
+{
+[; ;main.c: 836: PA3 = 0;
+"836
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 837: ucTimerDelay4 = 0;
+"837
+[e = F876 -> -> 0 `i `uc ]
+[; ;main.c: 838: ucLoaderStep4++;
+"838
+[e ++ F877 -> -> 1 `i `uc ]
+"839
+}
+[; ;main.c: 839: }
+[e $U 187  ]
+"840
+[e :U 186 ]
+[; ;main.c: 840: else
+[; ;main.c: 841: ucTimerDelay4++;
+"841
+[e ++ F876 -> -> 1 `i `uc ]
+[e :U 187 ]
+[; ;main.c: 842: break;
+"842
+[e $U 179  ]
+"843
+}
+[; ;main.c: 843: }
+[; ;main.c: 845: case 3:
+"845
+[e :U 188 ]
+[; ;main.c: 846: {
+"846
+{
+[; ;main.c: 847: if(ucTimerDelay4 >= 2)
+"847
+[e $ ! >= -> F876 `i -> 2 `i 189  ]
+[; ;main.c: 848: {
+"848
+{
+[; ;main.c: 849: ucTimerDelay4 = 0;
+"849
+[e = F876 -> -> 0 `i `uc ]
+[; ;main.c: 851: ucLoaderStep4 = 0;
+"851
+[e = F877 -> -> 0 `i `uc ]
+[; ;main.c: 852: ucADC4_Step = ADC4_STEP_THIRD;
+"852
+[e = F867 . `E828 3 ]
+"853
+}
+[; ;main.c: 853: }
+[e $U 190  ]
+"854
+[e :U 189 ]
+[; ;main.c: 854: else
+[; ;main.c: 855: ucTimerDelay4++;
 "855
-[e :U 191 ]
+[e ++ F876 -> -> 1 `i `uc ]
+[e :U 190 ]
 [; ;main.c: 856: break;
 "856
 [e $U 179  ]
 "857
 }
 [; ;main.c: 857: }
+[; ;main.c: 860: default:
+"860
+[e :U 191 ]
+[; ;main.c: 861: break;
+"861
 [e $U 179  ]
-"802
+"862
+}
+[; ;main.c: 862: }
+[e $U 179  ]
+"807
 [e :U 180 ]
-[e [\ F876 , $ -> -> 0 `i `uc 181
+[e [\ F877 , $ -> -> 0 `i `uc 181
  , $ -> -> 1 `i `uc 182
  , $ -> -> 2 `i `uc 185
  , $ -> -> 3 `i `uc 188
  191 ]
-"857
-[e :U 179 ]
-[; ;main.c: 859: break;
-"859
-[e $U 93  ]
-"860
-}
-[; ;main.c: 860: }
-[; ;main.c: 862: default:
 "862
-[e :U 192 ]
-[; ;main.c: 863: break;
-"863
-[e $U 93  ]
+[e :U 179 ]
+[; ;main.c: 864: break;
 "864
-}
-[; ;main.c: 864: }
 [e $U 93  ]
-"413
+"865
+}
+[; ;main.c: 865: }
+[; ;main.c: 867: default:
+"867
+[e :U 192 ]
+[; ;main.c: 868: break;
+"868
+[e $U 93  ]
+"869
+}
+[; ;main.c: 869: }
+[e $U 93  ]
+"418
 [e :U 94 ]
 [e [\ F858 , $ . `E840 0 95
  , $ . `E840 1 118
@@ -3426,220 +3432,214 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E840 3 161
  , $ . `E840 4 178
  192 ]
-"864
-[e :U 93 ]
-[; ;main.c: 866: break;
-"866
-[e $U 80  ]
-"867
-}
-[; ;main.c: 867: }
-[; ;main.c: 869: case ADC4_STEP_THIRD:
 "869
-[e :U 193 ]
-[; ;main.c: 870: {
-"870
-{
+[e :U 93 ]
+[; ;main.c: 871: break;
 "871
-[v F877 `uc  1 s ucTimerDelayP5s ]
-[i F877
--> -> 0 `i `uc
-]
-"873
-[v F878 `uc  1 s ucTimerPA6DelayP1s ]
+[e $U 80  ]
+"872
+}
+[; ;main.c: 872: }
+[; ;main.c: 874: case ADC4_STEP_THIRD:
+"874
+[e :U 193 ]
+[; ;main.c: 875: {
+"875
+{
+"876
+[v F878 `uc  1 s ucTimerDelayP5s ]
 [i F878
 -> -> 0 `i `uc
 ]
-"875
-[v F879 `uc  1 s ucTimerPB6DelayP1s ]
+"878
+[v F879 `uc  1 s ucTimerPA6DelayP1s ]
 [i F879
 -> -> 0 `i `uc
 ]
-[; ;main.c: 871: static unsigned char ucTimerDelayP5s = 0;
-[; ;main.c: 873: static unsigned char ucTimerPA6DelayP1s = 0;
-[; ;main.c: 875: static unsigned char ucTimerPB6DelayP1s = 0;
-[; ;main.c: 877: if(isFinishedTwentySecondsTimer())
-"877
-[e $ ! != -> ( _isFinishedTwentySecondsTimer ..  `i -> -> -> 0 `i `uc `i 194  ]
-[; ;main.c: 878: {
-"878
-{
-[; ;main.c: 879: if(ucTimerPA6DelayP1s < 1)
-"879
-[e $ ! < -> F878 `i -> 1 `i 195  ]
-[; ;main.c: 880: {
 "880
-{
-[; ;main.c: 881: PA6 = 0;
-"881
-[e = _PA6 -> -> 0 `i `b ]
-[; ;main.c: 882: ucTimerPA6DelayP1s++;
-"882
-[e ++ F878 -> -> 1 `i `uc ]
-"883
-}
-[; ;main.c: 883: }
-[e $U 196  ]
-"884
-[e :U 195 ]
-[; ;main.c: 884: else
-[; ;main.c: 885: {
-"885
-{
-[; ;main.c: 886: if(ucTimerPB6DelayP1s < 1)
-"886
-[e $ ! < -> F879 `i -> 1 `i 197  ]
-[; ;main.c: 887: {
-"887
-{
-[; ;main.c: 888: PBOD6 =0;
-"888
-[e = _PBOD6 -> -> 0 `i `b ]
-[; ;main.c: 889: PB6 = 1;
-"889
-[e = _PB6 -> -> 1 `i `b ]
-[; ;main.c: 890: ucTimerPB6DelayP1s++;
-"890
-[e ++ F879 -> -> 1 `i `uc ]
-"891
-}
-[; ;main.c: 891: }
-[e $U 198  ]
-"892
-[e :U 197 ]
-[; ;main.c: 892: else
-[; ;main.c: 893: {
-"893
-{
-[; ;main.c: 894: if(ucTimerDelayP5s < 5)
-"894
-[e $ ! < -> F877 `i -> 5 `i 199  ]
-[; ;main.c: 895: {
-"895
-{
-[; ;main.c: 896: ucTimerDelayP5s++;
-"896
-[e ++ F877 -> -> 1 `i `uc ]
-"897
-}
-[; ;main.c: 897: }
-[e $U 200  ]
-"898
-[e :U 199 ]
-[; ;main.c: 898: else
-[; ;main.c: 899: {
-"899
-{
-[; ;main.c: 901: ucTimerDelayP5s = 0;
-"901
-[e = F877 -> -> 0 `i `uc ]
-[; ;main.c: 903: ucTimerPB6DelayP1s = 0;
-"903
-[e = F879 -> -> 0 `i `uc ]
-[; ;main.c: 904: ucTimerPA6DelayP1s = 0;
-"904
-[e = F878 -> -> 0 `i `uc ]
-[; ;main.c: 906: if((getAdOriginalCh14Value() > 2800))
-"906
-[e $ ! > ( _getAdOriginalCh14Value ..  -> -> 2800 `i `ui 201  ]
-[; ;main.c: 907: DACR0=0x0F;
-"907
-[e = _DACR0 -> -> 15 `i `uc ]
-[e $U 202  ]
-"908
-[e :U 201 ]
-[; ;main.c: 908: else
-[; ;main.c: 909: DACR0=0x07;
-"909
-[e = _DACR0 -> -> 7 `i `uc ]
-[e :U 202 ]
-[; ;main.c: 911: ucADC4_Step = ADC4_STEP_FOURTH;
-"911
-[e = F866 . `E828 4 ]
-"912
-}
-[e :U 200 ]
-"913
-}
-[e :U 198 ]
-"914
-}
-[e :U 196 ]
-"915
-}
-[; ;main.c: 912: }
-[; ;main.c: 913: }
-[; ;main.c: 914: }
-[; ;main.c: 915: }
-[e $U 203  ]
-"916
-[e :U 194 ]
-[; ;main.c: 916: else
-[; ;main.c: 917: ucADC4_Step = ADC4_STEP_FIRST;
-"917
-[e = F866 . `E828 1 ]
-[e :U 203 ]
-[; ;main.c: 919: break;
-"919
-[e $U 80  ]
-"920
-}
-[; ;main.c: 920: }
-[; ;main.c: 922: case ADC4_STEP_FOURTH:
-"922
-[e :U 204 ]
-[; ;main.c: 923: {
-"923
-{
-"924
-[v F880 `uc  1 s ucTimer1s ]
+[v F880 `uc  1 s ucTimerPB6DelayP1s ]
 [i F880
 -> -> 0 `i `uc
 ]
-"926
-[v F881 `uc  1 s ucTimerSeond1s ]
+[; ;main.c: 876: static unsigned char ucTimerDelayP5s = 0;
+[; ;main.c: 878: static unsigned char ucTimerPA6DelayP1s = 0;
+[; ;main.c: 880: static unsigned char ucTimerPB6DelayP1s = 0;
+[; ;main.c: 882: if(isFinishedTwentySecondsTimer())
+"882
+[e $ ! != -> ( _isFinishedTwentySecondsTimer ..  `i -> -> -> 0 `i `uc `i 194  ]
+[; ;main.c: 883: {
+"883
+{
+[; ;main.c: 884: if(ucTimerPA6DelayP1s < 1)
+"884
+[e $ ! < -> F879 `i -> 1 `i 195  ]
+[; ;main.c: 885: {
+"885
+{
+[; ;main.c: 886: PA6 = 0;
+"886
+[e = _PA6 -> -> 0 `i `b ]
+[; ;main.c: 887: ucTimerPA6DelayP1s++;
+"887
+[e ++ F879 -> -> 1 `i `uc ]
+"888
+}
+[; ;main.c: 888: }
+[e $U 196  ]
+"889
+[e :U 195 ]
+[; ;main.c: 889: else
+[; ;main.c: 890: {
+"890
+{
+[; ;main.c: 891: if(ucTimerPB6DelayP1s < 1)
+"891
+[e $ ! < -> F880 `i -> 1 `i 197  ]
+[; ;main.c: 892: {
+"892
+{
+[; ;main.c: 893: PBOD6 =0;
+"893
+[e = _PBOD6 -> -> 0 `i `b ]
+[; ;main.c: 894: PB6 = 1;
+"894
+[e = _PB6 -> -> 1 `i `b ]
+[; ;main.c: 895: ucTimerPB6DelayP1s++;
+"895
+[e ++ F880 -> -> 1 `i `uc ]
+"896
+}
+[; ;main.c: 896: }
+[e $U 198  ]
+"897
+[e :U 197 ]
+[; ;main.c: 897: else
+[; ;main.c: 898: {
+"898
+{
+[; ;main.c: 899: if(ucTimerDelayP5s < 3)
+"899
+[e $ ! < -> F878 `i -> 3 `i 199  ]
+[; ;main.c: 900: {
+"900
+{
+[; ;main.c: 901: ucTimerDelayP5s++;
+"901
+[e ++ F878 -> -> 1 `i `uc ]
+"902
+}
+[; ;main.c: 902: }
+[e $U 200  ]
+"903
+[e :U 199 ]
+[; ;main.c: 903: else
+[; ;main.c: 904: {
+"904
+{
+[; ;main.c: 906: ucTimerDelayP5s = 0;
+"906
+[e = F878 -> -> 0 `i `uc ]
+[; ;main.c: 908: ucTimerPB6DelayP1s = 0;
+"908
+[e = F880 -> -> 0 `i `uc ]
+[; ;main.c: 909: ucTimerPA6DelayP1s = 0;
+"909
+[e = F879 -> -> 0 `i `uc ]
+"911
+[v F881 `uc  1 s ucTimerForDACR0_CNT1 ]
 [i F881
 -> -> 0 `i `uc
 ]
-[; ;main.c: 924: static unsigned char ucTimer1s = 0;
-[; ;main.c: 926: static unsigned char ucTimerSeond1s = 0;
-[; ;main.c: 928: if(ucTimerSeond1s < 5)
-"928
-[e $ ! < -> F881 `i -> 5 `i 205  ]
-[; ;main.c: 929: {
-"929
+[v F882 `uc  1 s ucTimerForDACR0_CNT2 ]
+[i F882
+-> -> 0 `i `uc
+]
+"913
+[v F883 `uc  1 s ucTimerForDACR0_CNT1_f ]
+[i F883
+-> -> 0 `i `uc
+]
+[v F884 `uc  1 s ucTimerForDACR0_CNT2_f ]
+[i F884
+-> -> 0 `i `uc
+]
+[; ;main.c: 911: static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
+[; ;main.c: 913: static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
+[; ;main.c: 915: if((getAdOriginalCh14Value() > 2800))
+"915
+[e $ ! > ( _getAdOriginalCh14Value ..  -> -> 2800 `i `ui 201  ]
+[; ;main.c: 916: {
+"916
 {
-[; ;main.c: 930: ucTimerSeond1s++;
-"930
+[; ;main.c: 917: ucTimerForDACR0_CNT1++;
+"917
 [e ++ F881 -> -> 1 `i `uc ]
-"931
+[; ;main.c: 918: ucTimerForDACR0_CNT2 = 0;
+"918
+[e = F882 -> -> 0 `i `uc ]
+"919
 }
-[; ;main.c: 931: }
-[e $U 206  ]
+[; ;main.c: 919: }
+[e $U 202  ]
+"920
+[e :U 201 ]
+[; ;main.c: 920: else
+[; ;main.c: 921: {
+"921
+{
+[; ;main.c: 922: ucTimerForDACR0_CNT2 = 0;
+"922
+[e = F882 -> -> 0 `i `uc ]
+[; ;main.c: 923: ucTimerForDACR0_CNT1++;
+"923
+[e ++ F881 -> -> 1 `i `uc ]
+"924
+}
+[e :U 202 ]
+[; ;main.c: 924: }
+[; ;main.c: 926: if(ucTimerForDACR0_CNT1 >= 3)
+"926
+[e $ ! >= -> F881 `i -> 3 `i 203  ]
+[; ;main.c: 927: ucTimerForDACR0_CNT1_f = 1;
+"927
+[e = F883 -> -> 1 `i `uc ]
+[e :U 203 ]
+[; ;main.c: 929: if(ucTimerForDACR0_CNT2 >= 3)
+"929
+[e $ ! >= -> F882 `i -> 3 `i 204  ]
+[; ;main.c: 930: ucTimerForDACR0_CNT2_f = 1;
+"930
+[e = F884 -> -> 1 `i `uc ]
+[e :U 204 ]
+[; ;main.c: 932: if(ucTimerForDACR0_CNT1_f)
 "932
-[e :U 205 ]
-[; ;main.c: 932: else
+[e $ ! != -> F883 `i -> -> -> 0 `i `uc `i 205  ]
 [; ;main.c: 933: {
 "933
 {
-[; ;main.c: 934: ucTimerSeond1s = 0;
+[; ;main.c: 934: DACR0=0x0F;
 "934
-[e = F881 -> -> 0 `i `uc ]
-[; ;main.c: 936: if(ucTimer1s < 5)
+[e = _DACR0 -> -> 15 `i `uc ]
+[; ;main.c: 935: ucADC4_Step = ADC4_STEP_FOURTH;
+"935
+[e = F867 . `E828 4 ]
 "936
-[e $ ! < -> F880 `i -> 5 `i 207  ]
-[; ;main.c: 937: {
+}
+[; ;main.c: 936: }
+[e $U 206  ]
 "937
-{
-[; ;main.c: 938: ucTimer1s++;
+[e :U 205 ]
+[; ;main.c: 937: else if(ucTimerForDACR0_CNT2_f)
+[e $ ! != -> F884 `i -> -> -> 0 `i `uc `i 207  ]
+[; ;main.c: 938: {
 "938
-[e ++ F880 -> -> 1 `i `uc ]
-[; ;main.c: 939: PB6 = 1;
+{
+[; ;main.c: 939: DACR0=0x07;
 "939
-[e = _PB6 -> -> 1 `i `b ]
-[; ;main.c: 940: PBOD6 = 1;
+[e = _DACR0 -> -> 7 `i `uc ]
+[; ;main.c: 940: ucADC4_Step = ADC4_STEP_FOURTH;
 "940
-[e = _PBOD6 -> -> 1 `i `b ]
+[e = F867 . `E828 4 ]
 "941
 }
 [; ;main.c: 941: }
@@ -3650,641 +3650,763 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 943: {
 "943
 {
-[; ;main.c: 944: ucTimer1s = 0;
-"944
-[e = F880 -> -> 0 `i `uc ]
-[; ;main.c: 946: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-"946
-[e = F857 . `E846 1 ]
-[; ;main.c: 947: ucADC4_Step = ADC4_STEP_INIT;
-"947
-[e = F866 . `E828 0 ]
-"948
+[; ;main.c: 944: ;
+"945
 }
 [e :U 208 ]
-"949
-}
 [e :U 206 ]
-[; ;main.c: 948: }
-[; ;main.c: 949: }
-[; ;main.c: 951: break;
+[; ;main.c: 945: }
+[; ;main.c: 947: if(ADC4_STEP_FOURTH == ucADC4_Step)
+"947
+[e $ ! == -> . `E828 4 `i -> F867 `i 209  ]
+[; ;main.c: 948: {
+"948
+{
+[; ;main.c: 949: ucTimerForDACR0_CNT1 = 0;
+"949
+[e = F881 -> -> 0 `i `uc ]
+[; ;main.c: 950: ucTimerForDACR0_CNT2 = 0;
+"950
+[e = F882 -> -> 0 `i `uc ]
+[; ;main.c: 951: ucTimerForDACR0_CNT1_f = 0;
 "951
-[e $U 80  ]
+[e = F883 -> -> 0 `i `uc ]
+[; ;main.c: 952: ucTimerForDACR0_CNT2_f = 0;
 "952
+[e = F884 -> -> 0 `i `uc ]
+"953
 }
-[; ;main.c: 952: }
-[; ;main.c: 954: default:
-"954
 [e :U 209 ]
-[; ;main.c: 955: break;
+"954
+}
+[e :U 200 ]
 "955
-[e $U 80  ]
+}
+[e :U 198 ]
 "956
 }
+[e :U 196 ]
+"957
+}
+[; ;main.c: 953: }
+[; ;main.c: 954: }
+[; ;main.c: 955: }
 [; ;main.c: 956: }
+[; ;main.c: 957: }
+[e $U 210  ]
+"958
+[e :U 194 ]
+[; ;main.c: 958: else
+[; ;main.c: 959: ucADC4_Step = ADC4_STEP_FIRST;
+"959
+[e = F867 . `E828 1 ]
+[e :U 210 ]
+[; ;main.c: 961: break;
+"961
 [e $U 80  ]
-"385
+"962
+}
+[; ;main.c: 962: }
+[; ;main.c: 964: case ADC4_STEP_FOURTH:
+"964
+[e :U 211 ]
+[; ;main.c: 965: {
+"965
+{
+"966
+[v F885 `uc  1 s ucTimer1s ]
+[i F885
+-> -> 0 `i `uc
+]
+"968
+[v F886 `uc  1 s ucTimerSeond1s ]
+[i F886
+-> -> 0 `i `uc
+]
+[; ;main.c: 966: static unsigned char ucTimer1s = 0;
+[; ;main.c: 968: static unsigned char ucTimerSeond1s = 0;
+[; ;main.c: 970: if(ucTimerSeond1s < 3)
+"970
+[e $ ! < -> F886 `i -> 3 `i 212  ]
+[; ;main.c: 971: {
+"971
+{
+[; ;main.c: 972: ucTimerSeond1s++;
+"972
+[e ++ F886 -> -> 1 `i `uc ]
+"973
+}
+[; ;main.c: 973: }
+[e $U 213  ]
+"974
+[e :U 212 ]
+[; ;main.c: 974: else
+[; ;main.c: 975: {
+"975
+{
+[; ;main.c: 976: ucTimerSeond1s = 0;
+"976
+[e = F886 -> -> 0 `i `uc ]
+[; ;main.c: 978: if(ucTimer1s < 3)
+"978
+[e $ ! < -> F885 `i -> 3 `i 214  ]
+[; ;main.c: 979: {
+"979
+{
+[; ;main.c: 980: ucTimer1s++;
+"980
+[e ++ F885 -> -> 1 `i `uc ]
+[; ;main.c: 981: PB6 = 1;
+"981
+[e = _PB6 -> -> 1 `i `b ]
+[; ;main.c: 982: PBOD6 = 1;
+"982
+[e = _PBOD6 -> -> 1 `i `b ]
+"983
+}
+[; ;main.c: 983: }
+[e $U 215  ]
+"984
+[e :U 214 ]
+[; ;main.c: 984: else
+[; ;main.c: 985: {
+"985
+{
+[; ;main.c: 986: ucTimer1s = 0;
+"986
+[e = F885 -> -> 0 `i `uc ]
+[; ;main.c: 988: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+"988
+[e = F857 . `E846 1 ]
+[; ;main.c: 989: ucADC4_Step = ADC4_STEP_INIT;
+"989
+[e = F867 . `E828 0 ]
+"990
+}
+[e :U 215 ]
+"991
+}
+[e :U 213 ]
+[; ;main.c: 990: }
+[; ;main.c: 991: }
+[; ;main.c: 993: break;
+"993
+[e $U 80  ]
+"994
+}
+[; ;main.c: 994: }
+[; ;main.c: 996: default:
+"996
+[e :U 216 ]
+[; ;main.c: 997: break;
+"997
+[e $U 80  ]
+"998
+}
+[; ;main.c: 998: }
+[e $U 80  ]
+"390
 [e :U 81 ]
-[e [\ F866 , $ . `E828 0 82
+[e [\ F867 , $ . `E828 0 82
  , $ . `E828 1 83
  , $ . `E828 2 92
  , $ . `E828 3 193
- , $ . `E828 4 204
- 209 ]
-"956
+ , $ . `E828 4 211
+ 216 ]
+"998
 [e :U 80 ]
-"958
+"1000
 }
 [e :U 79 ]
-[; ;main.c: 958: }
-[; ;main.c: 960: break;
-"960
+[; ;main.c: 1000: }
+[; ;main.c: 1002: break;
+"1002
 [e $U 51  ]
-"961
-}
-[; ;main.c: 961: }
-[; ;main.c: 963: case MAIN_LOOP_STEP_3_HOUR_BRANCH:
-"963
-[e :U 210 ]
-[; ;main.c: 964: {
-"964
-{
-"969
-[c E882 0 1 2 .. ]
-[n E882 hour_3_branch_step HOUR_3_BRANCH_STEP_FIRST HOUR_3_BRANCH_STEP_SECOND HOUR_3_BRANCH_STEP_THIRD  ]
-"971
-[v F886 `E882  1 s enumBranchStep ]
-[i F886
-. `E882 0
-]
-[; ;main.c: 965: enum hour_3_branch_step{
-[; ;main.c: 966: HOUR_3_BRANCH_STEP_FIRST,
-[; ;main.c: 967: HOUR_3_BRANCH_STEP_SECOND,
-[; ;main.c: 968: HOUR_3_BRANCH_STEP_THIRD,
-[; ;main.c: 969: };
-[; ;main.c: 971: static enum hour_3_branch_step enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-[; ;main.c: 973: switch(enumBranchStep)
-"973
-[e $U 212  ]
-[; ;main.c: 974: {
-"974
-{
-[; ;main.c: 975: case HOUR_3_BRANCH_STEP_FIRST:
-"975
-[e :U 213 ]
-[; ;main.c: 976: {
-"976
-{
-[; ;main.c: 977: PA7 = 1;
-"977
-[e = _PA7 -> -> 1 `i `b ]
-[; ;main.c: 978: PAOD7 = 1;
-"978
-[e = _PAOD7 -> -> 1 `i `b ]
-[; ;main.c: 979: startThreeHoursTimer(60);
-"979
-[e ( _startThreeHoursTimer (1 -> -> 60 `i `ui ]
-[; ;main.c: 981: PB0 = 1;
-"981
-[e = _PB0 -> -> 1 `i `b ]
-[; ;main.c: 982: PA0 = 1;
-"982
-[e = _PA0 -> -> 1 `i `b ]
-[; ;main.c: 983: PA1 = 1;
-"983
-[e = _PA1 -> -> 1 `i `b ]
-[; ;main.c: 984: PA2 = 1;
-"984
-[e = _PA2 -> -> 1 `i `b ]
-[; ;main.c: 985: PA3 = 1;
-"985
-[e = _PA3 -> -> 1 `i `b ]
-[; ;main.c: 987: enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
-"987
-[e = F886 . `E882 1 ]
-[; ;main.c: 988: break;
-"988
-[e $U 211  ]
-"989
-}
-[; ;main.c: 989: }
-[; ;main.c: 991: case HOUR_3_BRANCH_STEP_SECOND:
-"991
-[e :U 214 ]
-[; ;main.c: 992: {
-"992
-{
-"993
-[v F887 `uc  1 s ucTimer20s ]
-[i F887
--> -> 0 `i `uc
-]
-[; ;main.c: 993: static unsigned char ucTimer20s = 0;
-[; ;main.c: 995: if(ucTimer20s < 200)
-"995
-[e $ ! < -> F887 `i -> 200 `i 215  ]
-[; ;main.c: 996: {
-"996
-{
-[; ;main.c: 997: ucTimer20s++;
-"997
-[e ++ F887 -> -> 1 `i `uc ]
-"999
-}
-[; ;main.c: 999: }
-[e $U 216  ]
-"1000
-[e :U 215 ]
-[; ;main.c: 1000: else
-[; ;main.c: 1001: {
-"1001
-{
-[; ;main.c: 1003: ucTimer20s = 0;
 "1003
-[e = F887 -> -> 0 `i `uc ]
-[; ;main.c: 1005: enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
+}
+[; ;main.c: 1003: }
+[; ;main.c: 1005: case MAIN_LOOP_STEP_3_HOUR_BRANCH:
 "1005
-[e = F886 . `E882 2 ]
-[; ;main.c: 1007: PA6 = 0;
-"1007
-[e = _PA6 -> -> 0 `i `b ]
-"1008
-}
-[e :U 216 ]
-[; ;main.c: 1008: }
-[; ;main.c: 1009: break;
-"1009
-[e $U 211  ]
-"1010
-}
-[; ;main.c: 1010: }
-[; ;main.c: 1012: case HOUR_3_BRANCH_STEP_THIRD:
-"1012
 [e :U 217 ]
-[; ;main.c: 1013: {
+[; ;main.c: 1006: {
+"1006
+{
+"1011
+[c E887 0 1 2 .. ]
+[n E887 hour_3_branch_step HOUR_3_BRANCH_STEP_FIRST HOUR_3_BRANCH_STEP_SECOND HOUR_3_BRANCH_STEP_THIRD  ]
 "1013
-{
-[; ;main.c: 1014: if(isFinishedThreeHoursTimer())
-"1014
-[e $ ! != -> ( _isFinishedThreeHoursTimer ..  `i -> -> -> 0 `i `uc `i 218  ]
-[; ;main.c: 1015: {
-"1015
-{
-[; ;main.c: 1016: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-"1016
-[e = F886 . `E882 0 ]
-[; ;main.c: 1017: enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
-"1017
-[e = F857 . `E846 9 ]
-"1018
-}
-[; ;main.c: 1018: }
-[e $U 219  ]
-"1019
-[e :U 218 ]
-[; ;main.c: 1019: else
-[; ;main.c: 1020: {
-"1020
-{
-"1021
-[v F888 `uc  1 s ucTimerX1P5s ]
-[i F888
--> -> 0 `i `uc
-]
-"1023
-[v F889 `uc  1 s ucTimerLessX1P5s ]
-[i F889
--> -> 0 `i `uc
-]
-[; ;main.c: 1021: static unsigned char ucTimerX1P5s = 0;
-[; ;main.c: 1023: static unsigned char ucTimerLessX1P5s = 0;
-[; ;main.c: 1025: if(getAdOriginalCh1Value() < 130)
-"1025
-[e $ ! < ( _getAdOriginalCh1Value ..  -> -> 130 `i `ui 220  ]
-[; ;main.c: 1026: {
-"1026
-{
-[; ;main.c: 1027: ucTimerX1P5s = 0;
-"1027
-[e = F888 -> -> 0 `i `uc ]
-[; ;main.c: 1028: ucTimerLessX1P5s++;
-"1028
-[e ++ F889 -> -> 1 `i `uc ]
-"1029
-}
-[; ;main.c: 1029: }
-[e $U 221  ]
-"1030
-[e :U 220 ]
-[; ;main.c: 1030: else
-[; ;main.c: 1031: {
-"1031
-{
-[; ;main.c: 1032: ucTimerX1P5s++;
-"1032
-[e ++ F888 -> -> 1 `i `uc ]
-[; ;main.c: 1033: ucTimerLessX1P5s = 0;
-"1033
-[e = F889 -> -> 0 `i `uc ]
-"1034
-}
-[e :U 221 ]
-[; ;main.c: 1034: }
-[; ;main.c: 1036: if(ucTimerX1P5s >= 5)
-"1036
-[e $ ! >= -> F888 `i -> 5 `i 222  ]
-[; ;main.c: 1037: {
-"1037
-{
-[; ;main.c: 1038: ucTimerX1P5s = 0;
-"1038
-[e = F888 -> -> 0 `i `uc ]
-[; ;main.c: 1039: PAOD7 = 0;
-"1039
-[e = _PAOD7 -> -> 0 `i `b ]
-[; ;main.c: 1040: PA7 = 0;
-"1040
-[e = _PA7 -> -> 0 `i `b ]
-[; ;main.c: 1041: clearThreeHoursTimer();
-"1041
-[e ( _clearThreeHoursTimer ..  ]
-[; ;main.c: 1043: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-"1043
-[e = F886 . `E882 0 ]
-[; ;main.c: 1045: enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
-"1045
-[e = F857 . `E846 2 ]
-"1046
-}
-[; ;main.c: 1046: }
-[e $U 223  ]
-"1047
-[e :U 222 ]
-[; ;main.c: 1047: else if(ucTimerLessX1P5s >= 5)
-[e $ ! >= -> F889 `i -> 5 `i 224  ]
-[; ;main.c: 1048: {
-"1048
-{
-"1049
-[v F890 `uc  1 s ucTimerX2P5s ]
-[i F890
--> -> 0 `i `uc
-]
-"1051
-[v F891 `uc  1 s ucTimerLessX2P5s ]
+[v F891 `E887  1 s enumBranchStep ]
 [i F891
+. `E887 0
+]
+[; ;main.c: 1007: enum hour_3_branch_step{
+[; ;main.c: 1008: HOUR_3_BRANCH_STEP_FIRST,
+[; ;main.c: 1009: HOUR_3_BRANCH_STEP_SECOND,
+[; ;main.c: 1010: HOUR_3_BRANCH_STEP_THIRD,
+[; ;main.c: 1011: };
+[; ;main.c: 1013: static enum hour_3_branch_step enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+[; ;main.c: 1015: switch(enumBranchStep)
+"1015
+[e $U 219  ]
+[; ;main.c: 1016: {
+"1016
+{
+[; ;main.c: 1017: case HOUR_3_BRANCH_STEP_FIRST:
+"1017
+[e :U 220 ]
+[; ;main.c: 1018: {
+"1018
+{
+[; ;main.c: 1019: PA7 = 1;
+"1019
+[e = _PA7 -> -> 1 `i `b ]
+[; ;main.c: 1020: PAOD7 = 1;
+"1020
+[e = _PAOD7 -> -> 1 `i `b ]
+[; ;main.c: 1021: startThreeHoursTimer(60);
+"1021
+[e ( _startThreeHoursTimer (1 -> -> 60 `i `ui ]
+[; ;main.c: 1023: PB0 = 1;
+"1023
+[e = _PB0 -> -> 1 `i `b ]
+[; ;main.c: 1024: PA0 = 1;
+"1024
+[e = _PA0 -> -> 1 `i `b ]
+[; ;main.c: 1025: PA1 = 1;
+"1025
+[e = _PA1 -> -> 1 `i `b ]
+[; ;main.c: 1026: PA2 = 1;
+"1026
+[e = _PA2 -> -> 1 `i `b ]
+[; ;main.c: 1027: PA3 = 1;
+"1027
+[e = _PA3 -> -> 1 `i `b ]
+[; ;main.c: 1029: enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
+"1029
+[e = F891 . `E887 1 ]
+[; ;main.c: 1030: break;
+"1030
+[e $U 218  ]
+"1031
+}
+[; ;main.c: 1031: }
+[; ;main.c: 1033: case HOUR_3_BRANCH_STEP_SECOND:
+"1033
+[e :U 221 ]
+[; ;main.c: 1034: {
+"1034
+{
+"1035
+[v F892 `uc  1 s ucTimer20s ]
+[i F892
 -> -> 0 `i `uc
 ]
-[; ;main.c: 1049: static unsigned char ucTimerX2P5s = 0;
-[; ;main.c: 1051: static unsigned char ucTimerLessX2P5s = 0;
-[; ;main.c: 1053: if(getAdOriginalCh14Value() >= 1950)
-"1053
-[e $ ! >= ( _getAdOriginalCh14Value ..  -> -> 1950 `i `ui 225  ]
-[; ;main.c: 1054: {
+[; ;main.c: 1035: static unsigned char ucTimer20s = 0;
+[; ;main.c: 1037: if(ucTimer20s < 200)
+"1037
+[e $ ! < -> F892 `i -> 200 `i 222  ]
+[; ;main.c: 1038: {
+"1038
+{
+[; ;main.c: 1039: ucTimer20s++;
+"1039
+[e ++ F892 -> -> 1 `i `uc ]
+"1041
+}
+[; ;main.c: 1041: }
+[e $U 223  ]
+"1042
+[e :U 222 ]
+[; ;main.c: 1042: else
+[; ;main.c: 1043: {
+"1043
+{
+[; ;main.c: 1045: ucTimer20s = 0;
+"1045
+[e = F892 -> -> 0 `i `uc ]
+[; ;main.c: 1047: enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
+"1047
+[e = F891 . `E887 2 ]
+[; ;main.c: 1049: PA6 = 0;
+"1049
+[e = _PA6 -> -> 0 `i `b ]
+"1050
+}
+[e :U 223 ]
+[; ;main.c: 1050: }
+[; ;main.c: 1051: break;
+"1051
+[e $U 218  ]
+"1052
+}
+[; ;main.c: 1052: }
+[; ;main.c: 1054: case HOUR_3_BRANCH_STEP_THIRD:
 "1054
-{
-[; ;main.c: 1055: ucTimerX2P5s++;
+[e :U 224 ]
+[; ;main.c: 1055: {
 "1055
-[e ++ F890 -> -> 1 `i `uc ]
-[; ;main.c: 1056: ucTimerLessX2P5s = 0;
+{
+[; ;main.c: 1056: if(isFinishedThreeHoursTimer())
 "1056
-[e = F891 -> -> 0 `i `uc ]
+[e $ ! != -> ( _isFinishedThreeHoursTimer ..  `i -> -> -> 0 `i `uc `i 225  ]
+[; ;main.c: 1057: {
 "1057
-}
-[; ;main.c: 1057: }
-[e $U 226  ]
+{
+[; ;main.c: 1058: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 "1058
-[e :U 225 ]
-[; ;main.c: 1058: else
-[; ;main.c: 1059: {
+[e = F891 . `E887 0 ]
+[; ;main.c: 1059: enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
 "1059
-{
-[; ;main.c: 1060: ucTimerX2P5s = 0;
+[e = F857 . `E846 9 ]
 "1060
-[e = F890 -> -> 0 `i `uc ]
-[; ;main.c: 1061: ucTimerLessX2P5s++;
+}
+[; ;main.c: 1060: }
+[e $U 226  ]
 "1061
-[e ++ F891 -> -> 1 `i `uc ]
+[e :U 225 ]
+[; ;main.c: 1061: else
+[; ;main.c: 1062: {
 "1062
-}
-[e :U 226 ]
-[; ;main.c: 1062: }
-[; ;main.c: 1064: if(ucTimerX2P5s >= 5)
-"1064
-[e $ ! >= -> F890 `i -> 5 `i 227  ]
-[; ;main.c: 1065: {
+{
+"1063
+[v F893 `uc  1 s ucTimerX1P5s ]
+[i F893
+-> -> 0 `i `uc
+]
 "1065
-{
-[; ;main.c: 1066: ucTimerX2P5s = 0;
-"1066
-[e = F890 -> -> 0 `i `uc ]
+[v F894 `uc  1 s ucTimerLessX1P5s ]
+[i F894
+-> -> 0 `i `uc
+]
+[; ;main.c: 1063: static unsigned char ucTimerX1P5s = 0;
+[; ;main.c: 1065: static unsigned char ucTimerLessX1P5s = 0;
+[; ;main.c: 1067: if(getAdOriginalCh1Value() < 130)
 "1067
-}
-[; ;main.c: 1067: }
-[e $U 228  ]
+[e $ ! < ( _getAdOriginalCh1Value ..  -> -> 130 `i `ui 227  ]
+[; ;main.c: 1068: {
 "1068
-[e :U 227 ]
-[; ;main.c: 1068: else if(ucTimerLessX2P5s >= 5)
-[e $ ! >= -> F891 `i -> 5 `i 229  ]
-[; ;main.c: 1069: {
+{
+[; ;main.c: 1069: ucTimerX1P5s = 0;
 "1069
-{
-[; ;main.c: 1070: clearPinPortAndTimer();
+[e = F893 -> -> 0 `i `uc ]
+[; ;main.c: 1070: ucTimerLessX1P5s++;
 "1070
-[e ( _clearPinPortAndTimer ..  ]
-[; ;main.c: 1071: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+[e ++ F894 -> -> 1 `i `uc ]
 "1071
-[e = F857 . `E846 1 ]
-"1072
 }
-[; ;main.c: 1072: }
-[e $U 230  ]
+[; ;main.c: 1071: }
+[e $U 228  ]
+"1072
+[e :U 227 ]
+[; ;main.c: 1072: else
+[; ;main.c: 1073: {
 "1073
-[e :U 229 ]
-[; ;main.c: 1073: else
-[; ;main.c: 1074: {
-"1074
 {
-[; ;main.c: 1075: ;
+[; ;main.c: 1074: ucTimerX1P5s++;
+"1074
+[e ++ F893 -> -> 1 `i `uc ]
+[; ;main.c: 1075: ucTimerLessX1P5s = 0;
+"1075
+[e = F894 -> -> 0 `i `uc ]
 "1076
 }
-[e :U 230 ]
 [e :U 228 ]
-"1077
-}
 [; ;main.c: 1076: }
-[; ;main.c: 1077: }
-[e $U 231  ]
+[; ;main.c: 1078: if(ucTimerX1P5s >= 5)
 "1078
-[e :U 224 ]
-[; ;main.c: 1078: else
+[e $ ! >= -> F893 `i -> 5 `i 229  ]
 [; ;main.c: 1079: {
 "1079
 {
-[; ;main.c: 1080: ;
+[; ;main.c: 1080: ucTimerX1P5s = 0;
+"1080
+[e = F893 -> -> 0 `i `uc ]
+[; ;main.c: 1081: PAOD7 = 0;
 "1081
-}
-[e :U 231 ]
-[e :U 223 ]
+[e = _PAOD7 -> -> 0 `i `b ]
+[; ;main.c: 1082: PA7 = 0;
+"1082
+[e = _PA7 -> -> 0 `i `b ]
+[; ;main.c: 1083: clearThreeHoursTimer();
 "1083
-}
-[e :U 219 ]
-[; ;main.c: 1081: }
-[; ;main.c: 1083: }
-[; ;main.c: 1085: break;
+[e ( _clearThreeHoursTimer ..  ]
+[; ;main.c: 1085: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 "1085
-[e $U 211  ]
-"1086
+[e = F891 . `E887 0 ]
+[; ;main.c: 1087: enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
+"1087
+[e = F857 . `E846 2 ]
+"1088
 }
-[; ;main.c: 1086: }
-[; ;main.c: 1089: default:
+[; ;main.c: 1088: }
+[e $U 230  ]
 "1089
-[e :U 232 ]
-[; ;main.c: 1090: break;
+[e :U 229 ]
+[; ;main.c: 1089: else if(ucTimerLessX1P5s >= 5)
+[e $ ! >= -> F894 `i -> 5 `i 231  ]
+[; ;main.c: 1090: {
 "1090
-[e $U 211  ]
-"1091
-}
-[; ;main.c: 1091: }
-[e $U 211  ]
-"973
-[e :U 212 ]
-[e [\ F886 , $ . `E882 0 213
- , $ . `E882 1 214
- , $ . `E882 2 217
- 232 ]
-"1091
-[e :U 211 ]
-[; ;main.c: 1093: break;
-"1093
-[e $U 51  ]
-"1094
-}
-[; ;main.c: 1094: }
-[; ;main.c: 1096: case MAIN_LOOP_STEP_12_HOUR_END:
-"1096
-[e :U 233 ]
-[; ;main.c: 1097: {
-"1097
 {
-"1103
-[c E892 0 1 2 3 .. ]
-[n E892 INTERNAL_STEP INTERNAL_FIRST_STEP INTERNAL_SECOND_STEP INTERNAL_THIRD_STEP INTERNAL_FOUTTH_STEP  ]
-"1105
-[v F897 `E892  1 s enumInteralStep ]
-[i F897
-. `E892 0
+"1091
+[v F895 `uc  1 s ucTimerX2P5s ]
+[i F895
+-> -> 0 `i `uc
 ]
-[; ;main.c: 1098: enum INTERNAL_STEP {
-[; ;main.c: 1099: INTERNAL_FIRST_STEP,
-[; ;main.c: 1100: INTERNAL_SECOND_STEP,
-[; ;main.c: 1101: INTERNAL_THIRD_STEP,
-[; ;main.c: 1102: INTERNAL_FOUTTH_STEP,
-[; ;main.c: 1103: };
-[; ;main.c: 1105: static enum INTERNAL_STEP enumInteralStep = INTERNAL_FIRST_STEP;
-[; ;main.c: 1107: switch (enumInteralStep)
+"1093
+[v F896 `uc  1 s ucTimerLessX2P5s ]
+[i F896
+-> -> 0 `i `uc
+]
+[; ;main.c: 1091: static unsigned char ucTimerX2P5s = 0;
+[; ;main.c: 1093: static unsigned char ucTimerLessX2P5s = 0;
+[; ;main.c: 1095: if(getAdOriginalCh14Value() >= 1950)
+"1095
+[e $ ! >= ( _getAdOriginalCh14Value ..  -> -> 1950 `i `ui 232  ]
+[; ;main.c: 1096: {
+"1096
+{
+[; ;main.c: 1097: ucTimerX2P5s++;
+"1097
+[e ++ F895 -> -> 1 `i `uc ]
+[; ;main.c: 1098: ucTimerLessX2P5s = 0;
+"1098
+[e = F896 -> -> 0 `i `uc ]
+"1099
+}
+[; ;main.c: 1099: }
+[e $U 233  ]
+"1100
+[e :U 232 ]
+[; ;main.c: 1100: else
+[; ;main.c: 1101: {
+"1101
+{
+[; ;main.c: 1102: ucTimerX2P5s = 0;
+"1102
+[e = F895 -> -> 0 `i `uc ]
+[; ;main.c: 1103: ucTimerLessX2P5s++;
+"1103
+[e ++ F896 -> -> 1 `i `uc ]
+"1104
+}
+[e :U 233 ]
+[; ;main.c: 1104: }
+[; ;main.c: 1106: if(ucTimerX2P5s >= 5)
+"1106
+[e $ ! >= -> F895 `i -> 5 `i 234  ]
+[; ;main.c: 1107: {
 "1107
-[e $U 235  ]
-[; ;main.c: 1108: {
+{
+[; ;main.c: 1108: ucTimerX2P5s = 0;
 "1108
-{
-[; ;main.c: 1109: case INTERNAL_FIRST_STEP:
+[e = F895 -> -> 0 `i `uc ]
 "1109
-[e :U 236 ]
-[; ;main.c: 1110: {
+}
+[; ;main.c: 1109: }
+[e $U 235  ]
 "1110
-{
-[; ;main.c: 1111: PB0 = 0;
+[e :U 234 ]
+[; ;main.c: 1110: else if(ucTimerLessX2P5s >= 5)
+[e $ ! >= -> F896 `i -> 5 `i 236  ]
+[; ;main.c: 1111: {
 "1111
-[e = _PB0 -> -> 0 `i `b ]
-[; ;main.c: 1112: PB1 = 0;
+{
+[; ;main.c: 1112: clearPinPortAndTimer();
 "1112
-[e = _PB1 -> -> 0 `i `b ]
-[; ;main.c: 1113: PA0 = 0;
+[e ( _clearPinPortAndTimer ..  ]
+[; ;main.c: 1113: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 "1113
-[e = _PA0 -> -> 0 `i `b ]
-[; ;main.c: 1114: PA1 = 0;
+[e = F857 . `E846 1 ]
 "1114
-[e = _PA1 -> -> 0 `i `b ]
-[; ;main.c: 1115: PA2 = 0;
+}
+[; ;main.c: 1114: }
+[e $U 237  ]
 "1115
-[e = _PA2 -> -> 0 `i `b ]
-[; ;main.c: 1116: PA3 = 0;
+[e :U 236 ]
+[; ;main.c: 1115: else
+[; ;main.c: 1116: {
 "1116
-[e = _PA3 -> -> 0 `i `b ]
-[; ;main.c: 1117: PBOD6 = 0;
-"1117
-[e = _PBOD6 -> -> 0 `i `b ]
-[; ;main.c: 1118: PB6 = 1;
+{
+[; ;main.c: 1117: ;
 "1118
-[e = _PB6 -> -> 1 `i `b ]
-[; ;main.c: 1119: PA6 =0;
+}
+[e :U 237 ]
+[e :U 235 ]
 "1119
-[e = _PA6 -> -> 0 `i `b ]
-[; ;main.c: 1121: enumInteralStep = INTERNAL_SECOND_STEP;
+}
+[; ;main.c: 1118: }
+[; ;main.c: 1119: }
+[e $U 238  ]
+"1120
+[e :U 231 ]
+[; ;main.c: 1120: else
+[; ;main.c: 1121: {
 "1121
-[e = F897 . `E892 1 ]
-[; ;main.c: 1122: break;
-"1122
-[e $U 234  ]
+{
+[; ;main.c: 1122: ;
 "1123
 }
-[; ;main.c: 1123: }
-[; ;main.c: 1125: case INTERNAL_SECOND_STEP:
-"1125
-[e :U 237 ]
-[; ;main.c: 1126: {
-"1126
-{
-"1127
-[v F898 `uc  1 s ucTimer1s ]
-[i F898
--> -> 0 `i `uc
-]
-[; ;main.c: 1127: static unsigned char ucTimer1s = 0;
-[; ;main.c: 1129: if(getAdOriginalCh14Value() <= 1000)
-"1129
-[e $ ! <= ( _getAdOriginalCh14Value ..  -> -> 1000 `i `ui 238  ]
-[; ;main.c: 1130: {
-"1130
-{
-[; ;main.c: 1131: ucTimer1s++;
-"1131
-[e ++ F898 -> -> 1 `i `uc ]
-"1132
-}
-[; ;main.c: 1132: }
-[e $U 239  ]
-"1133
 [e :U 238 ]
-[; ;main.c: 1133: else
-[; ;main.c: 1134: ucTimer1s = 0;
-"1134
-[e = F898 -> -> 0 `i `uc ]
+[e :U 230 ]
+"1125
+}
+[e :U 226 ]
+[; ;main.c: 1123: }
+[; ;main.c: 1125: }
+[; ;main.c: 1127: break;
+"1127
+[e $U 218  ]
+"1128
+}
+[; ;main.c: 1128: }
+[; ;main.c: 1131: default:
+"1131
 [e :U 239 ]
-[; ;main.c: 1136: if(ucTimer1s >= 10)
+[; ;main.c: 1132: break;
+"1132
+[e $U 218  ]
+"1133
+}
+[; ;main.c: 1133: }
+[e $U 218  ]
+"1015
+[e :U 219 ]
+[e [\ F891 , $ . `E887 0 220
+ , $ . `E887 1 221
+ , $ . `E887 2 224
+ 239 ]
+"1133
+[e :U 218 ]
+[; ;main.c: 1135: break;
+"1135
+[e $U 51  ]
 "1136
-[e $ ! >= -> F898 `i -> 10 `i 240  ]
-[; ;main.c: 1137: {
-"1137
-{
-[; ;main.c: 1138: enumInteralStep = INTERNAL_THIRD_STEP;
+}
+[; ;main.c: 1136: }
+[; ;main.c: 1138: case MAIN_LOOP_STEP_12_HOUR_END:
 "1138
-[e = F897 . `E892 2 ]
-[; ;main.c: 1139: ucTimer1s = 0;
-"1139
-[e = F898 -> -> 0 `i `uc ]
-"1140
-}
 [e :U 240 ]
-[; ;main.c: 1140: }
-[; ;main.c: 1141: break;
-"1141
-[e $U 234  ]
-"1142
-}
-[; ;main.c: 1142: }
-[; ;main.c: 1144: case INTERNAL_THIRD_STEP:
-"1144
-[e :U 241 ]
-[; ;main.c: 1145: {
-"1145
+[; ;main.c: 1139: {
+"1139
 {
-"1146
-[v F899 `uc  1 s ucTimerP3s ]
-[i F899
+"1145
+[c E897 0 1 2 3 .. ]
+[n E897 INTERNAL_STEP INTERNAL_FIRST_STEP INTERNAL_SECOND_STEP INTERNAL_THIRD_STEP INTERNAL_FOUTTH_STEP  ]
+"1147
+[v F902 `E897  1 s enumInteralStep ]
+[i F902
+. `E897 0
+]
+[; ;main.c: 1140: enum INTERNAL_STEP {
+[; ;main.c: 1141: INTERNAL_FIRST_STEP,
+[; ;main.c: 1142: INTERNAL_SECOND_STEP,
+[; ;main.c: 1143: INTERNAL_THIRD_STEP,
+[; ;main.c: 1144: INTERNAL_FOUTTH_STEP,
+[; ;main.c: 1145: };
+[; ;main.c: 1147: static enum INTERNAL_STEP enumInteralStep = INTERNAL_FIRST_STEP;
+[; ;main.c: 1149: switch (enumInteralStep)
+"1149
+[e $U 242  ]
+[; ;main.c: 1150: {
+"1150
+{
+[; ;main.c: 1151: case INTERNAL_FIRST_STEP:
+"1151
+[e :U 243 ]
+[; ;main.c: 1152: {
+"1152
+{
+[; ;main.c: 1153: PB0 = 0;
+"1153
+[e = _PB0 -> -> 0 `i `b ]
+[; ;main.c: 1154: PB1 = 0;
+"1154
+[e = _PB1 -> -> 0 `i `b ]
+[; ;main.c: 1155: PA0 = 0;
+"1155
+[e = _PA0 -> -> 0 `i `b ]
+[; ;main.c: 1156: PA1 = 0;
+"1156
+[e = _PA1 -> -> 0 `i `b ]
+[; ;main.c: 1157: PA2 = 0;
+"1157
+[e = _PA2 -> -> 0 `i `b ]
+[; ;main.c: 1158: PA3 = 0;
+"1158
+[e = _PA3 -> -> 0 `i `b ]
+[; ;main.c: 1159: PBOD6 = 0;
+"1159
+[e = _PBOD6 -> -> 0 `i `b ]
+[; ;main.c: 1160: PB6 = 1;
+"1160
+[e = _PB6 -> -> 1 `i `b ]
+[; ;main.c: 1161: PA6 =0;
+"1161
+[e = _PA6 -> -> 0 `i `b ]
+[; ;main.c: 1163: enumInteralStep = INTERNAL_SECOND_STEP;
+"1163
+[e = F902 . `E897 1 ]
+[; ;main.c: 1164: break;
+"1164
+[e $U 241  ]
+"1165
+}
+[; ;main.c: 1165: }
+[; ;main.c: 1167: case INTERNAL_SECOND_STEP:
+"1167
+[e :U 244 ]
+[; ;main.c: 1168: {
+"1168
+{
+"1169
+[v F903 `uc  1 s ucTimer1s ]
+[i F903
 -> -> 0 `i `uc
 ]
-[; ;main.c: 1146: static unsigned char ucTimerP3s = 0;
-[; ;main.c: 1148: if(getAdOriginalCh14Value() >= 1950)
-"1148
-[e $ ! >= ( _getAdOriginalCh14Value ..  -> -> 1950 `i `ui 242  ]
-[; ;main.c: 1149: {
-"1149
-{
-[; ;main.c: 1150: ucTimerP3s++;
-"1150
-[e ++ F899 -> -> 1 `i `uc ]
-"1151
-}
-[; ;main.c: 1151: }
-[e $U 243  ]
-"1152
-[e :U 242 ]
-[; ;main.c: 1152: else
-[; ;main.c: 1153: ucTimerP3s = 0;
-"1153
-[e = F899 -> -> 0 `i `uc ]
-[e :U 243 ]
-[; ;main.c: 1155: if(ucTimerP3s >= 3)
-"1155
-[e $ ! >= -> F899 `i -> 3 `i 244  ]
-[; ;main.c: 1156: {
-"1156
-{
-[; ;main.c: 1157: enumInteralStep = INTERNAL_FIRST_STEP;
-"1157
-[e = F897 . `E892 0 ]
-[; ;main.c: 1158: ucTimerP3s = 0;
-"1158
-[e = F899 -> -> 0 `i `uc ]
-[; ;main.c: 1159: clearAllTimer();
-"1159
-[e ( _clearAllTimer ..  ]
-[; ;main.c: 1161: DACR0=0x0F;
-"1161
-[e = _DACR0 -> -> 15 `i `uc ]
-[; ;main.c: 1162: initPin();
-"1162
-[e ( _initPin ..  ]
-[; ;main.c: 1165: enumMainLoopStep = MAIN_LOOP_STEP_INIT;
-"1165
-[e = F857 . `E846 0 ]
-"1167
-}
-[e :U 244 ]
-[; ;main.c: 1167: }
-[; ;main.c: 1168: break;
-"1168
-[e $U 234  ]
-"1169
-}
-[; ;main.c: 1169: }
-[; ;main.c: 1171: default:
+[; ;main.c: 1169: static unsigned char ucTimer1s = 0;
+[; ;main.c: 1171: if(getAdOriginalCh14Value() <= 1000)
 "1171
-[e :U 245 ]
-[; ;main.c: 1172: break;
+[e $ ! <= ( _getAdOriginalCh14Value ..  -> -> 1000 `i `ui 245  ]
+[; ;main.c: 1172: {
 "1172
-[e $U 234  ]
+{
+[; ;main.c: 1173: ucTimer1s++;
 "1173
+[e ++ F903 -> -> 1 `i `uc ]
+"1174
 }
-[; ;main.c: 1173: }
-[e $U 234  ]
-"1107
-[e :U 235 ]
-[e [\ F897 , $ . `E892 0 236
- , $ . `E892 1 237
- , $ . `E892 2 241
- 245 ]
-"1173
-[e :U 234 ]
-[; ;main.c: 1175: break;
+[; ;main.c: 1174: }
+[e $U 246  ]
 "1175
-[e $U 51  ]
+[e :U 245 ]
+[; ;main.c: 1175: else
+[; ;main.c: 1176: ucTimer1s = 0;
 "1176
-}
-[; ;main.c: 1176: }
-[; ;main.c: 1178: default:
-"1178
+[e = F903 -> -> 0 `i `uc ]
 [e :U 246 ]
-[; ;main.c: 1179: break;
+[; ;main.c: 1178: if(ucTimer1s >= 10)
+"1178
+[e $ ! >= -> F903 `i -> 10 `i 247  ]
+[; ;main.c: 1179: {
 "1179
-[e $U 51  ]
+{
+[; ;main.c: 1180: enumInteralStep = INTERNAL_THIRD_STEP;
 "1180
+[e = F902 . `E897 2 ]
+[; ;main.c: 1181: ucTimer1s = 0;
+"1181
+[e = F903 -> -> 0 `i `uc ]
+"1182
 }
-[; ;main.c: 1180: }
+[e :U 247 ]
+[; ;main.c: 1182: }
+[; ;main.c: 1183: break;
+"1183
+[e $U 241  ]
+"1184
+}
+[; ;main.c: 1184: }
+[; ;main.c: 1186: case INTERNAL_THIRD_STEP:
+"1186
+[e :U 248 ]
+[; ;main.c: 1187: {
+"1187
+{
+"1188
+[v F904 `uc  1 s ucTimerP3s ]
+[i F904
+-> -> 0 `i `uc
+]
+[; ;main.c: 1188: static unsigned char ucTimerP3s = 0;
+[; ;main.c: 1190: if(getAdOriginalCh14Value() >= 1950)
+"1190
+[e $ ! >= ( _getAdOriginalCh14Value ..  -> -> 1950 `i `ui 249  ]
+[; ;main.c: 1191: {
+"1191
+{
+[; ;main.c: 1192: ucTimerP3s++;
+"1192
+[e ++ F904 -> -> 1 `i `uc ]
+"1193
+}
+[; ;main.c: 1193: }
+[e $U 250  ]
+"1194
+[e :U 249 ]
+[; ;main.c: 1194: else
+[; ;main.c: 1195: ucTimerP3s = 0;
+"1195
+[e = F904 -> -> 0 `i `uc ]
+[e :U 250 ]
+[; ;main.c: 1197: if(ucTimerP3s >= 3)
+"1197
+[e $ ! >= -> F904 `i -> 3 `i 251  ]
+[; ;main.c: 1198: {
+"1198
+{
+[; ;main.c: 1199: enumInteralStep = INTERNAL_FIRST_STEP;
+"1199
+[e = F902 . `E897 0 ]
+[; ;main.c: 1200: ucTimerP3s = 0;
+"1200
+[e = F904 -> -> 0 `i `uc ]
+[; ;main.c: 1201: clearAllTimer();
+"1201
+[e ( _clearAllTimer ..  ]
+[; ;main.c: 1203: DACR0=0x0F;
+"1203
+[e = _DACR0 -> -> 15 `i `uc ]
+[; ;main.c: 1204: initPin();
+"1204
+[e ( _initPin ..  ]
+[; ;main.c: 1207: enumMainLoopStep = MAIN_LOOP_STEP_INIT;
+"1207
+[e = F857 . `E846 0 ]
+"1209
+}
+[e :U 251 ]
+[; ;main.c: 1209: }
+[; ;main.c: 1210: break;
+"1210
+[e $U 241  ]
+"1211
+}
+[; ;main.c: 1211: }
+[; ;main.c: 1213: default:
+"1213
+[e :U 252 ]
+[; ;main.c: 1214: break;
+"1214
+[e $U 241  ]
+"1215
+}
+[; ;main.c: 1215: }
+[e $U 241  ]
+"1149
+[e :U 242 ]
+[e [\ F902 , $ . `E897 0 243
+ , $ . `E897 1 244
+ , $ . `E897 2 248
+ 252 ]
+"1215
+[e :U 241 ]
+[; ;main.c: 1217: break;
+"1217
 [e $U 51  ]
-"234
+"1218
+}
+[; ;main.c: 1218: }
+[; ;main.c: 1220: default:
+"1220
+[e :U 253 ]
+[; ;main.c: 1221: break;
+"1221
+[e $U 51  ]
+"1222
+}
+[; ;main.c: 1222: }
+[e $U 51  ]
+"235
 [e :U 52 ]
 [e [\ F857 , $ . `E846 0 53
  , $ . `E846 1 57
@@ -4292,23 +4414,23 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E846 3 64
  , $ . `E846 4 76
  , $ . `E846 5 77
- , $ . `E846 8 210
- , $ . `E846 9 233
- 246 ]
-"1180
+ , $ . `E846 8 217
+ , $ . `E846 9 240
+ 253 ]
+"1222
 [e :U 51 ]
-"1182
+"1224
 }
 [e :U 48 ]
-"1183
+"1225
 }
 [e :U 45 ]
-"213
+"214
 [e $U 46  ]
 [e :U 47 ]
-[; ;main.c: 1182: }
-[; ;main.c: 1183: }
-[; ;main.c: 1186: }
-"1186
+[; ;main.c: 1224: }
+[; ;main.c: 1225: }
+[; ;main.c: 1228: }
+"1228
 [e :UE 44 ]
 }
