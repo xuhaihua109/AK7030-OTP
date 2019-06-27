@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
-                                                                                               Thu Jun 27 06:20:34 2019
+                                                                                               Thu Jun 27 09:39:46 2019
 
 HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
      1                           	processor	16C77
@@ -976,7 +976,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    970                           
    971                           ;main.c: 180: adc_start();
    972  003D  118A  2594  118A   	fcall	_adc_start
-   973  0040                     l4245:	
+   973  0040                     l4241:	
    974  0040  0064               	clrwdt	;#
    975                           
    976                           ;main.c: 218: process_AD_Converter_Value();
@@ -986,7 +986,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    980  0044  118A  2662  118A   	fcall	_isPermitSampleTime
    981  0047  3A00               	xorlw	0
    982  0048  1903               	skipnz
-   983  0049  2840               	goto	l4245
+   983  0049  2840               	goto	l4241
    984                           
    985                           ;main.c: 221: {
    986                           ;main.c: 222: clrSampeTime();
@@ -997,15 +997,15 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
    991  004E  1283               	bcf	3,5	;RP0=0, select bank0
    992  004F  0265               	subwf	main@ucTimerPowerLed,w
    993  0050  1803               	skipnc
-   994  0051  2854               	goto	l4257
+   994  0051  2854               	goto	l4253
    995                           
    996                           ;main.c: 225: {
    997                           ;main.c: 226: ucTimerPowerLed ++;
    998  0052  0AE5               	incf	main@ucTimerPowerLed,f
    999                           
   1000                           ;main.c: 227: }
-  1001  0053  2B73               	goto	l4813
-  1002  0054                     l4257:	
+  1001  0053  2B73               	goto	l4805
+  1002  0054                     l4253:	
   1003                           
   1004                           ;main.c: 228: else
   1005                           ;main.c: 229: {
@@ -1014,8 +1014,8 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1008                           
   1009                           ;main.c: 231: PB1 = 0;
   1010  0055  1086               	bcf	6,1
-  1011  0056  2B73               	goto	l4813
-  1012  0057                     l4261:	
+  1011  0056  2B73               	goto	l4805
+  1012  0057                     l4257:	
   1013                           
   1014                           ;main.c: 238: {
   1015                           ;main.c: 239: static unsigned char ucTimerZeroPoint5s = 0;
@@ -1027,31 +1027,31 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1021  005D  1903               	skipnz
   1022  005E  0246               	subwf	?_getAdOriginalCh14Value,w
   1023  005F  1C03               	skipc
-  1024  0060  2863               	goto	l4265
+  1024  0060  2863               	goto	l4261
   1025                           
   1026                           ;main.c: 241: {
   1027                           ;main.c: 242: ucTimerZeroPoint5s++;
   1028  0061  0AEB               	incf	main@ucTimerZeroPoint5s,f
   1029                           
   1030                           ;main.c: 243: }
-  1031  0062  2864               	goto	l4267
-  1032  0063                     l4265:	
+  1031  0062  2864               	goto	l4263
+  1032  0063                     l4261:	
   1033                           
   1034                           ;main.c: 244: else
   1035                           ;main.c: 245: ucTimerZeroPoint5s = 0;
   1036  0063  01EB               	clrf	main@ucTimerZeroPoint5s
-  1037  0064                     l4267:	
+  1037  0064                     l4263:	
   1038                           
   1039                           ;main.c: 247: if(ucTimerZeroPoint5s >= 5)
   1040  0064  3005               	movlw	5
   1041  0065  026B               	subwf	main@ucTimerZeroPoint5s,w
   1042  0066  1C03               	skipc
-  1043  0067  2840               	goto	l4245
+  1043  0067  2840               	goto	l4241
   1044                           
   1045                           ;main.c: 248: {
   1046                           ;main.c: 249: ucTimerZeroPoint5s = 0;
   1047  0068  01EB               	clrf	main@ucTimerZeroPoint5s
-  1048  0069                     l4271:	
+  1048  0069                     l4267:	
   1049                           
   1050                           ;main.c: 250: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
   1051  0069  1283               	bcf	3,5	;RP0=0, select bank0
@@ -1061,8 +1061,8 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1055                           
   1056                           ;main.c: 251: }
   1057                           ;main.c: 252: break;
-  1058  006C  2840               	goto	l4245
-  1059  006D                     l4273:	
+  1058  006C  2840               	goto	l4241
+  1059  006D                     l4269:	
   1060                           
   1061                           ;main.c: 256: {
   1062                           ;main.c: 257: static unsigned char ucTimerZeroPoint3s = 0;
@@ -1074,7 +1074,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1068  0073  1903               	skipnz
   1069  0074  0246               	subwf	?_getAdOriginalCh14Value,w
   1070  0075  1C03               	skipc
-  1071  0076  287B               	goto	l4279
+  1071  0076  287B               	goto	l4275
   1072                           
   1073                           ;main.c: 261: {
   1074                           ;main.c: 263: enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
@@ -1085,8 +1085,8 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1079  0079  01EA               	clrf	main@ucTimerZeroPoint3s
   1080                           
   1081                           ;main.c: 268: }
-  1082  007A  2840               	goto	l4245
-  1083  007B                     l4279:	
+  1082  007A  2840               	goto	l4241
+  1083  007B                     l4275:	
   1084  007B  3003               	movlw	3
   1085                           
   1086                           ;main.c: 269: else
@@ -1097,7 +1097,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1091                           ;main.c: 273: if(ucTimerZeroPoint3s >= 3)
   1092  007D  026A               	subwf	main@ucTimerZeroPoint3s,w
   1093  007E  1C03               	skipc
-  1094  007F  2840               	goto	l4245
+  1094  007F  2840               	goto	l4241
   1095                           
   1096                           ;main.c: 274: {
   1097                           ;main.c: 275: ucTimerZeroPoint3s = 0;
@@ -1105,44 +1105,44 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1099                           
   1100                           ;main.c: 277: clearPinPortAndTimer();
   1101  0081  118A  2597  118A   	fcall	_clearPinPortAndTimer
-  1102  0084  2840               	goto	l4245
+  1102  0084  2840               	goto	l4241
   1103  0085                     l718:	
-  1104                           ;main.c: 283: }
-  1105                           ;main.c: 285: case MAIN_LOOP_STEP_SECOND:
+  1104                           ;main.c: 286: }
+  1105                           ;main.c: 288: case MAIN_LOOP_STEP_SECOND:
   1106                           
   1107  0085  3005               	movlw	5
   1108                           
-  1109                           ;main.c: 286: {
-  1110                           ;main.c: 287: static unsigned char ucTimerP5s = 0;
-  1111                           ;main.c: 289: PA6 = 1;
+  1109                           ;main.c: 289: {
+  1110                           ;main.c: 290: static unsigned char ucTimerP5s = 0;
+  1111                           ;main.c: 292: PA6 = 1;
   1112  0086  1705               	bsf	5,6
   1113                           
-  1114                           ;main.c: 291: if(ucTimerP5s < 5)
+  1114                           ;main.c: 294: if(ucTimerP5s < 5)
   1115  0087  0262               	subwf	main@ucTimerP5s,w
   1116  0088  1803               	skipnc
-  1117  0089  288C               	goto	l4291
+  1117  0089  288C               	goto	l4287
   1118                           
-  1119                           ;main.c: 292: ucTimerP5s++;
+  1119                           ;main.c: 295: ucTimerP5s++;
   1120  008A  0AE2               	incf	main@ucTimerP5s,f
-  1121  008B  2840               	goto	l4245
-  1122  008C                     l4291:	
+  1121  008B  2840               	goto	l4241
+  1122  008C                     l4287:	
   1123  008C  3003               	movlw	3
   1124                           
-  1125                           ;main.c: 293: else
-  1126                           ;main.c: 294: {
-  1127                           ;main.c: 295: ucTimerP5s = 0;
+  1125                           ;main.c: 296: else
+  1126                           ;main.c: 297: {
+  1127                           ;main.c: 298: ucTimerP5s = 0;
   1128  008D  01E2               	clrf	main@ucTimerP5s
   1129                           
-  1130                           ;main.c: 297: enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+  1130                           ;main.c: 300: enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
   1131  008E  2AEF               	goto	L4
-  1132  008F                     l4295:	
+  1132  008F                     l4291:	
   1133                           
-  1134                           ;main.c: 304: {
-  1135                           ;main.c: 305: static unsigned char ucTimerADC1ZeroP5s = 0;
-  1136                           ;main.c: 307: static unsigned char ucTimerLessADC1ZeroP5s = 0;
-  1137                           ;main.c: 309: static unsigned char ucTimerLessADC1ZeroP5sFlag = 0;
-  1138                           ;main.c: 311: static unsigned char ucTimerRightP5s = 0;
-  1139                           ;main.c: 313: if(getAdOriginalCh1Value() < 115)
+  1134                           ;main.c: 307: {
+  1135                           ;main.c: 308: static unsigned char ucTimerADC1ZeroP5s = 0;
+  1136                           ;main.c: 310: static unsigned char ucTimerLessADC1ZeroP5s = 0;
+  1137                           ;main.c: 312: static unsigned char ucTimerLessADC1ZeroP5sFlag = 0;
+  1138                           ;main.c: 314: static unsigned char ucTimerRightP5s = 0;
+  1139                           ;main.c: 316: if(getAdOriginalCh1Value() < 115)
   1140  008F  118A  2478  118A   	fcall	_getAdOriginalCh1Value
   1141  0092  3000               	movlw	0
   1142  0093  0247               	subwf	?_getAdOriginalCh1Value+1,w
@@ -1150,54 +1150,54 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1144  0095  1903               	skipnz
   1145  0096  0246               	subwf	?_getAdOriginalCh1Value,w
   1146  0097  1803               	skipnc
-  1147  0098  289C               	goto	l4301
+  1147  0098  289C               	goto	l4297
   1148                           
-  1149                           ;main.c: 314: {
-  1150                           ;main.c: 315: ucTimerADC1ZeroP5s = 0;
+  1149                           ;main.c: 317: {
+  1150                           ;main.c: 318: ucTimerADC1ZeroP5s = 0;
   1151  0099  01D4               	clrf	main@ucTimerADC1ZeroP5s
   1152                           
-  1153                           ;main.c: 317: ucTimerLessADC1ZeroP5s++;
+  1153                           ;main.c: 320: ucTimerLessADC1ZeroP5s++;
   1154  009A  0ADF               	incf	main@ucTimerLessADC1ZeroP5s,f
   1155                           
-  1156                           ;main.c: 318: }
-  1157  009B  289E               	goto	l4305
-  1158  009C                     l4301:	
+  1156                           ;main.c: 321: }
+  1157  009B  289E               	goto	l4301
+  1158  009C                     l4297:	
   1159                           
-  1160                           ;main.c: 319: else
-  1161                           ;main.c: 320: {
-  1162                           ;main.c: 321: ucTimerADC1ZeroP5s++;
+  1160                           ;main.c: 322: else
+  1161                           ;main.c: 323: {
+  1162                           ;main.c: 324: ucTimerADC1ZeroP5s++;
   1163  009C  0AD4               	incf	main@ucTimerADC1ZeroP5s,f
   1164                           
-  1165                           ;main.c: 323: ucTimerLessADC1ZeroP5s = 0;
+  1165                           ;main.c: 326: ucTimerLessADC1ZeroP5s = 0;
   1166  009D  01DF               	clrf	main@ucTimerLessADC1ZeroP5s
-  1167  009E                     l4305:	
+  1167  009E                     l4301:	
   1168                           
-  1169                           ;main.c: 324: }
-  1170                           ;main.c: 326: if(ucTimerADC1ZeroP5s >= 5)
+  1169                           ;main.c: 327: }
+  1170                           ;main.c: 329: if(ucTimerADC1ZeroP5s >= 5)
   1171  009E  3005               	movlw	5
   1172  009F  0254               	subwf	main@ucTimerADC1ZeroP5s,w
   1173  00A0  1C03               	skipc
-  1174  00A1  28A5               	goto	l4311
+  1174  00A1  28A5               	goto	l4307
   1175  00A2  3004               	movlw	4
   1176                           
-  1177                           ;main.c: 327: {
-  1178                           ;main.c: 328: ucTimerADC1ZeroP5s = 0;
+  1177                           ;main.c: 330: {
+  1178                           ;main.c: 331: ucTimerADC1ZeroP5s = 0;
   1179  00A3  01D4               	clrf	main@ucTimerADC1ZeroP5s
   1180                           
-  1181                           ;main.c: 329: enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
+  1181                           ;main.c: 332: enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
   1182  00A4  28BD               	goto	L2
-  1183  00A5                     l4311:	
-  1184                           ;main.c: 330: }
+  1183  00A5                     l4307:	
+  1184                           ;main.c: 333: }
   1185                           
   1186                           
-  1187                           ;main.c: 331: else if( ucTimerLessADC1ZeroP5s >= 5)
+  1187                           ;main.c: 334: else if( ucTimerLessADC1ZeroP5s >= 5)
   1188  00A5  3005               	movlw	5
   1189  00A6  025F               	subwf	main@ucTimerLessADC1ZeroP5s,w
   1190  00A7  1C03               	skipc
-  1191  00A8  28BE               	goto	l4325
+  1191  00A8  28BE               	goto	l4321
   1192                           
-  1193                           ;main.c: 332: {
-  1194                           ;main.c: 334: if(getAdOriginalCh1Value() < 105)
+  1193                           ;main.c: 335: {
+  1194                           ;main.c: 337: if(getAdOriginalCh1Value() < 105)
   1195  00A9  118A  2478  118A   	fcall	_getAdOriginalCh1Value
   1196  00AC  3000               	movlw	0
   1197  00AD  0247               	subwf	?_getAdOriginalCh1Value+1,w
@@ -1205,122 +1205,122 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1199  00AF  1903               	skipnz
   1200  00B0  0246               	subwf	?_getAdOriginalCh1Value,w
   1201  00B1  1803               	skipnc
-  1202  00B2  28B5               	goto	l4317
+  1202  00B2  28B5               	goto	l4313
   1203                           
-  1204                           ;main.c: 335: {
-  1205                           ;main.c: 336: ucTimerRightP5s++;
+  1204                           ;main.c: 338: {
+  1205                           ;main.c: 339: ucTimerRightP5s++;
   1206  00B3  0AE6               	incf	main@ucTimerRightP5s,f
   1207                           
-  1208                           ;main.c: 337: }
-  1209  00B4  28B6               	goto	l4319
-  1210  00B5                     l4317:	
+  1208                           ;main.c: 340: }
+  1209  00B4  28B6               	goto	l4315
+  1210  00B5                     l4313:	
   1211                           
-  1212                           ;main.c: 338: else
-  1213                           ;main.c: 339: {
-  1214                           ;main.c: 340: ucTimerRightP5s = 0;
+  1212                           ;main.c: 341: else
+  1213                           ;main.c: 342: {
+  1214                           ;main.c: 343: ucTimerRightP5s = 0;
   1215  00B5  01E6               	clrf	main@ucTimerRightP5s
-  1216  00B6                     l4319:	
+  1216  00B6                     l4315:	
   1217                           
-  1218                           ;main.c: 341: }
-  1219                           ;main.c: 343: if(ucTimerRightP5s >= 5)
+  1218                           ;main.c: 344: }
+  1219                           ;main.c: 346: if(ucTimerRightP5s >= 5)
   1220  00B6  3005               	movlw	5
   1221  00B7  0266               	subwf	main@ucTimerRightP5s,w
   1222  00B8  1C03               	skipc
-  1223  00B9  28BE               	goto	l4325
+  1223  00B9  28BE               	goto	l4321
   1224  00BA  3008               	movlw	8
   1225                           
-  1226                           ;main.c: 344: {
-  1227                           ;main.c: 345: ucTimerLessADC1ZeroP5s = 0;
+  1226                           ;main.c: 347: {
+  1227                           ;main.c: 348: ucTimerLessADC1ZeroP5s = 0;
   1228  00BB  01DF               	clrf	main@ucTimerLessADC1ZeroP5s
   1229                           
-  1230                           ;main.c: 346: ucTimerRightP5s = 0;
+  1230                           ;main.c: 349: ucTimerRightP5s = 0;
   1231  00BC  01E6               	clrf	main@ucTimerRightP5s
   1232  00BD                     L2:	
-  1233                           ;main.c: 347: enumMainLoopStep = MAIN_LOOP_STEP_3_HOUR_BRANCH;
+  1233                           ;main.c: 350: enumMainLoopStep = MAIN_LOOP_STEP_3_HOUR_BRANCH;
   1234                           
   1235  00BD  00CA               	movwf	main@enumMainLoopStep
-  1236  00BE                     l4325:	
-  1237                           ;main.c: 354: else
-  1238                           ;main.c: 355: {
-  1239                           ;main.c: 356: ;
+  1236  00BE                     l4321:	
+  1237                           ;main.c: 357: else
+  1238                           ;main.c: 358: {
+  1239                           ;main.c: 359: ;
   1240                           
-  1241                           ;main.c: 348: }
+  1241                           ;main.c: 351: }
   1242                           
   1243                           
-  1244                           ;main.c: 357: }
-  1245                           ;main.c: 359: if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_F
+  1244                           ;main.c: 360: }
+  1245                           ;main.c: 362: if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_F
       +                          OURTH == enumMainLoopStep))
   1246  00BE  084A               	movf	main@enumMainLoopStep,w
   1247  00BF  3A08               	xorlw	8
   1248  00C0  1903               	skipnz
-  1249  00C1  28C6               	goto	l4329
+  1249  00C1  28C6               	goto	l4325
   1250  00C2  084A               	movf	main@enumMainLoopStep,w
   1251  00C3  3A04               	xorlw	4
   1252  00C4  1D03               	skipz
-  1253  00C5  2840               	goto	l4245
-  1254  00C6                     l4329:	
+  1253  00C5  2840               	goto	l4241
+  1254  00C6                     l4325:	
   1255                           
-  1256                           ;main.c: 360: {
-  1257                           ;main.c: 361: ucTimerRightP5s = 0;
+  1256                           ;main.c: 363: {
+  1257                           ;main.c: 364: ucTimerRightP5s = 0;
   1258  00C6  01E6               	clrf	main@ucTimerRightP5s
   1259                           
-  1260                           ;main.c: 362: ucTimerADC1ZeroP5s = 0;
+  1260                           ;main.c: 365: ucTimerADC1ZeroP5s = 0;
   1261  00C7  01D4               	clrf	main@ucTimerADC1ZeroP5s
   1262                           
-  1263                           ;main.c: 363: ucTimerLessADC1ZeroP5s = 0;
+  1263                           ;main.c: 366: ucTimerLessADC1ZeroP5s = 0;
   1264  00C8  01DF               	clrf	main@ucTimerLessADC1ZeroP5s
-  1265  00C9  2840               	goto	l4245
-  1266  00CA                     l4331:	
+  1265  00C9  2840               	goto	l4241
+  1266  00CA                     l4327:	
   1267                           
-  1268                           ;main.c: 371: {
-  1269                           ;main.c: 373: startTwelveHourTimer(600);
+  1268                           ;main.c: 374: {
+  1269                           ;main.c: 376: startTwelveHourTimer(600);
   1270  00CA  3058               	movlw	88
   1271  00CB  00A0               	movwf	?_startTwelveHourTimer
   1272  00CC  3002               	movlw	2
   1273  00CD  00A1               	movwf	?_startTwelveHourTimer+1
   1274  00CE  118A  2609  118A   	fcall	_startTwelveHourTimer
   1275                           
-  1276                           ;main.c: 374: enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
+  1276                           ;main.c: 377: enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
   1277  00D1  3005               	movlw	5
   1278  00D2  28DA               	goto	L8
-  1279  00D3                     l4335:	
-  1280                           ;main.c: 376: break;
+  1279  00D3                     l4331:	
+  1280                           ;main.c: 379: break;
   1281                           
   1282                           
-  1283                           ;main.c: 380: {
-  1284                           ;main.c: 382: if(isFinishedTwelveHoursTimer())
+  1283                           ;main.c: 383: {
+  1284                           ;main.c: 385: if(isFinishedTwelveHoursTimer())
   1285  00D3  118A  265C  118A   	fcall	_isFinishedTwelveHoursTimer
   1286  00D6  3A00               	xorlw	0
   1287  00D7  1903               	skipnz
-  1288  00D8  2A94               	goto	l4695
-  1289  00D9                     l4337:	
+  1288  00D8  2A94               	goto	l4687
+  1289  00D9                     l4333:	
   1290                           
-  1291                           ;main.c: 383: {
-  1292                           ;main.c: 384: enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
+  1291                           ;main.c: 386: {
+  1292                           ;main.c: 387: enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
   1293  00D9  3009               	movlw	9
   1294  00DA                     L8:	
   1295  00DA  1283               	bcf	3,5	;RP0=0, select bank0
   1296  00DB  2AEF               	goto	L4
-  1297  00DC                     l4339:	
-  1298                           ;main.c: 385: }
+  1297  00DC                     l4335:	
+  1298                           ;main.c: 388: }
   1299                           
   1300                           
-  1301                           ;main.c: 393: {
-  1302                           ;main.c: 394: startTwentySecondsTimer();
+  1301                           ;main.c: 396: {
+  1302                           ;main.c: 397: startTwentySecondsTimer();
   1303  00DC  118A  2668  118A   	fcall	_startTwentySecondsTimer
-  1304  00DF                     l4341:	
+  1304  00DF                     l4337:	
   1305                           
-  1306                           ;main.c: 395: ucADC4_Step = ADC4_STEP_FIRST;
+  1306                           ;main.c: 398: ucADC4_Step = ADC4_STEP_FIRST;
   1307  00DF  1283               	bcf	3,5	;RP0=0, select bank0
   1308  00E0  01CB               	clrf	main@ucADC4_Step
   1309  00E1  0ACB               	incf	main@ucADC4_Step,f
   1310                           
-  1311                           ;main.c: 396: break;
-  1312  00E2  2840               	goto	l4245
-  1313  00E3                     l4343:	
+  1311                           ;main.c: 399: break;
+  1312  00E2  2840               	goto	l4241
+  1313  00E3                     l4339:	
   1314                           
-  1315                           ;main.c: 400: {
-  1316                           ;main.c: 401: if(getAdOriginaCh4Value() < 1911)
+  1315                           ;main.c: 403: {
+  1316                           ;main.c: 404: if(getAdOriginaCh4Value() < 1911)
   1317  00E3  118A  246F  118A   	fcall	_getAdOriginaCh4Value
   1318  00E6  3007               	movlw	7
   1319  00E7  0247               	subwf	?_getAdOriginaCh4Value+1,w
@@ -1328,14 +1328,14 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1321  00E9  1903               	skipnz
   1322  00EA  0246               	subwf	?_getAdOriginaCh4Value,w
   1323  00EB  1803               	skipnc
-  1324  00EC  28EF               	goto	l4347
+  1324  00EC  28EF               	goto	l4343
   1325                           
-  1326                           ;main.c: 402: ucChannel4Type = LESS_THAN_1911;
+  1326                           ;main.c: 405: ucChannel4Type = LESS_THAN_1911;
   1327  00ED  01CC               	clrf	main@ucChannel4Type
   1328  00EE  2916               	goto	l756
-  1329  00EF                     l4347:	
+  1329  00EF                     l4343:	
   1330                           
-  1331                           ;main.c: 403: else if(getAdOriginaCh4Value() < 2067)
+  1331                           ;main.c: 406: else if(getAdOriginaCh4Value() < 2067)
   1332  00EF  118A  246F  118A   	fcall	_getAdOriginaCh4Value
   1333  00F2  3008               	movlw	8
   1334  00F3  0247               	subwf	?_getAdOriginaCh4Value+1,w
@@ -1343,15 +1343,15 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1336  00F5  1903               	skipnz
   1337  00F6  0246               	subwf	?_getAdOriginaCh4Value,w
   1338  00F7  1803               	skipnc
-  1339  00F8  28FC               	goto	l4351
+  1339  00F8  28FC               	goto	l4347
   1340                           
-  1341                           ;main.c: 404: ucChannel4Type = BETWEEN_1911_AND_2067;
+  1341                           ;main.c: 407: ucChannel4Type = BETWEEN_1911_AND_2067;
   1342  00F9  01CC               	clrf	main@ucChannel4Type
   1343  00FA  0ACC               	incf	main@ucChannel4Type,f
   1344  00FB  2916               	goto	l756
-  1345  00FC                     l4351:	
+  1345  00FC                     l4347:	
   1346                           
-  1347                           ;main.c: 405: else if(getAdOriginaCh4Value() < 2204)
+  1347                           ;main.c: 408: else if(getAdOriginaCh4Value() < 2204)
   1348  00FC  118A  246F  118A   	fcall	_getAdOriginaCh4Value
   1349  00FF  3008               	movlw	8
   1350  0100  0247               	subwf	?_getAdOriginaCh4Value+1,w
@@ -1359,14 +1359,14 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1352  0102  1903               	skipnz
   1353  0103  0246               	subwf	?_getAdOriginaCh4Value,w
   1354  0104  1803               	skipnc
-  1355  0105  2908               	goto	l4355
+  1355  0105  2908               	goto	l4351
   1356                           
-  1357                           ;main.c: 406: ucChannel4Type = BETWEEN_2067_AND_2204;
+  1357                           ;main.c: 409: ucChannel4Type = BETWEEN_2067_AND_2204;
   1358  0106  3002               	movlw	2
   1359  0107  2915               	goto	L5
-  1360  0108                     l4355:	
+  1360  0108                     l4351:	
   1361                           
-  1362                           ;main.c: 407: else if(getAdOriginaCh4Value() < 2340)
+  1362                           ;main.c: 410: else if(getAdOriginaCh4Value() < 2340)
   1363  0108  118A  246F  118A   	fcall	_getAdOriginaCh4Value
   1364  010B  3009               	movlw	9
   1365  010C  0247               	subwf	?_getAdOriginaCh4Value+1,w
@@ -1374,152 +1374,152 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1367  010E  1903               	skipnz
   1368  010F  0246               	subwf	?_getAdOriginaCh4Value,w
   1369  0110  1803               	skipnc
-  1370  0111  2914               	goto	l4359
+  1370  0111  2914               	goto	l4355
   1371                           
-  1372                           ;main.c: 408: ucChannel4Type = BETWEEN_2204_AND_2340;
+  1372                           ;main.c: 411: ucChannel4Type = BETWEEN_2204_AND_2340;
   1373  0112  3003               	movlw	3
   1374  0113  2915               	goto	L5
-  1375  0114                     l4359:	
+  1375  0114                     l4355:	
   1376                           
-  1377                           ;main.c: 409: else
-  1378                           ;main.c: 410: ucChannel4Type = MORE_THAN_2340;
+  1377                           ;main.c: 412: else
+  1378                           ;main.c: 413: ucChannel4Type = MORE_THAN_2340;
   1379  0114  3004               	movlw	4
   1380  0115                     L5:	
   1381  0115  00CC               	movwf	main@ucChannel4Type
   1382  0116                     l756:	
   1383                           
-  1384                           ;main.c: 412: ucADC4_Step = ADC4_STEP_SECOND;
+  1384                           ;main.c: 415: ucADC4_Step = ADC4_STEP_SECOND;
   1385  0116  3002               	movlw	2
   1386  0117  2947               	goto	L6
   1387  0118                     l771:	
-  1388                           ;main.c: 427: {
-  1389                           ;main.c: 428: case 0:
+  1388                           ;main.c: 430: {
+  1389                           ;main.c: 431: case 0:
   1390                           
-  1391                           ;main.c: 413: break;
+  1391                           ;main.c: 416: break;
   1392                           
   1393                           
-  1394                           ;main.c: 429: {
-  1395                           ;main.c: 430: PB0 = 1;
+  1394                           ;main.c: 432: {
+  1395                           ;main.c: 433: PB0 = 1;
   1396  0118  1406               	bsf	6,0
-  1397  0119                     l4361:	
+  1397  0119                     l4357:	
   1398                           
-  1399                           ;main.c: 431: ucLoaderStep++;
+  1399                           ;main.c: 434: ucLoaderStep++;
   1400  0119  0ACD               	incf	main@ucLoaderStep,f
   1401                           
-  1402                           ;main.c: 432: break;
-  1403  011A  2840               	goto	l4245
-  1404  011B                     l4363:	
+  1402                           ;main.c: 435: break;
+  1403  011A  2840               	goto	l4241
+  1404  011B                     l4359:	
   1405                           
-  1406                           ;main.c: 436: {
-  1407                           ;main.c: 437: if(ucTimerDelay >= 5)
+  1406                           ;main.c: 439: {
+  1407                           ;main.c: 440: if(ucTimerDelay >= 5)
   1408  011B  3005               	movlw	5
   1409  011C  0255               	subwf	main@ucTimerDelay,w
   1410  011D  1C03               	skipc
-  1411  011E  2922               	goto	l4371
+  1411  011E  2922               	goto	l4367
   1412                           
-  1413                           ;main.c: 438: {
-  1414                           ;main.c: 439: PA0 = 1;
+  1413                           ;main.c: 441: {
+  1414                           ;main.c: 442: PA0 = 1;
   1415  011F  1405               	bsf	5,0
-  1416  0120                     l4367:	
+  1416  0120                     l4363:	
   1417                           
-  1418                           ;main.c: 440: ucTimerDelay = 0;
+  1418                           ;main.c: 443: ucTimerDelay = 0;
   1419  0120  01D5               	clrf	main@ucTimerDelay
-  1420  0121  2919               	goto	l4361
-  1421  0122                     l4371:	
+  1420  0121  2919               	goto	l4357
+  1421  0122                     l4367:	
   1422                           
-  1423                           ;main.c: 443: else
-  1424                           ;main.c: 444: ucTimerDelay++;
+  1423                           ;main.c: 446: else
+  1424                           ;main.c: 447: ucTimerDelay++;
   1425  0122  0AD5               	incf	main@ucTimerDelay,f
-  1426  0123  2840               	goto	l4245
-  1427  0124                     l4373:	
+  1426  0123  2840               	goto	l4241
+  1427  0124                     l4369:	
   1428                           
-  1429                           ;main.c: 449: {
-  1430                           ;main.c: 450: if(ucTimerDelay >= 5)
+  1429                           ;main.c: 452: {
+  1430                           ;main.c: 453: if(ucTimerDelay >= 5)
   1431  0124  3005               	movlw	5
   1432  0125  0255               	subwf	main@ucTimerDelay,w
   1433  0126  1C03               	skipc
-  1434  0127  2922               	goto	l4371
+  1434  0127  2922               	goto	l4367
   1435                           
-  1436                           ;main.c: 451: {
-  1437                           ;main.c: 452: PA1= 1;
+  1436                           ;main.c: 454: {
+  1437                           ;main.c: 455: PA1= 1;
   1438  0128  1485               	bsf	5,1
-  1439  0129  2920               	goto	l4367
-  1440  012A                     l4383:	
+  1439  0129  2920               	goto	l4363
+  1440  012A                     l4379:	
   1441                           
-  1442                           ;main.c: 463: {
-  1443                           ;main.c: 464: if(ucTimerDelay >= 5)
+  1442                           ;main.c: 466: {
+  1443                           ;main.c: 467: if(ucTimerDelay >= 5)
   1444  012A  3005               	movlw	5
   1445  012B  0255               	subwf	main@ucTimerDelay,w
   1446  012C  1C03               	skipc
-  1447  012D  2922               	goto	l4371
+  1447  012D  2922               	goto	l4367
   1448                           
-  1449                           ;main.c: 465: {
-  1450                           ;main.c: 466: PA2= 1;
+  1449                           ;main.c: 468: {
+  1450                           ;main.c: 469: PA2= 1;
   1451  012E  1505               	bsf	5,2
-  1452  012F  2920               	goto	l4367
-  1453  0130                     l4393:	
+  1452  012F  2920               	goto	l4363
+  1453  0130                     l4389:	
   1454                           
-  1455                           ;main.c: 476: {
-  1456                           ;main.c: 477: if(ucTimerDelay >= 5)
+  1455                           ;main.c: 479: {
+  1456                           ;main.c: 480: if(ucTimerDelay >= 5)
   1457  0130  3005               	movlw	5
   1458  0131  0255               	subwf	main@ucTimerDelay,w
   1459  0132  1C03               	skipc
-  1460  0133  2922               	goto	l4371
+  1460  0133  2922               	goto	l4367
   1461                           
-  1462                           ;main.c: 478: {
-  1463                           ;main.c: 479: PA3 = 1;
+  1462                           ;main.c: 481: {
+  1463                           ;main.c: 482: PA3 = 1;
   1464  0134  1585               	bsf	5,3
-  1465  0135  2920               	goto	l4367
-  1466  0136                     l4403:	
+  1465  0135  2920               	goto	l4363
+  1466  0136                     l4399:	
   1467                           
-  1468                           ;main.c: 489: {
-  1469                           ;main.c: 490: if(ucTimerDelay >= 5)
+  1468                           ;main.c: 492: {
+  1469                           ;main.c: 493: if(ucTimerDelay >= 5)
   1470  0136  3005               	movlw	5
   1471  0137  0255               	subwf	main@ucTimerDelay,w
   1472  0138  1C03               	skipc
-  1473  0139  2922               	goto	l4371
+  1473  0139  2922               	goto	l4367
   1474                           
-  1475                           ;main.c: 491: {
-  1476                           ;main.c: 492: PB0 = 0;
+  1475                           ;main.c: 494: {
+  1476                           ;main.c: 495: PB0 = 0;
   1477  013A  1006               	bcf	6,0
   1478                           
-  1479                           ;main.c: 493: PA0 = 0;
+  1479                           ;main.c: 496: PA0 = 0;
   1480  013B  1005               	bcf	5,0
   1481                           
-  1482                           ;main.c: 494: PA1 = 0;
+  1482                           ;main.c: 497: PA1 = 0;
   1483  013C  1085               	bcf	5,1
   1484                           
-  1485                           ;main.c: 495: PA2 = 0;
+  1485                           ;main.c: 498: PA2 = 0;
   1486  013D  1105               	bcf	5,2
   1487                           
-  1488                           ;main.c: 496: PA3 = 0;
+  1488                           ;main.c: 499: PA3 = 0;
   1489  013E  1185               	bcf	5,3
-  1490  013F  2920               	goto	l4367
-  1491  0140                     l4413:	
+  1490  013F  2920               	goto	l4363
+  1491  0140                     l4409:	
   1492                           
-  1493                           ;main.c: 506: {
-  1494                           ;main.c: 507: if(ucTimerDelay >= 2)
+  1493                           ;main.c: 509: {
+  1494                           ;main.c: 510: if(ucTimerDelay >= 2)
   1495  0140  3002               	movlw	2
   1496  0141  0255               	subwf	main@ucTimerDelay,w
   1497  0142  1C03               	skipc
-  1498  0143  2922               	goto	l4371
+  1498  0143  2922               	goto	l4367
   1499                           
-  1500                           ;main.c: 508: {
-  1501                           ;main.c: 509: ucTimerDelay = 0;
+  1500                           ;main.c: 511: {
+  1501                           ;main.c: 512: ucTimerDelay = 0;
   1502  0144  01D5               	clrf	main@ucTimerDelay
   1503                           
-  1504                           ;main.c: 511: ucLoaderStep = 0;
+  1504                           ;main.c: 514: ucLoaderStep = 0;
   1505  0145  01CD               	clrf	main@ucLoaderStep
-  1506  0146                     l4417:	
+  1506  0146                     l4413:	
   1507                           
-  1508                           ;main.c: 512: ucADC4_Step = ADC4_STEP_THIRD;
+  1508                           ;main.c: 515: ucADC4_Step = ADC4_STEP_THIRD;
   1509  0146  3003               	movlw	3
   1510  0147                     L6:	
   1511  0147  00CB               	movwf	main@ucADC4_Step
   1512                           
-  1513                           ;main.c: 513: }
-  1514  0148  2840               	goto	l4245
-  1515  0149                     l4423:	
+  1513                           ;main.c: 516: }
+  1514  0148  2840               	goto	l4241
+  1515  0149                     l4419:	
   1516  0149  084D               	movf	main@ucLoaderStep,w
   1517                           
   1518                           ; Switch size 1, requested type "space"
@@ -1537,129 +1537,129 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1530  014B  3007               	movlw	7
   1531  014C  0204               	subwf	4,w
   1532  014D  1803               	skipnc
-  1533  014E  2840               	goto	l4245
-  1534  014F  3005               	movlw	high S5031
+  1533  014E  2840               	goto	l4241
+  1534  014F  3005               	movlw	high S5023
   1535  0150  008A               	movwf	10
   1536  0151  1003               	clrc
   1537  0152  0D04               	rlf	4,w
-  1538  0153  3EDF               	addlw	low S5031
+  1538  0153  3EDF               	addlw	low S5023
   1539  0154  0082               	movwf	2
   1540  0155                     l799:	
-  1541                           ;main.c: 532: {
-  1542                           ;main.c: 533: case 0:
+  1541                           ;main.c: 535: {
+  1542                           ;main.c: 536: case 0:
   1543                           
   1544                           
-  1545                           ;main.c: 534: {
-  1546                           ;main.c: 535: PB0 = 1;
+  1545                           ;main.c: 537: {
+  1546                           ;main.c: 538: PB0 = 1;
   1547  0155  1406               	bsf	6,0
-  1548  0156                     l4425:	
+  1548  0156                     l4421:	
   1549                           
-  1550                           ;main.c: 536: ucLoaderStep1++;
+  1550                           ;main.c: 539: ucLoaderStep1++;
   1551  0156  0ACE               	incf	main@ucLoaderStep1,f
   1552                           
-  1553                           ;main.c: 537: break;
-  1554  0157  2840               	goto	l4245
-  1555  0158                     l4427:	
+  1553                           ;main.c: 540: break;
+  1554  0157  2840               	goto	l4241
+  1555  0158                     l4423:	
   1556                           
-  1557                           ;main.c: 541: {
-  1558                           ;main.c: 542: if(ucTimerDelay1 >= 5)
+  1557                           ;main.c: 544: {
+  1558                           ;main.c: 545: if(ucTimerDelay1 >= 5)
   1559  0158  3005               	movlw	5
   1560  0159  0256               	subwf	main@ucTimerDelay1,w
   1561  015A  1C03               	skipc
-  1562  015B  295F               	goto	l4435
+  1562  015B  295F               	goto	l4431
   1563                           
-  1564                           ;main.c: 543: {
-  1565                           ;main.c: 544: PA0 = 1;
+  1564                           ;main.c: 546: {
+  1565                           ;main.c: 547: PA0 = 1;
   1566  015C  1405               	bsf	5,0
-  1567  015D                     l4431:	
+  1567  015D                     l4427:	
   1568                           
-  1569                           ;main.c: 545: ucTimerDelay1 = 0;
+  1569                           ;main.c: 548: ucTimerDelay1 = 0;
   1570  015D  01D6               	clrf	main@ucTimerDelay1
-  1571  015E  2956               	goto	l4425
-  1572  015F                     l4435:	
+  1571  015E  2956               	goto	l4421
+  1572  015F                     l4431:	
   1573                           
-  1574                           ;main.c: 548: else
-  1575                           ;main.c: 549: ucTimerDelay1++;
+  1574                           ;main.c: 551: else
+  1575                           ;main.c: 552: ucTimerDelay1++;
   1576  015F  0AD6               	incf	main@ucTimerDelay1,f
-  1577  0160  2840               	goto	l4245
-  1578  0161                     l4437:	
+  1577  0160  2840               	goto	l4241
+  1578  0161                     l4433:	
   1579                           
-  1580                           ;main.c: 554: {
-  1581                           ;main.c: 555: if(ucTimerDelay1 >= 5)
+  1580                           ;main.c: 557: {
+  1581                           ;main.c: 558: if(ucTimerDelay1 >= 5)
   1582  0161  3005               	movlw	5
   1583  0162  0256               	subwf	main@ucTimerDelay1,w
   1584  0163  1C03               	skipc
-  1585  0164  295F               	goto	l4435
+  1585  0164  295F               	goto	l4431
   1586                           
-  1587                           ;main.c: 556: {
-  1588                           ;main.c: 557: PA1= 1;
+  1587                           ;main.c: 559: {
+  1588                           ;main.c: 560: PA1= 1;
   1589  0165  1485               	bsf	5,1
-  1590  0166  295D               	goto	l4431
-  1591  0167                     l4447:	
+  1590  0166  295D               	goto	l4427
+  1591  0167                     l4443:	
   1592                           
-  1593                           ;main.c: 567: {
-  1594                           ;main.c: 568: if(ucTimerDelay1 >= 5)
+  1593                           ;main.c: 570: {
+  1594                           ;main.c: 571: if(ucTimerDelay1 >= 5)
   1595  0167  3005               	movlw	5
   1596  0168  0256               	subwf	main@ucTimerDelay1,w
   1597  0169  1C03               	skipc
-  1598  016A  295F               	goto	l4435
+  1598  016A  295F               	goto	l4431
   1599                           
-  1600                           ;main.c: 569: {
-  1601                           ;main.c: 570: PA2 = 1;
+  1600                           ;main.c: 572: {
+  1601                           ;main.c: 573: PA2 = 1;
   1602  016B  1505               	bsf	5,2
-  1603  016C  295D               	goto	l4431
-  1604  016D                     l4457:	
+  1603  016C  295D               	goto	l4427
+  1604  016D                     l4453:	
   1605                           
-  1606                           ;main.c: 580: {
-  1607                           ;main.c: 581: if(ucTimerDelay1 >= 5)
+  1606                           ;main.c: 583: {
+  1607                           ;main.c: 584: if(ucTimerDelay1 >= 5)
   1608  016D  3005               	movlw	5
   1609  016E  0256               	subwf	main@ucTimerDelay1,w
   1610  016F  1C03               	skipc
-  1611  0170  295F               	goto	l4435
+  1611  0170  295F               	goto	l4431
   1612                           
-  1613                           ;main.c: 582: {
-  1614                           ;main.c: 583: PA3 = 1;
+  1613                           ;main.c: 585: {
+  1614                           ;main.c: 586: PA3 = 1;
   1615  0171  1585               	bsf	5,3
-  1616  0172  295D               	goto	l4431
-  1617  0173                     l4467:	
+  1616  0172  295D               	goto	l4427
+  1617  0173                     l4463:	
   1618                           
-  1619                           ;main.c: 593: {
-  1620                           ;main.c: 594: if(ucTimerDelay1 >= 5)
+  1619                           ;main.c: 596: {
+  1620                           ;main.c: 597: if(ucTimerDelay1 >= 5)
   1621  0173  3005               	movlw	5
   1622  0174  0256               	subwf	main@ucTimerDelay1,w
   1623  0175  1C03               	skipc
-  1624  0176  295F               	goto	l4435
+  1624  0176  295F               	goto	l4431
   1625                           
-  1626                           ;main.c: 595: {
-  1627                           ;main.c: 596: PA0 = 0;
+  1626                           ;main.c: 598: {
+  1627                           ;main.c: 599: PA0 = 0;
   1628  0177  1005               	bcf	5,0
   1629                           
-  1630                           ;main.c: 597: PA1 = 0;
+  1630                           ;main.c: 600: PA1 = 0;
   1631  0178  1085               	bcf	5,1
   1632                           
-  1633                           ;main.c: 598: PA2 = 0;
+  1633                           ;main.c: 601: PA2 = 0;
   1634  0179  1105               	bcf	5,2
   1635                           
-  1636                           ;main.c: 599: PA3 = 0;
+  1636                           ;main.c: 602: PA3 = 0;
   1637  017A  1185               	bcf	5,3
-  1638  017B  295D               	goto	l4431
-  1639  017C                     l4477:	
+  1638  017B  295D               	goto	l4427
+  1639  017C                     l4473:	
   1640                           
-  1641                           ;main.c: 609: {
-  1642                           ;main.c: 610: if(ucTimerDelay1 >= 2)
+  1641                           ;main.c: 612: {
+  1642                           ;main.c: 613: if(ucTimerDelay1 >= 2)
   1643  017C  3002               	movlw	2
   1644  017D  0256               	subwf	main@ucTimerDelay1,w
   1645  017E  1C03               	skipc
-  1646  017F  295F               	goto	l4435
+  1646  017F  295F               	goto	l4431
   1647                           
-  1648                           ;main.c: 611: {
-  1649                           ;main.c: 612: ucTimerDelay1 = 0;
+  1648                           ;main.c: 614: {
+  1649                           ;main.c: 615: ucTimerDelay1 = 0;
   1650  0180  01D6               	clrf	main@ucTimerDelay1
   1651                           
-  1652                           ;main.c: 614: ucLoaderStep1 = 0;
+  1652                           ;main.c: 617: ucLoaderStep1 = 0;
   1653  0181  01CE               	clrf	main@ucLoaderStep1
-  1654  0182  2946               	goto	l4417
-  1655  0183                     l4487:	
+  1654  0182  2946               	goto	l4413
+  1655  0183                     l4483:	
   1656  0183  084E               	movf	main@ucLoaderStep1,w
   1657                           
   1658                           ; Switch size 1, requested type "space"
@@ -1677,116 +1677,116 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1670  0185  3007               	movlw	7
   1671  0186  0204               	subwf	4,w
   1672  0187  1803               	skipnc
-  1673  0188  2840               	goto	l4245
-  1674  0189  3005               	movlw	high S5033
+  1673  0188  2840               	goto	l4241
+  1674  0189  3005               	movlw	high S5025
   1675  018A  008A               	movwf	10
   1676  018B  1003               	clrc
   1677  018C  0D04               	rlf	4,w
-  1678  018D  3EED               	addlw	low S5033
+  1678  018D  3EED               	addlw	low S5025
   1679  018E  0082               	movwf	2
   1680  018F                     l826:	
-  1681                           ;main.c: 636: {
-  1682                           ;main.c: 637: case 0:
+  1681                           ;main.c: 639: {
+  1682                           ;main.c: 640: case 0:
   1683                           
   1684                           
-  1685                           ;main.c: 638: {
-  1686                           ;main.c: 639: PB0 = 1;
+  1685                           ;main.c: 641: {
+  1686                           ;main.c: 642: PB0 = 1;
   1687  018F  1406               	bsf	6,0
   1688                           
-  1689                           ;main.c: 640: PA0 = 1;
+  1689                           ;main.c: 643: PA0 = 1;
   1690  0190  1405               	bsf	5,0
-  1691  0191                     l4489:	
+  1691  0191                     l4485:	
   1692                           
-  1693                           ;main.c: 641: ucLoaderStep2++;
+  1693                           ;main.c: 644: ucLoaderStep2++;
   1694  0191  0ACF               	incf	main@ucLoaderStep2,f
   1695                           
-  1696                           ;main.c: 642: break;
-  1697  0192  2840               	goto	l4245
-  1698  0193                     l4491:	
+  1696                           ;main.c: 645: break;
+  1697  0192  2840               	goto	l4241
+  1698  0193                     l4487:	
   1699                           
-  1700                           ;main.c: 646: {
-  1701                           ;main.c: 647: if(ucTimerDelay2 >= 5)
+  1700                           ;main.c: 649: {
+  1701                           ;main.c: 650: if(ucTimerDelay2 >= 5)
   1702  0193  3005               	movlw	5
   1703  0194  0257               	subwf	main@ucTimerDelay2,w
   1704  0195  1C03               	skipc
-  1705  0196  299A               	goto	l4499
+  1705  0196  299A               	goto	l4495
   1706                           
-  1707                           ;main.c: 648: {
-  1708                           ;main.c: 649: PA1 = 1;
+  1707                           ;main.c: 651: {
+  1708                           ;main.c: 652: PA1 = 1;
   1709  0197  1485               	bsf	5,1
-  1710  0198                     l4495:	
+  1710  0198                     l4491:	
   1711                           
-  1712                           ;main.c: 650: ucTimerDelay2 = 0;
+  1712                           ;main.c: 653: ucTimerDelay2 = 0;
   1713  0198  01D7               	clrf	main@ucTimerDelay2
-  1714  0199  2991               	goto	l4489
-  1715  019A                     l4499:	
+  1714  0199  2991               	goto	l4485
+  1715  019A                     l4495:	
   1716                           
-  1717                           ;main.c: 653: else
-  1718                           ;main.c: 654: ucTimerDelay2++;
+  1717                           ;main.c: 656: else
+  1718                           ;main.c: 657: ucTimerDelay2++;
   1719  019A  0AD7               	incf	main@ucTimerDelay2,f
-  1720  019B  2840               	goto	l4245
-  1721  019C                     l4501:	
+  1720  019B  2840               	goto	l4241
+  1721  019C                     l4497:	
   1722                           
-  1723                           ;main.c: 659: {
-  1724                           ;main.c: 660: if(ucTimerDelay2 >= 5)
+  1723                           ;main.c: 662: {
+  1724                           ;main.c: 663: if(ucTimerDelay2 >= 5)
   1725  019C  3005               	movlw	5
   1726  019D  0257               	subwf	main@ucTimerDelay2,w
   1727  019E  1C03               	skipc
-  1728  019F  299A               	goto	l4499
+  1728  019F  299A               	goto	l4495
   1729                           
-  1730                           ;main.c: 661: {
-  1731                           ;main.c: 662: PA2 = 1;
+  1730                           ;main.c: 664: {
+  1731                           ;main.c: 665: PA2 = 1;
   1732  01A0  1505               	bsf	5,2
-  1733  01A1  2998               	goto	l4495
-  1734  01A2                     l4511:	
+  1733  01A1  2998               	goto	l4491
+  1734  01A2                     l4507:	
   1735                           
-  1736                           ;main.c: 672: {
-  1737                           ;main.c: 673: if(ucTimerDelay2 >= 5)
+  1736                           ;main.c: 675: {
+  1737                           ;main.c: 676: if(ucTimerDelay2 >= 5)
   1738  01A2  3005               	movlw	5
   1739  01A3  0257               	subwf	main@ucTimerDelay2,w
   1740  01A4  1C03               	skipc
-  1741  01A5  299A               	goto	l4499
+  1741  01A5  299A               	goto	l4495
   1742                           
-  1743                           ;main.c: 674: {
-  1744                           ;main.c: 675: PA3 = 1;
+  1743                           ;main.c: 677: {
+  1744                           ;main.c: 678: PA3 = 1;
   1745  01A6  1585               	bsf	5,3
-  1746  01A7  2998               	goto	l4495
-  1747  01A8                     l4521:	
+  1746  01A7  2998               	goto	l4491
+  1747  01A8                     l4517:	
   1748                           
-  1749                           ;main.c: 685: {
-  1750                           ;main.c: 686: if(ucTimerDelay2 >= 5)
+  1749                           ;main.c: 688: {
+  1750                           ;main.c: 689: if(ucTimerDelay2 >= 5)
   1751  01A8  3005               	movlw	5
   1752  01A9  0257               	subwf	main@ucTimerDelay2,w
   1753  01AA  1C03               	skipc
-  1754  01AB  299A               	goto	l4499
+  1754  01AB  299A               	goto	l4495
   1755                           
-  1756                           ;main.c: 687: {
-  1757                           ;main.c: 689: PA1 = 0;
+  1756                           ;main.c: 690: {
+  1757                           ;main.c: 692: PA1 = 0;
   1758  01AC  1085               	bcf	5,1
   1759                           
-  1760                           ;main.c: 690: PA2 = 0;
+  1760                           ;main.c: 693: PA2 = 0;
   1761  01AD  1105               	bcf	5,2
   1762                           
-  1763                           ;main.c: 691: PA3 = 0;
+  1763                           ;main.c: 694: PA3 = 0;
   1764  01AE  1185               	bcf	5,3
-  1765  01AF  2998               	goto	l4495
-  1766  01B0                     l4531:	
+  1765  01AF  2998               	goto	l4491
+  1766  01B0                     l4527:	
   1767                           
-  1768                           ;main.c: 701: {
-  1769                           ;main.c: 702: if(ucTimerDelay2 >= 2)
+  1768                           ;main.c: 704: {
+  1769                           ;main.c: 705: if(ucTimerDelay2 >= 2)
   1770  01B0  3002               	movlw	2
   1771  01B1  0257               	subwf	main@ucTimerDelay2,w
   1772  01B2  1C03               	skipc
-  1773  01B3  299A               	goto	l4499
+  1773  01B3  299A               	goto	l4495
   1774                           
-  1775                           ;main.c: 703: {
-  1776                           ;main.c: 704: ucTimerDelay2 = 0;
+  1775                           ;main.c: 706: {
+  1776                           ;main.c: 707: ucTimerDelay2 = 0;
   1777  01B4  01D7               	clrf	main@ucTimerDelay2
   1778                           
-  1779                           ;main.c: 706: ucLoaderStep2 = 0;
+  1779                           ;main.c: 709: ucLoaderStep2 = 0;
   1780  01B5  01CF               	clrf	main@ucLoaderStep2
-  1781  01B6  2946               	goto	l4417
-  1782  01B7                     l4541:	
+  1781  01B6  2946               	goto	l4413
+  1782  01B7                     l4537:	
   1783  01B7  084F               	movf	main@ucLoaderStep2,w
   1784                           
   1785                           ; Switch size 1, requested type "space"
@@ -1804,103 +1804,103 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1797  01B9  3006               	movlw	6
   1798  01BA  0204               	subwf	4,w
   1799  01BB  1803               	skipnc
-  1800  01BC  2840               	goto	l4245
-  1801  01BD  3006               	movlw	high S5035
+  1800  01BC  2840               	goto	l4241
+  1801  01BD  3006               	movlw	high S5027
   1802  01BE  008A               	movwf	10
   1803  01BF  1003               	clrc
   1804  01C0  0D04               	rlf	4,w
-  1805  01C1  3E17               	addlw	low S5035
+  1805  01C1  3E17               	addlw	low S5027
   1806  01C2  0082               	movwf	2
   1807  01C3                     l850:	
-  1808                           ;main.c: 728: {
-  1809                           ;main.c: 729: case 0:
+  1808                           ;main.c: 731: {
+  1809                           ;main.c: 732: case 0:
   1810                           
   1811                           
-  1812                           ;main.c: 730: {
-  1813                           ;main.c: 731: PB0 = 1;
+  1812                           ;main.c: 733: {
+  1813                           ;main.c: 734: PB0 = 1;
   1814  01C3  1406               	bsf	6,0
   1815                           
-  1816                           ;main.c: 732: PA0 = 1;
+  1816                           ;main.c: 735: PA0 = 1;
   1817  01C4  1405               	bsf	5,0
   1818                           
-  1819                           ;main.c: 733: PA1 = 1;
+  1819                           ;main.c: 736: PA1 = 1;
   1820  01C5  1485               	bsf	5,1
-  1821  01C6                     l4543:	
+  1821  01C6                     l4539:	
   1822                           
-  1823                           ;main.c: 734: ucLoaderStep3++;
+  1823                           ;main.c: 737: ucLoaderStep3++;
   1824  01C6  0AD0               	incf	main@ucLoaderStep3,f
   1825                           
-  1826                           ;main.c: 735: break;
-  1827  01C7  2840               	goto	l4245
-  1828  01C8                     l4545:	
+  1826                           ;main.c: 738: break;
+  1827  01C7  2840               	goto	l4241
+  1828  01C8                     l4541:	
   1829                           
-  1830                           ;main.c: 739: {
-  1831                           ;main.c: 740: if(ucTimerDelay3 >= 5)
+  1830                           ;main.c: 742: {
+  1831                           ;main.c: 743: if(ucTimerDelay3 >= 5)
   1832  01C8  3005               	movlw	5
   1833  01C9  0258               	subwf	main@ucTimerDelay3,w
   1834  01CA  1C03               	skipc
-  1835  01CB  29CF               	goto	l4553
+  1835  01CB  29CF               	goto	l4549
   1836                           
-  1837                           ;main.c: 741: {
-  1838                           ;main.c: 742: PA2 = 1;
+  1837                           ;main.c: 744: {
+  1838                           ;main.c: 745: PA2 = 1;
   1839  01CC  1505               	bsf	5,2
-  1840  01CD                     l4549:	
+  1840  01CD                     l4545:	
   1841                           
-  1842                           ;main.c: 743: ucTimerDelay3 = 0;
+  1842                           ;main.c: 746: ucTimerDelay3 = 0;
   1843  01CD  01D8               	clrf	main@ucTimerDelay3
-  1844  01CE  29C6               	goto	l4543
-  1845  01CF                     l4553:	
+  1844  01CE  29C6               	goto	l4539
+  1845  01CF                     l4549:	
   1846                           
-  1847                           ;main.c: 746: else
-  1848                           ;main.c: 747: ucTimerDelay3++;
+  1847                           ;main.c: 749: else
+  1848                           ;main.c: 750: ucTimerDelay3++;
   1849  01CF  0AD8               	incf	main@ucTimerDelay3,f
-  1850  01D0  2840               	goto	l4245
-  1851  01D1                     l4555:	
+  1850  01D0  2840               	goto	l4241
+  1851  01D1                     l4551:	
   1852                           
-  1853                           ;main.c: 752: {
-  1854                           ;main.c: 753: if(ucTimerDelay3 >= 5)
+  1853                           ;main.c: 755: {
+  1854                           ;main.c: 756: if(ucTimerDelay3 >= 5)
   1855  01D1  3005               	movlw	5
   1856  01D2  0258               	subwf	main@ucTimerDelay3,w
   1857  01D3  1C03               	skipc
-  1858  01D4  29CF               	goto	l4553
+  1858  01D4  29CF               	goto	l4549
   1859                           
-  1860                           ;main.c: 754: {
-  1861                           ;main.c: 755: PA3 = 1;
+  1860                           ;main.c: 757: {
+  1861                           ;main.c: 758: PA3 = 1;
   1862  01D5  1585               	bsf	5,3
-  1863  01D6  29CD               	goto	l4549
-  1864  01D7                     l4565:	
+  1863  01D6  29CD               	goto	l4545
+  1864  01D7                     l4561:	
   1865                           
-  1866                           ;main.c: 766: {
-  1867                           ;main.c: 767: if(ucTimerDelay3 >= 5)
+  1866                           ;main.c: 769: {
+  1867                           ;main.c: 770: if(ucTimerDelay3 >= 5)
   1868  01D7  3005               	movlw	5
   1869  01D8  0258               	subwf	main@ucTimerDelay3,w
   1870  01D9  1C03               	skipc
-  1871  01DA  29CF               	goto	l4553
+  1871  01DA  29CF               	goto	l4549
   1872                           
-  1873                           ;main.c: 768: {
-  1874                           ;main.c: 770: PA2 = 0;
+  1873                           ;main.c: 771: {
+  1874                           ;main.c: 773: PA2 = 0;
   1875  01DB  1105               	bcf	5,2
   1876                           
-  1877                           ;main.c: 771: PA3 = 0;
+  1877                           ;main.c: 774: PA3 = 0;
   1878  01DC  1185               	bcf	5,3
-  1879  01DD  29CD               	goto	l4549
-  1880  01DE                     l4575:	
+  1879  01DD  29CD               	goto	l4545
+  1880  01DE                     l4571:	
   1881                           
-  1882                           ;main.c: 781: {
-  1883                           ;main.c: 782: if(ucTimerDelay3 >= 2)
+  1882                           ;main.c: 784: {
+  1883                           ;main.c: 785: if(ucTimerDelay3 >= 2)
   1884  01DE  3002               	movlw	2
   1885  01DF  0258               	subwf	main@ucTimerDelay3,w
   1886  01E0  1C03               	skipc
-  1887  01E1  29CF               	goto	l4553
+  1887  01E1  29CF               	goto	l4549
   1888                           
-  1889                           ;main.c: 783: {
-  1890                           ;main.c: 784: ucTimerDelay3 = 0;
+  1889                           ;main.c: 786: {
+  1890                           ;main.c: 787: ucTimerDelay3 = 0;
   1891  01E2  01D8               	clrf	main@ucTimerDelay3
   1892                           
-  1893                           ;main.c: 786: ucLoaderStep3 = 0;
+  1893                           ;main.c: 789: ucLoaderStep3 = 0;
   1894  01E3  01D0               	clrf	main@ucLoaderStep3
-  1895  01E4  2946               	goto	l4417
-  1896  01E5                     l4585:	
+  1895  01E4  2946               	goto	l4413
+  1896  01E5                     l4581:	
   1897  01E5  0850               	movf	main@ucLoaderStep3,w
   1898                           
   1899                           ; Switch size 1, requested type "space"
@@ -1919,94 +1919,94 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1912  01E8  29C3               	goto	l850
   1913  01E9  3A01               	xorlw	1	; case 1
   1914  01EA  1903               	skipnz
-  1915  01EB  29C8               	goto	l4545
+  1915  01EB  29C8               	goto	l4541
   1916  01EC  3A03               	xorlw	3	; case 2
   1917  01ED  1903               	skipnz
-  1918  01EE  29D1               	goto	l4555
+  1918  01EE  29D1               	goto	l4551
   1919  01EF  3A01               	xorlw	1	; case 3
   1920  01F0  1903               	skipnz
-  1921  01F1  29D7               	goto	l4565
+  1921  01F1  29D7               	goto	l4561
   1922  01F2  3A07               	xorlw	7	; case 4
   1923  01F3  1903               	skipnz
-  1924  01F4  29DE               	goto	l4575
+  1924  01F4  29DE               	goto	l4571
   1925  01F5  286C               	goto	l710
   1926  01F6                     l871:	
-  1927                           ;main.c: 808: {
-  1928                           ;main.c: 809: case 0:
+  1927                           ;main.c: 811: {
+  1928                           ;main.c: 812: case 0:
   1929                           
   1930                           
-  1931                           ;main.c: 810: {
-  1932                           ;main.c: 811: PB0 = 1;
+  1931                           ;main.c: 813: {
+  1932                           ;main.c: 814: PB0 = 1;
   1933  01F6  1406               	bsf	6,0
   1934                           
-  1935                           ;main.c: 812: PA0 = 1;
+  1935                           ;main.c: 815: PA0 = 1;
   1936  01F7  1405               	bsf	5,0
   1937                           
-  1938                           ;main.c: 813: PA1 = 1;
+  1938                           ;main.c: 816: PA1 = 1;
   1939  01F8  1485               	bsf	5,1
   1940                           
-  1941                           ;main.c: 814: PA2 = 1;
+  1941                           ;main.c: 817: PA2 = 1;
   1942  01F9  1505               	bsf	5,2
-  1943  01FA                     l4587:	
+  1943  01FA                     l4583:	
   1944                           
-  1945                           ;main.c: 815: ucLoaderStep4++;
+  1945                           ;main.c: 818: ucLoaderStep4++;
   1946  01FA  0AD1               	incf	main@ucLoaderStep4,f
   1947                           
-  1948                           ;main.c: 816: break;
-  1949  01FB  2840               	goto	l4245
-  1950  01FC                     l4589:	
+  1948                           ;main.c: 819: break;
+  1949  01FB  2840               	goto	l4241
+  1950  01FC                     l4585:	
   1951                           
-  1952                           ;main.c: 820: {
-  1953                           ;main.c: 821: if(ucTimerDelay4 >= 5)
+  1952                           ;main.c: 823: {
+  1953                           ;main.c: 824: if(ucTimerDelay4 >= 5)
   1954  01FC  3005               	movlw	5
   1955  01FD  0259               	subwf	main@ucTimerDelay4,w
   1956  01FE  1C03               	skipc
-  1957  01FF  2A03               	goto	l4597
+  1957  01FF  2A03               	goto	l4593
   1958                           
-  1959                           ;main.c: 822: {
-  1960                           ;main.c: 823: PA3 = 1;
+  1959                           ;main.c: 825: {
+  1960                           ;main.c: 826: PA3 = 1;
   1961  0200  1585               	bsf	5,3
-  1962  0201                     l4593:	
+  1962  0201                     l4589:	
   1963                           
-  1964                           ;main.c: 824: ucTimerDelay4 = 0;
+  1964                           ;main.c: 827: ucTimerDelay4 = 0;
   1965  0201  01D9               	clrf	main@ucTimerDelay4
-  1966  0202  29FA               	goto	l4587
-  1967  0203                     l4597:	
+  1966  0202  29FA               	goto	l4583
+  1967  0203                     l4593:	
   1968                           
-  1969                           ;main.c: 827: else
-  1970                           ;main.c: 828: ucTimerDelay4++;
+  1969                           ;main.c: 830: else
+  1970                           ;main.c: 831: ucTimerDelay4++;
   1971  0203  0AD9               	incf	main@ucTimerDelay4,f
-  1972  0204  2840               	goto	l4245
-  1973  0205                     l4599:	
+  1972  0204  2840               	goto	l4241
+  1973  0205                     l4595:	
   1974                           
-  1975                           ;main.c: 833: {
-  1976                           ;main.c: 834: if(ucTimerDelay4 >= 5)
+  1975                           ;main.c: 836: {
+  1976                           ;main.c: 837: if(ucTimerDelay4 >= 5)
   1977  0205  3005               	movlw	5
   1978  0206  0259               	subwf	main@ucTimerDelay4,w
   1979  0207  1C03               	skipc
-  1980  0208  2A03               	goto	l4597
+  1980  0208  2A03               	goto	l4593
   1981                           
-  1982                           ;main.c: 835: {
-  1983                           ;main.c: 836: PA3 = 0;
+  1982                           ;main.c: 838: {
+  1983                           ;main.c: 839: PA3 = 0;
   1984  0209  1185               	bcf	5,3
-  1985  020A  2A01               	goto	l4593
-  1986  020B                     l4609:	
+  1985  020A  2A01               	goto	l4589
+  1986  020B                     l4605:	
   1987                           
-  1988                           ;main.c: 846: {
-  1989                           ;main.c: 847: if(ucTimerDelay4 >= 2)
+  1988                           ;main.c: 849: {
+  1989                           ;main.c: 850: if(ucTimerDelay4 >= 2)
   1990  020B  3002               	movlw	2
   1991  020C  0259               	subwf	main@ucTimerDelay4,w
   1992  020D  1C03               	skipc
-  1993  020E  2A03               	goto	l4597
+  1993  020E  2A03               	goto	l4593
   1994                           
-  1995                           ;main.c: 848: {
-  1996                           ;main.c: 849: ucTimerDelay4 = 0;
+  1995                           ;main.c: 851: {
+  1996                           ;main.c: 852: ucTimerDelay4 = 0;
   1997  020F  01D9               	clrf	main@ucTimerDelay4
   1998                           
-  1999                           ;main.c: 851: ucLoaderStep4 = 0;
+  1999                           ;main.c: 854: ucLoaderStep4 = 0;
   2000  0210  01D1               	clrf	main@ucLoaderStep4
-  2001  0211  2946               	goto	l4417
-  2002  0212                     l4619:	
+  2001  0211  2946               	goto	l4413
+  2002  0212                     l4615:	
   2003  0212  0851               	movf	main@ucLoaderStep4,w
   2004                           
   2005                           ; Switch size 1, requested type "space"
@@ -2025,15 +2025,15 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2018  0215  29F6               	goto	l871
   2019  0216  3A01               	xorlw	1	; case 1
   2020  0217  1903               	skipnz
-  2021  0218  29FC               	goto	l4589
+  2021  0218  29FC               	goto	l4585
   2022  0219  3A03               	xorlw	3	; case 2
   2023  021A  1903               	skipnz
-  2024  021B  2A05               	goto	l4599
+  2024  021B  2A05               	goto	l4595
   2025  021C  3A01               	xorlw	1	; case 3
   2026  021D  1903               	skipnz
-  2027  021E  2A0B               	goto	l4609
+  2027  021E  2A0B               	goto	l4605
   2028  021F  286C               	goto	l710
-  2029  0220                     l4623:	
+  2029  0220                     l4619:	
   2030  0220  084C               	movf	main@ucChannel4Type,w
   2031                           
   2032                           ; Switch size 1, requested type "space"
@@ -2049,261 +2049,261 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2042                           ;	Chosen strategy is simple_byte
   2043  0221  3A00               	xorlw	0	; case 0
   2044  0222  1903               	skipnz
-  2045  0223  2949               	goto	l4423
+  2045  0223  2949               	goto	l4419
   2046  0224  3A01               	xorlw	1	; case 1
   2047  0225  1903               	skipnz
-  2048  0226  2983               	goto	l4487
+  2048  0226  2983               	goto	l4483
   2049  0227  3A03               	xorlw	3	; case 2
   2050  0228  1903               	skipnz
-  2051  0229  29B7               	goto	l4541
+  2051  0229  29B7               	goto	l4537
   2052  022A  3A01               	xorlw	1	; case 3
   2053  022B  1903               	skipnz
-  2054  022C  29E5               	goto	l4585
+  2054  022C  29E5               	goto	l4581
   2055  022D  3A07               	xorlw	7	; case 4
   2056  022E  1903               	skipnz
-  2057  022F  2A12               	goto	l4619
+  2057  022F  2A12               	goto	l4615
   2058  0230  286C               	goto	l710
-  2059  0231                     l4625:	
+  2059  0231                     l4621:	
   2060                           
-  2061                           ;main.c: 875: {
-  2062                           ;main.c: 876: static unsigned char ucTimerDelayP5s = 0;
-  2063                           ;main.c: 878: static unsigned char ucTimerPA6DelayP1s = 0;
-  2064                           ;main.c: 880: static unsigned char ucTimerPB6DelayP1s = 0;
-  2065                           ;main.c: 882: if(isFinishedTwentySecondsTimer())
+  2061                           ;main.c: 878: {
+  2062                           ;main.c: 879: static unsigned char ucTimerDelayP5s = 0;
+  2063                           ;main.c: 881: static unsigned char ucTimerPA6DelayP1s = 0;
+  2064                           ;main.c: 883: static unsigned char ucTimerPB6DelayP1s = 0;
+  2065                           ;main.c: 885: if(isFinishedTwentySecondsTimer())
   2066  0231  118A  2656  118A   	fcall	_isFinishedTwentySecondsTimer
   2067  0234  3A00               	xorlw	0
   2068  0235  1903               	skipnz
-  2069  0236  28DF               	goto	l4341
+  2069  0236  28DF               	goto	l4337
   2070                           
-  2071                           ;main.c: 883: {
-  2072                           ;main.c: 884: if(ucTimerPA6DelayP1s < 1)
+  2071                           ;main.c: 886: {
+  2072                           ;main.c: 887: if(ucTimerPA6DelayP1s < 1)
   2073  0237  1283               	bcf	3,5	;RP0=0, select bank0
   2074  0238  08E3               	movf	main@ucTimerPA6DelayP1s,f
   2075  0239  1D03               	skipz
-  2076  023A  2A3E               	goto	l4633
+  2076  023A  2A3E               	goto	l4629
   2077                           
-  2078                           ;main.c: 885: {
-  2079                           ;main.c: 886: PA6 = 0;
+  2078                           ;main.c: 888: {
+  2079                           ;main.c: 889: PA6 = 0;
   2080  023B  1305               	bcf	5,6
   2081                           
-  2082                           ;main.c: 887: ucTimerPA6DelayP1s++;
+  2082                           ;main.c: 890: ucTimerPA6DelayP1s++;
   2083  023C  0AE3               	incf	main@ucTimerPA6DelayP1s,f
   2084                           
-  2085                           ;main.c: 888: }
-  2086  023D  2840               	goto	l4245
-  2087  023E                     l4633:	
+  2085                           ;main.c: 891: }
+  2086  023D  2840               	goto	l4241
+  2087  023E                     l4629:	
   2088                           
-  2089                           ;main.c: 889: else
-  2090                           ;main.c: 890: {
-  2091                           ;main.c: 891: if(ucTimerPB6DelayP1s < 1)
+  2089                           ;main.c: 892: else
+  2090                           ;main.c: 893: {
+  2091                           ;main.c: 894: if(ucTimerPB6DelayP1s < 1)
   2092  023E  08E4               	movf	main@ucTimerPB6DelayP1s,f
   2093  023F  1D03               	skipz
-  2094  0240  2A49               	goto	l4639
+  2094  0240  2A49               	goto	l4635
   2095                           
-  2096                           ;main.c: 892: {
-  2097                           ;main.c: 893: PBOD6 =0;
+  2096                           ;main.c: 895: {
+  2097                           ;main.c: 896: PBOD6 =0;
   2098  0241  1683               	bsf	3,5	;RP0=1, select bank3
   2099  0242  1703               	bsf	3,6	;RP1=1, select bank3
   2100  0243  1308               	bcf	8,6
   2101                           
-  2102                           ;main.c: 894: PB6 = 1;
+  2102                           ;main.c: 897: PB6 = 1;
   2103  0244  1283               	bcf	3,5	;RP0=0, select bank0
   2104  0245  1303               	bcf	3,6	;RP1=0, select bank0
   2105  0246  1706               	bsf	6,6
   2106                           
-  2107                           ;main.c: 895: ucTimerPB6DelayP1s++;
+  2107                           ;main.c: 898: ucTimerPB6DelayP1s++;
   2108  0247  0AE4               	incf	main@ucTimerPB6DelayP1s,f
   2109                           
-  2110                           ;main.c: 896: }
-  2111  0248  2840               	goto	l4245
-  2112  0249                     l4639:	
+  2110                           ;main.c: 899: }
+  2111  0248  2840               	goto	l4241
+  2112  0249                     l4635:	
   2113                           
-  2114                           ;main.c: 897: else
-  2115                           ;main.c: 898: {
-  2116                           ;main.c: 899: if(ucTimerDelayP5s < 3)
+  2114                           ;main.c: 900: else
+  2115                           ;main.c: 901: {
+  2116                           ;main.c: 902: if(ucTimerDelayP5s < 3)
   2117  0249  3003               	movlw	3
   2118  024A  025A               	subwf	main@ucTimerDelayP5s,w
   2119  024B  1803               	skipnc
-  2120  024C  2A4F               	goto	l4643
+  2120  024C  2A4F               	goto	l4639
   2121                           
-  2122                           ;main.c: 900: {
-  2123                           ;main.c: 901: ucTimerDelayP5s++;
+  2122                           ;main.c: 903: {
+  2123                           ;main.c: 904: ucTimerDelayP5s++;
   2124  024D  0ADA               	incf	main@ucTimerDelayP5s,f
   2125                           
-  2126                           ;main.c: 902: }
-  2127  024E  2840               	goto	l4245
-  2128  024F                     l4643:	
+  2126                           ;main.c: 905: }
+  2127  024E  2840               	goto	l4241
+  2128  024F                     l4639:	
   2129                           
-  2130                           ;main.c: 903: else
-  2131                           ;main.c: 904: {
-  2132                           ;main.c: 906: ucTimerDelayP5s = 0;
-  2133  024F  01DA               	clrf	main@ucTimerDelayP5s
-  2134                           
-  2135                           ;main.c: 908: ucTimerPB6DelayP1s = 0;
-  2136  0250  01E4               	clrf	main@ucTimerPB6DelayP1s
-  2137                           
-  2138                           ;main.c: 909: ucTimerPA6DelayP1s = 0;
-  2139  0251  01E3               	clrf	main@ucTimerPA6DelayP1s
-  2140                           
-  2141                           ;main.c: 911: static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
-  2142                           ;main.c: 913: static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 
+  2130                           ;main.c: 906: else
+  2131                           ;main.c: 907: {
+  2132                           ;main.c: 909: static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
+  2133                           ;main.c: 911: static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 
       +                          0;
-  2143                           ;main.c: 915: if((getAdOriginalCh14Value() > 2800))
-  2144  0252  118A  2482  118A   	fcall	_getAdOriginalCh14Value
-  2145  0255  300A               	movlw	10
-  2146  0256  0247               	subwf	?_getAdOriginalCh14Value+1,w
-  2147  0257  30F1               	movlw	241
-  2148  0258  1903               	skipnz
-  2149  0259  0246               	subwf	?_getAdOriginalCh14Value,w
-  2150  025A  1C03               	skipc
-  2151  025B  2A5F               	goto	l4651
-  2152                           
-  2153                           ;main.c: 916: {
-  2154                           ;main.c: 917: ucTimerForDACR0_CNT1++;
-  2155  025C  0ADB               	incf	main@ucTimerForDACR0_CNT1,f
-  2156                           
-  2157                           ;main.c: 918: ucTimerForDACR0_CNT2 = 0;
-  2158  025D  01DD               	clrf	main@ucTimerForDACR0_CNT2
+  2134                           ;main.c: 913: if((getAdOriginalCh14Value() > 2800))
+  2135  024F  118A  2482  118A   	fcall	_getAdOriginalCh14Value
+  2136  0252  300A               	movlw	10
+  2137  0253  0247               	subwf	?_getAdOriginalCh14Value+1,w
+  2138  0254  30F1               	movlw	241
+  2139  0255  1903               	skipnz
+  2140  0256  0246               	subwf	?_getAdOriginalCh14Value,w
+  2141  0257  1C03               	skipc
+  2142  0258  2A5C               	goto	l4645
+  2143                           
+  2144                           ;main.c: 914: {
+  2145                           ;main.c: 915: ucTimerForDACR0_CNT1++;
+  2146  0259  0ADB               	incf	main@ucTimerForDACR0_CNT1,f
+  2147                           
+  2148                           ;main.c: 916: ucTimerForDACR0_CNT2 = 0;
+  2149  025A  01DD               	clrf	main@ucTimerForDACR0_CNT2
+  2150                           
+  2151                           ;main.c: 917: }
+  2152  025B  2A5E               	goto	l4649
+  2153  025C                     l4645:	
+  2154                           
+  2155                           ;main.c: 918: else
+  2156                           ;main.c: 919: {
+  2157                           ;main.c: 920: ucTimerForDACR0_CNT2 = 0;
+  2158  025C  01DD               	clrf	main@ucTimerForDACR0_CNT2
   2159                           
-  2160                           ;main.c: 919: }
-  2161  025E  2A61               	goto	l4655
-  2162  025F                     l4651:	
+  2160                           ;main.c: 921: ucTimerForDACR0_CNT1++;
+  2161  025D  0ADB               	incf	main@ucTimerForDACR0_CNT1,f
+  2162  025E                     l4649:	
   2163                           
-  2164                           ;main.c: 920: else
-  2165                           ;main.c: 921: {
-  2166                           ;main.c: 922: ucTimerForDACR0_CNT2 = 0;
-  2167  025F  01DD               	clrf	main@ucTimerForDACR0_CNT2
-  2168                           
-  2169                           ;main.c: 923: ucTimerForDACR0_CNT1++;
-  2170  0260  0ADB               	incf	main@ucTimerForDACR0_CNT1,f
-  2171  0261                     l4655:	
-  2172                           
-  2173                           ;main.c: 924: }
-  2174                           ;main.c: 926: if(ucTimerForDACR0_CNT1 >= 3)
-  2175  0261  3003               	movlw	3
-  2176  0262  025B               	subwf	main@ucTimerForDACR0_CNT1,w
-  2177  0263  1C03               	skipc
-  2178  0264  2A67               	goto	l4663
-  2179                           
-  2180                           ;main.c: 927: ucTimerForDACR0_CNT1_f = 1;
-  2181  0265  01DC               	clrf	main@ucTimerForDACR0_CNT1_f
-  2182  0266  0ADC               	incf	main@ucTimerForDACR0_CNT1_f,f
-  2183  0267                     l4663:	
-  2184                           
-  2185                           ;main.c: 932: if(ucTimerForDACR0_CNT1_f)
-  2186  0267  085C               	movf	main@ucTimerForDACR0_CNT1_f,w
-  2187  0268  1903               	btfsc	3,2
-  2188  0269  2A6C               	goto	l4667
+  2164                           ;main.c: 922: }
+  2165                           ;main.c: 924: if(ucTimerForDACR0_CNT1 >= 3)
+  2166  025E  3003               	movlw	3
+  2167  025F  025B               	subwf	main@ucTimerForDACR0_CNT1,w
+  2168  0260  1C03               	skipc
+  2169  0261  2A64               	goto	l4657
+  2170                           
+  2171                           ;main.c: 925: ucTimerForDACR0_CNT1_f = 1;
+  2172  0262  01DC               	clrf	main@ucTimerForDACR0_CNT1_f
+  2173  0263  0ADC               	incf	main@ucTimerForDACR0_CNT1_f,f
+  2174  0264                     l4657:	
+  2175                           
+  2176                           ;main.c: 930: if(ucTimerForDACR0_CNT1_f)
+  2177  0264  085C               	movf	main@ucTimerForDACR0_CNT1_f,w
+  2178  0265  1903               	btfsc	3,2
+  2179  0266  2A69               	goto	l4661
+  2180                           
+  2181                           ;main.c: 931: {
+  2182                           ;main.c: 932: DACR0=0x0F;
+  2183  0267  300F               	movlw	15
+  2184  0268  2A6D               	goto	L7
+  2185  0269                     l4661:	
+  2186                           ;main.c: 934: }
+  2187                           
+  2188                           ;main.c: 933: ucADC4_Step = ADC4_STEP_FOURTH;
   2189                           
-  2190                           ;main.c: 933: {
-  2191                           ;main.c: 934: DACR0=0x0F;
-  2192  026A  300F               	movlw	15
-  2193  026B  2A70               	goto	L7
-  2194  026C                     l4667:	
-  2195                           ;main.c: 936: }
-  2196                           
-  2197                           ;main.c: 935: ucADC4_Step = ADC4_STEP_FOURTH;
-  2198                           
-  2199                           
-  2200                           ;main.c: 937: else if(ucTimerForDACR0_CNT2_f)
-  2201  026C  085E               	movf	main@ucTimerForDACR0_CNT2_f,w
-  2202  026D  1903               	btfsc	3,2
-  2203  026E  2A75               	goto	l4671
-  2204                           
-  2205                           ;main.c: 938: {
-  2206                           ;main.c: 939: DACR0=0x07;
-  2207  026F  3007               	movlw	7
-  2208  0270                     L7:	
-  2209  0270  1683               	bsf	3,5	;RP0=1, select bank1
-  2210  0271  0088               	movwf	8	;volatile
-  2211                           
-  2212                           ;main.c: 940: ucADC4_Step = ADC4_STEP_FOURTH;
-  2213  0272  3004               	movlw	4
-  2214  0273  1283               	bcf	3,5	;RP0=0, select bank0
-  2215  0274  00CB               	movwf	main@ucADC4_Step
-  2216  0275                     l4671:	
-  2217                           ;main.c: 941: }
-  2218                           
-  2219                           
-  2220                           ;main.c: 945: }
-  2221                           ;main.c: 947: if(ADC4_STEP_FOURTH == ucADC4_Step)
-  2222  0275  084B               	movf	main@ucADC4_Step,w
-  2223  0276  3A04               	xorlw	4
-  2224  0277  1D03               	skipz
-  2225  0278  2840               	goto	l4245
-  2226                           
-  2227                           ;main.c: 948: {
-  2228                           ;main.c: 949: ucTimerForDACR0_CNT1 = 0;
-  2229  0279  01DB               	clrf	main@ucTimerForDACR0_CNT1
+  2190                           
+  2191                           ;main.c: 935: else if(ucTimerForDACR0_CNT2_f)
+  2192  0269  085E               	movf	main@ucTimerForDACR0_CNT2_f,w
+  2193  026A  1903               	btfsc	3,2
+  2194  026B  2A72               	goto	l4665
+  2195                           
+  2196                           ;main.c: 936: {
+  2197                           ;main.c: 937: DACR0=0x07;
+  2198  026C  3007               	movlw	7
+  2199  026D                     L7:	
+  2200  026D  1683               	bsf	3,5	;RP0=1, select bank1
+  2201  026E  0088               	movwf	8	;volatile
+  2202                           
+  2203                           ;main.c: 938: ucADC4_Step = ADC4_STEP_FOURTH;
+  2204  026F  3004               	movlw	4
+  2205  0270  1283               	bcf	3,5	;RP0=0, select bank0
+  2206  0271  00CB               	movwf	main@ucADC4_Step
+  2207  0272                     l4665:	
+  2208                           ;main.c: 939: }
+  2209                           
+  2210                           
+  2211                           ;main.c: 943: }
+  2212                           ;main.c: 945: if(ADC4_STEP_FOURTH == ucADC4_Step)
+  2213  0272  084B               	movf	main@ucADC4_Step,w
+  2214  0273  3A04               	xorlw	4
+  2215  0274  1D03               	skipz
+  2216  0275  2840               	goto	l4241
+  2217                           
+  2218                           ;main.c: 946: {
+  2219                           ;main.c: 947: ucTimerForDACR0_CNT1 = 0;
+  2220  0276  01DB               	clrf	main@ucTimerForDACR0_CNT1
+  2221                           
+  2222                           ;main.c: 948: ucTimerForDACR0_CNT2 = 0;
+  2223  0277  01DD               	clrf	main@ucTimerForDACR0_CNT2
+  2224                           
+  2225                           ;main.c: 949: ucTimerForDACR0_CNT1_f = 0;
+  2226  0278  01DC               	clrf	main@ucTimerForDACR0_CNT1_f
+  2227                           
+  2228                           ;main.c: 950: ucTimerForDACR0_CNT2_f = 0;
+  2229  0279  01DE               	clrf	main@ucTimerForDACR0_CNT2_f
   2230                           
-  2231                           ;main.c: 950: ucTimerForDACR0_CNT2 = 0;
-  2232  027A  01DD               	clrf	main@ucTimerForDACR0_CNT2
+  2231                           ;main.c: 952: ucTimerPB6DelayP1s = 0;
+  2232  027A  01E4               	clrf	main@ucTimerPB6DelayP1s
   2233                           
-  2234                           ;main.c: 951: ucTimerForDACR0_CNT1_f = 0;
-  2235  027B  01DC               	clrf	main@ucTimerForDACR0_CNT1_f
+  2234                           ;main.c: 953: ucTimerPA6DelayP1s = 0;
+  2235  027B  01E3               	clrf	main@ucTimerPA6DelayP1s
   2236                           
-  2237                           ;main.c: 952: ucTimerForDACR0_CNT2_f = 0;
-  2238  027C  01DE               	clrf	main@ucTimerForDACR0_CNT2_f
-  2239  027D  2840               	goto	l4245
-  2240  027E                     l4675:	
+  2237                           ;main.c: 955: ucTimerDelayP5s = 0;
+  2238  027C  01DA               	clrf	main@ucTimerDelayP5s
+  2239  027D  2840               	goto	l4241
+  2240  027E                     l4669:	
   2241                           
-  2242                           ;main.c: 965: {
-  2243                           ;main.c: 966: static unsigned char ucTimer1s = 0;
-  2244                           ;main.c: 968: static unsigned char ucTimerSeond1s = 0;
-  2245                           ;main.c: 970: if(ucTimerSeond1s < 3)
+  2242                           ;main.c: 968: {
+  2243                           ;main.c: 969: static unsigned char ucTimer1s = 0;
+  2244                           ;main.c: 971: static unsigned char ucTimerSeond1s = 0;
+  2245                           ;main.c: 973: if(ucTimerSeond1s < 3)
   2246  027E  3003               	movlw	3
   2247  027F  0267               	subwf	main@ucTimerSeond1s,w
   2248  0280  1803               	skipnc
-  2249  0281  2A84               	goto	l4679
+  2249  0281  2A84               	goto	l4673
   2250                           
-  2251                           ;main.c: 971: {
-  2252                           ;main.c: 972: ucTimerSeond1s++;
+  2251                           ;main.c: 974: {
+  2252                           ;main.c: 975: ucTimerSeond1s++;
   2253  0282  0AE7               	incf	main@ucTimerSeond1s,f
   2254                           
-  2255                           ;main.c: 973: }
-  2256  0283  2840               	goto	l4245
-  2257  0284                     l4679:	
-  2258  0284  3003               	movlw	3
-  2259                           
-  2260                           ;main.c: 974: else
-  2261                           ;main.c: 975: {
-  2262                           ;main.c: 976: ucTimerSeond1s = 0;
-  2263  0285  01E7               	clrf	main@ucTimerSeond1s
-  2264                           
-  2265                           ;main.c: 978: if(ucTimer1s < 3)
-  2266  0286  0252               	subwf	main@ucTimer1s,w
-  2267  0287  1803               	skipnc
-  2268  0288  2A8F               	goto	l4689
-  2269                           
-  2270                           ;main.c: 979: {
-  2271                           ;main.c: 980: ucTimer1s++;
-  2272  0289  0AD2               	incf	main@ucTimer1s,f
+  2255                           ;main.c: 976: }
+  2256  0283  2840               	goto	l4241
+  2257  0284                     l4673:	
+  2258                           
+  2259                           ;main.c: 977: else
+  2260                           ;main.c: 978: {
+  2261                           ;main.c: 979: if(ucTimer1s < 3)
+  2262  0284  3003               	movlw	3
+  2263  0285  0252               	subwf	main@ucTimer1s,w
+  2264  0286  1803               	skipnc
+  2265  0287  2A8E               	goto	l4681
+  2266                           
+  2267                           ;main.c: 980: {
+  2268                           ;main.c: 981: ucTimer1s++;
+  2269  0288  0AD2               	incf	main@ucTimer1s,f
+  2270                           
+  2271                           ;main.c: 982: PB6 = 1;
+  2272  0289  1706               	bsf	6,6
   2273                           
-  2274                           ;main.c: 981: PB6 = 1;
-  2275  028A  1706               	bsf	6,6
-  2276                           
-  2277                           ;main.c: 982: PBOD6 = 1;
-  2278  028B  1683               	bsf	3,5	;RP0=1, select bank3
-  2279  028C  1703               	bsf	3,6	;RP1=1, select bank3
-  2280  028D  1708               	bsf	8,6
-  2281                           
-  2282                           ;main.c: 983: }
-  2283  028E  2840               	goto	l4245
-  2284  028F                     l4689:	
-  2285                           
-  2286                           ;main.c: 984: else
-  2287                           ;main.c: 985: {
-  2288                           ;main.c: 986: ucTimer1s = 0;
-  2289  028F  01D2               	clrf	main@ucTimer1s
+  2274                           ;main.c: 983: PBOD6 = 1;
+  2275  028A  1683               	bsf	3,5	;RP0=1, select bank3
+  2276  028B  1703               	bsf	3,6	;RP1=1, select bank3
+  2277  028C  1708               	bsf	8,6
+  2278                           
+  2279                           ;main.c: 984: }
+  2280  028D  2840               	goto	l4241
+  2281  028E                     l4681:	
+  2282                           
+  2283                           ;main.c: 985: else
+  2284                           ;main.c: 986: {
+  2285                           ;main.c: 987: ucTimer1s = 0;
+  2286  028E  01D2               	clrf	main@ucTimer1s
+  2287                           
+  2288                           ;main.c: 989: ucTimerSeond1s = 0;
+  2289  028F  01E7               	clrf	main@ucTimerSeond1s
   2290                           
-  2291                           ;main.c: 988: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+  2291                           ;main.c: 991: enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
   2292  0290  01CA               	clrf	main@enumMainLoopStep
   2293  0291  0ACA               	incf	main@enumMainLoopStep,f
   2294                           
-  2295                           ;main.c: 989: ucADC4_Step = ADC4_STEP_INIT;
+  2295                           ;main.c: 993: ucADC4_Step = ADC4_STEP_INIT;
   2296  0292  01CB               	clrf	main@ucADC4_Step
-  2297  0293  2840               	goto	l4245
-  2298  0294                     l4695:	
+  2297  0293  2840               	goto	l4241
+  2298  0294                     l4687:	
   2299  0294  1283               	bcf	3,5	;RP0=0, select bank0
   2300  0295  084B               	movf	main@ucADC4_Step,w
   2301                           
@@ -2320,115 +2320,115 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2312                           ;	Chosen strategy is simple_byte
   2313  0296  3A00               	xorlw	0	; case 0
   2314  0297  1903               	skipnz
-  2315  0298  28DC               	goto	l4339
+  2315  0298  28DC               	goto	l4335
   2316  0299  3A01               	xorlw	1	; case 1
   2317  029A  1903               	skipnz
-  2318  029B  28E3               	goto	l4343
+  2318  029B  28E3               	goto	l4339
   2319  029C  3A03               	xorlw	3	; case 2
   2320  029D  1903               	skipnz
-  2321  029E  2A20               	goto	l4623
+  2321  029E  2A20               	goto	l4619
   2322  029F  3A01               	xorlw	1	; case 3
   2323  02A0  1903               	skipnz
-  2324  02A1  2A31               	goto	l4625
+  2324  02A1  2A31               	goto	l4621
   2325  02A2  3A07               	xorlw	7	; case 4
   2326  02A3  1903               	skipnz
-  2327  02A4  2A7E               	goto	l4675
+  2327  02A4  2A7E               	goto	l4669
   2328  02A5  286C               	goto	l710
   2329  02A6                     l930:	
-  2330                           ;main.c: 1016: {
-  2331                           ;main.c: 1017: case HOUR_3_BRANCH_STEP_FIRST:
+  2330                           ;main.c: 1020: {
+  2331                           ;main.c: 1021: case HOUR_3_BRANCH_STEP_FIRST:
   2332                           
   2333                           
-  2334                           ;main.c: 1018: {
-  2335                           ;main.c: 1019: PA7 = 1;
+  2334                           ;main.c: 1022: {
+  2335                           ;main.c: 1023: PA7 = 1;
   2336  02A6  1785               	bsf	5,7
   2337                           
-  2338                           ;main.c: 1020: PAOD7 = 1;
+  2338                           ;main.c: 1024: PAOD7 = 1;
   2339  02A7  1683               	bsf	3,5	;RP0=1, select bank3
   2340  02A8  303C               	movlw	60
   2341  02A9  1703               	bsf	3,6	;RP1=1, select bank3
   2342  02AA  1787               	bsf	7,7
   2343                           
-  2344                           ;main.c: 1021: startThreeHoursTimer(60);
+  2344                           ;main.c: 1025: startThreeHoursTimer(60);
   2345  02AB  1283               	bcf	3,5	;RP0=0, select bank0
   2346  02AC  1303               	bcf	3,6	;RP1=0, select bank0
   2347  02AD  00A0               	movwf	?_startThreeHoursTimer
   2348  02AE  01A1               	clrf	?_startThreeHoursTimer+1
   2349  02AF  118A  25FB  118A   	fcall	_startThreeHoursTimer
   2350                           
-  2351                           ;main.c: 1023: PB0 = 1;
+  2351                           ;main.c: 1027: PB0 = 1;
   2352  02B2  1283               	bcf	3,5	;RP0=0, select bank0
   2353  02B3  1406               	bsf	6,0
   2354                           
-  2355                           ;main.c: 1024: PA0 = 1;
+  2355                           ;main.c: 1028: PA0 = 1;
   2356  02B4  1405               	bsf	5,0
   2357                           
-  2358                           ;main.c: 1025: PA1 = 1;
+  2358                           ;main.c: 1029: PA1 = 1;
   2359  02B5  1485               	bsf	5,1
   2360                           
-  2361                           ;main.c: 1026: PA2 = 1;
+  2361                           ;main.c: 1030: PA2 = 1;
   2362  02B6  1505               	bsf	5,2
   2363                           
-  2364                           ;main.c: 1027: PA3 = 1;
+  2364                           ;main.c: 1031: PA3 = 1;
   2365  02B7  1585               	bsf	5,3
   2366                           
-  2367                           ;main.c: 1029: enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
+  2367                           ;main.c: 1033: enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
   2368  02B8  01C9               	clrf	main@enumBranchStep
   2369  02B9  0AC9               	incf	main@enumBranchStep,f
   2370                           
-  2371                           ;main.c: 1030: break;
-  2372  02BA  2840               	goto	l4245
-  2373  02BB                     l4711:	
+  2371                           ;main.c: 1034: break;
+  2372  02BA  2840               	goto	l4241
+  2373  02BB                     l4703:	
   2374                           
-  2375                           ;main.c: 1034: {
-  2376                           ;main.c: 1035: static unsigned char ucTimer20s = 0;
-  2377                           ;main.c: 1037: if(ucTimer20s < 200)
+  2375                           ;main.c: 1038: {
+  2376                           ;main.c: 1039: static unsigned char ucTimer20s = 0;
+  2377                           ;main.c: 1041: if(ucTimer20s < 200)
   2378  02BB  30C8               	movlw	200
   2379  02BC  0253               	subwf	main@ucTimer20s,w
   2380  02BD  1803               	skipnc
-  2381  02BE  2AC1               	goto	l4715
+  2381  02BE  2AC1               	goto	l4707
   2382                           
-  2383                           ;main.c: 1038: {
-  2384                           ;main.c: 1039: ucTimer20s++;
+  2383                           ;main.c: 1042: {
+  2384                           ;main.c: 1043: ucTimer20s++;
   2385  02BF  0AD3               	incf	main@ucTimer20s,f
   2386                           
-  2387                           ;main.c: 1041: }
-  2388  02C0  2840               	goto	l4245
-  2389  02C1                     l4715:	
+  2387                           ;main.c: 1045: }
+  2388  02C0  2840               	goto	l4241
+  2389  02C1                     l4707:	
   2390  02C1  3002               	movlw	2
   2391                           
-  2392                           ;main.c: 1042: else
-  2393                           ;main.c: 1043: {
-  2394                           ;main.c: 1045: ucTimer20s = 0;
+  2392                           ;main.c: 1046: else
+  2393                           ;main.c: 1047: {
+  2394                           ;main.c: 1049: ucTimer20s = 0;
   2395  02C2  01D3               	clrf	main@ucTimer20s
   2396                           
-  2397                           ;main.c: 1047: enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
+  2397                           ;main.c: 1051: enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
   2398  02C3  00C9               	movwf	main@enumBranchStep
   2399                           
-  2400                           ;main.c: 1049: PA6 = 0;
+  2400                           ;main.c: 1053: PA6 = 0;
   2401  02C4  1305               	bcf	5,6
-  2402  02C5  2840               	goto	l4245
-  2403  02C6                     l4721:	
+  2402  02C5  2840               	goto	l4241
+  2403  02C6                     l4713:	
   2404                           
-  2405                           ;main.c: 1055: {
-  2406                           ;main.c: 1056: if(isFinishedThreeHoursTimer())
+  2405                           ;main.c: 1059: {
+  2406                           ;main.c: 1060: if(isFinishedThreeHoursTimer())
   2407  02C6  118A  2650  118A   	fcall	_isFinishedThreeHoursTimer
   2408  02C9  3A00               	xorlw	0
   2409  02CA  1903               	skipnz
-  2410  02CB  2ACF               	goto	l4727
+  2410  02CB  2ACF               	goto	l4719
   2411                           
-  2412                           ;main.c: 1057: {
-  2413                           ;main.c: 1058: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+  2412                           ;main.c: 1061: {
+  2413                           ;main.c: 1062: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
   2414  02CC  1283               	bcf	3,5	;RP0=0, select bank0
   2415  02CD  01C9               	clrf	main@enumBranchStep
-  2416  02CE  28D9               	goto	l4337
-  2417  02CF                     l4727:	
+  2416  02CE  28D9               	goto	l4333
+  2417  02CF                     l4719:	
   2418                           
-  2419                           ;main.c: 1061: else
-  2420                           ;main.c: 1062: {
-  2421                           ;main.c: 1063: static unsigned char ucTimerX1P5s = 0;
-  2422                           ;main.c: 1065: static unsigned char ucTimerLessX1P5s = 0;
-  2423                           ;main.c: 1067: if(getAdOriginalCh1Value() < 130)
+  2419                           ;main.c: 1065: else
+  2420                           ;main.c: 1066: {
+  2421                           ;main.c: 1067: static unsigned char ucTimerX1P5s = 0;
+  2422                           ;main.c: 1069: static unsigned char ucTimerLessX1P5s = 0;
+  2423                           ;main.c: 1071: if(getAdOriginalCh1Value() < 130)
   2424  02CF  118A  2478  118A   	fcall	_getAdOriginalCh1Value
   2425  02D2  3000               	movlw	0
   2426  02D3  0247               	subwf	?_getAdOriginalCh1Value+1,w
@@ -2436,75 +2436,75 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2428  02D5  1903               	skipnz
   2429  02D6  0246               	subwf	?_getAdOriginalCh1Value,w
   2430  02D7  1803               	skipnc
-  2431  02D8  2ADC               	goto	l4733
+  2431  02D8  2ADC               	goto	l4725
   2432                           
-  2433                           ;main.c: 1068: {
-  2434                           ;main.c: 1069: ucTimerX1P5s = 0;
+  2433                           ;main.c: 1072: {
+  2434                           ;main.c: 1073: ucTimerX1P5s = 0;
   2435  02D9  01E8               	clrf	main@ucTimerX1P5s
   2436                           
-  2437                           ;main.c: 1070: ucTimerLessX1P5s++;
+  2437                           ;main.c: 1074: ucTimerLessX1P5s++;
   2438  02DA  0AE0               	incf	main@ucTimerLessX1P5s,f
   2439                           
-  2440                           ;main.c: 1071: }
-  2441  02DB  2ADE               	goto	l4737
-  2442  02DC                     l4733:	
+  2440                           ;main.c: 1075: }
+  2441  02DB  2ADE               	goto	l4729
+  2442  02DC                     l4725:	
   2443                           
-  2444                           ;main.c: 1072: else
-  2445                           ;main.c: 1073: {
-  2446                           ;main.c: 1074: ucTimerX1P5s++;
+  2444                           ;main.c: 1076: else
+  2445                           ;main.c: 1077: {
+  2446                           ;main.c: 1078: ucTimerX1P5s++;
   2447  02DC  0AE8               	incf	main@ucTimerX1P5s,f
   2448                           
-  2449                           ;main.c: 1075: ucTimerLessX1P5s = 0;
+  2449                           ;main.c: 1079: ucTimerLessX1P5s = 0;
   2450  02DD  01E0               	clrf	main@ucTimerLessX1P5s
-  2451  02DE                     l4737:	
+  2451  02DE                     l4729:	
   2452                           
-  2453                           ;main.c: 1076: }
-  2454                           ;main.c: 1078: if(ucTimerX1P5s >= 5)
+  2453                           ;main.c: 1080: }
+  2454                           ;main.c: 1082: if(ucTimerX1P5s >= 5)
   2455  02DE  3005               	movlw	5
   2456  02DF  0268               	subwf	main@ucTimerX1P5s,w
   2457  02E0  1C03               	skipc
-  2458  02E1  2AF1               	goto	l4751
+  2458  02E1  2AF1               	goto	l4743
   2459                           
-  2460                           ;main.c: 1079: {
-  2461                           ;main.c: 1080: ucTimerX1P5s = 0;
+  2460                           ;main.c: 1083: {
+  2461                           ;main.c: 1084: ucTimerX1P5s = 0;
   2462  02E2  01E8               	clrf	main@ucTimerX1P5s
   2463                           
-  2464                           ;main.c: 1081: PAOD7 = 0;
+  2464                           ;main.c: 1085: PAOD7 = 0;
   2465  02E3  1683               	bsf	3,5	;RP0=1, select bank3
   2466  02E4  1703               	bsf	3,6	;RP1=1, select bank3
   2467  02E5  1387               	bcf	7,7
   2468                           
-  2469                           ;main.c: 1082: PA7 = 0;
+  2469                           ;main.c: 1086: PA7 = 0;
   2470  02E6  1283               	bcf	3,5	;RP0=0, select bank0
   2471  02E7  1303               	bcf	3,6	;RP1=0, select bank0
   2472  02E8  1385               	bcf	5,7
   2473                           
-  2474                           ;main.c: 1083: clearThreeHoursTimer();
+  2474                           ;main.c: 1087: clearThreeHoursTimer();
   2475  02E9  118A  25AC  118A   	fcall	_clearThreeHoursTimer
   2476                           
-  2477                           ;main.c: 1085: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+  2477                           ;main.c: 1089: enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
   2478  02EC  1283               	bcf	3,5	;RP0=0, select bank0
   2479  02ED  3002               	movlw	2
   2480  02EE  01C9               	clrf	main@enumBranchStep
   2481  02EF                     L4:	
-  2482                           ;main.c: 1087: enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
+  2482                           ;main.c: 1091: enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
   2483                           
   2484  02EF  00CA               	movwf	main@enumMainLoopStep
   2485                           
-  2486                           ;main.c: 1088: }
-  2487  02F0  2840               	goto	l4245
-  2488  02F1                     l4751:	
+  2486                           ;main.c: 1092: }
+  2487  02F0  2840               	goto	l4241
+  2488  02F1                     l4743:	
   2489                           
-  2490                           ;main.c: 1089: else if(ucTimerLessX1P5s >= 5)
+  2490                           ;main.c: 1093: else if(ucTimerLessX1P5s >= 5)
   2491  02F1  3005               	movlw	5
   2492  02F2  0260               	subwf	main@ucTimerLessX1P5s,w
   2493  02F3  1C03               	skipc
-  2494  02F4  2840               	goto	l4245
+  2494  02F4  2840               	goto	l4241
   2495                           
-  2496                           ;main.c: 1090: {
-  2497                           ;main.c: 1091: static unsigned char ucTimerX2P5s = 0;
-  2498                           ;main.c: 1093: static unsigned char ucTimerLessX2P5s = 0;
-  2499                           ;main.c: 1095: if(getAdOriginalCh14Value() >= 1950)
+  2496                           ;main.c: 1094: {
+  2497                           ;main.c: 1095: static unsigned char ucTimerX2P5s = 0;
+  2498                           ;main.c: 1097: static unsigned char ucTimerLessX2P5s = 0;
+  2499                           ;main.c: 1099: if(getAdOriginalCh14Value() >= 1950)
   2500  02F5  118A  2482  118A   	fcall	_getAdOriginalCh14Value
   2501  02F8  3007               	movlw	7
   2502  02F9  0247               	subwf	?_getAdOriginalCh14Value+1,w
@@ -2512,54 +2512,54 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2504  02FB  1903               	skipnz
   2505  02FC  0246               	subwf	?_getAdOriginalCh14Value,w
   2506  02FD  1C03               	skipc
-  2507  02FE  2B02               	goto	l4759
+  2507  02FE  2B02               	goto	l4751
   2508                           
-  2509                           ;main.c: 1096: {
-  2510                           ;main.c: 1097: ucTimerX2P5s++;
+  2509                           ;main.c: 1100: {
+  2510                           ;main.c: 1101: ucTimerX2P5s++;
   2511  02FF  0AE9               	incf	main@ucTimerX2P5s,f
   2512                           
-  2513                           ;main.c: 1098: ucTimerLessX2P5s = 0;
+  2513                           ;main.c: 1102: ucTimerLessX2P5s = 0;
   2514  0300  01E1               	clrf	main@ucTimerLessX2P5s
   2515                           
-  2516                           ;main.c: 1099: }
-  2517  0301  2B04               	goto	l4763
-  2518  0302                     l4759:	
+  2516                           ;main.c: 1103: }
+  2517  0301  2B04               	goto	l4755
+  2518  0302                     l4751:	
   2519                           
-  2520                           ;main.c: 1100: else
-  2521                           ;main.c: 1101: {
-  2522                           ;main.c: 1102: ucTimerX2P5s = 0;
+  2520                           ;main.c: 1104: else
+  2521                           ;main.c: 1105: {
+  2522                           ;main.c: 1106: ucTimerX2P5s = 0;
   2523  0302  01E9               	clrf	main@ucTimerX2P5s
   2524                           
-  2525                           ;main.c: 1103: ucTimerLessX2P5s++;
+  2525                           ;main.c: 1107: ucTimerLessX2P5s++;
   2526  0303  0AE1               	incf	main@ucTimerLessX2P5s,f
-  2527  0304                     l4763:	
+  2527  0304                     l4755:	
   2528                           
-  2529                           ;main.c: 1104: }
-  2530                           ;main.c: 1106: if(ucTimerX2P5s >= 5)
+  2529                           ;main.c: 1108: }
+  2530                           ;main.c: 1110: if(ucTimerX2P5s >= 5)
   2531  0304  3005               	movlw	5
   2532  0305  0269               	subwf	main@ucTimerX2P5s,w
   2533  0306  1C03               	skipc
-  2534  0307  2B0A               	goto	l4767
+  2534  0307  2B0A               	goto	l4759
   2535                           
-  2536                           ;main.c: 1107: {
-  2537                           ;main.c: 1108: ucTimerX2P5s = 0;
+  2536                           ;main.c: 1111: {
+  2537                           ;main.c: 1112: ucTimerX2P5s = 0;
   2538  0308  01E9               	clrf	main@ucTimerX2P5s
   2539                           
-  2540                           ;main.c: 1109: }
-  2541  0309  2840               	goto	l4245
-  2542  030A                     l4767:	
+  2540                           ;main.c: 1113: }
+  2541  0309  2840               	goto	l4241
+  2542  030A                     l4759:	
   2543                           
-  2544                           ;main.c: 1110: else if(ucTimerLessX2P5s >= 5)
+  2544                           ;main.c: 1114: else if(ucTimerLessX2P5s >= 5)
   2545  030A  3005               	movlw	5
   2546  030B  0261               	subwf	main@ucTimerLessX2P5s,w
   2547  030C  1C03               	skipc
-  2548  030D  2840               	goto	l4245
+  2548  030D  2840               	goto	l4241
   2549                           
-  2550                           ;main.c: 1111: {
-  2551                           ;main.c: 1112: clearPinPortAndTimer();
+  2550                           ;main.c: 1115: {
+  2551                           ;main.c: 1116: clearPinPortAndTimer();
   2552  030E  118A  2597  118A   	fcall	_clearPinPortAndTimer
-  2553  0311  2869               	goto	l4271
-  2554  0312                     l4775:	
+  2553  0311  2869               	goto	l4267
+  2554  0312                     l4767:	
   2555  0312  0849               	movf	main@enumBranchStep,w
   2556                           
   2557                           ; Switch size 1, requested type "space"
@@ -2578,61 +2578,61 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2570  0315  2AA6               	goto	l930
   2571  0316  3A01               	xorlw	1	; case 1
   2572  0317  1903               	skipnz
-  2573  0318  2ABB               	goto	l4711
+  2573  0318  2ABB               	goto	l4703
   2574  0319  3A03               	xorlw	3	; case 2
   2575  031A  1903               	skipnz
-  2576  031B  2AC6               	goto	l4721
+  2576  031B  2AC6               	goto	l4713
   2577  031C  286C               	goto	l710
   2578  031D                     l965:	
-  2579                           ;main.c: 1150: {
-  2580                           ;main.c: 1151: case INTERNAL_FIRST_STEP:
+  2579                           ;main.c: 1154: {
+  2580                           ;main.c: 1155: case INTERNAL_FIRST_STEP:
   2581                           
   2582                           
-  2583                           ;main.c: 1152: {
-  2584                           ;main.c: 1153: PB0 = 0;
+  2583                           ;main.c: 1156: {
+  2584                           ;main.c: 1157: PB0 = 0;
   2585  031D  1283               	bcf	3,5	;RP0=0, select bank0
   2586  031E  1006               	bcf	6,0
   2587                           
-  2588                           ;main.c: 1154: PB1 = 0;
+  2588                           ;main.c: 1158: PB1 = 0;
   2589  031F  1086               	bcf	6,1
   2590                           
-  2591                           ;main.c: 1155: PA0 = 0;
+  2591                           ;main.c: 1159: PA0 = 0;
   2592  0320  1005               	bcf	5,0
   2593                           
-  2594                           ;main.c: 1156: PA1 = 0;
+  2594                           ;main.c: 1160: PA1 = 0;
   2595  0321  1085               	bcf	5,1
   2596                           
-  2597                           ;main.c: 1157: PA2 = 0;
+  2597                           ;main.c: 1161: PA2 = 0;
   2598  0322  1105               	bcf	5,2
   2599                           
-  2600                           ;main.c: 1158: PA3 = 0;
+  2600                           ;main.c: 1162: PA3 = 0;
   2601  0323  1185               	bcf	5,3
   2602                           
-  2603                           ;main.c: 1159: PBOD6 = 0;
+  2603                           ;main.c: 1163: PBOD6 = 0;
   2604  0324  1683               	bsf	3,5	;RP0=1, select bank3
   2605  0325  1703               	bsf	3,6	;RP1=1, select bank3
   2606  0326  1308               	bcf	8,6
   2607                           
-  2608                           ;main.c: 1160: PB6 = 1;
+  2608                           ;main.c: 1164: PB6 = 1;
   2609  0327  1283               	bcf	3,5	;RP0=0, select bank0
   2610  0328  1303               	bcf	3,6	;RP1=0, select bank0
   2611  0329  1706               	bsf	6,6
   2612                           
-  2613                           ;main.c: 1161: PA6 =0;
+  2613                           ;main.c: 1165: PA6 =0;
   2614  032A  1305               	bcf	5,6
   2615                           
-  2616                           ;main.c: 1163: enumInteralStep = INTERNAL_SECOND_STEP;
+  2616                           ;main.c: 1167: enumInteralStep = INTERNAL_SECOND_STEP;
   2617  032B  1683               	bsf	3,5	;RP0=1, select bank1
   2618  032C  01AA               	clrf	main@enumInteralStep^(0+128)
   2619  032D  0AAA               	incf	main@enumInteralStep^(0+128),f
   2620                           
-  2621                           ;main.c: 1164: break;
-  2622  032E  2840               	goto	l4245
-  2623  032F                     l4777:	
+  2621                           ;main.c: 1168: break;
+  2622  032E  2840               	goto	l4241
+  2623  032F                     l4769:	
   2624                           
-  2625                           ;main.c: 1168: {
-  2626                           ;main.c: 1169: static unsigned char ucTimer1s = 0;
-  2627                           ;main.c: 1171: if(getAdOriginalCh14Value() <= 1000)
+  2625                           ;main.c: 1172: {
+  2626                           ;main.c: 1173: static unsigned char ucTimer1s = 0;
+  2627                           ;main.c: 1175: if(getAdOriginalCh14Value() <= 1000)
   2628  032F  118A  2482  118A   	fcall	_getAdOriginalCh14Value
   2629  0332  3003               	movlw	3
   2630  0333  0247               	subwf	?_getAdOriginalCh14Value+1,w
@@ -2640,42 +2640,42 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2632  0335  1903               	skipnz
   2633  0336  0246               	subwf	?_getAdOriginalCh14Value,w
   2634  0337  1803               	skipnc
-  2635  0338  2B3C               	goto	l4781
+  2635  0338  2B3C               	goto	l4773
   2636                           
-  2637                           ;main.c: 1172: {
-  2638                           ;main.c: 1173: ucTimer1s++;
+  2637                           ;main.c: 1176: {
+  2638                           ;main.c: 1177: ucTimer1s++;
   2639  0339  1683               	bsf	3,5	;RP0=1, select bank1
   2640  033A  0AA9               	incf	main@cTimer1s_823^(0+128),f
   2641                           
-  2642                           ;main.c: 1174: }
-  2643  033B  2B3E               	goto	l4783
-  2644  033C                     l4781:	
+  2642                           ;main.c: 1178: }
+  2643  033B  2B3E               	goto	l4775
+  2644  033C                     l4773:	
   2645                           
-  2646                           ;main.c: 1175: else
-  2647                           ;main.c: 1176: ucTimer1s = 0;
+  2646                           ;main.c: 1179: else
+  2647                           ;main.c: 1180: ucTimer1s = 0;
   2648  033C  1683               	bsf	3,5	;RP0=1, select bank1
   2649  033D  01A9               	clrf	main@cTimer1s_823^(0+128)
-  2650  033E                     l4783:	
+  2650  033E                     l4775:	
   2651                           
-  2652                           ;main.c: 1178: if(ucTimer1s >= 10)
+  2652                           ;main.c: 1182: if(ucTimer1s >= 10)
   2653  033E  300A               	movlw	10
   2654  033F  0229               	subwf	main@cTimer1s_823^(0+128),w
   2655  0340  1C03               	skipc
-  2656  0341  2840               	goto	l4245
+  2656  0341  2840               	goto	l4241
   2657                           
-  2658                           ;main.c: 1179: {
-  2659                           ;main.c: 1180: enumInteralStep = INTERNAL_THIRD_STEP;
+  2658                           ;main.c: 1183: {
+  2659                           ;main.c: 1184: enumInteralStep = INTERNAL_THIRD_STEP;
   2660  0342  3002               	movlw	2
   2661  0343  00AA               	movwf	main@enumInteralStep^(0+128)
   2662                           
-  2663                           ;main.c: 1181: ucTimer1s = 0;
+  2663                           ;main.c: 1185: ucTimer1s = 0;
   2664  0344  01A9               	clrf	main@cTimer1s_823^(0+128)
-  2665  0345  2840               	goto	l4245
-  2666  0346                     l4789:	
+  2665  0345  2840               	goto	l4241
+  2666  0346                     l4781:	
   2667                           
-  2668                           ;main.c: 1187: {
-  2669                           ;main.c: 1188: static unsigned char ucTimerP3s = 0;
-  2670                           ;main.c: 1190: if(getAdOriginalCh14Value() >= 1950)
+  2668                           ;main.c: 1191: {
+  2669                           ;main.c: 1192: static unsigned char ucTimerP3s = 0;
+  2670                           ;main.c: 1194: if(getAdOriginalCh14Value() >= 1950)
   2671  0346  118A  2482  118A   	fcall	_getAdOriginalCh14Value
   2672  0349  3007               	movlw	7
   2673  034A  0247               	subwf	?_getAdOriginalCh14Value+1,w
@@ -2683,52 +2683,52 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2675  034C  1903               	skipnz
   2676  034D  0246               	subwf	?_getAdOriginalCh14Value,w
   2677  034E  1C03               	skipc
-  2678  034F  2B53               	goto	l4793
+  2678  034F  2B53               	goto	l4785
   2679                           
-  2680                           ;main.c: 1191: {
-  2681                           ;main.c: 1192: ucTimerP3s++;
+  2680                           ;main.c: 1195: {
+  2681                           ;main.c: 1196: ucTimerP3s++;
   2682  0350  1683               	bsf	3,5	;RP0=1, select bank1
   2683  0351  0AAB               	incf	main@ucTimerP3s^(0+128),f
   2684                           
-  2685                           ;main.c: 1193: }
-  2686  0352  2B55               	goto	l4795
-  2687  0353                     l4793:	
+  2685                           ;main.c: 1197: }
+  2686  0352  2B55               	goto	l4787
+  2687  0353                     l4785:	
   2688                           
-  2689                           ;main.c: 1194: else
-  2690                           ;main.c: 1195: ucTimerP3s = 0;
+  2689                           ;main.c: 1198: else
+  2690                           ;main.c: 1199: ucTimerP3s = 0;
   2691  0353  1683               	bsf	3,5	;RP0=1, select bank1
   2692  0354  01AB               	clrf	main@ucTimerP3s^(0+128)
-  2693  0355                     l4795:	
+  2693  0355                     l4787:	
   2694                           
-  2695                           ;main.c: 1197: if(ucTimerP3s >= 3)
+  2695                           ;main.c: 1201: if(ucTimerP3s >= 3)
   2696  0355  3003               	movlw	3
   2697  0356  022B               	subwf	main@ucTimerP3s^(0+128),w
   2698  0357  1C03               	skipc
-  2699  0358  2840               	goto	l4245
+  2699  0358  2840               	goto	l4241
   2700                           
-  2701                           ;main.c: 1198: {
-  2702                           ;main.c: 1199: enumInteralStep = INTERNAL_FIRST_STEP;
+  2701                           ;main.c: 1202: {
+  2702                           ;main.c: 1203: enumInteralStep = INTERNAL_FIRST_STEP;
   2703  0359  01AA               	clrf	main@enumInteralStep^(0+128)
   2704                           
-  2705                           ;main.c: 1200: ucTimerP3s = 0;
+  2705                           ;main.c: 1204: ucTimerP3s = 0;
   2706  035A  01AB               	clrf	main@ucTimerP3s^(0+128)
   2707                           
-  2708                           ;main.c: 1201: clearAllTimer();
+  2708                           ;main.c: 1205: clearAllTimer();
   2709  035B  118A  25A3  118A   	fcall	_clearAllTimer
   2710                           
-  2711                           ;main.c: 1203: DACR0=0x0F;
+  2711                           ;main.c: 1207: DACR0=0x0F;
   2712  035E  300F               	movlw	15
   2713  035F  0088               	movwf	8	;volatile
   2714                           
-  2715                           ;main.c: 1204: initPin();
+  2715                           ;main.c: 1208: initPin();
   2716  0360  118A  25CC  118A   	fcall	_initPin
   2717                           
-  2718                           ;main.c: 1207: enumMainLoopStep = MAIN_LOOP_STEP_INIT;
+  2718                           ;main.c: 1211: enumMainLoopStep = MAIN_LOOP_STEP_INIT;
   2719  0363  1283               	bcf	3,5	;RP0=0, select bank0
   2720  0364  1303               	bcf	3,6	;RP1=0, select bank0
   2721  0365  01CA               	clrf	main@enumMainLoopStep
-  2722  0366  2840               	goto	l4245
-  2723  0367                     l4809:	
+  2722  0366  2840               	goto	l4241
+  2723  0367                     l4801:	
   2724  0367  1683               	bsf	3,5	;RP0=1, select bank1
   2725  0368  082A               	movf	main@enumInteralStep^(0+128),w
   2726                           
@@ -2748,12 +2748,12 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2740  036B  2B1D               	goto	l965
   2741  036C  3A01               	xorlw	1	; case 1
   2742  036D  1903               	skipnz
-  2743  036E  2B2F               	goto	l4777
+  2743  036E  2B2F               	goto	l4769
   2744  036F  3A03               	xorlw	3	; case 2
   2745  0370  1903               	skipnz
-  2746  0371  2B46               	goto	l4789
+  2746  0371  2B46               	goto	l4781
   2747  0372  286C               	goto	l710
-  2748  0373                     l4813:	
+  2748  0373                     l4805:	
   2749  0373  084A               	movf	main@enumMainLoopStep,w
   2750                           
   2751                           ; Switch size 1, requested type "space"
@@ -2769,63 +2769,63 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2761                           ;	Chosen strategy is simple_byte
   2762  0374  3A00               	xorlw	0	; case 0
   2763  0375  1903               	skipnz
-  2764  0376  2857               	goto	l4261
+  2764  0376  2857               	goto	l4257
   2765  0377  3A01               	xorlw	1	; case 1
   2766  0378  1903               	skipnz
-  2767  0379  286D               	goto	l4273
+  2767  0379  286D               	goto	l4269
   2768  037A  3A03               	xorlw	3	; case 2
   2769  037B  1903               	skipnz
   2770  037C  2885               	goto	l718
   2771  037D  3A01               	xorlw	1	; case 3
   2772  037E  1903               	skipnz
-  2773  037F  288F               	goto	l4295
+  2773  037F  288F               	goto	l4291
   2774  0380  3A07               	xorlw	7	; case 4
   2775  0381  1903               	skipnz
-  2776  0382  28CA               	goto	l4331
+  2776  0382  28CA               	goto	l4327
   2777  0383  3A01               	xorlw	1	; case 5
   2778  0384  1903               	skipnz
-  2779  0385  28D3               	goto	l4335
+  2779  0385  28D3               	goto	l4331
   2780  0386  3A0D               	xorlw	13	; case 8
   2781  0387  1903               	skipnz
-  2782  0388  2B12               	goto	l4775
+  2782  0388  2B12               	goto	l4767
   2783  0389  3A01               	xorlw	1	; case 9
   2784  038A  1903               	skipnz
-  2785  038B  2B67               	goto	l4809
+  2785  038B  2B67               	goto	l4801
   2786  038C  286C               	goto	l710
   2787  038D  118A  2811         	ljmp	start
   2788  038F                     __end_of_main:	
   2789                           
   2790                           	psect	swtext1
   2791  05DF                     __pswtext1:	
-  2792  05DF                     S5031:	
+  2792  05DF                     S5023:	
   2793  05DF  118A  2918         	ljmp	l771
-  2794  05E1  118A  291B         	ljmp	l4363
-  2795  05E3  118A  2924         	ljmp	l4373
-  2796  05E5  118A  292A         	ljmp	l4383
-  2797  05E7  118A  2930         	ljmp	l4393
-  2798  05E9  118A  2936         	ljmp	l4403
-  2799  05EB  118A  2940         	ljmp	l4413
+  2794  05E1  118A  291B         	ljmp	l4359
+  2795  05E3  118A  2924         	ljmp	l4369
+  2796  05E5  118A  292A         	ljmp	l4379
+  2797  05E7  118A  2930         	ljmp	l4389
+  2798  05E9  118A  2936         	ljmp	l4399
+  2799  05EB  118A  2940         	ljmp	l4409
   2800                           
   2801                           	psect	swtext2
   2802  05ED                     __pswtext2:	
-  2803  05ED                     S5033:	
+  2803  05ED                     S5025:	
   2804  05ED  118A  2955         	ljmp	l799
-  2805  05EF  118A  2958         	ljmp	l4427
-  2806  05F1  118A  2961         	ljmp	l4437
-  2807  05F3  118A  2967         	ljmp	l4447
-  2808  05F5  118A  296D         	ljmp	l4457
-  2809  05F7  118A  2973         	ljmp	l4467
-  2810  05F9  118A  297C         	ljmp	l4477
+  2805  05EF  118A  2958         	ljmp	l4423
+  2806  05F1  118A  2961         	ljmp	l4433
+  2807  05F3  118A  2967         	ljmp	l4443
+  2808  05F5  118A  296D         	ljmp	l4453
+  2809  05F7  118A  2973         	ljmp	l4463
+  2810  05F9  118A  297C         	ljmp	l4473
   2811                           
   2812                           	psect	swtext3
   2813  0617                     __pswtext3:	
-  2814  0617                     S5035:	
+  2814  0617                     S5027:	
   2815  0617  118A  298F         	ljmp	l826
-  2816  0619  118A  2993         	ljmp	l4491
-  2817  061B  118A  299C         	ljmp	l4501
-  2818  061D  118A  29A2         	ljmp	l4511
-  2819  061F  118A  29A8         	ljmp	l4521
-  2820  0621  118A  29B0         	ljmp	l4531
+  2816  0619  118A  2993         	ljmp	l4487
+  2817  061B  118A  299C         	ljmp	l4497
+  2818  061D  118A  29A2         	ljmp	l4507
+  2819  061F  118A  29A8         	ljmp	l4517
+  2820  0621  118A  29B0         	ljmp	l4527
   2821                           
   2822                           	psect	text755
   2823  0597                     __ptext755:	
@@ -2891,7 +2891,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2883  05A1  1385               	bcf	5,7
   2884                           
   2885                           ;main.c: 100: clearAllTimer();
-  2886  05A2  2DA3               	ljmp	l4189
+  2886  05A2  2DA3               	ljmp	l4185
   2887  05A3                     __end_of_clearPinPortAndTimer:	
   2888  05A3                     __ptext760:	
   2889 ;; =============== function _process_AD_Converter_Value ends ============
@@ -2930,7 +2930,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2922 ;; This function uses a non-reentrant model
   2923 ;;
   2924  05A3                     _clearAllTimer:	
-  2925  05A3                     l4189:	
+  2925  05A3                     l4185:	
   2926                           ; Regs used in _clearAllTimer: [status,2+status,0+pclath+cstack]
   2927                           
   2928                           
@@ -2941,7 +2941,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2933  05A5  25AC  118A         	fcall	_clearThreeHoursTimer
   2934                           
   2935                           ;main.c: 86: clearTwentySecondsTimer();
-  2936  05A7  2DB0               	ljmp	l3919
+  2936  05A7  2DB0               	ljmp	l3915
   2937  05A8                     __end_of_clearAllTimer:	
   2938  05A8                     __ptext784:	
   2939 ;; =============== function _clearThreeHoursTimer ends ============
@@ -3064,7 +3064,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3056 ;; This function uses a non-reentrant model
   3057 ;;
   3058  05B0                     _clearTwentySecondsTimer:	
-  3059  05B0                     l3919:	
+  3059  05B0                     l3915:	
   3060                           ; Regs used in _clearTwentySecondsTimer: [status,2]
   3061                           
   3062                           
@@ -3281,7 +3281,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3270                           ;common.c: 59: for(int cir = 0;cir < 12; cir++)
   3271  0492  01C2               	clrf	Filter@cir
   3272  0493  01C3               	clrf	Filter@cir+1
-  3273  0494                     l4029:	
+  3273  0494                     l4025:	
   3274                           
   3275                           ;common.c: 60: filter_buf[cir] = *tmpValue++;
   3276  0494  1283               	bcf	3,5	;RP0=0, select bank0
@@ -3320,18 +3320,18 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3309  04B6  0242               	subwf	Filter@cir,w
   3310  04B7                     u1095:	
   3311  04B7  1C03               	skipc
-  3312  04B8  2C94               	goto	l4029
+  3312  04B8  2C94               	goto	l4025
   3313                           
   3314                           ;common.c: 63: for(j = 0; j < 12 - 1; j++)
   3315  04B9  1283               	bcf	3,5	;RP0=0, select bank0
   3316  04BA  1303               	bcf	3,6	;RP1=0, select bank0
   3317  04BB  01C4               	clrf	Filter@j
-  3318  04BC                     l4043:	
+  3318  04BC                     l4039:	
   3319                           
   3320                           ;common.c: 64: {
   3321                           ;common.c: 65: for(i = 0; i < 12 - 1 - j; i++)
   3322  04BC  01C5               	clrf	Filter@i
-  3323  04BD                     l4051:	
+  3323  04BD                     l4047:	
   3324  04BD  01A3               	clrf	??_Filter+1
   3325  04BE  0844               	movf	Filter@j,w
   3326  04BF  3C0B               	sublw	11
@@ -3347,7 +3347,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3336  04C9  0245               	subwf	Filter@i,w
   3337  04CA                     u1115:	
   3338  04CA  1803               	btfsc	3,0
-  3339  04CB  2CFF               	goto	l4053
+  3339  04CB  2CFF               	goto	l4049
   3340                           
   3341                           ;common.c: 66: {
   3342                           ;common.c: 67: if(filter_buf[i] > filter_buf[i + 1])
@@ -3369,7 +3369,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3358  04DD  0224               	subwf	??_Filter+2,w
   3359  04DE                     u1105:	
   3360  04DE  1803               	skipnc
-  3361  04DF  2CFD               	goto	l4049
+  3361  04DF  2CFD               	goto	l4045
   3362                           
   3363                           ;common.c: 68: {
   3364                           ;common.c: 70: filter_temp = filter_buf[i];
@@ -3403,17 +3403,17 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3392  04FA  0A84               	incf	4,f
   3393  04FB  083F               	movf	Filter@filter_temp+1,w
   3394  04FC  0080               	movwf	0
-  3395  04FD                     l4049:	
+  3395  04FD                     l4045:	
   3396  04FD  0AC5               	incf	Filter@i,f
-  3397  04FE  2CBD               	goto	l4051
-  3398  04FF                     l4053:	
+  3397  04FE  2CBD               	goto	l4047
+  3398  04FF                     l4049:	
   3399  04FF  1283               	bcf	3,5	;RP0=0, select bank0
   3400  0500  300B               	movlw	11
   3401  0501  1303               	bcf	3,6	;RP1=0, select bank0
   3402  0502  0AC4               	incf	Filter@j,f
   3403  0503  0244               	subwf	Filter@j,w
   3404  0504  1C03               	skipc
-  3405  0505  2CBC               	goto	l4043
+  3405  0505  2CBC               	goto	l4039
   3406                           
   3407                           ;common.c: 75: }
   3408                           ;common.c: 76: }
@@ -3542,25 +3542,25 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3531  0544  086E               	movf	_sampleChannelSelect,w
   3532  0545  3A04               	xorlw	4
   3533  0546  1D03               	skipz
-  3534  0547  2D4C               	goto	l4199
+  3534  0547  2D4C               	goto	l4195
   3535                           
   3536                           ;common.c: 257: adc_test_init(4,3);
   3537  0548  3003               	movlw	3
   3538  0549  00A0               	movwf	?_adc_test_init
   3539  054A  3004               	movlw	4
   3540  054B  2D55               	goto	L9
-  3541  054C                     l4199:	
+  3541  054C                     l4195:	
   3542                           
   3543                           ;common.c: 258: else if(1 == sampleChannelSelect)
   3544  054C  0B6E               	decfsz	_sampleChannelSelect,w
-  3545  054D  2D52               	goto	l4203
+  3545  054D  2D52               	goto	l4199
   3546                           
   3547                           ;common.c: 259: adc_test_init(1,3);
   3548  054E  3003               	movlw	3
   3549  054F  00A0               	movwf	?_adc_test_init
   3550  0550  3001               	movlw	1
   3551  0551  2D55               	goto	L9
-  3552  0552                     l4203:	
+  3552  0552                     l4199:	
   3553                           
   3554                           ;common.c: 260: else
   3555                           ;common.c: 261: adc_test_init(14,3);
@@ -3571,7 +3571,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3560  0555  257F  118A         	fcall	_adc_test_init
   3561                           
   3562                           ;common.c: 263: adc_start();
-  3563  0557  2D94               	ljmp	l3961
+  3563  0557  2D94               	ljmp	l3957
   3564  0558                     __end_of_process_AD_Converter_Value:	
   3565  0558                     __ptext763:	
   3566 ;; =============== function _setAD_ConvertFlag ends ============
@@ -3723,7 +3723,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3712  056C  086E               	movf	_sampleChannelSelect,w
   3713  056D  3A0E               	xorlw	14
   3714  056E  1D03               	skipz
-  3715  056F  2D73               	goto	l4139
+  3715  056F  2D73               	goto	l4135
   3716                           
   3717                           ;common.c: 307: {
   3718                           ;common.c: 310: sampleChannelSelect = 1;
@@ -3732,14 +3732,14 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3721                           
   3722                           ;common.c: 311: }
   3723  0572  0008               	return
-  3724  0573                     l4139:	
+  3724  0573                     l4135:	
   3725                           
   3726                           ;common.c: 312: else if(sampleChannelSelect == 4)
   3727  0573  086E               	movf	_sampleChannelSelect,w
   3728  0574  3A04               	xorlw	4
   3729  0575  1D03               	skipz
-  3730  0576  2D7A               	goto	l4143
-  3731  0577                     l4141:	
+  3730  0576  2D7A               	goto	l4139
+  3731  0577                     l4137:	
   3732                           
   3733                           ;common.c: 313: {
   3734                           ;common.c: 315: sampleChannelSelect = 14;
@@ -3748,11 +3748,11 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3737                           
   3738                           ;common.c: 316: }
   3739  0579  0008               	return
-  3740  057A                     l4143:	
+  3740  057A                     l4139:	
   3741                           
   3742                           ;common.c: 317: else if(sampleChannelSelect == 1)
   3743  057A  0B6E               	decfsz	_sampleChannelSelect,w
-  3744  057B  2D77               	goto	l4141
+  3744  057B  2D77               	goto	l4137
   3745                           
   3746                           ;common.c: 318: {
   3747                           ;common.c: 320: sampleChannelSelect = 4;
@@ -3868,7 +3868,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3857 ;; This function uses a non-reentrant model
   3858 ;;
   3859  0594                     _adc_start:	
-  3860  0594                     l3961:	
+  3860  0594                     l3957:	
   3861                           ; Regs used in _adc_start: []
   3862                           
   3863                           
@@ -4735,7 +4735,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4724                           ;common.c: 440: static unsigned char ucTimer1sCnt = 0;
   4725                           ;common.c: 442: if(TMR1IF == 1)
   4726  038F  1C0C               	btfss	12,0
-  4727  0390  2BB8               	goto	i1l4167
+  4727  0390  2BB8               	goto	i1l4163
   4728                           
   4729                           ;common.c: 443: {
   4730                           ;common.c: 444: TMR1IF = 0 ;
@@ -4752,7 +4752,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4741                           ;common.c: 448: if(ucTimer1sCnt >= 100)
   4742  0396  0226               	subwf	ISR@ucTimer1sCnt^(0+128),w
   4743  0397  1C03               	skipc
-  4744  0398  2BB8               	goto	i1l4167
+  4744  0398  2BB8               	goto	i1l4163
   4745                           
   4746                           ;common.c: 449: {
   4747                           ;common.c: 450: ucTimer1sCnt = 0;
@@ -4792,7 +4792,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4781  03AE  0825               	movf	(_uiTwentySecondsTimer+1)^(0+128),w
   4782  03AF  0424               	iorwf	_uiTwentySecondsTimer^(0+128),w
   4783  03B0  1903               	skipnz
-  4784  03B1  2BB8               	goto	i1l4167
+  4784  03B1  2BB8               	goto	i1l4163
   4785                           
   4786                           ;common.c: 458: uiTwentySecondsTimer--;
   4787  03B2  3001               	movlw	1
@@ -4801,7 +4801,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4790  03B5  1C03               	skipc
   4791  03B6  03A5               	decf	(_uiTwentySecondsTimer+1)^(0+128),f
   4792  03B7  02A5               	subwf	(_uiTwentySecondsTimer+1)^(0+128),f
-  4793  03B8                     i1l4167:	
+  4793  03B8                     i1l4163:	
   4794                           
   4795                           ;common.c: 459: }
   4796                           ;common.c: 460: }
@@ -4823,7 +4823,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4812  03C0  086E               	movf	_sampleChannelSelect,w
   4813  03C1  3A04               	xorlw	4
   4814  03C2  1D03               	skipz
-  4815  03C3  2BCC               	goto	i1l4177
+  4815  03C3  2BCC               	goto	i1l4173
   4816                           
   4817                           ;common.c: 468: {
   4818                           ;common.c: 471: vPutSampleDataIntoTable(adc_get(),4);
@@ -4834,13 +4834,13 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4823  03C9  00F4               	movwf	?_vPutSampleDataIntoTable
   4824  03CA  3004               	movlw	4
   4825  03CB  2BDE               	goto	L11
-  4826  03CC                     i1l4177:	
+  4826  03CC                     i1l4173:	
   4827                           ;common.c: 475: }
   4828                           
   4829                           
   4830                           ;common.c: 476: else if(sampleChannelSelect == 1)
   4831  03CC  0B6E               	decfsz	_sampleChannelSelect,w
-  4832  03CD  2BD7               	goto	i1l4181
+  4832  03CD  2BD7               	goto	i1l4177
   4833                           
   4834                           ;common.c: 477: {
   4835                           ;common.c: 479: vPutSampleDataIntoTable(adc_get(),1);
@@ -4852,7 +4852,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4841  03D4  01F6               	clrf	?_vPutSampleDataIntoTable+2
   4842  03D5  0AF6               	incf	?_vPutSampleDataIntoTable+2,f
   4843  03D6  2BDF               	goto	L12
-  4844  03D7                     i1l4181:	
+  4844  03D7                     i1l4177:	
   4845                           ;common.c: 484: }
   4846                           
   4847                           
@@ -4978,14 +4978,14 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4967                           
   4968                           ; Regs used in _vPutSampleDataIntoTable: [wreg-fsr0h+status,2+status,0+btemp+1]
   4969  03F8  0B76               	decfsz	vPutSampleDataIntoTable@channel,w
-  4970  03F9  2C0A               	goto	i1l4085
+  4970  03F9  2C0A               	goto	i1l4081
   4971                           
   4972                           ;common.c: 106: {
   4973                           ;common.c: 107: if(ucChannelFirstLength < 12)
   4974  03FA  300C               	movlw	12
   4975  03FB  027D               	subwf	vPutSampleDataIntoTable@ucChannelFirstLength,w
   4976  03FC  1803               	skipnc
-  4977  03FD  2C04               	goto	i1l4081
+  4977  03FD  2C04               	goto	i1l4077
   4978                           
   4979                           ;common.c: 108: {
   4980                           ;common.c: 109: uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
@@ -4999,7 +4999,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   4988                           
   4989                           ;common.c: 112: }
   4990  0403  0008               	return
-  4991  0404                     i1l4081:	
+  4991  0404                     i1l4077:	
   4992                           
   4993                           ;common.c: 113: else
   4994                           ;common.c: 114: {
@@ -5012,13 +5012,13 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5001  0407  3EAC               	addlw	_uiSampleChannelFirst& (0+255)
   5002  0408  245F               	fcall	PL2	;call to abstracted procedure
   5003  0409  0008               	return
-  5004  040A                     i1l4085:	
+  5004  040A                     i1l4081:	
   5005                           
   5006                           ;common.c: 120: else if(channel == 4)
   5007  040A  0876               	movf	vPutSampleDataIntoTable@channel,w
   5008  040B  3A04               	xorlw	4
   5009  040C  1D03               	skipz
-  5010  040D  2C1F               	goto	i1l4097
+  5010  040D  2C1F               	goto	i1l4093
   5011                           
   5012                           ;common.c: 121: {
   5013                           ;common.c: 122: if(ucChannelFourthLength < 12)
@@ -5026,7 +5026,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5015  040F  1283               	bcf	3,5	;RP0=0, select bank0
   5016  0410  026D               	subwf	vPutSampleDataIntoTable@ucChannelFourthLength,w
   5017  0411  1803               	skipnc
-  5018  0412  2C19               	goto	i1l4093
+  5018  0412  2C19               	goto	i1l4089
   5019                           
   5020                           ;common.c: 123: {
   5021                           ;common.c: 124: uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
@@ -5040,7 +5040,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5029                           
   5030                           ;common.c: 127: }
   5031  0418  0008               	return
-  5032  0419                     i1l4093:	
+  5032  0419                     i1l4089:	
   5033                           
   5034                           ;common.c: 128: else
   5035                           ;common.c: 129: {
@@ -5053,13 +5053,13 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5042  041C  3EC4               	addlw	_uiSampleChannelFourth& (0+255)
   5043  041D  245F               	fcall	PL2	;call to abstracted procedure
   5044  041E  0008               	return
-  5045  041F                     i1l4097:	
+  5045  041F                     i1l4093:	
   5046                           
   5047                           ;common.c: 135: else if(channel == 14)
   5048  041F  0876               	movf	vPutSampleDataIntoTable@channel,w
   5049  0420  3A0E               	xorlw	14
   5050  0421  1D03               	skipz
-  5051  0422  2C3A               	goto	i1l4109
+  5051  0422  2C3A               	goto	i1l4105
   5052                           
   5053                           ;common.c: 136: {
   5054                           ;common.c: 137: if(ucChannelFourteenthLength < 12)
@@ -5067,7 +5067,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5056  0424  1283               	bcf	3,5	;RP0=0, select bank0
   5057  0425  026C               	subwf	vPutSampleDataIntoTable@ucChannelFourteenthLength,w
   5058  0426  1803               	skipnc
-  5059  0427  2C34               	goto	i1l4105
+  5059  0427  2C34               	goto	i1l4101
   5060                           
   5061                           ;common.c: 138: {
   5062                           ;common.c: 139: uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
@@ -5087,7 +5087,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5076                           
   5077                           ;common.c: 142: }
   5078  0433  0008               	return
-  5079  0434                     i1l4105:	
+  5079  0434                     i1l4101:	
   5080                           
   5081                           ;common.c: 143: else
   5082                           ;common.c: 144: {
@@ -5100,7 +5100,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5089  0437  3EC4               	addlw	_uiSampleChannelFourth& (0+255)
   5090  0438  245F               	fcall	PL2	;call to abstracted procedure
   5091  0439  0008               	return
-  5092  043A                     i1l4109:	
+  5092  043A                     i1l4105:	
   5093                           
   5094                           ;common.c: 150: else
   5095                           ;common.c: 151: {
@@ -5117,7 +5117,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5106                           ;common.c: 158: for(int i = 0;i < 12; i++)
   5107  043E  01F7               	clrf	vPutSampleDataIntoTable@i
   5108  043F  01F8               	clrf	vPutSampleDataIntoTable@i+1
-  5109  0440                     i1l4115:	
+  5109  0440                     i1l4111:	
   5110                           
   5111                           ;common.c: 159: {
   5112                           ;common.c: 160: uiSampleChannelFirst[i] = 0;
@@ -5150,7 +5150,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5139  0458                     u120_25:	
   5140  0458  1803               	btfsc	3,0
   5141  0459  0008               	return
-  5142  045A  2C40               	goto	i1l4115
+  5142  045A  2C40               	goto	i1l4111
   5143  045B                     __end_of_vPutSampleDataIntoTable:	
   5144  045B                     __ptext786:	
   5145 ;; =============== function _ISR ends ============
@@ -5242,7 +5242,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
 
 
 HI-TECH Software PICC Macro Assembler V9.83 build 10920 
-Symbol Table                                                                                   Thu Jun 27 06:20:34 2019
+Symbol Table                                                                                   Thu Jun 27 09:39:46 2019
 
                                   ??_clock_config 0020                                                 pc 0002  
                                               _GO 00F9                                                fsr 0004  
@@ -5260,135 +5260,134 @@ Symbol Table                                                                    
                                              _PA7 002F                                               _PB6 0036  
                                              _ISR 038F                                               fsr0 0004  
                                              indf 0000                            ??_startThreeHoursTimer 0022  
-                                            S5031 05DF                                              S5033 05ED  
-                                            S5035 0617                                              ?_ISR 0070  
+                                            S5023 05DF                                              S5025 05ED  
+                                            S5027 0617                                              ?_ISR 0070  
                               __size_of_AD_Sample 001E                            ?_getAdOriginalCh1Value 0046  
-                                            l4011 0000                                              l2413 0000  
+                                            l4003 0000                                              l2413 0000  
                                             l1702 0000                                              l4007 0000  
-                                            l4031 0000                                              l4023 0000  
-                                            l2416 0000                                              l2433 0000  
-                                            l4033 0000                                              l4121 0000  
-                                            l4201 0000                                              l1731 0000  
+                                            l4031 0000                                              l2416 0000  
+                                            l2433 0000                                              l4025 0494  
+                                            l4121 0000                                              l1731 0000  
                                             l2427 0000                                              l2419 0000  
-                                            l4051 04BD                                              l4043 04BC  
-                                            l4035 0000                                              l4131 0000  
-                                            l4203 0552                                              l4211 0000  
-                                            l1652 0000                                              l4053 04FF  
-                                            l4029 0494                                              l4125 0000  
-                                            l4141 0577                                              l4221 0000  
-                                            l4301 009C                                              l1734 0000  
-                                            l4063 0000                                              l4055 0000  
-                                            l4143 057A                                              l4135 0000  
-                                            l4127 0000                                              l4207 0000  
-                                            l4215 0000                                              l4311 00A5  
-                                            l4303 0000                                              l4231 0000  
-                                            l4223 0000                                              l1744 0000  
-                                            l1737 0000                                              l1681 0000  
-                                            l4065 0000                                              l4049 04FD  
-                                            l4145 0000                                              l4305 009E  
-                                            l4241 0000                                              l4233 0000  
+                                            l4051 0000                                              l4027 0000  
+                                            l4019 0000                                              l4131 0000  
+                                            l4123 0000                                              l4203 0000  
+                                            l4211 0000                                              l1652 0000  
+                                            l4061 0000                                              l4045 04FD  
+                                            l4029 0000                                              l4117 0000  
+                                            l4141 0000                                              l4301 009E  
+                                            l4221 0000                                              l1734 0000  
+                                            l4047 04BD                                              l4039 04BC  
+                                            l4135 0573                                              l4127 0000  
+                                            l4207 0000                                              l4215 0000  
+                                            l4231 0000                                              l4223 0000  
+                                            l1744 0000                                              l1737 0000  
+                                            l1681 0000                                              l4065 0000  
+                                            l4049 04FF                                              l4137 0577  
+                                            l4217 0000                                              l4313 00B5  
+                                            l4321 00BE                                              l4305 0000  
+                                            l4241 0040                                              l4233 0000  
                                             l4225 0000                                              l1690 0000  
-                                            l4139 0573                                              l4219 0000  
-                                            l4403 0136                                              l4331 00CA  
-                                            l4323 0000                                              l4243 0000  
+                                            l4059 0000                                              l4139 057A  
+                                            l4331 00D3                                              l4315 00B6  
+                                            l4307 00A5                                              l4243 0000  
                                             l4235 0000                                              l4227 0000  
-                                            l1684 0000                                              l4069 0000  
-                                            l1693 0000                                              l4501 019C  
-                                            l4413 0140                                              l4341 00DF  
-                                            l4333 0000                                              l4317 00B5  
-                                            l4325 00BE                                              l4309 0000  
-                                            l4261 0057                                              l4253 0000  
-                                            l4245 0040                                              l4237 0000  
-                                            l4229 0000                                              l1678 064D  
-                                            l1687 0000                                              l1767 0000  
-                                            l4191 0000                                              l4511 01A2  
-                                            l4431 015D                                              l4423 0149  
-                                            l4351 00FC                                              l4343 00E3  
-                                            l4335 00D3                                              l4319 00B6  
-                                            l4271 0069                                              l4247 0000  
-                                            l4239 0000                                              l1696 0000  
-                                            l4521 01A8                                              l4425 0156  
-                                            l4417 0146                                              l4361 0119  
-                                            l4337 00D9                                              l4329 00C6  
-                                            l4281 0000                                              l4273 006D  
-                                            l4265 0063                                              l4257 0054  
-                                            l4249 0000                                              l4195 0000  
-                                            l1699 0000                                              l4531 01B0  
-                                            l4435 015F                                              l4427 0158  
-                                            l4371 0122                                              l4363 011B  
-                                            l4355 0108                                              l4347 00EF  
-                                            l4339 00DC                                              l4291 008C  
-                                            l4267 0064                                              l4259 0000  
-                                            l4189 05A3                                              l4701 0000  
-                                            l4541 01B7                                              l4437 0161  
-                                            l4373 0124                                              l4293 0000  
-                                            l4285 0000                                              l4277 0000  
-                                            l4199 054C                                              l4711 02BB  
-                                            l4703 0000                                              l4631 0000  
-                                            l4623 0220                                              l4543 01C6  
-                                            l4447 0167                                              l4383 012A  
-                                            l4367 0120                                              l4359 0114  
-                                            l4295 008F                                              l4287 0000  
-                                            l4279 007B                                              l3921 0000  
-                                            l4801 0000                                              l4721 02C6  
-                                            l4705 0000                                              l4633 023E  
-                                            l4625 0231                                              l4609 020B  
-                                            l4553 01CF                                              l4545 01C8  
-                                            l4457 016D                                              l4393 0130  
-                                            l3915 0000                                              l3923 0000  
-                                            l3931 0000                                              l4803 0000  
-                                            l4731 0000                                              l4715 02C1  
-                                            l4707 0000                                              l4651 025F  
-                                            l4643 024F                                              l4619 0212  
-                                            l4555 01D1                                              l4491 0193  
-                                            l4467 0173                                              l4299 0000  
+                                            l4219 0000                                              l1684 0000  
+                                            l1693 0000                                              l4421 0156  
+                                            l4413 0146                                              l4333 00D9  
+                                            l4325 00C6                                              l4261 0063  
+                                            l4253 0054                                              l4245 0000  
+                                            l4237 0000                                              l4229 0000  
+                                            l1678 064D                                              l1687 0000  
+                                            l1767 0000                                              l4191 0000  
+                                            l4431 015F                                              l4423 0158  
+                                            l4351 0108                                              l4343 00EF  
+                                            l4335 00DC                                              l4327 00CA  
+                                            l4319 0000                                              l4263 0064  
+                                            l4255 0000                                              l4239 0000  
+                                            l1696 0000                                              l4185 05A3  
+                                            l4433 0161                                              l4409 0140  
+                                            l4337 00DF                                              l4329 0000  
+                                            l4281 0000                                              l4273 0000  
+                                            l4257 0057                                              l4249 0000  
+                                            l4195 054C                                              l4187 0000  
+                                            l1699 0000                                              l4507 01A2  
+                                            l4443 0167                                              l4427 015D  
+                                            l4419 0149                                              l4363 0120  
+                                            l4355 0114                                              l4347 00FC  
+                                            l4339 00E3                                              l4291 008F  
+                                            l4283 0000                                              l4275 007B  
+                                            l4267 0069                                              l4197 0000  
+                                            l4701 0000                                              l4621 0231  
+                                            l4605 020B                                              l4541 01C8  
+                                            l4517 01A8                                              l4453 016D  
+                                            l4357 0119                                              l4277 0000  
+                                            l4269 006D                                              l3911 0000  
+                                            l4199 0552                                              l4711 0000  
+                                            l4703 02BB                                              l4615 0212  
+                                            l4551 01D1                                              l4527 01B0  
+                                            l4463 0173                                              l4367 0122  
+                                            l4359 011B                                              l4295 0000  
+                                            l4287 008C                                              l3913 0000  
+                                            l3921 0000                                              l4801 0367  
+                                            l4713 02C6                                              l4633 0000  
+                                            l4561 01D7                                              l4545 01CD  
+                                            l4537 01B7                                              l4473 017C  
+                                            l4369 0124                                              l4297 009C  
+                                            l4289 0000                                              l3915 05B0  
+                                            l3923 0000                                              l3931 0000  
+                                            l4723 0000                                              l4707 02C1  
+                                            l4643 0000                                              l4635 0249  
+                                            l4627 0000                                              l4619 0220  
+                                            l4571 01DE                                              l4539 01C6  
+                                            l4491 0198                                              l4483 0183  
+                                            l4379 012A                                              l4299 0000  
                                             l3917 0000                                              l3925 0000  
-                                            l3941 0000                                              l3933 0000  
-                                            l4805 0000                                              l4741 0000  
-                                            l4733 02DC                                              l4717 0000  
-                                            l4709 0000                                              l4653 0000  
-                                            l4645 0000                                              l4637 0000  
-                                            l4565 01D7                                              l4549 01CD  
-                                            l4477 017C                                              l4813 0373  
-                                            l3919 05B0                                              l3927 0000  
+                                            l3933 0000                                              l3941 0000  
+                                            l4741 0000                                              l4733 0000  
+                                            l4725 02DC                                              l4709 0000  
+                                            l4661 0269                                              l4645 025C  
+                                            l4629 023E                                              l4581 01E5  
+                                            l4549 01CF                                              l4485 0191  
+                                            l4389 0130                                              l4805 0373  
+                                            l3919 0000                                              l3927 0000  
                                             l3935 0000                                              l3943 0000  
-                                            l3951 0000                                              l4743 0000  
-                                            l4751 02F1                                              l4735 0000  
-                                            l4727 02CF                                              l4719 0000  
-                                            l4671 0275                                              l4663 0267  
-                                            l4655 0261                                              l4639 0249  
-                                            l4575 01DE                                              l4495 0198  
-                                            l4487 0183                                              l3929 0000  
-                                            l3937 0000                                              l3945 0000  
-                                            l3953 0000                                              l3961 0594  
-                                            l4809 0367                                              l4761 0000  
-                                            l4745 0000                                              l4737 02DE  
-                                            l4681 0000                                              l4665 0000  
-                                            l4649 0000                                              l4593 0201  
-                                            l4585 01E5                                              l4489 0191  
+                                            l3951 0000                                              l4751 0302  
+                                            l4735 0000                                              l4743 02F1  
+                                            l4727 0000                                              l4719 02CF  
+                                            l4663 0000                                              l4647 0000  
+                                            l4639 024F                                              l4583 01FA  
+                                            l4495 019A                                              l4487 0193  
+                                            l4399 0136                                              l3937 0000  
+                                            l3929 0000                                              l3945 0000  
+                                            l3953 0000                                              l4753 0000  
+                                            l4737 0000                                              l4729 02DE  
+                                            l4681 028E                                              l4673 0284  
+                                            l4665 0272                                              l4657 0264  
+                                            l4649 025E                                              l4593 0203  
+                                            l4585 01FC                                              l4497 019C  
                                             l3939 0000                                              l3947 0000  
-                                            l3955 0000                                              l3963 0000  
-                                            l4763 0304                                              l4747 0000  
-                                            l4691 0000                                              l4675 027E  
-                                            l4667 026C                                              l4587 01FA  
-                                            l4499 019A                                              l3949 0000  
-                                            l3957 0000                                              l3981 0000  
-                                            l4781 033C                                              l4757 0000  
-                                            l4749 0000                                              l4685 0000  
-                                            l4669 0000                                              l4597 0203  
-                                            l4589 01FC                                              l3959 0000  
-                                            l3975 0000                                              l4783 033E  
-                                            l4775 0312                                              l4767 030A  
-                                            l4759 0302                                              l4687 0000  
-                                            l4679 0284                                              l4599 0205  
-                                            l4695 0294                                              _ADIE 046A  
+                                            l3955 0000                                              l3971 0000  
+                                            l4755 0304                                              l4739 0000  
+                                            l4691 0000                                              l4683 0000  
+                                            l4659 0000                                              l4595 0205  
+                                            l3949 0000                                              l3957 0594  
+                                            l3973 0000                                              l4781 0346  
+                                            l4773 033C                                              l4749 0000  
+                                            l4693 0000                                              l4677 0000  
+                                            l4669 027E                                              l4589 0201  
+                                            l3959 0000                                              l3991 0000  
+                                            l4791 0000                                              l4775 033E  
+                                            l4767 0312                                              l4759 030A  
+                                            l4695 0000                                              l4679 0000  
+                                            l4687 0294                                              _ADIE 046A  
                                             _ADIF 006A                                              l3977 0000  
-                                            l3993 0000                                              l4793 0353  
-                                            l4777 032F                                              l4697 0000  
-                                            l4689 028F                                              l3995 0000  
-                                            l4795 0355                                              l4787 0000  
-                                            l4699 0000                                              l4789 0346  
-                                            l4799 0000                                              _ADON 00F8  
+                                            l4793 0000                                              l4785 0353  
+                                            l4769 032F                                              l4697 0000  
+                                            l4689 0000                                              l4795 0000  
+                                            l4787 0355                                              l4779 0000  
+                                            l4699 0000                                              l3989 0000  
+                                            l4797 0000                                              _ADON 00F8  
                    startTwelveHourTimer@uiSetTime 0020                                              u1105 04DE  
                                             u1115 04CA                                              u1095 04B7  
                                             _PEIE 005E                                              _main 0013  
@@ -5415,23 +5414,23 @@ Symbol Table                                                                    
                             __end_of_clock_config 0650                                            _DACCON 0087  
                                           _ADRESH 001E                                            _ADRESL 009E  
                                           _CLKPCE 0847                                            u120_25 0458  
-                                          i1l4103 0000                                            i1l4105 0434  
-                                          i1l4115 0440                                            i1l4107 0000  
-                                          i1l2436 0000                                            i1l4117 0000  
-                                          i1l4109 043A                                            i1l4119 0000  
-                                          i1l4081 0404                                            i1l4073 0000  
-                                          i1l4153 0000                                            i1l4091 0000  
-                                          i1l4083 0000                                            i1l4075 0000  
-                                          i1l4171 0000                                            i1l4155 0000  
-                                          i1l4093 0419                                            i1l4085 040A  
-                                          i1l1693 0000                                            i1l4181 03D7  
-                                          i1l4173 0000                                            i1l4149 0000  
-                                          i1l1782 03E0                                            i1l1774 03A4  
-                                          i1l4095 0000                                            i1l4079 0000  
-                                          i1l4183 0000                                            i1l1775 03AE  
-                                          i1l4159 0000                                            i1l4167 03B8  
-                                          i1l4097 041F                                            i1l4177 03CC  
-                                          i1l4187 0000                                            i1l4179 0000  
+                                          i1l4101 0434                                            i1l4111 0440  
+                                          i1l4103 0000                                            i1l4113 0000  
+                                          i1l4105 043A                                            i1l4115 0000  
+                                          i1l2436 0000                                            i1l4071 0000  
+                                          i1l4151 0000                                            i1l4081 040A  
+                                          i1l4145 0000                                            i1l4091 0000  
+                                          i1l4075 0000                                            i1l4155 0000  
+                                          i1l4163 03B8                                            i1l4093 041F  
+                                          i1l4077 0404                                            i1l4069 0000  
+                                          i1l1693 0000                                            i1l4173 03CC  
+                                          i1l4149 0000                                            i1l1782 03E0  
+                                          i1l1774 03A4                                            i1l4087 0000  
+                                          i1l4079 0000                                            i1l4183 0000  
+                                          i1l4175 0000                                            i1l4167 0000  
+                                          i1l1775 03AE                                            i1l4089 0419  
+                                          i1l4177 03D7                                            i1l4169 0000  
+                                          i1l4099 0000                                            i1l4179 0000  
                                 __end_of_dac_init 0672                         ??_clearTwentySecondsTimer 0020  
                                           _TMR1IE 0460                                            _TMR1IF 0060  
                                _getAD_ConvertFlag 0558                                 _setAD_ConvertFlag 055C  

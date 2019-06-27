@@ -279,6 +279,9 @@ void main (void)
 					}
 
 
+
+
+
 					break;
 				}
 
@@ -903,11 +906,6 @@ void main (void)
 											else
 											{
 
-												ucTimerDelayP5s = 0;
-
-												ucTimerPB6DelayP1s = 0;
-												ucTimerPA6DelayP1s = 0;
-
 												static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
 
 												static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
@@ -950,6 +948,11 @@ void main (void)
 													ucTimerForDACR0_CNT2 = 0;
 													ucTimerForDACR0_CNT1_f = 0;
 													ucTimerForDACR0_CNT2_f = 0;
+
+													ucTimerPB6DelayP1s = 0;
+													ucTimerPA6DelayP1s = 0;
+
+													ucTimerDelayP5s = 0;
 												}
 											}
 										}
@@ -973,8 +976,6 @@ void main (void)
 								}
 								else
 								{
-									ucTimerSeond1s = 0;
-
 									if(ucTimer1s < 3)
 									{
 										ucTimer1s++;
@@ -985,7 +986,10 @@ void main (void)
 									{
 										ucTimer1s = 0;
 
+										ucTimerSeond1s = 0;
+
 										enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+
 										ucADC4_Step = ADC4_STEP_INIT;
 									}
 								}
