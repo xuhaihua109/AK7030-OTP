@@ -910,7 +910,7 @@ PAOD7 = 0;
 
 }
 
-# 128
+# 133
 void main (void)
 {
 enum setp_Adc4
@@ -932,6 +932,10 @@ static unsigned char ucWaitTimeO3s = 0;
 static unsigned char ucSmallTimerActionFlag = 0;
 
 static unsigned char ucSetSmallActionFlag = 0;
+
+static unsigned char bCheckTweHour = 0;
+
+static unsigned char bCheckTheHour = 0;
 
 TRISA0 = 0;
 TRISA1 = 0;
@@ -994,9 +998,7 @@ static enum MAIN_LOOP_STEP enumMainLoopStep = MAIN_LOOP_STEP_INIT;
 
 static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = 0;
 
-static unsigned char ucTimerPowerLed = 0;
-
-
+# 225
 while(1)
 {
 asm(" clrwdt");
@@ -1007,17 +1009,7 @@ if(isPermitSampleTime())
 {
 clrSampeTime();
 
-if(ucTimerPowerLed < 30)
-{
-ucTimerPowerLed ++;
-}
-else
-{
-ucTimerPowerLed = 0;
-PB1 = 0;
-}
-
-
+# 247
 switch(enumMainLoopStep)
 {
 case MAIN_LOOP_STEP_INIT:
@@ -1064,7 +1056,7 @@ clearPinPortAndTimer();
 }
 }
 
-# 285
+# 297
 break;
 }
 
@@ -1109,12 +1101,12 @@ ucTimerADC1ZeroP5s++;
 ucTimerLessADC1ZeroP5s = 0;
 }
 
-if(ucTimerADC1ZeroP5s >= 5)
+if(ucTimerADC1ZeroP5s >= 3)
 {
 ucTimerADC1ZeroP5s = 0;
 enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
 }
-else if( ucTimerLessADC1ZeroP5s >= 5)
+else if( ucTimerLessADC1ZeroP5s >= 3)
 {
 
 if(getAdOriginalCh1Value() < 105)
@@ -1126,7 +1118,7 @@ else
 ucTimerRightP5s = 0;
 }
 
-if(ucTimerRightP5s >= 5)
+if(ucTimerRightP5s >= 3)
 {
 ucTimerLessADC1ZeroP5s = 0;
 ucTimerRightP5s = 0;
@@ -1156,8 +1148,10 @@ break;
 case MAIN_LOOP_STEP_FOURTH:
 {
 
-startTwelveHourTimer(600);
+startTwelveHourTimer(43200);
 enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
+
+bCheckTweHour = 0;
 
 break;
 }
@@ -1165,9 +1159,10 @@ break;
 case MAIN_LOOP_STEP_FIFTH:
 {
 
-if(isFinishedTwelveHoursTimer())
+if(( isFinishedTwelveHoursTimer() && (! bCheckTweHour)))
 {
 enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
+bCheckTweHour = 1;
 }
 else
 {
@@ -1290,7 +1285,7 @@ break;
 
 case 6:
 {
-if(ucTimerDelay >= 2)
+if(ucTimerDelay >= 1)
 {
 ucTimerDelay = 0;
 
@@ -1393,7 +1388,7 @@ break;
 
 case 6:
 {
-if(ucTimerDelay1 >= 2)
+if(ucTimerDelay1 >= 1)
 {
 ucTimerDelay1 = 0;
 
@@ -1485,7 +1480,7 @@ break;
 
 case 5:
 {
-if(ucTimerDelay2 >= 2)
+if(ucTimerDelay2 >= 1)
 {
 ucTimerDelay2 = 0;
 
@@ -1565,7 +1560,7 @@ break;
 
 case 4:
 {
-if(ucTimerDelay3 >= 2)
+if(ucTimerDelay3 >= 1)
 {
 ucTimerDelay3 = 0;
 
@@ -1630,7 +1625,7 @@ break;
 
 case 3:
 {
-if(ucTimerDelay4 >= 2)
+if(ucTimerDelay4 >= 1)
 {
 ucTimerDelay4 = 0;
 
@@ -1805,7 +1800,7 @@ case HOUR_3_BRANCH_STEP_FIRST:
 {
 PA7 = 1;
 PAOD7 = 1;
-startThreeHoursTimer(60);
+startThreeHoursTimer(10800);
 
 PB0 = 1;
 PA0 = 1;
@@ -1851,7 +1846,7 @@ static unsigned char ucTimerX1P5s = 0;
 
 static unsigned char ucTimerLessX1P5s = 0;
 
-if(getAdOriginalCh1Value() < 130)
+if(getAdOriginalCh1Value() < 115)
 {
 ucTimerX1P5s = 0;
 ucTimerLessX1P5s++;
@@ -1898,6 +1893,7 @@ else if(ucTimerLessX2P5s >= 5)
 {
 clearPinPortAndTimer();
 enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 }
 else
 {
@@ -1992,6 +1988,8 @@ initPin();
 
 
 enumMainLoopStep = MAIN_LOOP_STEP_INIT;
+
+while(1);
 
 }
 break;

@@ -121,8 +121,13 @@ static void initPin(void)
 }
 
 
-#define   BIG_TIME_SECONDS   600
-#define   SMALL_TIME_SECONDS  60
+#define   BIG_TIME_SECONDS   43200
+#define   SMALL_TIME_SECONDS  10800
+
+#define  LETE_BRANCH_COMMON_STAY_TIME     1
+
+#define    TRUE   1
+#define    FALSE  0
 
 
 void main (void)
@@ -146,6 +151,10 @@ void main (void)
 	static unsigned char ucSmallTimerActionFlag = 0;
 
 	static unsigned char ucSetSmallActionFlag = 0;
+
+	static unsigned char bCheckTweHour = 0;
+
+	static unsigned char bCheckTheHour = 0;
 
 	TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
 	TRISA1 = 0;
@@ -208,8 +217,10 @@ void main (void)
 	
 	static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = 0;
 
-	static unsigned char ucTimerPowerLed = 0;
 
+#ifdef SET_PB1_AS_RESET_DEBUG_PIN
+	static unsigned char ucTimerPowerLed = FALSE;
+#endif
 
 	while(1)
     {	
@@ -221,6 +232,7 @@ void main (void)
 		{
     	   clrSampeTime();
 
+#ifdef SET_PB1_AS_RESET_DEBUG_PIN
 		if(ucTimerPowerLed < 30)
 		{
 			ucTimerPowerLed ++; 
@@ -230,7 +242,7 @@ void main (void)
 		ucTimerPowerLed = 0;
 		PB1 = 0;
 		}	
-
+#endif
 		   
 		   switch(enumMainLoopStep)
 		   {
@@ -326,12 +338,12 @@ void main (void)
 						ucTimerLessADC1ZeroP5s = 0;
 					}
 
-					if(ucTimerADC1ZeroP5s >= 5)
+					if(ucTimerADC1ZeroP5s >= 3)
 					{
 						ucTimerADC1ZeroP5s = 0;
 						enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
 					}
-					else if( ucTimerLessADC1ZeroP5s >= 5)
+					else if( ucTimerLessADC1ZeroP5s >= 3)
 					{
 
 						if(getAdOriginalCh1Value() < 105)//????// wait to be determined.
@@ -343,7 +355,7 @@ void main (void)
 							ucTimerRightP5s = 0;
 						}
 
-						if(ucTimerRightP5s >= 5)
+						if(ucTimerRightP5s >= 3)
 						{
 							ucTimerLessADC1ZeroP5s = 0; // clear it, make sure this value is always more than 5 before clearing it
 							ucTimerRightP5s = 0;
@@ -376,15 +388,18 @@ void main (void)
 					startTwelveHourTimer(BIG_TIME_SECONDS);
 					enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 
+					bCheckTweHour = FALSE;
+
 					break;
 				}
 
 				case MAIN_LOOP_STEP_FIFTH:
 				{
 
-					if(isFinishedTwelveHoursTimer())
+					if(( isFinishedTwelveHoursTimer() && (! bCheckTweHour)))
 					{
 						enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;//???? wait to be determined
+						bCheckTweHour = TRUE;
 					}
 					else
 					{
@@ -507,7 +522,7 @@ void main (void)
 
 											case 6:
 											{
-												if(ucTimerDelay >= 2)
+												if(ucTimerDelay >= LETE_BRANCH_COMMON_STAY_TIME)
 												{
 													ucTimerDelay = 0;
 								//					AD_sample_process_step = 2;
@@ -610,7 +625,7 @@ void main (void)
 
 											case 6:
 											{
-												if(ucTimerDelay1 >= 2)
+												if(ucTimerDelay1 >= LETE_BRANCH_COMMON_STAY_TIME)
 												{
 													ucTimerDelay1 = 0;
 									//				AD_sample_process_step = 2;
@@ -702,7 +717,7 @@ void main (void)
 
 											case 5:
 											{
-												if(ucTimerDelay2 >= 2)
+												if(ucTimerDelay2 >= LETE_BRANCH_COMMON_STAY_TIME)
 												{
 													ucTimerDelay2 = 0;
 										//			AD_sample_process_step = 2;
@@ -782,7 +797,7 @@ void main (void)
 
 											case 4:
 											{
-												if(ucTimerDelay3 >= 2)
+												if(ucTimerDelay3 >= LETE_BRANCH_COMMON_STAY_TIME)
 												{
 													ucTimerDelay3 = 0;
 											//		AD_sample_process_step = 2;
@@ -847,7 +862,7 @@ void main (void)
 
 											case 3:
 											{
-												if(ucTimerDelay4 >= 2)
+												if(ucTimerDelay4 >= LETE_BRANCH_COMMON_STAY_TIME)
 												{
 													ucTimerDelay4 = 0;
 											//		AD_sample_process_step = 2;
@@ -1068,7 +1083,7 @@ void main (void)
 
 								static unsigned char ucTimerLessX1P5s = 0;
 
-								if(getAdOriginalCh1Value() < 130)
+								if(getAdOriginalCh1Value() < 115)
 								{
 									ucTimerX1P5s = 0;
 									ucTimerLessX1P5s++;
@@ -1115,6 +1130,7 @@ void main (void)
 									{
 										clearPinPortAndTimer();
 										enumMainLoopStep =  MAIN_LOOP_STEP_FIRST;
+										enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 									}
 									else
 									{
@@ -1209,6 +1225,8 @@ void main (void)
 
 
 								enumMainLoopStep =  MAIN_LOOP_STEP_INIT;
+
+								while(1);// as to reset MCU
 
 							}
 							break;
