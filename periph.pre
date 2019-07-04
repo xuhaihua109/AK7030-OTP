@@ -862,9 +862,9 @@ void setAD_ConvertFlag(unsigned char flag);
 # 13 "D:\develop\190625\AK7030-OTP\periph.c"
 void dac_init()
 {
-DACCON|=1;
+DACCON|=2;
 
-DACR0=0x0F;
+DACR0=0x1B;
 DACCON|=(1)<<2;
 
 

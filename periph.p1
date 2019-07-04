@@ -1269,12 +1269,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.c: 14: {
 [e :U _dac_init ]
 [f ]
-[; ;periph.c: 15: DACCON|=1;
+[; ;periph.c: 15: DACCON|=2;
 "15
-[e =| _DACCON -> -> 1 `i `uc ]
-[; ;periph.c: 17: DACR0=0x0F;
+[e =| _DACCON -> -> 2 `i `uc ]
+[; ;periph.c: 17: DACR0=0x1B;
 "17
-[e = _DACR0 -> -> 15 `i `uc ]
+[e = _DACR0 -> -> 27 `i `uc ]
 [; ;periph.c: 18: DACCON|=(1)<<2;
 "18
 [e =| _DACCON -> << -> 1 `i -> 2 `i `uc ]
