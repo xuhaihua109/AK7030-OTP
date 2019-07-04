@@ -117,7 +117,7 @@ static void AD_Sample(void);
 			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 		 }
 	 }
-	 else if(channel == AD_CHANNEL_4_CHANNEL)
+	 else if(channel == AD_CHANNEL_5_CHANNEL)
 	 {
 		 if(ucChannelFourthLength < FILTER_N)
 		 {
@@ -253,8 +253,8 @@ void process_AD_Converter_Value()
 	{
 		setAD_ConvertFlag(0);
 		AD_Sample();
-		if(AD_CHANNEL_4_CHANNEL == sampleChannelSelect)
-			adc_test_init(AD_CHANNEL_4_CHANNEL,ADC_REF_2P1);
+		if(AD_CHANNEL_5_CHANNEL == sampleChannelSelect)
+			adc_test_init(AD_CHANNEL_5_CHANNEL,ADC_REF_2P1);
 		else if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
 			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
 		else
@@ -309,7 +309,7 @@ static void AD_Sample(void)
 //				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
 				sampleChannelSelect = AD_CHANNEL_1_CHANNEL;
 			}
-			else if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
+			else if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
 			{
 //				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
 				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
@@ -317,7 +317,7 @@ static void AD_Sample(void)
 			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
 			{
 //				sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_4_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_5_CHANNEL;
 			}
 			else
 			{
@@ -464,11 +464,11 @@ void interrupt ISR(void)
 		ADIF=0;
 		setAD_ConvertFlag(1);
 //		adc_original_value = adc_get();
-		if(sampleChannelSelect == AD_CHANNEL_4_CHANNEL)
+		if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
 		{
 
 #ifdef USING_AD_FILTER_ALGORITHMN
-			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_4_CHANNEL);
+			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_5_CHANNEL);
 #else
 			adc_original_CH4_value = adc_get();//getAdCh4Value();
 #endif

@@ -697,13 +697,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PBOD `Vuc  1 e@392 ]
 "901 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _PBOD6 `Vb  1 e@3142 ]
-"905 D:\develop\190625\AK7030-OTP\yn8p520.h
+"902 D:\develop\190625\AK7030-OTP\yn8p520.h
+[v _PBOD7 `Vb  1 e@3143 ]
+"906 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG4 `Vuc  1 e@396 ]
-"909 D:\develop\190625\AK7030-OTP\yn8p520.h
+"910 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG5 `Vuc  1 e@397 ]
-"913 D:\develop\190625\AK7030-OTP\yn8p520.h
+"914 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG6 `Vuc  1 e@398 ]
-"917 D:\develop\190625\AK7030-OTP\yn8p520.h
+"918 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
@@ -1225,10 +1227,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 896: volatile bit PAOD7 @ ((unsigned)&PAOD*8)+7;
 [; ;yn8p520.h: 900: volatile unsigned char PBOD @ 0x188;
 [; ;yn8p520.h: 901: volatile bit PBOD6 @ ((unsigned)&PBOD*8)+6;
-[; ;yn8p520.h: 905: volatile unsigned char ALG4 @ 0x18C;
-[; ;yn8p520.h: 909: volatile unsigned char ALG5 @ 0x18D;
-[; ;yn8p520.h: 913: volatile unsigned char ALG6 @ 0x18E;
-[; ;yn8p520.h: 917: volatile unsigned char ALG7 @ 0x18F;
+[; ;yn8p520.h: 902: volatile bit PBOD7 @ ((unsigned)&PBOD*8)+7;
+[; ;yn8p520.h: 906: volatile unsigned char ALG4 @ 0x18C;
+[; ;yn8p520.h: 910: volatile unsigned char ALG5 @ 0x18D;
+[; ;yn8p520.h: 914: volatile unsigned char ALG6 @ 0x18E;
+[; ;yn8p520.h: 918: volatile unsigned char ALG7 @ 0x18F;
 [; ;periph.h: 13: void dac_init();
 [; ;periph.h: 14: void op1_init();
 [; ;periph.h: 15: void op2_init();
@@ -1312,21 +1315,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.c: 45: {
 [e :U _op2_init ]
 [f ]
-[; ;periph.c: 52: OP2CON1=0x10;
+[; ;periph.c: 52: OP2CON1=0x14;
 "52
-[e = _OP2CON1 -> -> 16 `i `uc ]
+[e = _OP2CON1 -> -> 20 `i `uc ]
 [; ;periph.c: 54: OP2CON2=0x10;
 "54
 [e = _OP2CON2 -> -> 16 `i `uc ]
 [; ;periph.c: 55: OP2CON0=0x80;
 "55
 [e = _OP2CON0 -> -> 128 `i `uc ]
-[; ;periph.c: 58: TRISA7=0;
-"58
-[e = _TRISA7 -> -> 0 `i `b ]
-[; ;periph.c: 60: TRISB7 = 1;
-"60
-[e = _TRISB7 -> -> 1 `i `b ]
 [; ;periph.c: 61: }
 "61
 [e :UE 43 ]

@@ -786,6 +786,7 @@ volatile bit PAOD7 @ ((unsigned)&PAOD*8)+7;
 
 volatile unsigned char PBOD @ 0x188;
 volatile bit PBOD6 @ ((unsigned)&PBOD*8)+6;
+volatile bit PBOD7 @ ((unsigned)&PBOD*8)+7;
 
 
 
@@ -953,7 +954,7 @@ ucChannelFirstLength = 0;
 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 }
 }
-else if(channel == 4)
+else if(channel == 5)
 {
 if(ucChannelFourthLength < 12)
 {
@@ -1079,8 +1080,8 @@ if(getAD_ConvertFlag())
 {
 setAD_ConvertFlag(0);
 AD_Sample();
-if(4 == sampleChannelSelect)
-adc_test_init(4,3);
+if(5 == sampleChannelSelect)
+adc_test_init(5,3);
 else if(1 == sampleChannelSelect)
 adc_test_init(1,3);
 else
@@ -1109,7 +1110,7 @@ if(sampleChannelSelect == 14)
 
 sampleChannelSelect = 1;
 }
-else if(sampleChannelSelect == 4)
+else if(sampleChannelSelect == 5)
 {
 
 sampleChannelSelect = 14;
@@ -1117,7 +1118,7 @@ sampleChannelSelect = 14;
 else if(sampleChannelSelect == 1)
 {
 
-sampleChannelSelect = 4;
+sampleChannelSelect = 5;
 }
 else
 {
@@ -1247,11 +1248,11 @@ if(ADIF)
 ADIF=0;
 setAD_ConvertFlag(1);
 
-if(sampleChannelSelect == 4)
+if(sampleChannelSelect == 5)
 {
 
 
-vPutSampleDataIntoTable(adc_get(),4);
+vPutSampleDataIntoTable(adc_get(),5);
 
 # 475
 }

@@ -697,13 +697,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PBOD `Vuc  1 e@392 ]
 "901 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _PBOD6 `Vb  1 e@3142 ]
-"905 D:\develop\190625\AK7030-OTP\yn8p520.h
+"902 D:\develop\190625\AK7030-OTP\yn8p520.h
+[v _PBOD7 `Vb  1 e@3143 ]
+"906 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG4 `Vuc  1 e@396 ]
-"909 D:\develop\190625\AK7030-OTP\yn8p520.h
+"910 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG5 `Vuc  1 e@397 ]
-"913 D:\develop\190625\AK7030-OTP\yn8p520.h
+"914 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG6 `Vuc  1 e@398 ]
-"917 D:\develop\190625\AK7030-OTP\yn8p520.h
+"918 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
 "16 D:\develop\190625\AK7030-OTP\common.c
 [v _adc_convert_flag `uc  1 s ]
@@ -1255,10 +1257,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 896: volatile bit PAOD7 @ ((unsigned)&PAOD*8)+7;
 [; ;yn8p520.h: 900: volatile unsigned char PBOD @ 0x188;
 [; ;yn8p520.h: 901: volatile bit PBOD6 @ ((unsigned)&PBOD*8)+6;
-[; ;yn8p520.h: 905: volatile unsigned char ALG4 @ 0x18C;
-[; ;yn8p520.h: 909: volatile unsigned char ALG5 @ 0x18D;
-[; ;yn8p520.h: 913: volatile unsigned char ALG6 @ 0x18E;
-[; ;yn8p520.h: 917: volatile unsigned char ALG7 @ 0x18F;
+[; ;yn8p520.h: 902: volatile bit PBOD7 @ ((unsigned)&PBOD*8)+7;
+[; ;yn8p520.h: 906: volatile unsigned char ALG4 @ 0x18C;
+[; ;yn8p520.h: 910: volatile unsigned char ALG5 @ 0x18D;
+[; ;yn8p520.h: 914: volatile unsigned char ALG6 @ 0x18E;
+[; ;yn8p520.h: 918: volatile unsigned char ALG7 @ 0x18F;
 [; ;common.h: 26: void clock_config();
 [; ;common.h: 27: void timer1_config();
 [; ;common.h: 28: void timer1_interrupt_config();
@@ -1459,18 +1462,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _channel `uc  1 r2 ]
 [f ]
 "99
-[v F844 `uc  1 s ucChannelFirstLength ]
-[i F844
+[v F846 `uc  1 s ucChannelFirstLength ]
+[i F846
 -> -> 0 `i `uc
 ]
 "101
-[v F845 `uc  1 s ucChannelFourthLength ]
-[i F845
+[v F847 `uc  1 s ucChannelFourthLength ]
+[i F847
 -> -> 0 `i `uc
 ]
 "103
-[v F846 `uc  1 s ucChannelFourteenthLength ]
-[i F846
+[v F848 `uc  1 s ucChannelFourteenthLength ]
+[i F848
 -> -> 0 `i `uc
 ]
 [; ;common.c: 99: static unsigned char ucChannelFirstLength = 0;
@@ -1484,16 +1487,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 107: if(ucChannelFirstLength < 12)
 "107
-[e $ ! < -> F844 `i -> 12 `i 59  ]
+[e $ ! < -> F846 `i -> 12 `i 59  ]
 [; ;common.c: 108: {
 "108
 {
 [; ;common.c: 109: uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 "109
-[e = *U + &U _uiSampleChannelFirst * -> F844 `ux -> -> # *U &U _uiSampleChannelFirst `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelFirst * -> F846 `ux -> -> # *U &U _uiSampleChannelFirst `ui `ux -> _uiSampleData `i ]
 [; ;common.c: 111: ucChannelFirstLength++;
 "111
-[e ++ F844 -> -> 1 `i `uc ]
+[e ++ F846 -> -> 1 `i `uc ]
 "112
 }
 [; ;common.c: 112: }
@@ -1506,10 +1509,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 115: ucChannelFirstLength = 0;
 "115
-[e = F844 -> -> 0 `i `uc ]
+[e = F846 -> -> 0 `i `uc ]
 [; ;common.c: 117: uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 "117
-[e = *U + &U _uiSampleChannelFirst * -> F844 `ux -> -> # *U &U _uiSampleChannelFirst `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelFirst * -> F846 `ux -> -> # *U &U _uiSampleChannelFirst `ui `ux -> _uiSampleData `i ]
 "118
 }
 [e :U 60 ]
@@ -1520,23 +1523,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 61  ]
 "120
 [e :U 58 ]
-[; ;common.c: 120: else if(channel == 4)
-[e $ ! == -> _channel `i -> 4 `i 62  ]
+[; ;common.c: 120: else if(channel == 5)
+[e $ ! == -> _channel `i -> 5 `i 62  ]
 [; ;common.c: 121: {
 "121
 {
 [; ;common.c: 122: if(ucChannelFourthLength < 12)
 "122
-[e $ ! < -> F845 `i -> 12 `i 63  ]
+[e $ ! < -> F847 `i -> 12 `i 63  ]
 [; ;common.c: 123: {
 "123
 {
 [; ;common.c: 124: uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 "124
-[e = *U + &U _uiSampleChannelFourth * -> F845 `ux -> -> # *U &U _uiSampleChannelFourth `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelFourth * -> F847 `ux -> -> # *U &U _uiSampleChannelFourth `ui `ux -> _uiSampleData `i ]
 [; ;common.c: 126: ucChannelFourthLength++;
 "126
-[e ++ F845 -> -> 1 `i `uc ]
+[e ++ F847 -> -> 1 `i `uc ]
 "127
 }
 [; ;common.c: 127: }
@@ -1549,10 +1552,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 130: ucChannelFourthLength = 0;
 "130
-[e = F845 -> -> 0 `i `uc ]
+[e = F847 -> -> 0 `i `uc ]
 [; ;common.c: 132: uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 "132
-[e = *U + &U _uiSampleChannelFourth * -> F845 `ux -> -> # *U &U _uiSampleChannelFourth `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelFourth * -> F847 `ux -> -> # *U &U _uiSampleChannelFourth `ui `ux -> _uiSampleData `i ]
 "133
 }
 [e :U 64 ]
@@ -1570,16 +1573,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 137: if(ucChannelFourteenthLength < 12)
 "137
-[e $ ! < -> F846 `i -> 12 `i 67  ]
+[e $ ! < -> F848 `i -> 12 `i 67  ]
 [; ;common.c: 138: {
 "138
 {
 [; ;common.c: 139: uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
 "139
-[e = *U + &U _uiSampleChannelFourteenth * -> F846 `ux -> -> # *U &U _uiSampleChannelFourteenth `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelFourteenth * -> F848 `ux -> -> # *U &U _uiSampleChannelFourteenth `ui `ux -> _uiSampleData `i ]
 [; ;common.c: 141: ucChannelFourteenthLength++;
 "141
-[e ++ F846 -> -> 1 `i `uc ]
+[e ++ F848 -> -> 1 `i `uc ]
 "142
 }
 [; ;common.c: 142: }
@@ -1592,10 +1595,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 145: ucChannelFourteenthLength = 0;
 "145
-[e = F846 -> -> 0 `i `uc ]
+[e = F848 -> -> 0 `i `uc ]
 [; ;common.c: 147: uiSampleChannelFourth[ucChannelFourteenthLength] = uiSampleData;
 "147
-[e = *U + &U _uiSampleChannelFourth * -> F846 `ux -> -> # *U &U _uiSampleChannelFourth `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelFourth * -> F848 `ux -> -> # *U &U _uiSampleChannelFourth `ui `ux -> _uiSampleData `i ]
 "148
 }
 [e :U 68 ]
@@ -1612,13 +1615,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 152: ucChannelFirstLength = 0;
 "152
-[e = F844 -> -> 0 `i `uc ]
+[e = F846 -> -> 0 `i `uc ]
 [; ;common.c: 154: ucChannelFourthLength = 0;
 "154
-[e = F845 -> -> 0 `i `uc ]
+[e = F847 -> -> 0 `i `uc ]
 [; ;common.c: 156: ucChannelFourteenthLength = 0;
 "156
-[e = F846 -> -> 0 `i `uc ]
+[e = F848 -> -> 0 `i `uc ]
 [; ;common.c: 158: for(int i = 0;i < 12; i++)
 "158
 {
@@ -1816,12 +1819,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 255: AD_Sample();
 "255
 [e ( _AD_Sample ..  ]
-[; ;common.c: 256: if(4 == sampleChannelSelect)
+[; ;common.c: 256: if(5 == sampleChannelSelect)
 "256
-[e $ ! == -> 4 `i -> _sampleChannelSelect `i 86  ]
-[; ;common.c: 257: adc_test_init(4,3);
+[e $ ! == -> 5 `i -> _sampleChannelSelect `i 86  ]
+[; ;common.c: 257: adc_test_init(5,3);
 "257
-[e ( _adc_test_init (2 , -> -> 4 `i `uc -> -> 3 `i `uc ]
+[e ( _adc_test_init (2 , -> -> 5 `i `uc -> -> 3 `i `uc ]
 [e $U 87  ]
 "258
 [e :U 86 ]
@@ -1890,8 +1893,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 94  ]
 "312
 [e :U 93 ]
-[; ;common.c: 312: else if(sampleChannelSelect == 4)
-[e $ ! == -> _sampleChannelSelect `i -> 4 `i 95  ]
+[; ;common.c: 312: else if(sampleChannelSelect == 5)
+[e $ ! == -> _sampleChannelSelect `i -> 5 `i 95  ]
 [; ;common.c: 313: {
 "313
 {
@@ -1909,9 +1912,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 318: {
 "318
 {
-[; ;common.c: 320: sampleChannelSelect = 4;
+[; ;common.c: 320: sampleChannelSelect = 5;
 "320
-[e = _sampleChannelSelect -> -> 4 `i `uc ]
+[e = _sampleChannelSelect -> -> 5 `i `uc ]
 "321
 }
 [; ;common.c: 321: }
@@ -2181,16 +2184,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 120 ]
 }
 "439
-[v F855 `(v  1 tf ]
-[v _ISR `IF855  1 e ]
+[v F857 `(v  1 tf ]
+[v _ISR `IF857  1 e ]
 {
 [; ;common.c: 438: void interrupt ISR(void)
 [; ;common.c: 439: {
 [e :U _ISR ]
 [f ]
 "440
-[v F856 `uc  1 s ucTimer1sCnt ]
-[i F856
+[v F858 `uc  1 s ucTimer1sCnt ]
+[i F858
 -> -> 0 `i `uc
 ]
 [; ;common.c: 440: static unsigned char ucTimer1sCnt = 0;
@@ -2208,16 +2211,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . _timer 0 -> -> 1 `i `uc ]
 [; ;common.c: 446: ucTimer1sCnt++;
 "446
-[e ++ F856 -> -> 1 `i `uc ]
+[e ++ F858 -> -> 1 `i `uc ]
 [; ;common.c: 448: if(ucTimer1sCnt >= 100)
 "448
-[e $ ! >= -> F856 `i -> 100 `i 123  ]
+[e $ ! >= -> F858 `i -> 100 `i 123  ]
 [; ;common.c: 449: {
 "449
 {
 [; ;common.c: 450: ucTimer1sCnt = 0;
 "450
-[e = F856 -> -> 0 `i `uc ]
+[e = F858 -> -> 0 `i `uc ]
 [; ;common.c: 451: if(uiBigTimer > 0)
 "451
 [e $ ! > _uiBigTimer -> -> 0 `i `ui 124  ]
@@ -2259,15 +2262,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 465: setAD_ConvertFlag(1);
 "465
 [e ( _setAD_ConvertFlag (1 -> -> 1 `i `uc ]
-[; ;common.c: 467: if(sampleChannelSelect == 4)
+[; ;common.c: 467: if(sampleChannelSelect == 5)
 "467
-[e $ ! == -> _sampleChannelSelect `i -> 4 `i 128  ]
+[e $ ! == -> _sampleChannelSelect `i -> 5 `i 128  ]
 [; ;common.c: 468: {
 "468
 {
-[; ;common.c: 471: vPutSampleDataIntoTable(adc_get(),4);
+[; ;common.c: 471: vPutSampleDataIntoTable(adc_get(),5);
 "471
-[e ( _vPutSampleDataIntoTable (2 , ( _adc_get ..  -> -> 4 `i `uc ]
+[e ( _vPutSampleDataIntoTable (2 , ( _adc_get ..  -> -> 5 `i `uc ]
 "475
 }
 [; ;common.c: 475: }

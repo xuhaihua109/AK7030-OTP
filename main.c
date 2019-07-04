@@ -95,8 +95,10 @@ static void clearPinPortAndTimer(void)
 	PA1 = 0;
 	PA2 = 0;
 	PA3 = 0;
-	PAOD7 = 0;
-	PA7 = 0;
+//	PAOD7 = 0;
+//	PA7 = 0;
+	PBOD7 = 0;
+	PB7 = 0;
 	clearAllTimer();
 }
 
@@ -115,14 +117,15 @@ static void initPin(void)
 	PB0 = 0;
 	PB1 = 1;
 	PA6 = 0;
-	PA7 = 0;
-	PAOD7 = 0;
+//	PA7 = 0;
+	PB7 = 0;
+	PBOD7 = 0;
 
 }
 
 
-#define   BIG_TIME_SECONDS   43200
-#define   SMALL_TIME_SECONDS  10800
+#define   BIG_TIME_SECONDS        43200
+#define   SMALL_TIME_SECONDS      10800
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 
@@ -163,7 +166,8 @@ void main (void)
 	TRISB0 = 0;
 	TRISB1 = 0;
 	TRISA6 = 0;
-	TRISA7 = 0;
+//	TRISA7 = 0;
+	TRISB7 = 0;// PB7 instead of PA7
 	TRISB6 = 0;
 
 
@@ -172,7 +176,9 @@ void main (void)
 
 	TRISB2 = 1;//SET AD sample Channel 14
 
-	TRISB7 = 1;// set AD sample Channel 4
+//	TRISB7 = 1;// set AD sample Channel 4
+	TRISA7 = 1;// set AD sample channel 5
+
 	TRISB4 = 1;// set AD sample Channel 1
 
 	clock_config();	//使系统时钟稳定
@@ -416,13 +422,13 @@ void main (void)
 
 							case ADC4_STEP_FIRST:
 							{
-								if(getAdOriginaCh4Value() < 1911)
+								if(getAdOriginaCh4Value() < 1931)
 									ucChannel4Type = LESS_THAN_1911;
-								else if(getAdOriginaCh4Value() < 2067)
+								else if(getAdOriginaCh4Value() < 2047)
 									ucChannel4Type = BETWEEN_1911_AND_2067;
-								else if(getAdOriginaCh4Value() < 2204)
+								else if(getAdOriginaCh4Value() < 2164)
 									ucChannel4Type = BETWEEN_2067_AND_2204;
-								else if(getAdOriginaCh4Value() < 2340)
+								else if(getAdOriginaCh4Value() < 2281)
 									ucChannel4Type = BETWEEN_2204_AND_2340;
 								else
 									ucChannel4Type = MORE_THAN_2340;
@@ -932,8 +938,8 @@ void main (void)
 												}
 												else
 												{
-													ucTimerForDACR0_CNT2 = 0;
-													ucTimerForDACR0_CNT1++;
+													ucTimerForDACR0_CNT2++;
+													ucTimerForDACR0_CNT1 = 0;
 												}
 
 												if(ucTimerForDACR0_CNT1 >= 3)
@@ -1035,8 +1041,9 @@ void main (void)
 					{
 						case HOUR_3_BRANCH_STEP_FIRST:
 						{
-							PA7 = 1;
-							PAOD7 = 1; //set PA7 AS hign resistence
+						//	PA7 = 1;
+							PB7 = 1;
+							PBOD7 = 1; //set PA7 AS hign resistence
 							startThreeHoursTimer(SMALL_TIME_SECONDS);
 
 							PB0 = 1;
@@ -1097,8 +1104,10 @@ void main (void)
 								if(ucTimerX1P5s >= 5)
 								{
 									ucTimerX1P5s = 0;
-									PAOD7 = 0;
-									PA7 = 0;
+							//		PAOD7 = 0;
+							//		PA7 = 0;
+									PBOD7 = 0;
+									PB7 = 0;
 									clearThreeHoursTimer();
 
 									enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;

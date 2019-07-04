@@ -20,7 +20,7 @@
 
 #define AD_CHANNEL_1_CHANNEL            1
 
-#define AD_CHANNEL_4_CHANNEL            4
+#define AD_CHANNEL_5_CHANNEL            5
 
 
 void clock_config();
