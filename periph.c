@@ -30,17 +30,17 @@ void op1_init()
 	//OP1CON0=0x80; //OP1使能 正相输出 禁止滤波                                                10000000B
     
     //配置：OP1负端选择DAC0=1.3V(内部管脚) ，OP1正端选择A1P(PB3)引脚
-    OP1CON1=0x02; //正沿负沿不中断 OP1 负端选择DAC0(内部管脚)引脚 ，OP1正端选择A1P(PB3)引脚    00000010B
-	OP1CON2=0xA0; //A1E(PB5)输出 负端MUX连接 其他用途                                        10100000B
+    OP1CON1=0x13; //正沿负沿不中断 OP1 负端选择DAC0(内部管脚)引脚 ，OP1正端选择A1P(PB3)引脚    00000010B
+	OP1CON2=0x90; //A1E(PB5)输出 负端MUX连接 其他用途                                        10100000B
 	OP1CON0=0x80; //OP1使能 正相输出 禁止滤波                                                10000000B
 
 	//OP1配置
-	TRISB3=1;	//PB3（A1P）输入
+//	TRISB3=1;	//PB3（A1P）输入
 //	TRISB4=1;	//PB4（A1N）输入
 	TRISB5=0;	//PB5（A1E）输出  DAC0信号输出Pin
 }
 
-////////////////////OP2配置为放大模式将DAC1电压从A1E(PA7)输出///////////////////////
+////////////////////OP2配置为缓冲器将DAC1电压从A1E(PA7)输出///////////////////////
 void op2_init()
 {
     //配置：OP2正端选择DAC1=0.3V(内部管脚) , OP2负端选择A2N(PB7)引脚
@@ -49,13 +49,13 @@ void op2_init()
 	//OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B   
     
     //配置：OP2负端选择DAC1=0.3V(内部管脚) , OP2正端选择A2P(PB6)引脚
-    OP2CON1=0x14; // set PB6 as A2P, set PB7 as A2N
+    OP2CON1=0x14; // set BGR(1.3V) as A2P, set AVss as A2N
 	//OP2CON2=0xA0; //A2E(PA7)输出 负端MUX连接 其他用途 增益放大使能 放大1倍                    10100000B
-    OP2CON2=0x10; //disable A2E(PA7)输出 ,负端MUX连接, OP2 作为BUFFER      10010000B
+    OP2CON2=0x90; //enable A2E(PA7)输出 , OP2 作为BUFFER      10010000B
 	OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B 
 
 	//OP2配置
-//	TRISA7=0;	//PA7（A2E）输出	  DAC1信号输出Pin
+	TRISA7=0;	//PA7（A2E）输出	  DAC1信号输出Pin
 //	TRISB6=1;	//PB6(A2P)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
 //	TRISB7 = 1; //PB7(A2N)设置为输入 相应位0-输出 1-输入（也可以整个TRISA/B赋值）
 }

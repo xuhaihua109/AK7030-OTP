@@ -174,18 +174,18 @@ void main (void)
 	initPin();
 
 
-	TRISB2 = 1;//SET AD sample Channel 14
-
-//	TRISB7 = 1;// set AD sample Channel 4
-	TRISA7 = 1;// set AD sample channel 5
-
-	TRISB4 = 1;// set AD sample Channel 1
+//	TRISB2 = 1;//SET AD sample Channel 14
+//
+////	TRISB7 = 1;// set AD sample Channel 4
+//	TRISA7 = 1;// set AD sample channel 5
+//
+//	TRISB4 = 1;// set AD sample Channel 1
 
 	clock_config();	//使系统时钟稳定
 	timer1_config();
 	timer1_interrupt_config();
 	
-	adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
+//	adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
 
 	dac_init(); //DAC0/1初始化
 	op1_init(); //OP1初始化

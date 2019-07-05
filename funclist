@@ -1,15 +1,14 @@
-_op1_init: CODE, 339 0 11
-_adc_start: CODE, 388 0 3
-_op2_init: CODE, 376 0 7
+_op1_init: CODE, 307 0 10
+_adc_start: CODE, 355 0 3
+_op2_init: CODE, 335 0 8
 _ISR: CODE, 19 0 88
-_main: CODE, 234 0 47
-_initPin: CODE, 302 0 19
-_adc_test_init: CODE, 281 0 21
+_main: CODE, 234 0 36
+_initPin: CODE, 270 0 19
 _setAD_ConvertFlag: CODE, 217 0 1
-_dac_init: CODE, 383 0 5
+_dac_init: CODE, 350 0 5
 _vPutSampleDataIntoTable: CODE, 118 0 99
-_timer1_config: CODE, 350 0 10
-_timer1_interrupt_config: CODE, 391 0 3
+_timer1_config: CODE, 317 0 10
+_timer1_interrupt_config: CODE, 358 0 3
 _adc_get: CODE, 107 0 11
-_clock_config: CODE, 368 0 8
-Total: 333
+_clock_config: CODE, 343 0 7
+Total: 300

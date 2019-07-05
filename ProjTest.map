@@ -26,25 +26,23 @@ startup.obj     end_init                             11       11        2       
                 reset_vec                             0        0        2        0       0
 ProjTest.obj    intentry                              4        4        D        8       0
                 config                             2000     2000        3     4000       0
-                text312                              13       13       D7        8       0
-                text311                             12E      12E       13        8       0
-                text310                             170      170        8        8       0
-                text309                             15E      15E        A        8       0
-                text308                             187      187        3        8       0
-                text307                             119      119       15        8       0
-                text306                             17F      17F        5        8       0
-                text305                             153      153        B        8       0
-                text304                             178      178        7        8       0
-                text303                             184      184        3        8       0
-                maintext                             EA       EA       2F        8       0
-                cstackBANK0                          59       59        3       20       1
+                text287                              13       13       D7        8       0
+                text286                             10E      10E       13        8       0
+                text285                             157      157        7        8       0
+                text284                             13D      13D        A        8       0
+                text283                             166      166        3        8       0
+                text282                             15E      15E        5        8       0
+                text281                             133      133        A        8       0
+                text280                             14F      14F        8        8       0
+                text279                             163      163        3        8       0
+                maintext                             EA       EA       24        8       0
                 cstackCOMMON                         70       70        D       70       1
-                clrtext                             168      168        8        8       0
+                clrtext                             147      147        8        8       0
                 bssBANK1                             A0       A0       18       A0       1
-                dataBANK0                            5C       5C        1       20       1
+                dataBANK0                            59       59        1       20       1
                 bssBANK0                             20       20       39       20       1
                 bssCOMMON                            7D       7D        1       70       1
-                cinit                               141      141       12        8       0
+                cinit                               121      121       12        8       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CONST          
@@ -53,19 +51,18 @@ TOTAL           Name                               Link     Load   Length     Sp
                 end_init                             11       11        2         0
                 intentry                              4        4        D         0
                 reset_vec                             0        0        2         0
-                text312                              13       13       D7         0
-                text311                             12E      12E       13         0
-                text310                             170      170        8         0
-                text309                             15E      15E        A         0
-                text308                             187      187        3         0
-                text307                             119      119       15         0
-                text306                             17F      17F        5         0
-                text305                             153      153        B         0
-                text304                             178      178        7         0
-                text303                             184      184        3         0
-                maintext                             EA       EA       2F         0
-                clrtext                             168      168        8         0
-                cinit                               141      141       12         0
+                text287                              13       13       D7         0
+                text286                             10E      10E       13         0
+                text285                             157      157        7         0
+                text284                             13D      13D        A         0
+                text283                             166      166        3         0
+                text282                             15E      15E        5         0
+                text281                             133      133        A         0
+                text280                             14F      14F        8         0
+                text279                             163      163        3         0
+                maintext                             EA       EA       24         0
+                clrtext                             147      147        8         0
+                cinit                               121      121       12         0
 
         CLASS   STRCODE        
 
@@ -74,8 +71,7 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   STRING         
 
         CLASS   BANK0          
-                cstackBANK0                          59       59        3         1
-                dataBANK0                            5C       5C        1         1
+                dataBANK0                            59       59        1         1
                 bssBANK0                             20       20       39         1
 
         CLASS   BANK1          
@@ -114,8 +110,8 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000002  000002         0       0  CODE        2
-                intentry                       000004  000186  00018A         8       0  CODE        2
-                bssBANK0                       000020  00003D  00005D        20       1  BANK0       1
+                intentry                       000004  000165  000169         8       0  CODE        2
+                bssBANK0                       000020  00003A  00005A        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
                 bssBANK1                       0000A0  000018  0000B8        A0       1  BANK1       1
                 config                         002000  000003  002003      4000       0  CONFIG      2
@@ -124,19 +120,19 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            005D-006F             13           1
+        BANK0            005A-006F             16           1
         BANK1            00B8-00EF             38           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0002-0003              2           2
-                         018A-0FFF            676
+                         0169-0FFF            697
         CONFIG           2003-2007              5           2
         CONST            0002-0003              2           2
-                         018A-0FFF            100
+                         0169-0FFF            100
         ENTRY            0002-0003              2           2
-                         018A-0FFF            100
+                         0169-0FFF            100
         IDLOC            2008-200B              4           2
-        RAM              005D-006F             13           1
+        RAM              005A-006F             16           1
                          00B8-00EF             38
                          0110-016F             60
                          0190-01EF             60
@@ -145,30 +141,28 @@ UNUSED ADDRESS RANGES
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
         STRCODE          0002-0003              2           2
-                         018A-0FFF            E76
+                         0169-0FFF            E97
         STRING           0002-0003              2           2
-                         018A-0FFF            100
+                         0169-0FFF            100
 
                                   Symbol Table
 
 ??_ISR                                            cstackCOMMON 0079
 ??_adc_get                                        cstackCOMMON 0072
-??_adc_start                                      cstackBANK0  0059
-??_adc_test_init                                  cstackBANK0  005A
-??_clock_config                                   cstackBANK0  0059
-??_dac_init                                       cstackBANK0  0059
-??_initPin                                        cstackBANK0  0059
-??_main                                           cstackBANK0  005C
-??_op1_init                                       cstackBANK0  0059
-??_op2_init                                       cstackBANK0  0059
+??_adc_start                                      cstackBANK0  0000
+??_clock_config                                   cstackBANK0  0000
+??_dac_init                                       cstackBANK0  0000
+??_initPin                                        cstackBANK0  0000
+??_main                                           cstackBANK0  0000
+??_op1_init                                       cstackBANK0  0000
+??_op2_init                                       cstackBANK0  0000
 ??_setAD_ConvertFlag                              cstackCOMMON 0070
-??_timer1_config                                  cstackBANK0  0059
-??_timer1_interrupt_config                        cstackBANK0  0059
+??_timer1_config                                  cstackBANK0  0000
+??_timer1_interrupt_config                        cstackBANK0  0000
 ??_vPutSampleDataIntoTable                        cstackCOMMON 0077
 ?_ISR                                             cstackCOMMON 0070
 ?_adc_get                                         cstackCOMMON 0070
 ?_adc_start                                       cstackCOMMON 0070
-?_adc_test_init                                   cstackBANK0  0059
 ?_clock_config                                    cstackCOMMON 0070
 ?_dac_init                                        cstackCOMMON 0070
 ?_initPin                                         cstackCOMMON 0070
@@ -180,11 +174,7 @@ UNUSED ADDRESS RANGES
 ?_timer1_interrupt_config                         cstackCOMMON 0070
 ?_vPutSampleDataIntoTable                         cstackCOMMON 0074
 ISR@ucTimer1sCnt                                  bssBANK0     0026
-_ADCON0                                           (abs)        001F
-_ADCON1                                           (abs)        009F
-_ADIE                                             (abs)        046A
 _ADIF                                             (abs)        006A
-_ADON                                             (abs)        00F8
 _ADRESH                                           (abs)        001E
 _ADRESL                                           (abs)        009E
 _CLKPCE                                           (abs)        0847
@@ -193,7 +183,7 @@ _DACCON                                           (abs)        0087
 _DACR0                                            (abs)        0088
 _GIE                                              (abs)        005F
 _GO                                               (abs)        00F9
-_ISR                                              text312      0013
+_ISR                                              text287      0013
 _OP1CON0                                          (abs)        001B
 _OP1CON1                                          (abs)        001C
 _OP1CON2                                          (abs)        001D
@@ -225,9 +215,6 @@ _TRISA6                                           (abs)        042E
 _TRISA7                                           (abs)        042F
 _TRISB0                                           (abs)        0430
 _TRISB1                                           (abs)        0431
-_TRISB2                                           (abs)        0432
-_TRISB3                                           (abs)        0433
-_TRISB4                                           (abs)        0434
 _TRISB5                                           (abs)        0435
 _TRISB6                                           (abs)        0436
 _TRISB7                                           (abs)        0437
@@ -301,47 +288,44 @@ __Lstrings                                        strings      0000
 __Ltext                                           text         0000
 __S0                                              (abs)        2003
 __S1                                              (abs)        00B8
-__end_of_ISR                                      text312      006B
-__end_of_adc_get                                  text312      0076
-__end_of_adc_start                                text303      0187
-__end_of_adc_test_init                            text307      012E
-__end_of_clock_config                             text310      0178
-__end_of_dac_init                                 text306      0184
-__end_of_initPin                                  text311      0141
-__end_of_main                                     maintext     0119
-__end_of_op1_init                                 text305      015E
-__end_of_op2_init                                 text304      017F
-__end_of_setAD_ConvertFlag                        text312      00DA
-__end_of_timer1_config                            text309      0168
-__end_of_timer1_interrupt_config                  text308      018A
-__end_of_vPutSampleDataIntoTable                  text312      00D9
+__end_of_ISR                                      text287      006B
+__end_of_adc_get                                  text287      0076
+__end_of_adc_start                                text279      0166
+__end_of_clock_config                             text285      015E
+__end_of_dac_init                                 text282      0163
+__end_of_initPin                                  text286      0121
+__end_of_main                                     maintext     010E
+__end_of_op1_init                                 text281      013D
+__end_of_op2_init                                 text280      0157
+__end_of_setAD_ConvertFlag                        text287      00DA
+__end_of_timer1_config                            text284      0147
+__end_of_timer1_interrupt_config                  text283      0169
+__end_of_vPutSampleDataIntoTable                  text287      00D9
 __pbssBANK0                                       bssBANK0     0020
 __pbssBANK1                                       bssBANK1     00A0
 __pbssCOMMON                                      bssCOMMON    007D
-__pcstackBANK0                                    cstackBANK0  0059
+__pcstackBANK0                                    cstackBANK0  0000
 __pcstackCOMMON                                   cstackCOMMON 0070
-__pdataBANK0                                      dataBANK0    005C
+__pdataBANK0                                      dataBANK0    0059
 __pidataBANK0                                     idataBANK0   0000
 __pintentry                                       intentry     0004
 __pmaintext                                       maintext     00EA
-__ptext303                                        text303      0184
-__ptext304                                        text304      0178
-__ptext305                                        text305      0153
-__ptext306                                        text306      017F
-__ptext307                                        text307      0119
-__ptext308                                        text308      0187
-__ptext309                                        text309      015E
-__ptext310                                        text310      0170
-__ptext311                                        text311      012E
-__ptext312                                        text312      0013
-__ptext313                                        text312      006B
-__ptext314                                        text312      00D9
-__ptext315                                        text312      0076
-__ptext316                                        text316      0000
+__ptext279                                        text279      0163
+__ptext280                                        text280      014F
+__ptext281                                        text281      0133
+__ptext282                                        text282      015E
+__ptext283                                        text283      0166
+__ptext284                                        text284      013D
+__ptext285                                        text285      0157
+__ptext286                                        text286      010E
+__ptext287                                        text287      0013
+__ptext288                                        text287      006B
+__ptext289                                        text287      00D9
+__ptext290                                        text287      0076
+__ptext291                                        text291      0000
 __size_of_ISR                                     (abs)        0000
 __size_of_adc_get                                 (abs)        0000
 __size_of_adc_start                               (abs)        0000
-__size_of_adc_test_init                           (abs)        0000
 __size_of_clock_config                            (abs)        0000
 __size_of_dac_init                                (abs)        0000
 __size_of_initPin                                 (abs)        0000
@@ -352,53 +336,50 @@ __size_of_setAD_ConvertFlag                       (abs)        0000
 __size_of_timer1_config                           (abs)        0000
 __size_of_timer1_interrupt_config                 (abs)        0000
 __size_of_vPutSampleDataIntoTable                 (abs)        0000
-_adc_get                                          text312      006B
-_adc_start                                        text303      0184
-_adc_test_init                                    text307      0119
-_clock_config                                     text310      0170
-_dac_init                                         text306      017F
+_adc_get                                          text287      006B
+_adc_start                                        text279      0163
+_clock_config                                     text285      0157
+_dac_init                                         text282      015E
 _exit                                             init         0011
-_initPin                                          text311      012E
+_initPin                                          text286      010E
 _main                                             maintext     00EA
-_op1_init                                         text305      0153
-_op2_init                                         text304      0178
-_sampleChannelSelect                              dataBANK0    005C
-_setAD_ConvertFlag                                text312      00D9
-_timer1_config                                    text309      015E
-_timer1_interrupt_config                          text308      0187
+_op1_init                                         text281      0133
+_op2_init                                         text280      014F
+_sampleChannelSelect                              dataBANK0    0059
+_setAD_ConvertFlag                                text287      00D9
+_timer1_config                                    text284      013D
+_timer1_interrupt_config                          text283      0166
 _uiBigTimer                                       bssBANK0     0020
 _uiSampleChannelFirst                             bssBANK0     0029
 _uiSampleChannelFourteenth                        bssBANK1     00A0
 _uiSampleChannelFourth                            bssBANK0     0041
 _uiSmallTimer                                     bssBANK0     0022
 _uiTwentySecondsTimer                             bssBANK0     0024
-_vPutSampleDataIntoTable                          text312      0076
+_vPutSampleDataIntoTable                          text287      0076
 adc_get@val                                       cstackCOMMON 0072
-adc_test_init@channel                             cstackBANK0  005B
-adc_test_init@ref                                 cstackBANK0  0059
 btemp                                             (abs)        007E
-clear_ram                                         clrtext      0168
-end_of_initialization                             cinit        0150
-i1l1395                                                            
-i1l2140                                                            
-i1l2699                                                            
+clear_ram                                         clrtext      0147
+end_of_initialization                             cinit        0130
+i1l1393                                                            
+i1l2138                                                            
+i1l2671                                                            
+i1l2673                                                            
+i1l2677                                                            
+i1l2681                                                            
+i1l2689                                                            
+i1l2693                                                            
 i1l2701                                                            
 i1l2705                                                            
-i1l2709                                                            
+i1l2715                                                            
 i1l2717                                                            
-i1l2721                                                            
+i1l2719                                                            
+i1l2723                                                            
+i1l2725                                                            
 i1l2729                                                            
-i1l2733                                                            
+i1l2741                                                            
 i1l2743                                                            
-i1l2745                                                            
-i1l2747                                                            
-i1l2751                                                            
+i1l2749                                                            
 i1l2753                                                            
-i1l2757                                                            
-i1l2769                                                            
-i1l2771                                                            
-i1l2777                                                            
-i1l2781                                                            
 interrupt_function                                intentry     0004
 intlevel0                                         functab      0000
 intlevel1                                         functab      0000
@@ -406,50 +387,41 @@ intlevel2                                         functab      0000
 intlevel3                                         functab      0000
 intlevel4                                         functab      0000
 intlevel5                                         functab      0000
-l1383                                                              
-l1386                                                              
-l1389                                                              
-l2117                                                              
-l2120                                                              
-l2123                                                              
-l2131                                                              
-l2137                                                              
+l1381                                                              
+l1384                                                              
+l1387                                                              
+l2115                                                              
+l2118                                                              
+l2121                                                              
+l2135                                                              
+l2643                                                              
+l2645                                                              
+l2647                                                              
+l2649                                                              
+l2651                                                              
+l2653                                                              
+l2655                                                              
+l2657                                                              
+l2659                                                              
 l2661                                                              
 l2663                                                              
 l2665                                                              
 l2667                                                              
 l2669                                                              
-l2671                                                              
-l2673                                                              
-l2675                                                              
-l2677                                                              
-l2679                                                              
-l2681                                                              
-l2683                                                              
-l2685                                                              
-l2687                                                              
-l2689                                                              
-l2691                                                              
-l2693                                                              
-l2695                                                              
-l2697                                                              
-l2785                                                              
-l2787                                                              
-l2789                                                              
-l2791                                                              
-l2793                                                              
-l2795                                                              
-l2797                                                              
-l2799                                                              
-l2801                                                              
-l2803                                                              
-l2805                                                              
-l661                                                               
+l2757                                                              
+l2759                                                              
+l2761                                                              
+l2763                                                              
+l2765                                                              
+l2767                                                              
+l2769                                                              
+l2771                                                              
+l659                                                               
 reset_vec                                         reset_vec    0000
 saved_w                                           (abs)        007E
 setAD_ConvertFlag@flag                            cstackCOMMON 0070
 start                                             init         0011
-start_initialization                              cinit        0141
+start_initialization                              cinit        0121
 vPutSampleDataIntoTable@channel                   cstackCOMMON 0076
 vPutSampleDataIntoTable@i                         cstackCOMMON 0077
 vPutSampleDataIntoTable@ucChannelFirstLength      bssCOMMON    007D
