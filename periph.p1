@@ -1269,12 +1269,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.c: 14: {
 [e :U _dac_init ]
 [f ]
-[; ;periph.c: 15: DACCON|=2;
+[; ;periph.c: 15: DACCON|= 1 ;
 "15
-[e =| _DACCON -> -> 2 `i `uc ]
-[; ;periph.c: 17: DACR0=0x1B;
+[e =| _DACCON -> -> 1 `i `uc ]
+[; ;periph.c: 17: DACR0=0x0F;
 "17
-[e = _DACR0 -> -> 27 `i `uc ]
+[e = _DACR0 -> -> 15 `i `uc ]
 [; ;periph.c: 18: DACCON|=(1)<<2;
 "18
 [e =| _DACCON -> << -> 1 `i -> 2 `i `uc ]
@@ -1289,9 +1289,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.c: 26: {
 [e :U _op1_init ]
 [f ]
-[; ;periph.c: 33: OP1CON1=0x13;
+[; ;periph.c: 33: OP1CON1=0x23;
 "33
-[e = _OP1CON1 -> -> 19 `i `uc ]
+[e = _OP1CON1 -> -> 35 `i `uc ]
 [; ;periph.c: 34: OP1CON2=0x90;
 "34
 [e = _OP1CON2 -> -> 144 `i `uc ]

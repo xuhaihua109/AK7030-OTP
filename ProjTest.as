@@ -827,8 +827,8 @@ _op1_init:
 	line	33
 	
 l2661:	
-;periph.c: 33: OP1CON1=0x13;
-	movlw	(013h)
+;periph.c: 33: OP1CON1=0x23;
+	movlw	(023h)
 	bcf	status, 5	;RP0=0, select bank0
 	movwf	(28)	;volatile
 	line	34
@@ -901,13 +901,13 @@ _dac_init:
 	line	15
 	
 l2655:	
-;periph.c: 15: DACCON|=2;
-	bsf	(135)^080h+(1/8),(1)&7	;volatile
+;periph.c: 15: DACCON|= 1 ;
+	bsf	(135)^080h+(0/8),(0)&7	;volatile
 	line	17
 	
 l2657:	
-;periph.c: 17: DACR0=0x1B;
-	movlw	(01Bh)
+;periph.c: 17: DACR0=0x0F;
+	movlw	(0Fh)
 	movwf	(136)^080h	;volatile
 	line	18
 	

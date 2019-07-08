@@ -862,9 +862,9 @@ void setAD_ConvertFlag(unsigned char flag);
 # 13 "C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\periph.c"
 void dac_init()
 {
-DACCON|=2;
+DACCON|= 1 ;
 
-DACR0=0x1B;
+DACR0=0x0F;
 DACCON|=(1)<<2;
 
 
@@ -876,7 +876,7 @@ void op1_init()
 {
 
 # 33
-OP1CON1=0x13;
+OP1CON1=0x23;
 OP1CON2=0x90;
 OP1CON0=0x80;
 
