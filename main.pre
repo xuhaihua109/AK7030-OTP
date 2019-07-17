@@ -923,7 +923,15 @@ ADC4_STEP_INIT = 0,
 ADC4_STEP_FIRST,
 ADC4_STEP_SECOND,
 ADC4_STEP_THIRD,
+ADC4_STEP_FOURTH_PREFIX1,
+ADC4_STEP_FOURTH_PREFIX2,
+ADC4_STEP_FOURTH_PREFIX3,
+ADC4_STEP_FOURTH_PREFIX4,
+ADC4_STEP_FOURTH_PREFIX5,
+ADC4_STEP_FOURTH_PREFIX6,
 ADC4_STEP_FOURTH,
+ADC4_STEP_FOURTH_SUFFIX1,
+ADC4_STEP_FOURTH_SUFFIX2,
 ADC4_STEP_FIFTH,
 ADC4_STEP_SIXTH,
 };
@@ -1005,7 +1013,7 @@ static enum MAIN_LOOP_STEP enumMainLoopStep = MAIN_LOOP_STEP_INIT;
 
 static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = 0;
 
-# 231
+# 239
 while(1)
 {
 asm(" clrwdt");
@@ -1016,7 +1024,7 @@ if(isPermitSampleTime())
 {
 clrSampeTime();
 
-# 253
+# 261
 switch(enumMainLoopStep)
 {
 case MAIN_LOOP_STEP_INIT:
@@ -1049,7 +1057,6 @@ enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
 
 ucTimerZeroPoint3s = 0;
 
-
 }
 else
 {
@@ -1063,7 +1070,6 @@ clearPinPortAndTimer();
 }
 }
 
-# 303
 break;
 }
 
@@ -1179,7 +1185,7 @@ switch(ucADC4_Step)
 {
 case ADC4_STEP_INIT:
 {
-startTwentySecondsTimer();
+
 ucADC4_Step = ADC4_STEP_FIRST;
 break;
 }
@@ -1661,34 +1667,54 @@ break;
 
 case ADC4_STEP_THIRD:
 {
-static unsigned char ucTimerDelayP5s = 0;
+static unsigned char ucTimerDelayP2sLess = 0;
 
-static unsigned char ucTimerPA6DelayP1s = 0;
+static unsigned char ucTimerDelayP2sMore = 0;
 
-static unsigned char ucTimerPB6DelayP1s = 0;
-
-if(isFinishedTwentySecondsTimer())
+if( getAdOriginalCh1Value() <= 200 )
 {
-if(ucTimerPA6DelayP1s < 1)
-{
-PA6 = 0;
-ucTimerPA6DelayP1s++;
+ucTimerDelayP2sLess++;
+ucTimerDelayP2sMore = 0;
 }
 else
 {
-if(ucTimerPB6DelayP1s < 1)
-{
-PBOD6 =0;
-PB6 = 1;
-ucTimerPB6DelayP1s++;
+ucTimerDelayP2sMore++;
+ucTimerDelayP2sLess = 0;
 }
-else
+
+if( ucTimerDelayP2sLess >= 2)
 {
-if(ucTimerDelayP5s < 3)
-{
-ucTimerDelayP5s++;
+ucTimerDelayP2sLess = 0;
+ucTimerDelayP2sMore = 0;
+
+startTwentySecondsTimer();
+
+ucADC4_Step = ADC4_STEP_FOURTH_PREFIX1;
 }
+
+if(ucTimerDelayP2sMore >= 2)
+{
+ucTimerDelayP2sMore = 0;
+ucTimerDelayP2sLess = 0;
+ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
+}
+
+
+break;
+}
+
+case ADC4_STEP_FOURTH_PREFIX1:
+{
+if( !isFinishedTwentySecondsTimer() )
+ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
 else
+ucADC4_Step = ADC4_STEP_FOURTH_PREFIX3;
+
+break;
+}
+
+
+case ADC4_STEP_FOURTH_PREFIX2:
 {
 
 static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
@@ -1706,10 +1732,10 @@ ucTimerForDACR0_CNT2++;
 ucTimerForDACR0_CNT1 = 0;
 }
 
-if(ucTimerForDACR0_CNT1 >= 3)
+if(ucTimerForDACR0_CNT1 >= 2)
 ucTimerForDACR0_CNT1_f = 1;
 
-if(ucTimerForDACR0_CNT2 >= 3)
+if(ucTimerForDACR0_CNT2 >= 2)
 ucTimerForDACR0_CNT2_f = 1;
 
 if(ucTimerForDACR0_CNT1_f)
@@ -1719,7 +1745,7 @@ ucADC4_Step = ADC4_STEP_FOURTH;
 }
 else if(ucTimerForDACR0_CNT2_f)
 {
-DACR0=0x07;
+DACR0=0x09;
 ucADC4_Step = ADC4_STEP_FOURTH;
 }
 else
@@ -1734,51 +1760,131 @@ ucTimerForDACR0_CNT2 = 0;
 ucTimerForDACR0_CNT1_f = 0;
 ucTimerForDACR0_CNT2_f = 0;
 
-ucTimerPB6DelayP1s = 0;
-ucTimerPA6DelayP1s = 0;
-
-ucTimerDelayP5s = 0;
 }
-}
-}
-}
-}
-else
-ucADC4_Step = ADC4_STEP_FIRST;
 
 break;
 }
 
-case ADC4_STEP_FOURTH:
+case ADC4_STEP_FOURTH_PREFIX3:
 {
-static unsigned char ucTimer1s = 0;
-
-static unsigned char ucTimerSeond1s = 0;
-
-if(ucTimerSeond1s < 3)
-{
-ucTimerSeond1s++;
-}
-else
-{
-if(ucTimer1s < 3)
-{
-ucTimer1s++;
+clearTwentySecondsTimer();
+PA6 = 1;
+PBOD6 = 0;
 PB6 = 1;
-PBOD6 = 1;
+
+ucADC4_Step = ADC4_STEP_FOURTH_PREFIX4;
+break;
+
 }
-else
+
+
+case ADC4_STEP_FOURTH_PREFIX4:
 {
-ucTimer1s = 0;
+static unsigned char ucDelayPrefix4TimerP5s;
 
-ucTimerSeond1s = 0;
+ucDelayPrefix4TimerP5s++;
 
-enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+if( ucDelayPrefix4TimerP5s >= 5)
+{
+ucDelayPrefix4TimerP5s = 0;
+
+ucADC4_Step = ADC4_STEP_FOURTH_PREFIX5;
+}
+break;
+}
+
+case ADC4_STEP_FOURTH_PREFIX5:
+{
+
+PBOD6 = 1;
+PB6 = 1;
+ucADC4_Step = ADC4_STEP_FOURTH_PREFIX6;
+
+break;
+
+}
+
+case ADC4_STEP_FOURTH_PREFIX6:
+{
+static unsigned char ucDelayPrefix6TimerP2s;
+
+ucDelayPrefix6TimerP2s++;
+
+if( ucDelayPrefix6TimerP2s >= 2)
+{
+ucDelayPrefix6TimerP2s = 0;
 
 ucADC4_Step = ADC4_STEP_INIT;
+
+enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
 }
+break;
 }
 
+
+case ADC4_STEP_FOURTH:
+{
+static unsigned char ucCheckTimerP2sLess = 0;
+
+static unsigned char ucCheckTimerP2sMore = 0;
+
+if( getAdOriginalCh1Value() < 105)
+{
+ucCheckTimerP2sLess++;
+ucCheckTimerP2sMore = 0;
+}
+else
+{
+ucCheckTimerP2sMore++;
+ucCheckTimerP2sLess = 0;
+}
+
+if( ucCheckTimerP2sMore > 2)
+{
+ucCheckTimerP2sMore = 0;
+ucCheckTimerP2sLess = 0;
+
+ucADC4_Step = ADC4_STEP_INIT;
+
+enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+}
+
+if( ucCheckTimerP2sLess > 2)
+{
+ucCheckTimerP2sMore = 0;
+ucCheckTimerP2sLess = 0;
+
+ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX1;
+
+}
+
+
+break;
+}
+
+case ADC4_STEP_FOURTH_SUFFIX1:
+{
+static unsigned char ucFourthSuffix1TimerP3s = 0;
+
+ucFourthSuffix1TimerP3s++;
+
+if( ucFourthSuffix1TimerP3s > 3)
+{
+ucFourthSuffix1TimerP3s = 0;
+ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX2;
+
+}
+break;
+}
+
+case ADC4_STEP_FOURTH_SUFFIX2:
+{
+PA6 = 0;
+
+clearPinPortAndTimer();
+ucADC4_Step = ADC4_STEP_INIT;
+
+enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 break;
 }
 

@@ -141,7 +141,15 @@ void main (void)
 		ADC4_STEP_FIRST,
 		ADC4_STEP_SECOND,
 		ADC4_STEP_THIRD,
+		ADC4_STEP_FOURTH_PREFIX1,
+		ADC4_STEP_FOURTH_PREFIX2,
+		ADC4_STEP_FOURTH_PREFIX3,
+		ADC4_STEP_FOURTH_PREFIX4,
+		ADC4_STEP_FOURTH_PREFIX5,
+		ADC4_STEP_FOURTH_PREFIX6,
 		ADC4_STEP_FOURTH,
+		ADC4_STEP_FOURTH_SUFFIX1,
+		ADC4_STEP_FOURTH_SUFFIX2,
 		ADC4_STEP_FIFTH,
 		ADC4_STEP_SIXTH,
 	};
@@ -282,7 +290,6 @@ void main (void)
 
 						ucTimerZeroPoint3s = 0;
 
-
 					}
 					else
 					{
@@ -295,10 +302,6 @@ void main (void)
 							clearPinPortAndTimer();
 						}
 					}
-
-
-
-
 
 					break;
 				}
@@ -415,7 +418,7 @@ void main (void)
 					    {
 							case ADC4_STEP_INIT:
 							{
-								startTwentySecondsTimer();
+							//	startTwentySecondsTimer();
 								ucADC4_Step = ADC4_STEP_FIRST;
 								break;
 							}
@@ -897,124 +900,224 @@ void main (void)
 
 							case ADC4_STEP_THIRD:
 							{
-								static unsigned char ucTimerDelayP5s = 0;
+								static unsigned char ucTimerDelayP2sLess = 0;
 
-								static unsigned char ucTimerPA6DelayP1s = 0;
+								static unsigned char ucTimerDelayP2sMore = 0;
 
-								static unsigned char ucTimerPB6DelayP1s = 0;
-
-								if(isFinishedTwentySecondsTimer())
+								if( getAdOriginalCh1Value() <= 200 )
 								{
-									if(ucTimerPA6DelayP1s < 1)
-									{
-										PA6 = 0;
-										ucTimerPA6DelayP1s++;
-									}
-									else
-									{
-										if(ucTimerPB6DelayP1s < 1)
-										{
-											PBOD6 =0;
-											PB6 = 1;// how make PB6 ouput high level
-											ucTimerPB6DelayP1s++;
-										}
-										else
-										{
-											if(ucTimerDelayP5s < 3)
-											{
-												ucTimerDelayP5s++;
-											}
-											else
-											{
-
-												static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
-
-												static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
-
-												if((getAdOriginalCh14Value() > 2800))
-												{
-													ucTimerForDACR0_CNT1++;
-													ucTimerForDACR0_CNT2 = 0;
-												}
-												else
-												{
-													ucTimerForDACR0_CNT2++;
-													ucTimerForDACR0_CNT1 = 0;
-												}
-
-												if(ucTimerForDACR0_CNT1 >= 3)
-													ucTimerForDACR0_CNT1_f = 1;
-
-												if(ucTimerForDACR0_CNT2 >= 3)
-													ucTimerForDACR0_CNT2_f = 1;
-
-												if(ucTimerForDACR0_CNT1_f)
-												{
-													DACR0=0x0F;//set OP1 input 0.3v
-													ucADC4_Step = ADC4_STEP_FOURTH;
-												}
-												else if(ucTimerForDACR0_CNT2_f)
-												{
-													DACR0=0x07;//set op1 input 0.14
-													ucADC4_Step = ADC4_STEP_FOURTH;
-												}
-												else
-												{
-													;//do nothing, if this AD value vibrate in this scope, consider to alway stay here.
-												}
-
-												if(ADC4_STEP_FOURTH == ucADC4_Step)
-												{
-													ucTimerForDACR0_CNT1 = 0;
-													ucTimerForDACR0_CNT2 = 0;
-													ucTimerForDACR0_CNT1_f = 0;
-													ucTimerForDACR0_CNT2_f = 0;
-
-													ucTimerPB6DelayP1s = 0;
-													ucTimerPA6DelayP1s = 0;
-
-													ucTimerDelayP5s = 0;
-												}
-											}
-										}
-									}
+									ucTimerDelayP2sLess++;
+									ucTimerDelayP2sMore = 0;
 								}
 								else
-									ucADC4_Step = ADC4_STEP_FIRST;
+								{
+									ucTimerDelayP2sMore++;  //if value is vibrating , will always stop here
+									ucTimerDelayP2sLess = 0;
+								}
+
+								if( ucTimerDelayP2sLess >= 2)
+								{
+									ucTimerDelayP2sLess = 0;
+									ucTimerDelayP2sMore = 0;
+
+									startTwentySecondsTimer();
+
+									ucADC4_Step = ADC4_STEP_FOURTH_PREFIX1;
+								}
+
+								if(ucTimerDelayP2sMore >= 2)
+								{
+									ucTimerDelayP2sMore = 0;
+									ucTimerDelayP2sLess = 0;
+									ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
+								}
+
+
+								break;
+						}
+
+						case ADC4_STEP_FOURTH_PREFIX1:
+						{
+							if( !isFinishedTwentySecondsTimer() )
+								ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
+							else
+								ucADC4_Step = ADC4_STEP_FOURTH_PREFIX3;
+
+							break;
+						}
+
+
+						case ADC4_STEP_FOURTH_PREFIX2:
+						{
+
+							static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
+
+							static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
+
+							if((getAdOriginalCh14Value() > 2800))
+							{
+								ucTimerForDACR0_CNT1++;
+								ucTimerForDACR0_CNT2 = 0;
+							}
+							else
+							{
+								ucTimerForDACR0_CNT2++;
+								ucTimerForDACR0_CNT1 = 0;
+							}
+
+							if(ucTimerForDACR0_CNT1 >= 2)
+								ucTimerForDACR0_CNT1_f = 1;
+
+							if(ucTimerForDACR0_CNT2 >= 2)
+								ucTimerForDACR0_CNT2_f = 1;
+
+							if(ucTimerForDACR0_CNT1_f)
+							{
+								DACR0=0x0F;//set OP1 input 0.3v
+								ucADC4_Step = ADC4_STEP_FOURTH;
+							}
+							else if(ucTimerForDACR0_CNT2_f)
+							{
+								DACR0=0x09;//set op1 input 0.18v
+								ucADC4_Step = ADC4_STEP_FOURTH;
+							}
+							else
+							{
+								;//do nothing, if this AD value vibrate in this scope, consider to always stay here.
+							}
+
+							if(ADC4_STEP_FOURTH == ucADC4_Step)
+							{
+								ucTimerForDACR0_CNT1 = 0;
+								ucTimerForDACR0_CNT2 = 0;
+								ucTimerForDACR0_CNT1_f = 0;
+								ucTimerForDACR0_CNT2_f = 0;
+
+							}
+
+							break;
+						}
+
+						case  ADC4_STEP_FOURTH_PREFIX3:
+						{
+							clearTwentySecondsTimer();
+							PA6 = 0;
+							PBOD6 = 0;
+							PB6 = 1;
+
+							ucADC4_Step = ADC4_STEP_FOURTH_PREFIX4;
+							break;
+
+						}
+
+
+						case  ADC4_STEP_FOURTH_PREFIX4:
+						{
+							static unsigned char ucDelayPrefix4TimerP5s;
+
+							ucDelayPrefix4TimerP5s++;
+
+							if( ucDelayPrefix4TimerP5s >= 5)
+							{
+								ucDelayPrefix4TimerP5s = 0;
+
+								ucADC4_Step = ADC4_STEP_FOURTH_PREFIX5;
+							}
+							break;
+						}
+
+						case  ADC4_STEP_FOURTH_PREFIX5:
+						{
+
+							PBOD6 = 1;
+							PB6 = 1;
+							ucADC4_Step = ADC4_STEP_FOURTH_PREFIX6;
+
+							break;
+
+						}
+
+						case  ADC4_STEP_FOURTH_PREFIX6:
+						{
+							static unsigned char ucDelayPrefix6TimerP2s;
+
+							ucDelayPrefix6TimerP2s++;
+
+							if( ucDelayPrefix6TimerP2s >= 2)
+							{
+								ucDelayPrefix6TimerP2s = 0;
+
+								ucADC4_Step = ADC4_STEP_INIT;
+
+								enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+							}
+							break;
+						}
+
+
+							case ADC4_STEP_FOURTH:
+							{
+								static unsigned char ucCheckTimerP2sLess = 0;
+
+								static unsigned char ucCheckTimerP2sMore = 0;
+
+								if( getAdOriginalCh1Value() < 105)
+								{
+									ucCheckTimerP2sLess++;
+									ucCheckTimerP2sMore = 0;
+								}
+								else
+								{
+									ucCheckTimerP2sMore++;
+									ucCheckTimerP2sLess = 0;
+								}
+
+								if( ucCheckTimerP2sMore > 2)
+								{
+									ucCheckTimerP2sMore = 0;
+									ucCheckTimerP2sLess = 0;
+
+									ucADC4_Step = ADC4_STEP_INIT;
+
+									enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+								}
+
+								if( ucCheckTimerP2sLess > 2)
+								{
+									ucCheckTimerP2sMore = 0;
+									ucCheckTimerP2sLess = 0;
+
+									ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX1;
+
+								}
+
 
 								break;
 							}
 
-							case ADC4_STEP_FOURTH:
+							case ADC4_STEP_FOURTH_SUFFIX1:
 							{
-								static unsigned char ucTimer1s = 0;
+								static unsigned char ucFourthSuffix1TimerP3s = 0;
 
-								static unsigned char ucTimerSeond1s = 0;
+								ucFourthSuffix1TimerP3s++;
 
-								if(ucTimerSeond1s < 3)
+								if( ucFourthSuffix1TimerP3s > 3)
 								{
-									ucTimerSeond1s++;
+									ucFourthSuffix1TimerP3s = 0;
+									ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX2;
+
 								}
-								else
-								{
-									if(ucTimer1s < 3)
-									{
-										ucTimer1s++;
-										PB6 = 1; // make sure PB6 can output Hign resistance
-										PBOD6 = 1; //set PB6 as high resistance
-									}
-									else
-									{
-										ucTimer1s = 0;
+								break;
+							}
 
-										ucTimerSeond1s = 0;
+							case ADC4_STEP_FOURTH_SUFFIX2:
+							{
+								PA6 = 0;
 
-										enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+								clearPinPortAndTimer();
+								ucADC4_Step = ADC4_STEP_INIT;
 
-										ucADC4_Step = ADC4_STEP_INIT;
-									}
-								}
-
+								enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 								break;
 							}
 
