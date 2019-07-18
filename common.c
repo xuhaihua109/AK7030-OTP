@@ -391,7 +391,8 @@ void startThreeHoursTimer(unsigned int uiSetTime)
 
 void startTwentySecondsTimer()
 {
-	uiTwentySecondsTimer = 20;
+	if( 0 == uiTwentySecondsTimer)
+		uiTwentySecondsTimer = 20;
 }
 
 

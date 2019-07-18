@@ -1175,6 +1175,7 @@ uiSmallTimer = uiSetTime;
 
 void startTwentySecondsTimer()
 {
+if( 0 == uiTwentySecondsTimer)
 uiTwentySecondsTimer = 20;
 }
 
@@ -1254,14 +1255,14 @@ if(sampleChannelSelect == 5)
 
 vPutSampleDataIntoTable(adc_get(),5);
 
-# 475
+# 476
 }
 else if(sampleChannelSelect == 1)
 {
 
 vPutSampleDataIntoTable(adc_get(),1);
 
-# 484
+# 485
 }
 else
 {
