@@ -880,10 +880,12 @@ static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
 static unsigned int uiTwentySecondsTimer = 0;
 
+static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
+
 
 static void AD_Sample(void);
 
-# 50
+# 52
 unsigned int Filter(int *tmpValue)
 {
 
@@ -1044,14 +1046,14 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 216
+# 218
 unsigned int getAdOriginalCh1Value()
 {
 
 
 return Filter(uiSampleChannelFirst);
 
-# 225
+# 227
 }
 
 
@@ -1060,7 +1062,7 @@ unsigned int getAdOriginaCh4Value()
 
 return Filter(uiSampleChannelFourth);
 
-# 236
+# 238
 }
 
 
@@ -1069,7 +1071,7 @@ unsigned int getAdOriginalCh14Value()
 
 return Filter(uiSampleChannelFourteenth);
 
-# 246
+# 248
 }
 
 
@@ -1091,13 +1093,13 @@ adc_start();
 }
 }
 
-# 276
+# 278
 static void AD_Sample(void)
 {
 if(sampleTimes < 12)
 {
 
-# 300
+# 302
 sampleTimes++;
 
 if(sampleTimes >= 12)
@@ -1133,7 +1135,7 @@ sampleChannelSelect = 14;
 }
 }
 
-# 348
+# 350
 void setDAC0_ChannelValue(unsigned char ucValue)
 {
 DACR0=ucValue;
@@ -1141,49 +1143,64 @@ DACR0=ucValue;
 
 void startTwelveHourTimer(unsigned int uiSetTime )
 {
-if(0 == uiBigTimer)
+if((0 == uiBigTimer) && ( 0 == bBigTimerStartFlag))
+{
 uiBigTimer = uiSetTime;
+bBigTimerStartFlag = 1;
+}
 
-# 362
+# 367
 }
 
 void clearTwelveHoursTimer()
 {
 uiBigTimer = 0;
+bBigTimerStartFlag = 0;
 }
 
 
 void clearThreeHoursTimer()
 {
 uiSmallTimer = 0;
+bSmallTimerStartFlag = 0;
 }
 
 void clearTwentySecondsTimer()
 {
 uiTwentySecondsTimer = 0;
+bTwentySecStartFlag = 0;
 }
 
 
 void startThreeHoursTimer(unsigned int uiSetTime)
 {
-if(0 == uiSmallTimer)
+if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
+{
 uiSmallTimer = uiSetTime;
+bSmallTimerStartFlag = 1;
+}
 
-# 389
+# 400
 }
 
 
 void startTwentySecondsTimer()
 {
-if( 0 == uiTwentySecondsTimer)
+if(( 0 == uiTwentySecondsTimer) && ( 0 == bTwentySecStartFlag))
+{
 uiTwentySecondsTimer = 20;
+bTwentySecStartFlag = 1;
+}
 }
 
 
 unsigned char isFinishedTwentySecondsTimer()
 {
-if(0 == uiTwentySecondsTimer)
+if(( 0 == uiTwentySecondsTimer ) && bTwentySecStartFlag )
+{
+bTwentySecStartFlag = 0;
 return 1;
+}
 else
 return 0;
 }
@@ -1191,16 +1208,22 @@ return 0;
 
 unsigned char isFinishedTwelveHoursTimer()
 {
-if(uiBigTimer == 0)
+if(( uiBigTimer == 0 ) && bBigTimerStartFlag )
+{
+bBigTimerStartFlag = 0;
 return 1;
+}
 else
 return 0;
 }
 
 unsigned char isFinishedThreeHoursTimer()
 {
-if(uiSmallTimer == 0)
+if((uiSmallTimer == 0) && bSmallTimerStartFlag)
+{
+bSmallTimerStartFlag = 0;
 return 1;
+}
 else
 return 0;
 }
@@ -1255,14 +1278,14 @@ if(sampleChannelSelect == 5)
 
 vPutSampleDataIntoTable(adc_get(),5);
 
-# 476
+# 499
 }
 else if(sampleChannelSelect == 1)
 {
 
 vPutSampleDataIntoTable(adc_get(),1);
 
-# 485
+# 508
 }
 else
 {

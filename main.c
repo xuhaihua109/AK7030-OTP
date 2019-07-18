@@ -1342,7 +1342,7 @@ void main (void)
 
 									static unsigned char ucTimerDelayP2sMore = 0;
 
-									if( getAdOriginalCh1Value() <= 200 )
+									if( getAdOriginalCh1Value() <= 220 )
 									{
 										ucTimerDelayP2sLess++;
 										ucTimerDelayP2sMore = 0;

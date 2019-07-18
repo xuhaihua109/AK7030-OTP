@@ -37,6 +37,8 @@ static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
 static unsigned int uiTwentySecondsTimer = 0;
 
+static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
+
 
 static void AD_Sample(void);
 
@@ -352,8 +354,11 @@ void setDAC0_ChannelValue(unsigned char ucValue)
 
 void startTwelveHourTimer(unsigned int uiSetTime )
 {
-	if(0 == uiBigTimer)
+	if((0 == uiBigTimer) && ( 0 == bBigTimerStartFlag))
+	{
 	  uiBigTimer = uiSetTime;//43200; // 43200s = 12h
+	  bBigTimerStartFlag = 1;
+	}
 
 #ifdef DEBUG_FUNCITON
 
@@ -364,24 +369,30 @@ void startTwelveHourTimer(unsigned int uiSetTime )
 void clearTwelveHoursTimer()
 {
 	uiBigTimer = 0;
+	bBigTimerStartFlag = 0;
 }
 
 
 void clearThreeHoursTimer()
 {
 	uiSmallTimer = 0;
+	bSmallTimerStartFlag = 0;
 }
 
 void clearTwentySecondsTimer()
 {
 	uiTwentySecondsTimer = 0;
+	bTwentySecStartFlag = 0;
 }
 
 
 void startThreeHoursTimer(unsigned int uiSetTime)
 {
-	if(0 == uiSmallTimer)
+	if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
+	{
 		uiSmallTimer = uiSetTime;//10800; //3600*3 = 3h
+		bSmallTimerStartFlag = 1;
+	}
 #ifdef DEBUG_FUNCITON
 
 	uiSmallTimer = 180;
@@ -391,15 +402,21 @@ void startThreeHoursTimer(unsigned int uiSetTime)
 
 void startTwentySecondsTimer()
 {
-	if( 0 == uiTwentySecondsTimer)
+	if(( 0 == uiTwentySecondsTimer) && ( 0 == bTwentySecStartFlag))
+	{
 		uiTwentySecondsTimer = 20;
+		bTwentySecStartFlag = 1;
+	}
 }
 
 
 unsigned char isFinishedTwentySecondsTimer()
 {
-	if(0 == uiTwentySecondsTimer)
+	if(( 0 == uiTwentySecondsTimer ) && bTwentySecStartFlag )
+	{
+		bTwentySecStartFlag = 0;
 		return 1;
+	}
 	else
 		return 0;
 }
@@ -407,16 +424,22 @@ unsigned char isFinishedTwentySecondsTimer()
 
 unsigned char isFinishedTwelveHoursTimer()
 {
-	if(uiBigTimer == 0)
+	if(( uiBigTimer == 0 ) && bBigTimerStartFlag )
+	{
+		bBigTimerStartFlag = 0;
 		return 1;
+	}
 	else
 		return 0;
 }
 
 unsigned char isFinishedThreeHoursTimer()
 {
-	if(uiSmallTimer == 0)
+	if((uiSmallTimer == 0) && bSmallTimerStartFlag)
+	{
+		bSmallTimerStartFlag = 0;
 		return 1;
+	}
 	else
 		return 0;
 }

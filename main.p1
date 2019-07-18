@@ -3675,9 +3675,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;main.c: 1341: static unsigned char ucTimerDelayP2sLess = 0;
 [; ;main.c: 1343: static unsigned char ucTimerDelayP2sMore = 0;
-[; ;main.c: 1345: if( getAdOriginalCh1Value() <= 200 )
+[; ;main.c: 1345: if( getAdOriginalCh1Value() <= 220 )
 "1345
-[e $ ! <= ( _getAdOriginalCh1Value ..  -> -> 200 `i `ui 216  ]
+[e $ ! <= ( _getAdOriginalCh1Value ..  -> -> 220 `i `ui 216  ]
 [; ;main.c: 1346: {
 "1346
 {
