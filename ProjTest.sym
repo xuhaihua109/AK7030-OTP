@@ -501,11 +501,11 @@ startup.as
 61 0 0 CODE
 70 11 0 CODE
 ProjTest.obj
-D:\develop\190625\AK7030-OTP\main.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\main.c
 79 2000 0 CONFIG
 80 2001 0 CONFIG
 81 2002 0 CONFIG
-D:\develop\190625\AK7030-OTP\common.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\common.c
 484 695 0 CODE
 480 696 0 CODE
 483 697 0 CODE
@@ -533,7 +533,7 @@ D:\develop\190625\AK7030-OTP\common.c
 474 76F 0 CODE
 475 770 0 CODE
 476 771 0 CODE
-D:\develop\190625\AK7030-OTP\main.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\main.c
 498 13 0 CODE
 499 15 0 CODE
 500 16 0 CODE
@@ -918,7 +918,7 @@ D:\develop\190625\AK7030-OTP\main.c
 97 666 0 CODE
 98 668 0 CODE
 99 669 0 CODE
-D:\develop\190625\AK7030-OTP\common.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\common.c
 371 669 0 CODE
 372 66C 0 CODE
 373 66E 0 CODE
@@ -981,7 +981,7 @@ D:\develop\190625\AK7030-OTP\common.c
 319 63A 0 CODE
 322 63C 0 CODE
 335 63E 0 CODE
-D:\develop\190625\AK7030-OTP\periph.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\periph.c
 85 63F 0 CODE
 86 640 0 CODE
 87 641 0 CODE
@@ -991,7 +991,7 @@ D:\develop\190625\AK7030-OTP\periph.c
 91 653 0 CODE
 101 654 0 CODE
 102 656 0 CODE
-D:\develop\190625\AK7030-OTP\common.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\common.c
 438 728 0 CODE
 441 731 0 CODE
 440 732 0 CODE
@@ -1025,7 +1025,7 @@ D:\develop\190625\AK7030-OTP\common.c
 451 7B5 0 CODE
 454 7B6 0 CODE
 455 7B7 0 CODE
-D:\develop\190625\AK7030-OTP\periph.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\periph.c
 52 7AA 0 CODE
 54 7AC 0 CODE
 55 7AE 0 CODE
@@ -1040,7 +1040,7 @@ D:\develop\190625\AK7030-OTP\periph.c
 17 7B8 0 CODE
 18 7BA 0 CODE
 22 7BB 0 CODE
-D:\develop\190625\AK7030-OTP\common.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\common.c
 195 7BC 0 CODE
 196 7BD 0 CODE
 197 7BE 0 CODE
@@ -1053,7 +1053,7 @@ D:\develop\190625\AK7030-OTP\common.c
 177 776 0 CODE
 178 777 0 CODE
 179 77A 0 CODE
-D:\develop\190625\AK7030-OTP\main.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\main.c
 281 77A 0 CODE
 282 77B 0 CODE
 284 77E 0 CODE
@@ -1101,7 +1101,7 @@ D:\develop\190625\AK7030-OTP\main.c
 138 6E4 0 CODE
 139 6E5 0 CODE
 144 6E8 0 CODE
-D:\develop\190625\AK7030-OTP\common.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\common.c
 466 44F 0 CODE
 468 451 0 CODE
 469 452 0 CODE
@@ -1126,11 +1126,11 @@ D:\develop\190625\AK7030-OTP\common.c
 503 48E 0 CODE
 514 497 0 CODE
 519 4A0 0 CODE
-D:\develop\190625\AK7030-OTP\periph.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\periph.c
 107 4AD 0 CODE
 108 4B3 0 CODE
 109 4B7 0 CODE
-D:\develop\190625\AK7030-OTP\common.c
+C:\Users\pc\eclipse-workspace-AK730-2ND-PRJ\AK\common.c
 107 4B8 0 CODE
 109 4BA 0 CODE
 111 4BE 0 CODE

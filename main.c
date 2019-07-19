@@ -1535,7 +1535,7 @@ void main (void)
 
 									static unsigned char ucCheckTimerP2sMore = 0;
 
-									if( getAdOriginalCh1Value() < 105)
+									if( getAdOriginalCh1Value() < 85)
 									{
 										ucCheckTimerP2sLess++;
 										ucCheckTimerP2sMore = 0;
