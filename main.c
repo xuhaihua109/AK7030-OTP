@@ -454,6 +454,7 @@ void clearAllTimer(void)
 #define    FALSE  0
 
 
+
 void main (void)
 {
 
@@ -788,13 +789,63 @@ void main (void)
 #ifdef USE_SOFTWARE_SIMULATION_TEST
 						cout <<"ucADC4_Step :: ADC4_STEP_FIRST; "<<endl;
 #endif
-									if(getAdOriginaCh4Value() < 1931)
+									static unsigned int uiOldValue = 0, uiMinValue = 0, uiMaxValue = 0;
+
+									static unsigned char bInitFlag = 0;
+
+									if( 0 == bInitFlag)
+									{
+										bInitFlag = 1;
+										uiOldValue = getAdOriginaCh4Value();
+									}
+
+				#define             RANGE_FIRST_VALUE                1931
+				#define             RANGE_SECOND_VALUE               2047
+				#define             RANGE_THIRD_VALUE                2164
+				#define             RANGE_FOURTH_VALUE               2281
+				#define             HYSTERETIC_NEGATIVE_VALUE        40
+				#define             HYSTERETIC_POSITIVE_VALUE        0
+
+									if(LESS_THAN_1911 == ucChannel4Type)
+									{
+										uiMinValue = 0;
+										uiMaxValue = RANGE_FIRST_VALUE;
+									}
+									else if(BETWEEN_1911_AND_2067 == ucChannel4Type)
+									{
+										uiMinValue = RANGE_FIRST_VALUE - HYSTERETIC_NEGATIVE_VALUE;
+										uiMaxValue = RANGE_SECOND_VALUE;
+									}
+									else if(BETWEEN_2067_AND_2204 == ucChannel4Type)
+									{
+										uiMinValue = RANGE_SECOND_VALUE - HYSTERETIC_NEGATIVE_VALUE;
+										uiMaxValue = RANGE_THIRD_VALUE;
+									}
+									else if(BETWEEN_2204_AND_2340 == ucChannel4Type)
+									{
+										uiMinValue = RANGE_THIRD_VALUE - HYSTERETIC_NEGATIVE_VALUE;
+										uiMaxValue = RANGE_FOURTH_VALUE;
+									}
+									else
+									{
+										uiMinValue = RANGE_FOURTH_VALUE - HYSTERETIC_NEGATIVE_VALUE;
+										uiMaxValue = RANGE_FOURTH_VALUE;
+									}
+
+
+									if(( getAdOriginaCh4Value() < uiMinValue )
+										|| 	(getAdOriginaCh4Value() > uiMaxValue ))
+									{
+										uiOldValue =  getAdOriginaCh4Value();
+									}
+
+									if( uiOldValue < RANGE_FIRST_VALUE )
 										ucChannel4Type = LESS_THAN_1911;
-									else if(getAdOriginaCh4Value() < 2047)
+									else if( uiOldValue < RANGE_SECOND_VALUE )
 										ucChannel4Type = BETWEEN_1911_AND_2067;
-									else if(getAdOriginaCh4Value() < 2164)
+									else if( uiOldValue < RANGE_THIRD_VALUE )
 										ucChannel4Type = BETWEEN_2067_AND_2204;
-									else if(getAdOriginaCh4Value() < 2281)
+									else if( uiOldValue < RANGE_FOURTH_VALUE )
 										ucChannel4Type = BETWEEN_2204_AND_2340;
 									else
 										ucChannel4Type = MORE_THAN_2340;
