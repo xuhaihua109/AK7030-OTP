@@ -172,7 +172,7 @@ void setPB1(unsigned char bValue)
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PB0 = 1;
+		PB1 = 1;
 #else
 	   cout <<"PB1 = 0;"<<endl;
 #endif
