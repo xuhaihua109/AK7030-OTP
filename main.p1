@@ -1465,9 +1465,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "173
 [e :U 48 ]
 [; ;main.c: 173: else
-[; ;main.c: 175: PB0 = 1;
+[; ;main.c: 175: PB1 = 0;
 "175
-[e = _PB0 -> -> 1 `i `b ]
+[e = _PB1 -> -> 0 `i `b ]
 [e :U 49 ]
 [; ;main.c: 179: }
 "179

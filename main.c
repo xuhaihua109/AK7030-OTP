@@ -172,7 +172,7 @@ void setPB1(unsigned char bValue)
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PB1 = 1;
+		PB1 = 0;
 #else
 	   cout <<"PB1 = 0;"<<endl;
 #endif
@@ -445,7 +445,7 @@ void clearAllTimer(void)
 #endif
 
 
-#define   BIG_TIME_SECONDS        36000
+#define   BIG_TIME_SECONDS         36000
 #define   SMALL_TIME_SECONDS      10800
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
