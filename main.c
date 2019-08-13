@@ -1733,7 +1733,7 @@ void main (void)
 #ifdef USE_SOFTWARE_SIMULATION_TEST
 						cout <<"I am in HOUR_3_BRANCH_STEP_THIRD "<<endl;
 #endif
-								if(isFinishedThreeHoursTimer())
+								if( isFinishedTwelveHoursTimer() && isFinishedThreeHoursTimer())
 								{
 									enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 									enumMainLoopStep =  MAIN_LOOP_STEP_12_HOUR_END;
