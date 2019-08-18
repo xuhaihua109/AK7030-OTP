@@ -60,9 +60,14 @@ void startTwentySecondsTimer();//20s
 unsigned char isFinishedTwentySecondsTimer();
 
 
+void startTwentyMinTimer(unsigned int uiSetValue);//20m
+unsigned char isFinishedTwentyMinTimer();
+
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
 void clearTwentySecondsTimer();
+void clearTwentyMinTimer();
+
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();

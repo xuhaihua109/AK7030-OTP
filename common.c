@@ -37,8 +37,12 @@ static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
 static unsigned int uiTwentySecondsTimer = 0;
 
+static unsigned int uiTwentyMinTimer = 0;
+
 static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
 
+
+static unsigned char bTwentyMinStartFlag = 0;
 
 static void AD_Sample(void);
 
@@ -386,6 +390,13 @@ void clearTwentySecondsTimer()
 }
 
 
+void clearTwentyMinTimer()
+{
+	uiTwentyMinTimer = 0;
+	bTwentyMinStartFlag = 0;
+}
+
+
 void startThreeHoursTimer(unsigned int uiSetTime)
 {
 	if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
@@ -407,6 +418,29 @@ void startTwentySecondsTimer()
 		uiTwentySecondsTimer = 20;
 		bTwentySecStartFlag = 1;
 	}
+}
+
+
+
+void startTwentyMinTimer(unsigned int uiSetValue )
+{
+	if(( 0 == uiTwentyMinTimer) && ( 0 == bTwentyMinStartFlag))
+	{
+		uiTwentyMinTimer = uiSetValue;
+		bTwentyMinStartFlag = 1;
+	}
+}
+
+
+unsigned char isFinishedTwentyMinTimer()
+{
+	if(( 0 == uiTwentyMinTimer ) && bTwentyMinStartFlag )
+	{
+		bTwentyMinStartFlag = 0;
+		return 1;
+	}
+	else
+		return 0;
 }
 
 
@@ -480,6 +514,9 @@ void interrupt ISR(void)
 
 			if(uiTwentySecondsTimer)
 				uiTwentySecondsTimer--;
+
+			if(uiTwentyMinTimer)
+				uiTwentyMinTimer--;
 		}
     }
 

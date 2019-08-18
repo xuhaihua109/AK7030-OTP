@@ -838,9 +838,14 @@ void startTwentySecondsTimer();
 unsigned char isFinishedTwentySecondsTimer();
 
 
+void startTwentyMinTimer(unsigned int uiSetValue);
+unsigned char isFinishedTwentyMinTimer();
+
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
 void clearTwentySecondsTimer();
+void clearTwentyMinTimer();
+
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();
@@ -880,12 +885,16 @@ static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
 static unsigned int uiTwentySecondsTimer = 0;
 
+static unsigned int uiTwentyMinTimer = 0;
+
 static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
 
 
+static unsigned char bTwentyMinStartFlag = 0;
+
 static void AD_Sample(void);
 
-# 52
+# 56
 unsigned int Filter(int *tmpValue)
 {
 
@@ -1046,14 +1055,14 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 218
+# 222
 unsigned int getAdOriginalCh1Value()
 {
 
 
 return Filter(uiSampleChannelFirst);
 
-# 227
+# 231
 }
 
 
@@ -1062,7 +1071,7 @@ unsigned int getAdOriginaCh4Value()
 
 return Filter(uiSampleChannelFourth);
 
-# 238
+# 242
 }
 
 
@@ -1071,7 +1080,7 @@ unsigned int getAdOriginalCh14Value()
 
 return Filter(uiSampleChannelFourteenth);
 
-# 248
+# 252
 }
 
 
@@ -1093,13 +1102,13 @@ adc_start();
 }
 }
 
-# 278
+# 282
 static void AD_Sample(void)
 {
 if(sampleTimes < 12)
 {
 
-# 302
+# 306
 sampleTimes++;
 
 if(sampleTimes >= 12)
@@ -1135,7 +1144,7 @@ sampleChannelSelect = 14;
 }
 }
 
-# 350
+# 354
 void setDAC0_ChannelValue(unsigned char ucValue)
 {
 DACR0=ucValue;
@@ -1149,7 +1158,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 367
+# 371
 }
 
 void clearTwelveHoursTimer()
@@ -1172,6 +1181,13 @@ bTwentySecStartFlag = 0;
 }
 
 
+void clearTwentyMinTimer()
+{
+uiTwentyMinTimer = 0;
+bTwentyMinStartFlag = 0;
+}
+
+
 void startThreeHoursTimer(unsigned int uiSetTime)
 {
 if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
@@ -1180,7 +1196,7 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 400
+# 411
 }
 
 
@@ -1191,6 +1207,29 @@ if(( 0 == uiTwentySecondsTimer) && ( 0 == bTwentySecStartFlag))
 uiTwentySecondsTimer = 20;
 bTwentySecStartFlag = 1;
 }
+}
+
+
+
+void startTwentyMinTimer(unsigned int uiSetValue )
+{
+if(( 0 == uiTwentyMinTimer) && ( 0 == bTwentyMinStartFlag))
+{
+uiTwentyMinTimer = uiSetValue;
+bTwentyMinStartFlag = 1;
+}
+}
+
+
+unsigned char isFinishedTwentyMinTimer()
+{
+if(( 0 == uiTwentyMinTimer ) && bTwentyMinStartFlag )
+{
+bTwentyMinStartFlag = 0;
+return 1;
+}
+else
+return 0;
 }
 
 
@@ -1264,6 +1303,9 @@ uiSmallTimer--;
 
 if(uiTwentySecondsTimer)
 uiTwentySecondsTimer--;
+
+if(uiTwentyMinTimer)
+uiTwentyMinTimer--;
 }
 }
 
@@ -1278,14 +1320,14 @@ if(sampleChannelSelect == 5)
 
 vPutSampleDataIntoTable(adc_get(),5);
 
-# 499
+# 536
 }
 else if(sampleChannelSelect == 1)
 {
 
 vPutSampleDataIntoTable(adc_get(),1);
 
-# 508
+# 545
 }
 else
 {

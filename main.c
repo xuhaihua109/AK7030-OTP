@@ -448,6 +448,8 @@ void clearAllTimer(void)
 #define   BIG_TIME_SECONDS         36000
 #define   SMALL_TIME_SECONDS       10800
 
+#define   TIMER_20MIN       1200
+
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 
 #define    TRUE   1
@@ -607,12 +609,27 @@ void main (void)
 				   			ucTimerZeroPoint5s++;
 						}
 						else
+						{
+							static unsigned char bInit20Min = 0;
+							if(!bInit20Min)
+							{
+								bInit20Min = 1;
+								startTwentyMinTimer(TIMER_20MIN);
+							}
 							ucTimerZeroPoint5s = 0;
+						}
 
-						if(ucTimerZeroPoint5s >= 5) //5*100ms = 0.5s
+						if( ucTimerZeroPoint5s >= 5 ) //5*100ms = 0.5s
 						{
 							ucTimerZeroPoint5s = 0;
+							clearTwentyMinTimer();
 							enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+						}
+
+						if( isFinishedTwentyMinTimer() )
+						{
+							enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
+							ucTimerZeroPoint5s = 0;//no meaning, only prevent from unknown mistake
 						}
 				   		break;
 					}
