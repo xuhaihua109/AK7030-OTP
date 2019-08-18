@@ -2245,7 +2245,7 @@ case HOUR_3_BRANCH_STEP_THIRD:
 {
 
 # 1736
-if( isFinishedTwelveHoursTimer() && isFinishedThreeHoursTimer())
+if( (isFinishedTwelveHoursTimer()) || (isFinishedThreeHoursTimer()))
 {
 enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;

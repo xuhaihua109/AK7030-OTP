@@ -446,7 +446,7 @@ void clearAllTimer(void)
 
 
 #define   BIG_TIME_SECONDS         36000
-#define   SMALL_TIME_SECONDS      10800
+#define   SMALL_TIME_SECONDS       10800
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 
@@ -1733,7 +1733,7 @@ void main (void)
 #ifdef USE_SOFTWARE_SIMULATION_TEST
 						cout <<"I am in HOUR_3_BRANCH_STEP_THIRD "<<endl;
 #endif
-								if( isFinishedTwelveHoursTimer() && isFinishedThreeHoursTimer())
+								if( (isFinishedTwelveHoursTimer()) || (isFinishedThreeHoursTimer()))
 								{
 									enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
 									enumMainLoopStep =  MAIN_LOOP_STEP_12_HOUR_END;

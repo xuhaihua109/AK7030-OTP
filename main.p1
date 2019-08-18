@@ -4497,9 +4497,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 1732: {
 "1732
 {
-[; ;main.c: 1736: if( isFinishedTwelveHoursTimer() && isFinishedThreeHoursTimer())
+[; ;main.c: 1736: if( (isFinishedTwelveHoursTimer()) || (isFinishedThreeHoursTimer()))
 "1736
-[e $ ! && != -> ( _isFinishedTwelveHoursTimer ..  `i -> -> -> 0 `i `uc `i != -> ( _isFinishedThreeHoursTimer ..  `i -> -> -> 0 `i `uc `i 266  ]
+[e $ ! || != -> ( _isFinishedTwelveHoursTimer ..  `i -> -> -> 0 `i `uc `i != -> ( _isFinishedThreeHoursTimer ..  `i -> -> -> 0 `i `uc `i 266  ]
 [; ;main.c: 1737: {
 "1737
 {
