@@ -21,7 +21,11 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
 #ifndef USE_SOFTWARE_SIMULATION_TEST
+
+
 
 #define _XTAL_FREQ 20000000
 
@@ -87,7 +91,7 @@ __CONFIG(CONFIG3);
 
 #endif
 
-
+//#define CHANGE_PIN_DEFINAITION   1
 
 
 #ifndef USE_SOFTWARE_SIMULATION_TEST
@@ -100,62 +104,18 @@ static void clearAllTimer(void)
 #endif
 
 
-static void clearPinPortAndTimer(void)
-{
-#ifndef 	USE_SOFTWARE_SIMULATION_TEST
-	PB0 = 0;
-	PA0 = 0;
-	PA1 = 0;
-	PA2 = 0;
-	PA3 = 0;
-//	PAOD7 = 0;
-//	PA7 = 0;
-	PBOD7 = 0;
-	PB7 = 0;
-	clearAllTimer();
-#else
-	cout << "clearPinPortAndTimer(void)" << endl;
-#endif
-}
-
-
-static void initPin(void)
-{
-#ifndef 	USE_SOFTWARE_SIMULATION_TEST
-	PB6 = 1;
-	PBOD6 = 1; //set PB6 as high resistance
-
-
-
-	PA0 = 0;
-	PA1 = 0;
-	PA2 = 0;
-	PA3 = 0;
-	PB0 = 0;
-	PB1 = 1;
-	PA6 = 0;
-//	PA7 = 0;
-	PB7 = 0;
-	PBOD7 = 0;
-#else
-	cout << "initPin(void)" << endl;
-#endif
-
-}
-
-
-
 void setPB0(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PB0 = 1;
+		// PA2 -> PB0
+		PA2 = 1;
 #else
 	   cout <<"PB0 = 1;"<<endl;
 #endif
-	else
+	 else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PB0 = 0;
+		PA2 = 0;
 #else
 	   cout <<"PB0 = 0;"<<endl;
 #endif
@@ -166,13 +126,14 @@ void setPB1(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PB1 = 1;
+		// PA3 -> PB1
+		PA3 = 1;
 #else
 	   cout <<"PB1 = 1;"<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PB1 = 0;
+		PA3 = 0;
 #else
 	   cout <<"PB1 = 0;"<<endl;
 #endif
@@ -183,13 +144,14 @@ void setPA0(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA0 = 1;
+		// PA1 -> PA0
+		PA1 = 1;
 #else
 	   cout <<"PA0 = 1;"<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA0 = 0;
+		PA1 = 0;
 #else
 	   cout <<"PA0 = 0;"<<endl;
 #endif
@@ -200,13 +162,14 @@ void setPA1(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA1 = 1;
+		//PA0 -> PA1
+		PA0 = 1;
 #else
 	   cout <<"PA1 = 1;"<<endl;
 #endif
-	else
+	 else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA1 = 0;
+		PA0 = 0;
 #else
 	   cout <<"PA1 = 0;"<<endl;
 #endif
@@ -218,13 +181,16 @@ void setPA2(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA2 = 1;
+		//PB0 -> PA2
+		PB0 = 1;
+
 #else
 	   cout <<"PA2 = 1;"<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA2 = 0;
+
+		PB0 = 0;
 #else
 	   cout <<"PA2 = 0;"<<endl;
 #endif
@@ -235,13 +201,14 @@ void setPA3(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA3 = 1;
+		// PB1 -> PA3
+		PB1 = 1;
 #else
 	   cout <<"PA3 = 1;"<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA3 = 0;
+		PB1 = 0;
 #else
 	   cout <<"PA3 = 0;"<<endl;
 #endif
@@ -291,6 +258,62 @@ void setPA6(unsigned char bValue)
 #else
 	   cout <<"PA6 = 0;"<<endl;
 #endif
+}
+
+
+static void clearPinPortAndTimer(void)
+{
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
+//	PB0 = 0;
+	setPB0(0);
+//	PA0 = 0;
+	setPA0(0);
+//	PA1 = 0;
+	setPA1(0);
+//	PA2 = 0;
+	setPA2(0);
+//	PA3 = 0;
+	setPA3(0);
+//	PAOD7 = 0;
+//	PA7 = 0;
+	PBOD7 = 0;
+	PB7 = 0;
+	clearAllTimer();
+#else
+	cout << "clearPinPortAndTimer(void)" << endl;
+#endif
+}
+
+
+static void initPin(void)
+{
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
+	PB6 = 1;
+	PBOD6 = 1; //set PB6 as high resistance
+
+
+
+//	PA0 = 0;
+	setPA0(0);
+//	PA1 = 0;
+	setPA1(0);
+//	PA2 = 0;
+	setPA2(0);
+//	PA3 = 0;
+	setPA3(0);
+//	PB0 = 0;
+	setPB0(0);
+//	PB1 = 1;
+	setPB1(1);
+//	PA6 = 0;
+	setPA6(0);
+//	PA7 = 0;
+	PB7 = 0;
+	PBOD7 = 0;
+#else
+	cout << "initPin(void)" << endl;
+#endif
+
 }
 
 #ifdef USE_SOFTWARE_SIMULATION_TEST
@@ -890,7 +913,8 @@ void main (void)
 												{
 
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-													PB0 = 1;
+											//		PB0 = 1;
+													setPB0(1);
 #else
 													cout<<"PB0 = 1;"<<endl;
 #endif
@@ -903,7 +927,8 @@ void main (void)
 													if(ucTimerDelay >= 5)
 													{
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-														PA0 = 1;
+													//	PA0 = 1;
+														setPA0(1);
 #else
 														cout <<"PA0 = 1;"<<endl;
 #endif
@@ -920,7 +945,8 @@ void main (void)
 													if(ucTimerDelay >= 5)
 													{
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-														PA1= 1;
+													//	PA1= 1;
+														setPA1(1);
 #else
 														cout <<"PA1 = 1;"<<endl;
 #endif
@@ -938,7 +964,8 @@ void main (void)
 													if(ucTimerDelay >= 5)
 													{
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-														PA2= 1;
+														//PA2= 1;
+														setPA2(1);
 #else
 														cout<< "PA2 = 1;" <<endl;
 #endif
@@ -956,7 +983,8 @@ void main (void)
 													if(ucTimerDelay >= 5)
 													{
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-														PA3 = 1;
+													//	PA3 = 1;
+														setPA3(1);
 #else
 														cout << "PA3 = 1;"<<endl;
 #endif
@@ -973,11 +1001,16 @@ void main (void)
 													if(ucTimerDelay >= 5)
 													{
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-														PB0 = 0;
-														PA0 = 0;
-														PA1 = 0;
-														PA2 = 0;
-														PA3 = 0;
+												//		PB0 = 0;
+														setPB0(0);
+												//		PA0 = 0;
+														setPA0(0);
+												//		PA1 = 0;
+														setPA1(0);
+												//		PA2 = 0;
+														setPA2(0);
+												//		PA3 = 0;
+														setPA3(0);
 #else
 														cout << "PB0 = 0;"<<endl;
 														cout << "PA0 = 0;"<< endl;
@@ -1024,7 +1057,8 @@ void main (void)
 												case 0:
 												{
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-													PB0 = 1;
+												//	PB0 = 1;
+													setPB0(1);
 #else
 													cout <<"PB0 = 1;"<<endl;
 #endif
@@ -1037,7 +1071,8 @@ void main (void)
 													if(ucTimerDelay1 >= 5)
 													{
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-														PA0 = 1;
+													//	PA0 = 1;
+														setPA0(1);
 #else
 														cout <<"PA0 = 1;"<<endl;
 #endif
@@ -1054,7 +1089,8 @@ void main (void)
 													if(ucTimerDelay1 >= 5)
 													{
 #ifndef   USE_SOFTWARE_SIMULATION_TEST
-														PA1= 1;
+													//	PA1= 1;
+														setPA1(1);
 #else
 														cout <<"PA1 = 1;"<<endl;
 #endif
