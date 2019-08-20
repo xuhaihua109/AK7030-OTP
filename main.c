@@ -468,10 +468,10 @@ void clearAllTimer(void)
 #endif
 
 
-#define   BIG_TIME_SECONDS         36000
-#define   SMALL_TIME_SECONDS       10800
+#define   BIG_TIME_SECONDS          600//36000
+#define   SMALL_TIME_SECONDS       300//10800
 
-#define   TIMER_20MIN       1200
+#define   TIMER_20MIN       120// 1200
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 

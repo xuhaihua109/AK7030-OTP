@@ -168,7 +168,7 @@
 `uc 1 ADVREF1 1 0 :1:7 
 ]
 [u S600 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
-"484 D:\develop\190625\AK7030-OTP\main.c
+"507 D:\develop\190625\AK7030-OTP\main.c
 [e E850 setp_Adc4 `uc
 ADC4_STEP_INIT 0
 ADC4_STEP_FIRST 1
@@ -186,7 +186,7 @@ ADC4_STEP_FOURTH_SUFFIX2 12
 ADC4_STEP_FIFTH 13
 ADC4_STEP_SIXTH 14
 ]
-"546
+"569
 [e E872 AD_CHANNEL_4_VALUE_PATH `uc
 LESS_THAN_1911 0
 BETWEEN_1911_AND_2067 1
@@ -194,7 +194,7 @@ BETWEEN_2067_AND_2204 2
 BETWEEN_2204_AND_2340 3
 MORE_THAN_2340 4
 ]
-"560
+"583
 [e E878 MAIN_LOOP_STEP `uc
 MAIN_LOOP_STEP_INIT 0
 MAIN_LOOP_STEP_FIRST 1
@@ -207,13 +207,13 @@ MAIN_LOOP_STEP_SEVENTH 7
 MAIN_LOOP_STEP_3_HOUR_BRANCH 8
 MAIN_LOOP_STEP_12_HOUR_END 9
 ]
-"1691
+"1727
 [e E925 hour_3_branch_step `uc
 HOUR_3_BRANCH_STEP_FIRST 0
 HOUR_3_BRANCH_STEP_SECOND 1
 HOUR_3_BRANCH_STEP_THIRD 2
 ]
-"1853
+"1889
 [e E935 INTERNAL_STEP `uc
 INTERNAL_FIRST_STEP 0
 INTERNAL_SECOND_STEP 1
@@ -686,29 +686,29 @@ INTERNAL_FOUTTH_STEP 3
 [v _clrSampeTime `(v  1 e 0 0 ]
 "497
 [v _ISR `I(v  1 e 0 0 ]
-"95 D:\develop\190625\AK7030-OTP\main.c
+"99 D:\develop\190625\AK7030-OTP\main.c
 [v _clearAllTimer `(v  1 s 0 clearAllTimer ]
-"104
-[v _clearPinPortAndTimer `(v  1 s 0 clearPinPortAndTimer ]
-"123
-[v _initPin `(v  1 s 0 initPin ]
-"149
+"108
 [v _setPB0 `(v  1 e 0 0 ]
-"166
+"126
 [v _setPB1 `(v  1 e 0 0 ]
-"183
+"144
 [v _setPA0 `(v  1 e 0 0 ]
-"200
+"162
 [v _setPA1 `(v  1 e 0 0 ]
-"218
+"181
 [v _setPA2 `(v  1 e 0 0 ]
-"235
+"201
 [v _setPA3 `(v  1 e 0 0 ]
-"252
+"219
 [v _setPB7 `(v  1 e 0 0 ]
-"281
+"248
 [v _setPA6 `(v  1 e 0 0 ]
-"461
+"265
+[v _clearPinPortAndTimer `(v  1 s 0 clearPinPortAndTimer ]
+"289
+[v _initPin `(v  1 s 0 initPin ]
+"484
 [v _main `(v  1 e 0 0 ]
 "14 D:\develop\190625\AK7030-OTP\periph.c
 [v _dac_init `(v  1 e 0 0 ]
@@ -1383,101 +1383,101 @@ INTERNAL_FOUTTH_STEP 3
 [v _ALG6 `VEuc  1 e 1 @398 ]
 "918
 [v _ALG7 `VEuc  1 e 1 @399 ]
-"461 D:\develop\190625\AK7030-OTP\main.c
+"484 D:\develop\190625\AK7030-OTP\main.c
 [v _main `(v  1 e 0 0 ]
 {
-"495
+"518
 [v main@bCheckTweHour `uc  1 s 1 bCheckTweHour ]
-"563
+"586
 [v main@enumMainLoopStep `E878  1 s 1 enumMainLoopStep ]
-"565
+"588
 [v main@ucChannel4Type `E872  1 s 1 ucChannel4Type ]
-"606
+"629
 [v main@ucTimerZeroPoint5s `uc  1 s 1 ucTimerZeroPoint5s ]
-"613
+"636
 [v main@bInit20Min `uc  1 s 1 bInit20Min ]
-"643
+"666
 [v main@ucTimerZeroPoint3s `uc  1 s 1 ucTimerZeroPoint3s ]
-"675
-[v main@ucTimerP5s `uc  1 s 1 ucTimerP5s ]
 "698
+[v main@ucTimerP5s `uc  1 s 1 ucTimerP5s ]
+"721
 [v main@ucTimerADC1ZeroP5s `uc  1 s 1 ucTimerADC1ZeroP5s ]
-"700
+"723
 [v main@ucTimerLessADC1ZeroP5s `uc  1 s 1 ucTimerLessADC1ZeroP5s ]
-"704
+"727
 [v main@ucTimerRightP5s `uc  1 s 1 ucTimerRightP5s ]
-"790
+"813
 [v main@ucADC4_Step `E850  1 s 1 ucADC4_Step ]
-"809
+"832
 [v main@uiOldValue `ui  1 s 2 uiOldValue ]
 [v main@uiMinValue `ui  1 s 2 uiMinValue ]
 [v main@uiMaxValue `ui  1 s 2 uiMaxValue ]
-"811
+"834
 [v main@bInitFlag `uc  1 s 1 bInitFlag ]
-"884
+"907
 [v main@ucTimerDelay `uc  1 s 1 ucTimerDelay ]
-"885
+"908
 [v main@ucLoaderStep `uc  1 s 1 ucLoaderStep ]
-"1020
+"1053
 [v main@ucTimerDelay1 `uc  1 s 1 ucTimerDelay1 ]
-"1021
+"1054
 [v main@ucLoaderStep1 `uc  1 s 1 ucLoaderStep1 ]
-"1142
+"1178
 [v main@ucTimerDelay2 `uc  1 s 1 ucTimerDelay2 ]
-"1143
+"1179
 [v main@ucLoaderStep2 `uc  1 s 1 ucLoaderStep2 ]
-"1242
+"1278
 [v main@ucTimerDelay3 `uc  1 s 1 ucTimerDelay3 ]
-"1243
+"1279
 [v main@ucLoaderStep3 `uc  1 s 1 ucLoaderStep3 ]
-"1329
+"1365
 [v main@ucTimerDelay4 `uc  1 s 1 ucTimerDelay4 ]
-"1330
+"1366
 [v main@ucLoaderStep4 `uc  1 s 1 ucLoaderStep4 ]
-"1409
+"1445
 [v main@ucTimerDelayP2sLess `uc  1 s 1 ucTimerDelayP2sLess ]
-"1411
+"1447
 [v main@ucTimerDelayP2sMore `uc  1 s 1 ucTimerDelayP2sMore ]
-"1464
+"1500
 [v main@ucTimerForDACR0_CNT1 `uc  1 s 1 ucTimerForDACR0_CNT1 ]
 [v main@ucTimerForDACR0_CNT2 `uc  1 s 1 ucTimerForDACR0_CNT2 ]
-"1466
+"1502
 [v main@ucTimerForDACR0_CNT1_f `uc  1 s 1 ucTimerForDACR0_CNT1_f ]
 [v main@ucTimerForDACR0_CNT2_f `uc  1 s 1 ucTimerForDACR0_CNT2_f ]
-"1547
+"1583
 [v main@ucDelayPrefix4TimerP5s `uc  1 s 1 ucDelayPrefix4TimerP5s ]
-"1581
+"1617
 [v main@ucDelayPrefix6TimerP2s `uc  1 s 1 ucDelayPrefix6TimerP2s ]
-"1602
+"1638
 [v main@ucCheckTimerP2sLess `uc  1 s 1 ucCheckTimerP2sLess ]
-"1604
+"1640
 [v main@ucCheckTimerP2sMore `uc  1 s 1 ucCheckTimerP2sMore ]
-"1645
+"1681
 [v main@ucFourthSuffix1TimerP3s `uc  1 s 1 ucFourthSuffix1TimerP3s ]
-"1693
+"1729
 [v main@enumBranchStep `E925  1 s 1 enumBranchStep ]
-"1728
+"1764
 [v main@ucTimer20s `uc  1 s 1 ucTimer20s ]
-"1760
+"1796
 [v main@ucTimerX1P5s `uc  1 s 1 ucTimerX1P5s ]
-"1762
+"1798
 [v main@ucTimerLessX1P5s `uc  1 s 1 ucTimerLessX1P5s ]
-"1795
+"1831
 [v main@ucTimerX2P5s `uc  1 s 1 ucTimerX2P5s ]
-"1797
+"1833
 [v main@ucTimerLessX2P5s `uc  1 s 1 ucTimerLessX2P5s ]
-"1855
+"1891
 [v main@enumInteralStep `E935  1 s 1 enumInteralStep ]
-"1896
+"1932
 [v main@ucTimer1s `uc  1 s 1 ucTimer1s ]
-"1918
+"1954
 [v main@ucTimerP3s `uc  1 s 1 ucTimerP3s ]
-"1966
+"2002
 } 0
-"104
+"265
 [v _clearPinPortAndTimer `(v  1 s 0 clearPinPortAndTimer ]
 {
-"119
+"285
 } 0
 "235 D:\develop\190625\AK7030-OTP\common.c
 [v _getAdOriginaCh4Value `(ui  1 e 2 0 ]
@@ -1499,10 +1499,15 @@ INTERNAL_FOUTTH_STEP 3
 {
 "271
 } 0
-"95 D:\develop\190625\AK7030-OTP\main.c
+"289 D:\develop\190625\AK7030-OTP\main.c
+[v _initPin `(v  1 s 0 initPin ]
+{
+"317
+} 0
+"99
 [v _clearAllTimer `(v  1 s 0 clearAllTimer ]
 {
-"99
+"103
 } 0
 "283 D:\develop\190625\AK7030-OTP\common.c
 [v _AD_Sample `(v  1 s 0 AD_Sample ]
@@ -1639,59 +1644,54 @@ INTERNAL_FOUTTH_STEP 3
 {
 "183
 } 0
-"281 D:\develop\190625\AK7030-OTP\main.c
+"248 D:\develop\190625\AK7030-OTP\main.c
 [v _setPA6 `(v  1 e 0 0 ]
 {
 [v setPA6@bValue `uc  1 a 1 wreg ]
 [v setPA6@bValue `uc  1 a 1 wreg ]
-"294
+"261
 } 0
-"235
+"201
 [v _setPA3 `(v  1 e 0 0 ]
 {
 [v setPA3@bValue `uc  1 a 1 wreg ]
 [v setPA3@bValue `uc  1 a 1 wreg ]
-"248
+"215
 } 0
-"218
+"181
 [v _setPA2 `(v  1 e 0 0 ]
 {
 [v setPA2@bValue `uc  1 a 1 wreg ]
 [v setPA2@bValue `uc  1 a 1 wreg ]
-"231
+"197
 } 0
-"200
+"162
 [v _setPA1 `(v  1 e 0 0 ]
 {
 [v setPA1@bValue `uc  1 a 1 wreg ]
 [v setPA1@bValue `uc  1 a 1 wreg ]
-"213
+"176
 } 0
-"183
+"144
 [v _setPA0 `(v  1 e 0 0 ]
 {
 [v setPA0@bValue `uc  1 a 1 wreg ]
 [v setPA0@bValue `uc  1 a 1 wreg ]
-"196
+"158
 } 0
-"166
+"126
 [v _setPB1 `(v  1 e 0 0 ]
 {
 [v setPB1@bValue `uc  1 a 1 wreg ]
 [v setPB1@bValue `uc  1 a 1 wreg ]
-"179
+"140
 } 0
-"149
+"108
 [v _setPB0 `(v  1 e 0 0 ]
 {
 [v setPB0@bValue `uc  1 a 1 wreg ]
 [v setPB0@bValue `uc  1 a 1 wreg ]
-"162
-} 0
-"123
-[v _initPin `(v  1 s 0 initPin ]
-{
-"144
+"122
 } 0
 "387 D:\develop\190625\AK7030-OTP\common.c
 [v _clearTwentySecondsTimer `(v  1 e 0 0 ]
