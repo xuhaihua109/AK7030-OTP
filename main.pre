@@ -785,7 +785,7 @@ volatile bit PAOD7 @ ((unsigned)&PAOD*8)+7;
 
 
 volatile unsigned char PBOD @ 0x188;
-volatile bit PBOD6 @ ((unsigned)&PBOD*8)+6;
+volatile bit PBOD2 @ ((unsigned)&PBOD*8)+2;
 volatile bit PBOD7 @ ((unsigned)&PBOD*8)+7;
 
 
@@ -804,7 +804,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 26 "D:\develop\190625\AK7030-OTP\common.h"
+# 30 "D:\develop\190625\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -818,9 +818,9 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 44
-unsigned int getAdOriginalCh1Value();
-unsigned int getAdOriginaCh4Value();
+# 48
+unsigned int getAdOriginalCh12Value();
+unsigned int getAdOriginalCh13Value();
 
 unsigned int getAdOriginalCh14Value();
 
@@ -833,6 +833,8 @@ void setDAC0_ChannelValue(unsigned char ucValue);
 void startTwelveHourTimer(unsigned int uiSetTime);
 void startThreeHoursTimer(unsigned int uiSetTime);
 
+void startOneHoursTimer(unsigned int uiSetTime);
+
 
 void startTwentySecondsTimer();
 unsigned char isFinishedTwentySecondsTimer();
@@ -843,12 +845,14 @@ unsigned char isFinishedTwentyMinTimer();
 
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
+void clearOneHoursTimer();
 void clearTwentySecondsTimer();
 void clearTwentyMinTimer();
 
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();
+unsigned char isFinishedOneHoursTimer();
 
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
@@ -865,16 +869,16 @@ void adc_start();
 unsigned int adc_get(void);
 
 
-# 33 "D:\develop\190625\AK7030-OTP\main.c"
+# 54 "D:\develop\190625\AK7030-OTP\main.c"
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 79
+# 100
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x2FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
 
-# 94
+# 116
 static void clearAllTimer(void)
 {
 clearTwelveHoursTimer();
@@ -884,199 +888,193 @@ clearTwentySecondsTimer();
 
 
 
+void initPB3(unsigned char bValue)
+{
+if( bValue )
+
+TRISB3 = 1;
+
+# 133
+else
+
+TRISB3 = 0;
+
+# 139
+}
+
+
+void setPB3(unsigned char bValue)
+{
+if( bValue )
+
+PB3 = 1;
+
+# 150
+else
+
+PB3= 0;
+
+# 156
+}
+
+
+
+void initPB4(unsigned char bValue)
+{
+if( bValue )
+
+TRISB4 = 1;
+
+# 168
+else
+
+TRISB4= 0;
+
+# 174
+}
+
+
+void setPB4(unsigned char bValue)
+{
+if( bValue )
+
+PB4 = 1;
+
+# 185
+else
+
+PB4= 0;
+
+# 191
+}
+
+
+void initPB5(unsigned char bValue)
+{
+if( bValue )
+
+TRISB5 = 1;
+
+# 202
+else
+
+TRISB5= 0;
+
+# 208
+}
+
+
+void setPB5(unsigned char bValue)
+{
+if( bValue )
+
+PB5 = 1;
+
+# 219
+else
+
+PB5= 0;
+
+# 225
+}
+
+
+void initPB2_AsHighResistence( void )
+{
+
+PB2 = 1;
+PBOD2 = 1;
+
+# 236
+}
+
+# 255
 static void clearPinPortAndTimer(void)
 {
 
-PB0 = 0;
-PA0 = 0;
-PA1 = 0;
-PA2 = 0;
-PA3 = 0;
 
-
-PBOD7 = 0;
-PB7 = 0;
+setPB3(0);
+setPB4(0);
+setPB5(0);
+setPB2_AsHighResistence();
 clearAllTimer();
 
-# 119
+# 267
 }
 
+
+
+void pwm_start(void)
+{
+
+
+CCP1CON = 0x10 ;
+PR2 = 4 ;
+T2CON = 0x04 ;
+CCPR1L = 0x02 ;
+PWMCON1 = 0x55;
+
+TRISB2=0;
+
+CCP1CON |= 0x0e ;
+
+# 287
+}
 
 static void initPin(void)
 {
 
-PB6 = 1;
-PBOD6 = 1;
+initPB2_AsHighResistence();
 
+initPB3(0);
 
+initPB4(0);
 
-PA0 = 0;
-PA1 = 0;
-PA2 = 0;
-PA3 = 0;
-PB0 = 0;
-PB1 = 1;
-PA6 = 0;
+initPB5(0);
 
-PB7 = 0;
-PBOD7 = 0;
-
-# 144
+# 303
 }
 
-
-
-void setPB0(unsigned char bValue)
+static void setPinInitVaule( void )
 {
-if( bValue )
 
-PB0 = 1;
+setPB3(1);
+setPB4(0);
+setPB5(1);
 
-# 156
-else
-
-PB0 = 0;
-
-# 162
+# 314
 }
 
-
-void setPB1(unsigned char bValue)
+static void selectAdChannel( void )
 {
-if( bValue )
 
-PB1 = 1;
+TRISB0 = 1;
+TRISB1 = 1;
 
-# 173
-else
-
-PB1 = 0;
-
-# 179
+# 324
 }
 
-
-void setPA0(unsigned char bValue)
+static void setPulseWidth( void )
 {
-if( bValue )
 
-PA0 = 1;
+;
 
-# 190
-else
-
-PA0 = 0;
-
-# 196
+# 333
 }
 
-
-void setPA1(unsigned char bValue)
+static void reset( void )
 {
-if( bValue )
 
-PA1 = 1;
+while(1);
 
-# 207
-else
-
-PA1 = 0;
-
-# 213
+# 342
 }
 
-
-
-void setPA2(unsigned char bValue)
-{
-if( bValue )
-
-PA2 = 1;
-
-# 225
-else
-
-PA2 = 0;
-
-# 231
-}
-
-
-void setPA3(unsigned char bValue)
-{
-if( bValue )
-
-PA3 = 1;
-
-# 242
-else
-
-PA3 = 0;
-
-# 248
-}
-
-
-void setPB7(unsigned char bValue)
-{
-if( bValue )
-
-{
-PBOD7 = 1;
-PB7 = 1;
-}
-
-# 265
-else
-
-{
-PBOD7 = 0;
-PB7 = 0;
-}
-
-# 277
-}
-
-
-void setPA6(unsigned char bValue)
-{
-if( bValue )
-
-PA6 = 1;
-
-# 288
-else
-
-PA6= 0;
-
-# 294
-}
-
-# 460
+# 496
 void main (void)
 {
 
-# 467
-enum setp_Adc4
-{
-ADC4_STEP_INIT = 0,
-ADC4_STEP_FIRST,
-ADC4_STEP_SECOND,
-ADC4_STEP_THIRD,
-ADC4_STEP_FOURTH_PREFIX1,
-ADC4_STEP_FOURTH_PREFIX2,
-ADC4_STEP_FOURTH_PREFIX3,
-ADC4_STEP_FOURTH_PREFIX4,
-ADC4_STEP_FOURTH_PREFIX5,
-ADC4_STEP_FOURTH_PREFIX6,
-ADC4_STEP_FOURTH,
-ADC4_STEP_FOURTH_SUFFIX1,
-ADC4_STEP_FOURTH_SUFFIX2,
-ADC4_STEP_FIFTH,
-ADC4_STEP_SIXTH,
-};
-
-
+# 504
 static unsigned char ucWaitTime1S = 0;
 
 static unsigned char ucWaitTimeO3s = 0;
@@ -1089,73 +1087,24 @@ static unsigned char bCheckTweHour = 0;
 
 static unsigned char bCheckTheHour = 0;
 
-
-
-TRISA0 = 0;
-TRISA1 = 0;
-TRISA2 = 0;
-TRISA3 = 0;
-TRISB0 = 0;
-TRISB1 = 0;
-TRISA6 = 0;
-
-TRISB7 = 0;
-TRISB6 = 0;
-
-
+# 530
 initPin();
+setPinInitVaule();
+selectAdChannel();
 
-
-TRISB2 = 1;
-
-
-TRISA7 = 1;
-
-TRISB4 = 1;
-
+# 542
 clock_config();
 timer1_config();
 timer1_interrupt_config();
 
-adc_test_init(14,3);
+adc_test_init(12,3);
 
-dac_init();
-op1_init();
-op2_init();
-
-
+# 553
 adc_start();
 
-# 539
-enum AD_CHANNEL_4_VALUE_PATH
-{
-LESS_THAN_1911 = 0,
-BETWEEN_1911_AND_2067,
-BETWEEN_2067_AND_2204,
-BETWEEN_2204_AND_2340,
-MORE_THAN_2340,
-};
+# 563
+startTwentyMinTimer( 1200 );
 
-enum MAIN_LOOP_STEP
-{
-MAIN_LOOP_STEP_INIT = 0,
-MAIN_LOOP_STEP_FIRST,
-MAIN_LOOP_STEP_SECOND,
-MAIN_LOOP_STEP_THIRD,
-MAIN_LOOP_STEP_FOURTH,
-MAIN_LOOP_STEP_FIFTH,
-MAIN_LOOP_STEP_SIXTH,
-MAIN_LOOP_STEP_SEVENTH,
-MAIN_LOOP_STEP_3_HOUR_BRANCH,
-MAIN_LOOP_STEP_12_HOUR_END,
-};
-
-
-static enum MAIN_LOOP_STEP enumMainLoopStep = MAIN_LOOP_STEP_INIT;
-
-static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = LESS_THAN_1911;
-
-# 572
 while(1)
 {
 
@@ -1169,1179 +1118,216 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 598
-switch(enumMainLoopStep)
+# 590
+static unsigned char ucStep = 0;
+switch(ucStep)
 {
-case MAIN_LOOP_STEP_INIT:
+case 0:
 {
-
-# 606
-static unsigned char ucTimerZeroPoint5s = 0;
-if(getAdOriginalCh14Value() > 1950)
-{
-ucTimerZeroPoint5s++;
-}
-else
-{
-static unsigned char bInit20Min = 0;
-if(!bInit20Min)
-{
-bInit20Min = 1;
-startTwentyMinTimer(1200);
-}
-ucTimerZeroPoint5s = 0;
-}
-
-if( ucTimerZeroPoint5s >= 5 )
-{
-ucTimerZeroPoint5s = 0;
-clearTwentyMinTimer();
-enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-}
+static unsigned char ucTimerP3s = 0;
 
 if( isFinishedTwentyMinTimer() )
+;
+else
 {
-enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
-ucTimerZeroPoint5s = 0;
-}
-break;
-}
-
-case MAIN_LOOP_STEP_FIRST:
+if( getAdOriginalCh13Value() > 1000 )
 {
-
-# 643
-static unsigned char ucTimerZeroPoint3s = 0;
-
-
-if(getAdOriginalCh14Value() > 1950)
-{
-
-enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
-
-ucTimerZeroPoint3s = 0;
+ucTimerP3s++;
 
 }
 else
+ucTimerP3s = 0;
+
+static unsigned char ucDebug1 = 0;
+
+static unsigned char ucDebug2 = 0;
+
+ucDebug1++;
+
+if( ucDebug1 < 10 )
+setPB3(1);
+else if((ucDebug1 > 10) && ( ucDebug1 < 20))
 {
-ucTimerZeroPoint3s++;
-
-if(ucTimerZeroPoint3s >= 3)
+setPB3(0);
+}
+else
 {
-ucTimerZeroPoint3s = 0;
-
-clearPinPortAndTimer();
-}
+ucDebug1 = 0;
 }
 
+ucDebug2++;
+if(ucDebug2 > 150)
+ucStep++;
+}
 break;
 }
 
-case MAIN_LOOP_STEP_SECOND:
+case 1:
 {
+pwm_start();
+setPulseWidth();
+setPB3(0);
+setPB4(1);
+setPB5(0);
+clearTwentyMinTimer();
+startTwelveHourTimer( 36000);
+ucStep++;
+break;
+}
 
-# 675
+case 2:
+{
 static unsigned char ucTimerP5s = 0;
 
-
-setPA6(1);
-
-if(ucTimerP5s < 5)
+if( isFinishedTwelveHoursTimer () )
+ucStep = 99;
+else
+{
+if( getAdOriginalCh13Value() < 200 )
 ucTimerP5s++;
 else
+ucTimerP5s = 0;
+
+if( ucTimerP5s > 5)
 {
 ucTimerP5s = 0;
 
-enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
-}
-
-break;
-}
-
-case MAIN_LOOP_STEP_THIRD:
-{
-
-# 698
-static unsigned char ucTimerADC1ZeroP5s = 0;
-
-static unsigned char ucTimerLessADC1ZeroP5s = 0;
-
-static unsigned char ucTimerLessADC1ZeroP5sFlag = 0;
-
-static unsigned char ucTimerRightP5s = 0;
-
-if(getAdOriginalCh1Value() < 115)
-{
-ucTimerADC1ZeroP5s = 0;
-
-ucTimerLessADC1ZeroP5s++;
-}
-else
-{
-ucTimerADC1ZeroP5s++;
-
-ucTimerLessADC1ZeroP5s = 0;
-}
-
-if(ucTimerADC1ZeroP5s >= 3)
-{
-ucTimerADC1ZeroP5s = 0;
-enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
-}
-else if( ucTimerLessADC1ZeroP5s >= 3)
-{
-
-if(getAdOriginalCh1Value() < 105)
-{
-ucTimerRightP5s++;
-}
-else
-{
-ucTimerRightP5s = 0;
-}
-
-if(ucTimerRightP5s >= 3)
-{
-ucTimerLessADC1ZeroP5s = 0;
-ucTimerRightP5s = 0;
-enumMainLoopStep = MAIN_LOOP_STEP_3_HOUR_BRANCH;
-}
-else
-{
-;
 }
 }
-else
-{
-;
-}
-
-if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_FOURTH == enumMainLoopStep))
-{
-ucTimerRightP5s = 0;
-ucTimerADC1ZeroP5s = 0;
-ucTimerLessADC1ZeroP5s = 0;
-}
-
-
-break;
-}
-
-case MAIN_LOOP_STEP_FOURTH:
-{
-
-# 770
-startTwelveHourTimer(36000);
-enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
-
-bCheckTweHour = 0;
-
-break;
-}
-
-case MAIN_LOOP_STEP_FIFTH:
-{
-
-# 783
-if(( isFinishedTwelveHoursTimer() && (! bCheckTweHour)))
-{
-enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
-bCheckTweHour = 1;
-}
-else
-{
-static enum setp_Adc4 ucADC4_Step = ADC4_STEP_INIT;
-
-switch(ucADC4_Step)
-{
-case ADC4_STEP_INIT:
-{
-
-# 800
-ucADC4_Step = ADC4_STEP_FIRST;
-break;
-}
-
-case ADC4_STEP_FIRST:
-{
-
-# 809
-static unsigned int uiOldValue = 0, uiMinValue = 0, uiMaxValue = 0;
-
-static unsigned char bInitFlag = 0;
-
-if( 0 == bInitFlag)
-{
-bInitFlag = 1;
-uiOldValue = getAdOriginaCh4Value();
-}
-
-# 826
-if(LESS_THAN_1911 == ucChannel4Type)
-{
-uiMinValue = 0;
-uiMaxValue = 1931;
-}
-else if(BETWEEN_1911_AND_2067 == ucChannel4Type)
-{
-uiMinValue = 1931 - 40;
-uiMaxValue = 2047;
-}
-else if(BETWEEN_2067_AND_2204 == ucChannel4Type)
-{
-uiMinValue = 2047 - 40;
-uiMaxValue = 2164;
-}
-else if(BETWEEN_2204_AND_2340 == ucChannel4Type)
-{
-uiMinValue = 2164 - 40;
-uiMaxValue = 2281;
-}
-else
-{
-uiMinValue = 2281 - 40;
-uiMaxValue = 2281;
-}
-
-
-if(( getAdOriginaCh4Value() < uiMinValue )
-|| (getAdOriginaCh4Value() > uiMaxValue ))
-{
-uiOldValue = getAdOriginaCh4Value();
-}
-
-if( uiOldValue < 1931 )
-ucChannel4Type = LESS_THAN_1911;
-else if( uiOldValue < 2047 )
-ucChannel4Type = BETWEEN_1911_AND_2067;
-else if( uiOldValue < 2164 )
-ucChannel4Type = BETWEEN_2067_AND_2204;
-else if( uiOldValue < 2281 )
-ucChannel4Type = BETWEEN_2204_AND_2340;
-else
-ucChannel4Type = MORE_THAN_2340;
-
-ucADC4_Step = ADC4_STEP_SECOND;
-break;
-}
-
-case ADC4_STEP_SECOND:
-{
-
-# 879
-switch(ucChannel4Type)
-{
-
-case LESS_THAN_1911:
-{
-static unsigned char ucTimerDelay = 0;
-static unsigned char ucLoaderStep = 0;
-
-switch(ucLoaderStep)
-{
-case 0:
-{
-
-
-PB0 = 1;
-
-# 897
-ucLoaderStep++;
-break;
-}
-
-case 1:
-{
-if(ucTimerDelay >= 5)
-{
-
-PA0 = 1;
-
-# 910
-ucTimerDelay = 0;
-ucLoaderStep++;
-}
-else
-ucTimerDelay++;
-break;
-}
-
-case 2:
-{
-if(ucTimerDelay >= 5)
-{
-
-PA1= 1;
-
-# 927
-ucTimerDelay = 0;
-ucLoaderStep++;
-}
-else
-ucTimerDelay++;
-break;
-}
-
-
-case 3:
-{
-if(ucTimerDelay >= 5)
-{
-
-PA2= 1;
-
-# 946
-ucTimerDelay = 0;
-ucLoaderStep++;
-}
-else
-ucTimerDelay++;
-break;
-}
-
-case 4:
-{
-if(ucTimerDelay >= 5)
-{
-
-PA3 = 1;
-
-# 963
-ucTimerDelay = 0;
-ucLoaderStep++;
-}
-else
-ucTimerDelay++;
-break;
-}
-
-case 5:
-{
-if(ucTimerDelay >= 5)
-{
-
-PB0 = 0;
-PA0 = 0;
-PA1 = 0;
-PA2 = 0;
-PA3 = 0;
-
-# 988
-ucTimerDelay = 0;
-ucLoaderStep++;
-}
-else
-ucTimerDelay++;
-break;
-}
-
-case 6:
-{
-if(ucTimerDelay >= 1)
-{
-ucTimerDelay = 0;
-
-ucLoaderStep = 0;
-ucADC4_Step = ADC4_STEP_THIRD;
-}
-else
-ucTimerDelay++;
-break;
-}
-
-
-default:
-break;
-}
-
-break;
-}
-
-case BETWEEN_1911_AND_2067:
-{
-static unsigned char ucTimerDelay1 = 0;
-static unsigned char ucLoaderStep1 = 0;
-switch(ucLoaderStep1)
-{
-case 0:
-{
-
-PB0 = 1;
-
-# 1031
-ucLoaderStep1++;
-break;
-}
-
-case 1:
-{
-if(ucTimerDelay1 >= 5)
-{
-
-PA0 = 1;
-
-# 1044
-ucTimerDelay1 = 0;
-ucLoaderStep1++;
-}
-else
-ucTimerDelay1++;
-break;
-}
-
-case 2:
-{
-if(ucTimerDelay1 >= 5)
-{
-
-PA1= 1;
-
-# 1061
-ucTimerDelay1 = 0;
-ucLoaderStep1++;
-}
-else
-ucTimerDelay1++;
 break;
 }
 
 case 3:
 {
-if(ucTimerDelay1 >= 5)
-{
-
-setPA2(1);
-ucTimerDelay1 = 0;
-ucLoaderStep1++;
-}
-else
-ucTimerDelay1++;
-break;
-}
-
-case 4:
-{
-if(ucTimerDelay1 >= 5)
-{
-
-setPA3(1);
-ucTimerDelay1 = 0;
-ucLoaderStep1++;
-}
-else
-ucTimerDelay1++;
-break;
-}
-
-case 5:
-{
-if(ucTimerDelay1 >= 5)
-{
-
-setPA0(0);
-
-setPA1(0);
-
-setPA2(0);
-
-setPA3(0);
-ucTimerDelay1 = 0;
-ucLoaderStep1++;
-}
-else
-ucTimerDelay1++;
-break;
-}
-
-case 6:
-{
-if(ucTimerDelay1 >= 1)
-{
-ucTimerDelay1 = 0;
-
-ucLoaderStep1 = 0;
-ucADC4_Step = ADC4_STEP_THIRD;
-}
-else
-ucTimerDelay1++;
-break;
-}
-
-
-default:
-break;
-}
-
-break;
-}
-
-
-case BETWEEN_2067_AND_2204:
-{
-static unsigned char ucTimerDelay2 = 0;
-static unsigned char ucLoaderStep2 = 0;
-switch(ucLoaderStep2)
-{
-case 0:
-{
-
-setPB0(1);
-
-setPA0(1);
-ucLoaderStep2++;
-break;
-}
-
-case 1:
-{
-if(ucTimerDelay2 >= 5)
-{
-
-setPA1(1);
-ucTimerDelay2 = 0;
-ucLoaderStep2++;
-}
-else
-ucTimerDelay2++;
-break;
-}
-
-case 2:
-{
-if(ucTimerDelay2 >= 5)
-{
-
-setPA2(1);
-ucTimerDelay2 = 0;
-ucLoaderStep2++;
-}
-else
-ucTimerDelay2++;
-break;
-}
-
-case 3:
-{
-if(ucTimerDelay2 >= 5)
-{
-
-setPA3(1);
-ucTimerDelay2 = 0;
-ucLoaderStep2++;
-}
-else
-ucTimerDelay2++;
-break;
-}
-
-case 4:
-{
-if(ucTimerDelay2 >= 5)
-{
-
-
-setPA1(0);
-
-setPA2(0);
-
-setPA3(0);
-ucTimerDelay2 = 0;
-ucLoaderStep2++;
-}
-else
-ucTimerDelay2++;
-break;
-}
-
-case 5:
-{
-if(ucTimerDelay2 >= 1)
-{
-ucTimerDelay2 = 0;
-
-ucLoaderStep2 = 0;
-ucADC4_Step = ADC4_STEP_THIRD;;
-}
-else
-ucTimerDelay2++;
-break;
-}
-
-
-default:
-break;
-}
-
-break;
-}
-
-
-case BETWEEN_2204_AND_2340:
-{
-static unsigned char ucTimerDelay3 = 0;
-static unsigned char ucLoaderStep3 = 0;
-switch(ucLoaderStep3)
-{
-case 0:
-{
-
-setPB0(1);
-
-setPA0(1);
-
-setPA1(1);
-ucLoaderStep3++;
-break;
-}
-
-case 1:
-{
-if(ucTimerDelay3 >= 5)
-{
-
-setPA2(1);
-ucTimerDelay3 = 0;
-ucLoaderStep3++;
-}
-else
-ucTimerDelay3++;
-break;
-}
-
-case 2:
-{
-if(ucTimerDelay3 >= 5)
-{
-
-setPA3(1);
-ucTimerDelay3 = 0;
-ucLoaderStep3++;
-}
-else
-ucTimerDelay3++;
-break;
-}
-
-
-case 3:
-{
-if(ucTimerDelay3 >= 5)
-{
-
-
-setPA2(0);
-
-setPA3(0);
-ucTimerDelay3 = 0;
-ucLoaderStep3++;
-}
-else
-ucTimerDelay3++;
-break;
-}
-
-case 4:
-{
-if(ucTimerDelay3 >= 1)
-{
-ucTimerDelay3 = 0;
-
-ucLoaderStep3 = 0;
-ucADC4_Step = ADC4_STEP_THIRD;;
-}
-else
-ucTimerDelay3++;
-break;
-}
-
-
-default:
-break;
-}
-
-break;
-}
-
-
-case MORE_THAN_2340:
-{
-static unsigned char ucTimerDelay4 = 0;
-static unsigned char ucLoaderStep4 = 0;
-switch(ucLoaderStep4)
-{
-case 0:
-{
-
-setPB0(1);
-
-setPA0(1);
-
-setPA1(1);
-
-setPA2(1);
-ucLoaderStep4++;
-break;
-}
-
-case 1:
-{
-if(ucTimerDelay4 >= 5)
-{
-
-setPA3(1);
-ucTimerDelay4 = 0;
-ucLoaderStep4++;
-}
-else
-ucTimerDelay4++;
-break;
-}
-
-case 2:
-{
-if(ucTimerDelay4 >= 5)
-{
-
-setPA3(0);
-ucTimerDelay4 = 0;
-ucLoaderStep4++;
-}
-else
-ucTimerDelay4++;
-break;
-}
-
-case 3:
-{
-if(ucTimerDelay4 >= 1)
-{
-ucTimerDelay4 = 0;
-
-ucLoaderStep4 = 0;
-ucADC4_Step = ADC4_STEP_THIRD;
-}
-else
-ucTimerDelay4++;
-break;
-}
-
-
-default:
-break;
-}
-
-break;
-}
-
-default:
-break;
-}
-
-break;
-}
-
-case ADC4_STEP_THIRD:
-{
-
-# 1409
-static unsigned char ucTimerDelayP2sLess = 0;
-
-static unsigned char ucTimerDelayP2sMore = 0;
-
-if( getAdOriginalCh1Value() <= 220 )
-{
-ucTimerDelayP2sLess++;
-ucTimerDelayP2sMore = 0;
-}
-else
-{
-ucTimerDelayP2sMore++;
-ucTimerDelayP2sLess = 0;
-}
-
-if( ucTimerDelayP2sLess >= 2)
-{
-ucTimerDelayP2sLess = 0;
-ucTimerDelayP2sMore = 0;
-
-startTwentySecondsTimer();
-
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX1;
-}
-
-if(ucTimerDelayP2sMore >= 2)
-{
-ucTimerDelayP2sMore = 0;
-ucTimerDelayP2sLess = 0;
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
-}
-
-
-break;
-}
-
-case ADC4_STEP_FOURTH_PREFIX1:
-{
-
-# 1450
-if( !isFinishedTwentySecondsTimer() )
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
-else
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX3;
-
-break;
-}
-
-
-case ADC4_STEP_FOURTH_PREFIX2:
-{
-
-# 1464
-static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
-
-static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
-
-if((getAdOriginalCh14Value() > 2800))
-{
-ucTimerForDACR0_CNT1++;
-ucTimerForDACR0_CNT2 = 0;
-}
-else
-{
-ucTimerForDACR0_CNT2++;
-ucTimerForDACR0_CNT1 = 0;
-}
-
-if(ucTimerForDACR0_CNT1 >= 2)
-ucTimerForDACR0_CNT1_f = 1;
-
-if(ucTimerForDACR0_CNT2 >= 2)
-ucTimerForDACR0_CNT2_f = 1;
-
-if(ucTimerForDACR0_CNT1_f)
-{
-
-DACR0=0x0F;
-
-# 1492
-ucADC4_Step = ADC4_STEP_FOURTH;
-}
-else if(ucTimerForDACR0_CNT2_f)
-{
-
-DACR0=0x09;
-
-# 1501
-ucADC4_Step = ADC4_STEP_FOURTH;
-}
-else
-{
-;
-}
-
-if(ADC4_STEP_FOURTH == ucADC4_Step)
-{
-ucTimerForDACR0_CNT1 = 0;
-ucTimerForDACR0_CNT2 = 0;
-ucTimerForDACR0_CNT1_f = 0;
-ucTimerForDACR0_CNT2_f = 0;
-
-}
-
-break;
-}
-
-case ADC4_STEP_FOURTH_PREFIX3:
-{
-
-# 1525
-clearTwentySecondsTimer();
-
-setPA6(0);
-
-PBOD6 = 0;
-PB6 = 1;
-
-# 1535
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX4;
-break;
-
-}
-
-
-case ADC4_STEP_FOURTH_PREFIX4:
-{
-
-# 1547
-static unsigned char ucDelayPrefix4TimerP5s;
-
-ucDelayPrefix4TimerP5s++;
-
-if( ucDelayPrefix4TimerP5s >= 5)
-{
-ucDelayPrefix4TimerP5s = 0;
-
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX5;
-}
-break;
-}
-
-case ADC4_STEP_FOURTH_PREFIX5:
-{
-
-# 1567
-PBOD6 = 1;
-PB6 = 1;
-
-# 1573
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX6;
-
-break;
-
-}
-
-case ADC4_STEP_FOURTH_PREFIX6:
-{
-static unsigned char ucDelayPrefix6TimerP2s;
-
-ucDelayPrefix6TimerP2s++;
-
-if( ucDelayPrefix6TimerP2s >= 2)
-{
-ucDelayPrefix6TimerP2s = 0;
-
-ucADC4_Step = ADC4_STEP_INIT;
-
-enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-}
-break;
-}
-
-
-case ADC4_STEP_FOURTH:
-{
-
-# 1602
-static unsigned char ucCheckTimerP2sLess = 0;
-
-static unsigned char ucCheckTimerP2sMore = 0;
-
-if( getAdOriginalCh1Value() < 85)
-{
-ucCheckTimerP2sLess++;
-ucCheckTimerP2sMore = 0;
-}
-else
-{
-ucCheckTimerP2sMore++;
-ucCheckTimerP2sLess = 0;
-}
-
-if( ucCheckTimerP2sMore > 2)
-{
-ucCheckTimerP2sMore = 0;
-ucCheckTimerP2sLess = 0;
-
-ucADC4_Step = ADC4_STEP_INIT;
-
-enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
-}
-
-if( ucCheckTimerP2sLess > 2)
-{
-ucCheckTimerP2sMore = 0;
-ucCheckTimerP2sLess = 0;
-
-ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX1;
-
-}
-
-
-break;
-}
-
-case ADC4_STEP_FOURTH_SUFFIX1:
-{
-
-# 1645
-static unsigned char ucFourthSuffix1TimerP3s = 0;
-
-ucFourthSuffix1TimerP3s++;
-
-if( ucFourthSuffix1TimerP3s > 3)
-{
-ucFourthSuffix1TimerP3s = 0;
-ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX2;
-
-}
-break;
-}
-
-case ADC4_STEP_FOURTH_SUFFIX2:
-{
-
-# 1664
-setPA6(0);
-
-clearPinPortAndTimer();
-ucADC4_Step = ADC4_STEP_INIT;
-
-enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-break;
-}
-
-default:
-break;
-}
-
-}
-
-break;
-}
-
-case MAIN_LOOP_STEP_3_HOUR_BRANCH:
-{
-
-# 1687
-enum hour_3_branch_step{
-HOUR_3_BRANCH_STEP_FIRST,
-HOUR_3_BRANCH_STEP_SECOND,
-HOUR_3_BRANCH_STEP_THIRD,
-};
-
-static enum hour_3_branch_step enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-
-switch(enumBranchStep)
-{
-case HOUR_3_BRANCH_STEP_FIRST:
-{
-
-PB7 = 1;
-PBOD7 = 1;
-
-# 1706
+clearTwelveHoursTimer();
 startThreeHoursTimer(10800);
-
-
-setPB0(1);
-
-setPA0(1);
-
-setPA1(1);
-
-setPA2(1);
-
-setPA3(1);
-
-enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
+ucStep++;
 break;
 }
 
-case HOUR_3_BRANCH_STEP_SECOND:
+case 4:
 {
+static unsigned char ucTimerP5s = 0;
 
-# 1728
-static unsigned char ucTimer20s = 0;
-
-if(ucTimer20s < 200)
-{
-ucTimer20s++;
-
-}
+if( isFinishedThreeHoursTimer() )
+ucStep = 99;
 else
 {
+if( getAdOriginalCh13Value() < 85 )
+ucTimerP5s++;
+else
+ucTimerP5s = 0;
 
-ucTimer20s = 0;
-
-enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
-
-
-setPA6(0);
+if( ucTimerP5s > 5)
+{
+ucTimerP5s = 0;
+ucStep++;
+}
 }
 break;
 }
 
-case HOUR_3_BRANCH_STEP_THIRD:
+case 5:
 {
-
-# 1753
-if( (isFinishedTwelveHoursTimer()) || (isFinishedThreeHoursTimer()))
-{
-enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
-}
-else
-{
-static unsigned char ucTimerX1P5s = 0;
-
-static unsigned char ucTimerLessX1P5s = 0;
-
-if(getAdOriginalCh1Value() < 115)
-{
-ucTimerX1P5s = 0;
-ucTimerLessX1P5s++;
-}
-else
-{
-ucTimerX1P5s++;
-ucTimerLessX1P5s = 0;
-}
-
-if(ucTimerX1P5s >= 5)
-{
-ucTimerX1P5s = 0;
-
-
-
-PBOD7 = 0;
-PB7 = 0;
-
-# 1787
 clearThreeHoursTimer();
-
-enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-
-enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
+startOneHoursTimer( 3600 );
+setPB3(1);
+setPB4(0);
+setPB5(1);
+ucStep++;
+break;
 }
-else if(ucTimerLessX1P5s >= 5)
-{
-static unsigned char ucTimerX2P5s = 0;
 
-static unsigned char ucTimerLessX2P5s = 0;
-
-if(getAdOriginalCh14Value() >= 1950)
+case 6:
 {
-ucTimerX2P5s++;
-ucTimerLessX2P5s = 0;
+static unsigned int uiTimerOneP5s = 0;
+static unsigned int uiTimerTwoP5s = 0;
+
+
+if( isFinishedOneHoursTimer() )
+ucStep = 99;
+else
+{
+if( getAdOriginalCh13Value() > 100 )
+{
+uiTimerOneP5s++;
+uiTimerTwoP5s = 0;
+}
+else
+uiTimerOneP5s = 0;
+
+if(uiTimerOneP5s > 5)
+{
+setPB3(0);
+setPB4(1);
+setPB5(0);
+
+uiTimerOneP5s = 0;
+uiTimerTwoP5s = 0;
+ucStep++;
 }
 else
 {
-ucTimerX2P5s = 0;
-ucTimerLessX2P5s++;
-}
-
-if(ucTimerX2P5s >= 5)
-{
-ucTimerX2P5s = 0;
-}
-else if(ucTimerLessX2P5s >= 5)
-{
-clearPinPortAndTimer();
-enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-}
+if( getAdOriginalCh13Value() < 25 )
+uiTimerTwoP5s++;
 else
+uiTimerTwoP5s = 0;
+
+if(uiTimerTwoP5s > 5)
+reset();
+}
+}
+break;
+}
+
+case 7:
 {
-;
-}
-}
+static unsigned int uiTimerP5s = 0;
+if( getAdOriginalCh13Value() < 25 )
+uiTimerP5s++;
 else
+uiTimerP5s = 0;
+
+if(uiTimerP5s > 5)
 {
-;
+uiTimerP5s = 0;
+setPB3(1);
+setPB4(0);
+setPB5(1);
+ucStep = 99;
 }
 
+
+break;
 }
 
+
+case 99:
+{
+setPB3(0);
+setPB4(0);
+setPB5(1);
+setPulseWidth();
+ucStep++;
+break;
+}
+
+case 100:
+{
+static unsigned char ucTimerP5s = 0;
+if( getAdOriginalCh13Value() >50 )
+ucTimerP5s++;
+else
+ucTimerP5s = 0;
+
+if(ucTimerP5s > 5)
+ucStep++;
+break;
+}
+
+case 101:
+{
+reset();
 break;
 }
 
@@ -2350,118 +1336,7 @@ default:
 break;
 }
 
-break;
-}
-
-case MAIN_LOOP_STEP_12_HOUR_END:
-{
-
-# 1848
-enum INTERNAL_STEP {
-INTERNAL_FIRST_STEP,
-INTERNAL_SECOND_STEP,
-INTERNAL_THIRD_STEP,
-INTERNAL_FOUTTH_STEP,
-};
-
-static enum INTERNAL_STEP enumInteralStep = INTERNAL_FIRST_STEP;
-
-switch (enumInteralStep)
-{
-case INTERNAL_FIRST_STEP:
-{
-
-# 1865
-setPB0(0);
-
-setPB1(0);
-
-setPA0(0);
-
-setPA1(0);
-
-setPA2(0);
-
-setPA3(0);
-
-
-PBOD6 = 0;
-PB6 = 1;
-
-# 1885
-setPA6(0);
-
-enumInteralStep = INTERNAL_SECOND_STEP;
-break;
-}
-
-case INTERNAL_SECOND_STEP:
-{
-
-# 1896
-static unsigned char ucTimer1s = 0;
-
-if(getAdOriginalCh14Value() <= 1000)
-{
-ucTimer1s++;
-}
-else
-ucTimer1s = 0;
-
-if(ucTimer1s >= 10)
-{
-enumInteralStep = INTERNAL_THIRD_STEP;
-ucTimer1s = 0;
-}
-break;
-}
-
-case INTERNAL_THIRD_STEP:
-{
-
-# 1918
-static unsigned char ucTimerP3s = 0;
-
-if(getAdOriginalCh14Value() >= 1950)
-{
-ucTimerP3s++;
-}
-else
-ucTimerP3s = 0;
-
-if(ucTimerP3s >= 3)
-{
-enumInteralStep = INTERNAL_FIRST_STEP;
-ucTimerP3s = 0;
-
-clearAllTimer();
-
-DACR0=0x0F;
-
-# 1938
-initPin();
-
-
-enumMainLoopStep = MAIN_LOOP_STEP_INIT;
-
-while(1);
-
-# 1948
-}
-break;
-}
-
-default:
-break;
-}
-
-break;
-}
-
-default:
-break;
-}
-
+# 2186
 }
 }
 

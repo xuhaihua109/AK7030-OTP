@@ -785,7 +785,7 @@ volatile bit PAOD7 @ ((unsigned)&PAOD*8)+7;
 
 
 volatile unsigned char PBOD @ 0x188;
-volatile bit PBOD6 @ ((unsigned)&PBOD*8)+6;
+volatile bit PBOD2 @ ((unsigned)&PBOD*8)+2;
 volatile bit PBOD7 @ ((unsigned)&PBOD*8)+7;
 
 
@@ -804,7 +804,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 26 "D:\develop\190625\AK7030-OTP\common.h"
+# 30 "D:\develop\190625\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -818,9 +818,9 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 44
-unsigned int getAdOriginalCh1Value();
-unsigned int getAdOriginaCh4Value();
+# 48
+unsigned int getAdOriginalCh12Value();
+unsigned int getAdOriginalCh13Value();
 
 unsigned int getAdOriginalCh14Value();
 
@@ -833,6 +833,8 @@ void setDAC0_ChannelValue(unsigned char ucValue);
 void startTwelveHourTimer(unsigned int uiSetTime);
 void startThreeHoursTimer(unsigned int uiSetTime);
 
+void startOneHoursTimer(unsigned int uiSetTime);
+
 
 void startTwentySecondsTimer();
 unsigned char isFinishedTwentySecondsTimer();
@@ -843,12 +845,14 @@ unsigned char isFinishedTwentyMinTimer();
 
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
+void clearOneHoursTimer();
 void clearTwentySecondsTimer();
 void clearTwentyMinTimer();
 
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();
+unsigned char isFinishedOneHoursTimer();
 
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
@@ -869,7 +873,7 @@ static unsigned char adc_convert_flag = 0;
 
 # 23
 static unsigned char sampleTimes;
-static unsigned char sampleChannelSelect = 14;
+static unsigned char sampleChannelSelect = 12;
 
 
 
@@ -885,16 +889,19 @@ static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
 static unsigned int uiTwentySecondsTimer = 0;
 
+static unsigned int uiOneHourTimer = 0;
+
 static unsigned int uiTwentyMinTimer = 0;
 
 static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
 
+static unsigned char bOneHourTimerStartFlag = 0;
 
 static unsigned char bTwentyMinStartFlag = 0;
 
 static void AD_Sample(void);
 
-# 56
+# 59
 unsigned int Filter(int *tmpValue)
 {
 
@@ -950,7 +957,7 @@ static unsigned char ucChannelFourthLength = 0;
 
 static unsigned char ucChannelFourteenthLength = 0;
 
-if(channel == 1)
+if(channel == 12)
 {
 if(ucChannelFirstLength < 12)
 {
@@ -965,7 +972,7 @@ ucChannelFirstLength = 0;
 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 }
 }
-else if(channel == 5)
+else if(channel == 13)
 {
 if(ucChannelFourthLength < 12)
 {
@@ -1055,23 +1062,23 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 222
-unsigned int getAdOriginalCh1Value()
+# 225
+unsigned int getAdOriginalCh12Value()
 {
 
 
 return Filter(uiSampleChannelFirst);
 
-# 231
+# 234
 }
 
 
-unsigned int getAdOriginaCh4Value()
+unsigned int getAdOriginalCh13Value()
 {
 
 return Filter(uiSampleChannelFourth);
 
-# 242
+# 245
 }
 
 
@@ -1080,7 +1087,7 @@ unsigned int getAdOriginalCh14Value()
 
 return Filter(uiSampleChannelFourteenth);
 
-# 252
+# 255
 }
 
 
@@ -1091,50 +1098,42 @@ if(getAD_ConvertFlag())
 {
 setAD_ConvertFlag(0);
 AD_Sample();
-if(5 == sampleChannelSelect)
-adc_test_init(5,3);
-else if(1 == sampleChannelSelect)
-adc_test_init(1,3);
+if(12 == sampleChannelSelect)
+adc_test_init(12,3);
+
+
 else
-adc_test_init(14,3);
+adc_test_init(13,3);
 
 adc_start();
 }
 }
 
-# 282
+# 285
 static void AD_Sample(void)
 {
 if(sampleTimes < 12)
 {
 
-# 306
+# 309
 sampleTimes++;
 
 if(sampleTimes >= 12)
 {
 sampleTimes = 0;
 
-if(sampleChannelSelect == 14)
+if(sampleChannelSelect == 12)
 {
 
 
-sampleChannelSelect = 1;
+sampleChannelSelect = 13;
 }
-else if(sampleChannelSelect == 5)
-{
 
-sampleChannelSelect = 14;
-}
-else if(sampleChannelSelect == 1)
-{
-
-sampleChannelSelect = 5;
-}
+# 331
 else
 {
 
-sampleChannelSelect = 14;
+sampleChannelSelect = 12;
 }
 
 
@@ -1144,7 +1143,7 @@ sampleChannelSelect = 14;
 }
 }
 
-# 354
+# 357
 void setDAC0_ChannelValue(unsigned char ucValue)
 {
 DACR0=ucValue;
@@ -1158,7 +1157,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 371
+# 374
 }
 
 void clearTwelveHoursTimer()
@@ -1173,6 +1172,13 @@ void clearThreeHoursTimer()
 uiSmallTimer = 0;
 bSmallTimerStartFlag = 0;
 }
+
+void clearOneHoursTimer()
+{
+uiOneHourTimer = 0;
+bOneHourTimerStartFlag = 0;
+}
+
 
 void clearTwentySecondsTimer()
 {
@@ -1196,7 +1202,18 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 411
+# 421
+}
+
+void startOneHoursTimer(unsigned int uiSetTime)
+{
+if(( 0 == uiOneHourTimer ) && ( 0 == bOneHourTimerStartFlag ))
+{
+uiOneHourTimer = uiSetTime;
+bOneHourTimerStartFlag = 1;
+}
+
+# 434
 }
 
 
@@ -1267,6 +1284,20 @@ else
 return 0;
 }
 
+
+
+unsigned char isFinishedOneHoursTimer()
+{
+if((uiOneHourTimer == 0) && bOneHourTimerStartFlag)
+{
+bOneHourTimerStartFlag = 0;
+return 1;
+}
+else
+return 0;
+}
+
+
 unsigned char isPermitSampleTime()
 {
 if(timer.timer10msStopWatch >= 10)
@@ -1306,35 +1337,32 @@ uiTwentySecondsTimer--;
 
 if(uiTwentyMinTimer)
 uiTwentyMinTimer--;
+
+if( uiOneHourTimer )
+uiOneHourTimer--;
 }
 }
 
 if(ADIF)
 {
+
 ADIF=0;
 setAD_ConvertFlag(1);
 
-if(sampleChannelSelect == 5)
+if(sampleChannelSelect == 12)
 {
 
 
-vPutSampleDataIntoTable(adc_get(),5);
+vPutSampleDataIntoTable(adc_get(),12);
 
-# 536
-}
-else if(sampleChannelSelect == 1)
-{
-
-vPutSampleDataIntoTable(adc_get(),1);
-
-# 545
+# 577
 }
 else
 {
 
 
 
-vPutSampleDataIntoTable(adc_get(),14);
+vPutSampleDataIntoTable(adc_get(),13);
 
 }
 

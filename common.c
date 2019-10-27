@@ -21,7 +21,7 @@ static uint adc_original_CH1_value = 0,adc_original_CH14_value = 0,adc_original_
 
 //static uint buffer_Sample_AD_Value[TEMP_MAX_CONTINOUS_SAMPLE_TIMES];
 static uchar sampleTimes;
-static uchar sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
+static uchar sampleChannelSelect = AD_CHANNEL_12_CHANNEL;
 //static uint multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
 //static uint sampleCH14Value,sampleCH4Value,sampleCH1Value;
 
@@ -37,10 +37,13 @@ static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
 static unsigned int uiTwentySecondsTimer = 0;
 
+static unsigned int uiOneHourTimer = 0;
+
 static unsigned int uiTwentyMinTimer = 0;
 
 static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
 
+static unsigned char bOneHourTimerStartFlag = 0;
 
 static unsigned char bTwentyMinStartFlag = 0;
 
@@ -108,7 +111,7 @@ static void AD_Sample(void);
 
 	 static unsigned char ucChannelFourteenthLength = 0;
 
-	 if(channel == AD_CHANNEL_1_CHANNEL)
+	 if(channel == AD_CHANNEL_12_CHANNEL)
 	 {
 		 if(ucChannelFirstLength < FILTER_N)
 		 {
@@ -123,7 +126,7 @@ static void AD_Sample(void);
 			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 		 }
 	 }
-	 else if(channel == AD_CHANNEL_5_CHANNEL)
+	 else if(channel == AD_CHANNEL_13_CHANNEL)
 	 {
 		 if(ucChannelFourthLength < FILTER_N)
 		 {
@@ -219,7 +222,7 @@ void  setAD_ConvertFlag(uchar flag)
 //	return adc_original_value;
 //}
 
-unsigned int getAdOriginalCh1Value()
+unsigned int getAdOriginalCh12Value()
 {
 
 #ifdef USING_AD_FILTER_ALGORITHMN
@@ -231,7 +234,7 @@ unsigned int getAdOriginalCh1Value()
 }
 
 
-unsigned int getAdOriginaCh4Value()
+unsigned int getAdOriginalCh13Value()
 {
 #ifdef USING_AD_FILTER_ALGORITHMN
 	return Filter(uiSampleChannelFourth);
@@ -259,12 +262,12 @@ void process_AD_Converter_Value()
 	{
 		setAD_ConvertFlag(0);
 		AD_Sample();
-		if(AD_CHANNEL_5_CHANNEL == sampleChannelSelect)
-			adc_test_init(AD_CHANNEL_5_CHANNEL,ADC_REF_2P1);
-		else if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
-			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
+		if(AD_CHANNEL_12_CHANNEL == sampleChannelSelect)
+			adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_2P1);
+//		else if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
+//			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
 		else
-			adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);
+			adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);
 //		setAdcSampleChannel(sampleChannelSelect);
 		adc_start();	//ADCÆô¶¯
 	}
@@ -309,26 +312,26 @@ static void AD_Sample(void)
 		{
 			sampleTimes = 0;
 
-			if(sampleChannelSelect == AD_CHANNEL_14_CHANNEL)
+			if(sampleChannelSelect == AD_CHANNEL_12_CHANNEL)
 			{
 				  //filter max and min value,then calculate average value
 //				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_1_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
 			}
-			else if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
-			{
-//				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
-			}
-			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
-			{
-//				sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_5_CHANNEL;
-			}
+//			else if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
+//			{
+////				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
+//				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
+//			}
+//			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
+//			{
+////				sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
+//				sampleChannelSelect = AD_CHANNEL_5_CHANNEL;
+//			}
 			else
 			{
 //				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_12_CHANNEL;
 			}
 
 //			for(uchar index = 0; index < TEMP_MAX_CONTINOUS_SAMPLE_TIMES;index++)
@@ -383,6 +386,13 @@ void clearThreeHoursTimer()
 	bSmallTimerStartFlag = 0;
 }
 
+void clearOneHoursTimer()
+{
+	uiOneHourTimer = 0;
+	bOneHourTimerStartFlag = 0;
+}
+
+
 void clearTwentySecondsTimer()
 {
 	uiTwentySecondsTimer = 0;
@@ -407,6 +417,19 @@ void startThreeHoursTimer(unsigned int uiSetTime)
 #ifdef DEBUG_FUNCITON
 
 	uiSmallTimer = 180;
+#endif
+}
+
+void startOneHoursTimer(unsigned int uiSetTime)
+{
+	if(( 0 == uiOneHourTimer ) && ( 0 == bOneHourTimerStartFlag ))
+	{
+		uiOneHourTimer = uiSetTime;//3600s = 1h
+		bOneHourTimerStartFlag = 1;
+	}
+#ifdef DEBUG_FUNCITON
+
+	uiOneHourTimer = 180;
 #endif
 }
 
@@ -478,6 +501,20 @@ unsigned char isFinishedThreeHoursTimer()
 		return 0;
 }
 
+
+
+unsigned char isFinishedOneHoursTimer()
+{
+	if((uiOneHourTimer == 0) && bOneHourTimerStartFlag)
+	{
+		bOneHourTimerStartFlag = 0;
+		return 1;
+	}
+	else
+		return 0;
+}
+
+
 unsigned char isPermitSampleTime()
 {
 	if(timer.timer10msStopWatch >= 10) //10*10ms = 100ms
@@ -517,38 +554,33 @@ void interrupt ISR(void)
 
 			if(uiTwentyMinTimer)
 				uiTwentyMinTimer--;
+
+			if( uiOneHourTimer )
+				uiOneHourTimer--;
 		}
     }
 
 	if(ADIF)
 	   {
+
 		ADIF=0;
 		setAD_ConvertFlag(1);
 //		adc_original_value = adc_get();
-		if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
+		if(sampleChannelSelect == AD_CHANNEL_12_CHANNEL)
 		{
 
 #ifdef USING_AD_FILTER_ALGORITHMN
-			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_5_CHANNEL);
+			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_12_CHANNEL);
 #else
 			adc_original_CH4_value = adc_get();//getAdCh4Value();
 #endif
-		}
-		else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
-		{
-#ifdef USING_AD_FILTER_ALGORITHMN
-			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_1_CHANNEL);
-#else
-			adc_original_CH1_value = adc_get();//getAdCh1Value();
-#endif
-
 		}
 		else
 		{
 #ifndef USING_AD_FILTER_ALGORITHMN
 			adc_original_CH14_value = adc_get();//getAdCh14Value();
 #else
-			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_14_CHANNEL);
+			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_13_CHANNEL);
 #endif
 		}
 

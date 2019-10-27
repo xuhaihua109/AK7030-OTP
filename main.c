@@ -1,7 +1,4 @@
 
-//#define    USE_SOFTWARE_SIMULATION_TEST                1
-
-
 //////////////////////////////////////////////////////////////////////////////////
 //               【程序说明】：DAC0输出VCC*25/64=1.3V通过OP1放大从PB5输出		    //
 //							   DAC1输出VCC*6/64=0.3V通过OP2放大从PA7输出		    //
@@ -21,9 +18,29 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+// #define    USE_SOFTWARE_SIMULATION_TEST                1
 
 #ifndef USE_SOFTWARE_SIMULATION_TEST
+
+
+#define  SET_PIN_AS_OUTPUT   0
+#define  SET_PIN_AS_INPUT    1
+
+#define  SET_PIN_HIGH    1
+#define  SET_PIN_LOW     0
+
+
+#define   BIG_TIME_SECONDS         36000
+#define   SMALL_TIME_SECONDS       10800
+
+#define   TIMER_20MIN       1200
+
+#define  LETE_BRANCH_COMMON_STAY_TIME     1
+
+#define    TRUE   1
+#define    FALSE  0
+
+
 
 
 
@@ -94,6 +111,7 @@ __CONFIG(CONFIG3);
 //#define CHANGE_PIN_DEFINAITION   1
 
 
+
 #ifndef USE_SOFTWARE_SIMULATION_TEST
 static void clearAllTimer(void)
 {
@@ -104,180 +122,144 @@ static void clearAllTimer(void)
 #endif
 
 
-void setPB0(unsigned char bValue)
+void initPB3(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		// PA2 -> PB0
-		PA2 = 1;
+		TRISB3 = 1;
 #else
-	   cout <<"PB0 = 1;"<<endl;
-#endif
-	 else
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA2 = 0;
-#else
-	   cout <<"PB0 = 0;"<<endl;
-#endif
-}
-
-
-void setPB1(unsigned char bValue)
-{
-	if( bValue )
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-		// PA3 -> PB1
-		PA3 = 1;
-#else
-	   cout <<"PB1 = 1;"<<endl;
+	   cout <<"set PB3 as input pin."<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA3 = 0;
+		TRISB3 = 0;
 #else
-	   cout <<"PB1 = 0;"<<endl;
+	   cout <<"set PB3 as output pin."<<endl;
 #endif
 }
 
 
-void setPA0(unsigned char bValue)
+void setPB3(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		// PA1 -> PA0
-		PA1 = 1;
+		PB3 = 1;
 #else
-	   cout <<"PA0 = 1;"<<endl;
+	   cout <<"set PB3 output 1"<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA1 = 0;
+		PB3= 0;
 #else
-	   cout <<"PA0 = 0;"<<endl;
-#endif
-}
-
-
-void setPA1(unsigned char bValue)
-{
-	if( bValue )
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-		//PA0 -> PA1
-		PA0 = 1;
-#else
-	   cout <<"PA1 = 1;"<<endl;
-#endif
-	 else
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA0 = 0;
-#else
-	   cout <<"PA1 = 0;"<<endl;
+	   cout <<"set PB3 output 0"<<endl;
 #endif
 }
 
 
 
-void setPA2(unsigned char bValue)
+void initPB4(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		//PB0 -> PA2
-		PB0 = 1;
-
+		TRISB4 = 1;
 #else
-	   cout <<"PA2 = 1;"<<endl;
+	   cout <<"set PB4 as input pin."<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-
-		PB0 = 0;
+		TRISB4= 0;
 #else
-	   cout <<"PA2 = 0;"<<endl;
+	   cout <<"set PB4 as output pin."<<endl;
 #endif
 }
 
 
-void setPA3(unsigned char bValue)
+void setPB4(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		// PB1 -> PA3
-		PB1 = 1;
+		PB4 = 1;
 #else
-	   cout <<"PA3 = 1;"<<endl;
+	   cout <<"set PB4 output 1."<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PB1 = 0;
+		PB4= 0;
 #else
-	   cout <<"PA3 = 0;"<<endl;
+	   cout <<"set PB4 as output 0."<<endl;
 #endif
 }
 
 
-void setPB7(unsigned char bValue)
+void initPB5(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-	{
-		PBOD7 = 1;
-		PB7 = 1;
-	}
+		TRISB5 = 1;
 #else
-	{
-	   cout <<"PBOD7 = 1;"<<endl;
-	   cout <<"PB7 = 1;"<<endl;
-	}
+	   cout <<"set PB5 as input pin."<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-	{
-		PBOD7 = 0;
-		PB7 = 0;
-	}
+		TRISB5= 0;
 #else
-	{
-	cout <<"PBOD7 = 0;"<<endl;
-	cout <<"PB7 = 0;"<<endl;
-	}
+	   cout <<"set PB5 as output pin."<<endl;
 #endif
 }
 
 
-void setPA6(unsigned char bValue)
+void setPB5(unsigned char bValue)
 {
 	if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA6 = 1;
+		PB5 = 1;
 #else
-	   cout <<"PA6 = 1;"<<endl;
+	   cout <<"set PB5 output 1."<<endl;
 #endif
 	else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-		PA6= 0;
+		PB5= 0;
 #else
-	   cout <<"PA6 = 0;"<<endl;
+	   cout <<"set PB5 output 0."<<endl;
 #endif
 }
+
+
+void initPB2_AsHighResistence( void )
+{ // in 8 pin chip, PB2 is the fifth pin
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
+	PB2 = 1;
+	PBOD2 = 1; //set PB2 as high resistance
+#else
+	cout << "set PB2 as high resistance"<< endl;
+#endif
+}
+
+//void initCCP1PWM_Mode( void )
+//{
+//	 CCP1CON = 0x10 ; // 0101 0101 OP1 输出导致 PWM 输出关闭，当条件撤销时， PWM 自动启动 OP2 输出导致 PWM 输出关闭，必须通过软件来重新启动 ；PWM 自启动使能；1： OP1 输出会导致 PWM 自动关闭,op2不会; PWM 自动关闭使能
+//	 PR2 = 4 ;     //T2周期寄存器
+//	 T2CON = 0x04 ;   //使能TMR2，后分频值1 预分频值1
+//	 CCPR1L = 0x02 ;
+//	 PWMCON1 = 0x55;   // 寄存器的值和datasheed里面不一样，对应的为PWM1CON1寄存器
+//
+//}
+//
+//void startPWM_Mode (void)
+//{
+//	CCP1CON |= 0x0e ;    //打开pwm模式
+//	TRISB2=0;	//输出
+//}
 
 
 static void clearPinPortAndTimer(void)
 {
 #ifndef 	USE_SOFTWARE_SIMULATION_TEST
-//	PB0 = 0;
-	setPB0(0);
-//	PA0 = 0;
-	setPA0(0);
-//	PA1 = 0;
-	setPA1(0);
-//	PA2 = 0;
-	setPA2(0);
-//	PA3 = 0;
-	setPA3(0);
-//	PAOD7 = 0;
-//	PA7 = 0;
-	PBOD7 = 0;
-	PB7 = 0;
+
+	setPB3(0);
+	setPB4(0);
+	setPB5(0);
+	setPB2_AsHighResistence();
 	clearAllTimer();
 #else
 	cout << "clearPinPortAndTimer(void)" << endl;
@@ -285,35 +267,78 @@ static void clearPinPortAndTimer(void)
 }
 
 
+//pwm初始化
+void pwm_start(void)
+{
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
+ //CCP1CON is at 348 line in yn8p520.h file
+ CCP1CON = 0x10 ; // 0101 0101 OP1 输出导致 PWM 输出关闭，当条件撤销时， PWM 自动启动 OP2 输出导致 PWM 输出关闭，必须通过软件来重新启动 ；PWM 自启动使能；1： OP1 输出会导致 PWM 自动关闭,op2不会; PWM 自动关闭使能
+ PR2 = 4 ;     //T2周期寄存器   // it is at 649 line in yn8p520.h file
+ T2CON = 0x04 ;   //使能TMR2，后分频值1 预分频值1
+ CCPR1L = 0x02 ;
+ PWMCON1 = 0x55;   // 寄存器的值和datasheed里面不一样，对应的为PWM1CON1寄存器
+
+ TRISB2=0;	//输出
+
+ CCP1CON |= 0x0e ;    //打开pwm模式
+#else
+ 	 cout << "pwm_start();" <<endl;
+#endif
+}
+
 static void initPin(void)
 {
 #ifndef 	USE_SOFTWARE_SIMULATION_TEST
-	PB6 = 1;
-	PBOD6 = 1; //set PB6 as high resistance
+	initPB2_AsHighResistence();
 
+	initPB3(SET_PIN_AS_OUTPUT);
 
+	initPB4(SET_PIN_AS_OUTPUT);
 
-//	PA0 = 0;
-	setPA0(0);
-//	PA1 = 0;
-	setPA1(0);
-//	PA2 = 0;
-	setPA2(0);
-//	PA3 = 0;
-	setPA3(0);
-//	PB0 = 0;
-	setPB0(0);
-//	PB1 = 1;
-	setPB1(1);
-//	PA6 = 0;
-	setPA6(0);
-//	PA7 = 0;
-	PB7 = 0;
-	PBOD7 = 0;
+	initPB5(SET_PIN_AS_OUTPUT);
 #else
 	cout << "initPin(void)" << endl;
 #endif
 
+}
+
+static void setPinInitVaule( void )
+{
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
+	setPB3(SET_PIN_HIGH);
+	setPB4(SET_PIN_LOW);
+	setPB5(SET_PIN_HIGH);
+#else
+	cout << "setPinInitVaule(void)" << endl;
+#endif
+}
+
+static void selectAdChannel( void )
+{
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
+	TRISB0 = 1; //AD 12 CHANNEL
+	TRISB1 = 1; // AD 13 CHANNEL
+#else
+	cout << "selectAdChannel(void)" << endl;
+#endif
+}
+
+static void setPulseWidth( void )
+{
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
+	;//wait to develop.
+#else
+	cout << "setPulseWidth();"<<endl;
+#endif
+}
+
+static void reset( void )
+{
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
+	while(1);
+#else
+	cout << "while(1);" <<endl;
+#endif
 }
 
 #ifdef USE_SOFTWARE_SIMULATION_TEST
@@ -360,7 +385,7 @@ unsigned int getAdOriginalCh14Value(void)
 {
 	unsigned int uiCh14Value = 0;
 
-	cout <<"please input value of ch14:"<<endl;
+	cout <<"please input value of ch14:"<< endl;
 
 	cin >> uiCh14Value;
 
@@ -468,43 +493,12 @@ void clearAllTimer(void)
 #endif
 
 
-#define   BIG_TIME_SECONDS         36000
-#define   SMALL_TIME_SECONDS       10800
-
-#define   TIMER_20MIN       1200
-
-#define  LETE_BRANCH_COMMON_STAY_TIME     1
-
-#define    TRUE   1
-#define    FALSE  0
-
-
-
 void main (void)
 {
 
 #ifdef		USE_SOFTWARE_SIMULATION_TEST
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 #endif
-
-	enum setp_Adc4
-		{
-			ADC4_STEP_INIT = 0,
-			ADC4_STEP_FIRST,
-			ADC4_STEP_SECOND,
-			ADC4_STEP_THIRD,
-			ADC4_STEP_FOURTH_PREFIX1,
-			ADC4_STEP_FOURTH_PREFIX2,
-			ADC4_STEP_FOURTH_PREFIX3,
-			ADC4_STEP_FOURTH_PREFIX4,
-			ADC4_STEP_FOURTH_PREFIX5,
-			ADC4_STEP_FOURTH_PREFIX6,
-			ADC4_STEP_FOURTH,
-			ADC4_STEP_FOURTH_SUFFIX1,
-			ADC4_STEP_FOURTH_SUFFIX2,
-			ADC4_STEP_FIFTH,
-			ADC4_STEP_SIXTH,
-		};
 
 
 		static unsigned char ucWaitTime1S = 0;
@@ -521,37 +515,39 @@ void main (void)
 
 
 #ifndef		USE_SOFTWARE_SIMULATION_TEST
-		TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
-		TRISA1 = 0;
-		TRISA2 = 0;
-		TRISA3 = 0;
-		TRISB0 = 0;
-		TRISB1 = 0;
-		TRISA6 = 0;
-	//	TRISA7 = 0;
-		TRISB7 = 0;// PB7 instead of PA7
-		TRISB6 = 0;
+//		TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
+//		TRISA1 = 0;
+//		TRISA2 = 0;
+//		TRISA3 = 0;
+//		TRISB0 = 0;
+//		TRISB1 = 0;
+//		TRISA6 = 0;
+//	//	TRISA7 = 0;
+//		TRISB7 = 0;// PB7 instead of PA7
+//		TRISB6 = 0;
 
 
 		initPin();
+		setPinInitVaule();
+		selectAdChannel();
 
 
-		TRISB2 = 1;//SET AD sample Channel 14
-
-	//	TRISB7 = 1;// set AD sample Channel 4
-		TRISA7 = 1;// set AD sample channel 5
-
-		TRISB4 = 1;// set AD sample Channel 1
+//		TRISB2 = 1;//SET AD sample Channel 14
+//
+//	//	TRISB7 = 1;// set AD sample Channel 4
+//		TRISA7 = 1;// set AD sample channel 5
+//
+//		TRISB4 = 1;// set AD sample Channel 1
 
 		clock_config();	//使系统时钟稳定
 		timer1_config();
 		timer1_interrupt_config();
 
-		adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
+		adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_2P1);//ADC初始化 通道12 PB0，2.1V 电压为参考源
 
-		dac_init(); //DAC0/1初始化
-		op1_init(); //OP1初始化
-		op2_init(); //OP2初始化
+//		dac_init(); //DAC0/1初始化
+//		op1_init(); //OP1初始化
+//		op2_init(); //OP2初始化
 
 
 		adc_start();	//ADC启动
@@ -559,38 +555,12 @@ void main (void)
 		cout << "initialization after power on" << endl;
 #endif
 
-		enum AD_CHANNEL_4_VALUE_PATH
-		{
-			LESS_THAN_1911 = 0,
-			BETWEEN_1911_AND_2067,
-			BETWEEN_2067_AND_2204,
-			BETWEEN_2204_AND_2340,
-			MORE_THAN_2340,
-		};
-
-		enum MAIN_LOOP_STEP
-		{
-			MAIN_LOOP_STEP_INIT = 0,
-			MAIN_LOOP_STEP_FIRST,
-			MAIN_LOOP_STEP_SECOND,
-			MAIN_LOOP_STEP_THIRD,
-			MAIN_LOOP_STEP_FOURTH,
-			MAIN_LOOP_STEP_FIFTH,
-			MAIN_LOOP_STEP_SIXTH,
-			MAIN_LOOP_STEP_SEVENTH,
-			MAIN_LOOP_STEP_3_HOUR_BRANCH,
-			MAIN_LOOP_STEP_12_HOUR_END,
-		};
-
-
-		static enum MAIN_LOOP_STEP  enumMainLoopStep = MAIN_LOOP_STEP_INIT;
-
-		static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = LESS_THAN_1911;
-
 
 	#ifdef SET_PB1_AS_RESET_DEBUG_PIN
 		static unsigned char ucTimerPowerLed = FALSE;
 	#endif
+
+		startTwentyMinTimer( TIMER_20MIN );
 
 		while(1)
 	    {
@@ -617,1384 +587,1601 @@ void main (void)
 			PB1 = 0;
 			}
 	#endif
+			static unsigned char ucStep = 0;
+			switch(ucStep)
+			{
+				case 0:
+				{
+					static unsigned char ucTimerP3s = 0;
 
-			   switch(enumMainLoopStep)
-			   {
-				   case MAIN_LOOP_STEP_INIT:
+					if( isFinishedTwentyMinTimer() )
+						;// wait to develop
+					else
 					{
-
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in MAIN_LOOP_STEP_INIT "<<endl;
-#endif
-						static unsigned char ucTimerZeroPoint5s = 0;
-				   		if(getAdOriginalCh14Value() > 1950)//  AD value -> 2v
+						if( getAdOriginalCh13Value() > 1000 )
 						{
-				   			ucTimerZeroPoint5s++;
-						}
-						else
-						{
-							static unsigned char bInit20Min = 0;
-							if(!bInit20Min)
-							{
-								bInit20Min = 1;
-								startTwentyMinTimer(TIMER_20MIN);
-							}
-							ucTimerZeroPoint5s = 0;
-						}
-
-						if( ucTimerZeroPoint5s >= 5 ) //5*100ms = 0.5s
-						{
-							ucTimerZeroPoint5s = 0;
-							clearTwentyMinTimer();
-							enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-						}
-
-						if( isFinishedTwentyMinTimer() )
-						{
-							enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
-							ucTimerZeroPoint5s = 0;//no meaning, only prevent from unknown mistake
-						}
-				   		break;
-					}
-
-				   case MAIN_LOOP_STEP_FIRST:
-					{
-
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in MAIN_LOOP_STEP_FIRST "<<endl;
-#endif
-						static unsigned char ucTimerZeroPoint3s = 0;
-
-
-						if(getAdOriginalCh14Value() > 1950)// AD value -> 2v
-						{
-
-							enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
-
-							ucTimerZeroPoint3s = 0;
+							ucTimerP3s++;
 
 						}
 						else
+							ucTimerP3s = 0;
+
+						static unsigned char ucDebug1 = 0;
+
+						static unsigned char ucDebug2 = 0;
+
+						ucDebug1++;
+
+						if( ucDebug1 < 10 )
+							setPB3(SET_PIN_HIGH);
+						else if((ucDebug1 > 10) && ( ucDebug1 < 20))
 						{
-							ucTimerZeroPoint3s++;
-
-							if(ucTimerZeroPoint3s >= 3)//
-							{
-								ucTimerZeroPoint3s = 0;
-
-								clearPinPortAndTimer();
-							}
+							setPB3(SET_PIN_LOW);
+						}
+						else
+						{
+							ucDebug1 = 0;
 						}
 
-						break;
+						ucDebug2++;
+						if(ucDebug2 > 150) //100 *100ms = 15s
+							ucStep++;
 					}
+					break;
+				}
 
-					case MAIN_LOOP_STEP_SECOND:
+				case 1:
+				{
+					pwm_start();
+					setPulseWidth();
+					setPB3(SET_PIN_LOW);
+					setPB4(SET_PIN_HIGH);
+					setPB5(SET_PIN_LOW);
+					clearTwentyMinTimer();
+					startTwelveHourTimer( 36000); //10 hours timer
+					ucStep++;
+					break;
+				}
+
+				case 2:
+				{
+					static unsigned char ucTimerP5s = 0;
+
+					if( isFinishedTwelveHoursTimer () )
+						ucStep = 99;
+					else
 					{
-
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in MAIN_LOOP_STEP_SECOND "<<endl;
-#endif
-						static unsigned char ucTimerP5s = 0;
-
-					//	PA6 = 1;
-						setPA6(1);
-
-						if(ucTimerP5s < 5)
+						if( getAdOriginalCh13Value() < 200 )
 							ucTimerP5s++;
 						else
-						{
 							ucTimerP5s = 0;
 
-				   			enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
-						}
-
-				   		break;
-					}
-
-					case MAIN_LOOP_STEP_THIRD:
-					{
-
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in MAIN_LOOP_STEP_THIRD "<<endl;
-#endif
-						static unsigned char ucTimerADC1ZeroP5s = 0;
-
-						static unsigned char ucTimerLessADC1ZeroP5s = 0;
-
-						static unsigned char ucTimerLessADC1ZeroP5sFlag = 0;
-
-						static unsigned char ucTimerRightP5s = 0;
-
-						if(getAdOriginalCh1Value() < 115)
+						if( ucTimerP5s > 5)
 						{
-							ucTimerADC1ZeroP5s = 0;
+							ucTimerP5s = 0;
+					//		ucStep++;
+						}
+					}
+					break;
+				}
 
-							ucTimerLessADC1ZeroP5s++;  // looking for questions，need consider AD1 value is again more than 130  after less than 130
+				case 3:
+				{
+					clearTwelveHoursTimer();
+					startThreeHoursTimer(10800);//3 hours
+					ucStep++;
+					break;
+				}
+
+				case 4:
+				{
+					static unsigned char ucTimerP5s = 0;
+
+					if( isFinishedThreeHoursTimer() )
+						ucStep = 99;
+					else
+					{
+						if( getAdOriginalCh13Value() < 85 )
+							ucTimerP5s++;
+						else
+							ucTimerP5s = 0;
+
+						if( ucTimerP5s > 5)
+						{
+							ucTimerP5s = 0;
+							ucStep++;
+						}
+					}
+					break;
+				}
+
+				case 5:
+				{
+					clearThreeHoursTimer();
+					startOneHoursTimer( 3600 );
+					setPB3(SET_PIN_HIGH);
+					setPB4(SET_PIN_LOW);
+					setPB5(SET_PIN_HIGH);
+					ucStep++;
+					break;
+				}
+
+				case 6:
+				{
+					static unsigned int uiTimerOneP5s = 0;
+					static unsigned int uiTimerTwoP5s = 0;
+
+
+					if( isFinishedOneHoursTimer() )
+						ucStep = 99;
+					else
+					{
+						if( getAdOriginalCh13Value() > 100 )
+						{
+							uiTimerOneP5s++;
+							uiTimerTwoP5s = 0; // need clear it because value is less than 25.
+						}
+						else
+						 uiTimerOneP5s = 0;
+
+						if(uiTimerOneP5s > 5)
+						{
+							setPB3(SET_PIN_LOW);
+							setPB4(SET_PIN_HIGH);
+							setPB5(SET_PIN_LOW);
+
+							uiTimerOneP5s = 0;
+							uiTimerTwoP5s = 0;
+							ucStep++;
 						}
 						else
 						{
-							ucTimerADC1ZeroP5s++;
-
-							ucTimerLessADC1ZeroP5s = 0;
-						}
-
-						if(ucTimerADC1ZeroP5s >= 3)
-						{
-							ucTimerADC1ZeroP5s = 0;
-							enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
-						}
-						else if( ucTimerLessADC1ZeroP5s >= 3)
-						{
-
-							if(getAdOriginalCh1Value() < 105)//????// wait to be determined.
-							{
-								ucTimerRightP5s++;
-							}
+							if( getAdOriginalCh13Value() < 25 )
+								uiTimerTwoP5s++;
 							else
-							{
-								ucTimerRightP5s = 0;
-							}
+								uiTimerTwoP5s = 0;
 
-							if(ucTimerRightP5s >= 3)
-							{
-								ucTimerLessADC1ZeroP5s = 0; // clear it, make sure this value is always more than 5 before clearing it
-								ucTimerRightP5s = 0;
-								enumMainLoopStep =  MAIN_LOOP_STEP_3_HOUR_BRANCH;
-							}
-							else
-							{
-								;// always do the same thing in the MAIN_LOOP_STEP_THIRD
-							}
+							if(uiTimerTwoP5s > 5)
+								reset();
 						}
-						else
-						{
-							;//do nothing
-						}
-
-						if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_FOURTH == enumMainLoopStep))
-						{  // only to make sure clear timer when exit this case. no other attention
-							ucTimerRightP5s = 0;
-							ucTimerADC1ZeroP5s = 0;
-							ucTimerLessADC1ZeroP5s = 0;
-						}
-
-
-						break;
 					}
+					break;
+				}
 
-					case MAIN_LOOP_STEP_FOURTH:
+				case 7:
+				{
+					static unsigned int uiTimerP5s = 0;
+					if( getAdOriginalCh13Value() < 25 )
+						uiTimerP5s++;
+					else
+						uiTimerP5s = 0;
+
+					if(uiTimerP5s > 5)
 					{
-
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in MAIN_LOOP_STEP_FOURTH "<<endl;
-#endif
-
-						startTwelveHourTimer(BIG_TIME_SECONDS);
-						enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
-
-						bCheckTweHour = FALSE;
-
-						break;
+						uiTimerP5s = 0;
+						setPB3(SET_PIN_HIGH);
+						setPB4(SET_PIN_LOW);
+						setPB5(SET_PIN_HIGH);
+						ucStep  = 99;
 					}
 
-					case MAIN_LOOP_STEP_FIFTH:
-					{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in MAIN_LOOP_STEP_FIFTH "<<endl;
-#endif
-						if(( isFinishedTwelveHoursTimer() && (! bCheckTweHour)))
-						{
-							enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;//???? wait to be determined
-							bCheckTweHour = TRUE;
-						}
-						else
-						{
-						    static enum setp_Adc4 ucADC4_Step = ADC4_STEP_INIT;
 
-						    switch(ucADC4_Step)
-						    {
-								case ADC4_STEP_INIT:
-								{
-								//	startTwentySecondsTimer();
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_INIT; "<<endl;
-#endif
-									ucADC4_Step = ADC4_STEP_FIRST;
-									break;
-								}
-
-								case ADC4_STEP_FIRST:
-								{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FIRST; "<<endl;
-#endif
-									static unsigned int uiOldValue = 0, uiMinValue = 0, uiMaxValue = 0;
-
-									static unsigned char bInitFlag = 0;
-
-									if( 0 == bInitFlag)
-									{
-										bInitFlag = 1;
-										uiOldValue = getAdOriginaCh4Value();
-									}
-
-				#define             RANGE_FIRST_VALUE                1931
-				#define             RANGE_SECOND_VALUE               2047
-				#define             RANGE_THIRD_VALUE                2164
-				#define             RANGE_FOURTH_VALUE               2281
-				#define             HYSTERETIC_NEGATIVE_VALUE        40
-				#define             HYSTERETIC_POSITIVE_VALUE        0
-
-									if(LESS_THAN_1911 == ucChannel4Type)
-									{
-										uiMinValue = 0;
-										uiMaxValue = RANGE_FIRST_VALUE;
-									}
-									else if(BETWEEN_1911_AND_2067 == ucChannel4Type)
-									{
-										uiMinValue = RANGE_FIRST_VALUE - HYSTERETIC_NEGATIVE_VALUE;
-										uiMaxValue = RANGE_SECOND_VALUE;
-									}
-									else if(BETWEEN_2067_AND_2204 == ucChannel4Type)
-									{
-										uiMinValue = RANGE_SECOND_VALUE - HYSTERETIC_NEGATIVE_VALUE;
-										uiMaxValue = RANGE_THIRD_VALUE;
-									}
-									else if(BETWEEN_2204_AND_2340 == ucChannel4Type)
-									{
-										uiMinValue = RANGE_THIRD_VALUE - HYSTERETIC_NEGATIVE_VALUE;
-										uiMaxValue = RANGE_FOURTH_VALUE;
-									}
-									else
-									{
-										uiMinValue = RANGE_FOURTH_VALUE - HYSTERETIC_NEGATIVE_VALUE;
-										uiMaxValue = RANGE_FOURTH_VALUE;
-									}
-
-
-									if(( getAdOriginaCh4Value() < uiMinValue )
-										|| 	(getAdOriginaCh4Value() > uiMaxValue ))
-									{
-										uiOldValue =  getAdOriginaCh4Value();
-									}
-
-									if( uiOldValue < RANGE_FIRST_VALUE )
-										ucChannel4Type = LESS_THAN_1911;
-									else if( uiOldValue < RANGE_SECOND_VALUE )
-										ucChannel4Type = BETWEEN_1911_AND_2067;
-									else if( uiOldValue < RANGE_THIRD_VALUE )
-										ucChannel4Type = BETWEEN_2067_AND_2204;
-									else if( uiOldValue < RANGE_FOURTH_VALUE )
-										ucChannel4Type = BETWEEN_2204_AND_2340;
-									else
-										ucChannel4Type = MORE_THAN_2340;
-
-									ucADC4_Step = ADC4_STEP_SECOND;
-									break;
-								}
-
-								case ADC4_STEP_SECOND:
-								{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_SECOND; "<<endl;
-#endif
-									switch(ucChannel4Type)
-									{
-
-										case LESS_THAN_1911:
-										{
-											static unsigned char ucTimerDelay = 0;
-											static unsigned char ucLoaderStep = 0;
-
-											switch(ucLoaderStep)
-											{
-												case 0:
-												{
-
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-											//		PB0 = 1;
-													setPB0(1);
-#else
-													cout<<"PB0 = 1;"<<endl;
-#endif
-													ucLoaderStep++;
-													break;
-												}
-
-												case 1:
-												{
-													if(ucTimerDelay >= 5)
-													{
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-													//	PA0 = 1;
-														setPA0(1);
-#else
-														cout <<"PA0 = 1;"<<endl;
-#endif
-														ucTimerDelay = 0;
-														ucLoaderStep++;
-													}
-													else
-														ucTimerDelay++;
-													break;
-												}
-
-												case 2:
-												{
-													if(ucTimerDelay >= 5)
-													{
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-													//	PA1= 1;
-														setPA1(1);
-#else
-														cout <<"PA1 = 1;"<<endl;
-#endif
-														ucTimerDelay = 0;
-														ucLoaderStep++;
-													}
-													else
-														ucTimerDelay++;
-													break;
-												}
-
-
-												case 3:
-												{
-													if(ucTimerDelay >= 5)
-													{
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-														//PA2= 1;
-														setPA2(1);
-#else
-														cout<< "PA2 = 1;" <<endl;
-#endif
-
-														ucTimerDelay = 0;
-														ucLoaderStep++;
-													}
-													else
-														ucTimerDelay++;
-													break;
-												}
-
-												case 4:
-												{
-													if(ucTimerDelay >= 5)
-													{
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-													//	PA3 = 1;
-														setPA3(1);
-#else
-														cout << "PA3 = 1;"<<endl;
-#endif
-														ucTimerDelay = 0;
-														ucLoaderStep++;
-													}
-													else
-														ucTimerDelay++;
-													break;
-												}
-
-												case 5:
-												{
-													if(ucTimerDelay >= 5)
-													{
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-												//		PB0 = 0;
-														setPB0(0);
-												//		PA0 = 0;
-														setPA0(0);
-												//		PA1 = 0;
-														setPA1(0);
-												//		PA2 = 0;
-														setPA2(0);
-												//		PA3 = 0;
-														setPA3(0);
-#else
-														cout << "PB0 = 0;"<<endl;
-														cout << "PA0 = 0;"<< endl;
-														cout << "PA1 = 0;"<<endl;
-														cout << "PA2 = 0;"<<endl;
-														cout << "PA3 = 0;"<<endl;
-#endif
-														ucTimerDelay = 0;
-														ucLoaderStep++;
-													}
-													else
-														ucTimerDelay++;
-													break;
-												}
-
-												case 6:
-												{
-													if(ucTimerDelay >= LETE_BRANCH_COMMON_STAY_TIME)
-													{
-														ucTimerDelay = 0;
-									//					AD_sample_process_step = 2;
-														ucLoaderStep = 0;
-														ucADC4_Step = ADC4_STEP_THIRD;
-													}
-													else
-														ucTimerDelay++;
-													break;
-												}
-
-
-												default:
-												break;
-											}
-
-											 break;
-										}
-
-										case BETWEEN_1911_AND_2067:
-										{
-											static unsigned char ucTimerDelay1 = 0;
-											static unsigned char ucLoaderStep1 = 0;
-											switch(ucLoaderStep1)
-											{
-												case 0:
-												{
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-												//	PB0 = 1;
-													setPB0(1);
-#else
-													cout <<"PB0 = 1;"<<endl;
-#endif
-													ucLoaderStep1++;
-													break;
-												}
-
-												case 1:
-												{
-													if(ucTimerDelay1 >= 5)
-													{
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-													//	PA0 = 1;
-														setPA0(1);
-#else
-														cout <<"PA0 = 1;"<<endl;
-#endif
-														ucTimerDelay1 = 0;
-														ucLoaderStep1++;
-													}
-													else
-														ucTimerDelay1++;
-													break;
-												}
-
-												case 2:
-												{
-													if(ucTimerDelay1 >= 5)
-													{
-#ifndef   USE_SOFTWARE_SIMULATION_TEST
-													//	PA1= 1;
-														setPA1(1);
-#else
-														cout <<"PA1 = 1;"<<endl;
-#endif
-														ucTimerDelay1 = 0;
-														ucLoaderStep1++;
-													}
-													else
-														ucTimerDelay1++;
-													break;
-												}
-
-												case 3:
-												{
-													if(ucTimerDelay1 >= 5)
-													{
-												//		PA2 = 1;
-														setPA2(1);
-														ucTimerDelay1 = 0;
-														ucLoaderStep1++;
-													}
-													else
-														ucTimerDelay1++;
-													break;
-												}
-
-												case 4:
-												{
-													if(ucTimerDelay1 >= 5)
-													{
-												//		PA3 = 1;
-														setPA3(1);
-														ucTimerDelay1 = 0;
-														ucLoaderStep1++;
-													}
-													else
-														ucTimerDelay1++;
-													break;
-												}
-
-												case 5:
-												{
-													if(ucTimerDelay1 >= 5)
-													{
-													//	PA0 = 0;
-														setPA0(0);
-													//	PA1 = 0;
-														setPA1(0);
-													//	PA2 = 0;
-														setPA2(0);
-													//	PA3 = 0;
-														setPA3(0);
-														ucTimerDelay1 = 0;
-														ucLoaderStep1++;
-													}
-													else
-														ucTimerDelay1++;
-													break;
-												}
-
-												case 6:
-												{
-													if(ucTimerDelay1 >= LETE_BRANCH_COMMON_STAY_TIME)
-													{
-														ucTimerDelay1 = 0;
-										//				AD_sample_process_step = 2;
-														ucLoaderStep1 = 0;
-														ucADC4_Step = ADC4_STEP_THIRD;
-													}
-													else
-														ucTimerDelay1++;
-													break;
-												}
-
-
-												default:
-												break;
-											}
-
-											 break;
-										}
-
-
-										case BETWEEN_2067_AND_2204:
-										{
-											static unsigned char ucTimerDelay2 = 0;
-											static unsigned char ucLoaderStep2 = 0;
-											switch(ucLoaderStep2)
-											{
-												case 0:
-												{
-												//	PB0 = 1;
-													setPB0(1);
-												//	PA0 = 1;
-													setPA0(1);
-													ucLoaderStep2++;
-													break;
-												}
-
-												case 1:
-												{
-													if(ucTimerDelay2 >= 5)
-													{
-												//		PA1 = 1;
-														setPA1(1);
-														ucTimerDelay2 = 0;
-														ucLoaderStep2++;
-													}
-													else
-														ucTimerDelay2++;
-													break;
-												}
-
-												case 2:
-												{
-													if(ucTimerDelay2 >= 5)
-													{
-													//	PA2 = 1;
-														setPA2(1);
-														ucTimerDelay2 = 0;
-														ucLoaderStep2++;
-													}
-													else
-														ucTimerDelay2++;
-													break;
-												}
-
-												case 3:
-												{
-													if(ucTimerDelay2 >= 5)
-													{
-												//		PA3 = 1;
-														setPA3(1);
-														ucTimerDelay2 = 0;
-														ucLoaderStep2++;
-													}
-													else
-														ucTimerDelay2++;
-													break;
-												}
-
-												case 4:
-												{
-													if(ucTimerDelay2 >= 5)
-													{
-
-													//	PA1 = 0;
-														setPA1(0);
-												//		PA2 = 0;
-														setPA2(0);
-											//			PA3 = 0;
-														setPA3(0);
-														ucTimerDelay2 = 0;
-														ucLoaderStep2++;
-													}
-													else
-														ucTimerDelay2++;
-													break;
-												}
-
-												case 5:
-												{
-													if(ucTimerDelay2 >= LETE_BRANCH_COMMON_STAY_TIME)
-													{
-														ucTimerDelay2 = 0;
-											//			AD_sample_process_step = 2;
-														ucLoaderStep2 = 0;
-														ucADC4_Step = ADC4_STEP_THIRD;;
-													}
-													else
-														ucTimerDelay2++;
-													break;
-												}
-
-
-												default:
-												break;
-											}
-
-											 break;
-										}
-
-
-										case BETWEEN_2204_AND_2340:
-										{
-											static unsigned char ucTimerDelay3 = 0;
-											static unsigned char ucLoaderStep3 = 0;
-											switch(ucLoaderStep3)
-											{
-												case 0:
-												{
-												//	PB0 = 1;
-													setPB0(1);
-											//		PA0 = 1;
-													setPA0(1);
-												//	PA1 = 1;
-													setPA1(1);
-													ucLoaderStep3++;
-													break;
-												}
-
-												case 1:
-												{
-													if(ucTimerDelay3 >= 5)
-													{
-													//	PA2 = 1;
-														setPA2(1);
-														ucTimerDelay3 = 0;
-														ucLoaderStep3++;
-													}
-													else
-														ucTimerDelay3++;
-													break;
-												}
-
-												case 2:
-												{
-													if(ucTimerDelay3 >= 5)
-													{
-												//		PA3 = 1;
-														setPA3(1);
-														ucTimerDelay3 = 0;
-														ucLoaderStep3++;
-													}
-													else
-														ucTimerDelay3++;
-													break;
-												}
-
-
-												case 3:
-												{
-													if(ucTimerDelay3 >= 5)
-													{
-
-													//	PA2 = 0;
-														setPA2(0);
-													//	PA3 = 0;
-														setPA3(0);
-														ucTimerDelay3 = 0;
-														ucLoaderStep3++;
-													}
-													else
-														ucTimerDelay3++;
-													break;
-												}
-
-												case 4:
-												{
-													if(ucTimerDelay3 >= LETE_BRANCH_COMMON_STAY_TIME)
-													{
-														ucTimerDelay3 = 0;
-												//		AD_sample_process_step = 2;
-														ucLoaderStep3 = 0;
-														ucADC4_Step = ADC4_STEP_THIRD;;
-													}
-													else
-														ucTimerDelay3++;
-													break;
-												}
-
-
-												default:
-												break;
-											}
-
-											 break;
-										}
-
-
-										case MORE_THAN_2340:
-										{
-											static unsigned char ucTimerDelay4 = 0;
-											static unsigned char ucLoaderStep4 = 0;
-											switch(ucLoaderStep4)
-											{
-												case 0:
-												{
-												//	PB0 = 1;
-													setPB0(1);
-											   //		PA0 = 1;
-													setPA0(1);
-												//	PA1 = 1;
-													setPA1(1);
-												//	PA2 = 1;
-													setPA2(1);
-													ucLoaderStep4++;
-													break;
-												}
-
-												case 1:
-												{
-													if(ucTimerDelay4 >= 5)
-													{
-												//		PA3 = 1;
-														setPA3(1);
-														ucTimerDelay4 = 0;
-														ucLoaderStep4++;
-													}
-													else
-														ucTimerDelay4++;
-													break;
-												}
-
-												case 2:
-												{
-													if(ucTimerDelay4 >= 5)
-													{
-												//		PA3 = 0;
-														setPA3(0);
-														ucTimerDelay4 = 0;
-														ucLoaderStep4++;
-													}
-													else
-														ucTimerDelay4++;
-													break;
-												}
-
-												case 3:
-												{
-													if(ucTimerDelay4 >= LETE_BRANCH_COMMON_STAY_TIME)
-													{
-														ucTimerDelay4 = 0;
-												//		AD_sample_process_step = 2;
-														ucLoaderStep4 = 0;
-														ucADC4_Step = ADC4_STEP_THIRD;
-													}
-													else
-														ucTimerDelay4++;
-													break;
-												}
-
-
-												default:
-												break;
-											}
-
-											 break;
-										}
-
-										default:
-										break;
-									}
-
-									break;
-								}
-
-								case ADC4_STEP_THIRD:
-								{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_THIRD; "<<endl;
-#endif
-									static unsigned char ucTimerDelayP2sLess = 0;
-
-									static unsigned char ucTimerDelayP2sMore = 0;
-
-									if( getAdOriginalCh1Value() <= 220 )
-									{
-										ucTimerDelayP2sLess++;
-										ucTimerDelayP2sMore = 0;
-									}
-									else
-									{
-										ucTimerDelayP2sMore++;  //if value is vibrating , will always stop here
-										ucTimerDelayP2sLess = 0;
-									}
-
-									if( ucTimerDelayP2sLess >= 2)
-									{
-										ucTimerDelayP2sLess = 0;
-										ucTimerDelayP2sMore = 0;
-
-										startTwentySecondsTimer();
-
-										ucADC4_Step = ADC4_STEP_FOURTH_PREFIX1;
-									}
-
-									if(ucTimerDelayP2sMore >= 2)
-									{
-										ucTimerDelayP2sMore = 0;
-										ucTimerDelayP2sLess = 0;
-										ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
-									}
-
-
-									break;
-							}
-
-							case ADC4_STEP_FOURTH_PREFIX1:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX1; "<<endl;
-#endif
-								if( !isFinishedTwentySecondsTimer() )
-									ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
-								else
-									ucADC4_Step = ADC4_STEP_FOURTH_PREFIX3;
-
-								break;
-							}
-
-
-							case ADC4_STEP_FOURTH_PREFIX2:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX2; "<<endl;
-#endif
-								static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
-
-								static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
-
-								if((getAdOriginalCh14Value() > 2800))
-								{
-									ucTimerForDACR0_CNT1++;
-									ucTimerForDACR0_CNT2 = 0;
-								}
-								else
-								{
-									ucTimerForDACR0_CNT2++;
-									ucTimerForDACR0_CNT1 = 0;
-								}
-
-								if(ucTimerForDACR0_CNT1 >= 2)
-									ucTimerForDACR0_CNT1_f = 1;
-
-								if(ucTimerForDACR0_CNT2 >= 2)
-									ucTimerForDACR0_CNT2_f = 1;
-
-								if(ucTimerForDACR0_CNT1_f)
-								{
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-									DACR0=0x0F;//set OP1 input 0.3v
-#else
-									cout <<"DACR0 = 0x0F;"<<endl;
-#endif
-									ucADC4_Step = ADC4_STEP_FOURTH;
-								}
-								else if(ucTimerForDACR0_CNT2_f)
-								{
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-									DACR0=0x09;//set op1 input 0.18v
-#else
-									cout <<"DACR0 = 0x09;"<<endl;
-#endif
-									ucADC4_Step = ADC4_STEP_FOURTH;
-								}
-								else
-								{
-									;//do nothing, if this AD value vibrate in this scope, consider to always stay here.
-								}
-
-								if(ADC4_STEP_FOURTH == ucADC4_Step)
-								{
-									ucTimerForDACR0_CNT1 = 0;
-									ucTimerForDACR0_CNT2 = 0;
-									ucTimerForDACR0_CNT1_f = 0;
-									ucTimerForDACR0_CNT2_f = 0;
-
-								}
-
-								break;
-							}
-
-							case  ADC4_STEP_FOURTH_PREFIX3:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX3; "<<endl;
-#endif
-								clearTwentySecondsTimer();
-							//	PA6 = 0;
-								setPA6(0);
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-								PBOD6 = 0;
-								PB6 = 1;
-#else
-								cout <<"PBOD6 = 0;"<<endl;
-								cout <<"PB6 = 1;"<<endl;
-#endif
-								ucADC4_Step = ADC4_STEP_FOURTH_PREFIX4;
-								break;
-
-							}
-
-
-							case  ADC4_STEP_FOURTH_PREFIX4:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX4; "<<endl;
-#endif
-
-								static unsigned char ucDelayPrefix4TimerP5s;
-
-								ucDelayPrefix4TimerP5s++;
-
-								if( ucDelayPrefix4TimerP5s >= 5)
-								{
-									ucDelayPrefix4TimerP5s = 0;
-
-									ucADC4_Step = ADC4_STEP_FOURTH_PREFIX5;
-								}
-								break;
-							}
-
-							case  ADC4_STEP_FOURTH_PREFIX5:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX5; "<<endl;
-#endif
-
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-								PBOD6 = 1;
-								PB6 = 1;
-#else
-								cout <<"PBOD6 = 1;"<<endl;
-								cout <<"PB6 = 1;"<<endl;
-#endif
-								ucADC4_Step = ADC4_STEP_FOURTH_PREFIX6;
-
-								break;
-
-							}
-
-							case  ADC4_STEP_FOURTH_PREFIX6:
-							{
-								static unsigned char ucDelayPrefix6TimerP2s;
-
-								ucDelayPrefix6TimerP2s++;
-
-								if( ucDelayPrefix6TimerP2s >= 2)
-								{
-									ucDelayPrefix6TimerP2s = 0;
-
-									ucADC4_Step = ADC4_STEP_INIT;
-
-									enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-								}
-								break;
-							}
-
-
-								case ADC4_STEP_FOURTH:
-								{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH; "<<endl;
-#endif
-									static unsigned char ucCheckTimerP2sLess = 0;
-
-									static unsigned char ucCheckTimerP2sMore = 0;
-
-									if( getAdOriginalCh1Value() < 85)
-									{
-										ucCheckTimerP2sLess++;
-										ucCheckTimerP2sMore = 0;
-									}
-									else
-									{
-										ucCheckTimerP2sMore++;
-										ucCheckTimerP2sLess = 0;
-									}
-
-									if( ucCheckTimerP2sMore > 2)
-									{
-										ucCheckTimerP2sMore = 0;
-										ucCheckTimerP2sLess = 0;
-
-										ucADC4_Step = ADC4_STEP_INIT;
-
-										enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
-									}
-
-									if( ucCheckTimerP2sLess > 2)
-									{
-										ucCheckTimerP2sMore = 0;
-										ucCheckTimerP2sLess = 0;
-
-										ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX1;
-
-									}
-
-
-									break;
-								}
-
-								case ADC4_STEP_FOURTH_SUFFIX1:
-								{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_SUFFIX1; "<<endl;
-#endif
-									static unsigned char ucFourthSuffix1TimerP3s = 0;
-
-									ucFourthSuffix1TimerP3s++;
-
-									if( ucFourthSuffix1TimerP3s > 3)
-									{
-										ucFourthSuffix1TimerP3s = 0;
-										ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX2;
-
-									}
-									break;
-								}
-
-								case ADC4_STEP_FOURTH_SUFFIX2:
-								{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_SUFFIX2; "<<endl;
-#endif
-							//		PA6 = 0;
-									setPA6(0);
-
-									clearPinPortAndTimer();
-									ucADC4_Step = ADC4_STEP_INIT;
-
-									enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
-									break;
-								}
-
-						    	default:
-						    		break;
-						    }
-
-						}
-
-						break;
-					}
-
-					case MAIN_LOOP_STEP_3_HOUR_BRANCH:
-					{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in MAIN_LOOP_STEP_3_HOUR_BRANCH "<<endl;
-#endif
-						enum hour_3_branch_step{
-							HOUR_3_BRANCH_STEP_FIRST,
-							HOUR_3_BRANCH_STEP_SECOND,
-							HOUR_3_BRANCH_STEP_THIRD,
-						};
-
-						static enum hour_3_branch_step  enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-
-						switch(enumBranchStep)
-						{
-							case HOUR_3_BRANCH_STEP_FIRST:
-							{
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-								PB7 = 1;
-								PBOD7 = 1; //set PA7 AS hign resistence
-#else
-								cout <<"PB7 = 1;"<<endl;
-								cout<<"PBOD7 = 1;"<<endl;
-#endif
-								startThreeHoursTimer(SMALL_TIME_SECONDS);
-
-							//	PB0 = 1;
-								setPB0(1);
-							//	PA0 = 1;
-								setPA0(1);
-							//	PA1 = 1;
-								setPA1(1);
-							//	PA2 = 1;
-								setPA2(1);
-							//	PA3 = 1;
-								setPA3(1);
-
-								enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
-								break;
-							}
-
-							case HOUR_3_BRANCH_STEP_SECOND:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in HOUR_3_BRANCH_STEP_SECOND "<<endl;
-#endif
-								static unsigned char ucTimer20s = 0;
-
-								if(ucTimer20s < 200)
-								{
-									ucTimer20s++;
-
-								}
-								else
-								{
-
-									ucTimer20s = 0;
-
-									enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
-
-								//	PA6 = 0;
-									setPA6(0);
-								}
-								break;
-							}
-
-							case HOUR_3_BRANCH_STEP_THIRD:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in HOUR_3_BRANCH_STEP_THIRD "<<endl;
-#endif
-								if( (isFinishedTwelveHoursTimer()) || (isFinishedThreeHoursTimer()))
-								{
-									enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-									enumMainLoopStep =  MAIN_LOOP_STEP_12_HOUR_END;
-								}
-								else
-								{
-									static unsigned char ucTimerX1P5s = 0;
-
-									static unsigned char ucTimerLessX1P5s = 0;
-
-									if(getAdOriginalCh1Value() < 115)
-									{
-										ucTimerX1P5s = 0;
-										ucTimerLessX1P5s++;
-									}
-									else
-									{
-										ucTimerX1P5s++;
-										ucTimerLessX1P5s = 0;
-									}
-
-									if(ucTimerX1P5s >= 5)
-									{
-										ucTimerX1P5s = 0;
-
-
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-										PBOD7 = 0;
-										PB7 = 0;
-#else
-										cout <<"PBOD7 = 0;"<<endl;
-										cout <<"PB7 = 0;"<<endl;
-#endif
-										clearThreeHoursTimer();
-
-										enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-
-										enumMainLoopStep =  MAIN_LOOP_STEP_SECOND;
-									}
-									else if(ucTimerLessX1P5s >= 5)
-									{
-										static unsigned char ucTimerX2P5s = 0;
-
-										static unsigned char ucTimerLessX2P5s = 0;
-
-										if(getAdOriginalCh14Value() >= 1950)
-										{
-											ucTimerX2P5s++;
-											ucTimerLessX2P5s = 0;
-										}
-										else
-										{
-											ucTimerX2P5s = 0;
-											ucTimerLessX2P5s++;
-										}
-
-										if(ucTimerX2P5s >= 5)
-										{
-											ucTimerX2P5s = 0;
-										}
-										else if(ucTimerLessX2P5s >= 5)
-										{
-											clearPinPortAndTimer();
-											enumMainLoopStep =  MAIN_LOOP_STEP_FIRST;
-											enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-										}
-										else
-										{
-											;//do thing
-										}
-									}
-									else
-									{
-										;//do nothing
-									}
-
-								}
-
-								break;
-							}
-
-
-							default:
-								break;
-						}
-
-						break;
-					}
-
-					case MAIN_LOOP_STEP_12_HOUR_END:
-					{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"I am in MAIN_LOOP_STEP_12_HOUR_END "<<endl;
-#endif
-						enum INTERNAL_STEP {
-							INTERNAL_FIRST_STEP,
-							INTERNAL_SECOND_STEP,
-							INTERNAL_THIRD_STEP,
-							INTERNAL_FOUTTH_STEP,
-						};
-
-						static enum INTERNAL_STEP enumInteralStep = INTERNAL_FIRST_STEP;
-
-						switch (enumInteralStep)
-						{
-							case INTERNAL_FIRST_STEP:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"enumInteralStep :: INTERNAL_FIRST_STEP "<<endl;
-#endif
-						//		PB0 = 0;
-								setPB0(0);
-					//			PB1 = 0;
-								setPB1(0);
-			//					PA0 = 0;
-								setPA0(0);
-					//			PA1 = 0;
-								setPA1(0);
-						//		PA2 = 0;
-								setPA2(0);
-						//		PA3 = 0;
-								setPA3(0);
-
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-								PBOD6 = 0;
-								PB6 = 1;
-#else
-								cout <<"PBOD6 = 0;"<<endl;
-								cout <<"PB6 = 1;"<<endl;
-#endif
-					//			PA6 =0;
-								setPA6(0);
-
-								enumInteralStep = INTERNAL_SECOND_STEP;
-								break;
-							}
-
-							case INTERNAL_SECOND_STEP:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"enumInteralStep :: INTERNAL_SECOND_STEP "<<endl;
-#endif
-								static unsigned char ucTimer1s = 0;
-
-								if(getAdOriginalCh14Value() <= 1000)
-								{
-									ucTimer1s++;
-								}
-								else
-									ucTimer1s = 0;
-
-								if(ucTimer1s >= 10)
-								{
-									enumInteralStep = INTERNAL_THIRD_STEP;
-									ucTimer1s = 0;
-								}
-								break;
-							}
-
-							case INTERNAL_THIRD_STEP:
-							{
-#ifdef USE_SOFTWARE_SIMULATION_TEST
-						cout <<"enumInteralStep :: INTERNAL_THIRD_STEP "<<endl;
-#endif
-								static unsigned char ucTimerP3s = 0;
-
-								if(getAdOriginalCh14Value() >= 1950)
-								{
-									ucTimerP3s++;
-								}
-								else
-									ucTimerP3s = 0;
-
-								if(ucTimerP3s >= 3)
-								{
-									enumInteralStep = INTERNAL_FIRST_STEP;
-									ucTimerP3s = 0;
-
-									clearAllTimer();
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-									DACR0=0x0F;//set OP1 input 0.3v
-#else
-									cout <<"DACR0 = 0x0F;"<<endl;
-#endif
-									initPin();
-
-
-									enumMainLoopStep =  MAIN_LOOP_STEP_INIT;
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-									while(1);// as to reset MCU
-#else
-									cout<<"the software is reset;"<<endl;
-#endif
-
-								}
-								break;
-							}
-
-							default:
-								break;
-						}
-
-						break;
-					}
-
-					default:
-						break;
-			   }
+					break;
+				}
+
+
+				case 99:
+				{
+					setPB3(SET_PIN_LOW);
+					setPB4(SET_PIN_LOW);
+					setPB5(SET_PIN_HIGH);
+					setPulseWidth();// need to set 60% pulse width
+					ucStep++;
+					break;
+				}
+
+				case 100:
+				{
+					static unsigned char ucTimerP5s = 0;
+					if( getAdOriginalCh13Value() >50 )
+						ucTimerP5s++;
+					else
+						ucTimerP5s = 0;
+
+					if(ucTimerP5s > 5)
+						ucStep++;
+					break;
+				}
+
+				case 101:
+				{
+					reset();
+					break;
+				}
+
+
+				default:
+					break;
+			}
+
+
+//			   switch(enumMainLoopStep)
+//			   {
+//				   case MAIN_LOOP_STEP_INIT:
+//					{
+//
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in MAIN_LOOP_STEP_INIT "<<endl;
+//#endif
+//						static unsigned char ucTimerZeroPoint5s = 0;
+//				   		if(getAdOriginalCh14Value() > 1950)//  AD value -> 2v
+//						{
+//				   			ucTimerZeroPoint5s++;
+//						}
+//						else
+//						{
+//							static unsigned char bInit20Min = 0;
+//							if(!bInit20Min)
+//							{
+//								bInit20Min = 1;
+//								startTwentyMinTimer(TIMER_20MIN);
+//							}
+//							ucTimerZeroPoint5s = 0;
+//						}
+//
+//						if( ucTimerZeroPoint5s >= 5 ) //5*100ms = 0.5s
+//						{
+//							ucTimerZeroPoint5s = 0;
+//							clearTwentyMinTimer();
+//							enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+//						}
+//
+//						if( isFinishedTwentyMinTimer() )
+//						{
+//							enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
+//							ucTimerZeroPoint5s = 0;//no meaning, only prevent from unknown mistake
+//						}
+//				   		break;
+//					}
+//
+//				   case MAIN_LOOP_STEP_FIRST:
+//					{
+//
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in MAIN_LOOP_STEP_FIRST "<<endl;
+//#endif
+//						static unsigned char ucTimerZeroPoint3s = 0;
+//
+//
+//						if(getAdOriginalCh14Value() > 1950)// AD value -> 2v
+//						{
+//
+//							enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
+//
+//							ucTimerZeroPoint3s = 0;
+//
+//						}
+//						else
+//						{
+//							ucTimerZeroPoint3s++;
+//
+//							if(ucTimerZeroPoint3s >= 3)//
+//							{
+//								ucTimerZeroPoint3s = 0;
+//
+//								clearPinPortAndTimer();
+//							}
+//						}
+//
+//						break;
+//					}
+//
+//					case MAIN_LOOP_STEP_SECOND:
+//					{
+//
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in MAIN_LOOP_STEP_SECOND "<<endl;
+//#endif
+//						static unsigned char ucTimerP5s = 0;
+//
+//					//	PA6 = 1;
+//						setPA6(1);
+//
+//						if(ucTimerP5s < 5)
+//							ucTimerP5s++;
+//						else
+//						{
+//							ucTimerP5s = 0;
+//
+//				   			enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+//						}
+//
+//				   		break;
+//					}
+//
+//					case MAIN_LOOP_STEP_THIRD:
+//					{
+//
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in MAIN_LOOP_STEP_THIRD "<<endl;
+//#endif
+//						static unsigned char ucTimerADC1ZeroP5s = 0;
+//
+//						static unsigned char ucTimerLessADC1ZeroP5s = 0;
+//
+//						static unsigned char ucTimerLessADC1ZeroP5sFlag = 0;
+//
+//						static unsigned char ucTimerRightP5s = 0;
+//
+//						if(getAdOriginalCh1Value() < 115)
+//						{
+//							ucTimerADC1ZeroP5s = 0;
+//
+//							ucTimerLessADC1ZeroP5s++;  // looking for questions，need consider AD1 value is again more than 130  after less than 130
+//						}
+//						else
+//						{
+//							ucTimerADC1ZeroP5s++;
+//
+//							ucTimerLessADC1ZeroP5s = 0;
+//						}
+//
+//						if(ucTimerADC1ZeroP5s >= 3)
+//						{
+//							ucTimerADC1ZeroP5s = 0;
+//							enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
+//						}
+//						else if( ucTimerLessADC1ZeroP5s >= 3)
+//						{
+//
+//							if(getAdOriginalCh1Value() < 105)//????// wait to be determined.
+//							{
+//								ucTimerRightP5s++;
+//							}
+//							else
+//							{
+//								ucTimerRightP5s = 0;
+//							}
+//
+//							if(ucTimerRightP5s >= 3)
+//							{
+//								ucTimerLessADC1ZeroP5s = 0; // clear it, make sure this value is always more than 5 before clearing it
+//								ucTimerRightP5s = 0;
+//								enumMainLoopStep =  MAIN_LOOP_STEP_3_HOUR_BRANCH;
+//							}
+//							else
+//							{
+//								;// always do the same thing in the MAIN_LOOP_STEP_THIRD
+//							}
+//						}
+//						else
+//						{
+//							;//do nothing
+//						}
+//
+//						if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_FOURTH == enumMainLoopStep))
+//						{  // only to make sure clear timer when exit this case. no other attention
+//							ucTimerRightP5s = 0;
+//							ucTimerADC1ZeroP5s = 0;
+//							ucTimerLessADC1ZeroP5s = 0;
+//						}
+//
+//
+//						break;
+//					}
+//
+//					case MAIN_LOOP_STEP_FOURTH:
+//					{
+//
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in MAIN_LOOP_STEP_FOURTH "<<endl;
+//#endif
+//
+//						startTwelveHourTimer(BIG_TIME_SECONDS);
+//						enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
+//
+//						bCheckTweHour = FALSE;
+//
+//						break;
+//					}
+//
+//					case MAIN_LOOP_STEP_FIFTH:
+//					{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in MAIN_LOOP_STEP_FIFTH "<<endl;
+//#endif
+//						if(( isFinishedTwelveHoursTimer() && (! bCheckTweHour)))
+//						{
+//							enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;//???? wait to be determined
+//							bCheckTweHour = TRUE;
+//						}
+//						else
+//						{
+//						    static enum setp_Adc4 ucADC4_Step = ADC4_STEP_INIT;
+//
+//						    switch(ucADC4_Step)
+//						    {
+//								case ADC4_STEP_INIT:
+//								{
+//								//	startTwentySecondsTimer();
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_INIT; "<<endl;
+//#endif
+//									ucADC4_Step = ADC4_STEP_FIRST;
+//									break;
+//								}
+//
+//								case ADC4_STEP_FIRST:
+//								{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FIRST; "<<endl;
+//#endif
+//									static unsigned int uiOldValue = 0, uiMinValue = 0, uiMaxValue = 0;
+//
+//									static unsigned char bInitFlag = 0;
+//
+//									if( 0 == bInitFlag)
+//									{
+//										bInitFlag = 1;
+//										uiOldValue = getAdOriginaCh4Value();
+//									}
+//
+//				#define             RANGE_FIRST_VALUE                1931
+//				#define             RANGE_SECOND_VALUE               2047
+//				#define             RANGE_THIRD_VALUE                2164
+//				#define             RANGE_FOURTH_VALUE               2281
+//				#define             HYSTERETIC_NEGATIVE_VALUE        40
+//				#define             HYSTERETIC_POSITIVE_VALUE        0
+//
+//									if(LESS_THAN_1911 == ucChannel4Type)
+//									{
+//										uiMinValue = 0;
+//										uiMaxValue = RANGE_FIRST_VALUE;
+//									}
+//									else if(BETWEEN_1911_AND_2067 == ucChannel4Type)
+//									{
+//										uiMinValue = RANGE_FIRST_VALUE - HYSTERETIC_NEGATIVE_VALUE;
+//										uiMaxValue = RANGE_SECOND_VALUE;
+//									}
+//									else if(BETWEEN_2067_AND_2204 == ucChannel4Type)
+//									{
+//										uiMinValue = RANGE_SECOND_VALUE - HYSTERETIC_NEGATIVE_VALUE;
+//										uiMaxValue = RANGE_THIRD_VALUE;
+//									}
+//									else if(BETWEEN_2204_AND_2340 == ucChannel4Type)
+//									{
+//										uiMinValue = RANGE_THIRD_VALUE - HYSTERETIC_NEGATIVE_VALUE;
+//										uiMaxValue = RANGE_FOURTH_VALUE;
+//									}
+//									else
+//									{
+//										uiMinValue = RANGE_FOURTH_VALUE - HYSTERETIC_NEGATIVE_VALUE;
+//										uiMaxValue = RANGE_FOURTH_VALUE;
+//									}
+//
+//
+//									if(( getAdOriginaCh4Value() < uiMinValue )
+//										|| 	(getAdOriginaCh4Value() > uiMaxValue ))
+//									{
+//										uiOldValue =  getAdOriginaCh4Value();
+//									}
+//
+//									if( uiOldValue < RANGE_FIRST_VALUE )
+//										ucChannel4Type = LESS_THAN_1911;
+//									else if( uiOldValue < RANGE_SECOND_VALUE )
+//										ucChannel4Type = BETWEEN_1911_AND_2067;
+//									else if( uiOldValue < RANGE_THIRD_VALUE )
+//										ucChannel4Type = BETWEEN_2067_AND_2204;
+//									else if( uiOldValue < RANGE_FOURTH_VALUE )
+//										ucChannel4Type = BETWEEN_2204_AND_2340;
+//									else
+//										ucChannel4Type = MORE_THAN_2340;
+//
+//									ucADC4_Step = ADC4_STEP_SECOND;
+//									break;
+//								}
+//
+//								case ADC4_STEP_SECOND:
+//								{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_SECOND; "<<endl;
+//#endif
+//									switch(ucChannel4Type)
+//									{
+//
+//										case LESS_THAN_1911:
+//										{
+//											static unsigned char ucTimerDelay = 0;
+//											static unsigned char ucLoaderStep = 0;
+//
+//											switch(ucLoaderStep)
+//											{
+//												case 0:
+//												{
+//
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//											//		PB0 = 1;
+//													setPB0(1);
+//#else
+//													cout<<"PB0 = 1;"<<endl;
+//#endif
+//													ucLoaderStep++;
+//													break;
+//												}
+//
+//												case 1:
+//												{
+//													if(ucTimerDelay >= 5)
+//													{
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//													//	PA0 = 1;
+//														setPA0(1);
+//#else
+//														cout <<"PA0 = 1;"<<endl;
+//#endif
+//														ucTimerDelay = 0;
+//														ucLoaderStep++;
+//													}
+//													else
+//														ucTimerDelay++;
+//													break;
+//												}
+//
+//												case 2:
+//												{
+//													if(ucTimerDelay >= 5)
+//													{
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//													//	PA1= 1;
+//														setPA1(1);
+//#else
+//														cout <<"PA1 = 1;"<<endl;
+//#endif
+//														ucTimerDelay = 0;
+//														ucLoaderStep++;
+//													}
+//													else
+//														ucTimerDelay++;
+//													break;
+//												}
+//
+//
+//												case 3:
+//												{
+//													if(ucTimerDelay >= 5)
+//													{
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//														//PA2= 1;
+//														setPA2(1);
+//#else
+//														cout<< "PA2 = 1;" <<endl;
+//#endif
+//
+//														ucTimerDelay = 0;
+//														ucLoaderStep++;
+//													}
+//													else
+//														ucTimerDelay++;
+//													break;
+//												}
+//
+//												case 4:
+//												{
+//													if(ucTimerDelay >= 5)
+//													{
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//													//	PA3 = 1;
+//														setPA3(1);
+//#else
+//														cout << "PA3 = 1;"<<endl;
+//#endif
+//														ucTimerDelay = 0;
+//														ucLoaderStep++;
+//													}
+//													else
+//														ucTimerDelay++;
+//													break;
+//												}
+//
+//												case 5:
+//												{
+//													if(ucTimerDelay >= 5)
+//													{
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//												//		PB0 = 0;
+//														setPB0(0);
+//												//		PA0 = 0;
+//														setPA0(0);
+//												//		PA1 = 0;
+//														setPA1(0);
+//												//		PA2 = 0;
+//														setPA2(0);
+//												//		PA3 = 0;
+//														setPA3(0);
+//#else
+//														cout << "PB0 = 0;"<<endl;
+//														cout << "PA0 = 0;"<< endl;
+//														cout << "PA1 = 0;"<<endl;
+//														cout << "PA2 = 0;"<<endl;
+//														cout << "PA3 = 0;"<<endl;
+//#endif
+//														ucTimerDelay = 0;
+//														ucLoaderStep++;
+//													}
+//													else
+//														ucTimerDelay++;
+//													break;
+//												}
+//
+//												case 6:
+//												{
+//													if(ucTimerDelay >= LETE_BRANCH_COMMON_STAY_TIME)
+//													{
+//														ucTimerDelay = 0;
+//									//					AD_sample_process_step = 2;
+//														ucLoaderStep = 0;
+//														ucADC4_Step = ADC4_STEP_THIRD;
+//													}
+//													else
+//														ucTimerDelay++;
+//													break;
+//												}
+//
+//
+//												default:
+//												break;
+//											}
+//
+//											 break;
+//										}
+//
+//										case BETWEEN_1911_AND_2067:
+//										{
+//											static unsigned char ucTimerDelay1 = 0;
+//											static unsigned char ucLoaderStep1 = 0;
+//											switch(ucLoaderStep1)
+//											{
+//												case 0:
+//												{
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//												//	PB0 = 1;
+//													setPB0(1);
+//#else
+//													cout <<"PB0 = 1;"<<endl;
+//#endif
+//													ucLoaderStep1++;
+//													break;
+//												}
+//
+//												case 1:
+//												{
+//													if(ucTimerDelay1 >= 5)
+//													{
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//													//	PA0 = 1;
+//														setPA0(1);
+//#else
+//														cout <<"PA0 = 1;"<<endl;
+//#endif
+//														ucTimerDelay1 = 0;
+//														ucLoaderStep1++;
+//													}
+//													else
+//														ucTimerDelay1++;
+//													break;
+//												}
+//
+//												case 2:
+//												{
+//													if(ucTimerDelay1 >= 5)
+//													{
+//#ifndef   USE_SOFTWARE_SIMULATION_TEST
+//													//	PA1= 1;
+//														setPA1(1);
+//#else
+//														cout <<"PA1 = 1;"<<endl;
+//#endif
+//														ucTimerDelay1 = 0;
+//														ucLoaderStep1++;
+//													}
+//													else
+//														ucTimerDelay1++;
+//													break;
+//												}
+//
+//												case 3:
+//												{
+//													if(ucTimerDelay1 >= 5)
+//													{
+//												//		PA2 = 1;
+//														setPA2(1);
+//														ucTimerDelay1 = 0;
+//														ucLoaderStep1++;
+//													}
+//													else
+//														ucTimerDelay1++;
+//													break;
+//												}
+//
+//												case 4:
+//												{
+//													if(ucTimerDelay1 >= 5)
+//													{
+//												//		PA3 = 1;
+//														setPA3(1);
+//														ucTimerDelay1 = 0;
+//														ucLoaderStep1++;
+//													}
+//													else
+//														ucTimerDelay1++;
+//													break;
+//												}
+//
+//												case 5:
+//												{
+//													if(ucTimerDelay1 >= 5)
+//													{
+//													//	PA0 = 0;
+//														setPA0(0);
+//													//	PA1 = 0;
+//														setPA1(0);
+//													//	PA2 = 0;
+//														setPA2(0);
+//													//	PA3 = 0;
+//														setPA3(0);
+//														ucTimerDelay1 = 0;
+//														ucLoaderStep1++;
+//													}
+//													else
+//														ucTimerDelay1++;
+//													break;
+//												}
+//
+//												case 6:
+//												{
+//													if(ucTimerDelay1 >= LETE_BRANCH_COMMON_STAY_TIME)
+//													{
+//														ucTimerDelay1 = 0;
+//										//				AD_sample_process_step = 2;
+//														ucLoaderStep1 = 0;
+//														ucADC4_Step = ADC4_STEP_THIRD;
+//													}
+//													else
+//														ucTimerDelay1++;
+//													break;
+//												}
+//
+//
+//												default:
+//												break;
+//											}
+//
+//											 break;
+//										}
+//
+//
+//										case BETWEEN_2067_AND_2204:
+//										{
+//											static unsigned char ucTimerDelay2 = 0;
+//											static unsigned char ucLoaderStep2 = 0;
+//											switch(ucLoaderStep2)
+//											{
+//												case 0:
+//												{
+//												//	PB0 = 1;
+//													setPB0(1);
+//												//	PA0 = 1;
+//													setPA0(1);
+//													ucLoaderStep2++;
+//													break;
+//												}
+//
+//												case 1:
+//												{
+//													if(ucTimerDelay2 >= 5)
+//													{
+//												//		PA1 = 1;
+//														setPA1(1);
+//														ucTimerDelay2 = 0;
+//														ucLoaderStep2++;
+//													}
+//													else
+//														ucTimerDelay2++;
+//													break;
+//												}
+//
+//												case 2:
+//												{
+//													if(ucTimerDelay2 >= 5)
+//													{
+//													//	PA2 = 1;
+//														setPA2(1);
+//														ucTimerDelay2 = 0;
+//														ucLoaderStep2++;
+//													}
+//													else
+//														ucTimerDelay2++;
+//													break;
+//												}
+//
+//												case 3:
+//												{
+//													if(ucTimerDelay2 >= 5)
+//													{
+//												//		PA3 = 1;
+//														setPA3(1);
+//														ucTimerDelay2 = 0;
+//														ucLoaderStep2++;
+//													}
+//													else
+//														ucTimerDelay2++;
+//													break;
+//												}
+//
+//												case 4:
+//												{
+//													if(ucTimerDelay2 >= 5)
+//													{
+//
+//													//	PA1 = 0;
+//														setPA1(0);
+//												//		PA2 = 0;
+//														setPA2(0);
+//											//			PA3 = 0;
+//														setPA3(0);
+//														ucTimerDelay2 = 0;
+//														ucLoaderStep2++;
+//													}
+//													else
+//														ucTimerDelay2++;
+//													break;
+//												}
+//
+//												case 5:
+//												{
+//													if(ucTimerDelay2 >= LETE_BRANCH_COMMON_STAY_TIME)
+//													{
+//														ucTimerDelay2 = 0;
+//											//			AD_sample_process_step = 2;
+//														ucLoaderStep2 = 0;
+//														ucADC4_Step = ADC4_STEP_THIRD;;
+//													}
+//													else
+//														ucTimerDelay2++;
+//													break;
+//												}
+//
+//
+//												default:
+//												break;
+//											}
+//
+//											 break;
+//										}
+//
+//
+//										case BETWEEN_2204_AND_2340:
+//										{
+//											static unsigned char ucTimerDelay3 = 0;
+//											static unsigned char ucLoaderStep3 = 0;
+//											switch(ucLoaderStep3)
+//											{
+//												case 0:
+//												{
+//												//	PB0 = 1;
+//													setPB0(1);
+//											//		PA0 = 1;
+//													setPA0(1);
+//												//	PA1 = 1;
+//													setPA1(1);
+//													ucLoaderStep3++;
+//													break;
+//												}
+//
+//												case 1:
+//												{
+//													if(ucTimerDelay3 >= 5)
+//													{
+//													//	PA2 = 1;
+//														setPA2(1);
+//														ucTimerDelay3 = 0;
+//														ucLoaderStep3++;
+//													}
+//													else
+//														ucTimerDelay3++;
+//													break;
+//												}
+//
+//												case 2:
+//												{
+//													if(ucTimerDelay3 >= 5)
+//													{
+//												//		PA3 = 1;
+//														setPA3(1);
+//														ucTimerDelay3 = 0;
+//														ucLoaderStep3++;
+//													}
+//													else
+//														ucTimerDelay3++;
+//													break;
+//												}
+//
+//
+//												case 3:
+//												{
+//													if(ucTimerDelay3 >= 5)
+//													{
+//
+//													//	PA2 = 0;
+//														setPA2(0);
+//													//	PA3 = 0;
+//														setPA3(0);
+//														ucTimerDelay3 = 0;
+//														ucLoaderStep3++;
+//													}
+//													else
+//														ucTimerDelay3++;
+//													break;
+//												}
+//
+//												case 4:
+//												{
+//													if(ucTimerDelay3 >= LETE_BRANCH_COMMON_STAY_TIME)
+//													{
+//														ucTimerDelay3 = 0;
+//												//		AD_sample_process_step = 2;
+//														ucLoaderStep3 = 0;
+//														ucADC4_Step = ADC4_STEP_THIRD;;
+//													}
+//													else
+//														ucTimerDelay3++;
+//													break;
+//												}
+//
+//
+//												default:
+//												break;
+//											}
+//
+//											 break;
+//										}
+//
+//
+//										case MORE_THAN_2340:
+//										{
+//											static unsigned char ucTimerDelay4 = 0;
+//											static unsigned char ucLoaderStep4 = 0;
+//											switch(ucLoaderStep4)
+//											{
+//												case 0:
+//												{
+//												//	PB0 = 1;
+//													setPB0(1);
+//											   //		PA0 = 1;
+//													setPA0(1);
+//												//	PA1 = 1;
+//													setPA1(1);
+//												//	PA2 = 1;
+//													setPA2(1);
+//													ucLoaderStep4++;
+//													break;
+//												}
+//
+//												case 1:
+//												{
+//													if(ucTimerDelay4 >= 5)
+//													{
+//												//		PA3 = 1;
+//														setPA3(1);
+//														ucTimerDelay4 = 0;
+//														ucLoaderStep4++;
+//													}
+//													else
+//														ucTimerDelay4++;
+//													break;
+//												}
+//
+//												case 2:
+//												{
+//													if(ucTimerDelay4 >= 5)
+//													{
+//												//		PA3 = 0;
+//														setPA3(0);
+//														ucTimerDelay4 = 0;
+//														ucLoaderStep4++;
+//													}
+//													else
+//														ucTimerDelay4++;
+//													break;
+//												}
+//
+//												case 3:
+//												{
+//													if(ucTimerDelay4 >= LETE_BRANCH_COMMON_STAY_TIME)
+//													{
+//														ucTimerDelay4 = 0;
+//												//		AD_sample_process_step = 2;
+//														ucLoaderStep4 = 0;
+//														ucADC4_Step = ADC4_STEP_THIRD;
+//													}
+//													else
+//														ucTimerDelay4++;
+//													break;
+//												}
+//
+//
+//												default:
+//												break;
+//											}
+//
+//											 break;
+//										}
+//
+//										default:
+//										break;
+//									}
+//
+//									break;
+//								}
+//
+//								case ADC4_STEP_THIRD:
+//								{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_THIRD; "<<endl;
+//#endif
+//									static unsigned char ucTimerDelayP2sLess = 0;
+//
+//									static unsigned char ucTimerDelayP2sMore = 0;
+//
+//									if( getAdOriginalCh1Value() <= 220 )
+//									{
+//										ucTimerDelayP2sLess++;
+//										ucTimerDelayP2sMore = 0;
+//									}
+//									else
+//									{
+//										ucTimerDelayP2sMore++;  //if value is vibrating , will always stop here
+//										ucTimerDelayP2sLess = 0;
+//									}
+//
+//									if( ucTimerDelayP2sLess >= 2)
+//									{
+//										ucTimerDelayP2sLess = 0;
+//										ucTimerDelayP2sMore = 0;
+//
+//										startTwentySecondsTimer();
+//
+//										ucADC4_Step = ADC4_STEP_FOURTH_PREFIX1;
+//									}
+//
+//									if(ucTimerDelayP2sMore >= 2)
+//									{
+//										ucTimerDelayP2sMore = 0;
+//										ucTimerDelayP2sLess = 0;
+//										ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
+//									}
+//
+//
+//									break;
+//							}
+//
+//							case ADC4_STEP_FOURTH_PREFIX1:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX1; "<<endl;
+//#endif
+//								if( !isFinishedTwentySecondsTimer() )
+//									ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
+//								else
+//									ucADC4_Step = ADC4_STEP_FOURTH_PREFIX3;
+//
+//								break;
+//							}
+//
+//
+//							case ADC4_STEP_FOURTH_PREFIX2:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX2; "<<endl;
+//#endif
+//								static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
+//
+//								static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
+//
+//								if((getAdOriginalCh14Value() > 2800))
+//								{
+//									ucTimerForDACR0_CNT1++;
+//									ucTimerForDACR0_CNT2 = 0;
+//								}
+//								else
+//								{
+//									ucTimerForDACR0_CNT2++;
+//									ucTimerForDACR0_CNT1 = 0;
+//								}
+//
+//								if(ucTimerForDACR0_CNT1 >= 2)
+//									ucTimerForDACR0_CNT1_f = 1;
+//
+//								if(ucTimerForDACR0_CNT2 >= 2)
+//									ucTimerForDACR0_CNT2_f = 1;
+//
+//								if(ucTimerForDACR0_CNT1_f)
+//								{
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//									DACR0=0x0F;//set OP1 input 0.3v
+//#else
+//									cout <<"DACR0 = 0x0F;"<<endl;
+//#endif
+//									ucADC4_Step = ADC4_STEP_FOURTH;
+//								}
+//								else if(ucTimerForDACR0_CNT2_f)
+//								{
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//									DACR0=0x09;//set op1 input 0.18v
+//#else
+//									cout <<"DACR0 = 0x09;"<<endl;
+//#endif
+//									ucADC4_Step = ADC4_STEP_FOURTH;
+//								}
+//								else
+//								{
+//									;//do nothing, if this AD value vibrate in this scope, consider to always stay here.
+//								}
+//
+//								if(ADC4_STEP_FOURTH == ucADC4_Step)
+//								{
+//									ucTimerForDACR0_CNT1 = 0;
+//									ucTimerForDACR0_CNT2 = 0;
+//									ucTimerForDACR0_CNT1_f = 0;
+//									ucTimerForDACR0_CNT2_f = 0;
+//
+//								}
+//
+//								break;
+//							}
+//
+//							case  ADC4_STEP_FOURTH_PREFIX3:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX3; "<<endl;
+//#endif
+//								clearTwentySecondsTimer();
+//							//	PA6 = 0;
+//								setPA6(0);
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//								PBOD6 = 0;
+//								PB6 = 1;
+//#else
+//								cout <<"PBOD6 = 0;"<<endl;
+//								cout <<"PB6 = 1;"<<endl;
+//#endif
+//								ucADC4_Step = ADC4_STEP_FOURTH_PREFIX4;
+//								break;
+//
+//							}
+//
+//
+//							case  ADC4_STEP_FOURTH_PREFIX4:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX4; "<<endl;
+//#endif
+//
+//								static unsigned char ucDelayPrefix4TimerP5s;
+//
+//								ucDelayPrefix4TimerP5s++;
+//
+//								if( ucDelayPrefix4TimerP5s >= 5)
+//								{
+//									ucDelayPrefix4TimerP5s = 0;
+//
+//									ucADC4_Step = ADC4_STEP_FOURTH_PREFIX5;
+//								}
+//								break;
+//							}
+//
+//							case  ADC4_STEP_FOURTH_PREFIX5:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_PREFIX5; "<<endl;
+//#endif
+//
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//								PBOD6 = 1;
+//								PB6 = 1;
+//#else
+//								cout <<"PBOD6 = 1;"<<endl;
+//								cout <<"PB6 = 1;"<<endl;
+//#endif
+//								ucADC4_Step = ADC4_STEP_FOURTH_PREFIX6;
+//
+//								break;
+//
+//							}
+//
+//							case  ADC4_STEP_FOURTH_PREFIX6:
+//							{
+//								static unsigned char ucDelayPrefix6TimerP2s;
+//
+//								ucDelayPrefix6TimerP2s++;
+//
+//								if( ucDelayPrefix6TimerP2s >= 2)
+//								{
+//									ucDelayPrefix6TimerP2s = 0;
+//
+//									ucADC4_Step = ADC4_STEP_INIT;
+//
+//									enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+//								}
+//								break;
+//							}
+//
+//
+//								case ADC4_STEP_FOURTH:
+//								{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH; "<<endl;
+//#endif
+//									static unsigned char ucCheckTimerP2sLess = 0;
+//
+//									static unsigned char ucCheckTimerP2sMore = 0;
+//
+//									if( getAdOriginalCh1Value() < 85)
+//									{
+//										ucCheckTimerP2sLess++;
+//										ucCheckTimerP2sMore = 0;
+//									}
+//									else
+//									{
+//										ucCheckTimerP2sMore++;
+//										ucCheckTimerP2sLess = 0;
+//									}
+//
+//									if( ucCheckTimerP2sMore > 2)
+//									{
+//										ucCheckTimerP2sMore = 0;
+//										ucCheckTimerP2sLess = 0;
+//
+//										ucADC4_Step = ADC4_STEP_INIT;
+//
+//										enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+//									}
+//
+//									if( ucCheckTimerP2sLess > 2)
+//									{
+//										ucCheckTimerP2sMore = 0;
+//										ucCheckTimerP2sLess = 0;
+//
+//										ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX1;
+//
+//									}
+//
+//
+//									break;
+//								}
+//
+//								case ADC4_STEP_FOURTH_SUFFIX1:
+//								{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_SUFFIX1; "<<endl;
+//#endif
+//									static unsigned char ucFourthSuffix1TimerP3s = 0;
+//
+//									ucFourthSuffix1TimerP3s++;
+//
+//									if( ucFourthSuffix1TimerP3s > 3)
+//									{
+//										ucFourthSuffix1TimerP3s = 0;
+//										ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX2;
+//
+//									}
+//									break;
+//								}
+//
+//								case ADC4_STEP_FOURTH_SUFFIX2:
+//								{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"ucADC4_Step :: ADC4_STEP_FOURTH_SUFFIX2; "<<endl;
+//#endif
+//							//		PA6 = 0;
+//									setPA6(0);
+//
+//									clearPinPortAndTimer();
+//									ucADC4_Step = ADC4_STEP_INIT;
+//
+//									enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+//									break;
+//								}
+//
+//						    	default:
+//						    		break;
+//						    }
+//
+//						}
+//
+//						break;
+//					}
+//
+//					case MAIN_LOOP_STEP_3_HOUR_BRANCH:
+//					{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in MAIN_LOOP_STEP_3_HOUR_BRANCH "<<endl;
+//#endif
+//						enum hour_3_branch_step{
+//							HOUR_3_BRANCH_STEP_FIRST,
+//							HOUR_3_BRANCH_STEP_SECOND,
+//							HOUR_3_BRANCH_STEP_THIRD,
+//						};
+//
+//						static enum hour_3_branch_step  enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+//
+//						switch(enumBranchStep)
+//						{
+//							case HOUR_3_BRANCH_STEP_FIRST:
+//							{
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//								PB7 = 1;
+//								PBOD7 = 1; //set PA7 AS hign resistence
+//#else
+//								cout <<"PB7 = 1;"<<endl;
+//								cout<<"PBOD7 = 1;"<<endl;
+//#endif
+//								startThreeHoursTimer(SMALL_TIME_SECONDS);
+//
+//							//	PB0 = 1;
+//								setPB0(1);
+//							//	PA0 = 1;
+//								setPA0(1);
+//							//	PA1 = 1;
+//								setPA1(1);
+//							//	PA2 = 1;
+//								setPA2(1);
+//							//	PA3 = 1;
+//								setPA3(1);
+//
+//								enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
+//								break;
+//							}
+//
+//							case HOUR_3_BRANCH_STEP_SECOND:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in HOUR_3_BRANCH_STEP_SECOND "<<endl;
+//#endif
+//								static unsigned char ucTimer20s = 0;
+//
+//								if(ucTimer20s < 200)
+//								{
+//									ucTimer20s++;
+//
+//								}
+//								else
+//								{
+//
+//									ucTimer20s = 0;
+//
+//									enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
+//
+//								//	PA6 = 0;
+//									setPA6(0);
+//								}
+//								break;
+//							}
+//
+//							case HOUR_3_BRANCH_STEP_THIRD:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in HOUR_3_BRANCH_STEP_THIRD "<<endl;
+//#endif
+//								if( (isFinishedTwelveHoursTimer()) || (isFinishedThreeHoursTimer()))
+//								{
+//									enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+//									enumMainLoopStep =  MAIN_LOOP_STEP_12_HOUR_END;
+//								}
+//								else
+//								{
+//									static unsigned char ucTimerX1P5s = 0;
+//
+//									static unsigned char ucTimerLessX1P5s = 0;
+//
+//									if(getAdOriginalCh1Value() < 115)
+//									{
+//										ucTimerX1P5s = 0;
+//										ucTimerLessX1P5s++;
+//									}
+//									else
+//									{
+//										ucTimerX1P5s++;
+//										ucTimerLessX1P5s = 0;
+//									}
+//
+//									if(ucTimerX1P5s >= 5)
+//									{
+//										ucTimerX1P5s = 0;
+//
+//
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//										PBOD7 = 0;
+//										PB7 = 0;
+//#else
+//										cout <<"PBOD7 = 0;"<<endl;
+//										cout <<"PB7 = 0;"<<endl;
+//#endif
+//										clearThreeHoursTimer();
+//
+//										enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+//
+//										enumMainLoopStep =  MAIN_LOOP_STEP_SECOND;
+//									}
+//									else if(ucTimerLessX1P5s >= 5)
+//									{
+//										static unsigned char ucTimerX2P5s = 0;
+//
+//										static unsigned char ucTimerLessX2P5s = 0;
+//
+//										if(getAdOriginalCh14Value() >= 1950)
+//										{
+//											ucTimerX2P5s++;
+//											ucTimerLessX2P5s = 0;
+//										}
+//										else
+//										{
+//											ucTimerX2P5s = 0;
+//											ucTimerLessX2P5s++;
+//										}
+//
+//										if(ucTimerX2P5s >= 5)
+//										{
+//											ucTimerX2P5s = 0;
+//										}
+//										else if(ucTimerLessX2P5s >= 5)
+//										{
+//											clearPinPortAndTimer();
+//											enumMainLoopStep =  MAIN_LOOP_STEP_FIRST;
+//											enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+//										}
+//										else
+//										{
+//											;//do thing
+//										}
+//									}
+//									else
+//									{
+//										;//do nothing
+//									}
+//
+//								}
+//
+//								break;
+//							}
+//
+//
+//							default:
+//								break;
+//						}
+//
+//						break;
+//					}
+//
+//					case MAIN_LOOP_STEP_12_HOUR_END:
+//					{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"I am in MAIN_LOOP_STEP_12_HOUR_END "<<endl;
+//#endif
+//						enum INTERNAL_STEP {
+//							INTERNAL_FIRST_STEP,
+//							INTERNAL_SECOND_STEP,
+//							INTERNAL_THIRD_STEP,
+//							INTERNAL_FOUTTH_STEP,
+//						};
+//
+//						static enum INTERNAL_STEP enumInteralStep = INTERNAL_FIRST_STEP;
+//
+//						switch (enumInteralStep)
+//						{
+//							case INTERNAL_FIRST_STEP:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"enumInteralStep :: INTERNAL_FIRST_STEP "<<endl;
+//#endif
+//						//		PB0 = 0;
+//								setPB0(0);
+//					//			PB1 = 0;
+//								setPB1(0);
+//			//					PA0 = 0;
+//								setPA0(0);
+//					//			PA1 = 0;
+//								setPA1(0);
+//						//		PA2 = 0;
+//								setPA2(0);
+//						//		PA3 = 0;
+//								setPA3(0);
+//
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//								PBOD6 = 0;
+//								PB6 = 1;
+//#else
+//								cout <<"PBOD6 = 0;"<<endl;
+//								cout <<"PB6 = 1;"<<endl;
+//#endif
+//					//			PA6 =0;
+//								setPA6(0);
+//
+//								enumInteralStep = INTERNAL_SECOND_STEP;
+//								break;
+//							}
+//
+//							case INTERNAL_SECOND_STEP:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"enumInteralStep :: INTERNAL_SECOND_STEP "<<endl;
+//#endif
+//								static unsigned char ucTimer1s = 0;
+//
+//								if(getAdOriginalCh14Value() <= 1000)
+//								{
+//									ucTimer1s++;
+//								}
+//								else
+//									ucTimer1s = 0;
+//
+//								if(ucTimer1s >= 10)
+//								{
+//									enumInteralStep = INTERNAL_THIRD_STEP;
+//									ucTimer1s = 0;
+//								}
+//								break;
+//							}
+//
+//							case INTERNAL_THIRD_STEP:
+//							{
+//#ifdef USE_SOFTWARE_SIMULATION_TEST
+//						cout <<"enumInteralStep :: INTERNAL_THIRD_STEP "<<endl;
+//#endif
+//								static unsigned char ucTimerP3s = 0;
+//
+//								if(getAdOriginalCh14Value() >= 1950)
+//								{
+//									ucTimerP3s++;
+//								}
+//								else
+//									ucTimerP3s = 0;
+//
+//								if(ucTimerP3s >= 3)
+//								{
+//									enumInteralStep = INTERNAL_FIRST_STEP;
+//									ucTimerP3s = 0;
+//
+//									clearAllTimer();
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//									DACR0=0x0F;//set OP1 input 0.3v
+//#else
+//									cout <<"DACR0 = 0x0F;"<<endl;
+//#endif
+//									initPin();
+//
+//
+//									enumMainLoopStep =  MAIN_LOOP_STEP_INIT;
+//#ifndef USE_SOFTWARE_SIMULATION_TEST
+//									while(1);// as to reset MCU
+//#else
+//									cout<<"the software is reset;"<<endl;
+//#endif
+//
+//								}
+//								break;
+//							}
+//
+//							default:
+//								break;
+//						}
+//
+//						break;
+//					}
+//
+//					default:
+//						break;
+//			   }
 
 			}
 		}

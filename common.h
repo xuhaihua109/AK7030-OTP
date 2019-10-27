@@ -16,6 +16,10 @@
 
 #define USING_AD_FILTER_ALGORITHMN
 
+#define AD_CHANNEL_12_CHANNEL            12
+
+#define AD_CHANNEL_13_CHANNEL            13
+
 #define AD_CHANNEL_14_CHANNEL            14
 
 #define AD_CHANNEL_1_CHANNEL            1
@@ -41,8 +45,8 @@ void process_AD_Converter_Value();
 //unsigned int getAdCh14Value();
 
 
-unsigned int getAdOriginalCh1Value();
-unsigned int getAdOriginaCh4Value();
+unsigned int getAdOriginalCh12Value();
+unsigned int getAdOriginalCh13Value();
 
 unsigned int getAdOriginalCh14Value();
 
@@ -55,6 +59,8 @@ void setDAC0_ChannelValue(unsigned char ucValue);
 void startTwelveHourTimer(unsigned int uiSetTime); //12 hours
 void startThreeHoursTimer(unsigned int uiSetTime);// 3 hours
 
+void startOneHoursTimer(unsigned int uiSetTime);// 3 hours
+
 
 void startTwentySecondsTimer();//20s
 unsigned char isFinishedTwentySecondsTimer();
@@ -65,12 +71,14 @@ unsigned char isFinishedTwentyMinTimer();
 
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
+void clearOneHoursTimer();
 void clearTwentySecondsTimer();
 void clearTwentyMinTimer();
 
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();
+unsigned char isFinishedOneHoursTimer();
 
 uchar getAD_ConvertFlag();
 void  setAD_ConvertFlag(uchar flag);

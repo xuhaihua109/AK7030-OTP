@@ -898,7 +898,7 @@ volatile bit PAOD7               @ ((unsigned)&PAOD*8)+7;
 
 // Register: PBPD
 volatile unsigned char           PBOD                @ 0x188;
-volatile bit PBOD6               @ ((unsigned)&PBOD*8)+6;
+volatile bit PBOD2               @ ((unsigned)&PBOD*8)+2;
 volatile bit PBOD7               @ ((unsigned)&PBOD*8)+7;
 // bit and bitfield definitions
 
