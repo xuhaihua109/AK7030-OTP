@@ -1004,21 +1004,27 @@ clearAllTimer();
 
 
 
-void pwm_start(void)
+void pwm_start(unsigned char ucPulseWidth)
 {
 
-
-CCP1CON = 0x10 ;
-PR2 = 4 ;
-T2CON = 0x04 ;
-CCPR1L = 0x02 ;
-PWMCON1 = 0x55;
+# 286
+T2CON=0x04;
+PR2 = 49;
+CCPR1L = ucPulseWidth;
+CCP1CON=0x00;
 
 TRISB2=0;
 
-CCP1CON |= 0x0e ;
+# 295
+}
 
-# 287
+
+void pwm_config(unsigned char state)
+{
+if( state )
+CCP1CON|= 0x0c;
+else
+CCP1CON&= 0xf0;
 }
 
 static void initPin(void)
@@ -1032,7 +1038,7 @@ initPB4(0);
 
 initPB5(0);
 
-# 303
+# 320
 }
 
 static void setPinInitVaule( void )
@@ -1042,7 +1048,7 @@ setPB3(1);
 setPB4(0);
 setPB5(1);
 
-# 314
+# 331
 }
 
 static void selectAdChannel( void )
@@ -1051,7 +1057,7 @@ static void selectAdChannel( void )
 TRISB0 = 1;
 TRISB1 = 1;
 
-# 324
+# 341
 }
 
 static void setPulseWidth( void )
@@ -1059,7 +1065,7 @@ static void setPulseWidth( void )
 
 ;
 
-# 333
+# 350
 }
 
 static void reset( void )
@@ -1067,14 +1073,14 @@ static void reset( void )
 
 while(1);
 
-# 342
+# 359
 }
 
-# 496
+# 513
 void main (void)
 {
 
-# 504
+# 521
 static unsigned char ucWaitTime1S = 0;
 
 static unsigned char ucWaitTimeO3s = 0;
@@ -1087,22 +1093,22 @@ static unsigned char bCheckTweHour = 0;
 
 static unsigned char bCheckTheHour = 0;
 
-# 530
+# 547
 initPin();
 setPinInitVaule();
 selectAdChannel();
 
-# 542
+# 559
 clock_config();
 timer1_config();
 timer1_interrupt_config();
 
 adc_test_init(12,3);
 
-# 553
+# 570
 adc_start();
 
-# 563
+# 580
 startTwentyMinTimer( 1200 );
 
 while(1)
@@ -1118,7 +1124,7 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 590
+# 607
 static unsigned char ucStep = 0;
 switch(ucStep)
 {
@@ -1132,11 +1138,27 @@ else
 {
 if( getAdOriginalCh13Value() > 1000 )
 {
+setPB5(1);
+ucTimerP3s++;
+}
+else
+{
+ucTimerP3s = 0;
+setPB5(0);
+}
+
+
+if( getAdOriginalCh12Value() > 1000 )
+{
+setPB4(1);
 ucTimerP3s++;
 
 }
 else
+{
 ucTimerP3s = 0;
+setPB4(0);
+}
 
 static unsigned char ucDebug1 = 0;
 
@@ -1146,7 +1168,7 @@ ucDebug1++;
 
 if( ucDebug1 < 10 )
 setPB3(1);
-else if((ucDebug1 > 10) && ( ucDebug1 < 20))
+else if((ucDebug1 >= 10) && ( ucDebug1 < 20))
 {
 setPB3(0);
 }
@@ -1164,8 +1186,12 @@ break;
 
 case 1:
 {
-pwm_start();
-setPulseWidth();
+if( getAdOriginalCh12Value() > 1000 )
+pwm_start(0x19);
+else
+pwm_start(0x02);
+
+pwm_config(1);
 setPB3(0);
 setPB4(1);
 setPB5(0);
@@ -1336,7 +1362,9 @@ default:
 break;
 }
 
-# 2186
+
+
+
 }
 }
 
