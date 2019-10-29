@@ -874,9 +874,9 @@ unsigned int adc_get(void);
 extern void _delay(unsigned long);
 
 # 100
-asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x2FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
-asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
-asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x0FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3BFF & 0x3FBF & 0x3FFF & 0x3FFE");;
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3EFF & 0x3FFF & 0x3FFF & 0x3FF8");;
 
 # 116
 static void clearAllTimer(void)
@@ -1014,8 +1014,9 @@ CCPR1L = ucPulseWidth;
 CCP1CON=0x00;
 
 TRISB2=0;
+PBOD2 = 0;
 
-# 295
+# 296
 }
 
 
@@ -1038,7 +1039,7 @@ initPB4(0);
 
 initPB5(0);
 
-# 320
+# 321
 }
 
 static void setPinInitVaule( void )
@@ -1048,7 +1049,7 @@ setPB3(1);
 setPB4(0);
 setPB5(1);
 
-# 331
+# 332
 }
 
 static void selectAdChannel( void )
@@ -1057,7 +1058,7 @@ static void selectAdChannel( void )
 TRISB0 = 1;
 TRISB1 = 1;
 
-# 341
+# 342
 }
 
 static void setPulseWidth( void )
@@ -1065,7 +1066,7 @@ static void setPulseWidth( void )
 
 ;
 
-# 350
+# 351
 }
 
 static void reset( void )
@@ -1073,14 +1074,14 @@ static void reset( void )
 
 while(1);
 
-# 359
+# 360
 }
 
-# 513
+# 514
 void main (void)
 {
 
-# 521
+# 522
 static unsigned char ucWaitTime1S = 0;
 
 static unsigned char ucWaitTimeO3s = 0;
@@ -1093,22 +1094,22 @@ static unsigned char bCheckTweHour = 0;
 
 static unsigned char bCheckTheHour = 0;
 
-# 547
+# 548
 initPin();
 setPinInitVaule();
 selectAdChannel();
 
-# 559
+# 560
 clock_config();
 timer1_config();
 timer1_interrupt_config();
 
 adc_test_init(12,3);
 
-# 570
+# 571
 adc_start();
 
-# 580
+# 581
 startTwentyMinTimer( 1200 );
 
 while(1)
@@ -1124,7 +1125,7 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 607
+# 608
 static unsigned char ucStep = 0;
 switch(ucStep)
 {

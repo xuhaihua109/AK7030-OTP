@@ -92,9 +92,9 @@ extern void _delay(unsigned long);
 ****************************************************************************/
 #ifndef USE_SOFTWARE_SIMULATION_TEST
 
-#define CONFIG1 IO_MODE16   & PWRTE_ON   & LVTEN_ON    & WDTE_ON    &  RDSEL_ON & SMT_ON
-#define CONFIG2 OTP_MOD4K  & BOR26V      & FOSC_RC20M  & RESETE_OFF
-#define CONFIG3 OTP_4K_0  & WDTPS_128   & SUT_ON      & SUT_0
+#define CONFIG1 IO_MODE8   & PWRTE_ON   & LVTEN_ON    & WDTE_ON    &  RDSEL_ON & SMT_ON
+#define CONFIG2 OTP_MOD2K  & BOR22V      & FOSC_RC20M  & RESETE_OFF
+#define CONFIG3 OTP_2K_1  & WDTPS_128   & SUT_ON      & SUT_0
 
 
 __CONFIG(CONFIG1);
@@ -289,6 +289,7 @@ void pwm_start(unsigned char ucPulseWidth)
 	CCP1CON=0x00;		//外部CCP1引脚输入  pwm低两位为00，启动 PWM模式， e PWM 默认输出为 1, d 0
 
 	TRISB2=0;			//pb2设为输出
+	PBOD2 = 0;
 #else
  	 cout << "pwm_start();" <<endl;
 #endif
@@ -548,13 +549,6 @@ void main (void)
 		setPinInitVaule();
 		selectAdChannel();
 
-
-//		TRISB2 = 1;//SET AD sample Channel 14
-//
-//	//	TRISB7 = 1;// set AD sample Channel 4
-//		TRISA7 = 1;// set AD sample channel 5
-//
-//		TRISB4 = 1;// set AD sample Channel 1
 
 		clock_config();	//使系统时钟稳定
 		timer1_config();

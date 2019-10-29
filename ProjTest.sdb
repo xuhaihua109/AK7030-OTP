@@ -660,19 +660,19 @@
 [v _clearPinPortAndTimer `(v  1 s 0 clearPinPortAndTimer ]
 "272
 [v _pwm_start `(v  1 e 0 0 ]
-"299
+"300
 [v _pwm_config `(v  1 e 0 0 ]
-"307
+"308
 [v _initPin `(v  1 s 0 initPin ]
-"323
+"324
 [v _setPinInitVaule `(v  1 s 0 setPinInitVaule ]
-"334
+"335
 [v _selectAdChannel `(v  1 s 0 selectAdChannel ]
-"344
+"345
 [v _setPulseWidth `(v  1 s 0 setPulseWidth ]
-"353
+"354
 [v _reset `(v  1 s 0 reset ]
-"514
+"515
 [v _main `(v  1 e 0 0 ]
 "14 D:\develop\190625\AK7030-OTP\periph.c
 [v _dac_init `(v  1 e 0 0 ]
@@ -1350,28 +1350,28 @@
 [v _ALG6 `VEuc  1 e 1 @398 ]
 "918
 [v _ALG7 `VEuc  1 e 1 @399 ]
-"514 D:\develop\190625\AK7030-OTP\main.c
+"515 D:\develop\190625\AK7030-OTP\main.c
 [v _main `(v  1 e 0 0 ]
 {
-"607
+"608
 [v main@ucStep `uc  1 s 1 ucStep ]
-"642
+"643
 [v main@ucDebug1 `uc  1 s 1 ucDebug1 ]
-"644
+"645
 [v main@ucDebug2 `uc  1 s 1 ucDebug2 ]
-"685
+"686
 [v main@ucTimerP5s `uc  1 s 1 ucTimerP5s ]
-"715
+"716
 [v main@cTimerP5s_783 `uc  1 s 1 ucTimerP5s ]
-"748
-[v main@uiTimerOneP5s `ui  1 s 2 uiTimerOneP5s ]
 "749
+[v main@uiTimerOneP5s `ui  1 s 2 uiTimerOneP5s ]
+"750
 [v main@uiTimerTwoP5s `ui  1 s 2 uiTimerTwoP5s ]
-"790
+"791
 [v main@uiTimerP5s `ui  1 s 2 uiTimerP5s ]
-"822
+"823
 [v main@cTimerP5s_787 `uc  1 s 1 ucTimerP5s ]
-"850
+"851
 } 0
 "226 D:\develop\190625\AK7030-OTP\common.c
 [v _getAdOriginalCh12Value `(ui  1 e 2 0 ]
@@ -1388,15 +1388,15 @@
 {
 "274
 } 0
-"323 D:\develop\190625\AK7030-OTP\main.c
+"324 D:\develop\190625\AK7030-OTP\main.c
 [v _setPinInitVaule `(v  1 s 0 setPinInitVaule ]
 {
-"331
+"332
 } 0
-"307
+"308
 [v _initPin `(v  1 s 0 initPin ]
 {
-"320
+"321
 } 0
 "286 D:\develop\190625\AK7030-OTP\common.c
 [v _AD_Sample `(v  1 s 0 AD_Sample ]
@@ -1520,34 +1520,34 @@
 {
 "186
 } 0
-"353 D:\develop\190625\AK7030-OTP\main.c
+"354 D:\develop\190625\AK7030-OTP\main.c
 [v _reset `(v  1 s 0 reset ]
 {
-"359
+"360
 } 0
-"344
+"345
 [v _setPulseWidth `(v  1 s 0 setPulseWidth ]
 {
-"350
+"351
 } 0
-"334
+"335
 [v _selectAdChannel `(v  1 s 0 selectAdChannel ]
 {
-"341
+"342
 } 0
-"299
+"300
 [v _pwm_config `(v  1 e 0 0 ]
 {
 [v pwm_config@state `uc  1 a 1 wreg ]
 [v pwm_config@state `uc  1 a 1 wreg ]
-"304
+"305
 } 0
 "272
 [v _pwm_start `(v  1 e 0 0 ]
 {
 [v pwm_start@ucPulseWidth `uc  1 a 1 wreg ]
 [v pwm_start@ucPulseWidth `uc  1 a 1 wreg ]
-"295
+"296
 } 0
 "229
 [v _initPB2_AsHighResistence `(v  1 e 0 0 ]
