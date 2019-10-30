@@ -1,4 +1,3 @@
-
 //////////////////////////////////////////////////////////////////////////////////
 //               【程序说明】：DAC0输出VCC*25/64=1.3V通过OP1放大从PB5输出		    //
 //							   DAC1输出VCC*6/64=0.3V通过OP2放大从PA7输出		    //
@@ -7,7 +6,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	【程序说明】：本程序将OP1和OP2配置成放大器,将同相端的输入电压进行放大。								     //
-//																							             //				
+//																							             //
 //									同相端（IN+）	反相端(IN-) 	    输出(VO)		增益			 	         //
 //						OP1		     PB3			   PB4				PB5		1+R2/R1		             //
 //						OP2			 PB6               PB7    		    PA7		 8				   	     //
@@ -18,10 +17,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// #define    USE_SOFTWARE_SIMULATION_TEST                1
-
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-
+//#define    USE_SOFTWARE_SIMULATION_TEST                1
 
 #define  SET_PIN_AS_OUTPUT   0
 #define  SET_PIN_AS_INPUT    1
@@ -29,32 +25,36 @@
 #define  SET_PIN_HIGH    1
 #define  SET_PIN_LOW     0
 
-
 #define   BIG_TIME_SECONDS         36000
 #define   SMALL_TIME_SECONDS       10800
 
-#define   TIMER_20MIN       1200
+
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 
 #define    TRUE   1
 #define    FALSE  0
 
-
-
-
+#ifndef USE_SOFTWARE_SIMULATION_TEST
 
 #define _XTAL_FREQ 20000000
 
 #include <stdio.h>
 #include "yn8p520.h"	//系统头文件
-#include "common.h"		
-#include "periph.h"		
+#include "common.h"
+#include "periph.h"
+
+
 
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 #define __delay_us(x) _delay((unsigned long)((x)*(_XTAL_FREQ/4000000.0)))
 
+#endif
+
+#ifdef USE_SOFTWARE_SIMULATION_TEST
+#include <iostream>
+using namespace std;
 #endif
 
 //OTP_MOD4K  : 4k --16c77
@@ -66,7 +66,7 @@ extern void _delay(unsigned long);
 
 //调试说明：
 //DAC0输出VCC*25/64=1.3V通过OP1缓冲从PB5输出
-//DAC1输出VCC*6/64 =0.3V通过OP2缓冲从PA7输出	        
+//DAC1输出VCC*6/64 =0.3V通过OP2缓冲从PA7输出
 
 
 /***************************************************************************
@@ -79,22 +79,22 @@ extern void _delay(unsigned long);
 *						相应芯片型号如上说明
 *	OTP_4K_0		：OTP_mK_n 在mK模式下第n个空间  m(1/2/4) 烧写时 n值需从0开始
 *						4K只可设为0	2K可设为0/1/2 1K可设为 0/1/2/3
-*	FOSC_RC20M	：系统时钟选择 可设为 
+*	FOSC_RC20M	：系统时钟选择 可设为
 *						配置		：	FOSC_RC20M FOSC_RC10M FOSC_RC10M FOSC_RC5M	FOSC_RC1P25M
 *						对应时钟	：			20MHZ		10MHZ			5MHZ		  2.5MHZ			1.25MHZ
 *	WDTPS_128	：看门狗定时器时钟分频
 *
 *
 *	注意：1.配置字若无特别需求请勿修改；
-*			2.其他配置字及相应功能见Datasheet及头文件；	
+*			2.其他配置字及相应功能见Datasheet及头文件；
 *			2.仿真器支持20M时钟模式，且无上下拉电阻测试时应注意；
 *
 ****************************************************************************/
 #ifndef USE_SOFTWARE_SIMULATION_TEST
 
 #define CONFIG1 IO_MODE8   & PWRTE_ON   & LVTEN_ON    & WDTE_ON    &  RDSEL_ON & SMT_ON
-#define CONFIG2 OTP_MOD2K  & BOR22V      & FOSC_RC20M  & RESETE_OFF
-#define CONFIG3 OTP_2K_1  & WDTPS_128   & SUT_ON      & SUT_0
+#define CONFIG2 OTP_MOD4K  & BOR26V      & FOSC_RC20M  & RESETE_OFF
+#define CONFIG3 OTP_4K_0  & WDTPS_128   & SUT_ON      & SUT_0
 
 
 __CONFIG(CONFIG1);
@@ -235,22 +235,6 @@ void initPB2_AsHighResistence( void )
 #endif
 }
 
-//void initCCP1PWM_Mode( void )
-//{
-//	 CCP1CON = 0x10 ; // 0101 0101 OP1 输出导致 PWM 输出关闭，当条件撤销时， PWM 自动启动 OP2 输出导致 PWM 输出关闭，必须通过软件来重新启动 ；PWM 自启动使能；1： OP1 输出会导致 PWM 自动关闭,op2不会; PWM 自动关闭使能
-//	 PR2 = 4 ;     //T2周期寄存器
-//	 T2CON = 0x04 ;   //使能TMR2，后分频值1 预分频值1
-//	 CCPR1L = 0x02 ;
-//	 PWMCON1 = 0x55;   // 寄存器的值和datasheed里面不一样，对应的为PWM1CON1寄存器
-//
-//}
-//
-//void startPWM_Mode (void)
-//{
-//	CCP1CON |= 0x0e ;    //打开pwm模式
-//	TRISB2=0;	//输出
-//}
-
 
 static void clearPinPortAndTimer(void)
 {
@@ -268,41 +252,73 @@ static void clearPinPortAndTimer(void)
 
 
 //pwm初始化
-void pwm_start(unsigned char ucPulseWidth)
+void pwm_start( unsigned char ucPulseWidth)
 {
+//	const unsigned char pulseWidthTable[ ] = {60,62,64,66,68,70,72}
+
+	unsigned char ucConvertRealPulseWidth = 0;
+
+	unsigned char ucGetLowestTwoValue = 0,ucGeHighestSixValue = 0;
+
+	unsigned char ucCCP1CON_Value = 0;
+
+#ifdef 	USE_SOFTWARE_SIMULATION_TEST
+	cout <<"ucPulseWidth :"<<(int) ucPulseWidth <<endl;
+#endif
+
+	ucConvertRealPulseWidth = ucPulseWidth << 1; //*2 ,because need divide 200
+
+#ifdef 	USE_SOFTWARE_SIMULATION_TEST
+	cout << "ucConvertRealPulseWidth:"<<(int) (ucConvertRealPulseWidth) << endl;
+#endif
+
+	ucGetLowestTwoValue =  ucConvertRealPulseWidth & 0x03;
+
+#ifdef 	USE_SOFTWARE_SIMULATION_TEST
+	cout << int ( ucGetLowestTwoValue )<<endl;
+#endif
+
+	ucCCP1CON_Value = ucGetLowestTwoValue << 4;
+
+#ifdef 	USE_SOFTWARE_SIMULATION_TEST
+	cout << int ( ucCCP1CON_Value )<<endl;
+#endif
+
+	ucGeHighestSixValue =  ucConvertRealPulseWidth >> 2;
+
+#ifdef 	USE_SOFTWARE_SIMULATION_TEST
+	cout << int ( ucGeHighestSixValue )<<endl;
+#endif
+
 #ifndef 	USE_SOFTWARE_SIMULATION_TEST
-// //CCP1CON is at 348 line in yn8p520.h file
-// CCP1CON = 0x10 ; // 0101 0101 OP1 输出导致 PWM 输出关闭，当条件撤销时， PWM 自动启动 OP2 输出导致 PWM 输出关闭，必须通过软件来重新启动 ；PWM 自启动使能；1： OP1 输出会导致 PWM 自动关闭,op2不会; PWM 自动关闭使能
-// PR2 = 4 ;     //T2周期寄存器   // it is at 649 line in yn8p520.h file
-// T2CON = 0x04 ;   //使能TMR2，后分频值1 预分频值1
-// CCPR1L = 0x02 ;
-// PWMCON1 = 0x55;   // 寄存器的值和datasheed里面不一样，对应的为PWM1CON1寄存器
-//
-// TRISB2=0;	//输出
-//
-// CCP1CON |= 0x0e ;    //打开pwm模式
 
 
 	T2CON=0x04;			//使能T2，后分频值1 预分频值1
 	PR2 = 49;   		//T2周期寄存器，   100kHZ f=20M/(4*(PR2+1))
-	CCPR1L = ucPulseWidth;	   //pwm高8位  占空比50% =【CCPR1L:CCP1CON[5:4]】/((PR2+1)*4)
+	CCPR1L = ucGeHighestSixValue;	   //pwm高8位  占空比50% =【CCPR1L:CCP1CON[5:4]】/((PR2+1)*4)
 	CCP1CON=0x00;		//外部CCP1引脚输入  pwm低两位为00，启动 PWM模式， e PWM 默认输出为 1, d 0
+	CCP1CON = CCP1CON | ucCCP1CON_Value;
 
 	TRISB2=0;			//pb2设为输出
 	PBOD2 = 0;
 #else
- 	 cout << "pwm_start();" <<endl;
+ 	cout << "pwm_start();" <<endl;
 #endif
 }
 
-
 void pwm_config(unsigned char state)
 {
+#ifndef 	USE_SOFTWARE_SIMULATION_TEST
 	if( state )
 		CCP1CON|= 0x0c;		//外部CCP1引脚输入  pwm低两位为01，启动 PWM模式， e PWM 默认输出为 1, d 0
 	else
 		CCP1CON&= 0xf0;		//禁止pwm
+#else
+	cout << "pwm_config "<< endl;
+#endif
 }
+
+
 
 static void initPin(void)
 {
@@ -341,14 +357,6 @@ static void selectAdChannel( void )
 #endif
 }
 
-static void setPulseWidth( void )
-{
-#ifndef 	USE_SOFTWARE_SIMULATION_TEST
-	;//wait to develop.
-#else
-	cout << "setPulseWidth();"<<endl;
-#endif
-}
 
 static void reset( void )
 {
@@ -360,67 +368,43 @@ static void reset( void )
 }
 
 #ifdef USE_SOFTWARE_SIMULATION_TEST
+
+
 bool isPermitSampleTime(void)
 {
-//	unsigned int firstVariable = 0, secondVariable = 0;
-//
-//	bool bCompareResult = false;
-//
-//	cout <<"please input value of firstVariable: "<<endl;
-//
-//	cin >> firstVariable;
-//
-//	cout <<"please input value of secondVariable: "<<endl;
-//
-//	cin >> secondVariable;
-//
-//	if(secondVariable > firstVariable)
-//		bCompareResult = true;
-//	else
-//		bCompareResult = false;
-//
-//	if(bCompareResult)
-//		cout << "The condition is OK " << endl;
-//	else
-//		cout << "The condition is NG" << endl;
-
-//	return bCompareResult;
-
-	static unsigned int uiCounter = 0;
+	 unsigned int uiCounter = 0;
 
 	uiCounter++;
 
 	cout << uiCounter << ";" << endl;
 
-
 	return true;
-
 }
 
 
 
-unsigned int getAdOriginalCh14Value(void)
+unsigned int getAdOriginalCh12Value(void)
 {
-	unsigned int uiCh14Value = 0;
+	unsigned int uiCh12Value = 0;
 
-	cout <<"please input value of ch14:"<< endl;
+	cout <<"please input value of ch12:"<<endl;
 
-	cin >> uiCh14Value;
+	cin >> uiCh12Value;
 
-	return uiCh14Value;
+	return uiCh12Value;
 
 }
 
 
-unsigned int getAdOriginalCh1Value(void)
+unsigned int getAdOriginalCh13Value(void)
 {
-	unsigned int uiCh1Value = 0;
+	unsigned int uiCh13Value = 0;
 
-	cout <<"please input value of ch1:"<< endl;
+	cout <<"please input value of ch13:"<< endl;
 
-	cin >> uiCh1Value;
+	cin >> uiCh13Value;
 
-	return uiCh1Value;
+	return uiCh13Value;
 }
 
 
@@ -456,12 +440,43 @@ bool isFinishedTwelveHoursTimer(void)
 	return false;
 }
 
+ bool isFinishedTwentyMinTimer( void)
+ {
+	 bool bTimerOut = false;
+	 cout << "isFinishedTwentyMinTimer()"<<endl;
+	 cin >> bTimerOut;
+	 return bTimerOut;
+ }
 
-void startTwentySecondsTimer( void )
+ bool isFinishedOneHoursTimer(void)
+ {
+	 bool bTimerOut = false;
+	 cout << "isFinishedOneHoursTimer()"<<endl;
+	 cin >> bTimerOut;
+	 return bTimerOut;
+ }
+
+
+void clearTwentyMinTimer( void )
 {
-	cout <<" startTwentySecondTimer() "<<endl;
+	cout << "clearTwentyMinTimer()"<<endl;
 }
 
+
+void clearTwelveHoursTimer(void)
+{
+	cout <<" clearTweleveHoursTimer() "<<endl;
+}
+
+void startOneHoursTimer( unsigned int uiPara )
+{
+	cout <<" startOneHoursTimer() "<<endl;
+}
+
+void startTwentyMinTimer(unsigned int uiPara)
+{
+	cout << "startTwentyMinTimer();" << endl;
+}
 
 bool isFinishedTwentySecondsTimer(void)
 {
@@ -475,9 +490,9 @@ bool isFinishedTwentySecondsTimer(void)
 }
 
 
-void clearTwentySecondsTimer(void)
+void clearTwentyHoursTimer(void)
 {
-	cout <<"clearTwentySecondsTimer()"<<endl;
+	cout <<"clearTwentyMinTimer()"<<endl;
 }
 
 
@@ -510,45 +525,84 @@ void clearAllTimer(void)
 
 #endif
 
-
-void main (void)
+static unsigned char calPulseWidth( void )
 {
+	unsigned char ucPulseWidth = 0;
+
+	#define AD_12_CHANNEL_MIN_VALUE  312
+
+	unsigned int uiChannel2Value = getAdOriginalCh12Value();
+
+	if( uiChannel2Value >= 332 )
+		ucPulseWidth = 100;
+	else if( uiChannel2Value <= AD_12_CHANNEL_MIN_VALUE)
+		ucPulseWidth = 30;
+	else
+	{
+		unsigned int uiGapValue = 0;
+
+		unsigned char ucGapValue = 0;
+
+		unsigned char ucThreeTimesValue = 0;
+		unsigned char ucHalfValue = 0;
+
+		uiGapValue = uiChannel2Value - 312;
+
+		ucGapValue = uiGapValue;
+
+		ucThreeTimesValue = ucGapValue*3;
+
+		ucHalfValue = ucGapValue >> 1;
+
+		ucPulseWidth = 30 + ucThreeTimesValue +  ucHalfValue;
+
+	}
+#ifdef		USE_SOFTWARE_SIMULATION_TEST
+	cout << (int) ucPulseWidth << endl;
+#endif
+	return  ucPulseWidth;
+}
+
+// #define  SET_PB4_AS_RESET_DEBUG_PIN   1
+
+#ifdef SET_PB4_AS_RESET_DEBUG_PIN
+static void chipResetDebug( void )
+{
+	static unsigned char ucTimerPowerLed = 0;
+	if(ucTimerPowerLed < 30)
+	{
+		ucTimerPowerLed ++;
+		PB4 = 1;
+	}
+	else
+	{
+		ucTimerPowerLed = 0;
+		PB4 = 0;
+	}
+}
+#endif
+
+#define   TIMER_20MIN       60//1200
+#define   TIMER_3HOUR       180//10800
+#define   TIMER_10HOUR      240//36000
+#define   TIMER_1HOUR       120//3600
+
+
+int main (void)
+{
+
 
 #ifdef		USE_SOFTWARE_SIMULATION_TEST
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 #endif
 
 
-		static unsigned char ucWaitTime1S = 0;
-
-		static unsigned char ucWaitTimeO3s = 0;
-
-		static unsigned char ucSmallTimerActionFlag = 0;
-
-		static unsigned char ucSetSmallActionFlag = 0;
-
-		static unsigned char bCheckTweHour = 0;
-
-		static unsigned char bCheckTheHour = 0;
-
 
 #ifndef		USE_SOFTWARE_SIMULATION_TEST
-//		TRISA0 = 0; //SET PA0,PA1,PA2,PA3 as output
-//		TRISA1 = 0;
-//		TRISA2 = 0;
-//		TRISA3 = 0;
-//		TRISB0 = 0;
-//		TRISB1 = 0;
-//		TRISA6 = 0;
-//	//	TRISA7 = 0;
-//		TRISB7 = 0;// PB7 instead of PA7
-//		TRISB6 = 0;
-
 
 		initPin();
 		setPinInitVaule();
 		selectAdChannel();
-
 
 		clock_config();	//使系统时钟稳定
 		timer1_config();
@@ -567,9 +621,6 @@ void main (void)
 #endif
 
 
-	#ifdef SET_PB1_AS_RESET_DEBUG_PIN
-		static unsigned char ucTimerPowerLed = FALSE;
-	#endif
 
 		startTwentyMinTimer( TIMER_20MIN );
 
@@ -587,99 +638,95 @@ void main (void)
 	    	   clrSampeTime();
 #endif
 
-	#ifdef SET_PB1_AS_RESET_DEBUG_PIN
-			if(ucTimerPowerLed < 30)
-			{
-				ucTimerPowerLed ++;
-			}
-			else
-			{
-			ucTimerPowerLed = 0;
-			PB1 = 0;
-			}
+	#ifdef SET_PB4_AS_RESET_DEBUG_PIN
+	    	   chipResetDebug();
+
 	#endif
-			static unsigned char ucStep = 0;
+
+	   enum  systemStep {
+					INIT_STEP = 0,
+					START_UP_PWM_STEP,
+					CHECK_10_HOUR_TIMER_STEP,
+					STARTUP_3_HOUR_TIMER_STEP,
+					CHECK_3_HOUR_TIMER_STEP,
+					STARTUP_1_HOUR_TIMER_STEP,
+					CHECK_1_HOUR_TIMER_STEP,
+					READY_FOR_RESET_STEP = 99,
+					MEET_RESET_CONDITION_STEP,
+					RESET_STEP,
+				};
+
+			static enum systemStep ucStep = INIT_STEP;
+
 			switch(ucStep)
 			{
-				case 0:
+
+			case INIT_STEP:
+			{
+#ifdef USE_SOFTWARE_SIMULATION_TEST
+				system("pause");
+				cout << ucStep << endl;
+#endif
+				static unsigned char ucTimerP3s = 0;
+
+				if( isFinishedTwentyMinTimer() )
 				{
-					static unsigned char ucTimerP3s = 0;
-
-					if( isFinishedTwentyMinTimer() )
-						;// wait to develop
-					else
-					{
-						if( getAdOriginalCh13Value() > 1000 )
-						{
-							setPB5(SET_PIN_HIGH);
-							ucTimerP3s++;
-						}
-						else
-						{
-							ucTimerP3s = 0;
-							setPB5(SET_PIN_LOW);
-						}
-
-
-						if( getAdOriginalCh12Value() > 1000 )
-						{
-							setPB4(SET_PIN_HIGH);
-							ucTimerP3s++;
-
-						}
-						else
-						{
-							ucTimerP3s = 0;
-							setPB4(SET_PIN_LOW);
-						}
-
-						static unsigned char ucDebug1 = 0;
-
-						static unsigned char ucDebug2 = 0;
-
-						ucDebug1++;
-
-						if( ucDebug1 < 10 )
-							setPB3(SET_PIN_HIGH);
-						else if((ucDebug1 >= 10) && ( ucDebug1 < 20))
-						{
-							setPB3(SET_PIN_LOW);
-						}
-						else
-						{
-							ucDebug1 = 0;
-						}
-
-						ucDebug2++;
-						if(ucDebug2 > 150) //100 *100ms = 15s
-							ucStep++;
-					}
-					break;
+					ucStep = READY_FOR_RESET_STEP;// wait to develop
+					ucTimerP3s = 0;
 				}
-
-				case 1:
+				else
 				{
-					if( getAdOriginalCh12Value() > 1000 )
-						pwm_start(0x19); //100/200 50%
+					if( getAdOriginalCh13Value() > 90 )
+					{
+						ucTimerP3s++;
+					}
 					else
-						pwm_start(0x02); //32/200 = 16%
-				//	setPulseWidth();
-					pwm_config(1);
+						ucTimerP3s = 0;
+
+					if( ucTimerP3s >= 3)
+					{
+						ucTimerP3s = 0;
+						ucStep = START_UP_PWM_STEP;
+					}
+
+				}
+#ifdef USE_SOFTWARE_SIMULATION_TEST
+				system("pause");
+#endif
+				break;
+			}
+
+				case START_UP_PWM_STEP:
+				{
+#ifdef USE_SOFTWARE_SIMULATION_TEST
+					system("pause");
+					cout << "enter 1 step" << endl;
+#endif
+					unsigned char ucPulseWidth = 0;
+
+					ucPulseWidth = calPulseWidth();
+
+					pwm_start( ucPulseWidth );
+
 					setPB3(SET_PIN_LOW);
 					setPB4(SET_PIN_HIGH);
 					setPB5(SET_PIN_LOW);
 					clearTwentyMinTimer();
-					startTwelveHourTimer( 36000); //10 hours timer
-					ucStep++;
+					startTwelveHourTimer( TIMER_10HOUR); //10 hours timer
+					ucStep = CHECK_10_HOUR_TIMER_STEP;
 					break;
 				}
 
-				case 2:
+				case CHECK_10_HOUR_TIMER_STEP:
 				{
+#ifdef USE_SOFTWARE_SIMULATION_TEST
+					cout << "CHECK_10_HOUR_TIMER_STEP" << endl;
+					system("pause");
+#endif
 					static unsigned char ucTimerP5s = 0;
 
 					if( isFinishedTwelveHoursTimer () )
-						ucStep = 99;
+						ucStep = READY_FOR_RESET_STEP;
 					else
 					{
 						if( getAdOriginalCh13Value() < 200 )
@@ -690,26 +737,27 @@ void main (void)
 						if( ucTimerP5s > 5)
 						{
 							ucTimerP5s = 0;
-					//		ucStep++;
+							ucStep = STARTUP_3_HOUR_TIMER_STEP;
 						}
 					}
 					break;
 				}
 
-				case 3:
+
+				case STARTUP_3_HOUR_TIMER_STEP:
 				{
 					clearTwelveHoursTimer();
-					startThreeHoursTimer(10800);//3 hours
-					ucStep++;
+					startThreeHoursTimer(TIMER_3HOUR);//3 hours
+					ucStep = CHECK_3_HOUR_TIMER_STEP;
 					break;
 				}
 
-				case 4:
+				case CHECK_3_HOUR_TIMER_STEP:
 				{
 					static unsigned char ucTimerP5s = 0;
 
 					if( isFinishedThreeHoursTimer() )
-						ucStep = 99;
+						ucStep = READY_FOR_RESET_STEP;
 					else
 					{
 						if( getAdOriginalCh13Value() < 85 )
@@ -720,34 +768,36 @@ void main (void)
 						if( ucTimerP5s > 5)
 						{
 							ucTimerP5s = 0;
-							ucStep++;
+							ucStep = STARTUP_1_HOUR_TIMER_STEP;
 						}
 					}
 					break;
 				}
 
-				case 5:
+				case STARTUP_1_HOUR_TIMER_STEP:
 				{
 					clearThreeHoursTimer();
-					startOneHoursTimer( 3600 );
+					startOneHoursTimer( TIMER_1HOUR );
 					setPB3(SET_PIN_HIGH);
 					setPB4(SET_PIN_LOW);
 					setPB5(SET_PIN_HIGH);
-					ucStep++;
+					ucStep = CHECK_1_HOUR_TIMER_STEP;
 					break;
 				}
 
-				case 6:
+				case CHECK_1_HOUR_TIMER_STEP:
 				{
 					static unsigned int uiTimerOneP5s = 0;
 					static unsigned int uiTimerTwoP5s = 0;
 
+					unsigned int uiCh13Value = getAdOriginalCh13Value();
+
 
 					if( isFinishedOneHoursTimer() )
-						ucStep = 99;
+						ucStep = READY_FOR_RESET_STEP;
 					else
 					{
-						if( getAdOriginalCh13Value() > 100 )
+						if( uiCh13Value > 100 )
 						{
 							uiTimerOneP5s++;
 							uiTimerTwoP5s = 0; // need clear it because value is less than 25.
@@ -763,11 +813,11 @@ void main (void)
 
 							uiTimerOneP5s = 0;
 							uiTimerTwoP5s = 0;
-							ucStep++;
+					//		ucStep++;
 						}
 						else
 						{
-							if( getAdOriginalCh13Value() < 25 )
+							if( uiCh13Value < 25 )
 								uiTimerTwoP5s++;
 							else
 								uiTimerTwoP5s = 0;
@@ -779,53 +829,57 @@ void main (void)
 					break;
 				}
 
-				case 7:
-				{
-					static unsigned int uiTimerP5s = 0;
-					if( getAdOriginalCh13Value() < 25 )
-						uiTimerP5s++;
-					else
-						uiTimerP5s = 0;
+//				case 7:
+//				{
+//					static unsigned int uiTimerP5s = 0;
+//					if( getAdOriginalCh13Value() < 25 )
+//						uiTimerP5s++;
+//					else
+//						uiTimerP5s = 0;
+//
+//					if(uiTimerP5s > 5)
+//					{
+//						uiTimerP5s = 0;
+//						setPB3(SET_PIN_HIGH);
+//						setPB4(SET_PIN_LOW);
+//						setPB5(SET_PIN_HIGH);
+//						ucStep  = 99;
+//					}
+//
+//
+//					break;
+//				}
 
-					if(uiTimerP5s > 5)
-					{
-						uiTimerP5s = 0;
-						setPB3(SET_PIN_HIGH);
-						setPB4(SET_PIN_LOW);
-						setPB5(SET_PIN_HIGH);
-						ucStep  = 99;
-					}
 
-
-					break;
-				}
-
-
-				case 99:
+				case READY_FOR_RESET_STEP:
 				{
 					setPB3(SET_PIN_LOW);
 					setPB4(SET_PIN_LOW);
 					setPB5(SET_PIN_HIGH);
-					setPulseWidth();// need to set 60% pulse width
-					ucStep++;
+					pwm_config(0);
+					pwm_start(60);// need to set 60% pulse width
+					pwm_config(1);
+					ucStep = MEET_RESET_CONDITION_STEP;
 					break;
 				}
 
-				case 100:
+				case MEET_RESET_CONDITION_STEP:
 				{
 					static unsigned char ucTimerP5s = 0;
+
 					if( getAdOriginalCh13Value() >50 )
 						ucTimerP5s++;
 					else
 						ucTimerP5s = 0;
 
 					if(ucTimerP5s > 5)
-						ucStep++;
+						ucStep = RESET_STEP;
 					break;
 				}
 
-				case 101:
+				case RESET_STEP:
 				{
+					ucStep = INIT_STEP;
 					reset();
 					break;
 				}
@@ -835,12 +889,7 @@ void main (void)
 					break;
 			}
 
-
-
-
 			}
 		}
 //	return 0;
 }
-
-
