@@ -873,12 +873,12 @@ unsigned int adc_get(void);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 100
+# 101
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x0FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
 
-# 116
+# 117
 static void clearAllTimer(void)
 {
 clearTwelveHoursTimer();
@@ -894,12 +894,12 @@ if( bValue )
 
 TRISB3 = 1;
 
-# 133
+# 134
 else
 
 TRISB3 = 0;
 
-# 139
+# 140
 }
 
 
@@ -909,12 +909,12 @@ if( bValue )
 
 PB3 = 1;
 
-# 150
+# 151
 else
 
 PB3= 0;
 
-# 156
+# 157
 }
 
 
@@ -925,12 +925,12 @@ if( bValue )
 
 TRISB4 = 1;
 
-# 168
+# 169
 else
 
 TRISB4= 0;
 
-# 174
+# 175
 }
 
 
@@ -940,12 +940,12 @@ if( bValue )
 
 PB4 = 1;
 
-# 185
+# 186
 else
 
 PB4= 0;
 
-# 191
+# 192
 }
 
 
@@ -955,12 +955,12 @@ if( bValue )
 
 TRISB5 = 1;
 
-# 202
+# 203
 else
 
 TRISB5= 0;
 
-# 208
+# 209
 }
 
 
@@ -970,12 +970,12 @@ if( bValue )
 
 PB5 = 1;
 
-# 219
+# 220
 else
 
 PB5= 0;
 
-# 225
+# 226
 }
 
 
@@ -985,21 +985,7 @@ void initPB2_AsHighResistence( void )
 PB2 = 1;
 PBOD2 = 1;
 
-# 236
-}
-
-
-static void clearPinPortAndTimer(void)
-{
-
-
-setPB3(0);
-setPB4(0);
-setPB5(0);
-setPB2_AsHighResistence();
-clearAllTimer();
-
-# 251
+# 237
 }
 
 
@@ -1014,19 +1000,27 @@ unsigned char ucGetLowestTwoValue = 0,ucGeHighestSixValue = 0;
 
 unsigned char ucCCP1CON_Value = 0;
 
-# 269
+# 255
 ucConvertRealPulseWidth = ucPulseWidth << 1;
 
-# 275
+# 261
 ucGetLowestTwoValue = ucConvertRealPulseWidth & 0x03;
 
-# 281
+# 267
 ucCCP1CON_Value = ucGetLowestTwoValue << 4;
 
-# 287
+# 273
 ucGeHighestSixValue = ucConvertRealPulseWidth >> 2;
 
-# 296
+# 281
+if( ucPulseWidth <= 30)
+ucGeHighestSixValue = 0x19;
+else if((ucPulseWidth > 30) &&(ucPulseWidth < 90))
+ucGeHighestSixValue = 0x25;
+else
+ucGeHighestSixValue = 0x3F;;
+
+
 T2CON=0x04;
 PR2 = 49;
 CCPR1L = ucGeHighestSixValue;
@@ -1036,7 +1030,7 @@ CCP1CON = CCP1CON | ucCCP1CON_Value;
 TRISB2=0;
 PBOD2 = 0;
 
-# 307
+# 300
 }
 
 void pwm_config(unsigned char state)
@@ -1047,7 +1041,7 @@ CCP1CON|= 0x0c;
 else
 CCP1CON&= 0xf0;
 
-# 319
+# 312
 }
 
 
@@ -1063,7 +1057,7 @@ initPB4(0);
 
 initPB5(0);
 
-# 337
+# 330
 }
 
 static void setPinInitVaule( void )
@@ -1073,7 +1067,7 @@ setPB3(1);
 setPB4(0);
 setPB5(1);
 
-# 348
+# 341
 }
 
 static void selectAdChannel( void )
@@ -1082,7 +1076,7 @@ static void selectAdChannel( void )
 TRISB0 = 1;
 TRISB1 = 1;
 
-# 358
+# 351
 }
 
 
@@ -1091,10 +1085,10 @@ static void reset( void )
 
 while(1);
 
-# 368
+# 361
 }
 
-# 528
+# 525
 static unsigned char calPulseWidth( void )
 {
 unsigned char ucPulseWidth = 0;
@@ -1128,15 +1122,15 @@ ucPulseWidth = 30 + ucThreeTimesValue + ucHalfValue;
 
 }
 
-# 563
+# 560
 return ucPulseWidth;
 }
 
-# 591
+# 593
 int main (void)
 {
 
-# 603
+# 605
 initPin();
 setPinInitVaule();
 selectAdChannel();
@@ -1147,10 +1141,10 @@ timer1_interrupt_config();
 
 adc_test_init(12,3);
 
-# 618
+# 620
 adc_start();
 
-# 625
+# 627
 startTwentyMinTimer( 60 );
 
 while(1)
@@ -1166,7 +1160,7 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 646
+# 648
 enum systemStep {
 INIT_STEP = 0,
 START_UP_PWM_STEP,
@@ -1188,7 +1182,7 @@ switch(ucStep)
 case INIT_STEP:
 {
 
-# 670
+# 672
 static unsigned char ucTimerP3s = 0;
 
 if( isFinishedTwentyMinTimer() )
@@ -1213,14 +1207,14 @@ ucStep = START_UP_PWM_STEP;
 
 }
 
-# 696
+# 698
 break;
 }
 
 case START_UP_PWM_STEP:
 {
 
-# 705
+# 706
 unsigned char ucPulseWidth = 0;
 
 ucPulseWidth = calPulseWidth();
@@ -1239,7 +1233,7 @@ break;
 case CHECK_10_HOUR_TIMER_STEP:
 {
 
-# 726
+# 727
 static unsigned char ucTimerP5s = 0;
 
 if( isFinishedTwelveHoursTimer () )
@@ -1304,8 +1298,11 @@ break;
 
 case CHECK_1_HOUR_TIMER_STEP:
 {
+
+# 795
 static unsigned int uiTimerOneP5s = 0;
 static unsigned int uiTimerTwoP5s = 0;
+static unsigned int uiTimerThreeP5s = 0;
 
 unsigned int uiCh13Value = getAdOriginalCh13Value();
 
@@ -1316,11 +1313,16 @@ else
 {
 if( uiCh13Value > 100 )
 {
+if( uiTimerOneP5s <= 5 )
 uiTimerOneP5s++;
 uiTimerTwoP5s = 0;
+uiTimerThreeP5s = 0;
 }
 else
+{
 uiTimerOneP5s = 0;
+}
+
 
 if(uiTimerOneP5s > 5)
 {
@@ -1330,23 +1332,40 @@ setPB5(0);
 
 uiTimerOneP5s = 0;
 uiTimerTwoP5s = 0;
-
 }
 else
 {
-if( uiCh13Value < 25 )
+if( uiCh13Value < 90 )
+{
+if( uiTimerTwoP5s <= 5)
 uiTimerTwoP5s++;
+}
 else
+{
 uiTimerTwoP5s = 0;
+uiTimerThreeP5s = 0;
+}
 
 if(uiTimerTwoP5s > 5)
+{
+setPB3(1);
+setPB4(0);
+setPB5(1);
+
+if(uiCh13Value < 25)
+uiTimerThreeP5s++;
+else
+uiTimerThreeP5s = 0;
+
+if(uiTimerThreeP5s > 5)
 reset();
+}
+
 }
 }
 break;
 }
 
-# 854
 case READY_FOR_RESET_STEP:
 {
 setPB3(0);
@@ -1362,8 +1381,9 @@ break;
 case MEET_RESET_CONDITION_STEP:
 {
 static unsigned char ucTimerP5s = 0;
+unsigned int ucChValue = getAdOriginalCh13Value();
 
-if( getAdOriginalCh13Value() >50 )
+if( ucChValue > 50 )
 ucTimerP5s++;
 else
 ucTimerP5s = 0;

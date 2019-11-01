@@ -39,17 +39,17 @@ fsr0	equ	4
 c	equ	1
 z	equ	0
 pclath	equ	10
-# 100 "D:\develop\190625\AK7030-OTP\main.c"
+# 101 "D:\develop\190625\AK7030-OTP\main.c"
 	psect config,class=CONFIG,delta=2 ;#
-# 100 "D:\develop\190625\AK7030-OTP\main.c"
+# 101 "D:\develop\190625\AK7030-OTP\main.c"
 	dw 0x0FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF ;#
-# 101 "D:\develop\190625\AK7030-OTP\main.c"
+# 102 "D:\develop\190625\AK7030-OTP\main.c"
 	psect config,class=CONFIG,delta=2 ;#
-# 101 "D:\develop\190625\AK7030-OTP\main.c"
+# 102 "D:\develop\190625\AK7030-OTP\main.c"
 	dw 0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE ;#
-# 102 "D:\develop\190625\AK7030-OTP\main.c"
+# 103 "D:\develop\190625\AK7030-OTP\main.c"
 	psect config,class=CONFIG,delta=2 ;#
-# 102 "D:\develop\190625\AK7030-OTP\main.c"
+# 103 "D:\develop\190625\AK7030-OTP\main.c"
 	dw 0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8 ;#
 	FNCALL	_main,_initPin
 	FNCALL	_main,_setPinInitVaule
@@ -117,7 +117,6 @@ __pidataBANK0:
 	global	_uiSmallTimer
 	global	_uiTwentyMinTimer
 	global	main@uiTimerOneP5s
-	global	main@uiTimerTwoP5s
 	global	ISR@ucTimer1sCnt
 	global	_adc_convert_flag
 	global	_bBigTimerStartFlag
@@ -126,8 +125,8 @@ __pidataBANK0:
 	global	_bTwentyMinStartFlag
 	global	_sampleTimes
 	global	_timer
+	global	main@cTimerP5s_792
 	global	main@cTimerP5s_797
-	global	main@cTimerP5s_801
 	global	main@ucStep
 	global	main@ucTimerP3s
 	global	main@ucTimerP5s
@@ -135,6 +134,8 @@ __pidataBANK0:
 	global	vPutSampleDataIntoTable@ucChannelFourthLength
 	global	vPutSampleDataIntoTable@ucChannelFirstLength
 	global	_uiTwentySecondsTimer
+	global	main@uiTimerThreeP5s
+	global	main@uiTimerTwoP5s
 	global	_uiSampleChannelFirst
 	global	_uiSampleChannelFourteenth
 	global	_uiSampleChannelFourth
@@ -232,9 +233,6 @@ _uiTwentyMinTimer:
 main@uiTimerOneP5s:
        ds      2
 
-main@uiTimerTwoP5s:
-       ds      2
-
 ISR@ucTimer1sCnt:
        ds      1
 
@@ -259,10 +257,10 @@ _sampleTimes:
 _timer:
        ds      1
 
-main@cTimerP5s_797:
+main@cTimerP5s_792:
        ds      1
 
-main@cTimerP5s_801:
+main@cTimerP5s_797:
        ds      1
 
 main@ucStep:
@@ -291,6 +289,12 @@ psect	bssBANK1,class=BANK1,space=1
 global __pbssBANK1
 __pbssBANK1:
 _uiTwentySecondsTimer:
+       ds      2
+
+main@uiTimerThreeP5s:
+       ds      2
+
+main@uiTimerTwoP5s:
        ds      2
 
 _uiSampleChannelFirst:
@@ -325,13 +329,13 @@ psect cinit,class=CODE,delta=2
 	bcf	status, 7	;select IRP bank0
 	movlw	low(__pbssBANK0)
 	movwf	fsr
-	movlw	low((__pbssBANK0)+01Bh)
+	movlw	low((__pbssBANK0)+019h)
 	fcall	clear_ram
 ; Clear objects allocated to BANK1
 psect cinit,class=CODE,delta=2
 	movlw	low(__pbssBANK1)
 	movwf	fsr
-	movlw	low((__pbssBANK1)+04Ah)
+	movlw	low((__pbssBANK1)+04Eh)
 	fcall	clear_ram
 ; Initialize objects allocated to BANK0
 	global __pidataBANK0
@@ -526,6 +530,8 @@ setPB4@bValue:	; 1 bytes @ 0x0
 initPB5@bValue:	; 1 bytes @ 0x0
 	global	setPB5@bValue
 setPB5@bValue:	; 1 bytes @ 0x0
+	global	pwm_start@ucCCP1CON_Value
+pwm_start@ucCCP1CON_Value:	; 1 bytes @ 0x0
 	global	pwm_config@state
 pwm_config@state:	; 1 bytes @ 0x0
 	global	setAD_ConvertFlag@flag
@@ -547,8 +553,8 @@ startTwentyMinTimer@uiSetValue:	; 2 bytes @ 0x0
 ??_initPin:	; 0 bytes @ 0x1
 	global	??_setPinInitVaule
 ??_setPinInitVaule:	; 0 bytes @ 0x1
-	global	pwm_start@ucPulseWidth
-pwm_start@ucPulseWidth:	; 1 bytes @ 0x1
+	global	pwm_start@ucGetLowestTwoValue
+pwm_start@ucGetLowestTwoValue:	; 1 bytes @ 0x1
 	ds	1
 	global	??_startTwentyMinTimer
 ??_startTwentyMinTimer:	; 0 bytes @ 0x2
@@ -567,15 +573,12 @@ adc_test_init@channel:	; 1 bytes @ 0x2
 	ds	1
 	global	??_process_AD_Converter_Value
 ??_process_AD_Converter_Value:	; 0 bytes @ 0x3
-	global	pwm_start@ucCCP1CON_Value
-pwm_start@ucCCP1CON_Value:	; 1 bytes @ 0x3
-	ds	1
-	global	pwm_start@ucGetLowestTwoValue
-pwm_start@ucGetLowestTwoValue:	; 1 bytes @ 0x4
-	ds	1
 	global	pwm_start@ucConvertRealPulseWidth
-pwm_start@ucConvertRealPulseWidth:	; 1 bytes @ 0x5
+pwm_start@ucConvertRealPulseWidth:	; 1 bytes @ 0x3
 	ds	1
+	global	pwm_start@ucPulseWidth
+pwm_start@ucPulseWidth:	; 1 bytes @ 0x4
+	ds	2
 	global	Filter@filter_buf
 Filter@filter_buf:	; 24 bytes @ 0x6
 	ds	24
@@ -628,17 +631,20 @@ calPulseWidth@uiChannel2Value:	; 2 bytes @ 0x2F
 	ds	2
 	global	??_main
 ??_main:	; 0 bytes @ 0x31
+	global	main@ucChValue
+main@ucChValue:	; 2 bytes @ 0x31
+	ds	2
 	global	main@ucPulseWidth
-main@ucPulseWidth:	; 1 bytes @ 0x31
+main@ucPulseWidth:	; 1 bytes @ 0x33
 	ds	1
 	global	main@uiCh13Value
-main@uiCh13Value:	; 2 bytes @ 0x32
+main@uiCh13Value:	; 2 bytes @ 0x34
 	ds	2
-;;Data sizes: Strings 0, constant 0, data 1, bss 102, persistent 0 stack 0
+;;Data sizes: Strings 0, constant 0, data 1, bss 104, persistent 0 stack 0
 ;;Auto spaces:   Size  Autos    Used
 ;; COMMON          14     13      14
-;; BANK0           80     52      80
-;; BANK1           80      0      74
+;; BANK0           80     54      80
+;; BANK1           80      0      78
 ;; BANK3           96      0       0
 ;; BANK2           96      0       0
 
@@ -720,8 +726,8 @@ main@uiCh13Value:	; 2 bytes @ 0x32
 ;; ---------------------------------------------------------------------------------
 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;; ---------------------------------------------------------------------------------
-;; (0) _main                                                 3     3      0    2080
-;;                                             49 BANK0      3     3      0
+;; (0) _main                                                 5     5      0    2194
+;;                                             49 BANK0      5     5      0
 ;;                            _initPin
 ;;                    _setPinInitVaule
 ;;                    _selectAdChannel
@@ -837,8 +843,8 @@ main@uiCh13Value:	; 2 bytes @ 0x32
 ;; (1) _pwm_config                                           1     1      0      22
 ;;                                              0 BANK0      1     1      0
 ;; ---------------------------------------------------------------------------------
-;; (1) _pwm_start                                            6     6      0     141
-;;                                              0 BANK0      6     6      0
+;; (1) _pwm_start                                            5     5      0     210
+;;                                              0 BANK0      5     5      0
 ;; ---------------------------------------------------------------------------------
 ;; (2) _initPB2_AsHighResistence                             0     0      0       0
 ;; ---------------------------------------------------------------------------------
@@ -956,14 +962,14 @@ main@uiCh13Value:	; 2 bytes @ 0x32
 ;;BITSFR2              0      0       0       5        0.0%
 ;;SFR1                 0      0       0       2        0.0%
 ;;BITSFR1              0      0       0       2        0.0%
-;;BANK1               50      0      4A       8       92.5%
+;;BANK1               50      0      4E       8       97.5%
 ;;BITBANK1            50      0       0       7        0.0%
 ;;CODE                 0      0       0       0        0.0%
-;;DATA                 0      0      AF       6        0.0%
-;;ABS                  0      0      A8       3        0.0%
+;;DATA                 0      0      B3       6        0.0%
+;;ABS                  0      0      AC       3        0.0%
 ;;NULL                 0      0       0       0        0.0%
 ;;STACK                0      0       7       2        0.0%
-;;BANK0               50     34      50       5      100.0%
+;;BANK0               50     36      50       5      100.0%
 ;;BITBANK0            50      0       0       4        0.0%
 ;;SFR0                 0      0       0       1        0.0%
 ;;BITSFR0              0      0       0       1        0.0%
@@ -977,14 +983,15 @@ __pmaintext:
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 592 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 594 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
-;;  uiCh13Value     2   50[BANK0 ] unsigned int 
-;;  ucPulseWidth    1   49[BANK0 ] unsigned char 
+;;  ucChValue       2   49[BANK0 ] unsigned int 
+;;  uiCh13Value     2   52[BANK0 ] unsigned int 
+;;  ucPulseWidth    1   51[BANK0 ] unsigned char 
 ;; Return value:  Size  Location     Type
-;;                  2  747[COMMON] int 
+;;                  2  746[COMMON] int 
 ;; Registers used:
 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
 ;; Tracked objects:
@@ -993,10 +1000,10 @@ __pmaintext:
 ;;		Unchanged: FFE00/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
-;;      Locals:         0       3       0       0       0
+;;      Locals:         0       5       0       0       0
 ;;      Temps:          0       0       0       0       0
-;;      Totals:         0       3       0       0       0
-;;Total ram usage:        3 bytes
+;;      Totals:         0       5       0       0       0
+;;Total ram usage:        5 bytes
 ;; Hardware stack levels required when called:    5
 ;; This function calls:
 ;;		_initPin
@@ -1035,141 +1042,141 @@ __pmaintext:
 ;;
 psect	maintext
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	592
+	line	594
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
 	
 _main:	
 	opt	stack 3
 ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
-	line	603
-	
-l3659:	
-;main.c: 603: initPin();
-	fcall	_initPin
-	line	604
-;main.c: 604: setPinInitVaule();
-	fcall	_setPinInitVaule
 	line	605
 	
-l3661:	
-;main.c: 605: selectAdChannel();
-	fcall	_selectAdChannel
+l3699:	
+;main.c: 605: initPin();
+	fcall	_initPin
+	line	606
+;main.c: 606: setPinInitVaule();
+	fcall	_setPinInitVaule
 	line	607
 	
-l3663:	
-;main.c: 607: clock_config();
-	fcall	_clock_config
-	line	608
-	
-l3665:	
-;main.c: 608: timer1_config();
-	fcall	_timer1_config
+l3701:	
+;main.c: 607: selectAdChannel();
+	fcall	_selectAdChannel
 	line	609
 	
-l3667:	
-;main.c: 609: timer1_interrupt_config();
-	fcall	_timer1_interrupt_config
+l3703:	
+;main.c: 609: clock_config();
+	fcall	_clock_config
+	line	610
+	
+l3705:	
+;main.c: 610: timer1_config();
+	fcall	_timer1_config
 	line	611
-;main.c: 611: adc_test_init(12,3);
+	
+l3707:	
+;main.c: 611: timer1_interrupt_config();
+	fcall	_timer1_interrupt_config
+	line	613
+;main.c: 613: adc_test_init(12,3);
 	movlw	(03h)
 	bcf	status, 5	;RP0=0, select bank0
 	movwf	(?_adc_test_init)
 	movlw	(0Ch)
 	fcall	_adc_test_init
-	line	618
+	line	620
 	
-l3669:	
-;main.c: 618: adc_start();
+l3709:	
+;main.c: 620: adc_start();
 	fcall	_adc_start
-	line	625
+	line	627
 	
-l3671:	
-;main.c: 625: startTwentyMinTimer( 60 );
+l3711:	
+;main.c: 627: startTwentyMinTimer( 60 );
 	movlw	03Ch
 	movwf	(?_startTwentyMinTimer)
 	clrf	(?_startTwentyMinTimer+1)
 	fcall	_startTwentyMinTimer
-	line	630
-	
-l3673:	
-# 630 "D:\develop\190625\AK7030-OTP\main.c"
- clrwdt ;#
-psect	maintext
 	line	632
 	
-l3675:	
-;main.c: 632: process_AD_Converter_Value();
-	fcall	_process_AD_Converter_Value
+l3713:	
+# 632 "D:\develop\190625\AK7030-OTP\main.c"
+ clrwdt ;#
+psect	maintext
 	line	634
 	
-l3677:	
-;main.c: 634: if( isPermitSampleTime() )
+l3715:	
+;main.c: 634: process_AD_Converter_Value();
+	fcall	_process_AD_Converter_Value
+	line	636
+	
+l3717:	
+;main.c: 636: if( isPermitSampleTime() )
 	fcall	_isPermitSampleTime
 	xorlw	0
 	skipnz
-	goto	u1241
-	goto	u1240
-u1241:
-	goto	l3673
-u1240:
-	line	638
+	goto	u1341
+	goto	u1340
+u1341:
+	goto	l3713
+u1340:
+	line	640
 	
-l3679:	
-;main.c: 635: {
-;main.c: 638: clrSampeTime();
+l3719:	
+;main.c: 637: {
+;main.c: 640: clrSampeTime();
 	fcall	_clrSampeTime
-	line	661
-;main.c: 646: enum systemStep {
-;main.c: 647: INIT_STEP = 0,
-;main.c: 648: START_UP_PWM_STEP,
-;main.c: 649: CHECK_10_HOUR_TIMER_STEP,
-;main.c: 650: STARTUP_3_HOUR_TIMER_STEP,
-;main.c: 651: CHECK_3_HOUR_TIMER_STEP,
-;main.c: 652: STARTUP_1_HOUR_TIMER_STEP,
-;main.c: 653: CHECK_1_HOUR_TIMER_STEP,
-;main.c: 654: READY_FOR_RESET_STEP = 99,
-;main.c: 655: MEET_RESET_CONDITION_STEP,
-;main.c: 656: RESET_STEP,
-;main.c: 657: };
-;main.c: 659: static enum systemStep ucStep = INIT_STEP;
-;main.c: 661: switch(ucStep)
-	goto	l3817
-	line	672
+	line	663
+;main.c: 648: enum systemStep {
+;main.c: 649: INIT_STEP = 0,
+;main.c: 650: START_UP_PWM_STEP,
+;main.c: 651: CHECK_10_HOUR_TIMER_STEP,
+;main.c: 652: STARTUP_3_HOUR_TIMER_STEP,
+;main.c: 653: CHECK_3_HOUR_TIMER_STEP,
+;main.c: 654: STARTUP_1_HOUR_TIMER_STEP,
+;main.c: 655: CHECK_1_HOUR_TIMER_STEP,
+;main.c: 656: READY_FOR_RESET_STEP = 99,
+;main.c: 657: MEET_RESET_CONDITION_STEP,
+;main.c: 658: RESET_STEP,
+;main.c: 659: };
+;main.c: 661: static enum systemStep ucStep = INIT_STEP;
+;main.c: 663: switch(ucStep)
+	goto	l3875
+	line	674
 	
-l3681:	
-;main.c: 665: {
-;main.c: 670: static unsigned char ucTimerP3s = 0;
-;main.c: 672: if( isFinishedTwentyMinTimer() )
+l3721:	
+;main.c: 667: {
+;main.c: 672: static unsigned char ucTimerP3s = 0;
+;main.c: 674: if( isFinishedTwentyMinTimer() )
 	fcall	_isFinishedTwentyMinTimer
 	xorlw	0
 	skipnz
-	goto	u1251
-	goto	u1250
-u1251:
-	goto	l3687
-u1250:
-	line	674
+	goto	u1351
+	goto	u1350
+u1351:
+	goto	l3727
+u1350:
+	line	676
 	
-l3683:	
-;main.c: 673: {
-;main.c: 674: ucStep = READY_FOR_RESET_STEP;
+l3723:	
+;main.c: 675: {
+;main.c: 676: ucStep = READY_FOR_RESET_STEP;
 	movlw	(063h)
 	movwf	(main@ucStep)
-	line	675
+	line	677
 	
-l3685:	
-;main.c: 675: ucTimerP3s = 0;
+l3725:	
+;main.c: 677: ucTimerP3s = 0;
 	clrf	(main@ucTimerP3s)
-	line	676
-;main.c: 676: }
-	goto	l3673
-	line	679
+	line	678
+;main.c: 678: }
+	goto	l3713
+	line	681
 	
-l3687:	
-;main.c: 677: else
-;main.c: 678: {
-;main.c: 679: if( getAdOriginalCh13Value() > 90 )
+l3727:	
+;main.c: 679: else
+;main.c: 680: {
+;main.c: 681: if( getAdOriginalCh13Value() > 90 )
 	fcall	_getAdOriginalCh13Value
 	movlw	high(05Bh)
 	subwf	(1+(?_getAdOriginalCh13Value)),w
@@ -1177,133 +1184,141 @@ l3687:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh13Value)),w
 	skipc
-	goto	u1261
-	goto	u1260
-u1261:
-	goto	l3691
-u1260:
-	line	681
+	goto	u1361
+	goto	u1360
+u1361:
+	goto	l3731
+u1360:
+	line	683
 	
-l3689:	
-;main.c: 680: {
-;main.c: 681: ucTimerP3s++;
+l3729:	
+;main.c: 682: {
+;main.c: 683: ucTimerP3s++;
 	incf	(main@ucTimerP3s),f
-	line	682
-;main.c: 682: }
-	goto	l3693
 	line	684
-	
-l3691:	
-;main.c: 683: else
-;main.c: 684: ucTimerP3s = 0;
-	clrf	(main@ucTimerP3s)
+;main.c: 684: }
+	goto	l3733
 	line	686
 	
-l3693:	
-;main.c: 686: if( ucTimerP3s >= 3)
+l3731:	
+;main.c: 685: else
+;main.c: 686: ucTimerP3s = 0;
+	clrf	(main@ucTimerP3s)
+	line	688
+	
+l3733:	
+;main.c: 688: if( ucTimerP3s >= 3)
 	movlw	(03h)
 	subwf	(main@ucTimerP3s),w
 	skipc
-	goto	u1271
-	goto	u1270
-u1271:
-	goto	l749
-u1270:
-	line	688
+	goto	u1371
+	goto	u1370
+u1371:
+	goto	l756
+u1370:
+	line	690
 	
-l3695:	
-;main.c: 687: {
-;main.c: 688: ucTimerP3s = 0;
+l3735:	
+;main.c: 689: {
+;main.c: 690: ucTimerP3s = 0;
 	clrf	(main@ucTimerP3s)
-	line	689
+	line	691
 	
-l3697:	
-;main.c: 689: ucStep = START_UP_PWM_STEP;
+l3737:	
+;main.c: 691: ucStep = START_UP_PWM_STEP;
 	clrf	(main@ucStep)
 	incf	(main@ucStep),f
-	goto	l3673
-	line	705
+	goto	l3713
+	line	694
 	
-l3699:	
-	line	707
+l756:	
+	line	698
+;main.c: 692: }
+;main.c: 694: }
+;main.c: 698: break;
+	goto	l3713
+	line	706
 	
-l3701:	
-;main.c: 707: ucPulseWidth = calPulseWidth();
+l3739:	
+	line	708
+	
+l3741:	
+;main.c: 708: ucPulseWidth = calPulseWidth();
 	fcall	_calPulseWidth
 	movwf	(main@ucPulseWidth)
-	line	709
+	line	710
 	
-l3703:	
-;main.c: 709: pwm_start( ucPulseWidth );
+l3743:	
+;main.c: 710: pwm_start( ucPulseWidth );
 	movf	(main@ucPulseWidth),w
 	fcall	_pwm_start
-	line	711
-	
-l3705:	
-;main.c: 711: setPB3(0);
-	movlw	(0)
-	fcall	_setPB3
 	line	712
 	
-l3707:	
-;main.c: 712: setPB4(1);
-	movlw	(01h)
-	fcall	_setPB4
+l3745:	
+;main.c: 712: setPB3(0);
+	movlw	(0)
+	fcall	_setPB3
 	line	713
 	
-l3709:	
-;main.c: 713: setPB5(0);
-	movlw	(0)
-	fcall	_setPB5
+l3747:	
+;main.c: 713: setPB4(1);
+	movlw	(01h)
+	fcall	_setPB4
 	line	714
 	
-l3711:	
-;main.c: 714: clearTwentyMinTimer();
-	fcall	_clearTwentyMinTimer
+l3749:	
+;main.c: 714: setPB5(0);
+	movlw	(0)
+	fcall	_setPB5
 	line	715
 	
-l3713:	
-;main.c: 715: startTwelveHourTimer( 240);
+l3751:	
+;main.c: 715: clearTwentyMinTimer();
+	fcall	_clearTwentyMinTimer
+	line	716
+	
+l3753:	
+;main.c: 716: startTwelveHourTimer( 240);
 	movlw	0F0h
 	movwf	(?_startTwelveHourTimer)
 	clrf	(?_startTwelveHourTimer+1)
 	fcall	_startTwelveHourTimer
-	line	716
+	line	717
 	
-l3715:	
-;main.c: 716: ucStep = CHECK_10_HOUR_TIMER_STEP;
+l3755:	
+;main.c: 717: ucStep = CHECK_10_HOUR_TIMER_STEP;
 	movlw	(02h)
 	movwf	(main@ucStep)
-	line	717
-;main.c: 717: break;
-	goto	l3673
-	line	728
+	line	718
+;main.c: 718: break;
+	goto	l3713
+	line	729
 	
-l3717:	
-;main.c: 721: {
-;main.c: 726: static unsigned char ucTimerP5s = 0;
-;main.c: 728: if( isFinishedTwelveHoursTimer () )
+l3757:	
+;main.c: 722: {
+;main.c: 727: static unsigned char ucTimerP5s = 0;
+;main.c: 729: if( isFinishedTwelveHoursTimer () )
 	fcall	_isFinishedTwelveHoursTimer
 	xorlw	0
 	skipnz
-	goto	u1281
-	goto	u1280
-u1281:
-	goto	l3721
-u1280:
-	line	729
+	goto	u1381
+	goto	u1380
+u1381:
+	goto	l3761
+u1380:
+	line	730
 	
-l3719:	
-;main.c: 729: ucStep = READY_FOR_RESET_STEP;
+l3759:	
+;main.c: 730: ucStep = READY_FOR_RESET_STEP;
 	movlw	(063h)
 	movwf	(main@ucStep)
-	goto	l3673
-	line	732
+	goto	l3713
+	line	733
 	
-l3721:	
-;main.c: 730: else
-;main.c: 731: {
-;main.c: 732: if( getAdOriginalCh13Value() < 200 )
+l3761:	
+;main.c: 731: else
+;main.c: 732: {
+;main.c: 733: if( getAdOriginalCh13Value() < 200 )
 	fcall	_getAdOriginalCh13Value
 	movlw	high(0C8h)
 	subwf	(1+(?_getAdOriginalCh13Value)),w
@@ -1311,90 +1326,90 @@ l3721:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh13Value)),w
 	skipnc
-	goto	u1291
-	goto	u1290
-u1291:
-	goto	l3725
-u1290:
-	line	733
+	goto	u1391
+	goto	u1390
+u1391:
+	goto	l3765
+u1390:
+	line	734
 	
-l3723:	
-;main.c: 733: ucTimerP5s++;
+l3763:	
+;main.c: 734: ucTimerP5s++;
 	incf	(main@ucTimerP5s),f
-	goto	l3727
-	line	735
+	goto	l3767
+	line	736
 	
-l3725:	
-;main.c: 734: else
-;main.c: 735: ucTimerP5s = 0;
+l3765:	
+;main.c: 735: else
+;main.c: 736: ucTimerP5s = 0;
 	clrf	(main@ucTimerP5s)
-	line	737
+	line	738
 	
-l3727:	
-;main.c: 737: if( ucTimerP5s > 5)
+l3767:	
+;main.c: 738: if( ucTimerP5s > 5)
 	movlw	(06h)
 	subwf	(main@ucTimerP5s),w
 	skipc
-	goto	u1301
-	goto	u1300
-u1301:
-	goto	l749
-u1300:
-	line	739
-	
-l3729:	
-;main.c: 738: {
-;main.c: 739: ucTimerP5s = 0;
-	clrf	(main@ucTimerP5s)
+	goto	u1401
+	goto	u1400
+u1401:
+	goto	l756
+u1400:
 	line	740
 	
-l3731:	
-;main.c: 740: ucStep = STARTUP_3_HOUR_TIMER_STEP;
+l3769:	
+;main.c: 739: {
+;main.c: 740: ucTimerP5s = 0;
+	clrf	(main@ucTimerP5s)
+	line	741
+	
+l3771:	
+;main.c: 741: ucStep = STARTUP_3_HOUR_TIMER_STEP;
 	movlw	(03h)
 	movwf	(main@ucStep)
-	goto	l3673
-	line	749
-	
-l3733:	
-;main.c: 748: {
-;main.c: 749: clearTwelveHoursTimer();
-	fcall	_clearTwelveHoursTimer
+	goto	l3713
 	line	750
 	
-l3735:	
-;main.c: 750: startThreeHoursTimer(180);
+l3773:	
+;main.c: 749: {
+;main.c: 750: clearTwelveHoursTimer();
+	fcall	_clearTwelveHoursTimer
+	line	751
+	
+l3775:	
+;main.c: 751: startThreeHoursTimer(180);
 	movlw	0B4h
 	movwf	(?_startThreeHoursTimer)
 	clrf	(?_startThreeHoursTimer+1)
 	fcall	_startThreeHoursTimer
-	line	751
-;main.c: 751: ucStep = CHECK_3_HOUR_TIMER_STEP;
+	line	752
+;main.c: 752: ucStep = CHECK_3_HOUR_TIMER_STEP;
 	movlw	(04h)
 	movwf	(main@ucStep)
-	line	752
-;main.c: 752: break;
-	goto	l3673
-	line	759
+	line	753
+;main.c: 753: break;
+	goto	l3713
+	line	760
 	
-l3737:	
-;main.c: 756: {
-;main.c: 757: static unsigned char ucTimerP5s = 0;
-;main.c: 759: if( isFinishedThreeHoursTimer() )
+l3777:	
+;main.c: 757: {
+;main.c: 758: static unsigned char ucTimerP5s = 0;
+;main.c: 760: if( isFinishedThreeHoursTimer() )
 	fcall	_isFinishedThreeHoursTimer
 	xorlw	0
 	skipnz
-	goto	u1311
-	goto	u1310
-u1311:
-	goto	l3741
-u1310:
-	goto	l3719
-	line	763
+	goto	u1411
+	goto	u1410
+u1411:
+	goto	l3781
+u1410:
+	goto	l3759
+	line	764
 	
-l3741:	
-;main.c: 761: else
-;main.c: 762: {
-;main.c: 763: if( getAdOriginalCh13Value() < 85 )
+l3781:	
+;main.c: 762: else
+;main.c: 763: {
+;main.c: 764: if( getAdOriginalCh13Value() < 85 )
 	fcall	_getAdOriginalCh13Value
 	movlw	high(055h)
 	subwf	(1+(?_getAdOriginalCh13Value)),w
@@ -1402,348 +1417,469 @@ l3741:
 	skipnz
 	subwf	(0+(?_getAdOriginalCh13Value)),w
 	skipnc
-	goto	u1321
-	goto	u1320
-u1321:
-	goto	l3745
-u1320:
-	line	764
+	goto	u1421
+	goto	u1420
+u1421:
+	goto	l3785
+u1420:
+	line	765
 	
-l3743:	
-;main.c: 764: ucTimerP5s++;
-	incf	(main@cTimerP5s_797),f
-	goto	l3747
-	line	766
+l3783:	
+;main.c: 765: ucTimerP5s++;
+	incf	(main@cTimerP5s_792),f
+	goto	l3787
+	line	767
 	
-l3745:	
-;main.c: 765: else
-;main.c: 766: ucTimerP5s = 0;
-	clrf	(main@cTimerP5s_797)
-	line	768
+l3785:	
+;main.c: 766: else
+;main.c: 767: ucTimerP5s = 0;
+	clrf	(main@cTimerP5s_792)
+	line	769
 	
-l3747:	
-;main.c: 768: if( ucTimerP5s > 5)
+l3787:	
+;main.c: 769: if( ucTimerP5s > 5)
 	movlw	(06h)
-	subwf	(main@cTimerP5s_797),w
+	subwf	(main@cTimerP5s_792),w
 	skipc
-	goto	u1331
-	goto	u1330
-u1331:
-	goto	l749
-u1330:
-	line	770
-	
-l3749:	
-;main.c: 769: {
-;main.c: 770: ucTimerP5s = 0;
-	clrf	(main@cTimerP5s_797)
+	goto	u1431
+	goto	u1430
+u1431:
+	goto	l756
+u1430:
 	line	771
 	
-l3751:	
-;main.c: 771: ucStep = STARTUP_1_HOUR_TIMER_STEP;
+l3789:	
+;main.c: 770: {
+;main.c: 771: ucTimerP5s = 0;
+	clrf	(main@cTimerP5s_792)
+	line	772
+	
+l3791:	
+;main.c: 772: ucStep = STARTUP_1_HOUR_TIMER_STEP;
 	movlw	(05h)
 	movwf	(main@ucStep)
-	goto	l3673
-	line	779
-	
-l3753:	
-;main.c: 778: {
-;main.c: 779: clearThreeHoursTimer();
-	fcall	_clearThreeHoursTimer
+	goto	l3713
 	line	780
 	
-l3755:	
-;main.c: 780: startOneHoursTimer( 120 );
+l3793:	
+;main.c: 779: {
+;main.c: 780: clearThreeHoursTimer();
+	fcall	_clearThreeHoursTimer
+	line	781
+	
+l3795:	
+;main.c: 781: startOneHoursTimer( 120 );
 	movlw	078h
 	movwf	(?_startOneHoursTimer)
 	clrf	(?_startOneHoursTimer+1)
 	fcall	_startOneHoursTimer
-	line	781
-	
-l3757:	
-;main.c: 781: setPB3(1);
-	movlw	(01h)
-	fcall	_setPB3
 	line	782
 	
-l3759:	
-;main.c: 782: setPB4(0);
-	movlw	(0)
-	fcall	_setPB4
+l3797:	
+;main.c: 782: setPB3(1);
+	movlw	(01h)
+	fcall	_setPB3
 	line	783
 	
-l3761:	
-;main.c: 783: setPB5(1);
-	movlw	(01h)
-	fcall	_setPB5
+l3799:	
+;main.c: 783: setPB4(0);
+	movlw	(0)
+	fcall	_setPB4
 	line	784
 	
-l3763:	
-;main.c: 784: ucStep = CHECK_1_HOUR_TIMER_STEP;
+l3801:	
+;main.c: 784: setPB5(1);
+	movlw	(01h)
+	fcall	_setPB5
+	line	785
+	
+l3803:	
+;main.c: 785: ucStep = CHECK_1_HOUR_TIMER_STEP;
 	movlw	(06h)
 	movwf	(main@ucStep)
-	line	785
-;main.c: 785: break;
-	goto	l3673
-	line	793
+	line	786
+;main.c: 786: break;
+	goto	l3713
+	line	799
 	
-l3765:	
-;main.c: 789: {
-;main.c: 790: static unsigned int uiTimerOneP5s = 0;
-;main.c: 791: static unsigned int uiTimerTwoP5s = 0;
-;main.c: 793: unsigned int uiCh13Value = getAdOriginalCh13Value();
+l3805:	
+;main.c: 790: {
+;main.c: 795: static unsigned int uiTimerOneP5s = 0;
+;main.c: 796: static unsigned int uiTimerTwoP5s = 0;
+;main.c: 797: static unsigned int uiTimerThreeP5s = 0;
+;main.c: 799: unsigned int uiCh13Value = getAdOriginalCh13Value();
 	fcall	_getAdOriginalCh13Value
 	movf	(1+(?_getAdOriginalCh13Value)),w
 	movwf	(main@uiCh13Value+1)
 	movf	(0+(?_getAdOriginalCh13Value)),w
 	movwf	(main@uiCh13Value)
-	line	796
+	line	802
 	
-l3767:	
-;main.c: 796: if( isFinishedOneHoursTimer() )
+l3807:	
+;main.c: 802: if( isFinishedOneHoursTimer() )
 	fcall	_isFinishedOneHoursTimer
 	xorlw	0
 	skipnz
-	goto	u1341
-	goto	u1340
-u1341:
-	goto	l3771
-u1340:
-	goto	l3719
-	line	800
+	goto	u1441
+	goto	u1440
+u1441:
+	goto	l3811
+u1440:
+	goto	l3759
+	line	806
 	
-l3771:	
-;main.c: 798: else
-;main.c: 799: {
-;main.c: 800: if( uiCh13Value > 100 )
+l3811:	
+;main.c: 804: else
+;main.c: 805: {
+;main.c: 806: if( uiCh13Value > 100 )
 	movlw	high(065h)
 	subwf	(main@uiCh13Value+1),w
 	movlw	low(065h)
 	skipnz
 	subwf	(main@uiCh13Value),w
 	skipc
-	goto	u1351
-	goto	u1350
-u1351:
-	goto	l3777
-u1350:
-	line	802
-	
-l3773:	
-;main.c: 801: {
-;main.c: 802: uiTimerOneP5s++;
-	incf	(main@uiTimerOneP5s),f
-	skipnz
-	incf	(main@uiTimerOneP5s+1),f
-	line	803
-	
-l3775:	
-;main.c: 803: uiTimerTwoP5s = 0;
-	clrf	(main@uiTimerTwoP5s)
-	clrf	(main@uiTimerTwoP5s+1)
-	line	804
-;main.c: 804: }
-	goto	l3779
-	line	806
-	
-l3777:	
-;main.c: 805: else
-;main.c: 806: uiTimerOneP5s = 0;
-	clrf	(main@uiTimerOneP5s)
-	clrf	(main@uiTimerOneP5s+1)
+	goto	u1451
+	goto	u1450
+u1451:
+	goto	l3821
+u1450:
 	line	808
 	
-l3779:	
-;main.c: 808: if(uiTimerOneP5s > 5)
+l3813:	
+;main.c: 807: {
+;main.c: 808: if( uiTimerOneP5s <= 5 )
 	movlw	high(06h)
 	subwf	(main@uiTimerOneP5s+1),w
 	movlw	low(06h)
 	skipnz
 	subwf	(main@uiTimerOneP5s),w
-	skipc
-	goto	u1361
-	goto	u1360
-u1361:
-	goto	l3787
-u1360:
+	skipnc
+	goto	u1461
+	goto	u1460
+u1461:
+	goto	l3817
+u1460:
+	line	809
+	
+l3815:	
+;main.c: 809: uiTimerOneP5s++;
+	incf	(main@uiTimerOneP5s),f
+	skipnz
+	incf	(main@uiTimerOneP5s+1),f
 	line	810
 	
-l3781:	
-;main.c: 809: {
-;main.c: 810: setPB3(0);
-	movlw	(0)
-	fcall	_setPB3
+l3817:	
+;main.c: 810: uiTimerTwoP5s = 0;
+	bsf	status, 5	;RP0=1, select bank1
+	clrf	(main@uiTimerTwoP5s)^080h
+	clrf	(main@uiTimerTwoP5s+1)^080h
 	line	811
-;main.c: 811: setPB4(1);
-	movlw	(01h)
-	fcall	_setPB4
-	line	812
-;main.c: 812: setPB5(0);
-	movlw	(0)
-	fcall	_setPB5
-	line	814
 	
-l3783:	
-;main.c: 814: uiTimerOneP5s = 0;
-	clrf	(main@uiTimerOneP5s)
-	clrf	(main@uiTimerOneP5s+1)
+l3819:	
+;main.c: 811: uiTimerThreeP5s = 0;
+	clrf	(main@uiTimerThreeP5s)^080h
+	clrf	(main@uiTimerThreeP5s+1)^080h
+	line	812
+;main.c: 812: }
+	goto	l3823
 	line	815
 	
-l3785:	
-;main.c: 815: uiTimerTwoP5s = 0;
-	clrf	(main@uiTimerTwoP5s)
-	clrf	(main@uiTimerTwoP5s+1)
-	line	817
-;main.c: 817: }
-	goto	l3673
-	line	820
+l3821:	
+;main.c: 813: else
+;main.c: 814: {
+;main.c: 815: uiTimerOneP5s = 0;
+	clrf	(main@uiTimerOneP5s)
+	clrf	(main@uiTimerOneP5s+1)
+	line	819
 	
-l3787:	
-;main.c: 818: else
-;main.c: 819: {
-;main.c: 820: if( uiCh13Value < 25 )
+l3823:	
+;main.c: 816: }
+;main.c: 819: if(uiTimerOneP5s > 5)
+	movlw	high(06h)
+	bcf	status, 5	;RP0=0, select bank0
+	subwf	(main@uiTimerOneP5s+1),w
+	movlw	low(06h)
+	skipnz
+	subwf	(main@uiTimerOneP5s),w
+	skipc
+	goto	u1471
+	goto	u1470
+u1471:
+	goto	l3831
+u1470:
+	line	821
+	
+l3825:	
+;main.c: 820: {
+;main.c: 821: setPB3(0);
+	movlw	(0)
+	fcall	_setPB3
+	line	822
+;main.c: 822: setPB4(1);
+	movlw	(01h)
+	fcall	_setPB4
+	line	823
+;main.c: 823: setPB5(0);
+	movlw	(0)
+	fcall	_setPB5
+	line	825
+	
+l3827:	
+;main.c: 825: uiTimerOneP5s = 0;
+	clrf	(main@uiTimerOneP5s)
+	clrf	(main@uiTimerOneP5s+1)
+	line	826
+	
+l3829:	
+;main.c: 826: uiTimerTwoP5s = 0;
+	bsf	status, 5	;RP0=1, select bank1
+	clrf	(main@uiTimerTwoP5s)^080h
+	clrf	(main@uiTimerTwoP5s+1)^080h
+	line	827
+;main.c: 827: }
+	goto	l3713
+	line	830
+	
+l3831:	
+;main.c: 828: else
+;main.c: 829: {
+;main.c: 830: if( uiCh13Value < 90 )
+	movlw	high(05Ah)
+	subwf	(main@uiCh13Value+1),w
+	movlw	low(05Ah)
+	skipnz
+	subwf	(main@uiCh13Value),w
+	skipnc
+	goto	u1481
+	goto	u1480
+u1481:
+	goto	l3837
+u1480:
+	line	832
+	
+l3833:	
+;main.c: 831: {
+;main.c: 832: if( uiTimerTwoP5s <= 5)
+	movlw	high(06h)
+	bsf	status, 5	;RP0=1, select bank1
+	subwf	(main@uiTimerTwoP5s+1)^080h,w
+	movlw	low(06h)
+	skipnz
+	subwf	(main@uiTimerTwoP5s)^080h,w
+	skipnc
+	goto	u1491
+	goto	u1490
+u1491:
+	goto	l3839
+u1490:
+	line	833
+	
+l3835:	
+;main.c: 833: uiTimerTwoP5s++;
+	incf	(main@uiTimerTwoP5s)^080h,f
+	skipnz
+	incf	(main@uiTimerTwoP5s+1)^080h,f
+	goto	l3839
+	line	837
+	
+l3837:	
+;main.c: 835: else
+;main.c: 836: {
+;main.c: 837: uiTimerTwoP5s = 0;
+	bsf	status, 5	;RP0=1, select bank1
+	clrf	(main@uiTimerTwoP5s)^080h
+	clrf	(main@uiTimerTwoP5s+1)^080h
+	line	838
+;main.c: 838: uiTimerThreeP5s = 0;
+	clrf	(main@uiTimerThreeP5s)^080h
+	clrf	(main@uiTimerThreeP5s+1)^080h
+	line	841
+	
+l3839:	
+;main.c: 839: }
+;main.c: 841: if(uiTimerTwoP5s > 5)
+	movlw	high(06h)
+	subwf	(main@uiTimerTwoP5s+1)^080h,w
+	movlw	low(06h)
+	skipnz
+	subwf	(main@uiTimerTwoP5s)^080h,w
+	skipc
+	goto	u1501
+	goto	u1500
+u1501:
+	goto	l3713
+u1500:
+	line	843
+	
+l3841:	
+;main.c: 842: {
+;main.c: 843: setPB3(1);
+	movlw	(01h)
+	fcall	_setPB3
+	line	844
+;main.c: 844: setPB4(0);
+	movlw	(0)
+	fcall	_setPB4
+	line	845
+;main.c: 845: setPB5(1);
+	movlw	(01h)
+	fcall	_setPB5
+	line	847
+	
+l3843:	
+;main.c: 847: if(uiCh13Value < 25)
 	movlw	high(019h)
 	subwf	(main@uiCh13Value+1),w
 	movlw	low(019h)
 	skipnz
 	subwf	(main@uiCh13Value),w
 	skipnc
-	goto	u1371
-	goto	u1370
-u1371:
-	goto	l3791
-u1370:
-	line	821
+	goto	u1511
+	goto	u1510
+u1511:
+	goto	l3847
+u1510:
+	line	848
 	
-l3789:	
-;main.c: 821: uiTimerTwoP5s++;
-	incf	(main@uiTimerTwoP5s),f
+l3845:	
+;main.c: 848: uiTimerThreeP5s++;
+	bsf	status, 5	;RP0=1, select bank1
+	incf	(main@uiTimerThreeP5s)^080h,f
 	skipnz
-	incf	(main@uiTimerTwoP5s+1),f
-	goto	l3793
-	line	823
+	incf	(main@uiTimerThreeP5s+1)^080h,f
+	goto	l3849
+	line	850
 	
-l3791:	
-;main.c: 822: else
-;main.c: 823: uiTimerTwoP5s = 0;
-	clrf	(main@uiTimerTwoP5s)
-	clrf	(main@uiTimerTwoP5s+1)
-	line	825
+l3847:	
+;main.c: 849: else
+;main.c: 850: uiTimerThreeP5s = 0;
+	bsf	status, 5	;RP0=1, select bank1
+	clrf	(main@uiTimerThreeP5s)^080h
+	clrf	(main@uiTimerThreeP5s+1)^080h
+	line	852
 	
-l3793:	
-;main.c: 825: if(uiTimerTwoP5s > 5)
+l3849:	
+;main.c: 852: if(uiTimerThreeP5s > 5)
 	movlw	high(06h)
-	subwf	(main@uiTimerTwoP5s+1),w
+	subwf	(main@uiTimerThreeP5s+1)^080h,w
 	movlw	low(06h)
 	skipnz
-	subwf	(main@uiTimerTwoP5s),w
+	subwf	(main@uiTimerThreeP5s)^080h,w
 	skipc
-	goto	u1381
-	goto	u1380
-u1381:
-	goto	l749
-u1380:
-	line	826
+	goto	u1521
+	goto	u1520
+u1521:
+	goto	l756
+u1520:
+	line	853
 	
-l3795:	
-;main.c: 826: reset();
+l3851:	
+;main.c: 853: reset();
 	fcall	_reset
-	goto	l3673
-	line	856
+	goto	l3713
+	line	863
 	
-l3797:	
-;main.c: 855: {
-;main.c: 856: setPB3(0);
+l3853:	
+;main.c: 862: {
+;main.c: 863: setPB3(0);
 	movlw	(0)
 	fcall	_setPB3
-	line	857
-;main.c: 857: setPB4(0);
+	line	864
+;main.c: 864: setPB4(0);
 	movlw	(0)
 	fcall	_setPB4
-	line	858
-;main.c: 858: setPB5(1);
+	line	865
+;main.c: 865: setPB5(1);
 	movlw	(01h)
 	fcall	_setPB5
-	line	859
-;main.c: 859: pwm_config(0);
+	line	866
+;main.c: 866: pwm_config(0);
 	movlw	(0)
 	fcall	_pwm_config
-	line	860
-;main.c: 860: pwm_start(60);
+	line	867
+;main.c: 867: pwm_start(60);
 	movlw	(03Ch)
 	fcall	_pwm_start
-	line	861
-;main.c: 861: pwm_config(1);
+	line	868
+;main.c: 868: pwm_config(1);
 	movlw	(01h)
 	fcall	_pwm_config
-	line	862
+	line	869
 	
-l3799:	
-;main.c: 862: ucStep = MEET_RESET_CONDITION_STEP;
+l3855:	
+;main.c: 869: ucStep = MEET_RESET_CONDITION_STEP;
 	movlw	(064h)
 	movwf	(main@ucStep)
-	line	863
-;main.c: 863: break;
-	goto	l3673
 	line	870
-	
-l3801:	
-;main.c: 867: {
-;main.c: 868: static unsigned char ucTimerP5s = 0;
-;main.c: 870: if( getAdOriginalCh13Value() >50 )
-	fcall	_getAdOriginalCh13Value
-	movlw	high(033h)
-	subwf	(1+(?_getAdOriginalCh13Value)),w
-	movlw	low(033h)
-	skipnz
-	subwf	(0+(?_getAdOriginalCh13Value)),w
-	skipc
-	goto	u1391
-	goto	u1390
-u1391:
-	goto	l3805
-u1390:
-	line	871
-	
-l3803:	
-;main.c: 871: ucTimerP5s++;
-	incf	(main@cTimerP5s_801),f
-	goto	l3807
-	line	873
-	
-l3805:	
-;main.c: 872: else
-;main.c: 873: ucTimerP5s = 0;
-	clrf	(main@cTimerP5s_801)
-	line	875
-	
-l3807:	
-;main.c: 875: if(ucTimerP5s > 5)
-	movlw	(06h)
-	subwf	(main@cTimerP5s_801),w
-	skipc
-	goto	u1401
-	goto	u1400
-u1401:
-	goto	l749
-u1400:
+;main.c: 870: break;
+	goto	l3713
 	line	876
 	
-l3809:	
-;main.c: 876: ucStep = RESET_STEP;
+l3857:	
+;main.c: 874: {
+;main.c: 875: static unsigned char ucTimerP5s = 0;
+;main.c: 876: unsigned int ucChValue = getAdOriginalCh13Value();
+	fcall	_getAdOriginalCh13Value
+	movf	(1+(?_getAdOriginalCh13Value)),w
+	movwf	(main@ucChValue+1)
+	movf	(0+(?_getAdOriginalCh13Value)),w
+	movwf	(main@ucChValue)
+	line	878
+	
+l3859:	
+;main.c: 878: if( ucChValue > 50 )
+	movlw	high(033h)
+	subwf	(main@ucChValue+1),w
+	movlw	low(033h)
+	skipnz
+	subwf	(main@ucChValue),w
+	skipc
+	goto	u1531
+	goto	u1530
+u1531:
+	goto	l3863
+u1530:
+	line	879
+	
+l3861:	
+;main.c: 879: ucTimerP5s++;
+	incf	(main@cTimerP5s_797),f
+	goto	l3865
+	line	881
+	
+l3863:	
+;main.c: 880: else
+;main.c: 881: ucTimerP5s = 0;
+	clrf	(main@cTimerP5s_797)
+	line	883
+	
+l3865:	
+;main.c: 883: if(ucTimerP5s > 5)
+	movlw	(06h)
+	subwf	(main@cTimerP5s_797),w
+	skipc
+	goto	u1541
+	goto	u1540
+u1541:
+	goto	l756
+u1540:
+	line	884
+	
+l3867:	
+;main.c: 884: ucStep = RESET_STEP;
 	movlw	(065h)
 	movwf	(main@ucStep)
-	goto	l3673
-	line	882
+	goto	l3713
+	line	890
 	
-l3811:	
-;main.c: 881: {
-;main.c: 882: ucStep = INIT_STEP;
+l3869:	
+;main.c: 889: {
+;main.c: 890: ucStep = INIT_STEP;
 	clrf	(main@ucStep)
-	goto	l3795
-	line	661
+	goto	l3851
+	line	663
 	
-l3817:	
+l3875:	
 	movf	(main@ucStep),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 10, Range of values is 0 to 101
@@ -1760,46 +1896,42 @@ l3817:
 	opt asmopt_off
 	xorlw	0^0	; case 0
 	skipnz
-	goto	l3681
+	goto	l3721
 	xorlw	1^0	; case 1
 	skipnz
-	goto	l3699
+	goto	l3739
 	xorlw	2^1	; case 2
 	skipnz
-	goto	l3717
+	goto	l3757
 	xorlw	3^2	; case 3
 	skipnz
-	goto	l3733
+	goto	l3773
 	xorlw	4^3	; case 4
 	skipnz
-	goto	l3737
+	goto	l3777
 	xorlw	5^4	; case 5
 	skipnz
-	goto	l3753
+	goto	l3793
 	xorlw	6^5	; case 6
 	skipnz
-	goto	l3765
+	goto	l3805
 	xorlw	99^6	; case 99
 	skipnz
-	goto	l3797
+	goto	l3853
 	xorlw	100^99	; case 100
 	skipnz
-	goto	l3801
+	goto	l3857
 	xorlw	101^100	; case 101
 	skipnz
-	goto	l3811
-	goto	l749
+	goto	l3869
+	goto	l756
 	opt asmopt_on
 
-	line	892
-	
-l749:	
-	goto	l3673
 	global	start
 	ljmp	start
 	opt stack 0
 psect	maintext
-	line	895
+	line	903
 GLOBAL	__end_of_main
 	__end_of_main:
 ;; =============== function _main ends ============
@@ -1812,7 +1944,7 @@ __ptext834:
 
 ;; *************** function _calPulseWidth *****************
 ;; Defined at:
-;;		line 529 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 526 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1846,135 +1978,135 @@ __ptext834:
 ;;
 psect	text834
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	529
+	line	526
 	global	__size_of_calPulseWidth
 	__size_of_calPulseWidth	equ	__end_of_calPulseWidth-_calPulseWidth
 	
 _calPulseWidth:	
 	opt	stack 3
 ; Regs used in _calPulseWidth: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
-	line	530
+	line	527
 	
-l3629:	
-	line	534
+l3669:	
+	line	531
 	
-l3631:	
-;main.c: 534: unsigned int uiChannel2Value = getAdOriginalCh12Value();
+l3671:	
+;main.c: 531: unsigned int uiChannel2Value = getAdOriginalCh12Value();
 	fcall	_getAdOriginalCh12Value
 	movf	(1+(?_getAdOriginalCh12Value)),w
 	movwf	(calPulseWidth@uiChannel2Value+1)
 	movf	(0+(?_getAdOriginalCh12Value)),w
 	movwf	(calPulseWidth@uiChannel2Value)
-	line	536
+	line	533
 	
-l3633:	
-;main.c: 536: if( uiChannel2Value >= 332 )
+l3673:	
+;main.c: 533: if( uiChannel2Value >= 332 )
 	movlw	high(014Ch)
 	subwf	(calPulseWidth@uiChannel2Value+1),w
 	movlw	low(014Ch)
 	skipnz
 	subwf	(calPulseWidth@uiChannel2Value),w
 	skipc
-	goto	u1221
-	goto	u1220
-u1221:
-	goto	l3637
-u1220:
-	line	537
+	goto	u1321
+	goto	u1320
+u1321:
+	goto	l3677
+u1320:
+	line	534
 	
-l3635:	
-;main.c: 537: ucPulseWidth = 100;
+l3675:	
+;main.c: 534: ucPulseWidth = 100;
 	movlw	(064h)
 	movwf	(calPulseWidth@ucPulseWidth)
-	goto	l3655
-	line	538
+	goto	l3695
+	line	535
 	
-l3637:	
-;main.c: 538: else if( uiChannel2Value <= 312)
+l3677:	
+;main.c: 535: else if( uiChannel2Value <= 312)
 	movlw	high(0139h)
 	subwf	(calPulseWidth@uiChannel2Value+1),w
 	movlw	low(0139h)
 	skipnz
 	subwf	(calPulseWidth@uiChannel2Value),w
 	skipnc
-	goto	u1231
-	goto	u1230
-u1231:
-	goto	l3641
-u1230:
-	line	539
+	goto	u1331
+	goto	u1330
+u1331:
+	goto	l3681
+u1330:
+	line	536
 	
-l3639:	
-;main.c: 539: ucPulseWidth = 30;
+l3679:	
+;main.c: 536: ucPulseWidth = 30;
 	movlw	(01Eh)
 	movwf	(calPulseWidth@ucPulseWidth)
-	goto	l3655
-	line	542
+	goto	l3695
+	line	539
 	
-l3641:	
-	line	544
-;main.c: 544: unsigned char ucGapValue = 0;
+l3681:	
+	line	541
+;main.c: 541: unsigned char ucGapValue = 0;
 	clrf	(calPulseWidth@ucGapValue)
-	line	546
-;main.c: 546: unsigned char ucThreeTimesValue = 0;
+	line	543
+;main.c: 543: unsigned char ucThreeTimesValue = 0;
 	clrf	(calPulseWidth@ucThreeTimesValue)
-	line	547
-;main.c: 547: unsigned char ucHalfValue = 0;
+	line	544
+;main.c: 544: unsigned char ucHalfValue = 0;
 	clrf	(calPulseWidth@ucHalfValue)
-	line	549
+	line	546
 	
-l3643:	
-;main.c: 549: uiGapValue = uiChannel2Value - 312;
+l3683:	
+;main.c: 546: uiGapValue = uiChannel2Value - 312;
 	movf	(calPulseWidth@uiChannel2Value+1),w
 	movwf	(calPulseWidth@uiGapValue+1)
 	movf	(calPulseWidth@uiChannel2Value),w
 	movwf	(calPulseWidth@uiGapValue)
 	
-l3645:	
+l3685:	
 	movlw	low(0FEC8h)
 	addwf	(calPulseWidth@uiGapValue),f
 	skipnc
 	incf	(calPulseWidth@uiGapValue+1),f
 	movlw	high(0FEC8h)
 	addwf	(calPulseWidth@uiGapValue+1),f
-	line	551
+	line	548
 	
-l3647:	
-;main.c: 551: ucGapValue = uiGapValue;
+l3687:	
+;main.c: 548: ucGapValue = uiGapValue;
 	movf	(calPulseWidth@uiGapValue),w
 	movwf	(calPulseWidth@ucGapValue)
-	line	553
+	line	550
 	
-l3649:	
-;main.c: 553: ucThreeTimesValue = ucGapValue*3;
+l3689:	
+;main.c: 550: ucThreeTimesValue = ucGapValue*3;
 	movf	(calPulseWidth@ucGapValue),w
 	addwf	(calPulseWidth@ucGapValue),w
 	addwf	(calPulseWidth@ucGapValue),w
 	movwf	(calPulseWidth@ucThreeTimesValue)
-	line	555
+	line	552
 	
-l3651:	
-;main.c: 555: ucHalfValue = ucGapValue >> 1;
+l3691:	
+;main.c: 552: ucHalfValue = ucGapValue >> 1;
 	clrc
 	rrf	(calPulseWidth@ucGapValue),w
 	movwf	(calPulseWidth@ucHalfValue)
-	line	557
+	line	554
 	
-l3653:	
-;main.c: 557: ucPulseWidth = 30 + ucThreeTimesValue + ucHalfValue;
+l3693:	
+;main.c: 554: ucPulseWidth = 30 + ucThreeTimesValue + ucHalfValue;
 	movf	(calPulseWidth@ucHalfValue),w
 	addwf	(calPulseWidth@ucThreeTimesValue),w
 	addlw	01Eh
 	movwf	(calPulseWidth@ucPulseWidth)
-	line	563
+	line	560
 	
-l3655:	
-;main.c: 559: }
-;main.c: 563: return ucPulseWidth;
+l3695:	
+;main.c: 556: }
+;main.c: 560: return ucPulseWidth;
 	movf	(calPulseWidth@ucPulseWidth),w
-	line	564
+	line	561
 	
-l745:	
+l744:	
 	return
 	opt stack 0
 GLOBAL	__end_of_calPulseWidth
@@ -2027,7 +2159,7 @@ _getAdOriginalCh13Value:
 ; Regs used in _getAdOriginalCh13Value: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	240
 	
-l3625:	
+l3665:	
 ;common.c: 240: return Filter(uiSampleChannelFourth);
 	movlw	(_uiSampleChannelFourth)&0ffh
 	fcall	_Filter
@@ -2037,7 +2169,7 @@ l3625:
 	movwf	(?_getAdOriginalCh13Value)
 	line	245
 	
-l1538:	
+l1544:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getAdOriginalCh13Value
@@ -2094,19 +2226,19 @@ _process_AD_Converter_Value:
 ; Regs used in _process_AD_Converter_Value: [wreg+status,2+status,0+pclath+cstack]
 	line	261
 	
-l3613:	
+l3653:	
 ;common.c: 261: if(getAD_ConvertFlag())
 	fcall	_getAD_ConvertFlag
 	xorlw	0
 	skipnz
-	goto	u1201
-	goto	u1200
-u1201:
-	goto	l1547
-u1200:
+	goto	u1301
+	goto	u1300
+u1301:
+	goto	l1553
+u1300:
 	line	263
 	
-l3615:	
+l3655:	
 ;common.c: 262: {
 ;common.c: 263: setAD_ConvertFlag(0);
 	movlw	(0)
@@ -2116,28 +2248,28 @@ l3615:
 	fcall	_AD_Sample
 	line	265
 	
-l3617:	
+l3657:	
 ;common.c: 265: if(12 == sampleChannelSelect)
 	movf	(_sampleChannelSelect),w
 	xorlw	0Ch
 	skipz
-	goto	u1211
-	goto	u1210
-u1211:
-	goto	l3621
-u1210:
+	goto	u1311
+	goto	u1310
+u1311:
+	goto	l3661
+u1310:
 	line	266
 	
-l3619:	
+l3659:	
 ;common.c: 266: adc_test_init(12,3);
 	movlw	(03h)
 	movwf	(?_adc_test_init)
 	movlw	(0Ch)
 	fcall	_adc_test_init
-	goto	l3623
+	goto	l3663
 	line	270
 	
-l3621:	
+l3661:	
 ;common.c: 269: else
 ;common.c: 270: adc_test_init(13,3);
 	movlw	(03h)
@@ -2146,12 +2278,12 @@ l3621:
 	fcall	_adc_test_init
 	line	272
 	
-l3623:	
+l3663:	
 ;common.c: 272: adc_start();
 	fcall	_adc_start
 	line	274
 	
-l1547:	
+l1553:	
 	return
 	opt stack 0
 GLOBAL	__end_of_process_AD_Converter_Value
@@ -2204,7 +2336,7 @@ _getAdOriginalCh12Value:
 ; Regs used in _getAdOriginalCh12Value: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
 	line	229
 	
-l3609:	
+l3649:	
 ;common.c: 229: return Filter(uiSampleChannelFirst);
 	movlw	(_uiSampleChannelFirst)&0ffh
 	fcall	_Filter
@@ -2214,7 +2346,7 @@ l3609:
 	movwf	(?_getAdOriginalCh12Value)
 	line	234
 	
-l1535:	
+l1541:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getAdOriginalCh12Value
@@ -2229,7 +2361,7 @@ __ptext838:
 
 ;; *************** function _setPinInitVaule *****************
 ;; Defined at:
-;;		line 340 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 333 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2260,30 +2392,30 @@ __ptext838:
 ;;
 psect	text838
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	340
+	line	333
 	global	__size_of_setPinInitVaule
 	__size_of_setPinInitVaule	equ	__end_of_setPinInitVaule-_setPinInitVaule
 	
 _setPinInitVaule:	
 	opt	stack 4
 ; Regs used in _setPinInitVaule: [wreg+status,2+status,0+pclath+cstack]
-	line	342
+	line	335
 	
-l3607:	
-;main.c: 342: setPB3(1);
+l3647:	
+;main.c: 335: setPB3(1);
 	movlw	(01h)
 	fcall	_setPB3
-	line	343
-;main.c: 343: setPB4(0);
+	line	336
+;main.c: 336: setPB4(0);
 	movlw	(0)
 	fcall	_setPB4
-	line	344
-;main.c: 344: setPB5(1);
+	line	337
+;main.c: 337: setPB5(1);
 	movlw	(01h)
 	fcall	_setPB5
-	line	348
+	line	341
 	
-l729:	
+l728:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setPinInitVaule
@@ -2298,7 +2430,7 @@ __ptext839:
 
 ;; *************** function _initPin *****************
 ;; Defined at:
-;;		line 324 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 317 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2330,39 +2462,39 @@ __ptext839:
 ;;
 psect	text839
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	324
+	line	317
 	global	__size_of_initPin
 	__size_of_initPin	equ	__end_of_initPin-_initPin
 	
 _initPin:	
 	opt	stack 4
 ; Regs used in _initPin: [wreg+status,2+status,0+pclath+cstack]
-	line	326
+	line	319
 	
-l3599:	
-;main.c: 326: initPB2_AsHighResistence();
+l3639:	
+;main.c: 319: initPB2_AsHighResistence();
 	fcall	_initPB2_AsHighResistence
-	line	328
+	line	321
 	
-l3601:	
-;main.c: 328: initPB3(0);
+l3641:	
+;main.c: 321: initPB3(0);
 	movlw	(0)
 	fcall	_initPB3
-	line	330
+	line	323
 	
-l3603:	
-;main.c: 330: initPB4(0);
+l3643:	
+;main.c: 323: initPB4(0);
 	movlw	(0)
 	fcall	_initPB4
-	line	332
+	line	325
 	
-l3605:	
-;main.c: 332: initPB5(0);
+l3645:	
+;main.c: 325: initPB5(0);
 	movlw	(0)
 	fcall	_initPB5
-	line	337
+	line	330
 	
-l726:	
+l725:	
 	return
 	opt stack 0
 GLOBAL	__end_of_initPin
@@ -2415,65 +2547,65 @@ _AD_Sample:
 ; Regs used in _AD_Sample: [wreg+status,2+status,0]
 	line	287
 	
-l3545:	
+l3585:	
 ;common.c: 287: if(sampleTimes < 12)
 	movlw	(0Ch)
 	subwf	(_sampleTimes),w
 	skipnc
-	goto	u1081
-	goto	u1080
-u1081:
-	goto	l1554
-u1080:
+	goto	u1181
+	goto	u1180
+u1181:
+	goto	l1560
+u1180:
 	line	309
 	
-l3547:	
+l3587:	
 ;common.c: 288: {
 ;common.c: 309: sampleTimes++;
 	incf	(_sampleTimes),f
 	line	311
 	
-l3549:	
+l3589:	
 ;common.c: 311: if(sampleTimes >= 12)
 	movlw	(0Ch)
 	subwf	(_sampleTimes),w
 	skipc
-	goto	u1091
-	goto	u1090
-u1091:
-	goto	l1554
-u1090:
+	goto	u1191
+	goto	u1190
+u1191:
+	goto	l1560
+u1190:
 	line	313
 	
-l3551:	
+l3591:	
 ;common.c: 312: {
 ;common.c: 313: sampleTimes = 0;
 	clrf	(_sampleTimes)
 	line	315
 	
-l3553:	
+l3593:	
 ;common.c: 315: if(sampleChannelSelect == 12)
 	movf	(_sampleChannelSelect),w
 	xorlw	0Ch
 	skipz
-	goto	u1101
-	goto	u1100
-u1101:
-	goto	l3557
-u1100:
+	goto	u1201
+	goto	u1200
+u1201:
+	goto	l3597
+u1200:
 	line	319
 	
-l3555:	
+l3595:	
 ;common.c: 316: {
 ;common.c: 319: sampleChannelSelect = 13;
 	movlw	(0Dh)
 	movwf	(_sampleChannelSelect)
 	line	320
 ;common.c: 320: }
-	goto	l1554
+	goto	l1560
 	line	334
 	
-l3557:	
+l3597:	
 ;common.c: 331: else
 ;common.c: 332: {
 ;common.c: 334: sampleChannelSelect = 12;
@@ -2481,7 +2613,7 @@ l3557:
 	movwf	(_sampleChannelSelect)
 	line	342
 	
-l1554:	
+l1560:	
 	return
 	opt stack 0
 GLOBAL	__end_of_AD_Sample
@@ -2536,13 +2668,13 @@ _setAD_ConvertFlag:
 	movwf	(setAD_ConvertFlag@flag)
 	line	216
 	
-l3543:	
+l3583:	
 ;common.c: 216: adc_convert_flag = flag;
 	movf	(setAD_ConvertFlag@flag),w
 	movwf	(_adc_convert_flag)
 	line	217
 	
-l1532:	
+l1538:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setAD_ConvertFlag
@@ -2595,14 +2727,14 @@ _getAD_ConvertFlag:
 ; Regs used in _getAD_ConvertFlag: [wreg]
 	line	210
 	
-l3539:	
+l3579:	
 ;common.c: 210: return adc_convert_flag;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	(_adc_convert_flag),w
 	line	211
 	
-l1529:	
+l1535:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getAD_ConvertFlag
@@ -2666,7 +2798,7 @@ _Filter:
 	line	62
 	movwf	(Filter@tmpValue)
 	
-l3441:	
+l3481:	
 	clrf	(Filter@j)
 	line	64
 ;common.c: 64: unsigned int filter_temp = 0, filter_sum = 0;
@@ -2681,7 +2813,7 @@ l3441:
 	clrf	(Filter@cir+1)
 	line	69
 	
-l3447:	
+l3487:	
 ;common.c: 69: filter_buf[cir] = *tmpValue++;
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -2703,51 +2835,51 @@ l3447:
 	movf	1+(??_Filter+0)+0,w
 	movwf	indf
 	
-l3449:	
+l3489:	
 	incf	(Filter@tmpValue),f
 	incf	(Filter@tmpValue),f
 	line	68
 	
-l3451:	
+l3491:	
 	incf	(Filter@cir),f
 	skipnz
 	incf	(Filter@cir+1),f
 	
-l3453:	
+l3493:	
 	movf	(Filter@cir+1),w
 	xorlw	80h
 	movwf	btemp+1
 	movlw	(high(0Ch))^80h
 	subwf	btemp+1,w
 	skipz
-	goto	u965
+	goto	u1065
 	movlw	low(0Ch)
 	subwf	(Filter@cir),w
-u965:
+u1065:
 
 	skipc
-	goto	u961
-	goto	u960
-u961:
-	goto	l3447
-u960:
+	goto	u1061
+	goto	u1060
+u1061:
+	goto	l3487
+u1060:
 	line	72
 	
-l3455:	
+l3495:	
 ;common.c: 72: for(j = 0; j < 12 - 1; j++)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	clrf	(Filter@j)
 	line	74
 	
-l3461:	
+l3501:	
 ;common.c: 73: {
 ;common.c: 74: for(i = 0; i < 12 - 1 - j; i++)
 	clrf	(Filter@i)
-	goto	l3469
+	goto	l3509
 	line	76
 	
-l3463:	
+l3503:	
 ;common.c: 75: {
 ;common.c: 76: if(filter_buf[i] > filter_buf[i + 1])
 	bcf	status, 5	;RP0=0, select bank0
@@ -2775,19 +2907,19 @@ l3463:
 	movf	1+(??_Filter+0)+0,w
 	subwf	1+(??_Filter+2)+0,w
 	skipz
-	goto	u975
+	goto	u1075
 	movf	0+(??_Filter+0)+0,w
 	subwf	0+(??_Filter+2)+0,w
-u975:
+u1075:
 	skipnc
-	goto	u971
-	goto	u970
-u971:
-	goto	l3467
-u970:
+	goto	u1071
+	goto	u1070
+u1071:
+	goto	l3507
+u1070:
 	line	79
 	
-l3465:	
+l3505:	
 ;common.c: 77: {
 ;common.c: 79: filter_temp = filter_buf[i];
 	clrc
@@ -2834,10 +2966,10 @@ l3465:
 	movwf	indf
 	line	74
 	
-l3467:	
+l3507:	
 	incf	(Filter@i),f
 	
-l3469:	
+l3509:	
 	movlw	high(0Bh)
 	movwf	(??_Filter+0)+0+1
 	movf	(Filter@j),w
@@ -2849,36 +2981,36 @@ l3469:
 	xorlw	80h
 	sublw	080h
 	skipz
-	goto	u985
+	goto	u1085
 	movf	0+(??_Filter+0)+0,w
 	subwf	(Filter@i),w
-u985:
+u1085:
 
 	skipc
-	goto	u981
-	goto	u980
-u981:
-	goto	l3463
-u980:
+	goto	u1081
+	goto	u1080
+u1081:
+	goto	l3503
+u1080:
 	line	72
 	
-l3471:	
+l3511:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	incf	(Filter@j),f
 	
-l3473:	
+l3513:	
 	movlw	(0Bh)
 	subwf	(Filter@j),w
 	skipc
-	goto	u991
-	goto	u990
-u991:
-	goto	l3461
-u990:
+	goto	u1091
+	goto	u1090
+u1091:
+	goto	l3501
+u1090:
 	line	88
 	
-l3475:	
+l3515:	
 ;common.c: 84: }
 ;common.c: 85: }
 ;common.c: 86: }
@@ -2887,7 +3019,7 @@ l3475:
 	movwf	(Filter@i)
 	line	90
 	
-l3479:	
+l3519:	
 ;common.c: 89: {
 ;common.c: 90: filter_sum += filter_buf[i];
 	clrc
@@ -2908,21 +3040,21 @@ l3479:
 	addwf	(Filter@filter_sum+1),f
 	line	88
 	
-l3481:	
+l3521:	
 	incf	(Filter@i),f
 	
-l3483:	
+l3523:	
 	movlw	(0Ah)
 	subwf	(Filter@i),w
 	skipc
-	goto	u1001
-	goto	u1000
-u1001:
-	goto	l3479
-u1000:
+	goto	u1101
+	goto	u1100
+u1101:
+	goto	l3519
+u1100:
 	line	93
 	
-l3485:	
+l3525:	
 ;common.c: 91: }
 ;common.c: 93: return (filter_sum >> 3);
 	movf	(Filter@filter_sum+1),w
@@ -2930,7 +3062,7 @@ l3485:
 	movf	(Filter@filter_sum),w
 	movwf	(?_Filter)
 	
-l3487:	
+l3527:	
 	clrc
 	rrf	(?_Filter+1),f
 	rrf	(?_Filter),f
@@ -2942,7 +3074,7 @@ l3487:
 	rrf	(?_Filter),f
 	line	95
 	
-l1491:	
+l1497:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Filter
@@ -2995,44 +3127,44 @@ _isFinishedOneHoursTimer:
 ; Regs used in _isFinishedOneHoursTimer: [wreg+status,2+status,0]
 	line	508
 	
-l3425:	
+l3465:	
 ;common.c: 508: if((uiOneHourTimer == 0) && bOneHourTimerStartFlag)
 	movf	((_uiOneHourTimer+1)),w
 	iorwf	((_uiOneHourTimer)),w
 	skipz
-	goto	u941
-	goto	u940
-u941:
-	goto	l3437
-u940:
+	goto	u1041
+	goto	u1040
+u1041:
+	goto	l3477
+u1040:
 	
-l3427:	
+l3467:	
 	movf	(_bOneHourTimerStartFlag),w
 	skipz
-	goto	u950
-	goto	l3437
-u950:
+	goto	u1050
+	goto	l3477
+u1050:
 	line	510
 	
-l3429:	
+l3469:	
 ;common.c: 509: {
 ;common.c: 510: bOneHourTimerStartFlag = 0;
 	clrf	(_bOneHourTimerStartFlag)
 	line	511
 	
-l3431:	
+l3471:	
 ;common.c: 511: return 1;
 	movlw	(01h)
-	goto	l1616
+	goto	l1622
 	line	514
 	
-l3437:	
+l3477:	
 ;common.c: 513: else
 ;common.c: 514: return 0;
 	movlw	(0)
 	line	515
 	
-l1616:	
+l1622:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isFinishedOneHoursTimer
@@ -3085,28 +3217,28 @@ _startOneHoursTimer:
 ; Regs used in _startOneHoursTimer: [wreg+status,2+status,0]
 	line	425
 	
-l3417:	
+l3457:	
 ;common.c: 425: if(( 0 == uiOneHourTimer ) && ( 0 == bOneHourTimerStartFlag ))
 	movf	((_uiOneHourTimer+1)),w
 	iorwf	((_uiOneHourTimer)),w
 	skipz
-	goto	u921
-	goto	u920
-u921:
-	goto	l1584
-u920:
+	goto	u1021
+	goto	u1020
+u1021:
+	goto	l1590
+u1020:
 	
-l3419:	
+l3459:	
 	movf	(_bOneHourTimerStartFlag),f
 	skipz
-	goto	u931
-	goto	u930
-u931:
-	goto	l1584
-u930:
+	goto	u1031
+	goto	u1030
+u1031:
+	goto	l1590
+u1030:
 	line	427
 	
-l3421:	
+l3461:	
 ;common.c: 426: {
 ;common.c: 427: uiOneHourTimer = uiSetTime;
 	movf	(startOneHoursTimer@uiSetTime+1),w
@@ -3115,13 +3247,13 @@ l3421:
 	movwf	(_uiOneHourTimer)
 	line	428
 	
-l3423:	
+l3463:	
 ;common.c: 428: bOneHourTimerStartFlag = 1;
 	clrf	(_bOneHourTimerStartFlag)
 	incf	(_bOneHourTimerStartFlag),f
 	line	434
 	
-l1584:	
+l1590:	
 	return
 	opt stack 0
 GLOBAL	__end_of_startOneHoursTimer
@@ -3174,44 +3306,44 @@ _isFinishedThreeHoursTimer:
 ; Regs used in _isFinishedThreeHoursTimer: [wreg+status,2+status,0]
 	line	495
 	
-l3401:	
+l3441:	
 ;common.c: 495: if((uiSmallTimer == 0) && bSmallTimerStartFlag)
 	movf	((_uiSmallTimer+1)),w
 	iorwf	((_uiSmallTimer)),w
 	skipz
-	goto	u901
-	goto	u900
-u901:
-	goto	l3413
-u900:
+	goto	u1001
+	goto	u1000
+u1001:
+	goto	l3453
+u1000:
 	
-l3403:	
+l3443:	
 	movf	(_bSmallTimerStartFlag),w
 	skipz
-	goto	u910
-	goto	l3413
-u910:
+	goto	u1010
+	goto	l3453
+u1010:
 	line	497
 	
-l3405:	
+l3445:	
 ;common.c: 496: {
 ;common.c: 497: bSmallTimerStartFlag = 0;
 	clrf	(_bSmallTimerStartFlag)
 	line	498
 	
-l3407:	
+l3447:	
 ;common.c: 498: return 1;
 	movlw	(01h)
-	goto	l1611
+	goto	l1617
 	line	501
 	
-l3413:	
+l3453:	
 ;common.c: 500: else
 ;common.c: 501: return 0;
 	movlw	(0)
 	line	502
 	
-l1611:	
+l1617:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isFinishedThreeHoursTimer
@@ -3264,28 +3396,28 @@ _startThreeHoursTimer:
 ; Regs used in _startThreeHoursTimer: [wreg+status,2+status,0]
 	line	412
 	
-l3393:	
+l3433:	
 ;common.c: 412: if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
 	movf	((_uiSmallTimer+1)),w
 	iorwf	((_uiSmallTimer)),w
 	skipz
-	goto	u881
-	goto	u880
-u881:
-	goto	l1580
-u880:
+	goto	u981
+	goto	u980
+u981:
+	goto	l1586
+u980:
 	
-l3395:	
+l3435:	
 	movf	(_bSmallTimerStartFlag),f
 	skipz
-	goto	u891
-	goto	u890
-u891:
-	goto	l1580
-u890:
+	goto	u991
+	goto	u990
+u991:
+	goto	l1586
+u990:
 	line	414
 	
-l3397:	
+l3437:	
 ;common.c: 413: {
 ;common.c: 414: uiSmallTimer = uiSetTime;
 	movf	(startThreeHoursTimer@uiSetTime+1),w
@@ -3294,13 +3426,13 @@ l3397:
 	movwf	(_uiSmallTimer)
 	line	415
 	
-l3399:	
+l3439:	
 ;common.c: 415: bSmallTimerStartFlag = 1;
 	clrf	(_bSmallTimerStartFlag)
 	incf	(_bSmallTimerStartFlag),f
 	line	421
 	
-l1580:	
+l1586:	
 	return
 	opt stack 0
 GLOBAL	__end_of_startThreeHoursTimer
@@ -3353,44 +3485,44 @@ _isFinishedTwelveHoursTimer:
 ; Regs used in _isFinishedTwelveHoursTimer: [wreg+status,2+status,0]
 	line	484
 	
-l3377:	
+l3417:	
 ;common.c: 484: if(( uiBigTimer == 0 ) && bBigTimerStartFlag )
 	movf	((_uiBigTimer+1)),w
 	iorwf	((_uiBigTimer)),w
 	skipz
-	goto	u861
-	goto	u860
-u861:
-	goto	l3389
-u860:
+	goto	u961
+	goto	u960
+u961:
+	goto	l3429
+u960:
 	
-l3379:	
+l3419:	
 	movf	(_bBigTimerStartFlag),w
 	skipz
-	goto	u870
-	goto	l3389
-u870:
+	goto	u970
+	goto	l3429
+u970:
 	line	486
 	
-l3381:	
+l3421:	
 ;common.c: 485: {
 ;common.c: 486: bBigTimerStartFlag = 0;
 	clrf	(_bBigTimerStartFlag)
 	line	487
 	
-l3383:	
+l3423:	
 ;common.c: 487: return 1;
 	movlw	(01h)
-	goto	l1606
+	goto	l1612
 	line	490
 	
-l3389:	
+l3429:	
 ;common.c: 489: else
 ;common.c: 490: return 0;
 	movlw	(0)
 	line	491
 	
-l1606:	
+l1612:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isFinishedTwelveHoursTimer
@@ -3443,28 +3575,28 @@ _startTwelveHourTimer:
 ; Regs used in _startTwelveHourTimer: [wreg+status,2+status,0]
 	line	364
 	
-l3369:	
+l3409:	
 ;common.c: 364: if((0 == uiBigTimer) && ( 0 == bBigTimerStartFlag))
 	movf	((_uiBigTimer+1)),w
 	iorwf	((_uiBigTimer)),w
 	skipz
-	goto	u841
-	goto	u840
-u841:
-	goto	l1561
-u840:
+	goto	u941
+	goto	u940
+u941:
+	goto	l1567
+u940:
 	
-l3371:	
+l3411:	
 	movf	(_bBigTimerStartFlag),f
 	skipz
-	goto	u851
-	goto	u850
-u851:
-	goto	l1561
-u850:
+	goto	u951
+	goto	u950
+u951:
+	goto	l1567
+u950:
 	line	366
 	
-l3373:	
+l3413:	
 ;common.c: 365: {
 ;common.c: 366: uiBigTimer = uiSetTime;
 	movf	(startTwelveHourTimer@uiSetTime+1),w
@@ -3473,13 +3605,13 @@ l3373:
 	movwf	(_uiBigTimer)
 	line	367
 	
-l3375:	
+l3415:	
 ;common.c: 367: bBigTimerStartFlag = 1;
 	clrf	(_bBigTimerStartFlag)
 	incf	(_bBigTimerStartFlag),f
 	line	374
 	
-l1561:	
+l1567:	
 	return
 	opt stack 0
 GLOBAL	__end_of_startTwelveHourTimer
@@ -3532,7 +3664,7 @@ _clearTwentyMinTimer:
 ; Regs used in _clearTwentyMinTimer: [status,2]
 	line	405
 	
-l3367:	
+l3407:	
 ;common.c: 405: uiTwentyMinTimer = 0;
 	clrf	(_uiTwentyMinTimer)
 	clrf	(_uiTwentyMinTimer+1)
@@ -3541,7 +3673,7 @@ l3367:
 	clrf	(_bTwentyMinStartFlag)
 	line	407
 	
-l1576:	
+l1582:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clearTwentyMinTimer
@@ -3594,44 +3726,44 @@ _isFinishedTwentyMinTimer:
 ; Regs used in _isFinishedTwentyMinTimer: [wreg+status,2+status,0]
 	line	460
 	
-l3351:	
+l3391:	
 ;common.c: 460: if(( 0 == uiTwentyMinTimer ) && bTwentyMinStartFlag )
 	movf	((_uiTwentyMinTimer+1)),w
 	iorwf	((_uiTwentyMinTimer)),w
 	skipz
-	goto	u821
-	goto	u820
-u821:
-	goto	l3363
-u820:
+	goto	u921
+	goto	u920
+u921:
+	goto	l3403
+u920:
 	
-l3353:	
+l3393:	
 	movf	(_bTwentyMinStartFlag),w
 	skipz
-	goto	u830
-	goto	l3363
-u830:
+	goto	u930
+	goto	l3403
+u930:
 	line	462
 	
-l3355:	
+l3395:	
 ;common.c: 461: {
 ;common.c: 462: bTwentyMinStartFlag = 0;
 	clrf	(_bTwentyMinStartFlag)
 	line	463
 	
-l3357:	
+l3397:	
 ;common.c: 463: return 1;
 	movlw	(01h)
-	goto	l1596
+	goto	l1602
 	line	466
 	
-l3363:	
+l3403:	
 ;common.c: 465: else
 ;common.c: 466: return 0;
 	movlw	(0)
 	line	467
 	
-l1596:	
+l1602:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isFinishedTwentyMinTimer
@@ -3684,12 +3816,12 @@ _clrSampeTime:
 ; Regs used in _clrSampeTime: [status,2]
 	line	530
 	
-l3349:	
+l3389:	
 ;common.c: 530: timer.timer10msStopWatch = 0;
 	clrf	(_timer)
 	line	531
 	
-l1625:	
+l1631:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clrSampeTime
@@ -3742,32 +3874,32 @@ _isPermitSampleTime:
 ; Regs used in _isPermitSampleTime: [wreg]
 	line	520
 	
-l3337:	
+l3377:	
 ;common.c: 520: if(timer.timer10msStopWatch >= 10)
 	movlw	(0Ah)
 	subwf	(_timer),w
 	skipc
-	goto	u811
-	goto	u810
-u811:
-	goto	l3345
-u810:
+	goto	u911
+	goto	u910
+u911:
+	goto	l3385
+u910:
 	line	522
 	
-l3339:	
+l3379:	
 ;common.c: 521: {
 ;common.c: 522: return 1;
 	movlw	(01h)
-	goto	l1621
+	goto	l1627
 	line	525
 	
-l3345:	
+l3385:	
 ;common.c: 524: else
 ;common.c: 525: return 0;
 	movlw	(0)
 	line	526
 	
-l1621:	
+l1627:	
 	return
 	opt stack 0
 GLOBAL	__end_of_isPermitSampleTime
@@ -3820,28 +3952,28 @@ _startTwentyMinTimer:
 ; Regs used in _startTwentyMinTimer: [wreg+status,2+status,0]
 	line	450
 	
-l3329:	
+l3369:	
 ;common.c: 450: if(( 0 == uiTwentyMinTimer) && ( 0 == bTwentyMinStartFlag))
 	movf	((_uiTwentyMinTimer+1)),w
 	iorwf	((_uiTwentyMinTimer)),w
 	skipz
-	goto	u791
-	goto	u790
-u791:
-	goto	l1592
-u790:
+	goto	u891
+	goto	u890
+u891:
+	goto	l1598
+u890:
 	
-l3331:	
+l3371:	
 	movf	(_bTwentyMinStartFlag),f
 	skipz
-	goto	u801
-	goto	u800
-u801:
-	goto	l1592
-u800:
+	goto	u901
+	goto	u900
+u901:
+	goto	l1598
+u900:
 	line	452
 	
-l3333:	
+l3373:	
 ;common.c: 451: {
 ;common.c: 452: uiTwentyMinTimer = uiSetValue;
 	movf	(startTwentyMinTimer@uiSetValue+1),w
@@ -3850,13 +3982,13 @@ l3333:
 	movwf	(_uiTwentyMinTimer)
 	line	453
 	
-l3335:	
+l3375:	
 ;common.c: 453: bTwentyMinStartFlag = 1;
 	clrf	(_bTwentyMinStartFlag)
 	incf	(_bTwentyMinStartFlag),f
 	line	455
 	
-l1592:	
+l1598:	
 	return
 	opt stack 0
 GLOBAL	__end_of_startTwentyMinTimer
@@ -3910,13 +4042,13 @@ _adc_start:
 ; Regs used in _adc_start: []
 	line	101
 	
-l3327:	
+l3367:	
 ;periph.c: 101: GO=1;
 	bcf	status, 5	;RP0=0, select bank0
 	bsf	(249/8),(249)&7
 	line	102
 	
-l2293:	
+l2299:	
 	return
 	opt stack 0
 GLOBAL	__end_of_adc_start
@@ -3973,12 +4105,12 @@ _adc_test_init:
 	movwf	(adc_test_init@channel)
 	line	86
 	
-l3317:	
+l3357:	
 ;periph.c: 86: ADCON0 = 0x00;
 	clrf	(31)	;volatile
 	line	87
 	
-l3319:	
+l3359:	
 ;periph.c: 87: ADCON0|=channel<<2;
 	movf	(adc_test_init@channel),w
 	movwf	(??_adc_test_init+0)+0
@@ -3989,7 +4121,7 @@ l3319:
 	iorwf	(31),f	;volatile
 	line	88
 	
-l3321:	
+l3361:	
 ;periph.c: 88: ADCON1|=ref<<6;
 	movf	(adc_test_init@ref),w
 	movwf	(??_adc_test_init+0)+0
@@ -4001,19 +4133,19 @@ l3321:
 	iorwf	(159)^080h,f	;volatile
 	line	89
 	
-l3323:	
+l3363:	
 ;periph.c: 89: ADON=1;
 	bcf	status, 5	;RP0=0, select bank0
 	bsf	(248/8),(248)&7
 	line	90
 	
-l3325:	
+l3365:	
 ;periph.c: 90: ADIE=1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1130/8)^080h,(1130)&7
 	line	91
 	
-l2287:	
+l2293:	
 	return
 	opt stack 0
 GLOBAL	__end_of_adc_test_init
@@ -4066,7 +4198,7 @@ _timer1_interrupt_config:
 ; Regs used in _timer1_interrupt_config: []
 	line	202
 	
-l3315:	
+l3355:	
 ;common.c: 202: GIE = 1;
 	bsf	(95/8),(95)&7
 	line	203
@@ -4074,7 +4206,7 @@ l3315:
 	bsf	(94/8),(94)&7
 	line	204
 	
-l1526:	
+l1532:	
 	return
 	opt stack 0
 GLOBAL	__end_of_timer1_interrupt_config
@@ -4127,7 +4259,7 @@ _timer1_config:
 ; Regs used in _timer1_config: [wreg]
 	line	191
 	
-l3311:	
+l3351:	
 ;common.c: 191: TMR1H=0xCF;
 	movlw	(0CFh)
 	bcf	status, 6	;RP1=0, select bank0
@@ -4142,13 +4274,13 @@ l3311:
 	movwf	(16)	;volatile
 	line	194
 	
-l3313:	
+l3353:	
 ;common.c: 194: TMR1IE=1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1120/8)^080h,(1120)&7
 	line	196
 	
-l1523:	
+l1529:	
 	return
 	opt stack 0
 GLOBAL	__end_of_timer1_config
@@ -4201,7 +4333,7 @@ _clock_config:
 ; Regs used in _clock_config: [wreg+status,2]
 	line	183
 	
-l3307:	
+l3347:	
 ;common.c: 183: CLKPR = 0x80;
 	movlw	(080h)
 	bcf	status, 5	;RP0=0, select bank2
@@ -4209,22 +4341,22 @@ l3307:
 	movwf	(264)^0100h	;volatile
 	line	184
 	
-l3309:	
+l3349:	
 ;common.c: 184: CLKPR = 0x00;
 	clrf	(264)^0100h	;volatile
 	line	185
 ;common.c: 185: while(CLKPCE);
 	
-l1517:	
+l1523:	
 	btfsc	(2119/8)^0100h,(2119)&7
-	goto	u781
-	goto	u780
-u781:
-	goto	l1517
-u780:
+	goto	u881
+	goto	u880
+u881:
+	goto	l1523
+u880:
 	line	186
 	
-l1520:	
+l1526:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clock_config
@@ -4239,7 +4371,7 @@ __ptext860:
 
 ;; *************** function _reset *****************
 ;; Defined at:
-;;		line 362 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 355 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4249,9 +4381,9 @@ __ptext860:
 ;; Registers used:
 ;;		None
 ;; Tracked objects:
-;;		On entry : 60/0
-;;		On exit  : 60/0
-;;		Unchanged: FFFFFF9F/0
+;;		On entry : 40/20
+;;		On exit  : 40/20
+;;		Unchanged: FFFFFFBF/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
 ;;      Locals:         0       0       0       0       0
@@ -4268,24 +4400,24 @@ __ptext860:
 ;;
 psect	text860
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	362
+	line	355
 	global	__size_of_reset
 	__size_of_reset	equ	__end_of_reset-_reset
 	
 _reset:	
 	opt	stack 5
 ; Regs used in _reset: []
-	line	364
-;main.c: 364: while(1);
+	line	357
+;main.c: 357: while(1);
 	
-l735:	
-	goto	l735
+l734:	
+	goto	l734
 	return
 	opt stack 0
 psect	text861,local,class=CODE,delta=2
 global __ptext861
 __ptext861:
-	line	368
+	line	361
 GLOBAL	__end_of_reset
 	__end_of_reset:
 ;; =============== function _reset ends ============
@@ -4295,7 +4427,7 @@ GLOBAL	__end_of_reset
 
 ;; *************** function _selectAdChannel *****************
 ;; Defined at:
-;;		line 351 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 344 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4324,25 +4456,25 @@ GLOBAL	__end_of_reset
 ;;
 psect	text861
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	351
+	line	344
 	global	__size_of_selectAdChannel
 	__size_of_selectAdChannel	equ	__end_of_selectAdChannel-_selectAdChannel
 	
 _selectAdChannel:	
 	opt	stack 5
 ; Regs used in _selectAdChannel: []
-	line	353
+	line	346
 	
-l3305:	
-;main.c: 353: TRISB0 = 1;
+l3345:	
+;main.c: 346: TRISB0 = 1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1072/8)^080h,(1072)&7
-	line	354
-;main.c: 354: TRISB1 = 1;
+	line	347
+;main.c: 347: TRISB1 = 1;
 	bsf	(1073/8)^080h,(1073)&7
-	line	358
+	line	351
 	
-l732:	
+l731:	
 	return
 	opt stack 0
 GLOBAL	__end_of_selectAdChannel
@@ -4357,7 +4489,7 @@ __ptext862:
 
 ;; *************** function _pwm_config *****************
 ;; Defined at:
-;;		line 310 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 303 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;  state           1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -4386,7 +4518,7 @@ __ptext862:
 ;;
 psect	text862
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	310
+	line	303
 	global	__size_of_pwm_config
 	__size_of_pwm_config	equ	__end_of_pwm_config-_pwm_config
 	
@@ -4394,35 +4526,35 @@ _pwm_config:
 	opt	stack 5
 ; Regs used in _pwm_config: [wreg+status,2+status,0]
 ;pwm_config@state stored from wreg
-	line	312
+	line	305
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(pwm_config@state)
 	
-l3299:	
-;main.c: 312: if( state )
+l3339:	
+;main.c: 305: if( state )
 	movf	(pwm_config@state),w
 	skipz
-	goto	u770
-	goto	l3303
-u770:
-	line	313
+	goto	u870
+	goto	l3343
+u870:
+	line	306
 	
-l3301:	
-;main.c: 313: CCP1CON|= 0x0c;
+l3341:	
+;main.c: 306: CCP1CON|= 0x0c;
 	movlw	(0Ch)
 	iorwf	(23),f	;volatile
-	goto	l723
-	line	315
+	goto	l722
+	line	308
 	
-l3303:	
-;main.c: 314: else
-;main.c: 315: CCP1CON&= 0xf0;
+l3343:	
+;main.c: 307: else
+;main.c: 308: CCP1CON&= 0xf0;
 	movlw	(0F0h)
 	andwf	(23),f	;volatile
-	line	319
+	line	312
 	
-l723:	
+l722:	
 	return
 	opt stack 0
 GLOBAL	__end_of_pwm_config
@@ -4437,15 +4569,15 @@ __ptext863:
 
 ;; *************** function _pwm_start *****************
 ;; Defined at:
-;;		line 256 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 242 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;  ucPulseWidth    1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
-;;  ucPulseWidth    1    1[BANK0 ] unsigned char 
-;;  ucConvertRea    1    5[BANK0 ] unsigned char 
-;;  ucGetLowestT    1    4[BANK0 ] unsigned char 
-;;  ucCCP1CON_Va    1    3[BANK0 ] unsigned char 
+;;  ucPulseWidth    1    4[BANK0 ] unsigned char 
+;;  ucConvertRea    1    3[BANK0 ] unsigned char 
 ;;  ucGeHighestS    1    2[BANK0 ] unsigned char 
+;;  ucGetLowestT    1    1[BANK0 ] unsigned char 
+;;  ucCCP1CON_Va    1    0[BANK0 ] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -4457,9 +4589,9 @@ __ptext863:
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
 ;;      Params:         0       0       0       0       0
 ;;      Locals:         0       5       0       0       0
-;;      Temps:          0       1       0       0       0
-;;      Totals:         0       6       0       0       0
-;;Total ram usage:        6 bytes
+;;      Temps:          0       0       0       0       0
+;;      Totals:         0       5       0       0       0
+;;Total ram usage:        5 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    2
 ;; This function calls:
@@ -4470,7 +4602,7 @@ __ptext863:
 ;;
 psect	text863
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	256
+	line	242
 	global	__size_of_pwm_start
 	__size_of_pwm_start	equ	__end_of_pwm_start-_pwm_start
 	
@@ -4478,98 +4610,142 @@ _pwm_start:
 	opt	stack 5
 ; Regs used in _pwm_start: [wreg+status,2+status,0]
 ;pwm_start@ucPulseWidth stored from wreg
-	line	261
+	line	247
 	movwf	(pwm_start@ucPulseWidth)
-	line	259
+	line	245
 	
-l3275:	
-	line	261
-;main.c: 261: unsigned char ucGetLowestTwoValue = 0,ucGeHighestSixValue = 0;
+l3307:	
+	line	247
+;main.c: 247: unsigned char ucGetLowestTwoValue = 0,ucGeHighestSixValue = 0;
 	clrf	(pwm_start@ucGetLowestTwoValue)
 	clrf	(pwm_start@ucGeHighestSixValue)
-	line	263
-;main.c: 263: unsigned char ucCCP1CON_Value = 0;
+	line	249
+;main.c: 249: unsigned char ucCCP1CON_Value = 0;
 	clrf	(pwm_start@ucCCP1CON_Value)
-	line	269
+	line	255
 	
-l3277:	
-;main.c: 269: ucConvertRealPulseWidth = ucPulseWidth << 1;
+l3309:	
+;main.c: 255: ucConvertRealPulseWidth = ucPulseWidth << 1;
 	clrc
 	rlf	(pwm_start@ucPulseWidth),w
 	movwf	(pwm_start@ucConvertRealPulseWidth)
-	line	275
+	line	261
 	
-l3279:	
-;main.c: 275: ucGetLowestTwoValue = ucConvertRealPulseWidth & 0x03;
+l3311:	
+;main.c: 261: ucGetLowestTwoValue = ucConvertRealPulseWidth & 0x03;
 	movf	(pwm_start@ucConvertRealPulseWidth),w
 	movwf	(pwm_start@ucGetLowestTwoValue)
 	
-l3281:	
+l3313:	
 	movlw	(03h)
 	andwf	(pwm_start@ucGetLowestTwoValue),f
-	line	281
+	line	267
 	
-l3283:	
-;main.c: 281: ucCCP1CON_Value = ucGetLowestTwoValue << 4;
+l3315:	
+;main.c: 267: ucCCP1CON_Value = ucGetLowestTwoValue << 4;
 	swapf	(pwm_start@ucGetLowestTwoValue),w
 	andlw	(0ffh shl 4) & 0ffh
 	movwf	(pwm_start@ucCCP1CON_Value)
-	line	287
+	line	273
 	
-l3285:	
-;main.c: 287: ucGeHighestSixValue = ucConvertRealPulseWidth >> 2;
-	movf	(pwm_start@ucConvertRealPulseWidth),w
-	movwf	(??_pwm_start+0)+0
-	clrc
-	rrf	(??_pwm_start+0)+0,f
-	clrc
-	rrf	(??_pwm_start+0)+0,f
-	movf	0+(??_pwm_start+0)+0,w
+l3317:	
+	line	281
+	
+l3319:	
+;main.c: 281: if( ucPulseWidth <= 30)
+	movlw	(01Fh)
+	subwf	(pwm_start@ucPulseWidth),w
+	skipnc
+	goto	u841
+	goto	u840
+u841:
+	goto	l3323
+u840:
+	line	282
+	
+l3321:	
+;main.c: 282: ucGeHighestSixValue = 0x19;
+	movlw	(019h)
 	movwf	(pwm_start@ucGeHighestSixValue)
-	line	296
+	goto	l714
+	line	283
 	
-l3287:	
-;main.c: 296: T2CON=0x04;
+l3323:	
+;main.c: 283: else if((ucPulseWidth > 30) &&(ucPulseWidth < 90))
+	movlw	(01Fh)
+	subwf	(pwm_start@ucPulseWidth),w
+	skipc
+	goto	u851
+	goto	u850
+u851:
+	goto	l3329
+u850:
+	
+l3325:	
+	movlw	(05Ah)
+	subwf	(pwm_start@ucPulseWidth),w
+	skipnc
+	goto	u861
+	goto	u860
+u861:
+	goto	l3329
+u860:
+	line	284
+	
+l3327:	
+;main.c: 284: ucGeHighestSixValue = 0x25;
+	movlw	(025h)
+	movwf	(pwm_start@ucGeHighestSixValue)
+	goto	l714
+	line	286
+	
+l3329:	
+;main.c: 285: else
+;main.c: 286: ucGeHighestSixValue = 0x3F;;
+	movlw	(03Fh)
+	movwf	(pwm_start@ucGeHighestSixValue)
+	
+l714:	
+	line	289
+;main.c: 289: T2CON=0x04;
 	movlw	(04h)
 	movwf	(18)	;volatile
-	line	297
-	
-l3289:	
-;main.c: 297: PR2 = 49;
+	line	290
+;main.c: 290: PR2 = 49;
 	movlw	(031h)
 	bsf	status, 5	;RP0=1, select bank1
 	movwf	(146)^080h	;volatile
-	line	298
-	
-l3291:	
-;main.c: 298: CCPR1L = ucGeHighestSixValue;
+	line	291
+;main.c: 291: CCPR1L = ucGeHighestSixValue;
 	bcf	status, 5	;RP0=0, select bank0
 	movf	(pwm_start@ucGeHighestSixValue),w
 	movwf	(21)	;volatile
-	line	299
-;main.c: 299: CCP1CON=0x00;
-	clrf	(23)	;volatile
-	line	300
+	line	292
 	
-l3293:	
-;main.c: 300: CCP1CON = CCP1CON | ucCCP1CON_Value;
+l3331:	
+;main.c: 292: CCP1CON=0x00;
+	clrf	(23)	;volatile
+	line	293
+	
+l3333:	
+;main.c: 293: CCP1CON = CCP1CON | ucCCP1CON_Value;
 	movf	(pwm_start@ucCCP1CON_Value),w
 	iorwf	(23),f	;volatile
-	line	302
+	line	295
 	
-l3295:	
-;main.c: 302: TRISB2=0;
+l3335:	
+;main.c: 295: TRISB2=0;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	(1074/8)^080h,(1074)&7
-	line	303
+	line	296
 	
-l3297:	
-;main.c: 303: PBOD2 = 0;
+l3337:	
+;main.c: 296: PBOD2 = 0;
 	bsf	status, 6	;RP1=1, select bank3
 	bcf	(3138/8)^0180h,(3138)&7
-	line	307
+	line	300
 	
-l718:	
+l717:	
 	return
 	opt stack 0
 GLOBAL	__end_of_pwm_start
@@ -4584,7 +4760,7 @@ __ptext864:
 
 ;; *************** function _initPB2_AsHighResistence *****************
 ;; Defined at:
-;;		line 229 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 230 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4613,26 +4789,26 @@ __ptext864:
 ;;
 psect	text864
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	229
+	line	230
 	global	__size_of_initPB2_AsHighResistence
 	__size_of_initPB2_AsHighResistence	equ	__end_of_initPB2_AsHighResistence-_initPB2_AsHighResistence
 	
 _initPB2_AsHighResistence:	
 	opt	stack 4
 ; Regs used in _initPB2_AsHighResistence: []
-	line	231
-	
-l3273:	
-;main.c: 231: PB2 = 1;
-	bsf	(50/8),(50)&7
 	line	232
-;main.c: 232: PBOD2 = 1;
+	
+l3305:	
+;main.c: 232: PB2 = 1;
+	bsf	(50/8),(50)&7
+	line	233
+;main.c: 233: PBOD2 = 1;
 	bsf	status, 5	;RP0=1, select bank3
 	bsf	status, 6	;RP1=1, select bank3
 	bsf	(3138/8)^0180h,(3138)&7
-	line	236
+	line	237
 	
-l712:	
+l710:	
 	return
 	opt stack 0
 GLOBAL	__end_of_initPB2_AsHighResistence
@@ -4647,7 +4823,7 @@ __ptext865:
 
 ;; *************** function _setPB5 *****************
 ;; Defined at:
-;;		line 212 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 213 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;  bValue          1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -4677,7 +4853,7 @@ __ptext865:
 ;;
 psect	text865
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	212
+	line	213
 	global	__size_of_setPB5
 	__size_of_setPB5	equ	__end_of_setPB5-_setPB5
 	
@@ -4686,31 +4862,31 @@ _setPB5:
 ; Regs used in _setPB5: [wreg]
 ;setPB5@bValue stored from wreg
 	movwf	(setPB5@bValue)
-	line	213
+	line	214
 	
-l3269:	
-;main.c: 213: if( bValue )
+l3301:	
+;main.c: 214: if( bValue )
 	movf	(setPB5@bValue),w
 	skipz
-	goto	u760
-	goto	l707
-u760:
-	line	215
+	goto	u830
+	goto	l705
+u830:
+	line	216
 	
-l3271:	
-;main.c: 215: PB5 = 1;
+l3303:	
+;main.c: 216: PB5 = 1;
 	bsf	(53/8),(53)&7
-	goto	l709
-	line	219
+	goto	l707
+	line	220
+	
+l705:	
+	line	222
+;main.c: 220: else
+;main.c: 222: PB5= 0;
+	bcf	(53/8),(53)&7
+	line	226
 	
 l707:	
-	line	221
-;main.c: 219: else
-;main.c: 221: PB5= 0;
-	bcf	(53/8),(53)&7
-	line	225
-	
-l709:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setPB5
@@ -4725,7 +4901,7 @@ __ptext866:
 
 ;; *************** function _initPB5 *****************
 ;; Defined at:
-;;		line 195 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 196 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;  bValue          1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -4754,7 +4930,7 @@ __ptext866:
 ;;
 psect	text866
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	195
+	line	196
 	global	__size_of_initPB5
 	__size_of_initPB5	equ	__end_of_initPB5-_initPB5
 	
@@ -4764,33 +4940,33 @@ _initPB5:
 ;initPB5@bValue stored from wreg
 	bcf	status, 5	;RP0=0, select bank0
 	movwf	(initPB5@bValue)
-	line	196
+	line	197
 	
-l3265:	
-;main.c: 196: if( bValue )
+l3297:	
+;main.c: 197: if( bValue )
 	movf	(initPB5@bValue),w
 	skipz
-	goto	u750
-	goto	l702
-u750:
-	line	198
+	goto	u820
+	goto	l700
+u820:
+	line	199
 	
-l3267:	
-;main.c: 198: TRISB5 = 1;
+l3299:	
+;main.c: 199: TRISB5 = 1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1077/8)^080h,(1077)&7
-	goto	l704
-	line	202
+	goto	l702
+	line	203
 	
-l702:	
-	line	204
-;main.c: 202: else
-;main.c: 204: TRISB5= 0;
+l700:	
+	line	205
+;main.c: 203: else
+;main.c: 205: TRISB5= 0;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	(1077/8)^080h,(1077)&7
-	line	208
+	line	209
 	
-l704:	
+l702:	
 	return
 	opt stack 0
 GLOBAL	__end_of_initPB5
@@ -4805,7 +4981,7 @@ __ptext867:
 
 ;; *************** function _setPB4 *****************
 ;; Defined at:
-;;		line 178 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 179 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;  bValue          1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -4835,7 +5011,7 @@ __ptext867:
 ;;
 psect	text867
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	178
+	line	179
 	global	__size_of_setPB4
 	__size_of_setPB4	equ	__end_of_setPB4-_setPB4
 	
@@ -4844,31 +5020,31 @@ _setPB4:
 ; Regs used in _setPB4: [wreg]
 ;setPB4@bValue stored from wreg
 	movwf	(setPB4@bValue)
-	line	179
+	line	180
 	
-l3261:	
-;main.c: 179: if( bValue )
+l3293:	
+;main.c: 180: if( bValue )
 	movf	(setPB4@bValue),w
 	skipz
-	goto	u740
-	goto	l697
-u740:
-	line	181
+	goto	u810
+	goto	l695
+u810:
+	line	182
 	
-l3263:	
-;main.c: 181: PB4 = 1;
+l3295:	
+;main.c: 182: PB4 = 1;
 	bsf	(52/8),(52)&7
-	goto	l699
-	line	185
+	goto	l697
+	line	186
+	
+l695:	
+	line	188
+;main.c: 186: else
+;main.c: 188: PB4= 0;
+	bcf	(52/8),(52)&7
+	line	192
 	
 l697:	
-	line	187
-;main.c: 185: else
-;main.c: 187: PB4= 0;
-	bcf	(52/8),(52)&7
-	line	191
-	
-l699:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setPB4
@@ -4883,7 +5059,7 @@ __ptext868:
 
 ;; *************** function _initPB4 *****************
 ;; Defined at:
-;;		line 161 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 162 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;  bValue          1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -4912,7 +5088,7 @@ __ptext868:
 ;;
 psect	text868
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	161
+	line	162
 	global	__size_of_initPB4
 	__size_of_initPB4	equ	__end_of_initPB4-_initPB4
 	
@@ -4922,33 +5098,33 @@ _initPB4:
 ;initPB4@bValue stored from wreg
 	bcf	status, 5	;RP0=0, select bank0
 	movwf	(initPB4@bValue)
-	line	162
+	line	163
 	
-l3257:	
-;main.c: 162: if( bValue )
+l3289:	
+;main.c: 163: if( bValue )
 	movf	(initPB4@bValue),w
 	skipz
-	goto	u730
-	goto	l692
-u730:
-	line	164
+	goto	u800
+	goto	l690
+u800:
+	line	165
 	
-l3259:	
-;main.c: 164: TRISB4 = 1;
+l3291:	
+;main.c: 165: TRISB4 = 1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1076/8)^080h,(1076)&7
-	goto	l694
-	line	168
+	goto	l692
+	line	169
 	
-l692:	
-	line	170
-;main.c: 168: else
-;main.c: 170: TRISB4= 0;
+l690:	
+	line	171
+;main.c: 169: else
+;main.c: 171: TRISB4= 0;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	(1076/8)^080h,(1076)&7
-	line	174
+	line	175
 	
-l694:	
+l692:	
 	return
 	opt stack 0
 GLOBAL	__end_of_initPB4
@@ -4963,7 +5139,7 @@ __ptext869:
 
 ;; *************** function _setPB3 *****************
 ;; Defined at:
-;;		line 143 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 144 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;  bValue          1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -4993,7 +5169,7 @@ __ptext869:
 ;;
 psect	text869
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	143
+	line	144
 	global	__size_of_setPB3
 	__size_of_setPB3	equ	__end_of_setPB3-_setPB3
 	
@@ -5004,31 +5180,31 @@ _setPB3:
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(setPB3@bValue)
-	line	144
+	line	145
 	
-l3253:	
-;main.c: 144: if( bValue )
+l3285:	
+;main.c: 145: if( bValue )
 	movf	(setPB3@bValue),w
 	skipz
-	goto	u720
-	goto	l687
-u720:
-	line	146
+	goto	u790
+	goto	l685
+u790:
+	line	147
 	
-l3255:	
-;main.c: 146: PB3 = 1;
+l3287:	
+;main.c: 147: PB3 = 1;
 	bsf	(51/8),(51)&7
-	goto	l689
-	line	150
+	goto	l687
+	line	151
+	
+l685:	
+	line	153
+;main.c: 151: else
+;main.c: 153: PB3= 0;
+	bcf	(51/8),(51)&7
+	line	157
 	
 l687:	
-	line	152
-;main.c: 150: else
-;main.c: 152: PB3= 0;
-	bcf	(51/8),(51)&7
-	line	156
-	
-l689:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setPB3
@@ -5043,7 +5219,7 @@ __ptext870:
 
 ;; *************** function _initPB3 *****************
 ;; Defined at:
-;;		line 126 in file "D:\develop\190625\AK7030-OTP\main.c"
+;;		line 127 in file "D:\develop\190625\AK7030-OTP\main.c"
 ;; Parameters:    Size  Location     Type
 ;;  bValue          1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -5072,7 +5248,7 @@ __ptext870:
 ;;
 psect	text870
 	file	"D:\develop\190625\AK7030-OTP\main.c"
-	line	126
+	line	127
 	global	__size_of_initPB3
 	__size_of_initPB3	equ	__end_of_initPB3-_initPB3
 	
@@ -5083,33 +5259,33 @@ _initPB3:
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(initPB3@bValue)
-	line	127
+	line	128
 	
-l3249:	
-;main.c: 127: if( bValue )
+l3281:	
+;main.c: 128: if( bValue )
 	movf	(initPB3@bValue),w
 	skipz
-	goto	u710
-	goto	l682
-u710:
-	line	129
+	goto	u780
+	goto	l680
+u780:
+	line	130
 	
-l3251:	
-;main.c: 129: TRISB3 = 1;
+l3283:	
+;main.c: 130: TRISB3 = 1;
 	bsf	status, 5	;RP0=1, select bank1
 	bsf	(1075/8)^080h,(1075)&7
-	goto	l684
-	line	133
+	goto	l682
+	line	134
 	
-l682:	
-	line	135
-;main.c: 133: else
-;main.c: 135: TRISB3 = 0;
+l680:	
+	line	136
+;main.c: 134: else
+;main.c: 136: TRISB3 = 0;
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	(1075/8)^080h,(1075)&7
-	line	139
+	line	140
 	
-l684:	
+l682:	
 	return
 	opt stack 0
 GLOBAL	__end_of_initPB3
@@ -5162,7 +5338,7 @@ _clearThreeHoursTimer:
 ; Regs used in _clearThreeHoursTimer: [status,2]
 	line	385
 	
-l3247:	
+l3279:	
 ;common.c: 385: uiSmallTimer = 0;
 	clrf	(_uiSmallTimer)
 	clrf	(_uiSmallTimer+1)
@@ -5171,7 +5347,7 @@ l3247:
 	clrf	(_bSmallTimerStartFlag)
 	line	387
 	
-l1567:	
+l1573:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clearThreeHoursTimer
@@ -5224,7 +5400,7 @@ _clearTwelveHoursTimer:
 ; Regs used in _clearTwelveHoursTimer: [status,2]
 	line	378
 	
-l3245:	
+l3277:	
 ;common.c: 378: uiBigTimer = 0;
 	clrf	(_uiBigTimer)
 	clrf	(_uiBigTimer+1)
@@ -5233,7 +5409,7 @@ l3245:
 	clrf	(_bBigTimerStartFlag)
 	line	380
 	
-l1564:	
+l1570:	
 	return
 	opt stack 0
 GLOBAL	__end_of_clearTwelveHoursTimer
@@ -5308,24 +5484,24 @@ interrupt_function:
 psect	text873
 	line	537
 	
-i1l3559:	
+i1l3599:	
 ;common.c: 535: static unsigned char ucTimer1sCnt = 0;
 ;common.c: 537: if(TMR1IF == 1)
 	btfss	(96/8),(96)&7
-	goto	u111_21
-	goto	u111_20
-u111_21:
-	goto	i1l3581
-u111_20:
+	goto	u121_21
+	goto	u121_20
+u121_21:
+	goto	i1l3621
+u121_20:
 	line	539
 	
-i1l3561:	
+i1l3601:	
 ;common.c: 538: {
 ;common.c: 539: TMR1IF = 0 ;
 	bcf	(96/8),(96)&7
 	line	540
 	
-i1l3563:	
+i1l3603:	
 ;common.c: 540: timer.timer10msStopWatch++;
 	incf	(_timer),f
 	line	541
@@ -5333,37 +5509,37 @@ i1l3563:
 	incf	(ISR@ucTimer1sCnt),f
 	line	543
 	
-i1l3565:	
+i1l3605:	
 ;common.c: 543: if(ucTimer1sCnt >= 100)
 	movlw	(064h)
 	subwf	(ISR@ucTimer1sCnt),w
 	skipc
-	goto	u112_21
-	goto	u112_20
-u112_21:
-	goto	i1l3581
-u112_20:
+	goto	u122_21
+	goto	u122_20
+u122_21:
+	goto	i1l3621
+u122_20:
 	line	545
 	
-i1l3567:	
+i1l3607:	
 ;common.c: 544: {
 ;common.c: 545: ucTimer1sCnt = 0;
 	clrf	(ISR@ucTimer1sCnt)
 	line	546
 	
-i1l3569:	
+i1l3609:	
 ;common.c: 546: if(uiBigTimer > 0)
 	movf	(_uiBigTimer+1),w
 	iorwf	(_uiBigTimer),w
 	skipnz
-	goto	u113_21
-	goto	u113_20
-u113_21:
-	goto	i1l1632
-u113_20:
+	goto	u123_21
+	goto	u123_20
+u123_21:
+	goto	i1l1638
+u123_20:
 	line	547
 	
-i1l3571:	
+i1l3611:	
 ;common.c: 547: uiBigTimer--;
 	movlw	low(01h)
 	subwf	(_uiBigTimer),f
@@ -5372,20 +5548,20 @@ i1l3571:
 	decf	(_uiBigTimer+1),f
 	subwf	(_uiBigTimer+1),f
 	
-i1l1632:	
+i1l1638:	
 	line	549
 ;common.c: 549: if(uiSmallTimer)
 	movf	(_uiSmallTimer+1),w
 	iorwf	(_uiSmallTimer),w
 	skipnz
-	goto	u114_21
-	goto	u114_20
-u114_21:
-	goto	i1l1633
-u114_20:
+	goto	u124_21
+	goto	u124_20
+u124_21:
+	goto	i1l1639
+u124_20:
 	line	550
 	
-i1l3573:	
+i1l3613:	
 ;common.c: 550: uiSmallTimer--;
 	movlw	low(01h)
 	subwf	(_uiSmallTimer),f
@@ -5394,21 +5570,21 @@ i1l3573:
 	decf	(_uiSmallTimer+1),f
 	subwf	(_uiSmallTimer+1),f
 	
-i1l1633:	
+i1l1639:	
 	line	552
 ;common.c: 552: if(uiTwentySecondsTimer)
 	bsf	status, 5	;RP0=1, select bank1
 	movf	(_uiTwentySecondsTimer+1)^080h,w
 	iorwf	(_uiTwentySecondsTimer)^080h,w
 	skipnz
-	goto	u115_21
-	goto	u115_20
-u115_21:
-	goto	i1l1634
-u115_20:
+	goto	u125_21
+	goto	u125_20
+u125_21:
+	goto	i1l1640
+u125_20:
 	line	553
 	
-i1l3575:	
+i1l3615:	
 ;common.c: 553: uiTwentySecondsTimer--;
 	movlw	low(01h)
 	subwf	(_uiTwentySecondsTimer)^080h,f
@@ -5417,21 +5593,21 @@ i1l3575:
 	decf	(_uiTwentySecondsTimer+1)^080h,f
 	subwf	(_uiTwentySecondsTimer+1)^080h,f
 	
-i1l1634:	
+i1l1640:	
 	line	555
 ;common.c: 555: if(uiTwentyMinTimer)
 	bcf	status, 5	;RP0=0, select bank0
 	movf	(_uiTwentyMinTimer+1),w
 	iorwf	(_uiTwentyMinTimer),w
 	skipnz
-	goto	u116_21
-	goto	u116_20
-u116_21:
-	goto	i1l1635
-u116_20:
+	goto	u126_21
+	goto	u126_20
+u126_21:
+	goto	i1l1641
+u126_20:
 	line	556
 	
-i1l3577:	
+i1l3617:	
 ;common.c: 556: uiTwentyMinTimer--;
 	movlw	low(01h)
 	subwf	(_uiTwentyMinTimer),f
@@ -5440,20 +5616,20 @@ i1l3577:
 	decf	(_uiTwentyMinTimer+1),f
 	subwf	(_uiTwentyMinTimer+1),f
 	
-i1l1635:	
+i1l1641:	
 	line	558
 ;common.c: 558: if( uiOneHourTimer )
 	movf	(_uiOneHourTimer+1),w
 	iorwf	(_uiOneHourTimer),w
 	skipnz
-	goto	u117_21
-	goto	u117_20
-u117_21:
-	goto	i1l3581
-u117_20:
+	goto	u127_21
+	goto	u127_20
+u127_21:
+	goto	i1l3621
+u127_20:
 	line	559
 	
-i1l3579:	
+i1l3619:	
 ;common.c: 559: uiOneHourTimer--;
 	movlw	low(01h)
 	subwf	(_uiOneHourTimer),f
@@ -5463,43 +5639,43 @@ i1l3579:
 	subwf	(_uiOneHourTimer+1),f
 	line	563
 	
-i1l3581:	
+i1l3621:	
 ;common.c: 560: }
 ;common.c: 561: }
 ;common.c: 563: if(ADIF)
 	btfss	(106/8),(106)&7
-	goto	u118_21
-	goto	u118_20
-u118_21:
-	goto	i1l1640
-u118_20:
+	goto	u128_21
+	goto	u128_20
+u128_21:
+	goto	i1l1646
+u128_20:
 	line	566
 	
-i1l3583:	
+i1l3623:	
 ;common.c: 564: {
 ;common.c: 566: ADIF=0;
 	bcf	(106/8),(106)&7
 	line	567
 	
-i1l3585:	
+i1l3625:	
 ;common.c: 567: setAD_ConvertFlag(1);
 	movlw	(01h)
 	fcall	i1_setAD_ConvertFlag
 	line	569
 	
-i1l3587:	
+i1l3627:	
 ;common.c: 569: if(sampleChannelSelect == 12)
 	movf	(_sampleChannelSelect),w
 	xorlw	0Ch
 	skipz
-	goto	u119_21
-	goto	u119_20
-u119_21:
-	goto	i1l3591
-u119_20:
+	goto	u129_21
+	goto	u129_20
+u129_21:
+	goto	i1l3631
+u129_20:
 	line	573
 	
-i1l3589:	
+i1l3629:	
 ;common.c: 570: {
 ;common.c: 573: vPutSampleDataIntoTable(adc_get(),12);
 	fcall	_adc_get
@@ -5512,10 +5688,10 @@ i1l3589:
 	fcall	_vPutSampleDataIntoTable
 	line	577
 ;common.c: 577: }
-	goto	i1l1640
+	goto	i1l1646
 	line	583
 	
-i1l3591:	
+i1l3631:	
 ;common.c: 578: else
 ;common.c: 579: {
 ;common.c: 583: vPutSampleDataIntoTable(adc_get(),13);
@@ -5529,7 +5705,7 @@ i1l3591:
 	fcall	_vPutSampleDataIntoTable
 	line	588
 	
-i1l1640:	
+i1l1646:	
 	movf	(??_ISR+3),w
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -5595,13 +5771,13 @@ i1_setAD_ConvertFlag:
 	movwf	(i1setAD_ConvertFlag@flag)
 	line	216
 	
-i1l3597:	
+i1l3637:	
 ;common.c: 216: adc_convert_flag = flag;
 	movf	(i1setAD_ConvertFlag@flag),w
 	movwf	(_adc_convert_flag)
 	line	217
 	
-i1l1532:	
+i1l1538:	
 	return
 	opt stack 0
 GLOBAL	__end_ofi1_setAD_ConvertFlag
@@ -5653,7 +5829,7 @@ _adc_get:
 ; Regs used in _adc_get: [wreg]
 	line	107
 	
-i1l3593:	
+i1l3633:	
 ;periph.c: 106: unsigned int val;
 ;periph.c: 107: val = (ADRESH<<8) | ADRESL;
 	movf	(30),w	;volatile
@@ -5670,7 +5846,7 @@ i1l3593:
 	movwf	(?_adc_get)
 	line	109
 	
-i1l2296:	
+i1l2302:	
 	return
 	opt stack 0
 GLOBAL	__end_of_adc_get
@@ -5723,7 +5899,7 @@ _vPutSampleDataIntoTable:
 ; Regs used in _vPutSampleDataIntoTable: [wreg-fsr0h+status,2+status,0+btemp+1]
 	line	114
 	
-i1l3491:	
+i1l3531:	
 ;common.c: 108: static unsigned char ucChannelFirstLength = 0;
 ;common.c: 110: static unsigned char ucChannelFourthLength = 0;
 ;common.c: 112: static unsigned char ucChannelFourteenthLength = 0;
@@ -5731,27 +5907,27 @@ i1l3491:
 	movf	(vPutSampleDataIntoTable@channel),w
 	xorlw	0Ch
 	skipz
-	goto	u101_21
-	goto	u101_20
-u101_21:
-	goto	i1l3503
-u101_20:
+	goto	u111_21
+	goto	u111_20
+u111_21:
+	goto	i1l3543
+u111_20:
 	line	116
 	
-i1l3493:	
+i1l3533:	
 ;common.c: 115: {
 ;common.c: 116: if(ucChannelFirstLength < 12)
 	movlw	(0Ch)
 	subwf	(vPutSampleDataIntoTable@ucChannelFirstLength),w
 	skipnc
-	goto	u102_21
-	goto	u102_20
-u102_21:
-	goto	i1l3499
-u102_20:
+	goto	u112_21
+	goto	u112_20
+u112_21:
+	goto	i1l3539
+u112_20:
 	line	118
 	
-i1l3495:	
+i1l3535:	
 ;common.c: 117: {
 ;common.c: 118: uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 	clrc
@@ -5766,22 +5942,22 @@ i1l3495:
 	movwf	indf
 	line	120
 	
-i1l3497:	
+i1l3537:	
 ;common.c: 120: ucChannelFirstLength++;
 	incf	(vPutSampleDataIntoTable@ucChannelFirstLength),f
 	line	121
 ;common.c: 121: }
-	goto	i1l1514
+	goto	i1l1520
 	line	124
 	
-i1l3499:	
+i1l3539:	
 ;common.c: 122: else
 ;common.c: 123: {
 ;common.c: 124: ucChannelFirstLength = 0;
 	clrf	(vPutSampleDataIntoTable@ucChannelFirstLength)
 	line	126
 	
-i1l3501:	
+i1l3541:	
 ;common.c: 126: uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 	clrc
 	rlf	(vPutSampleDataIntoTable@ucChannelFirstLength),w
@@ -5793,36 +5969,36 @@ i1l3501:
 	incf	fsr0,f
 	movf	(vPutSampleDataIntoTable@uiSampleData+1),w
 	movwf	indf
-	goto	i1l1514
+	goto	i1l1520
 	line	129
 	
-i1l3503:	
+i1l3543:	
 ;common.c: 129: else if(channel == 13)
 	movf	(vPutSampleDataIntoTable@channel),w
 	xorlw	0Dh
 	skipz
-	goto	u103_21
-	goto	u103_20
-u103_21:
-	goto	i1l3515
-u103_20:
+	goto	u113_21
+	goto	u113_20
+u113_21:
+	goto	i1l3555
+u113_20:
 	line	131
 	
-i1l3505:	
+i1l3545:	
 ;common.c: 130: {
 ;common.c: 131: if(ucChannelFourthLength < 12)
 	movlw	(0Ch)
 	bcf	status, 5	;RP0=0, select bank0
 	subwf	(vPutSampleDataIntoTable@ucChannelFourthLength),w
 	skipnc
-	goto	u104_21
-	goto	u104_20
-u104_21:
-	goto	i1l3511
-u104_20:
+	goto	u114_21
+	goto	u114_20
+u114_21:
+	goto	i1l3551
+u114_20:
 	line	133
 	
-i1l3507:	
+i1l3547:	
 ;common.c: 132: {
 ;common.c: 133: uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 	clrc
@@ -5837,22 +6013,22 @@ i1l3507:
 	movwf	indf
 	line	135
 	
-i1l3509:	
+i1l3549:	
 ;common.c: 135: ucChannelFourthLength++;
 	incf	(vPutSampleDataIntoTable@ucChannelFourthLength),f
 	line	136
 ;common.c: 136: }
-	goto	i1l1514
+	goto	i1l1520
 	line	139
 	
-i1l3511:	
+i1l3551:	
 ;common.c: 137: else
 ;common.c: 138: {
 ;common.c: 139: ucChannelFourthLength = 0;
 	clrf	(vPutSampleDataIntoTable@ucChannelFourthLength)
 	line	141
 	
-i1l3513:	
+i1l3553:	
 ;common.c: 141: uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 	clrc
 	rlf	(vPutSampleDataIntoTable@ucChannelFourthLength),w
@@ -5864,36 +6040,36 @@ i1l3513:
 	incf	fsr0,f
 	movf	(vPutSampleDataIntoTable@uiSampleData+1),w
 	movwf	indf
-	goto	i1l1514
+	goto	i1l1520
 	line	144
 	
-i1l3515:	
+i1l3555:	
 ;common.c: 144: else if(channel == 14)
 	movf	(vPutSampleDataIntoTable@channel),w
 	xorlw	0Eh
 	skipz
-	goto	u105_21
-	goto	u105_20
-u105_21:
-	goto	i1l3527
-u105_20:
+	goto	u115_21
+	goto	u115_20
+u115_21:
+	goto	i1l3567
+u115_20:
 	line	146
 	
-i1l3517:	
+i1l3557:	
 ;common.c: 145: {
 ;common.c: 146: if(ucChannelFourteenthLength < 12)
 	movlw	(0Ch)
 	bcf	status, 5	;RP0=0, select bank0
 	subwf	(vPutSampleDataIntoTable@ucChannelFourteenthLength),w
 	skipnc
-	goto	u106_21
-	goto	u106_20
-u106_21:
-	goto	i1l3523
-u106_20:
+	goto	u116_21
+	goto	u116_20
+u116_21:
+	goto	i1l3563
+u116_20:
 	line	148
 	
-i1l3519:	
+i1l3559:	
 ;common.c: 147: {
 ;common.c: 148: uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
 	clrc
@@ -5908,22 +6084,22 @@ i1l3519:
 	movwf	indf
 	line	150
 	
-i1l3521:	
+i1l3561:	
 ;common.c: 150: ucChannelFourteenthLength++;
 	incf	(vPutSampleDataIntoTable@ucChannelFourteenthLength),f
 	line	151
 ;common.c: 151: }
-	goto	i1l1514
+	goto	i1l1520
 	line	154
 	
-i1l3523:	
+i1l3563:	
 ;common.c: 152: else
 ;common.c: 153: {
 ;common.c: 154: ucChannelFourteenthLength = 0;
 	clrf	(vPutSampleDataIntoTable@ucChannelFourteenthLength)
 	line	156
 	
-i1l3525:	
+i1l3565:	
 ;common.c: 156: uiSampleChannelFourth[ucChannelFourteenthLength] = uiSampleData;
 	clrc
 	rlf	(vPutSampleDataIntoTable@ucChannelFourteenthLength),w
@@ -5935,10 +6111,10 @@ i1l3525:
 	incf	fsr0,f
 	movf	(vPutSampleDataIntoTable@uiSampleData+1),w
 	movwf	indf
-	goto	i1l1514
+	goto	i1l1520
 	line	161
 	
-i1l3527:	
+i1l3567:	
 ;common.c: 159: else
 ;common.c: 160: {
 ;common.c: 161: ucChannelFirstLength = 0;
@@ -5956,7 +6132,7 @@ i1l3527:
 	clrf	(vPutSampleDataIntoTable@i+1)
 	line	169
 	
-i1l3533:	
+i1l3573:	
 ;common.c: 168: {
 ;common.c: 169: uiSampleChannelFirst[i] = 0;
 	clrc
@@ -5987,32 +6163,32 @@ i1l3533:
 	clrf	indf
 	line	167
 	
-i1l3535:	
+i1l3575:	
 	incf	(vPutSampleDataIntoTable@i),f
 	skipnz
 	incf	(vPutSampleDataIntoTable@i+1),f
 	
-i1l3537:	
+i1l3577:	
 	movf	(vPutSampleDataIntoTable@i+1),w
 	xorlw	80h
 	movwf	btemp+1
 	movlw	(high(0Ch))^80h
 	subwf	btemp+1,w
 	skipz
-	goto	u107_25
+	goto	u117_25
 	movlw	low(0Ch)
 	subwf	(vPutSampleDataIntoTable@i),w
-u107_25:
+u117_25:
 
 	skipc
-	goto	u107_21
-	goto	u107_20
-u107_21:
-	goto	i1l3533
-u107_20:
+	goto	u117_21
+	goto	u117_20
+u117_21:
+	goto	i1l3573
+u117_20:
 	line	177
 	
-i1l1514:	
+i1l1520:	
 	return
 	opt stack 0
 GLOBAL	__end_of_vPutSampleDataIntoTable
