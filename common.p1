@@ -738,11 +738,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "48 D:\develop\190625\AK7030-OTP\common.c
 [v _bTwentyMinStartFlag `uc  1 s ]
 "98 D:\develop\190625\AK7030-OTP\common.c
-[v _uiSampleChannelFirst `i  -> 12 `i s ]
+[v _uiSampleChannelFirst `i  -> 20 `i s ]
 "100 D:\develop\190625\AK7030-OTP\common.c
-[v _uiSampleChannelFourth `i  -> 12 `i s ]
+[v _uiSampleChannelFourth `i  -> 20 `i s ]
 "102 D:\develop\190625\AK7030-OTP\common.c
-[v _uiSampleChannelFourteenth `i  -> 12 `i s ]
+[v _uiSampleChannelFourteenth `i  -> 20 `i s ]
 "50 D:\develop\190625\AK7030-OTP\common.c
 [v _AD_Sample `(v  0 sf ]
 "18 D:\develop\190625\AK7030-OTP\periph.h
@@ -1394,14 +1394,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _filter_sum `ui  1 a ]
 [e = _filter_sum -> -> 0 `i `ui ]
 "66
-[v _filter_buf `ui  -> 12 `i a ]
-[; ;common.c: 66: unsigned int filter_buf[12];
-[; ;common.c: 68: for(int cir = 0;cir < 12; cir++)
+[v _filter_buf `ui  -> 20 `i a ]
+[; ;common.c: 66: unsigned int filter_buf[20];
+[; ;common.c: 68: for(int cir = 0;cir < 20; cir++)
 "68
 {
 [v _cir `i  1 a ]
 [e = _cir -> 0 `i ]
-[e $ < _cir -> 12 `i 43  ]
+[e $ < _cir -> 20 `i 43  ]
 [e $U 44  ]
 "69
 [e :U 43 ]
@@ -1409,21 +1409,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _filter_buf * -> -> _cir `ui `ux -> -> # *U &U _filter_buf `ui `ux -> *U ++ _tmpValue * -> -> 1 `i `x -> -> # *U _tmpValue `i `x `ui ]
 "68
 [e ++ _cir -> 1 `i ]
-[e $ < _cir -> 12 `i 43  ]
+[e $ < _cir -> 20 `i 43  ]
 [e :U 44 ]
 "69
 }
-[; ;common.c: 72: for(j = 0; j < 12 - 1; j++)
+[; ;common.c: 72: for(j = 0; j < 20 - 1; j++)
 "72
 {
 [e = _j -> -> 0 `i `uc ]
-[e $ < -> _j `i - -> 12 `i -> 1 `i 46  ]
+[e $ < -> _j `i - -> 20 `i -> 1 `i 46  ]
 [e $U 47  ]
 "73
 [e :U 46 ]
 [; ;common.c: 73: {
 {
-[; ;common.c: 74: for(i = 0; i < 12 - 1 - j; i++)
+[; ;common.c: 74: for(i = 0; i < 20 - 1 - j; i++)
 "74
 {
 [e = _i -> -> 0 `i `uc ]
@@ -1455,7 +1455,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "74
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 52 ]
-[e $ < -> _i `i - - -> 12 `i -> 1 `i -> _j `i 49  ]
+[e $ < -> _i `i - - -> 20 `i -> 1 `i -> _j `i 49  ]
 [e :U 50 ]
 "85
 }
@@ -1463,18 +1463,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "72
 [e ++ _j -> -> 1 `i `uc ]
-[e $ < -> _j `i - -> 12 `i -> 1 `i 46  ]
+[e $ < -> _j `i - -> 20 `i -> 1 `i 46  ]
 [e :U 47 ]
 "86
 }
 [; ;common.c: 84: }
 [; ;common.c: 85: }
 [; ;common.c: 86: }
-[; ;common.c: 88: for(i = 2; i < 12 - 2; i++)
+[; ;common.c: 88: for(i = 2; i < 20 - 2; i++)
 "88
 {
 [e = _i -> -> 2 `i `uc ]
-[e $ < -> _i `i - -> 12 `i -> 2 `i 54  ]
+[e $ < -> _i `i - -> 20 `i -> 2 `i 54  ]
 [e $U 55  ]
 "89
 [e :U 54 ]
@@ -1487,22 +1487,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "88
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i - -> 12 `i -> 2 `i 54  ]
+[e $ < -> _i `i - -> 20 `i -> 2 `i 54  ]
 [e :U 55 ]
 "91
 }
 [; ;common.c: 91: }
-[; ;common.c: 93: return (filter_sum >> 3);
+[; ;common.c: 93: return (filter_sum >> 4);
 "93
-[e ) >> _filter_sum -> 3 `i ]
+[e ) >> _filter_sum -> 4 `i ]
 [e $UE 42  ]
 [; ;common.c: 95: }
 "95
 [e :UE 42 ]
 }
-[; ;common.c: 98: static int uiSampleChannelFirst[12];
-[; ;common.c: 100: static int uiSampleChannelFourth[12];
-[; ;common.c: 102: static int uiSampleChannelFourteenth[12];
+[; ;common.c: 98: static int uiSampleChannelFirst[20];
+[; ;common.c: 100: static int uiSampleChannelFourth[20];
+[; ;common.c: 102: static int uiSampleChannelFourteenth[20];
 "106
 [v _vPutSampleDataIntoTable `(v  1 ef2`ui`uc ]
 {
@@ -1536,9 +1536,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 115: {
 "115
 {
-[; ;common.c: 116: if(ucChannelFirstLength < 12)
+[; ;common.c: 116: if(ucChannelFirstLength < 20)
 "116
-[e $ ! < -> F861 `i -> 12 `i 59  ]
+[e $ ! < -> F861 `i -> 20 `i 59  ]
 [; ;common.c: 117: {
 "117
 {
@@ -1579,9 +1579,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 130: {
 "130
 {
-[; ;common.c: 131: if(ucChannelFourthLength < 12)
+[; ;common.c: 131: if(ucChannelFourthLength < 20)
 "131
-[e $ ! < -> F862 `i -> 12 `i 63  ]
+[e $ ! < -> F862 `i -> 20 `i 63  ]
 [; ;common.c: 132: {
 "132
 {
@@ -1622,9 +1622,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 145: {
 "145
 {
-[; ;common.c: 146: if(ucChannelFourteenthLength < 12)
+[; ;common.c: 146: if(ucChannelFourteenthLength < 20)
 "146
-[e $ ! < -> F863 `i -> 12 `i 67  ]
+[e $ ! < -> F863 `i -> 20 `i 67  ]
 [; ;common.c: 147: {
 "147
 {
@@ -1673,12 +1673,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 165: ucChannelFourteenthLength = 0;
 "165
 [e = F863 -> -> 0 `i `uc ]
-[; ;common.c: 167: for(int i = 0;i < 12; i++)
+[; ;common.c: 167: for(int i = 0;i < 20; i++)
 "167
 {
 [v _i `i  1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 12 `i 70  ]
+[e $ < _i -> 20 `i 70  ]
 [e $U 71  ]
 "168
 [e :U 70 ]
@@ -1697,7 +1697,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "167
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 12 `i 70  ]
+[e $ < _i -> 20 `i 70  ]
 [e :U 71 ]
 "175
 }

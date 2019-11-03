@@ -472,9 +472,46 @@ static unsigned char calPulseWidth( void )
 {
     unsigned char ucPulseWidth = 0;
 
-    #define AD_12_CHANNEL_MIN_VALUE  312
+    #define AD_12_CHANNEL_MIN_VALUE          312
+	#define AD_CHANGE_THRESHOLD_VALUE        5
 
-    unsigned int uiChannel2Value = getAdOriginalCh12Value();
+    unsigned int uiChannel2Value = 0;
+    unsigned int uiNewValue = 0;
+    static unsigned int uiOldValue = 0;
+
+    static unsigned char bInitFlag = 0;
+
+    uiNewValue = getAdOriginalCh12Value();
+
+    if( 0 == bInitFlag )
+    {
+    	uiOldValue = getAdOriginalCh12Value();
+    	bInitFlag = 1;
+    }
+
+    if(uiNewValue != uiOldValue)
+    {
+    	if(uiNewValue > uiOldValue)
+    	{
+    		if((uiNewValue - uiOldValue) >= AD_CHANGE_THRESHOLD_VALUE)
+    			uiOldValue = uiNewValue;
+    		else
+    			;//do nothing,keep previous value
+    	}
+    	else
+    	{
+    		if((uiOldValue - uiNewValue) >= AD_CHANGE_THRESHOLD_VALUE)
+    			uiOldValue = uiNewValue;
+			else
+				;//do nothing,keep previous value
+    	}
+    }
+    else
+    {
+    	;//do nothing
+    }
+
+    uiChannel2Value = uiOldValue;
 
     if( uiChannel2Value >= 332 )
         ucPulseWidth = 99;

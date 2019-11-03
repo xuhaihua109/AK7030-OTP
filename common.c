@@ -53,7 +53,7 @@ static void AD_Sample(void);
 
 
 
-#define FILTER_N   12
+#define FILTER_N   20
 
 
  unsigned int Filter(int *tmpValue)
@@ -90,7 +90,7 @@ static void AD_Sample(void);
 	  filter_sum += filter_buf[i];
   }
 
-   return (filter_sum >> 3);
+   return (filter_sum >> 4);
 
  }
 

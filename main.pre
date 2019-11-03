@@ -1058,7 +1058,44 @@ unsigned char ucPulseWidth = 0;
 
 
 
-unsigned int uiChannel2Value = getAdOriginalCh12Value();
+
+unsigned int uiChannel2Value = 0;
+unsigned int uiNewValue = 0;
+static unsigned int uiOldValue = 0;
+
+static unsigned char bInitFlag = 0;
+
+uiNewValue = getAdOriginalCh12Value();
+
+if( 0 == bInitFlag )
+{
+uiOldValue = getAdOriginalCh12Value();
+bInitFlag = 1;
+}
+
+if(uiNewValue != uiOldValue)
+{
+if(uiNewValue > uiOldValue)
+{
+if((uiNewValue - uiOldValue) >= 5)
+uiOldValue = uiNewValue;
+else
+;
+}
+else
+{
+if((uiOldValue - uiNewValue) >= 5)
+uiOldValue = uiNewValue;
+else
+;
+}
+}
+else
+{
+;
+}
+
+uiChannel2Value = uiOldValue;
 
 if( uiChannel2Value >= 332 )
 ucPulseWidth = 99;
@@ -1088,15 +1125,15 @@ ucPulseWidth = 99;
 
 }
 
-# 509
+# 546
 return ucPulseWidth;
 }
 
-# 543
+# 580
 int main (void)
 {
 
-# 555
+# 592
 initPin();
 setPinInitVaule();
 selectAdChannel();
@@ -1107,10 +1144,10 @@ timer1_interrupt_config();
 
 adc_test_init(12,3);
 
-# 570
+# 607
 adc_start();
 
-# 577
+# 614
 startTwentyMinTimer( 60 );
 
 while(1)
@@ -1126,7 +1163,7 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 598
+# 635
 enum systemStep {
 INIT_STEP = 0,
 START_UP_PWM_STEP,
@@ -1152,7 +1189,7 @@ switch(ucStep)
 case INIT_STEP:
 {
 
-# 626
+# 663
 static unsigned char ucTimerP3s = 0;
 
 if( isFinishedTwentyMinTimer() )
@@ -1177,14 +1214,14 @@ ucStep = START_UP_PWM_STEP;
 
 }
 
-# 652
+# 689
 break;
 }
 
 case START_UP_PWM_STEP:
 {
 
-# 660
+# 697
 unsigned char ucPulseWidth = 0;
 
 ucPulseWidth = calPulseWidth();
@@ -1203,7 +1240,7 @@ break;
 case CHECK_10_HOUR_TIMER_STEP:
 {
 
-# 681
+# 718
 static unsigned char ucTimerP5s = 0;
 
 if( isFinishedTwelveHoursTimer () )
@@ -1269,7 +1306,7 @@ break;
 case CHECK_1_HOUR_TIMER_STEP:
 {
 
-# 749
+# 786
 static unsigned int uiTimerOneP5s = 0;
 static unsigned int uiTimerTwoP5s = 0;
 static unsigned int uiTimerThreeP5s = 0;
@@ -1359,7 +1396,7 @@ ucDelay1s = 0;
 ucStep = MEET_RESET_CONDITION_STEP;
 }
 
-# 841
+# 878
 break;
 }
 

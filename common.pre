@@ -909,15 +909,15 @@ unsigned char i = 0, j = 0;
 
 unsigned int filter_temp = 0, filter_sum = 0;
 
-unsigned int filter_buf[12];
+unsigned int filter_buf[20];
 
-for(int cir = 0;cir < 12; cir++)
+for(int cir = 0;cir < 20; cir++)
 filter_buf[cir] = *tmpValue++;
 
 
-for(j = 0; j < 12 - 1; j++)
+for(j = 0; j < 20 - 1; j++)
 {
-for(i = 0; i < 12 - 1 - j; i++)
+for(i = 0; i < 20 - 1 - j; i++)
 {
 if(filter_buf[i] > filter_buf[i + 1])
 {
@@ -931,21 +931,21 @@ filter_buf[i + 1] = filter_temp;
 }
 }
 
-for(i = 2; i < 12 - 2; i++)
+for(i = 2; i < 20 - 2; i++)
 {
 filter_sum += filter_buf[i];
 }
 
-return (filter_sum >> 3);
+return (filter_sum >> 4);
 
 }
 
 
-static int uiSampleChannelFirst[12];
+static int uiSampleChannelFirst[20];
 
-static int uiSampleChannelFourth[12];
+static int uiSampleChannelFourth[20];
 
-static int uiSampleChannelFourteenth[12];
+static int uiSampleChannelFourteenth[20];
 
 
 void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
@@ -959,7 +959,7 @@ static unsigned char ucChannelFourteenthLength = 0;
 
 if(channel == 12)
 {
-if(ucChannelFirstLength < 12)
+if(ucChannelFirstLength < 20)
 {
 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 
@@ -974,7 +974,7 @@ uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 }
 else if(channel == 13)
 {
-if(ucChannelFourthLength < 12)
+if(ucChannelFourthLength < 20)
 {
 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 
@@ -989,7 +989,7 @@ uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 }
 else if(channel == 14)
 {
-if(ucChannelFourteenthLength < 12)
+if(ucChannelFourteenthLength < 20)
 {
 uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
 
@@ -1010,7 +1010,7 @@ ucChannelFourthLength = 0;
 
 ucChannelFourteenthLength = 0;
 
-for(int i = 0;i < 12; i++)
+for(int i = 0;i < 20; i++)
 {
 uiSampleChannelFirst[i] = 0;
 
