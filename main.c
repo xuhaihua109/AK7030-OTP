@@ -18,6 +18,7 @@
 
 
 //#define    USE_SOFTWARE_SIMULATION_TEST                1
+#define    TIMR_CONDITION_OK   1
 
 #define  SET_PIN_AS_OUTPUT   0
 #define  SET_PIN_AS_INPUT    1
@@ -240,77 +241,27 @@ void initPB2_AsHighResistence( void )
 //pwm初始化
 void pwm_start( unsigned char ucPulseWidth)
 {
-//  const unsigned char pulseWidthTable[ ] = {60,62,64,66,68,70,72}
-
-    unsigned char ucConvertRealPulseWidth = 0;
-
-    unsigned char ucGetLowestTwoValue = 0,ucGeHighestSixValue = 0;
-
-    unsigned char ucCCP1CON_Value = 0;
-
-#ifdef  USE_SOFTWARE_SIMULATION_TEST
-    cout <<"ucPulseWidth :"<<(int) ucPulseWidth <<endl;
-#endif
-
-    ucConvertRealPulseWidth = ucPulseWidth << 1; //*2 ,because need divide 200
-
-#ifdef  USE_SOFTWARE_SIMULATION_TEST
-    cout << "ucConvertRealPulseWidth:"<<(int) (ucConvertRealPulseWidth) << endl;
-#endif
-
-    ucGetLowestTwoValue =  ucConvertRealPulseWidth & 0x03;
-
-#ifdef  USE_SOFTWARE_SIMULATION_TEST
-    cout << int ( ucGetLowestTwoValue )<<endl;
-#endif
-
-    ucCCP1CON_Value = ucGetLowestTwoValue << 4;
-
-#ifdef  USE_SOFTWARE_SIMULATION_TEST
-    cout << int ( ucCCP1CON_Value )<<endl;
-#endif
-
-    ucGeHighestSixValue =  ucConvertRealPulseWidth >> 2;
-
-#ifdef  USE_SOFTWARE_SIMULATION_TEST
-    cout << int ( ucGeHighestSixValue )<<endl;
-#endif
-
 #ifndef     USE_SOFTWARE_SIMULATION_TEST
-
-    if( ucPulseWidth <= 30)
-        ucGeHighestSixValue = 0x19;
-    else if((ucPulseWidth > 30) &&(ucPulseWidth < 90))
-        ucGeHighestSixValue = 0x25;
-    else
-    	ucGeHighestSixValue = 0x3F;;
-
+	CCP1CON&= 0xf0;//disable PWM
 
     T2CON=0x04;         //使能T2，后分频值1 预分频值1
-    PR2 = 49;           //T2周期寄存器，   100kHZ f=20M/(4*(PR2+1))
-    CCPR1L = ucGeHighestSixValue;      //pwm高8位  占空比50% =【CCPR1L:CCP1CON[5:4]】/((PR2+1)*4)
+    PR2 = 99;           //T2周期寄存器，   100kHZ f=20M/(4*(PR2+1))
+    CCPR1L = ucPulseWidth;      //pwm高8位  占空比50% =【CCPR1L:CCP1CON[5:4]】/((PR2+1)*4)
     CCP1CON=0x00;       //外部CCP1引脚输入  pwm低两位为00，启动 PWM模式， e PWM 默认输出为 1, d 0
-    CCP1CON = CCP1CON | ucCCP1CON_Value;
 
     TRISB2=0;           //pb2设为输出
     PBOD2 = 0;
+
+    CCP1CON|= 0x0c;//enable
 #else
+
+    cout<<"*********************************************"<<endl;
     cout << "pwm_start();" <<endl;
+    unsigned int uiTempWidth = ucPulseWidth*100;
+    cout << "width of PWM is:" <<  uiTempWidth/99 << endl;
+    cout<<"*********************************************"<<endl;
 #endif
 }
-
-void pwm_config(unsigned char state)
-{
-#ifndef     USE_SOFTWARE_SIMULATION_TEST
-    if( state )
-        CCP1CON|= 0x0c;     //外部CCP1引脚输入  pwm低两位为01，启动 PWM模式， e PWM 默认输出为 1, d 0
-    else
-        CCP1CON&= 0xf0;     //禁止pwm
-#else
-    cout << "pwm_config "<< endl;
-#endif
-}
-
 
 
 static void initPin(void)
@@ -386,6 +337,8 @@ unsigned int getAdOriginalCh12Value(void)
 
     cout <<"please input value of ch12:"<<endl;
 
+    cin.sync();
+
     cin >> uiCh12Value;
 
     return uiCh12Value;
@@ -398,6 +351,8 @@ unsigned int getAdOriginalCh13Value(void)
     unsigned int uiCh13Value = 0;
 
     cout <<"please input value of ch13:"<< endl;
+
+    cin.sync();
 
     cin >> uiCh13Value;
 
@@ -427,14 +382,15 @@ void startTwelveHourTimer(unsigned int uiTimeValue)
 
 bool isFinishedTwelveHoursTimer(void)
 {
-//  bool bTimerOut = false;
-//
-//  cout << "please input running result for twelve hour timer" <<endl;
-//
-//  cin >> bTimerOut;
+	unsigned char bFinished = false;
 
-//  return bTimerOut;
-    return false;
+	cout <<"isFinishedTwelveHoursTimer():"<< endl;
+
+	cin.sync();
+
+	cin >> bFinished;
+
+	return 0;
 }
 
  bool isFinishedTwentyMinTimer( void)
@@ -475,17 +431,6 @@ void startTwentyMinTimer(unsigned int uiPara)
     cout << "startTwentyMinTimer();" << endl;
 }
 
-bool isFinishedTwentySecondsTimer(void)
-{
-    bool bTimeOut = false;
-
-    cout << "please input running result for twenty seconds timer: "<< endl;
-
-    cin >> bTimeOut;
-
-    return bTimeOut;
-}
-
 
 void clearTwentyHoursTimer(void)
 {
@@ -506,6 +451,7 @@ bool isFinishedThreeHoursTimer(void)
     cin >> bTimeOut;
 
     return bTimeOut;
+
 }
 
 
@@ -531,7 +477,7 @@ static unsigned char calPulseWidth( void )
     unsigned int uiChannel2Value = getAdOriginalCh12Value();
 
     if( uiChannel2Value >= 332 )
-        ucPulseWidth = 100;
+        ucPulseWidth = 99;
     else if( uiChannel2Value <= AD_12_CHANNEL_MIN_VALUE)
         ucPulseWidth = 30;
     else
@@ -552,6 +498,9 @@ static unsigned char calPulseWidth( void )
         ucHalfValue = ucGapValue >> 1;
 
         ucPulseWidth = 30 + ucThreeTimesValue +  ucHalfValue;
+
+        if(ucPulseWidth > 99)
+        	ucPulseWidth = 99;
 
     }
 #ifdef      USE_SOFTWARE_SIMULATION_TEST
@@ -586,6 +535,7 @@ static void chipResetDebug( void )
 
 #ifndef  USE_SOFTWARE_SIMULATION_TEST
 #define   CONFIRMATION_COUT    5
+
 #else
 #define   CONFIRMATION_COUT    1
 #endif
@@ -600,12 +550,12 @@ int main (void)
 
 
 
-#ifndef     USE_SOFTWARE_SIMULATION_TEST
+
 
         initPin();
         setPinInitVaule();
         selectAdChannel();
-
+#ifndef     USE_SOFTWARE_SIMULATION_TEST
         clock_config(); //使系统时钟稳定
         timer1_config();
         timer1_interrupt_config();
@@ -654,11 +604,15 @@ int main (void)
                     STARTUP_1_HOUR_TIMER_STEP,
                     CHECK_1_HOUR_TIMER_STEP,
                     READY_FOR_RESET_STEP = 99,
+					DELAY_ONE_SECOND_FOR_PWM,
                     MEET_RESET_CONDITION_STEP,
                     RESET_STEP,
                 };
 
             static enum systemStep ucStep = INIT_STEP;
+
+            if(( ucStep > START_UP_PWM_STEP) && ( ucStep < READY_FOR_RESET_STEP))
+            	pwm_start( calPulseWidth() );
 
             switch(ucStep)
             {
@@ -863,11 +817,28 @@ int main (void)
                     setPB3(SET_PIN_LOW);
                     setPB4(SET_PIN_LOW);
                     setPB5(SET_PIN_HIGH);
-                    pwm_config(0);
+                  //  pwm_config(0);
                     pwm_start(60);// need to set 60% pulse width
-                    pwm_config(1);
-                    ucStep = MEET_RESET_CONDITION_STEP;
+                 //   pwm_config(1);
+                    ucStep = DELAY_ONE_SECOND_FOR_PWM;
                     break;
+                }
+
+                case DELAY_ONE_SECOND_FOR_PWM:
+                {
+                	static unsigned ucDelay1s = 0;
+                	if(ucDelay1s < 10)
+                		ucDelay1s++;
+                	else
+                	{
+                		ucDelay1s = 0;
+                		ucStep = MEET_RESET_CONDITION_STEP;
+                	}
+
+#ifdef USE_SOFTWARE_SIMULATION_TEST
+                	cout << (int) (ucDelay1s) <<endl;
+#endif
+                	break;
                 }
 
                 case MEET_RESET_CONDITION_STEP:
