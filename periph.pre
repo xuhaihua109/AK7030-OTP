@@ -815,7 +815,7 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 void adc_start();
 unsigned int adc_get(void);
 
-# 30 "D:\develop\190625\AK7030-OTP\common.h"
+# 41 "D:\develop\190625\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -829,7 +829,7 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 48
+# 59
 unsigned int getAdOriginalCh12Value();
 unsigned int getAdOriginalCh13Value();
 
@@ -928,6 +928,7 @@ void adc_test_init(unsigned char channel,unsigned char ref)
 {
 ADCON0 = 0x00;
 ADCON0|=channel<<2;
+
 ADCON1|=ref<<6;
 ADON=1;
 ADIE=1;

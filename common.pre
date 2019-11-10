@@ -804,7 +804,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 30 "D:\develop\190625\AK7030-OTP\common.h"
+# 41 "D:\develop\190625\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -818,7 +818,7 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 48
+# 59
 unsigned int getAdOriginalCh12Value();
 unsigned int getAdOriginalCh13Value();
 
@@ -901,7 +901,18 @@ static unsigned char bTwentyMinStartFlag = 0;
 
 static void AD_Sample(void);
 
-# 59
+
+
+static void setPWM_Width(unsigned char ucWidth)
+{
+static unsigned char ucOldWidth = 0;
+if( ucOldWidth != ucWidth)
+{
+CCPR1L = ucWidth;
+ucOldWidth = ucWidth;
+}
+}
+
 unsigned int Filter(int *tmpValue)
 {
 
@@ -909,15 +920,16 @@ unsigned char i = 0, j = 0;
 
 unsigned int filter_temp = 0, filter_sum = 0;
 
-unsigned int filter_buf[20];
+unsigned int filter_buf[10];
 
-for(int cir = 0;cir < 20; cir++)
+for(int cir = 0;cir < 10; cir++)
 filter_buf[cir] = *tmpValue++;
 
 
-for(j = 0; j < 20 - 1; j++)
+
+for(j = 0; j < 10 - 1; j++)
 {
-for(i = 0; i < 20 - 1 - j; i++)
+for(i = 0; i < 10 - 1 - j; i++)
 {
 if(filter_buf[i] > filter_buf[i + 1])
 {
@@ -931,21 +943,21 @@ filter_buf[i + 1] = filter_temp;
 }
 }
 
-for(i = 2; i < 20 - 2; i++)
+for(i = 1; i < 10 - 1; i++)
 {
 filter_sum += filter_buf[i];
 }
 
-return (filter_sum >> 4);
+return (filter_sum >> 3);
 
 }
 
 
-static int uiSampleChannelFirst[20];
+static int uiSampleChannelFirst[10];
 
-static int uiSampleChannelFourth[20];
+static int uiSampleChannelFourth[10];
 
-static int uiSampleChannelFourteenth[20];
+static int uiSampleChannelFourteenth[10];
 
 
 void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
@@ -959,11 +971,13 @@ static unsigned char ucChannelFourteenthLength = 0;
 
 if(channel == 12)
 {
-if(ucChannelFirstLength < 20)
+if(ucChannelFirstLength < 10)
 {
 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 
 ucChannelFirstLength++;
+
+# 188
 }
 else
 {
@@ -974,7 +988,7 @@ uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 }
 else if(channel == 13)
 {
-if(ucChannelFourthLength < 20)
+if(ucChannelFourthLength < 10)
 {
 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 
@@ -989,7 +1003,7 @@ uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
 }
 else if(channel == 14)
 {
-if(ucChannelFourteenthLength < 20)
+if(ucChannelFourteenthLength < 10)
 {
 uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
 
@@ -1010,7 +1024,7 @@ ucChannelFourthLength = 0;
 
 ucChannelFourteenthLength = 0;
 
-for(int i = 0;i < 20; i++)
+for(int i = 0;i < 10; i++)
 {
 uiSampleChannelFirst[i] = 0;
 
@@ -1062,14 +1076,14 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 225
+# 292
 unsigned int getAdOriginalCh12Value()
 {
 
 
 return Filter(uiSampleChannelFirst);
 
-# 234
+# 301
 }
 
 
@@ -1078,7 +1092,7 @@ unsigned int getAdOriginalCh13Value()
 
 return Filter(uiSampleChannelFourth);
 
-# 245
+# 312
 }
 
 
@@ -1087,7 +1101,7 @@ unsigned int getAdOriginalCh14Value()
 
 return Filter(uiSampleChannelFourteenth);
 
-# 255
+# 322
 }
 
 
@@ -1100,50 +1114,37 @@ setAD_ConvertFlag(0);
 AD_Sample();
 if(12 == sampleChannelSelect)
 adc_test_init(12,3);
-
-
 else
 adc_test_init(13,3);
-
 adc_start();
 }
 }
 
-# 285
+# 349
 static void AD_Sample(void)
 {
-if(sampleTimes < 12)
+if(sampleTimes < 10)
 {
-
-# 309
 sampleTimes++;
 
-if(sampleTimes >= 12)
+if(sampleTimes >= 10)
 {
 sampleTimes = 0;
 
 if(sampleChannelSelect == 12)
 {
-
-
 sampleChannelSelect = 13;
 }
 
-# 331
 else
 {
-
 sampleChannelSelect = 12;
 }
-
-
-
-
 }
 }
 }
 
-# 357
+
 void setDAC0_ChannelValue(unsigned char ucValue)
 {
 DACR0=ucValue;
@@ -1157,7 +1158,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 374
+# 390
 }
 
 void clearTwelveHoursTimer()
@@ -1202,7 +1203,7 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 421
+# 437
 }
 
 void startOneHoursTimer(unsigned int uiSetTime)
@@ -1213,7 +1214,7 @@ uiOneHourTimer = uiSetTime;
 bOneHourTimerStartFlag = 1;
 }
 
-# 434
+# 450
 }
 
 
@@ -1313,15 +1314,63 @@ void clrSampeTime()
 timer.timer10msStopWatch = 0;
 }
 
+# 595
+static void refreshWidth(void )
+{
+static unsigned char ucRefresh10ms = 0;
+
+if(ucRefresh10ms < (2 -1))
+ucRefresh10ms++;
+else
+{
+ucRefresh10ms = 0;
+
+unsigned int uiCalWidth = 0;
+
+static unsigned char uiInitWidth = 75;
+
+uiCalWidth = Filter(uiSampleChannelFirst);
+
+if(uiCalWidth > 312)
+{
+unsigned int uiTmpValue = (uiCalWidth - 312)/5;
+
+uiInitWidth = uiInitWidth + uiTmpValue + 1;
+}
+else if(uiCalWidth < 312)
+{
+unsigned int uiTmpValue = (312 - uiCalWidth)/5;
+
+uiInitWidth = uiInitWidth - uiTmpValue - 1;
+}
+else
+;
+
+if(uiInitWidth > 249)
+uiInitWidth = 249;
+
+if(uiInitWidth < 75)
+uiInitWidth = 75;
+else
+;
+
+setPWM_Width(uiInitWidth);
+}
+
+}
+
 void interrupt ISR(void)
 {
 static unsigned char ucTimer1sCnt = 0;
+
 
 if(TMR1IF == 1)
 {
 TMR1IF = 0 ;
 timer.timer10msStopWatch++;
 ucTimer1sCnt++;
+
+refreshWidth();
 
 if(ucTimer1sCnt >= 100)
 {
@@ -1355,7 +1404,7 @@ if(sampleChannelSelect == 12)
 
 vPutSampleDataIntoTable(adc_get(),12);
 
-# 577
+# 686
 }
 else
 {

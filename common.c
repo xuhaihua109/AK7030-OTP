@@ -11,7 +11,7 @@
 
 #define TEMP_MAX_CONVERT_MACHINE_CYCLE  10
 
-#define RIGHT_SHIFT_NUMBER    2    // mean to divide 4
+
 
 static uchar adc_convert_flag = 0;
 
@@ -49,12 +49,17 @@ static unsigned char bTwentyMinStartFlag = 0;
 
 static void AD_Sample(void);
 
+//static void refreshWidth( unsigned char ucSampleCnt );
 
-
-
-
-#define FILTER_N   20
-
+static void setPWM_Width(unsigned char ucWidth)
+{
+	static unsigned char ucOldWidth = 0;
+	if( ucOldWidth !=  ucWidth)
+	{
+		CCPR1L = ucWidth;
+		ucOldWidth = ucWidth;
+	}
+}
 
  unsigned int Filter(int *tmpValue)
  {
@@ -67,6 +72,7 @@ static void AD_Sample(void);
 
    for(int cir = 0;cir < FILTER_N; cir++)
 	   filter_buf[cir] = *tmpValue++;
+
 
 
   for(j = 0; j < FILTER_N - 1; j++)
@@ -85,12 +91,12 @@ static void AD_Sample(void);
      }
    }
 
-  for(i = 2; i < FILTER_N - 2; i++)
+  for(i = 1; i < FILTER_N - 1; i++)
   {
 	  filter_sum += filter_buf[i];
   }
 
-   return (filter_sum >> 4);
+   return (filter_sum >> RIGHT_SHIFT_NUMBER);
 
  }
 
@@ -118,6 +124,67 @@ static void AD_Sample(void);
 			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
 
 			 ucChannelFirstLength++;
+//
+//		//	 refreshWidth( ucChannelFirstLength);
+//			 if( FILTER_N == ucChannelFirstLength )
+//			 {
+//
+//			 unsigned int uiCalWidth = 0;
+//
+//			 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
+//
+//			 uiCalWidth = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
+//
+//			 if(uiCalWidth > COMPARE_REFERENCE_VALUE)
+//			 {
+//				 unsigned int uiTmpValue =  (uiCalWidth - COMPARE_REFERENCE_VALUE)>>3;
+//
+//				 uiInitWidth = uiInitWidth + uiTmpValue + 1;
+//			 }
+//			 else if(uiCalWidth < COMPARE_REFERENCE_VALUE)
+//			 {
+//				 unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiCalWidth)>>3;
+//
+//				 uiInitWidth = uiInitWidth - uiTmpValue - 1;
+//			 }
+//			 else
+//				 ;//do nothing
+//
+//			 if(uiInitWidth > PWM_FREQUENCY)
+//				 uiInitWidth = PWM_FREQUENCY;
+//
+//			 if(uiInitWidth < PWM_DEFAULT_THIRTY_WIDTH)
+//				 uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;
+//			 else
+//				 ;//do nothing
+//
+//			 setPWM_Width(uiInitWidth);
+//		 }
+
+//			 if( FILTER_N == ucChannelFirstLength )
+//			 {
+//				 unsigned int uiCalWidth = 0;
+//				 static unsigned char uiInitWidth = 30;
+//
+//				 uiCalWidth = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
+//
+//				 if(uiCalWidth > 312)
+//					 uiInitWidth++;
+//				 else if(uiCalWidth < 312)
+//					 uiInitWidth--;
+//				 else
+//					 ;//do nothing
+//
+//				 if(uiInitWidth > 100)
+//					 uiInitWidth = 100;
+//				 else if(uiInitWidth < 30)
+//					 uiInitWidth = 30;
+//				 else
+//					 ;//do nothing
+//
+//				 setPWM_Width(uiInitWidth);
+//
+//			 }
 		 }
 		 else
 		 {
@@ -264,11 +331,8 @@ void process_AD_Converter_Value()
 		AD_Sample();
 		if(AD_CHANNEL_12_CHANNEL == sampleChannelSelect)
 			adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_2P1);
-//		else if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
-//			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
 		else
 			adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);
-//		setAdcSampleChannel(sampleChannelSelect);
 		adc_start();	//ADCÆô¶¯
 	}
 }
@@ -284,75 +348,27 @@ void process_AD_Converter_Value()
 ******************************************************************/
 static void AD_Sample(void)
 {
-	if(sampleTimes < TEMP_MAX_CONTINOUS_SAMPLE_TIMES)
+	if(sampleTimes < FILTER_N)
 	{
-
-//		buffer_Sample_AD_Value[sampleTimes] = getAdOriginalValue();
-//
-//		if(sampleTimes == 0)
-//		{
-//			multiFilterMaxValue = buffer_Sample_AD_Value[0];
-//			multiFilterMinValue = buffer_Sample_AD_Value[0];
-//		}
-//
-//		if(multiFilterMaxValue < buffer_Sample_AD_Value[sampleTimes])
-//		{
-//			multiFilterMaxValue = buffer_Sample_AD_Value[sampleTimes];
-//		}
-//		if(multiFilterMinValue > buffer_Sample_AD_Value[sampleTimes])
-//		{
-//			multiFilterMinValue = buffer_Sample_AD_Value[sampleTimes];
-//		}
-
-//		multiFilterSumValue = multiFilterSumValue + buffer_Sample_AD_Value[sampleTimes];
-
 		sampleTimes++;
 
-		if(sampleTimes >= TEMP_MAX_CONTINOUS_SAMPLE_TIMES)
+		if(sampleTimes >= FILTER_N)
 		{
 			sampleTimes = 0;
 
 			if(sampleChannelSelect == AD_CHANNEL_12_CHANNEL)
 			{
-				  //filter max and min value,then calculate average value
-//				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
 				sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
 			}
-//			else if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
-//			{
-////				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-//				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
-//			}
-//			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
-//			{
-////				sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-//				sampleChannelSelect = AD_CHANNEL_5_CHANNEL;
-//			}
+
 			else
 			{
-//				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
 				sampleChannelSelect = AD_CHANNEL_12_CHANNEL;
 			}
-
-//			for(uchar index = 0; index < TEMP_MAX_CONTINOUS_SAMPLE_TIMES;index++)
-//				buffer_Sample_AD_Value[index] = 0;
-
 		}
 	}
 }
 
-
-
-//unsigned int getAdCh4Value()
-//{
-//	return sampleCH4Value;
-//}
-//
-//
-//unsigned int getAdCh14Value()
-//{
-//	return sampleCH14Value;
-//}
 
 void setDAC0_ChannelValue(unsigned char ucValue)
 {
@@ -530,15 +546,108 @@ void clrSampeTime()
 	timer.timer10msStopWatch = 0;
 }
 
+
+//static void refreshWidth( unsigned char ucSampleCnt )
+//{
+////	static uchar ucRefresh10ms = 0;
+////
+////	if(ucRefresh10ms < (LOAD_PWM_STEP -1))
+////			ucRefresh10ms++;
+////	else
+//	if(  FILTER_N == ucSampleCnt)
+//	{
+////		ucRefresh10ms = 0;
+//
+//		 unsigned int uiCalWidth = 0;
+//
+//		 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
+//
+//		 uiCalWidth = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
+//
+//		 if(uiCalWidth > COMPARE_REFERENCE_VALUE)
+//		 {
+//			 unsigned int uiTmpValue =  (uiCalWidth - COMPARE_REFERENCE_VALUE)>>3;
+//
+//			 uiInitWidth = uiInitWidth + uiTmpValue + 1;
+//		 }
+//		 else if(uiCalWidth < COMPARE_REFERENCE_VALUE)
+//		 {
+//			 unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiCalWidth)>>3;
+//
+//			 uiInitWidth = uiInitWidth - uiTmpValue - 1;
+//		 }
+//		 else
+//			 ;//do nothing
+//
+//		 if(uiInitWidth > PWM_FREQUENCY)
+//			 uiInitWidth = PWM_FREQUENCY;
+//
+//		 if(uiInitWidth < PWM_DEFAULT_THIRTY_WIDTH)
+//			 uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;
+//		 else
+//			 ;//do nothing
+//
+//		 setPWM_Width(uiInitWidth);
+//	}
+//
+//}
+
+static void refreshWidth(void )
+{
+	static uchar ucRefresh10ms = 0;
+
+	if(ucRefresh10ms < (LOAD_PWM_STEP -1))
+			ucRefresh10ms++;
+	else
+	{
+		ucRefresh10ms = 0;
+
+		 unsigned int uiCalWidth = 0;
+
+		 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
+
+		 uiCalWidth = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
+
+		 if(uiCalWidth > COMPARE_REFERENCE_VALUE)
+		 {
+			 unsigned int uiTmpValue =  (uiCalWidth - COMPARE_REFERENCE_VALUE)>>3;
+
+			 uiInitWidth = uiInitWidth + uiTmpValue + 1;
+		 }
+		 else if(uiCalWidth < COMPARE_REFERENCE_VALUE)
+		 {
+			 unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiCalWidth)>>3;
+
+			 uiInitWidth = uiInitWidth - uiTmpValue - 1;
+		 }
+		 else
+			 ;//do nothing
+
+		 if(uiInitWidth > PWM_FREQUENCY)
+			 uiInitWidth = PWM_FREQUENCY;
+
+		 if(uiInitWidth < PWM_DEFAULT_THIRTY_WIDTH)
+			 uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;
+		 else
+			 ;//do nothing
+
+		 setPWM_Width(uiInitWidth);
+	}
+
+}
+
 void interrupt ISR(void)
 {
 	static uchar ucTimer1sCnt = 0;
+
 
 	if(TMR1IF == 1)  //this is a timer interrupt for 10ms
     {
 		TMR1IF = 0 ;
 		timer.timer10msStopWatch++;
 		ucTimer1sCnt++;
+
+		refreshWidth();
 
 		if(ucTimer1sCnt >= 100)// 100*10ms = 1s
 		{
