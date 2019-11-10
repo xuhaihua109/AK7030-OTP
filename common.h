@@ -1,8 +1,12 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-#define FILTER_N   10
-#define RIGHT_SHIFT_NUMBER    3    // 2^n = FILTER_N - 2
+#define FILTER_N_CH12   30
+#define RIGHT_SHIFT_NUMBER    4    // 2^n = FILTER_N - 2
+#define FILTER_MAX_MIN_VALUE_CH12  7
+
+#define FILTER_N_CH13   12
+#define RIGHT_SHIFT_NUMBER_CH13    3    // 2^n = FILTER_N - 2
 
 #define PWM_FREQUENCY       249 //   f=20M/(4*(PWM_FREQUENCY+1)) = 20M/(4*(249+1)) = 20K
 #define PWM_DEFAULT_THIRTY_WIDTH     75           // 30%, the width of PWM = PWM_DEFAULT_THIRTY_PERCENT/PWM_FREQUENCY

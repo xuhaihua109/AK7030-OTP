@@ -814,8 +814,10 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 
 void adc_start();
 unsigned int adc_get(void);
+void disable_AD_interrupt(void);
+void enable_AD_interrupt(void);
 
-# 41 "D:\develop\190625\AK7030-OTP\common.h"
+# 45 "D:\develop\190625\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -829,7 +831,7 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 59
+# 63
 unsigned int getAdOriginalCh12Value();
 unsigned int getAdOriginalCh13Value();
 
@@ -950,4 +952,14 @@ unsigned int adc_get(void)
 unsigned int val;
 val = (ADRESH<<8) | ADRESL;
 return val;
+}
+
+void disable_AD_interrupt(void)
+{
+ADIE = 0;
+}
+
+void enable_AD_interrupt(void)
+{
+ADIE = 1;
 }

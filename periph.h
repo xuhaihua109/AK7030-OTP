@@ -19,5 +19,7 @@ void adc_test_init(uchar channel,uchar ref);//ADC初始化
 //ref为参考电压 0-OP1 1-VCC 2-PB5 3-2.1V
 void adc_start();	//启动ADC
 uint adc_get(void);//获取采集结果
+void disable_AD_interrupt(void);
+void enable_AD_interrupt(void);
 
 #endif

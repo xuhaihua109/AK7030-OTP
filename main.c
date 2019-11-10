@@ -471,92 +471,92 @@ void clearAllTimer(void)
 
 #endif
 
-static unsigned char calPulseWidth( void )
-{
-    static unsigned char ucPulseWidth = 30;
-
-    unsigned int uiChannel2Value = 0;
-    unsigned int uiNewValue = 0;
-    static unsigned int uiOldValue = 0;
-
-    static unsigned char bInitFlag = 0;
-
-    uiNewValue = getAdOriginalCh12Value();
-
-    if( 0 == bInitFlag )
-    {
-    	uiOldValue = getAdOriginalCh12Value();
-    	bInitFlag = 1;
-    }
-
-//    if(uiNewValue != uiOldValue)
+//static unsigned char calPulseWidth( void )
+//{
+//    static unsigned char ucPulseWidth = 30;
+//
+//    unsigned int uiChannel2Value = 0;
+//    unsigned int uiNewValue = 0;
+//    static unsigned int uiOldValue = 0;
+//
+//    static unsigned char bInitFlag = 0;
+//
+//    uiNewValue = getAdOriginalCh12Value();
+//
+//    if( 0 == bInitFlag )
 //    {
-//    	if(uiNewValue > uiOldValue)
-//    	{
-//    		if((uiNewValue - uiOldValue) >= AD_CHANGE_THRESHOLD_VALUE)
-//    			uiOldValue = uiNewValue;
-//    		else
-//    			;//do nothing,keep previous value
-//    	}
-//    	else
-//    	{
-//    		if((uiOldValue - uiNewValue) >= AD_CHANGE_THRESHOLD_VALUE)
-//    			uiOldValue = uiNewValue;
-//			else
-//				;//do nothing,keep previous value
-//    	}
+//    	uiOldValue = getAdOriginalCh12Value();
+//    	bInitFlag = 1;
 //    }
+//
+////    if(uiNewValue != uiOldValue)
+////    {
+////    	if(uiNewValue > uiOldValue)
+////    	{
+////    		if((uiNewValue - uiOldValue) >= AD_CHANGE_THRESHOLD_VALUE)
+////    			uiOldValue = uiNewValue;
+////    		else
+////    			;//do nothing,keep previous value
+////    	}
+////    	else
+////    	{
+////    		if((uiOldValue - uiNewValue) >= AD_CHANGE_THRESHOLD_VALUE)
+////    			uiOldValue = uiNewValue;
+////			else
+////				;//do nothing,keep previous value
+////    	}
+////    }
+////    else
+////    {
+////    	;//do nothing
+////    }
+//
+//    if( uiNewValue > 312 )
+//    	ucPulseWidth++;
 //    else
-//    {
-//    	;//do nothing
-//    }
-
-    if( uiNewValue > 312 )
-    	ucPulseWidth++;
-    else
-    	ucPulseWidth--;
-
-    if(ucPulseWidth > 100)
-    	ucPulseWidth = 100;
-    else if(ucPulseWidth < 30)
-    	ucPulseWidth = 30;
-    else
-    	;
-
-    uiChannel2Value = uiOldValue;
-
-//    if( uiChannel2Value >= 332 )
-//        ucPulseWidth = 99;
-//    else if( uiChannel2Value <= AD_12_CHANNEL_MIN_VALUE)
-//        ucPulseWidth = 30;
+//    	ucPulseWidth--;
+//
+//    if(ucPulseWidth > 100)
+//    	ucPulseWidth = 100;
+//    else if(ucPulseWidth < 30)
+//    	ucPulseWidth = 30;
 //    else
-//    {
-//        unsigned int uiGapValue = 0;
+//    	;
 //
-//        unsigned char ucGapValue = 0;
+//    uiChannel2Value = uiOldValue;
 //
-//        unsigned char ucThreeTimesValue = 0;
-//        unsigned char ucHalfValue = 0;
-//
-//        uiGapValue = uiChannel2Value - 312;
-//
-//        ucGapValue = uiGapValue;
-//
-//        ucThreeTimesValue = ucGapValue*3;
-//
-//        ucHalfValue = ucGapValue >> 1;
-//
-//        ucPulseWidth = 30 + ucThreeTimesValue +  ucHalfValue;
-//
-//        if(ucPulseWidth > 99)
-//        	ucPulseWidth = 99;
-//
-//    }
-#ifdef      USE_SOFTWARE_SIMULATION_TEST
-    cout << (int) ucPulseWidth << endl;
-#endif
-    return  ucPulseWidth;
-}
+////    if( uiChannel2Value >= 332 )
+////        ucPulseWidth = 99;
+////    else if( uiChannel2Value <= AD_12_CHANNEL_MIN_VALUE)
+////        ucPulseWidth = 30;
+////    else
+////    {
+////        unsigned int uiGapValue = 0;
+////
+////        unsigned char ucGapValue = 0;
+////
+////        unsigned char ucThreeTimesValue = 0;
+////        unsigned char ucHalfValue = 0;
+////
+////        uiGapValue = uiChannel2Value - 312;
+////
+////        ucGapValue = uiGapValue;
+////
+////        ucThreeTimesValue = ucGapValue*3;
+////
+////        ucHalfValue = ucGapValue >> 1;
+////
+////        ucPulseWidth = 30 + ucThreeTimesValue +  ucHalfValue;
+////
+////        if(ucPulseWidth > 99)
+////        	ucPulseWidth = 99;
+////
+////    }
+//#ifdef      USE_SOFTWARE_SIMULATION_TEST
+//    cout << (int) ucPulseWidth << endl;
+//#endif
+//    return  ucPulseWidth;
+//}
 
 // #define  SET_PB4_AS_RESET_DEBUG_PIN   1
 
@@ -647,7 +647,7 @@ int main (void)
 #ifndef USE_SOFTWARE_SIMULATION_TEST
            CLRWDT();//feed watch dog
 
-           process_AD_Converter_Value();
+        //   process_AD_Converter_Value();
 
        //    if(( ucStep > START_UP_PWM_STEP) && ( ucStep < READY_FOR_RESET_STEP))
       //   	    pwm_start( calPulseWidth() );

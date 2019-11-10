@@ -47,13 +47,21 @@ static unsigned char bOneHourTimerStartFlag = 0;
 
 static unsigned char bTwentyMinStartFlag = 0;
 
+static int uiSampleCh12[FILTER_N_CH12];
+
+static  int uiSampleCh13[FILTER_N_CH13];
+
+
+
 static void AD_Sample(void);
 
-//static void refreshWidth( unsigned char ucSampleCnt );
+void switchSampleChannel(unsigned char ucCurrentChannel);
+
 
 static void setPWM_Width(unsigned char ucWidth)
 {
 	static unsigned char ucOldWidth = 0;
+
 	if( ucOldWidth !=  ucWidth)
 	{
 		CCPR1L = ucWidth;
@@ -61,183 +69,214 @@ static void setPWM_Width(unsigned char ucWidth)
 	}
 }
 
- unsigned int Filter(int *tmpValue)
+unsigned int FilterCh13()
  {
+#ifdef DEBUG_CONFIRM_OK
+	static  int uiSampleCh13[FILTER_N_CH13];
+
+	 for(unsigned char ucValue = 0; ucValue < FILTER_N_CH13;ucValue++ )
+	   {
+		   unsigned int x = 0;
+		   cout<<"请输入数组的值:"<<endl;
+		   cin >> x;
+		   uiSampleCh13[ucValue] = x;
+
+	   }
+
+#endif
 
    unsigned char i = 0, j = 0;
 
    unsigned  int filter_temp = 0, filter_sum = 0;
 
-   unsigned int filter_buf[FILTER_N];
-
-   for(int cir = 0;cir < FILTER_N; cir++)
-	   filter_buf[cir] = *tmpValue++;
 
 
-
-  for(j = 0; j < FILTER_N - 1; j++)
+  for(j = 0; j < FILTER_N_CH13 - 1; j++)
   {
-     for(i = 0; i < FILTER_N - 1 - j; i++)
+     for(i = 0; i < FILTER_N_CH13 - 1 - j; i++)
      {
-       if(filter_buf[i] > filter_buf[i + 1])
+       if(uiSampleCh13[i] > uiSampleCh13[i + 1])
        {
 
-         filter_temp = filter_buf[i];
+         filter_temp = uiSampleCh13[i];
 
-         filter_buf[i] = filter_buf[i + 1];
+         uiSampleCh13[i] = uiSampleCh13[i + 1];
 
-         filter_buf[i + 1] = filter_temp;
+         uiSampleCh13[i + 1] = filter_temp;
        }
      }
    }
 
-  for(i = 1; i < FILTER_N - 1; i++)
+#ifdef DEBUG_CONFIRM_OK
+  for(unsigned char ucValue = 0; ucValue < FILTER_N_CH13;ucValue++ )
+ {
+   cout<<"输出数组的值:"<<endl;
+   cout<<uiSampleCh13[ucValue]<<endl;
+ }
+#endif
+
+  for(i = 2; i < FILTER_N_CH13 - 2; i++)
   {
-	  filter_sum += filter_buf[i];
+	  filter_sum += uiSampleCh13[i];
   }
 
-   return (filter_sum >> RIGHT_SHIFT_NUMBER);
+#ifdef DEBUG_CONFIRM_OK
+  cout<<filter_sum<<endl;
+
+  cout<<(filter_sum >> RIGHT_SHIFT_NUMBER_CH13)<<endl;
+#endif
+   return (filter_sum >> RIGHT_SHIFT_NUMBER_CH13);
 
  }
 
 
- static  int uiSampleChannelFirst[FILTER_N];
+ unsigned int FilterCh12()//(int *tmpValue)
+ {
 
- static  int uiSampleChannelFourth[FILTER_N];
+#ifdef DEBUG_CONFIRM_OK
+	static  int uiSampleCh12[FILTER_N];
 
- static  int uiSampleChannelFourteenth[FILTER_N];
+	 for(unsigned char ucValue = 0; ucValue < FILTER_N;ucValue++ )
+	   {
+		   unsigned int x = 0;
+		   cout<<"请输入数组的值:"<<endl;
+		   cin >> x;
+		   uiSampleCh12[ucValue] = x;
+	   }
+
+#endif
+
+	   unsigned char i = 0, j = 0;
+
+	   unsigned  int filter_temp = 0, filter_sum = 0;
+
+	//   unsigned int filter_buf[FILTER_N];
+	//
+	//   for(int cir = 0;cir < FILTER_N; cir++)
+	//	   filter_buf[cir] = *tmpValue++;
+
+
+
+	  for(j = 0; j < FILTER_N_CH12 - 1; j++)
+	  {
+	     for(i = 0; i < FILTER_N_CH12 - 1 - j; i++)
+	     {
+	       if(uiSampleCh12[i] > uiSampleCh12[i + 1])
+	       {
+
+	         filter_temp = uiSampleCh12[i];
+
+	         uiSampleCh12[i] = uiSampleCh12[i + 1];
+
+	         uiSampleCh12[i + 1] = filter_temp;
+	       }
+	     }
+	   }
+
+#ifdef DEBUG_CONFIRM_OK
+  for(unsigned char ucValue = 0; ucValue < FILTER_N;ucValue++ )
+ {
+   cout<<"输出数组的值:"<<endl;
+   cout<<uiSampleCh12[ucValue]<<endl;
+ }
+#endif
+
+	  for(i = FILTER_MAX_MIN_VALUE_CH12; i < FILTER_N_CH12 - FILTER_MAX_MIN_VALUE_CH12; i++)
+	  {
+		  filter_sum += uiSampleCh12[i];
+	  }
+#ifdef DEBUG_CONFIRM_OK
+  cout<<filter_sum<<endl;
+
+  cout<<(filter_sum >> RIGHT_SHIFT_NUMBER)<<endl;
+#endif
+
+	   return (filter_sum >> RIGHT_SHIFT_NUMBER);
+
+}
 
 
  void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
  {
 
-	 static unsigned char ucChannelFirstLength = 0;
+	 static unsigned char ucCh12Length = 0;
 
-	 static unsigned char ucChannelFourthLength = 0;
-
-	 static unsigned char ucChannelFourteenthLength = 0;
+	 static unsigned char ucCh13Length = 0;
 
 	 if(channel == AD_CHANNEL_12_CHANNEL)
 	 {
-		 if(ucChannelFirstLength < FILTER_N)
+		 if(ucCh12Length < FILTER_N_CH12)
 		 {
-			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
+			 uiSampleCh12[ucCh12Length] = uiSampleData;
 
-			 ucChannelFirstLength++;
-//
-//		//	 refreshWidth( ucChannelFirstLength);
-//			 if( FILTER_N == ucChannelFirstLength )
-//			 {
-//
-//			 unsigned int uiCalWidth = 0;
-//
-//			 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
-//
-//			 uiCalWidth = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
-//
-//			 if(uiCalWidth > COMPARE_REFERENCE_VALUE)
-//			 {
-//				 unsigned int uiTmpValue =  (uiCalWidth - COMPARE_REFERENCE_VALUE)>>3;
-//
-//				 uiInitWidth = uiInitWidth + uiTmpValue + 1;
-//			 }
-//			 else if(uiCalWidth < COMPARE_REFERENCE_VALUE)
-//			 {
-//				 unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiCalWidth)>>3;
-//
-//				 uiInitWidth = uiInitWidth - uiTmpValue - 1;
-//			 }
-//			 else
-//				 ;//do nothing
-//
-//			 if(uiInitWidth > PWM_FREQUENCY)
-//				 uiInitWidth = PWM_FREQUENCY;
-//
-//			 if(uiInitWidth < PWM_DEFAULT_THIRTY_WIDTH)
-//				 uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;
-//			 else
-//				 ;//do nothing
-//
-//			 setPWM_Width(uiInitWidth);
-//		 }
+			 ucCh12Length++;
 
-//			 if( FILTER_N == ucChannelFirstLength )
-//			 {
-//				 unsigned int uiCalWidth = 0;
-//				 static unsigned char uiInitWidth = 30;
-//
-//				 uiCalWidth = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
-//
-//				 if(uiCalWidth > 312)
-//					 uiInitWidth++;
-//				 else if(uiCalWidth < 312)
-//					 uiInitWidth--;
-//				 else
-//					 ;//do nothing
-//
-//				 if(uiInitWidth > 100)
-//					 uiInitWidth = 100;
-//				 else if(uiInitWidth < 30)
-//					 uiInitWidth = 30;
-//				 else
-//					 ;//do nothing
-//
-//				 setPWM_Width(uiInitWidth);
-//
-//			 }
-		 }
-		 else
-		 {
-			 ucChannelFirstLength = 0;
+			 if( FILTER_N_CH12 == ucCh12Length )
+			 {
+				 ucCh12Length = 0;
 
-			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
+				 unsigned int uiCalWidth = 0;
+
+				 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
+
+				 disable_AD_interrupt();
+
+				 uiCalWidth = FilterCh12();// when the value of AD12 is five, filter and calculate the average value.
+
+				 if(uiCalWidth > COMPARE_REFERENCE_VALUE)
+				 {
+					// unsigned int uiTmpValue =(uiCalWidth - COMPARE_REFERENCE_VALUE)>> 3;
+
+					 uiInitWidth++;// = uiInitWidth + uiTmpValue + 1;
+				 }
+				 else if(uiCalWidth < COMPARE_REFERENCE_VALUE)
+				 {
+				//	 unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiCalWidth)>> 3;
+
+					 uiInitWidth--;// = uiInitWidth - uiTmpValue - 1;
+				 }
+				 else
+					 ;//do nothing
+
+				 if(uiInitWidth > PWM_FREQUENCY)
+					 uiInitWidth = PWM_FREQUENCY;
+
+				 if(uiInitWidth < PWM_DEFAULT_THIRTY_WIDTH)
+					 uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;
+				 else
+					 ;//do nothing
+
+				 setPWM_Width(uiInitWidth);
+				 switchSampleChannel( AD_CHANNEL_12_CHANNEL );
+				 enable_AD_interrupt();
+			 }
 		 }
 	 }
 	 else if(channel == AD_CHANNEL_13_CHANNEL)
 	 {
-		 if(ucChannelFourthLength < FILTER_N)
+		 if(ucCh13Length < FILTER_N_CH13)
 		 {
-			 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
+			 uiSampleCh13[ucCh13Length] = uiSampleData;
 
-			ucChannelFourthLength++;
-		 }
-		 else
-		 {
-			ucChannelFourthLength = 0;
-
-			 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
-		 }
-	 }
-	 else if(channel == AD_CHANNEL_14_CHANNEL)
-	 {
-		 if(ucChannelFourteenthLength < FILTER_N)
-		 {
-			 uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
-
-			 ucChannelFourteenthLength++;
-		 }
-		 else
-		 {
-			 ucChannelFourteenthLength = 0;
-
-			 uiSampleChannelFourth[ucChannelFourteenthLength] = uiSampleData;
+			 ucCh13Length++;
+			if( FILTER_N_CH13 == ucCh13Length)
+			{
+				ucCh13Length = 0;
+				switchSampleChannel( AD_CHANNEL_13_CHANNEL );
+			}
 		 }
 	 }
 	 else
 	 {
-		 ucChannelFirstLength = 0;
+		 ucCh12Length = 0;
 
-		 ucChannelFourthLength = 0;
+		 ucCh13Length = 0;
 
-		 ucChannelFourteenthLength = 0;
-
-		 for(int i = 0;i < FILTER_N; i++)
+		 for(int i = 0;i < FILTER_N_CH12; i++)
 		 {
-			 uiSampleChannelFirst[i] = 0;
+			 uiSampleCh12[i] = 0;
 
-			 uiSampleChannelFourth[i] = 0;
-
-			 uiSampleChannelFourth[i] = 0;
+			 uiSampleCh13[i] = 0;
 
 		 }
 	 }
@@ -283,6 +322,16 @@ void  setAD_ConvertFlag(uchar flag)
 	adc_convert_flag = flag;
 }
 
+//void disableAnalongSampeInterrupt( void)
+//{
+//	ADIE = 0;
+//}
+//
+//void enableAnalongSampeInterrupt(void)
+//{
+//	ADIE = 1;
+//}
+
 
 //unsigned int getAdOriginalValue()
 //{
@@ -293,7 +342,7 @@ unsigned int getAdOriginalCh12Value()
 {
 
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelFirst);
+	return FilterCh12();
 
 #else
 	return  adc_original_CH1_value;
@@ -304,7 +353,7 @@ unsigned int getAdOriginalCh12Value()
 unsigned int getAdOriginalCh13Value()
 {
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelFourth);
+	return FilterCh13();
 
 #else
 	return adc_original_CH4_value;
@@ -312,30 +361,34 @@ unsigned int getAdOriginalCh13Value()
 }
 
 
-unsigned int getAdOriginalCh14Value()
+void switchSampleChannel(unsigned char ucCurrentChannel)
 {
-#ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelFourteenth);
-#else
-	return adc_original_CH14_value;
-#endif
-}
-
-
-
-void process_AD_Converter_Value()
-{
-	if(getAD_ConvertFlag())
+	if(AD_CHANNEL_12_CHANNEL == ucCurrentChannel)
 	{
-		setAD_ConvertFlag(0);
-		AD_Sample();
-		if(AD_CHANNEL_12_CHANNEL == sampleChannelSelect)
-			adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_2P1);
-		else
-			adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);
-		adc_start();	//ADC启动
+		sampleChannelSelect = AD_CHANNEL_13_CHANNEL;
+		adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);
 	}
+	else
+	{
+		sampleChannelSelect = AD_CHANNEL_12_CHANNEL;
+		adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_2P1);
+	}
+
 }
+
+//void process_AD_Converter_Value()
+//{
+//	if(getAD_ConvertFlag())
+//	{
+//		setAD_ConvertFlag(0);
+//		AD_Sample();
+//		if(AD_CHANNEL_12_CHANNEL == sampleChannelSelect)
+//			adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_2P1);
+//		else
+//			adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);
+//		adc_start();	//ADC启动
+//	}
+//}
 
 /******************************************************************
 *  Name        :void AD_Sample(void)
@@ -348,11 +401,11 @@ void process_AD_Converter_Value()
 ******************************************************************/
 static void AD_Sample(void)
 {
-	if(sampleTimes < FILTER_N)
+	if(sampleTimes < FILTER_N_CH12)
 	{
 		sampleTimes++;
 
-		if(sampleTimes >= FILTER_N)
+		if(sampleTimes >= FILTER_N_CH12)
 		{
 			sampleTimes = 0;
 
@@ -546,33 +599,31 @@ void clrSampeTime()
 	timer.timer10msStopWatch = 0;
 }
 
-
-//static void refreshWidth( unsigned char ucSampleCnt )
+//static void refreshWidth(void)
 //{
-////	static uchar ucRefresh10ms = 0;
-////
-////	if(ucRefresh10ms < (LOAD_PWM_STEP -1))
-////			ucRefresh10ms++;
-////	else
-//	if(  FILTER_N == ucSampleCnt)
+//	static uchar ucRefresh10ms = 0;
+//
+//	if(ucRefresh10ms < (LOAD_PWM_STEP -1))
+//			ucRefresh10ms++;
+//	else
 //	{
-////		ucRefresh10ms = 0;
+//		ucRefresh10ms = 0;
 //
 //		 unsigned int uiCalWidth = 0;
 //
 //		 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
 //
-//		 uiCalWidth = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
+//		 uiCalWidth = FilterCh12();//(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
 //
 //		 if(uiCalWidth > COMPARE_REFERENCE_VALUE)
 //		 {
-//			 unsigned int uiTmpValue =  (uiCalWidth - COMPARE_REFERENCE_VALUE)>>3;
+//			 unsigned int uiTmpValue =  (uiCalWidth - COMPARE_REFERENCE_VALUE)/5;
 //
 //			 uiInitWidth = uiInitWidth + uiTmpValue + 1;
 //		 }
 //		 else if(uiCalWidth < COMPARE_REFERENCE_VALUE)
 //		 {
-//			 unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiCalWidth)>>3;
+//			 unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiCalWidth)/5;
 //
 //			 uiInitWidth = uiInitWidth - uiTmpValue - 1;
 //		 }
@@ -592,50 +643,6 @@ void clrSampeTime()
 //
 //}
 
-static void refreshWidth(void )
-{
-	static uchar ucRefresh10ms = 0;
-
-	if(ucRefresh10ms < (LOAD_PWM_STEP -1))
-			ucRefresh10ms++;
-	else
-	{
-		ucRefresh10ms = 0;
-
-		 unsigned int uiCalWidth = 0;
-
-		 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
-
-		 uiCalWidth = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
-
-		 if(uiCalWidth > COMPARE_REFERENCE_VALUE)
-		 {
-			 unsigned int uiTmpValue =  (uiCalWidth - COMPARE_REFERENCE_VALUE)>>3;
-
-			 uiInitWidth = uiInitWidth + uiTmpValue + 1;
-		 }
-		 else if(uiCalWidth < COMPARE_REFERENCE_VALUE)
-		 {
-			 unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiCalWidth)>>3;
-
-			 uiInitWidth = uiInitWidth - uiTmpValue - 1;
-		 }
-		 else
-			 ;//do nothing
-
-		 if(uiInitWidth > PWM_FREQUENCY)
-			 uiInitWidth = PWM_FREQUENCY;
-
-		 if(uiInitWidth < PWM_DEFAULT_THIRTY_WIDTH)
-			 uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;
-		 else
-			 ;//do nothing
-
-		 setPWM_Width(uiInitWidth);
-	}
-
-}
-
 void interrupt ISR(void)
 {
 	static uchar ucTimer1sCnt = 0;
@@ -647,7 +654,7 @@ void interrupt ISR(void)
 		timer.timer10msStopWatch++;
 		ucTimer1sCnt++;
 
-		refreshWidth();
+//		refreshWidth();
 
 		if(ucTimer1sCnt >= 100)// 100*10ms = 1s
 		{
@@ -670,28 +677,19 @@ void interrupt ISR(void)
     }
 
 	if(ADIF)
-	   {
+    {
 
 		ADIF=0;
 		setAD_ConvertFlag(1);
-//		adc_original_value = adc_get();
+	//		adc_original_value = adc_get();
 		if(sampleChannelSelect == AD_CHANNEL_12_CHANNEL)
 		{
-
-#ifdef USING_AD_FILTER_ALGORITHMN
 			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_12_CHANNEL);
-#else
-			adc_original_CH4_value = adc_get();//getAdCh4Value();
-#endif
 		}
 		else
 		{
-#ifndef USING_AD_FILTER_ALGORITHMN
-			adc_original_CH14_value = adc_get();//getAdCh14Value();
-#else
 			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_13_CHANNEL);
-#endif
-		}
 
-	   }
+		}
+    }
 }
