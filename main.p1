@@ -707,53 +707,53 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ALG6 `Vuc  1 e@398 ]
 "918 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
-"83 D:\develop\190625\AK7030-OTP\common.h
-[v _clearTwelveHoursTimer `(v  0 ef ]
-"84 D:\develop\190625\AK7030-OTP\common.h
-[v _clearThreeHoursTimer `(v  0 ef ]
 "86 D:\develop\190625\AK7030-OTP\common.h
+[v _clearTwelveHoursTimer `(v  0 ef ]
+"87 D:\develop\190625\AK7030-OTP\common.h
+[v _clearThreeHoursTimer `(v  0 ef ]
+"89 D:\develop\190625\AK7030-OTP\common.h
 [v _clearTwentySecondsTimer `(v  0 ef ]
-"59 D:\develop\190625\AK7030-OTP\common.h
+"62 D:\develop\190625\AK7030-OTP\common.h
 [v _getAdOriginalCh12Value `(ui  0 ef ]
 [p mainexit ]
-"41 D:\develop\190625\AK7030-OTP\common.h
+"44 D:\develop\190625\AK7030-OTP\common.h
 [v _clock_config `(v  0 ef ]
-"42 D:\develop\190625\AK7030-OTP\common.h
+"45 D:\develop\190625\AK7030-OTP\common.h
 [v _timer1_config `(v  0 ef ]
-"43 D:\develop\190625\AK7030-OTP\common.h
+"46 D:\develop\190625\AK7030-OTP\common.h
 [v _timer1_interrupt_config `(v  0 ef ]
 "18 D:\develop\190625\AK7030-OTP\periph.h
 [v _adc_test_init `(v  0 ef2`uc`uc ]
-"80 D:\develop\190625\AK7030-OTP\common.h
+"83 D:\develop\190625\AK7030-OTP\common.h
 [v _startTwentyMinTimer `(v  0 ef1`ui ]
 "54 D:\develop\190625\AK7030-OTP\main.c
 [v __delay `(v  0 ef1`ul ]
 [p i __delay ]
 "20 D:\develop\190625\AK7030-OTP\periph.h
 [v _adc_start `(v  0 ef ]
-"52 D:\develop\190625\AK7030-OTP\common.h
+"55 D:\develop\190625\AK7030-OTP\common.h
 [v _process_AD_Converter_Value `(v  0 ef ]
-"64 D:\develop\190625\AK7030-OTP\common.h
+"67 D:\develop\190625\AK7030-OTP\common.h
 [v _isPermitSampleTime `(uc  0 ef ]
-"66 D:\develop\190625\AK7030-OTP\common.h
+"69 D:\develop\190625\AK7030-OTP\common.h
 [v _clrSampeTime `(v  0 ef ]
-"81 D:\develop\190625\AK7030-OTP\common.h
+"84 D:\develop\190625\AK7030-OTP\common.h
 [v _isFinishedTwentyMinTimer `(uc  0 ef ]
-"60 D:\develop\190625\AK7030-OTP\common.h
+"63 D:\develop\190625\AK7030-OTP\common.h
 [v _getAdOriginalCh13Value `(ui  0 ef ]
-"87 D:\develop\190625\AK7030-OTP\common.h
-[v _clearTwentyMinTimer `(v  0 ef ]
-"70 D:\develop\190625\AK7030-OTP\common.h
-[v _startTwelveHourTimer `(v  0 ef1`ui ]
 "90 D:\develop\190625\AK7030-OTP\common.h
-[v _isFinishedTwelveHoursTimer `(uc  0 ef ]
-"71 D:\develop\190625\AK7030-OTP\common.h
-[v _startThreeHoursTimer `(v  0 ef1`ui ]
-"91 D:\develop\190625\AK7030-OTP\common.h
-[v _isFinishedThreeHoursTimer `(uc  0 ef ]
+[v _clearTwentyMinTimer `(v  0 ef ]
 "73 D:\develop\190625\AK7030-OTP\common.h
+[v _startTwelveHourTimer `(v  0 ef1`ui ]
+"93 D:\develop\190625\AK7030-OTP\common.h
+[v _isFinishedTwelveHoursTimer `(uc  0 ef ]
+"74 D:\develop\190625\AK7030-OTP\common.h
+[v _startThreeHoursTimer `(v  0 ef1`ui ]
+"94 D:\develop\190625\AK7030-OTP\common.h
+[v _isFinishedThreeHoursTimer `(uc  0 ef ]
+"76 D:\develop\190625\AK7030-OTP\common.h
 [v _startOneHoursTimer `(v  0 ef1`ui ]
-"92 D:\develop\190625\AK7030-OTP\common.h
+"95 D:\develop\190625\AK7030-OTP\common.h
 [v _isFinishedOneHoursTimer `(uc  0 ef ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
@@ -1280,35 +1280,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 910: volatile unsigned char ALG5 @ 0x18D;
 [; ;yn8p520.h: 914: volatile unsigned char ALG6 @ 0x18E;
 [; ;yn8p520.h: 918: volatile unsigned char ALG7 @ 0x18F;
-[; ;common.h: 41: void clock_config();
-[; ;common.h: 42: void timer1_config();
-[; ;common.h: 43: void timer1_interrupt_config();
-[; ;common.h: 45: void adConverter_config();
-[; ;common.h: 47: void setAdcSampleChannel(unsigned char ucChannel);
-[; ;common.h: 52: void process_AD_Converter_Value();
-[; ;common.h: 59: unsigned int getAdOriginalCh12Value();
-[; ;common.h: 60: unsigned int getAdOriginalCh13Value();
-[; ;common.h: 62: unsigned int getAdOriginalCh14Value();
-[; ;common.h: 64: unsigned char isPermitSampleTime();
-[; ;common.h: 66: void clrSampeTime();
-[; ;common.h: 68: void setDAC0_ChannelValue(unsigned char ucValue);
-[; ;common.h: 70: void startTwelveHourTimer(unsigned int uiSetTime);
-[; ;common.h: 71: void startThreeHoursTimer(unsigned int uiSetTime);
-[; ;common.h: 73: void startOneHoursTimer(unsigned int uiSetTime);
-[; ;common.h: 76: void startTwentySecondsTimer();
-[; ;common.h: 77: unsigned char isFinishedTwentySecondsTimer();
-[; ;common.h: 80: void startTwentyMinTimer(unsigned int uiSetValue);
-[; ;common.h: 81: unsigned char isFinishedTwentyMinTimer();
-[; ;common.h: 83: void clearTwelveHoursTimer();
-[; ;common.h: 84: void clearThreeHoursTimer();
-[; ;common.h: 85: void clearOneHoursTimer();
-[; ;common.h: 86: void clearTwentySecondsTimer();
-[; ;common.h: 87: void clearTwentyMinTimer();
-[; ;common.h: 90: unsigned char isFinishedTwelveHoursTimer();
-[; ;common.h: 91: unsigned char isFinishedThreeHoursTimer();
-[; ;common.h: 92: unsigned char isFinishedOneHoursTimer();
-[; ;common.h: 94: unsigned char getAD_ConvertFlag();
-[; ;common.h: 95: void setAD_ConvertFlag(unsigned char flag);
+[; ;common.h: 44: void clock_config();
+[; ;common.h: 45: void timer1_config();
+[; ;common.h: 46: void timer1_interrupt_config();
+[; ;common.h: 48: void adConverter_config();
+[; ;common.h: 50: void setAdcSampleChannel(unsigned char ucChannel);
+[; ;common.h: 55: void process_AD_Converter_Value();
+[; ;common.h: 62: unsigned int getAdOriginalCh12Value();
+[; ;common.h: 63: unsigned int getAdOriginalCh13Value();
+[; ;common.h: 65: unsigned int getAdOriginalCh14Value();
+[; ;common.h: 67: unsigned char isPermitSampleTime();
+[; ;common.h: 69: void clrSampeTime();
+[; ;common.h: 71: void setDAC0_ChannelValue(unsigned char ucValue);
+[; ;common.h: 73: void startTwelveHourTimer(unsigned int uiSetTime);
+[; ;common.h: 74: void startThreeHoursTimer(unsigned int uiSetTime);
+[; ;common.h: 76: void startOneHoursTimer(unsigned int uiSetTime);
+[; ;common.h: 79: void startTwentySecondsTimer();
+[; ;common.h: 80: unsigned char isFinishedTwentySecondsTimer();
+[; ;common.h: 83: void startTwentyMinTimer(unsigned int uiSetValue);
+[; ;common.h: 84: unsigned char isFinishedTwentyMinTimer();
+[; ;common.h: 86: void clearTwelveHoursTimer();
+[; ;common.h: 87: void clearThreeHoursTimer();
+[; ;common.h: 88: void clearOneHoursTimer();
+[; ;common.h: 89: void clearTwentySecondsTimer();
+[; ;common.h: 90: void clearTwentyMinTimer();
+[; ;common.h: 93: unsigned char isFinishedTwelveHoursTimer();
+[; ;common.h: 94: unsigned char isFinishedThreeHoursTimer();
+[; ;common.h: 95: unsigned char isFinishedOneHoursTimer();
+[; ;common.h: 97: unsigned char getAD_ConvertFlag();
+[; ;common.h: 98: void setAD_ConvertFlag(unsigned char flag);
 [; ;periph.h: 13: void dac_init();
 [; ;periph.h: 14: void op1_init();
 [; ;periph.h: 15: void op2_init();

@@ -804,7 +804,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 41 "D:\develop\190625\AK7030-OTP\common.h"
+# 44 "D:\develop\190625\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -818,7 +818,7 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 59
+# 62
 unsigned int getAdOriginalCh12Value();
 unsigned int getAdOriginalCh13Value();
 
@@ -980,14 +980,19 @@ if( 10 == ucChannelFirstLength )
 {
 
 
+static unsigned char bInitArrayFlag = 0;
+
 static unsigned int uiCalWidthArray[4],uiCalWidthCnt = 0;
 
 static unsigned char uiInitWidth = 75;
 
 uiCalWidthArray[uiCalWidthCnt++] = Filter(uiSampleChannelFirst);
 
-if( 4 == uiCalWidthCnt )
+if(( 4 == uiCalWidthCnt ) || (1 == bInitArrayFlag))
 {
+bInitArrayFlag = 1;
+
+if(uiCalWidthCnt >= uiCalWidthCnt)
 uiCalWidthCnt = 0;
 
 unsigned int uiCalWidth = 0,uiSum = 0;
@@ -995,7 +1000,7 @@ unsigned int uiCalWidth = 0,uiSum = 0;
 for(unsigned char ucIndex = 0; ucIndex < 4;ucIndex++)
 {
 uiSum += uiCalWidthArray[ucIndex];
-uiCalWidthArray[ucIndex] = 0;
+
 }
 
 uiCalWidth = uiSum >> 2;
@@ -1027,7 +1032,7 @@ setPWM_Width(uiInitWidth);
 }
 }
 
-# 202
+# 207
 }
 else
 {
@@ -1126,14 +1131,14 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 306
+# 311
 unsigned int getAdOriginalCh12Value()
 {
 
 
 return Filter(uiSampleChannelFirst);
 
-# 315
+# 320
 }
 
 
@@ -1142,7 +1147,7 @@ unsigned int getAdOriginalCh13Value()
 
 return Filter(uiSampleChannelFourth);
 
-# 326
+# 331
 }
 
 
@@ -1151,7 +1156,7 @@ unsigned int getAdOriginalCh14Value()
 
 return Filter(uiSampleChannelFourteenth);
 
-# 336
+# 341
 }
 
 
@@ -1170,7 +1175,7 @@ adc_start();
 }
 }
 
-# 363
+# 368
 static void AD_Sample(void)
 {
 if(sampleTimes < 10)
@@ -1208,7 +1213,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 404
+# 409
 }
 
 void clearTwelveHoursTimer()
@@ -1253,7 +1258,7 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 451
+# 456
 }
 
 void startOneHoursTimer(unsigned int uiSetTime)
@@ -1264,7 +1269,7 @@ uiOneHourTimer = uiSetTime;
 bOneHourTimerStartFlag = 1;
 }
 
-# 464
+# 469
 }
 
 
@@ -1453,7 +1458,7 @@ if(sampleChannelSelect == 12)
 
 vPutSampleDataIntoTable(adc_get(),12);
 
-# 654
+# 659
 }
 else
 {

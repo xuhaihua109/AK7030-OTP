@@ -36,8 +36,7 @@
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 
-#define    TRUE   1
-#define    FALSE  0
+
 
 #ifndef USE_SOFTWARE_SIMULATION_TEST
 

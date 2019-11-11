@@ -128,22 +128,27 @@ static void setPWM_Width(unsigned char ucWidth)
 			 {
 				#define PWM_UPDATED_COUNT  4
 
+				 static unsigned char bInitArrayFlag = FALSE;
+
 				static	unsigned int uiCalWidthArray[PWM_UPDATED_COUNT],uiCalWidthCnt = 0;
 
 				 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
 
 				 uiCalWidthArray[uiCalWidthCnt++] = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
 
-				 if( PWM_UPDATED_COUNT == uiCalWidthCnt )
+				 if(( PWM_UPDATED_COUNT == uiCalWidthCnt ) || (TRUE == bInitArrayFlag))
 				 {
-					 uiCalWidthCnt = 0;
+					 bInitArrayFlag = TRUE;
+
+					 if(uiCalWidthCnt >= uiCalWidthCnt)
+						 uiCalWidthCnt = 0;
 
 					 unsigned int uiCalWidth = 0,uiSum = 0;
 
 					 for(unsigned char ucIndex = 0; ucIndex < PWM_UPDATED_COUNT;ucIndex++)
 					 {
 						 uiSum += uiCalWidthArray[ucIndex];
-						 uiCalWidthArray[ucIndex] = 0;
+					//	 uiCalWidthArray[ucIndex] = 0;
 					 }
 
 					 uiCalWidth =  uiSum >> 2;

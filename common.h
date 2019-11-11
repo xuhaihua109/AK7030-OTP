@@ -15,6 +15,9 @@
 #define uchar unsigned char
 #define uint  unsigned int
 
+#define    TRUE   1
+#define    FALSE  0
+
 #define  CLR      0
 #define  ZERO     0
 #define  SET      1
