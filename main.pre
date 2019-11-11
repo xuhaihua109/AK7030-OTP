@@ -804,7 +804,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 45 "D:\develop\190625\AK7030-OTP\common.h"
+# 41 "D:\develop\190625\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -818,7 +818,7 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 63
+# 59
 unsigned int getAdOriginalCh12Value();
 unsigned int getAdOriginalCh13Value();
 
@@ -867,8 +867,6 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 
 void adc_start();
 unsigned int adc_get(void);
-void disable_AD_interrupt(void);
-void enable_AD_interrupt(void);
 
 
 # 53 "D:\develop\190625\AK7030-OTP\main.c"
@@ -1053,6 +1051,44 @@ while(1);
 # 315
 }
 
+# 474
+static unsigned char calPulseWidth( void )
+{
+static unsigned char ucPulseWidth = 30;
+
+unsigned int uiChannel2Value = 0;
+unsigned int uiNewValue = 0;
+static unsigned int uiOldValue = 0;
+
+static unsigned char bInitFlag = 0;
+
+uiNewValue = getAdOriginalCh12Value();
+
+if( 0 == bInitFlag )
+{
+uiOldValue = getAdOriginalCh12Value();
+bInitFlag = 1;
+}
+
+# 514
+if( uiNewValue > 312 )
+ucPulseWidth++;
+else
+ucPulseWidth--;
+
+if(ucPulseWidth > 100)
+ucPulseWidth = 100;
+else if(ucPulseWidth < 30)
+ucPulseWidth = 30;
+else
+;
+
+uiChannel2Value = uiOldValue;
+
+# 558
+return ucPulseWidth;
+}
+
 # 592
 int main (void)
 {
@@ -1093,7 +1129,11 @@ while(1)
 
 asm(" clrwdt");
 
-# 655
+process_AD_Converter_Value();
+
+
+
+
 if( isPermitSampleTime() )
 {
 

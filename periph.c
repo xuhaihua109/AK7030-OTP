@@ -85,7 +85,7 @@ void adc_test_init(uchar channel,uchar ref)
 {
 	ADCON0 = 0x00;
 	ADCON0|=channel<<2;//通道号
-//	ADCON1 = 0x3E;
+	ADCON1 = 0x35;
 	ADCON1|=ref<<6;	//参考电压 0-OP1 1-VCC 2-PB5 3-2.1v
 	ADON=1;	//启动ADC
 	ADIE=1;	//使能中断
@@ -107,14 +107,4 @@ uint adc_get(void)
 	uint val;
 	val = (ADRESH<<8) | ADRESL;
 	return val;
-}
-
-void disable_AD_interrupt(void)
-{
-	ADIE = 0;
-}
-
-void enable_AD_interrupt(void)
-{
-	ADIE = 1;
 }

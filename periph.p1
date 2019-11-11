@@ -1239,37 +1239,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.h: 18: void adc_test_init(unsigned char channel,unsigned char ref);
 [; ;periph.h: 20: void adc_start();
 [; ;periph.h: 21: unsigned int adc_get(void);
-[; ;periph.h: 22: void disable_AD_interrupt(void);
-[; ;periph.h: 23: void enable_AD_interrupt(void);
-[; ;common.h: 45: void clock_config();
-[; ;common.h: 46: void timer1_config();
-[; ;common.h: 47: void timer1_interrupt_config();
-[; ;common.h: 49: void adConverter_config();
-[; ;common.h: 51: void setAdcSampleChannel(unsigned char ucChannel);
-[; ;common.h: 56: void process_AD_Converter_Value();
-[; ;common.h: 63: unsigned int getAdOriginalCh12Value();
-[; ;common.h: 64: unsigned int getAdOriginalCh13Value();
-[; ;common.h: 66: unsigned int getAdOriginalCh14Value();
-[; ;common.h: 68: unsigned char isPermitSampleTime();
-[; ;common.h: 70: void clrSampeTime();
-[; ;common.h: 72: void setDAC0_ChannelValue(unsigned char ucValue);
-[; ;common.h: 74: void startTwelveHourTimer(unsigned int uiSetTime);
-[; ;common.h: 75: void startThreeHoursTimer(unsigned int uiSetTime);
-[; ;common.h: 77: void startOneHoursTimer(unsigned int uiSetTime);
-[; ;common.h: 80: void startTwentySecondsTimer();
-[; ;common.h: 81: unsigned char isFinishedTwentySecondsTimer();
-[; ;common.h: 84: void startTwentyMinTimer(unsigned int uiSetValue);
-[; ;common.h: 85: unsigned char isFinishedTwentyMinTimer();
-[; ;common.h: 87: void clearTwelveHoursTimer();
-[; ;common.h: 88: void clearThreeHoursTimer();
-[; ;common.h: 89: void clearOneHoursTimer();
-[; ;common.h: 90: void clearTwentySecondsTimer();
-[; ;common.h: 91: void clearTwentyMinTimer();
-[; ;common.h: 94: unsigned char isFinishedTwelveHoursTimer();
-[; ;common.h: 95: unsigned char isFinishedThreeHoursTimer();
-[; ;common.h: 96: unsigned char isFinishedOneHoursTimer();
-[; ;common.h: 98: unsigned char getAD_ConvertFlag();
-[; ;common.h: 99: void setAD_ConvertFlag(unsigned char flag);
+[; ;common.h: 41: void clock_config();
+[; ;common.h: 42: void timer1_config();
+[; ;common.h: 43: void timer1_interrupt_config();
+[; ;common.h: 45: void adConverter_config();
+[; ;common.h: 47: void setAdcSampleChannel(unsigned char ucChannel);
+[; ;common.h: 52: void process_AD_Converter_Value();
+[; ;common.h: 59: unsigned int getAdOriginalCh12Value();
+[; ;common.h: 60: unsigned int getAdOriginalCh13Value();
+[; ;common.h: 62: unsigned int getAdOriginalCh14Value();
+[; ;common.h: 64: unsigned char isPermitSampleTime();
+[; ;common.h: 66: void clrSampeTime();
+[; ;common.h: 68: void setDAC0_ChannelValue(unsigned char ucValue);
+[; ;common.h: 70: void startTwelveHourTimer(unsigned int uiSetTime);
+[; ;common.h: 71: void startThreeHoursTimer(unsigned int uiSetTime);
+[; ;common.h: 73: void startOneHoursTimer(unsigned int uiSetTime);
+[; ;common.h: 76: void startTwentySecondsTimer();
+[; ;common.h: 77: unsigned char isFinishedTwentySecondsTimer();
+[; ;common.h: 80: void startTwentyMinTimer(unsigned int uiSetValue);
+[; ;common.h: 81: unsigned char isFinishedTwentyMinTimer();
+[; ;common.h: 83: void clearTwelveHoursTimer();
+[; ;common.h: 84: void clearThreeHoursTimer();
+[; ;common.h: 85: void clearOneHoursTimer();
+[; ;common.h: 86: void clearTwentySecondsTimer();
+[; ;common.h: 87: void clearTwentyMinTimer();
+[; ;common.h: 90: unsigned char isFinishedTwelveHoursTimer();
+[; ;common.h: 91: unsigned char isFinishedThreeHoursTimer();
+[; ;common.h: 92: unsigned char isFinishedOneHoursTimer();
+[; ;common.h: 94: unsigned char getAD_ConvertFlag();
+[; ;common.h: 95: void setAD_ConvertFlag(unsigned char flag);
 "14 D:\develop\190625\AK7030-OTP\periph.c
 [v _dac_init `(v  1 ef ]
 {
@@ -1395,6 +1393,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.c: 87: ADCON0|=channel<<2;
 "87
 [e =| _ADCON0 -> << -> _channel `i -> 2 `i `uc ]
+[; ;periph.c: 88: ADCON1 = 0x35;
+"88
+[e = _ADCON1 -> -> 53 `i `uc ]
 [; ;periph.c: 89: ADCON1|=ref<<6;
 "89
 [e =| _ADCON1 -> << -> _ref `i -> 6 `i `uc ]
@@ -1457,32 +1458,4 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.c: 110: }
 "110
 [e :UE 50 ]
-}
-"113
-[v _disable_AD_interrupt `(v  1 ef ]
-{
-[; ;periph.c: 112: void disable_AD_interrupt(void)
-[; ;periph.c: 113: {
-[e :U _disable_AD_interrupt ]
-[f ]
-[; ;periph.c: 114: ADIE = 0;
-"114
-[e = _ADIE -> -> 0 `i `b ]
-[; ;periph.c: 115: }
-"115
-[e :UE 51 ]
-}
-"118
-[v _enable_AD_interrupt `(v  1 ef ]
-{
-[; ;periph.c: 117: void enable_AD_interrupt(void)
-[; ;periph.c: 118: {
-[e :U _enable_AD_interrupt ]
-[f ]
-[; ;periph.c: 119: ADIE = 1;
-"119
-[e = _ADIE -> -> 1 `i `b ]
-[; ;periph.c: 120: }
-"120
-[e :UE 52 ]
 }

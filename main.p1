@@ -707,49 +707,53 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ALG6 `Vuc  1 e@398 ]
 "918 D:\develop\190625\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
-"87 D:\develop\190625\AK7030-OTP\common.h
+"83 D:\develop\190625\AK7030-OTP\common.h
 [v _clearTwelveHoursTimer `(v  0 ef ]
-"88 D:\develop\190625\AK7030-OTP\common.h
+"84 D:\develop\190625\AK7030-OTP\common.h
 [v _clearThreeHoursTimer `(v  0 ef ]
-"90 D:\develop\190625\AK7030-OTP\common.h
+"86 D:\develop\190625\AK7030-OTP\common.h
 [v _clearTwentySecondsTimer `(v  0 ef ]
+"59 D:\develop\190625\AK7030-OTP\common.h
+[v _getAdOriginalCh12Value `(ui  0 ef ]
 [p mainexit ]
-"45 D:\develop\190625\AK7030-OTP\common.h
+"41 D:\develop\190625\AK7030-OTP\common.h
 [v _clock_config `(v  0 ef ]
-"46 D:\develop\190625\AK7030-OTP\common.h
+"42 D:\develop\190625\AK7030-OTP\common.h
 [v _timer1_config `(v  0 ef ]
-"47 D:\develop\190625\AK7030-OTP\common.h
+"43 D:\develop\190625\AK7030-OTP\common.h
 [v _timer1_interrupt_config `(v  0 ef ]
 "18 D:\develop\190625\AK7030-OTP\periph.h
 [v _adc_test_init `(v  0 ef2`uc`uc ]
-"84 D:\develop\190625\AK7030-OTP\common.h
+"80 D:\develop\190625\AK7030-OTP\common.h
 [v _startTwentyMinTimer `(v  0 ef1`ui ]
 "54 D:\develop\190625\AK7030-OTP\main.c
 [v __delay `(v  0 ef1`ul ]
 [p i __delay ]
 "20 D:\develop\190625\AK7030-OTP\periph.h
 [v _adc_start `(v  0 ef ]
-"68 D:\develop\190625\AK7030-OTP\common.h
-[v _isPermitSampleTime `(uc  0 ef ]
-"70 D:\develop\190625\AK7030-OTP\common.h
-[v _clrSampeTime `(v  0 ef ]
-"85 D:\develop\190625\AK7030-OTP\common.h
-[v _isFinishedTwentyMinTimer `(uc  0 ef ]
+"52 D:\develop\190625\AK7030-OTP\common.h
+[v _process_AD_Converter_Value `(v  0 ef ]
 "64 D:\develop\190625\AK7030-OTP\common.h
+[v _isPermitSampleTime `(uc  0 ef ]
+"66 D:\develop\190625\AK7030-OTP\common.h
+[v _clrSampeTime `(v  0 ef ]
+"81 D:\develop\190625\AK7030-OTP\common.h
+[v _isFinishedTwentyMinTimer `(uc  0 ef ]
+"60 D:\develop\190625\AK7030-OTP\common.h
 [v _getAdOriginalCh13Value `(ui  0 ef ]
-"91 D:\develop\190625\AK7030-OTP\common.h
+"87 D:\develop\190625\AK7030-OTP\common.h
 [v _clearTwentyMinTimer `(v  0 ef ]
-"74 D:\develop\190625\AK7030-OTP\common.h
+"70 D:\develop\190625\AK7030-OTP\common.h
 [v _startTwelveHourTimer `(v  0 ef1`ui ]
-"94 D:\develop\190625\AK7030-OTP\common.h
+"90 D:\develop\190625\AK7030-OTP\common.h
 [v _isFinishedTwelveHoursTimer `(uc  0 ef ]
-"75 D:\develop\190625\AK7030-OTP\common.h
+"71 D:\develop\190625\AK7030-OTP\common.h
 [v _startThreeHoursTimer `(v  0 ef1`ui ]
-"95 D:\develop\190625\AK7030-OTP\common.h
+"91 D:\develop\190625\AK7030-OTP\common.h
 [v _isFinishedThreeHoursTimer `(uc  0 ef ]
-"77 D:\develop\190625\AK7030-OTP\common.h
+"73 D:\develop\190625\AK7030-OTP\common.h
 [v _startOneHoursTimer `(v  0 ef1`ui ]
-"96 D:\develop\190625\AK7030-OTP\common.h
+"92 D:\develop\190625\AK7030-OTP\common.h
 [v _isFinishedOneHoursTimer `(uc  0 ef ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
@@ -1276,35 +1280,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 910: volatile unsigned char ALG5 @ 0x18D;
 [; ;yn8p520.h: 914: volatile unsigned char ALG6 @ 0x18E;
 [; ;yn8p520.h: 918: volatile unsigned char ALG7 @ 0x18F;
-[; ;common.h: 45: void clock_config();
-[; ;common.h: 46: void timer1_config();
-[; ;common.h: 47: void timer1_interrupt_config();
-[; ;common.h: 49: void adConverter_config();
-[; ;common.h: 51: void setAdcSampleChannel(unsigned char ucChannel);
-[; ;common.h: 56: void process_AD_Converter_Value();
-[; ;common.h: 63: unsigned int getAdOriginalCh12Value();
-[; ;common.h: 64: unsigned int getAdOriginalCh13Value();
-[; ;common.h: 66: unsigned int getAdOriginalCh14Value();
-[; ;common.h: 68: unsigned char isPermitSampleTime();
-[; ;common.h: 70: void clrSampeTime();
-[; ;common.h: 72: void setDAC0_ChannelValue(unsigned char ucValue);
-[; ;common.h: 74: void startTwelveHourTimer(unsigned int uiSetTime);
-[; ;common.h: 75: void startThreeHoursTimer(unsigned int uiSetTime);
-[; ;common.h: 77: void startOneHoursTimer(unsigned int uiSetTime);
-[; ;common.h: 80: void startTwentySecondsTimer();
-[; ;common.h: 81: unsigned char isFinishedTwentySecondsTimer();
-[; ;common.h: 84: void startTwentyMinTimer(unsigned int uiSetValue);
-[; ;common.h: 85: unsigned char isFinishedTwentyMinTimer();
-[; ;common.h: 87: void clearTwelveHoursTimer();
-[; ;common.h: 88: void clearThreeHoursTimer();
-[; ;common.h: 89: void clearOneHoursTimer();
-[; ;common.h: 90: void clearTwentySecondsTimer();
-[; ;common.h: 91: void clearTwentyMinTimer();
-[; ;common.h: 94: unsigned char isFinishedTwelveHoursTimer();
-[; ;common.h: 95: unsigned char isFinishedThreeHoursTimer();
-[; ;common.h: 96: unsigned char isFinishedOneHoursTimer();
-[; ;common.h: 98: unsigned char getAD_ConvertFlag();
-[; ;common.h: 99: void setAD_ConvertFlag(unsigned char flag);
+[; ;common.h: 41: void clock_config();
+[; ;common.h: 42: void timer1_config();
+[; ;common.h: 43: void timer1_interrupt_config();
+[; ;common.h: 45: void adConverter_config();
+[; ;common.h: 47: void setAdcSampleChannel(unsigned char ucChannel);
+[; ;common.h: 52: void process_AD_Converter_Value();
+[; ;common.h: 59: unsigned int getAdOriginalCh12Value();
+[; ;common.h: 60: unsigned int getAdOriginalCh13Value();
+[; ;common.h: 62: unsigned int getAdOriginalCh14Value();
+[; ;common.h: 64: unsigned char isPermitSampleTime();
+[; ;common.h: 66: void clrSampeTime();
+[; ;common.h: 68: void setDAC0_ChannelValue(unsigned char ucValue);
+[; ;common.h: 70: void startTwelveHourTimer(unsigned int uiSetTime);
+[; ;common.h: 71: void startThreeHoursTimer(unsigned int uiSetTime);
+[; ;common.h: 73: void startOneHoursTimer(unsigned int uiSetTime);
+[; ;common.h: 76: void startTwentySecondsTimer();
+[; ;common.h: 77: unsigned char isFinishedTwentySecondsTimer();
+[; ;common.h: 80: void startTwentyMinTimer(unsigned int uiSetValue);
+[; ;common.h: 81: unsigned char isFinishedTwentyMinTimer();
+[; ;common.h: 83: void clearTwelveHoursTimer();
+[; ;common.h: 84: void clearThreeHoursTimer();
+[; ;common.h: 85: void clearOneHoursTimer();
+[; ;common.h: 86: void clearTwentySecondsTimer();
+[; ;common.h: 87: void clearTwentyMinTimer();
+[; ;common.h: 90: unsigned char isFinishedTwelveHoursTimer();
+[; ;common.h: 91: unsigned char isFinishedThreeHoursTimer();
+[; ;common.h: 92: unsigned char isFinishedOneHoursTimer();
+[; ;common.h: 94: unsigned char getAD_ConvertFlag();
+[; ;common.h: 95: void setAD_ConvertFlag(unsigned char flag);
 [; ;periph.h: 13: void dac_init();
 [; ;periph.h: 14: void op1_init();
 [; ;periph.h: 15: void op2_init();
@@ -1312,8 +1316,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.h: 18: void adc_test_init(unsigned char channel,unsigned char ref);
 [; ;periph.h: 20: void adc_start();
 [; ;periph.h: 21: unsigned int adc_get(void);
-[; ;periph.h: 22: void disable_AD_interrupt(void);
-[; ;periph.h: 23: void enable_AD_interrupt(void);
 [; ;main.c: 54: extern void _delay(unsigned long);
 "105 D:\develop\190625\AK7030-OTP\main.c
 [; ;main.c: 105: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x0FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
@@ -1634,6 +1636,105 @@ Version 3.2 HI-TECH Software Intermediate Code
 "315
 [e :UE 65 ]
 }
+"475
+[v _calPulseWidth `(uc  1 sf ]
+{
+[; ;main.c: 474: static unsigned char calPulseWidth( void )
+[; ;main.c: 475: {
+[e :U _calPulseWidth ]
+[f ]
+"476
+[v F859 `uc  1 s ucPulseWidth ]
+[i F859
+-> -> 30 `i `uc
+]
+"478
+[v _uiChannel2Value `ui  1 a ]
+[; ;main.c: 476: static unsigned char ucPulseWidth = 30;
+[; ;main.c: 478: unsigned int uiChannel2Value = 0;
+[e = _uiChannel2Value -> -> 0 `i `ui ]
+"479
+[v _uiNewValue `ui  1 a ]
+[; ;main.c: 479: unsigned int uiNewValue = 0;
+[e = _uiNewValue -> -> 0 `i `ui ]
+"480
+[v F862 `ui  1 s uiOldValue ]
+[i F862
+-> -> 0 `i `ui
+]
+"482
+[v F863 `uc  1 s bInitFlag ]
+[i F863
+-> -> 0 `i `uc
+]
+[; ;main.c: 480: static unsigned int uiOldValue = 0;
+[; ;main.c: 482: static unsigned char bInitFlag = 0;
+[; ;main.c: 484: uiNewValue = getAdOriginalCh12Value();
+"484
+[e = _uiNewValue ( _getAdOriginalCh12Value ..  ]
+[; ;main.c: 486: if( 0 == bInitFlag )
+"486
+[e $ ! == -> 0 `i -> F863 `i 70  ]
+[; ;main.c: 487: {
+"487
+{
+[; ;main.c: 488: uiOldValue = getAdOriginalCh12Value();
+"488
+[e = F862 ( _getAdOriginalCh12Value ..  ]
+[; ;main.c: 489: bInitFlag = 1;
+"489
+[e = F863 -> -> 1 `i `uc ]
+"490
+}
+[e :U 70 ]
+[; ;main.c: 490: }
+[; ;main.c: 514: if( uiNewValue > 312 )
+"514
+[e $ ! > _uiNewValue -> -> 312 `i `ui 71  ]
+[; ;main.c: 515: ucPulseWidth++;
+"515
+[e ++ F859 -> -> 1 `i `uc ]
+[e $U 72  ]
+"516
+[e :U 71 ]
+[; ;main.c: 516: else
+[; ;main.c: 517: ucPulseWidth--;
+"517
+[e -- F859 -> -> 1 `i `uc ]
+[e :U 72 ]
+[; ;main.c: 519: if(ucPulseWidth > 100)
+"519
+[e $ ! > -> F859 `i -> 100 `i 73  ]
+[; ;main.c: 520: ucPulseWidth = 100;
+"520
+[e = F859 -> -> 100 `i `uc ]
+[e $U 74  ]
+"521
+[e :U 73 ]
+[; ;main.c: 521: else if(ucPulseWidth < 30)
+[e $ ! < -> F859 `i -> 30 `i 75  ]
+[; ;main.c: 522: ucPulseWidth = 30;
+"522
+[e = F859 -> -> 30 `i `uc ]
+[e $U 76  ]
+"523
+[e :U 75 ]
+[; ;main.c: 523: else
+[; ;main.c: 524: ;
+"524
+[e :U 76 ]
+[e :U 74 ]
+[; ;main.c: 526: uiChannel2Value = uiOldValue;
+"526
+[e = _uiChannel2Value F862 ]
+[; ;main.c: 558: return ucPulseWidth;
+"558
+[e ) F859 ]
+[e $UE 69  ]
+[; ;main.c: 559: }
+"559
+[e :UE 69 ]
+}
 "593
 [v _main `(i  1 ef ]
 {
@@ -1642,12 +1743,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "606
-[c E863 0 1 2 3 4 5 6 99 100 101 102 .. ]
-[n E863 systemStep INIT_STEP START_UP_PWM_STEP CHECK_10_HOUR_TIMER_STEP STARTUP_3_HOUR_TIMER_STEP CHECK_3_HOUR_TIMER_STEP STARTUP_1_HOUR_TIMER_STEP CHECK_1_HOUR_TIMER_STEP READY_FOR_RESET_STEP DELAY_ONE_SECOND_FOR_PWM MEET_RESET_CONDITION_STEP RESET_STEP  ]
+[c E866 0 1 2 3 4 5 6 99 100 101 102 .. ]
+[n E866 systemStep INIT_STEP START_UP_PWM_STEP CHECK_10_HOUR_TIMER_STEP STARTUP_3_HOUR_TIMER_STEP CHECK_3_HOUR_TIMER_STEP STARTUP_1_HOUR_TIMER_STEP CHECK_1_HOUR_TIMER_STEP READY_FOR_RESET_STEP DELAY_ONE_SECOND_FOR_PWM MEET_RESET_CONDITION_STEP RESET_STEP  ]
 "608
-[v F875 `E863  1 s ucStep ]
-[i F875
-. `E863 0
+[v F878 `E866  1 s ucStep ]
+[i F878
+. `E866 0
 ]
 [; ;main.c: 594: enum systemStep {
 [; ;main.c: 595: INIT_STEP = 0,
@@ -1698,16 +1799,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _adc_start ..  ]
 [; ;main.c: 645: while(1)
 "645
-[e :U 71 ]
+[e :U 79 ]
 [; ;main.c: 646: {
 "646
 {
 [; ;main.c: 648: asm(" clrwdt");
 "648
 [;  clrwdt ;#
+[; ;main.c: 650: process_AD_Converter_Value();
+"650
+[e ( _process_AD_Converter_Value ..  ]
 [; ;main.c: 655: if( isPermitSampleTime() )
 "655
-[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 73  ]
+[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 81  ]
 [; ;main.c: 656: {
 "656
 {
@@ -1716,93 +1820,93 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _clrSampeTime ..  ]
 [; ;main.c: 668: switch(ucStep)
 "668
-[e $U 75  ]
+[e $U 83  ]
 [; ;main.c: 669: {
 "669
 {
 [; ;main.c: 671: case INIT_STEP:
 "671
-[e :U 76 ]
+[e :U 84 ]
 [; ;main.c: 672: {
 "672
 {
 "677
-[v F876 `uc  1 s ucTimerP3s ]
-[i F876
+[v F879 `uc  1 s ucTimerP3s ]
+[i F879
 -> -> 0 `i `uc
 ]
 [; ;main.c: 677: static unsigned char ucTimerP3s = 0;
 [; ;main.c: 679: if( isFinishedTwentyMinTimer() )
 "679
-[e $ ! != -> ( _isFinishedTwentyMinTimer ..  `i -> -> -> 0 `i `uc `i 77  ]
+[e $ ! != -> ( _isFinishedTwentyMinTimer ..  `i -> -> -> 0 `i `uc `i 85  ]
 [; ;main.c: 680: {
 "680
 {
 [; ;main.c: 681: ucStep = READY_FOR_RESET_STEP;
 "681
-[e = F875 . `E863 7 ]
+[e = F878 . `E866 7 ]
 [; ;main.c: 682: ucTimerP3s = 0;
 "682
-[e = F876 -> -> 0 `i `uc ]
+[e = F879 -> -> 0 `i `uc ]
 "683
 }
 [; ;main.c: 683: }
-[e $U 78  ]
+[e $U 86  ]
 "684
-[e :U 77 ]
+[e :U 85 ]
 [; ;main.c: 684: else
 [; ;main.c: 685: {
 "685
 {
 [; ;main.c: 686: if( getAdOriginalCh13Value() > 90 )
 "686
-[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 90 `i `ui 79  ]
+[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 90 `i `ui 87  ]
 [; ;main.c: 687: {
 "687
 {
 [; ;main.c: 688: ucTimerP3s++;
 "688
-[e ++ F876 -> -> 1 `i `uc ]
+[e ++ F879 -> -> 1 `i `uc ]
 "689
 }
 [; ;main.c: 689: }
-[e $U 80  ]
+[e $U 88  ]
 "690
-[e :U 79 ]
+[e :U 87 ]
 [; ;main.c: 690: else
 [; ;main.c: 691: ucTimerP3s = 0;
 "691
-[e = F876 -> -> 0 `i `uc ]
-[e :U 80 ]
+[e = F879 -> -> 0 `i `uc ]
+[e :U 88 ]
 [; ;main.c: 693: if( ucTimerP3s >= 3)
 "693
-[e $ ! >= -> F876 `i -> 3 `i 81  ]
+[e $ ! >= -> F879 `i -> 3 `i 89  ]
 [; ;main.c: 694: {
 "694
 {
 [; ;main.c: 695: ucTimerP3s = 0;
 "695
-[e = F876 -> -> 0 `i `uc ]
+[e = F879 -> -> 0 `i `uc ]
 [; ;main.c: 696: ucStep = START_UP_PWM_STEP;
 "696
-[e = F875 . `E863 1 ]
+[e = F878 . `E866 1 ]
 "697
 }
-[e :U 81 ]
+[e :U 89 ]
 "699
 }
-[e :U 78 ]
+[e :U 86 ]
 [; ;main.c: 697: }
 [; ;main.c: 699: }
 [; ;main.c: 703: break;
 "703
-[e $U 74  ]
+[e $U 82  ]
 "704
 }
 [; ;main.c: 704: }
 [; ;main.c: 706: case START_UP_PWM_STEP:
 "706
-[e :U 82 ]
+[e :U 90 ]
 [; ;main.c: 707: {
 "707
 {
@@ -1823,81 +1927,81 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _startTwelveHourTimer (1 -> -> 240 `i `ui ]
 [; ;main.c: 722: ucStep = CHECK_10_HOUR_TIMER_STEP;
 "722
-[e = F875 . `E863 2 ]
+[e = F878 . `E866 2 ]
 [; ;main.c: 723: break;
 "723
-[e $U 74  ]
+[e $U 82  ]
 "724
 }
 [; ;main.c: 724: }
 [; ;main.c: 726: case CHECK_10_HOUR_TIMER_STEP:
 "726
-[e :U 83 ]
+[e :U 91 ]
 [; ;main.c: 727: {
 "727
 {
 "732
-[v F877 `uc  1 s ucTimerP5s ]
-[i F877
+[v F880 `uc  1 s ucTimerP5s ]
+[i F880
 -> -> 0 `i `uc
 ]
 [; ;main.c: 732: static unsigned char ucTimerP5s = 0;
 [; ;main.c: 734: if( isFinishedTwelveHoursTimer () )
 "734
-[e $ ! != -> ( _isFinishedTwelveHoursTimer ..  `i -> -> -> 0 `i `uc `i 84  ]
+[e $ ! != -> ( _isFinishedTwelveHoursTimer ..  `i -> -> -> 0 `i `uc `i 92  ]
 [; ;main.c: 735: ucStep = READY_FOR_RESET_STEP;
 "735
-[e = F875 . `E863 7 ]
-[e $U 85  ]
+[e = F878 . `E866 7 ]
+[e $U 93  ]
 "736
-[e :U 84 ]
+[e :U 92 ]
 [; ;main.c: 736: else
 [; ;main.c: 737: {
 "737
 {
 [; ;main.c: 738: if( getAdOriginalCh13Value() < 200 )
 "738
-[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 200 `i `ui 86  ]
+[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 200 `i `ui 94  ]
 [; ;main.c: 739: ucTimerP5s++;
 "739
-[e ++ F877 -> -> 1 `i `uc ]
-[e $U 87  ]
+[e ++ F880 -> -> 1 `i `uc ]
+[e $U 95  ]
 "740
-[e :U 86 ]
+[e :U 94 ]
 [; ;main.c: 740: else
 [; ;main.c: 741: ucTimerP5s = 0;
 "741
-[e = F877 -> -> 0 `i `uc ]
-[e :U 87 ]
+[e = F880 -> -> 0 `i `uc ]
+[e :U 95 ]
 [; ;main.c: 743: if( ucTimerP5s > 5)
 "743
-[e $ ! > -> F877 `i -> 5 `i 88  ]
+[e $ ! > -> F880 `i -> 5 `i 96  ]
 [; ;main.c: 744: {
 "744
 {
 [; ;main.c: 745: ucTimerP5s = 0;
 "745
-[e = F877 -> -> 0 `i `uc ]
+[e = F880 -> -> 0 `i `uc ]
 [; ;main.c: 746: ucStep = STARTUP_3_HOUR_TIMER_STEP;
 "746
-[e = F875 . `E863 3 ]
+[e = F878 . `E866 3 ]
 "747
 }
-[e :U 88 ]
+[e :U 96 ]
 "748
 }
-[e :U 85 ]
+[e :U 93 ]
 [; ;main.c: 747: }
 [; ;main.c: 748: }
 [; ;main.c: 749: break;
 "749
-[e $U 74  ]
+[e $U 82  ]
 "750
 }
 [; ;main.c: 750: }
 [; ;main.c: 753: case STARTUP_3_HOUR_TIMER_STEP:
 "753
-[e :U 89 ]
+[e :U 97 ]
 [; ;main.c: 754: {
 "754
 {
@@ -1909,81 +2013,81 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _startThreeHoursTimer (1 -> -> 180 `i `ui ]
 [; ;main.c: 757: ucStep = CHECK_3_HOUR_TIMER_STEP;
 "757
-[e = F875 . `E863 4 ]
+[e = F878 . `E866 4 ]
 [; ;main.c: 758: break;
 "758
-[e $U 74  ]
+[e $U 82  ]
 "759
 }
 [; ;main.c: 759: }
 [; ;main.c: 761: case CHECK_3_HOUR_TIMER_STEP:
 "761
-[e :U 90 ]
+[e :U 98 ]
 [; ;main.c: 762: {
 "762
 {
 "763
-[v F878 `uc  1 s ucTimerP5s ]
-[i F878
+[v F881 `uc  1 s ucTimerP5s ]
+[i F881
 -> -> 0 `i `uc
 ]
 [; ;main.c: 763: static unsigned char ucTimerP5s = 0;
 [; ;main.c: 765: if( isFinishedThreeHoursTimer() )
 "765
-[e $ ! != -> ( _isFinishedThreeHoursTimer ..  `i -> -> -> 0 `i `uc `i 91  ]
+[e $ ! != -> ( _isFinishedThreeHoursTimer ..  `i -> -> -> 0 `i `uc `i 99  ]
 [; ;main.c: 766: ucStep = READY_FOR_RESET_STEP;
 "766
-[e = F875 . `E863 7 ]
-[e $U 92  ]
+[e = F878 . `E866 7 ]
+[e $U 100  ]
 "767
-[e :U 91 ]
+[e :U 99 ]
 [; ;main.c: 767: else
 [; ;main.c: 768: {
 "768
 {
 [; ;main.c: 769: if( getAdOriginalCh13Value() < 85 )
 "769
-[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 85 `i `ui 93  ]
+[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 85 `i `ui 101  ]
 [; ;main.c: 770: ucTimerP5s++;
 "770
-[e ++ F878 -> -> 1 `i `uc ]
-[e $U 94  ]
+[e ++ F881 -> -> 1 `i `uc ]
+[e $U 102  ]
 "771
-[e :U 93 ]
+[e :U 101 ]
 [; ;main.c: 771: else
 [; ;main.c: 772: ucTimerP5s = 0;
 "772
-[e = F878 -> -> 0 `i `uc ]
-[e :U 94 ]
+[e = F881 -> -> 0 `i `uc ]
+[e :U 102 ]
 [; ;main.c: 774: if( ucTimerP5s > 5)
 "774
-[e $ ! > -> F878 `i -> 5 `i 95  ]
+[e $ ! > -> F881 `i -> 5 `i 103  ]
 [; ;main.c: 775: {
 "775
 {
 [; ;main.c: 776: ucTimerP5s = 0;
 "776
-[e = F878 -> -> 0 `i `uc ]
+[e = F881 -> -> 0 `i `uc ]
 [; ;main.c: 777: ucStep = STARTUP_1_HOUR_TIMER_STEP;
 "777
-[e = F875 . `E863 5 ]
+[e = F878 . `E866 5 ]
 "778
 }
-[e :U 95 ]
+[e :U 103 ]
 "779
 }
-[e :U 92 ]
+[e :U 100 ]
 [; ;main.c: 778: }
 [; ;main.c: 779: }
 [; ;main.c: 780: break;
 "780
-[e $U 74  ]
+[e $U 82  ]
 "781
 }
 [; ;main.c: 781: }
 [; ;main.c: 783: case STARTUP_1_HOUR_TIMER_STEP:
 "783
-[e :U 96 ]
+[e :U 104 ]
 [; ;main.c: 784: {
 "784
 {
@@ -2004,32 +2108,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setPB5 (1 -> -> 1 `i `uc ]
 [; ;main.c: 790: ucStep = CHECK_1_HOUR_TIMER_STEP;
 "790
-[e = F875 . `E863 6 ]
+[e = F878 . `E866 6 ]
 [; ;main.c: 791: break;
 "791
-[e $U 74  ]
+[e $U 82  ]
 "792
 }
 [; ;main.c: 792: }
 [; ;main.c: 794: case CHECK_1_HOUR_TIMER_STEP:
 "794
-[e :U 97 ]
+[e :U 105 ]
 [; ;main.c: 795: {
 "795
 {
 "800
-[v F879 `ui  1 s uiTimerOneP5s ]
-[i F879
+[v F882 `ui  1 s uiTimerOneP5s ]
+[i F882
 -> -> 0 `i `ui
 ]
 "801
-[v F880 `ui  1 s uiTimerTwoP5s ]
-[i F880
+[v F883 `ui  1 s uiTimerTwoP5s ]
+[i F883
 -> -> 0 `i `ui
 ]
 "802
-[v F881 `ui  1 s uiTimerThreeP5s ]
-[i F881
+[v F884 `ui  1 s uiTimerThreeP5s ]
+[i F884
 -> -> 0 `i `ui
 ]
 "804
@@ -2041,56 +2145,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _uiCh13Value ( _getAdOriginalCh13Value ..  ]
 [; ;main.c: 807: if( isFinishedOneHoursTimer() )
 "807
-[e $ ! != -> ( _isFinishedOneHoursTimer ..  `i -> -> -> 0 `i `uc `i 98  ]
+[e $ ! != -> ( _isFinishedOneHoursTimer ..  `i -> -> -> 0 `i `uc `i 106  ]
 [; ;main.c: 808: ucStep = READY_FOR_RESET_STEP;
 "808
-[e = F875 . `E863 7 ]
-[e $U 99  ]
+[e = F878 . `E866 7 ]
+[e $U 107  ]
 "809
-[e :U 98 ]
+[e :U 106 ]
 [; ;main.c: 809: else
 [; ;main.c: 810: {
 "810
 {
 [; ;main.c: 811: if( uiCh13Value > 100 )
 "811
-[e $ ! > _uiCh13Value -> -> 100 `i `ui 100  ]
+[e $ ! > _uiCh13Value -> -> 100 `i `ui 108  ]
 [; ;main.c: 812: {
 "812
 {
 [; ;main.c: 813: if( uiTimerOneP5s <= 5 )
 "813
-[e $ ! <= F879 -> -> 5 `i `ui 101  ]
+[e $ ! <= F882 -> -> 5 `i `ui 109  ]
 [; ;main.c: 814: uiTimerOneP5s++;
 "814
-[e ++ F879 -> -> 1 `i `ui ]
-[e :U 101 ]
+[e ++ F882 -> -> 1 `i `ui ]
+[e :U 109 ]
 [; ;main.c: 815: uiTimerTwoP5s = 0;
 "815
-[e = F880 -> -> 0 `i `ui ]
+[e = F883 -> -> 0 `i `ui ]
 [; ;main.c: 816: uiTimerThreeP5s = 0;
 "816
-[e = F881 -> -> 0 `i `ui ]
+[e = F884 -> -> 0 `i `ui ]
 "817
 }
 [; ;main.c: 817: }
-[e $U 102  ]
+[e $U 110  ]
 "818
-[e :U 100 ]
+[e :U 108 ]
 [; ;main.c: 818: else
 [; ;main.c: 819: {
 "819
 {
 [; ;main.c: 820: uiTimerOneP5s = 0;
 "820
-[e = F879 -> -> 0 `i `ui ]
+[e = F882 -> -> 0 `i `ui ]
 "821
 }
-[e :U 102 ]
+[e :U 110 ]
 [; ;main.c: 821: }
 [; ;main.c: 824: if(uiTimerOneP5s > 5)
 "824
-[e $ ! > F879 -> -> 5 `i `ui 103  ]
+[e $ ! > F882 -> -> 5 `i `ui 111  ]
 [; ;main.c: 825: {
 "825
 {
@@ -2105,56 +2209,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setPB5 (1 -> -> 0 `i `uc ]
 [; ;main.c: 830: uiTimerOneP5s = 0;
 "830
-[e = F879 -> -> 0 `i `ui ]
+[e = F882 -> -> 0 `i `ui ]
 [; ;main.c: 831: uiTimerTwoP5s = 0;
 "831
-[e = F880 -> -> 0 `i `ui ]
+[e = F883 -> -> 0 `i `ui ]
 "832
 }
 [; ;main.c: 832: }
-[e $U 104  ]
+[e $U 112  ]
 "833
-[e :U 103 ]
+[e :U 111 ]
 [; ;main.c: 833: else
 [; ;main.c: 834: {
 "834
 {
 [; ;main.c: 835: if( uiCh13Value < 90 )
 "835
-[e $ ! < _uiCh13Value -> -> 90 `i `ui 105  ]
+[e $ ! < _uiCh13Value -> -> 90 `i `ui 113  ]
 [; ;main.c: 836: {
 "836
 {
 [; ;main.c: 837: if( uiTimerTwoP5s <= 5)
 "837
-[e $ ! <= F880 -> -> 5 `i `ui 106  ]
+[e $ ! <= F883 -> -> 5 `i `ui 114  ]
 [; ;main.c: 838: uiTimerTwoP5s++;
 "838
-[e ++ F880 -> -> 1 `i `ui ]
-[e :U 106 ]
+[e ++ F883 -> -> 1 `i `ui ]
+[e :U 114 ]
 "839
 }
 [; ;main.c: 839: }
-[e $U 107  ]
+[e $U 115  ]
 "840
-[e :U 105 ]
+[e :U 113 ]
 [; ;main.c: 840: else
 [; ;main.c: 841: {
 "841
 {
 [; ;main.c: 842: uiTimerTwoP5s = 0;
 "842
-[e = F880 -> -> 0 `i `ui ]
+[e = F883 -> -> 0 `i `ui ]
 [; ;main.c: 843: uiTimerThreeP5s = 0;
 "843
-[e = F881 -> -> 0 `i `ui ]
+[e = F884 -> -> 0 `i `ui ]
 "844
 }
-[e :U 107 ]
+[e :U 115 ]
 [; ;main.c: 844: }
 [; ;main.c: 846: if(uiTimerTwoP5s > 5)
 "846
-[e $ ! > F880 -> -> 5 `i `ui 108  ]
+[e $ ! > F883 -> -> 5 `i `ui 116  ]
 [; ;main.c: 847: {
 "847
 {
@@ -2169,46 +2273,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setPB5 (1 -> -> 1 `i `uc ]
 [; ;main.c: 852: if(uiCh13Value < 25)
 "852
-[e $ ! < _uiCh13Value -> -> 25 `i `ui 109  ]
+[e $ ! < _uiCh13Value -> -> 25 `i `ui 117  ]
 [; ;main.c: 853: uiTimerThreeP5s++;
 "853
-[e ++ F881 -> -> 1 `i `ui ]
-[e $U 110  ]
+[e ++ F884 -> -> 1 `i `ui ]
+[e $U 118  ]
 "854
-[e :U 109 ]
+[e :U 117 ]
 [; ;main.c: 854: else
 [; ;main.c: 855: uiTimerThreeP5s = 0;
 "855
-[e = F881 -> -> 0 `i `ui ]
-[e :U 110 ]
+[e = F884 -> -> 0 `i `ui ]
+[e :U 118 ]
 [; ;main.c: 857: if(uiTimerThreeP5s > 5)
 "857
-[e $ ! > F881 -> -> 5 `i `ui 111  ]
+[e $ ! > F884 -> -> 5 `i `ui 119  ]
 [; ;main.c: 858: reset();
 "858
 [e ( _reset ..  ]
-[e :U 111 ]
+[e :U 119 ]
 "859
 }
-[e :U 108 ]
+[e :U 116 ]
 "861
 }
-[e :U 104 ]
+[e :U 112 ]
 "862
 }
-[e :U 99 ]
+[e :U 107 ]
 [; ;main.c: 859: }
 [; ;main.c: 861: }
 [; ;main.c: 862: }
 [; ;main.c: 863: break;
 "863
-[e $U 74  ]
+[e $U 82  ]
 "864
 }
 [; ;main.c: 864: }
 [; ;main.c: 866: case READY_FOR_RESET_STEP:
 "866
-[e :U 112 ]
+[e :U 120 ]
 [; ;main.c: 867: {
 "867
 {
@@ -2223,63 +2327,63 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setPB5 (1 -> -> 1 `i `uc ]
 [; ;main.c: 874: ucStep = DELAY_ONE_SECOND_FOR_PWM;
 "874
-[e = F875 . `E863 8 ]
+[e = F878 . `E866 8 ]
 [; ;main.c: 875: break;
 "875
-[e $U 74  ]
+[e $U 82  ]
 "876
 }
 [; ;main.c: 876: }
 [; ;main.c: 878: case DELAY_ONE_SECOND_FOR_PWM:
 "878
-[e :U 113 ]
+[e :U 121 ]
 [; ;main.c: 879: {
 "879
 {
 "880
-[v F883 `ui  1 s ucDelay1s ]
-[i F883
+[v F886 `ui  1 s ucDelay1s ]
+[i F886
 -> -> 0 `i `ui
 ]
 [; ;main.c: 880: static unsigned ucDelay1s = 0;
 [; ;main.c: 881: if(ucDelay1s < 10)
 "881
-[e $ ! < F883 -> -> 10 `i `ui 114  ]
+[e $ ! < F886 -> -> 10 `i `ui 122  ]
 [; ;main.c: 882: ucDelay1s++;
 "882
-[e ++ F883 -> -> 1 `i `ui ]
-[e $U 115  ]
+[e ++ F886 -> -> 1 `i `ui ]
+[e $U 123  ]
 "883
-[e :U 114 ]
+[e :U 122 ]
 [; ;main.c: 883: else
 [; ;main.c: 884: {
 "884
 {
 [; ;main.c: 885: ucDelay1s = 0;
 "885
-[e = F883 -> -> 0 `i `ui ]
+[e = F886 -> -> 0 `i `ui ]
 [; ;main.c: 886: ucStep = MEET_RESET_CONDITION_STEP;
 "886
-[e = F875 . `E863 9 ]
+[e = F878 . `E866 9 ]
 "887
 }
-[e :U 115 ]
+[e :U 123 ]
 [; ;main.c: 887: }
 [; ;main.c: 892: break;
 "892
-[e $U 74  ]
+[e $U 82  ]
 "893
 }
 [; ;main.c: 893: }
 [; ;main.c: 895: case MEET_RESET_CONDITION_STEP:
 "895
-[e :U 116 ]
+[e :U 124 ]
 [; ;main.c: 896: {
 "896
 {
 "897
-[v F884 `uc  1 s ucTimerP5s ]
-[i F884
+[v F887 `uc  1 s ucTimerP5s ]
+[i F887
 -> -> 0 `i `uc
 ]
 "898
@@ -2289,87 +2393,87 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ucChValue ( _getAdOriginalCh13Value ..  ]
 [; ;main.c: 900: if( ucChValue > 50 )
 "900
-[e $ ! > _ucChValue -> -> 50 `i `ui 117  ]
+[e $ ! > _ucChValue -> -> 50 `i `ui 125  ]
 [; ;main.c: 901: ucTimerP5s++;
 "901
-[e ++ F884 -> -> 1 `i `uc ]
-[e $U 118  ]
+[e ++ F887 -> -> 1 `i `uc ]
+[e $U 126  ]
 "902
-[e :U 117 ]
+[e :U 125 ]
 [; ;main.c: 902: else
 [; ;main.c: 903: ucTimerP5s = 0;
 "903
-[e = F884 -> -> 0 `i `uc ]
-[e :U 118 ]
+[e = F887 -> -> 0 `i `uc ]
+[e :U 126 ]
 [; ;main.c: 905: if(ucTimerP5s > 5)
 "905
-[e $ ! > -> F884 `i -> 5 `i 119  ]
+[e $ ! > -> F887 `i -> 5 `i 127  ]
 [; ;main.c: 906: ucStep = RESET_STEP;
 "906
-[e = F875 . `E863 10 ]
-[e :U 119 ]
+[e = F878 . `E866 10 ]
+[e :U 127 ]
 [; ;main.c: 907: break;
 "907
-[e $U 74  ]
+[e $U 82  ]
 "908
 }
 [; ;main.c: 908: }
 [; ;main.c: 910: case RESET_STEP:
 "910
-[e :U 120 ]
+[e :U 128 ]
 [; ;main.c: 911: {
 "911
 {
 [; ;main.c: 912: ucStep = INIT_STEP;
 "912
-[e = F875 . `E863 0 ]
+[e = F878 . `E866 0 ]
 [; ;main.c: 913: reset();
 "913
 [e ( _reset ..  ]
 [; ;main.c: 914: break;
 "914
-[e $U 74  ]
+[e $U 82  ]
 "915
 }
 [; ;main.c: 915: }
 [; ;main.c: 918: default:
 "918
-[e :U 121 ]
+[e :U 129 ]
 [; ;main.c: 919: break;
 "919
-[e $U 74  ]
+[e $U 82  ]
 "920
 }
 [; ;main.c: 920: }
-[e $U 74  ]
+[e $U 82  ]
 "668
-[e :U 75 ]
-[e [\ F875 , $ . `E863 0 76
- , $ . `E863 1 82
- , $ . `E863 2 83
- , $ . `E863 3 89
- , $ . `E863 4 90
- , $ . `E863 5 96
- , $ . `E863 6 97
- , $ . `E863 7 112
- , $ . `E863 8 113
- , $ . `E863 9 116
- , $ . `E863 10 120
- 121 ]
+[e :U 83 ]
+[e [\ F878 , $ . `E866 0 84
+ , $ . `E866 1 90
+ , $ . `E866 2 91
+ , $ . `E866 3 97
+ , $ . `E866 4 98
+ , $ . `E866 5 104
+ , $ . `E866 6 105
+ , $ . `E866 7 120
+ , $ . `E866 8 121
+ , $ . `E866 9 124
+ , $ . `E866 10 128
+ 129 ]
 "920
-[e :U 74 ]
+[e :U 82 ]
 "922
 }
-[e :U 73 ]
+[e :U 81 ]
 "923
 }
-[e :U 70 ]
+[e :U 78 ]
 "645
-[e $U 71  ]
-[e :U 72 ]
+[e $U 79  ]
+[e :U 80 ]
 [; ;main.c: 922: }
 [; ;main.c: 923: }
 [; ;main.c: 925: }
 "925
-[e :UE 69 ]
+[e :UE 77 ]
 }
