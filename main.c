@@ -18,7 +18,12 @@
 
 
 //#define    USE_SOFTWARE_SIMULATION_TEST                1
+
+
 #define    TIMR_CONDITION_OK   1
+
+#define AD_12_CHANNEL_MIN_VALUE          312
+#define AD_CHANGE_THRESHOLD_VALUE        1
 
 #define  SET_PIN_AS_OUTPUT   0
 #define  SET_PIN_AS_INPUT    1
@@ -112,16 +117,6 @@ __CONFIG(CONFIG3);
 
 //#define CHANGE_PIN_DEFINAITION   1
 
-
-
-#ifndef USE_SOFTWARE_SIMULATION_TEST
-static void clearAllTimer(void)
-{
-    clearTwelveHoursTimer();
-    clearThreeHoursTimer();
-    clearTwentySecondsTimer();
-}
-#endif
 
 
 void initPB3(unsigned char bValue)
@@ -239,13 +234,13 @@ void initPB2_AsHighResistence( void )
 
 
 //pwm初始化
-void pwm_start( unsigned char ucPulseWidth)
+void pwm_start( unsigned char ucPulseWidth,unsigned char ucPulseFrequency)
 {
 #ifndef     USE_SOFTWARE_SIMULATION_TEST
 	CCP1CON&= 0xf0;//disable PWM
 
     T2CON=0x04;         //使能T2，后分频值1 预分频值1
-    PR2 = 99;           //T2周期寄存器，   100kHZ f=20M/(4*(PR2+1))
+    PR2 = ucPulseFrequency;           //T2周期寄存器，   100kHZ f=20M/(4*(PR2+1))
     CCPR1L = ucPulseWidth;      //pwm高8位  占空比50% =【CCPR1L:CCP1CON[5:4]】/((PR2+1)*4)
     CCP1CON=0x00;       //外部CCP1引脚输入  pwm低两位为00，启动 PWM模式， e PWM 默认输出为 1, d 0
 
@@ -470,10 +465,7 @@ void clearAllTimer(void)
 
 static unsigned char calPulseWidth( void )
 {
-    unsigned char ucPulseWidth = 0;
-
-    #define AD_12_CHANNEL_MIN_VALUE          312
-	#define AD_CHANGE_THRESHOLD_VALUE        5
+    static unsigned char ucPulseWidth = 30;
 
     unsigned int uiChannel2Value = 0;
     unsigned int uiNewValue = 0;
@@ -489,57 +481,69 @@ static unsigned char calPulseWidth( void )
     	bInitFlag = 1;
     }
 
-    if(uiNewValue != uiOldValue)
-    {
-    	if(uiNewValue > uiOldValue)
-    	{
-    		if((uiNewValue - uiOldValue) >= AD_CHANGE_THRESHOLD_VALUE)
-    			uiOldValue = uiNewValue;
-    		else
-    			;//do nothing,keep previous value
-    	}
-    	else
-    	{
-    		if((uiOldValue - uiNewValue) >= AD_CHANGE_THRESHOLD_VALUE)
-    			uiOldValue = uiNewValue;
-			else
-				;//do nothing,keep previous value
-    	}
-    }
+//    if(uiNewValue != uiOldValue)
+//    {
+//    	if(uiNewValue > uiOldValue)
+//    	{
+//    		if((uiNewValue - uiOldValue) >= AD_CHANGE_THRESHOLD_VALUE)
+//    			uiOldValue = uiNewValue;
+//    		else
+//    			;//do nothing,keep previous value
+//    	}
+//    	else
+//    	{
+//    		if((uiOldValue - uiNewValue) >= AD_CHANGE_THRESHOLD_VALUE)
+//    			uiOldValue = uiNewValue;
+//			else
+//				;//do nothing,keep previous value
+//    	}
+//    }
+//    else
+//    {
+//    	;//do nothing
+//    }
+
+    if( uiNewValue > 312 )
+    	ucPulseWidth++;
     else
-    {
-    	;//do nothing
-    }
+    	ucPulseWidth--;
+
+    if(ucPulseWidth > 100)
+    	ucPulseWidth = 100;
+    else if(ucPulseWidth < 30)
+    	ucPulseWidth = 30;
+    else
+    	;
 
     uiChannel2Value = uiOldValue;
 
-    if( uiChannel2Value >= 332 )
-        ucPulseWidth = 99;
-    else if( uiChannel2Value <= AD_12_CHANNEL_MIN_VALUE)
-        ucPulseWidth = 30;
-    else
-    {
-        unsigned int uiGapValue = 0;
-
-        unsigned char ucGapValue = 0;
-
-        unsigned char ucThreeTimesValue = 0;
-        unsigned char ucHalfValue = 0;
-
-        uiGapValue = uiChannel2Value - 312;
-
-        ucGapValue = uiGapValue;
-
-        ucThreeTimesValue = ucGapValue*3;
-
-        ucHalfValue = ucGapValue >> 1;
-
-        ucPulseWidth = 30 + ucThreeTimesValue +  ucHalfValue;
-
-        if(ucPulseWidth > 99)
-        	ucPulseWidth = 99;
-
-    }
+//    if( uiChannel2Value >= 332 )
+//        ucPulseWidth = 99;
+//    else if( uiChannel2Value <= AD_12_CHANNEL_MIN_VALUE)
+//        ucPulseWidth = 30;
+//    else
+//    {
+//        unsigned int uiGapValue = 0;
+//
+//        unsigned char ucGapValue = 0;
+//
+//        unsigned char ucThreeTimesValue = 0;
+//        unsigned char ucHalfValue = 0;
+//
+//        uiGapValue = uiChannel2Value - 312;
+//
+//        ucGapValue = uiGapValue;
+//
+//        ucThreeTimesValue = ucGapValue*3;
+//
+//        ucHalfValue = ucGapValue >> 1;
+//
+//        ucPulseWidth = 30 + ucThreeTimesValue +  ucHalfValue;
+//
+//        if(ucPulseWidth > 99)
+//        	ucPulseWidth = 99;
+//
+//    }
 #ifdef      USE_SOFTWARE_SIMULATION_TEST
     cout << (int) ucPulseWidth << endl;
 #endif
@@ -571,7 +575,10 @@ static void chipResetDebug( void )
 #define   TIMER_1HOUR       120//3600
 
 #ifndef  USE_SOFTWARE_SIMULATION_TEST
-#define   CONFIRMATION_COUT    5
+#define   CONFIRMATION_COUT_0P5_SECOND    5
+#define   CONFIRMATION_COUT_0P3_SECOND    3
+#define   CONFIRMATION_COUT_0P2_SECOND    2
+#define   CONFIRMATION_COUT_0P1_SECOND    1
 
 #else
 #define   CONFIRMATION_COUT    1
@@ -579,6 +586,23 @@ static void chipResetDebug( void )
 
 int main (void)
 {
+	enum  systemStep {
+	                    INIT_STEP = 0,
+	                    START_UP_PWM_STEP,
+	                    CHECK_10_HOUR_TIMER_STEP,
+	                    STARTUP_3_HOUR_TIMER_STEP,
+	                    CHECK_3_HOUR_TIMER_STEP,
+	                    STARTUP_1_HOUR_TIMER_STEP,
+	                    CHECK_1_HOUR_TIMER_STEP,
+	                    READY_FOR_RESET_STEP = 99,
+						DELAY_ONE_SECOND_FOR_PWM,
+	                    MEET_RESET_CONDITION_STEP,
+	                    RESET_STEP,
+	                };
+
+	            static enum systemStep ucStep = INIT_STEP;
+
+
 
 
 #ifdef      USE_SOFTWARE_SIMULATION_TEST
@@ -604,15 +628,15 @@ int main (void)
 //      op2_init(); //OP2初始化
 
 
-        adc_start();    //ADC启动
+
 #else
         cout << "initialization after power on" << endl;
 #endif
 
-
-
         startTwentyMinTimer( TIMER_20MIN );
-
+        pwm_start(PWM_DEFAULT_THIRTY_WIDTH,PWM_FREQUENCY);
+        _delay(1000);
+        adc_start();    //ADC启动
         while(1)
         {
 #ifndef USE_SOFTWARE_SIMULATION_TEST
@@ -632,24 +656,6 @@ int main (void)
 
     #endif
 
-       enum  systemStep {
-                    INIT_STEP = 0,
-                    START_UP_PWM_STEP,
-                    CHECK_10_HOUR_TIMER_STEP,
-                    STARTUP_3_HOUR_TIMER_STEP,
-                    CHECK_3_HOUR_TIMER_STEP,
-                    STARTUP_1_HOUR_TIMER_STEP,
-                    CHECK_1_HOUR_TIMER_STEP,
-                    READY_FOR_RESET_STEP = 99,
-					DELAY_ONE_SECOND_FOR_PWM,
-                    MEET_RESET_CONDITION_STEP,
-                    RESET_STEP,
-                };
-
-            static enum systemStep ucStep = INIT_STEP;
-
-            if(( ucStep > START_UP_PWM_STEP) && ( ucStep < READY_FOR_RESET_STEP))
-            	pwm_start( calPulseWidth() );
 
             switch(ucStep)
             {
@@ -676,7 +682,7 @@ int main (void)
                     else
                         ucTimerP3s = 0;
 
-                    if( ucTimerP3s >= 3)
+                    if( ucTimerP3s >= CONFIRMATION_COUT_0P3_SECOND)
                     {
                         ucTimerP3s = 0;
                         ucStep = START_UP_PWM_STEP;
@@ -694,11 +700,11 @@ int main (void)
 #ifdef USE_SOFTWARE_SIMULATION_TEST
                     cout << "  case START_UP_PWM_STEP" << endl;
 #endif
-                    unsigned char ucPulseWidth = 0;
-
-                    ucPulseWidth = calPulseWidth();
-
-                    pwm_start( ucPulseWidth );
+//                    unsigned char ucPulseWidth = 0;
+//
+//                    ucPulseWidth = calPulseWidth();
+//
+//                    pwm_start( ucPulseWidth );
 
                     setPB3(SET_PIN_LOW);
                     setPB4(SET_PIN_HIGH);
@@ -726,7 +732,7 @@ int main (void)
                         else
                             ucTimerP5s = 0;
 
-                        if( ucTimerP5s > CONFIRMATION_COUT)
+                        if( ucTimerP5s >= CONFIRMATION_COUT_0P2_SECOND)
                         {
                             ucTimerP5s = 0;
                             ucStep = STARTUP_3_HOUR_TIMER_STEP;
@@ -752,12 +758,12 @@ int main (void)
                         ucStep = READY_FOR_RESET_STEP;
                     else
                     {
-                        if( getAdOriginalCh13Value() < 85 )
+                        if( getAdOriginalCh13Value() < 75 )
                             ucTimerP5s++;
                         else
                             ucTimerP5s = 0;
 
-                        if( ucTimerP5s > CONFIRMATION_COUT)
+                        if( ucTimerP5s >= CONFIRMATION_COUT_0P2_SECOND)
                         {
                             ucTimerP5s = 0;
                             ucStep = STARTUP_1_HOUR_TIMER_STEP;
@@ -794,9 +800,9 @@ int main (void)
                         ucStep = READY_FOR_RESET_STEP;
                     else
                     {
-                        if( uiCh13Value > 100 )
+                        if( uiCh13Value > 85 )
                         {
-                            if( uiTimerOneP5s <= CONFIRMATION_COUT )
+                            if( uiTimerOneP5s <= CONFIRMATION_COUT_0P1_SECOND )
                                 uiTimerOneP5s++;
                             uiTimerTwoP5s = 0; // need clear it because value is less than 25.
                             uiTimerThreeP5s = 0;
@@ -807,7 +813,7 @@ int main (void)
                         }
 
 
-                        if(uiTimerOneP5s > CONFIRMATION_COUT)
+                        if(uiTimerOneP5s > CONFIRMATION_COUT_0P1_SECOND)
                         {
                             setPB3(SET_PIN_LOW);
                             setPB4(SET_PIN_HIGH);
@@ -818,9 +824,9 @@ int main (void)
                         }
                         else
                         {
-                            if( uiCh13Value < 90 )
+                            if( uiCh13Value < 75 )
                             {
-                                if( uiTimerTwoP5s <= CONFIRMATION_COUT)
+                                if( uiTimerTwoP5s <= CONFIRMATION_COUT_0P1_SECOND)
                                     uiTimerTwoP5s++;
                             }
                             else
@@ -829,7 +835,7 @@ int main (void)
                                 uiTimerThreeP5s = 0;//in this case ,value of AD is more than 25, so clear this timer
                             }
 
-                            if(uiTimerTwoP5s > CONFIRMATION_COUT)
+                            if(uiTimerTwoP5s > CONFIRMATION_COUT_0P1_SECOND)
                             {
                                 setPB3(SET_PIN_HIGH);
                                 setPB4(SET_PIN_LOW);
@@ -840,7 +846,7 @@ int main (void)
                                 else
                                     uiTimerThreeP5s = 0;
 
-                                if(uiTimerThreeP5s > CONFIRMATION_COUT)
+                                if(uiTimerThreeP5s > CONFIRMATION_COUT_0P5_SECOND)
                                     reset();
                             }
 
@@ -855,7 +861,7 @@ int main (void)
                     setPB4(SET_PIN_LOW);
                     setPB5(SET_PIN_HIGH);
                   //  pwm_config(0);
-                    pwm_start(60);// need to set 60% pulse width
+  //                  pwm_start(60);// need to set 60% pulse width
                  //   pwm_config(1);
                     ucStep = DELAY_ONE_SECOND_FOR_PWM;
                     break;
@@ -864,7 +870,7 @@ int main (void)
                 case DELAY_ONE_SECOND_FOR_PWM:
                 {
                 	static unsigned ucDelay1s = 0;
-                	if(ucDelay1s < 10)
+                	if(ucDelay1s <= CONFIRMATION_COUT_0P5_SECOND)
                 		ucDelay1s++;
                 	else
                 	{
@@ -888,7 +894,7 @@ int main (void)
                     else
                         ucTimerP5s = 0;
 
-                    if(ucTimerP5s > CONFIRMATION_COUT)
+                    if(ucTimerP5s >= CONFIRMATION_COUT_0P5_SECOND)
                         ucStep = RESET_STEP;
                     break;
                 }

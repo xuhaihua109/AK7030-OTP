@@ -1,6 +1,22 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
+#define FILTER_N   3
+#define RIGHT_SHIFT_NUMBER    2   // 2^n = FILTER_N - 2
+
+
+#define FILTER_N_CH13    8
+#define FILTER_MAX_MIN_CNT    2
+#define DIVIDER_NUMBER_CH13    2 // means to divide 4
+
+#define PWM_FREQUENCY       249 //   f=20M/(4*(PWM_FREQUENCY+1)) = 20M/(4*(249+1)) = 20K
+#define PWM_DEFAULT_THIRTY_WIDTH     75           // 30%, the width of PWM = PWM_DEFAULT_THIRTY_PERCENT/PWM_FREQUENCY
+
+#define LOAD_PWM_STEP    2//  N*10ms, min steps is 10ms. 2*10ms = 20ms
+
+#define COMPARE_REFERENCE_VALUE  312
+
+
 #define uchar unsigned char
 #define uint  unsigned int
 
@@ -62,8 +78,8 @@ void startThreeHoursTimer(unsigned int uiSetTime);// 3 hours
 void startOneHoursTimer(unsigned int uiSetTime);// 3 hours
 
 
-void startTwentySecondsTimer();//20s
-unsigned char isFinishedTwentySecondsTimer();
+//void startTwentySecondsTimer();//20s
+//unsigned char isFinishedTwentySecondsTimer();
 
 
 void startTwentyMinTimer(unsigned int uiSetValue);//20m
@@ -72,7 +88,6 @@ unsigned char isFinishedTwentyMinTimer();
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
 void clearOneHoursTimer();
-void clearTwentySecondsTimer();
 void clearTwentyMinTimer();
 
 
