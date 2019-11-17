@@ -47,8 +47,19 @@ static unsigned char bOneHourTimerStartFlag = 0;
 
 static unsigned char bTwentyMinStartFlag = 0;
 
+static unsigned char bWaitResetFlag = 0;
+
 static void AD_Sample(void);
 
+void setWaitResetFlag(unsigned char bValue)
+{
+	bWaitResetFlag = bValue;
+}
+
+static unsigned char getWaitResetFlag(void)
+{
+	return bWaitResetFlag;
+}
 
 static void setPWM_Width(unsigned char ucWidth)
 {
@@ -142,9 +153,9 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
  }
 
 
- static  int uiSampleChannelFirst[FILTER_N];
+ static  int uiSampleCh12[FILTER_N];
 
- static  int uiSampleChannelFourth[FILTER_N];
+ static  int uiSampleCh13[FILTER_N_CH13];
 
  static  int uiSampleChannelFourteenth[FILTER_N];
 
@@ -152,25 +163,24 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
  void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
  {
 
-	 static unsigned char ucChannelFirstLength = 0;
+	 static unsigned char ucCh12Length = 0;
 
-	 static unsigned char ucChannelFourthLength = 0;
+	 static unsigned char ucCh13Length = 0;
 
 	 static unsigned char ucChannelFourteenthLength = 0;
      static	unsigned int uiCalWidthArrayNew = 0;
      static	unsigned int uiCalWidthArrayOld = 0;
 	 if(channel == AD_CHANNEL_12_CHANNEL)
 	 {
-		 if(ucChannelFirstLength < FILTER_N)
+		 if(ucCh12Length < FILTER_N)
 		 {
+			 uiSampleCh12[ucCh12Length] = uiSampleData;
 
-			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
+			 ucCh12Length++;
 
-			 ucChannelFirstLength++;
-
-	 if( FILTER_N == ucChannelFirstLength )
+			 if( FILTER_N == ucCh12Length )
 			 {
-				 ucChannelFirstLength = 0;
+				 ucCh12Length = 0;
 
 				#define PWM_UPDATED_COUNT  1
 
@@ -180,71 +190,79 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 
 				 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
 
-				 uiCalWidthArrayNew = Filter(uiSampleChannelFirst);// when the value of AD12 is five, filter and calculate the average value.
+				 uiCalWidthArrayNew = Filter(uiSampleCh12);// when the value of AD12 is five, filter and calculate the average value.
 
-				 
-                   
-                     unsigned int uiDeviationValue = 0;
-                     uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1)+(uiCalWidthArrayNew-uiCalWidthArrayOld);
-                     if(uiCalWidthCnt>400)
-					    uiDeviationValue =400;
-            
-                    
-                     uiCalWidthArrayOld=uiCalWidthArrayNew;
-			//		 unsigned int uiCalWidth = 0,uiSum = 0;
+				 unsigned int uiDeviationValue = 0,uiAbstractValue = 0;
 
-					// uiCalWidth =  uiCalWidthArray[PWM_UPDATED_COUNT]+ uiCalWidthArray[PWM_UPDATED_COUNT]- uiCalWidthArray[PWM_UPDATED_COUNT-1];
+				 if( uiCalWidthArrayNew >= uiCalWidthArrayOld)
+					 uiAbstractValue = uiCalWidthArrayNew - uiCalWidthArrayOld;
+				 else
+					 uiAbstractValue = uiCalWidthArrayOld - uiCalWidthArrayNew;
 
-					 if(uiDeviationValue > (COMPARE_REFERENCE_VALUE))
-					 {
-						 //unsigned int uiTmpValue =(uiDeviationValue - COMPARE_REFERENCE_VALUE)>> 2;
+				 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1)+ uiAbstractValue;
 
-						 uiInitWidth++;
-                       //uiInitWidth = uiInitWidth + uiTmpValue + 1;
-					 }
-					 else if(uiDeviationValue < (COMPARE_REFERENCE_VALUE))
-					 {
-						 //unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiDeviationValue)>> 2;
+				 if(uiCalWidthCnt>400)
+					uiDeviationValue =400;
 
-						 uiInitWidth--;
-                        //uiInitWidth = uiInitWidth - uiTmpValue - 1;
-					 }
-					 else
-						 ;//do nothing
 
-					 if(uiInitWidth > PWM_FREQUENCY)
-						 uiInitWidth = PWM_FREQUENCY;
+				 uiCalWidthArrayOld=uiCalWidthArrayNew;
+		//		 unsigned int uiCalWidth = 0,uiSum = 0;
 
-					 if(uiInitWidth < PWM_DEFAULT_THIRTY_WIDTH)
-						 uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;
-					 else
-						 ;//do nothing
+				// uiCalWidth =  uiCalWidthArray[PWM_UPDATED_COUNT]+ uiCalWidthArray[PWM_UPDATED_COUNT]- uiCalWidthArray[PWM_UPDATED_COUNT-1];
 
-					 setPWM_Width(uiInitWidth);
+				 if(uiDeviationValue > (COMPARE_REFERENCE_VALUE))
+				 {
+					 //unsigned int uiTmpValue =(uiDeviationValue - COMPARE_REFERENCE_VALUE)>> 2;
+
+					 uiInitWidth++;
+				   //uiInitWidth = uiInitWidth + uiTmpValue + 1;
+				 }
+				 else if(uiDeviationValue < (COMPARE_REFERENCE_VALUE))
+				 {
+					 //unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiDeviationValue)>> 2;
+
+					 uiInitWidth--;
+					//uiInitWidth = uiInitWidth - uiTmpValue - 1;
+				 }
+				 else
+					 ;//do nothing
+
+				 if(uiInitWidth > PWM_FREQUENCY)
+					 uiInitWidth = PWM_FREQUENCY;
+
+				 if(uiInitWidth < PWM_DEFAULT_THIRTY_WIDTH)
+					 uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;
+				 else
+					 ;//do nothing
+
+				 if( TRUE == getWaitResetFlag())
+					 uiInitWidth = PWM_SIXTY_WIDTH;
+
+				 setPWM_Width(uiInitWidth);
 				 
 				 
 			 }
 		 }
 		 else
 		 {
-			 ucChannelFirstLength = 0;
+			 ucCh12Length = 0;
 
-			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
+			 uiSampleCh12[ucCh12Length] = uiSampleData;
 		 }
 	 }
 	 else if(channel == AD_CHANNEL_13_CHANNEL)
 	 {
-		 if(ucChannelFourthLength < FILTER_N_CH13)
+		 if(ucCh13Length < FILTER_N_CH13)
 		 {
-			 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
+			 uiSampleCh13[ucCh13Length] = uiSampleData;
 
-			ucChannelFourthLength++;
+			 ucCh13Length++;
 		 }
 		 else
 		 {
-			ucChannelFourthLength = 0;
+			 ucCh13Length = 0;
 
-			 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
+			uiSampleCh13[ucCh13Length] = uiSampleData;
 		 }
 	 }
 	 else if(channel == AD_CHANNEL_14_CHANNEL)
@@ -259,24 +277,24 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 		 {
 			 ucChannelFourteenthLength = 0;
 
-			 uiSampleChannelFourth[ucChannelFourteenthLength] = uiSampleData;
+			 uiSampleCh13[ucChannelFourteenthLength] = uiSampleData;
 		 }
 	 }
 	 else
 	 {
-		 ucChannelFirstLength = 0;
+		 ucCh12Length = 0;
 
-		 ucChannelFourthLength = 0;
+		 ucCh13Length = 0;
 
 		 ucChannelFourteenthLength = 0;
 
 		 for(int i = 0;i < FILTER_N; i++)
 		 {
-			 uiSampleChannelFirst[i] = 0;
+			 uiSampleCh12[i] = 0;
 
-			 uiSampleChannelFourth[i] = 0;
+			 uiSampleCh13[i] = 0;
 
-			 uiSampleChannelFourth[i] = 0;
+			 uiSampleChannelFourteenth[i] = 0;
 
 		 }
 	 }
@@ -332,7 +350,7 @@ unsigned int getAdOriginalCh12Value()
 {
 
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelFirst);
+	return Filter(uiSampleCh12);
 
 #else
 	return  adc_original_CH1_value;
@@ -343,7 +361,7 @@ unsigned int getAdOriginalCh12Value()
 unsigned int getAdOriginalCh13Value()
 {
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return FilterCh13(uiSampleChannelFourth);
+	return FilterCh13(uiSampleCh13);
 
 #else
 	return adc_original_CH4_value;

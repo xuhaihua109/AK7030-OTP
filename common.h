@@ -11,6 +11,7 @@
 
 #define PWM_FREQUENCY       249 //   f=20M/(4*(PWM_FREQUENCY+1)) = 20M/(4*(249+1)) = 20K
 #define PWM_DEFAULT_THIRTY_WIDTH     75           // 30%, the width of PWM = PWM_DEFAULT_THIRTY_PERCENT/PWM_FREQUENCY
+#define PWM_SIXTY_WIDTH           150
 
 #define LOAD_PWM_STEP    2//  N*10ms, min steps is 10ms. 2*10ms = 20ms
 
@@ -23,6 +24,9 @@
 #define  CLR      0
 #define  ZERO     0
 #define  SET      1
+
+#define    TRUE   1
+#define    FALSE  0
 
 #define ON  1
 #define OFF	0
@@ -97,6 +101,8 @@ unsigned char isFinishedOneHoursTimer();
 
 uchar getAD_ConvertFlag();
 void  setAD_ConvertFlag(uchar flag);
+
+void setWaitResetFlag(unsigned char bValue);
 
 
 

@@ -804,7 +804,7 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 46 "D:\develop\AK7030-good\AK7030-OTP\common.h"
+# 50 "D:\develop\AK7030-good\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -818,7 +818,7 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 64
+# 68
 unsigned int getAdOriginalCh12Value();
 unsigned int getAdOriginalCh13Value();
 
@@ -835,7 +835,7 @@ void startThreeHoursTimer(unsigned int uiSetTime);
 
 void startOneHoursTimer(unsigned int uiSetTime);
 
-# 85
+# 89
 void startTwentyMinTimer(unsigned int uiSetValue);
 unsigned char isFinishedTwentyMinTimer();
 
@@ -852,6 +852,8 @@ unsigned char isFinishedOneHoursTimer();
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
 
+void setWaitResetFlag(unsigned char bValue);
+
 # 13 "D:\develop\AK7030-good\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
@@ -864,28 +866,28 @@ void adc_start();
 unsigned int adc_get(void);
 
 
-# 55 "D:\develop\AK7030-good\AK7030-OTP\main.c"
+# 48 "D:\develop\AK7030-good\AK7030-OTP\main.c"
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 107
+# 100
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x0FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
 
-# 122
+# 115
 void initPB3(unsigned char bValue)
 {
 if( bValue )
 
 TRISB3 = 1;
 
-# 130
+# 123
 else
 
 TRISB3 = 0;
 
-# 136
+# 129
 }
 
 
@@ -895,12 +897,12 @@ if( bValue )
 
 PB3 = 1;
 
-# 147
+# 140
 else
 
 PB3= 0;
 
-# 153
+# 146
 }
 
 
@@ -911,12 +913,12 @@ if( bValue )
 
 TRISB4 = 1;
 
-# 165
+# 158
 else
 
 TRISB4= 0;
 
-# 171
+# 164
 }
 
 
@@ -926,12 +928,12 @@ if( bValue )
 
 PB4 = 1;
 
-# 182
+# 175
 else
 
 PB4= 0;
 
-# 188
+# 181
 }
 
 
@@ -941,12 +943,12 @@ if( bValue )
 
 TRISB5 = 1;
 
-# 199
+# 192
 else
 
 TRISB5= 0;
 
-# 205
+# 198
 }
 
 
@@ -956,12 +958,12 @@ if( bValue )
 
 PB5 = 1;
 
-# 216
+# 209
 else
 
 PB5= 0;
 
-# 222
+# 215
 }
 
 
@@ -971,7 +973,7 @@ void initPB2_AsHighResistence( void )
 PB2 = 1;
 PBOD2 = 1;
 
-# 233
+# 226
 }
 
 
@@ -991,7 +993,7 @@ PBOD2 = 0;
 
 CCP1CON|= 0x0c;
 
-# 259
+# 252
 }
 
 
@@ -1006,7 +1008,7 @@ initPB4(0);
 
 initPB5(0);
 
-# 276
+# 269
 }
 
 static void setPinInitVaule( void )
@@ -1016,7 +1018,7 @@ setPB3(1);
 setPB4(0);
 setPB5(1);
 
-# 287
+# 280
 }
 
 static void selectAdChannel( void )
@@ -1025,7 +1027,7 @@ static void selectAdChannel( void )
 TRISB0 = 1;
 TRISB1 = 1;
 
-# 297
+# 290
 }
 
 
@@ -1034,48 +1036,10 @@ static void reset( void )
 
 while(1);
 
-# 307
+# 300
 }
 
-# 466
-static unsigned char calPulseWidth( void )
-{
-static unsigned char ucPulseWidth = 30;
-
-unsigned int uiChannel2Value = 0;
-unsigned int uiNewValue = 0;
-static unsigned int uiOldValue = 0;
-
-static unsigned char bInitFlag = 0;
-
-uiNewValue = getAdOriginalCh12Value();
-
-if( 0 == bInitFlag )
-{
-uiOldValue = getAdOriginalCh12Value();
-bInitFlag = 1;
-}
-
-# 506
-if( uiNewValue > 312 )
-ucPulseWidth++;
-else
-ucPulseWidth--;
-
-if(ucPulseWidth > 100)
-ucPulseWidth = 100;
-else if(ucPulseWidth < 30)
-ucPulseWidth = 30;
-else
-;
-
-uiChannel2Value = uiOldValue;
-
-# 550
-return ucPulseWidth;
-}
-
-# 587
+# 497
 int main (void)
 {
 enum systemStep {
@@ -1094,7 +1058,7 @@ RESET_STEP,
 
 static enum systemStep ucStep = INIT_STEP;
 
-# 616
+# 526
 initPin();
 setPinInitVaule();
 selectAdChannel();
@@ -1105,11 +1069,12 @@ timer1_interrupt_config();
 
 adc_test_init(12,3);
 
-# 636
+# 540
 startTwentyMinTimer( 60 );
-pwm_start(75,249);
 _delay(1000);
 adc_start();
+
+# 550
 while(1)
 {
 
@@ -1123,14 +1088,14 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 660
+# 570
 switch(ucStep)
 {
 
 case INIT_STEP:
 {
 
-# 669
+# 579
 static unsigned char ucTimerP3s = 0;
 
 if( isFinishedTwentyMinTimer() )
@@ -1155,14 +1120,18 @@ ucStep = START_UP_PWM_STEP;
 
 }
 
-# 695
+# 605
 break;
 }
 
 case START_UP_PWM_STEP:
 {
 
-# 709
+
+
+
+pwm_start(75,249);
+
 setPB3(0);
 setPB4(1);
 setPB5(0);
@@ -1175,7 +1144,7 @@ break;
 case CHECK_10_HOUR_TIMER_STEP:
 {
 
-# 724
+# 631
 static unsigned char ucTimerP5s = 0;
 
 if( isFinishedTwelveHoursTimer () )
@@ -1241,7 +1210,7 @@ break;
 case CHECK_1_HOUR_TIMER_STEP:
 {
 
-# 792
+# 699
 static unsigned int uiTimerOneP5s = 0;
 static unsigned int uiTimerTwoP5s = 0;
 static unsigned int uiTimerThreeP5s = 0;
@@ -1315,7 +1284,9 @@ setPB4(0);
 setPB5(1);
 
 
+setWaitResetFlag(1);
 
+# 778
 ucStep = DELAY_ONE_SECOND_FOR_PWM;
 break;
 }
@@ -1331,7 +1302,7 @@ ucDelay1s = 0;
 ucStep = MEET_RESET_CONDITION_STEP;
 }
 
-# 884
+# 796
 break;
 }
 

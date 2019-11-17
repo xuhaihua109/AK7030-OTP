@@ -22,8 +22,6 @@
 
 #define    TIMR_CONDITION_OK   1
 
-#define AD_12_CHANNEL_MIN_VALUE          312
-#define AD_CHANGE_THRESHOLD_VALUE        1
 
 #define  SET_PIN_AS_OUTPUT   0
 #define  SET_PIN_AS_INPUT    1
@@ -31,15 +29,10 @@
 #define  SET_PIN_HIGH    1
 #define  SET_PIN_LOW     0
 
-#define   BIG_TIME_SECONDS         36000
-#define   SMALL_TIME_SECONDS       10800
-
-
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 
-#define    TRUE   1
-#define    FALSE  0
+
 
 #ifndef USE_SOFTWARE_SIMULATION_TEST
 
@@ -463,92 +456,6 @@ void clearAllTimer(void)
 
 #endif
 
-static unsigned char calPulseWidth( void )
-{
-    static unsigned char ucPulseWidth = 30;
-
-    unsigned int uiChannel2Value = 0;
-    unsigned int uiNewValue = 0;
-    static unsigned int uiOldValue = 0;
-
-    static unsigned char bInitFlag = 0;
-
-    uiNewValue = getAdOriginalCh12Value();
-
-    if( 0 == bInitFlag )
-    {
-    	uiOldValue = getAdOriginalCh12Value();
-    	bInitFlag = 1;
-    }
-
-//    if(uiNewValue != uiOldValue)
-//    {
-//    	if(uiNewValue > uiOldValue)
-//    	{
-//    		if((uiNewValue - uiOldValue) >= AD_CHANGE_THRESHOLD_VALUE)
-//    			uiOldValue = uiNewValue;
-//    		else
-//    			;//do nothing,keep previous value
-//    	}
-//    	else
-//    	{
-//    		if((uiOldValue - uiNewValue) >= AD_CHANGE_THRESHOLD_VALUE)
-//    			uiOldValue = uiNewValue;
-//			else
-//				;//do nothing,keep previous value
-//    	}
-//    }
-//    else
-//    {
-//    	;//do nothing
-//    }
-
-    if( uiNewValue > 312 )
-    	ucPulseWidth++;
-    else
-    	ucPulseWidth--;
-
-    if(ucPulseWidth > 100)
-    	ucPulseWidth = 100;
-    else if(ucPulseWidth < 30)
-    	ucPulseWidth = 30;
-    else
-    	;
-
-    uiChannel2Value = uiOldValue;
-
-//    if( uiChannel2Value >= 332 )
-//        ucPulseWidth = 99;
-//    else if( uiChannel2Value <= AD_12_CHANNEL_MIN_VALUE)
-//        ucPulseWidth = 30;
-//    else
-//    {
-//        unsigned int uiGapValue = 0;
-//
-//        unsigned char ucGapValue = 0;
-//
-//        unsigned char ucThreeTimesValue = 0;
-//        unsigned char ucHalfValue = 0;
-//
-//        uiGapValue = uiChannel2Value - 312;
-//
-//        ucGapValue = uiGapValue;
-//
-//        ucThreeTimesValue = ucGapValue*3;
-//
-//        ucHalfValue = ucGapValue >> 1;
-//
-//        ucPulseWidth = 30 + ucThreeTimesValue +  ucHalfValue;
-//
-//        if(ucPulseWidth > 99)
-//        	ucPulseWidth = 99;
-//
-//    }
-#ifdef      USE_SOFTWARE_SIMULATION_TEST
-    cout << (int) ucPulseWidth << endl;
-#endif
-    return  ucPulseWidth;
-}
 
 // #define  SET_PB4_AS_RESET_DEBUG_PIN   1
 
@@ -575,14 +482,17 @@ static void chipResetDebug( void )
 #define   TIMER_1HOUR       120//3600
 
 #ifndef  USE_SOFTWARE_SIMULATION_TEST
+
+#else
+#define   CONFIRMATION_COUT    1
+#endif
+
+
 #define   CONFIRMATION_COUT_0P5_SECOND    5
 #define   CONFIRMATION_COUT_0P3_SECOND    3
 #define   CONFIRMATION_COUT_0P2_SECOND    2
 #define   CONFIRMATION_COUT_0P1_SECOND    1
 
-#else
-#define   CONFIRMATION_COUT    1
-#endif
 
 int main (void)
 {
@@ -627,16 +537,16 @@ int main (void)
 //      op1_init(); //OP1初始化
 //      op2_init(); //OP2初始化
 
+        startTwentyMinTimer( TIMER_20MIN );
+		_delay(1000);
+		adc_start();    //ADC启动
 
 
 #else
         cout << "initialization after power on" << endl;
 #endif
 
-        startTwentyMinTimer( TIMER_20MIN );
-        pwm_start(PWM_DEFAULT_THIRTY_WIDTH,PWM_FREQUENCY);
-        _delay(1000);
-        adc_start();    //ADC启动
+
         while(1)
         {
 #ifndef USE_SOFTWARE_SIMULATION_TEST
@@ -699,13 +609,10 @@ int main (void)
                 {
 #ifdef USE_SOFTWARE_SIMULATION_TEST
                     cout << "  case START_UP_PWM_STEP" << endl;
+                    cout <<"pwm_start(PWM_DEFAULT_THIRTY_WIDTH,PWM_FREQUENCY);"<<endl;
+#else
+                    pwm_start(PWM_DEFAULT_THIRTY_WIDTH,PWM_FREQUENCY);
 #endif
-//                    unsigned char ucPulseWidth = 0;
-//
-//                    ucPulseWidth = calPulseWidth();
-//
-//                    pwm_start( ucPulseWidth );
-
                     setPB3(SET_PIN_LOW);
                     setPB4(SET_PIN_HIGH);
                     setPB5(SET_PIN_LOW);
@@ -861,7 +768,12 @@ int main (void)
                     setPB4(SET_PIN_LOW);
                     setPB5(SET_PIN_HIGH);
                   //  pwm_config(0);
-  //                  pwm_start(60);// need to set 60% pulse width
+#ifndef USE_SOFTWARE_SIMULATION_TEST
+                    setWaitResetFlag(TRUE);
+               //     pwm_start(PWM_SIXTY_WIDTH,PWM_FREQUENCY);
+#else
+                    cout <<"pwm_start(PWM_SIXTY_WIDTH,PWM_FREQUENCY);"<<endl;
+#endif
                  //   pwm_config(1);
                     ucStep = DELAY_ONE_SECOND_FOR_PWM;
                     break;

@@ -168,8 +168,8 @@
 `uc 1 ADVREF1 1 0 :1:7 
 ]
 [u S600 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
-"601 D:\develop\AK7030-good\AK7030-OTP\main.c
-[e E861 systemStep `uc
+"511 D:\develop\AK7030-good\AK7030-OTP\main.c
+[e E856 systemStep `uc
 INIT_STEP 0
 START_UP_PWM_STEP 1
 CHECK_10_HOUR_TIMER_STEP 2
@@ -183,7 +183,7 @@ MEET_RESET_CONDITION_STEP 101
 RESET_STEP 102
 ]
 "184 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
-[s S806 . 1 `uc 1 C 1 0 :1:0 
+[s S801 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
 `uc 1 nPD 1 0 :1:3 
@@ -191,17 +191,17 @@ RESET_STEP 102
 `uc 1 RP 1 0 :2:5 
 `uc 1 IRP 1 0 :1:7 
 ]
-[s S814 . 1 `uc 1 . 1 0 :5:0 
+[s S809 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RP0 1 0 :1:5 
 `uc 1 RP1 1 0 :1:6 
 ]
-[u S818 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
+[u S813 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
 "254
-[s S854 . 1 `uc 1 . 1 0 :4:0 
+[s S849 . 1 `uc 1 . 1 0 :4:0 
 ]
-[u S856 . 1 `S91 1 . 1 0 ]
+[u S851 . 1 `S91 1 . 1 0 ]
 "276
-[s S870 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S865 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -210,28 +210,28 @@ RESET_STEP 102
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S879 . 1 `uc 1 . 1 0 :2:0 
+[s S874 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S884 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
+[u S879 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
 "396
-[s S945 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S940 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 ]
-[s S948 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S943 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
 `uc 1 CCP1Y 1 0 :1:4 
 `uc 1 CCP1X 1 0 :1:5 
 ]
-[u S955 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
+[u S950 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
 "439
-[s S975 . 1 `uc 1 OP1F 1 0 :4:0 
+[s S970 . 1 `uc 1 OP1F 1 0 :4:0 
 ]
-[s S977 . 1 `uc 1 OP1F0 1 0 :1:0 
+[s S972 . 1 `uc 1 OP1F0 1 0 :1:0 
 `uc 1 OP1F1 1 0 :1:1 
 `uc 1 OP1F2 1 0 :1:2 
 `uc 1 OP1F3 1 0 :1:3 
@@ -240,13 +240,13 @@ RESET_STEP 102
 `uc 1 OP1OUT 1 0 :1:6 
 `uc 1 OP1ON 1 0 :1:7 
 ]
-[u S986 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
+[u S981 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
 "460
-[s S991 . 1 `uc 1 OP1NCH 1 0 :2:0 
+[s S986 . 1 `uc 1 OP1NCH 1 0 :2:0 
 `uc 1 RSV 1 0 :2:2 
 `uc 1 OP1PCH 1 0 :2:4 
 ]
-[s S995 . 1 `uc 1 OP1NCH0 1 0 :1:0 
+[s S990 . 1 `uc 1 OP1NCH0 1 0 :1:0 
 `uc 1 OP1NCH1 1 0 :1:1 
 `uc 1 RSV0 1 0 :1:2 
 `uc 1 RSV1 1 0 :1:3 
@@ -255,9 +255,9 @@ RESET_STEP 102
 `uc 1 OP1INTN 1 0 :1:6 
 `uc 1 OP1INTP 1 0 :1:7 
 ]
-[u S1004 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
+[u S999 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
 "483
-[s S1009 . 1 `uc 1 RSV0 1 0 :1:0 
+[s S1004 . 1 `uc 1 RSV0 1 0 :1:0 
 `uc 1 RSV1 1 0 :1:1 
 `uc 1 RSV2 1 0 :1:2 
 `uc 1 RSV3 1 0 :1:3 
@@ -266,37 +266,37 @@ RESET_STEP 102
 `uc 1 OP1A2DEN 1 0 :1:6 
 `uc 1 OP1OUTEN 1 0 :1:7 
 ]
-[u S1018 . 1 `S296 1 . 1 0 ]
+[u S1013 . 1 `S296 1 . 1 0 ]
 "515
-[s S1032 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1027 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 G0 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S1036 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1031 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[u S1043 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
+[u S1038 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
 "543
-[s S1049 . 1 `uc 1 SWDTEN 1 0 :1:0 
+[s S1044 . 1 `uc 1 SWDTEN 1 0 :1:0 
 ]
-[u S1051 . 1 `S356 1 . 1 0 ]
+[u S1046 . 1 `S356 1 . 1 0 ]
 "576
-[s S1073 . 1 `uc 1 DACCH 1 0 :2:0 
+[s S1068 . 1 `uc 1 DACCH 1 0 :2:0 
 ]
-[s S1075 . 1 `uc 1 DACCH0 1 0 :1:0 
+[s S1070 . 1 `uc 1 DACCH0 1 0 :1:0 
 `uc 1 DACCH1 1 0 :1:1 
 `uc 1 DAC0EN 1 0 :1:2 
 `uc 1 DAC1EN 1 0 :1:3 
 ]
-[u S1080 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
+[u S1075 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
 "729
-[s S1179 . 1 `uc 1 OP2F 1 0 :4:0 
+[s S1174 . 1 `uc 1 OP2F 1 0 :4:0 
 ]
-[s S1181 . 1 `uc 1 OP2F0 1 0 :1:0 
+[s S1176 . 1 `uc 1 OP2F0 1 0 :1:0 
 `uc 1 OP2F1 1 0 :1:1 
 `uc 1 OP2F2 1 0 :1:2 
 `uc 1 OP2F3 1 0 :1:3 
@@ -305,12 +305,12 @@ RESET_STEP 102
 `uc 1 OP2OUT 1 0 :1:6 
 `uc 1 OP2ON 1 0 :1:7 
 ]
-[u S1190 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
+[u S1185 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
 "750
-[s S1195 . 1 `uc 1 OP2NCH 1 0 :3:0 
+[s S1190 . 1 `uc 1 OP2NCH 1 0 :3:0 
 `uc 1 OP2PCH 1 0 :3:3 
 ]
-[s S1198 . 1 `uc 1 OP2NCH0 1 0 :1:0 
+[s S1193 . 1 `uc 1 OP2NCH0 1 0 :1:0 
 `uc 1 OP2NCH1 1 0 :1:1 
 `uc 1 OP2NCH2 1 0 :1:2 
 `uc 1 OP2PCH0 1 0 :1:3 
@@ -319,11 +319,11 @@ RESET_STEP 102
 `uc 1 OP2INTN 1 0 :1:6 
 `uc 1 OP2INTP 1 0 :1:7 
 ]
-[u S1207 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
+[u S1202 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
 "772
-[s S1212 . 1 `uc 1 PGA 1 0 :3:0 
+[s S1207 . 1 `uc 1 PGA 1 0 :3:0 
 ]
-[s S1214 . 1 `uc 1 PGA0 1 0 :1:0 
+[s S1209 . 1 `uc 1 PGA0 1 0 :1:0 
 `uc 1 PGA1 1 0 :1:1 
 `uc 1 PGA2 1 0 :1:2 
 `uc 1 PGAEN 1 0 :1:3 
@@ -332,13 +332,13 @@ RESET_STEP 102
 `uc 1 OP2A2DEN 1 0 :1:6 
 `uc 1 OP2OUTEN 1 0 :1:7 
 ]
-[u S1223 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
+[u S1218 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
 "806
-[s S1237 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S1232 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 ADVREF 1 0 :2:6 
 ]
-[s S1241 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S1236 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
@@ -347,11 +347,11 @@ RESET_STEP 102
 `uc 1 ADVREF0 1 0 :1:6 
 `uc 1 ADVREF1 1 0 :1:7 
 ]
-[u S1250 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
+[u S1245 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
 "24 D:\develop\AK7030-good\AK7030-OTP\common.c
-[s S1289 . 1 `uc 1 timer10msStopWatch 1 0 ]
-"585
-[v F888 `(v  1 t 0 ]
+[s S1284 . 1 `uc 1 timer10msStopWatch 1 0 ]
+"603
+[v F895 `(v  1 t 0 ]
 "184 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
 [s S1394 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
@@ -590,95 +590,97 @@ RESET_STEP 102
 [v ___tmul `(um  1 e 3 0 ]
 "3 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\wmul.c
 [v ___wmul `(ui  1 e 2 0 ]
-"54 D:\develop\AK7030-good\AK7030-OTP\common.c
+"55 D:\develop\AK7030-good\AK7030-OTP\common.c
+[v _setWaitResetFlag `(v  1 e 0 0 ]
+"60
+[v _getWaitResetFlag `(uc  1 s 1 getWaitResetFlag ]
+"65
 [v _setPWM_Width `(v  1 s 0 setPWM_Width ]
-"64
+"75
 [v _FilterCh13 `(ui  1 e 2 0 ]
-"105
+"116
 [v _Filter `(ui  1 e 2 0 ]
-"153
+"164
 [v _vPutSampleDataIntoTable `(v  1 e 0 0 ]
-"287
+"305
 [v _clock_config `(v  1 e 0 0 ]
-"295
+"313
 [v _timer1_config `(v  1 e 0 0 ]
-"307
+"325
 [v _timer1_interrupt_config `(v  1 e 0 0 ]
-"315
+"333
 [v _getAD_ConvertFlag `(uc  1 e 1 0 ]
-"321
+"339
 [v _setAD_ConvertFlag `(v  1 e 0 0 ]
 [v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
 [v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
-"332
+"350
 [v _getAdOriginalCh12Value `(ui  1 e 2 0 ]
-"344
+"362
 [v _getAdOriginalCh13Value `(ui  1 e 2 0 ]
-"355
+"373
 [v _getAdOriginalCh14Value `(ui  1 e 2 0 ]
-"366
+"384
 [v _process_AD_Converter_Value `(v  1 e 0 0 ]
-"389
+"407
 [v _AD_Sample `(v  1 s 0 AD_Sample ]
-"413
+"431
 [v _setDAC0_ChannelValue `(v  1 e 0 0 ]
-"418
+"436
 [v _startTwelveHourTimer `(v  1 e 0 0 ]
-"432
+"450
 [v _clearTwelveHoursTimer `(v  1 e 0 0 ]
-"439
+"457
 [v _clearThreeHoursTimer `(v  1 e 0 0 ]
-"445
+"463
 [v _clearOneHoursTimer `(v  1 e 0 0 ]
-"452
+"470
 [v _clearTwentyMinTimer `(v  1 e 0 0 ]
-"459
+"477
 [v _startThreeHoursTimer `(v  1 e 0 0 ]
-"472
+"490
 [v _startOneHoursTimer `(v  1 e 0 0 ]
-"497
+"515
 [v _startTwentyMinTimer `(v  1 e 0 0 ]
-"507
+"525
 [v _isFinishedTwentyMinTimer `(uc  1 e 1 0 ]
-"531
+"549
 [v _isFinishedTwelveHoursTimer `(uc  1 e 1 0 ]
-"542
+"560
 [v _isFinishedThreeHoursTimer `(uc  1 e 1 0 ]
-"555
+"573
 [v _isFinishedOneHoursTimer `(uc  1 e 1 0 ]
-"567
-[v _isPermitSampleTime `(uc  1 e 1 0 ]
-"577
-[v _clrSampeTime `(v  1 e 0 0 ]
 "585
+[v _isPermitSampleTime `(uc  1 e 1 0 ]
+"595
+[v _clrSampeTime `(v  1 e 0 0 ]
+"603
 [v _ISR `I(v  1 e 0 0 ]
-"123 D:\develop\AK7030-good\AK7030-OTP\main.c
+"116 D:\develop\AK7030-good\AK7030-OTP\main.c
 [v _initPB3 `(v  1 e 0 0 ]
-"140
+"133
 [v _setPB3 `(v  1 e 0 0 ]
-"158
+"151
 [v _initPB4 `(v  1 e 0 0 ]
-"175
+"168
 [v _setPB4 `(v  1 e 0 0 ]
-"192
+"185
 [v _initPB5 `(v  1 e 0 0 ]
-"209
+"202
 [v _setPB5 `(v  1 e 0 0 ]
-"226
+"219
 [v _initPB2_AsHighResistence `(v  1 e 0 0 ]
-"238
+"231
 [v _pwm_start `(v  1 e 0 0 ]
-"263
+"256
 [v _initPin `(v  1 s 0 initPin ]
-"279
+"272
 [v _setPinInitVaule `(v  1 s 0 setPinInitVaule ]
-"290
+"283
 [v _selectAdChannel `(v  1 s 0 selectAdChannel ]
-"301
+"294
 [v _reset `(v  1 s 0 reset ]
-"467
-[v _calPulseWidth `(uc  1 s 1 calPulseWidth ]
-"588
+"498
 [v _main `(i  1 e 2 0 ]
 "14 D:\develop\AK7030-good\AK7030-OTP\periph.c
 [v _dac_init `(v  1 e 0 0 ]
@@ -703,7 +705,7 @@ RESET_STEP 102
 "24
 [v _sampleChannelSelect `uc  1 s 1 sampleChannelSelect ]
 "34
-[v _timer `S1289  1 s 1 timer ]
+[v _timer `S1284  1 s 1 timer ]
 "36
 [v _uiBigTimer `ui  1 s 2 uiBigTimer ]
 [v _uiSmallTimer `ui  1 s 2 uiSmallTimer ]
@@ -720,11 +722,13 @@ RESET_STEP 102
 [v _bOneHourTimerStartFlag `uc  1 s 1 bOneHourTimerStartFlag ]
 "48
 [v _bTwentyMinStartFlag `uc  1 s 1 bTwentyMinStartFlag ]
-"145
-[v _uiSampleChannelFirst `[3]i  1 s 6 uiSampleChannelFirst ]
-"147
-[v _uiSampleChannelFourth `[3]i  1 s 6 uiSampleChannelFourth ]
-"149
+"50
+[v _bWaitResetFlag `uc  1 s 1 bWaitResetFlag ]
+"156
+[v _uiSampleCh12 `[3]i  1 s 6 uiSampleCh12 ]
+"158
+[v _uiSampleCh13 `[8]i  1 s 16 uiSampleCh13 ]
+"160
 [v _uiSampleChannelFourteenth `[3]i  1 s 6 uiSampleChannelFourteenth ]
 "164 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
 [v _INDF `VEuc  1 e 1 @0 ]
@@ -1356,289 +1360,297 @@ RESET_STEP 102
 [v _ALG6 `VEuc  1 e 1 @398 ]
 "918
 [v _ALG7 `VEuc  1 e 1 @399 ]
-"588 D:\develop\AK7030-good\AK7030-OTP\main.c
+"498 D:\develop\AK7030-good\AK7030-OTP\main.c
 [v _main `(i  1 e 2 0 ]
 {
-"890
-[v main@ucChValue `ui  1 a 2 18 ]
-"796
-[v main@uiCh13Value `ui  1 a 2 20 ]
-"603
-[v main@ucStep `E861  1 s 1 ucStep ]
-"669
+"802
+[v main@ucChValue `ui  1 a 2 17 ]
+"703
+[v main@uiCh13Value `ui  1 a 2 19 ]
+"513
+[v main@ucStep `E856  1 s 1 ucStep ]
+"579
 [v main@ucTimerP3s `uc  1 s 1 ucTimerP3s ]
-"724
+"631
 [v main@ucTimerP5s `uc  1 s 1 ucTimerP5s ]
-"755
-[v main@cTimerP5s_786 `uc  1 s 1 ucTimerP5s ]
-"792
+"662
+[v main@cTimerP5s_781 `uc  1 s 1 ucTimerP5s ]
+"699
 [v main@uiTimerOneP5s `ui  1 s 2 uiTimerOneP5s ]
-"793
+"700
 [v main@uiTimerTwoP5s `ui  1 s 2 uiTimerTwoP5s ]
-"794
+"701
 [v main@uiTimerThreeP5s `ui  1 s 2 uiTimerThreeP5s ]
-"872
+"784
 [v main@ucDelay1s `ui  1 s 2 ucDelay1s ]
-"889
-[v main@cTimerP5s_792 `uc  1 s 1 ucTimerP5s ]
-"917
+"801
+[v main@cTimerP5s_787 `uc  1 s 1 ucTimerP5s ]
+"829
 } 0
-"344 D:\develop\AK7030-good\AK7030-OTP\common.c
+"362 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _getAdOriginalCh13Value `(ui  1 e 2 0 ]
 {
-"351
+"369
 } 0
-"366
+"384
 [v _process_AD_Converter_Value `(v  1 e 0 0 ]
 {
-"377
+"395
 } 0
-"279 D:\develop\AK7030-good\AK7030-OTP\main.c
+"272 D:\develop\AK7030-good\AK7030-OTP\main.c
 [v _setPinInitVaule `(v  1 s 0 setPinInitVaule ]
 {
-"287
+"280
 } 0
-"263
+"256
 [v _initPin `(v  1 s 0 initPin ]
 {
-"276
+"269
 } 0
-"389 D:\develop\AK7030-good\AK7030-OTP\common.c
+"407 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _AD_Sample `(v  1 s 0 AD_Sample ]
 {
-"409
+"427
 } 0
-"321
+"339
 [v _setAD_ConvertFlag `(v  1 e 0 0 ]
 {
 [v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
 [v setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
-"323
+"341
 } 0
-"315
+"333
 [v _getAD_ConvertFlag `(uc  1 e 1 0 ]
 {
-"317
+"335
 } 0
-"64
+"75
 [v _FilterCh13 `(ui  1 e 2 0 ]
 {
 [v FilterCh13@tmpValue `*.0i  1 a 1 wreg ]
-"71
+"82
 [v FilterCh13@cir `i  1 a 2 11 ]
-"69
+"80
 [v FilterCh13@filter_buf `[3]ui  1 a 6 5 ]
-"67
+"78
 [v FilterCh13@filter_sum `ui  1 a 2 3 ]
 [v FilterCh13@filter_temp `ui  1 a 2 1 ]
-"65
+"76
 [v FilterCh13@i `uc  1 a 1 14 ]
 [v FilterCh13@j `uc  1 a 1 13 ]
-"64
+"75
 [v FilterCh13@tmpValue `*.0i  1 a 1 wreg ]
-"99
+"110
 } 0
-"555
+"55
+[v _setWaitResetFlag `(v  1 e 0 0 ]
+{
+[v setWaitResetFlag@bValue `uc  1 a 1 wreg ]
+[v setWaitResetFlag@bValue `uc  1 a 1 wreg ]
+"57
+} 0
+"573
 [v _isFinishedOneHoursTimer `(uc  1 e 1 0 ]
 {
-"563
+"581
 } 0
-"472
+"490
 [v _startOneHoursTimer `(v  1 e 0 0 ]
 {
-[v startOneHoursTimer@uiSetTime `ui  1 p 2 23 ]
-"482
+[v startOneHoursTimer@uiSetTime `ui  1 p 2 21 ]
+"500
 } 0
-"439
+"457
 [v _clearThreeHoursTimer `(v  1 e 0 0 ]
 {
-"442
+"460
 } 0
-"542
+"560
 [v _isFinishedThreeHoursTimer `(uc  1 e 1 0 ]
 {
-"550
+"568
 } 0
-"459
+"477
 [v _startThreeHoursTimer `(v  1 e 0 0 ]
 {
-[v startThreeHoursTimer@uiSetTime `ui  1 p 2 23 ]
-"469
+[v startThreeHoursTimer@uiSetTime `ui  1 p 2 21 ]
+"487
 } 0
-"432
+"450
 [v _clearTwelveHoursTimer `(v  1 e 0 0 ]
 {
-"435
+"453
 } 0
-"531
+"549
 [v _isFinishedTwelveHoursTimer `(uc  1 e 1 0 ]
 {
-"539
+"557
 } 0
-"418
+"436
 [v _startTwelveHourTimer `(v  1 e 0 0 ]
 {
-[v startTwelveHourTimer@uiSetTime `ui  1 p 2 23 ]
-"429
+[v startTwelveHourTimer@uiSetTime `ui  1 p 2 21 ]
+"447
 } 0
-"452
+"470
 [v _clearTwentyMinTimer `(v  1 e 0 0 ]
 {
-"455
+"473
 } 0
-"507
+"525
 [v _isFinishedTwentyMinTimer `(uc  1 e 1 0 ]
 {
-"515
+"533
 } 0
-"577
+"595
 [v _clrSampeTime `(v  1 e 0 0 ]
 {
-"579
+"597
 } 0
-"567
+"585
 [v _isPermitSampleTime `(uc  1 e 1 0 ]
 {
-"574
+"592
 } 0
 "101 D:\develop\AK7030-good\AK7030-OTP\periph.c
 [v _adc_start `(v  1 e 0 0 ]
 {
 "103
 } 0
-"497 D:\develop\AK7030-good\AK7030-OTP\common.c
+"515 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _startTwentyMinTimer `(v  1 e 0 0 ]
 {
-[v startTwentyMinTimer@uiSetValue `ui  1 p 2 23 ]
-"503
+[v startTwentyMinTimer@uiSetValue `ui  1 p 2 21 ]
+"521
 } 0
 "85 D:\develop\AK7030-good\AK7030-OTP\periph.c
 [v _adc_test_init `(v  1 e 0 0 ]
 {
 [v adc_test_init@channel `uc  1 a 1 wreg ]
 [v adc_test_init@channel `uc  1 a 1 wreg ]
-[v adc_test_init@ref `uc  1 p 1 23 ]
+[v adc_test_init@ref `uc  1 p 1 21 ]
 "92
 } 0
-"307 D:\develop\AK7030-good\AK7030-OTP\common.c
+"325 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _timer1_interrupt_config `(v  1 e 0 0 ]
+{
+"328
+} 0
+"313
+[v _timer1_config `(v  1 e 0 0 ]
+{
+"320
+} 0
+"305
+[v _clock_config `(v  1 e 0 0 ]
 {
 "310
 } 0
-"295
-[v _timer1_config `(v  1 e 0 0 ]
-{
-"302
-} 0
-"287
-[v _clock_config `(v  1 e 0 0 ]
-{
-"292
-} 0
-"301 D:\develop\AK7030-good\AK7030-OTP\main.c
+"294 D:\develop\AK7030-good\AK7030-OTP\main.c
 [v _reset `(v  1 s 0 reset ]
 {
-"307
+"300
 } 0
-"290
+"283
 [v _selectAdChannel `(v  1 s 0 selectAdChannel ]
 {
-"297
+"290
 } 0
-"238
+"231
 [v _pwm_start `(v  1 e 0 0 ]
 {
 [v pwm_start@ucPulseWidth `uc  1 a 1 wreg ]
 [v pwm_start@ucPulseWidth `uc  1 a 1 wreg ]
-[v pwm_start@ucPulseFrequency `uc  1 p 1 23 ]
-"259
+[v pwm_start@ucPulseFrequency `uc  1 p 1 21 ]
+"252
 } 0
-"226
+"219
 [v _initPB2_AsHighResistence `(v  1 e 0 0 ]
 {
-"233
+"226
 } 0
-"209
+"202
 [v _setPB5 `(v  1 e 0 0 ]
 {
 [v setPB5@bValue `uc  1 a 1 wreg ]
 [v setPB5@bValue `uc  1 a 1 wreg ]
-"222
+"215
 } 0
-"192
+"185
 [v _initPB5 `(v  1 e 0 0 ]
 {
 [v initPB5@bValue `uc  1 a 1 wreg ]
 [v initPB5@bValue `uc  1 a 1 wreg ]
-"205
+"198
 } 0
-"175
+"168
 [v _setPB4 `(v  1 e 0 0 ]
 {
 [v setPB4@bValue `uc  1 a 1 wreg ]
 [v setPB4@bValue `uc  1 a 1 wreg ]
-"188
+"181
 } 0
-"158
+"151
 [v _initPB4 `(v  1 e 0 0 ]
 {
 [v initPB4@bValue `uc  1 a 1 wreg ]
 [v initPB4@bValue `uc  1 a 1 wreg ]
-"171
+"164
 } 0
-"140
+"133
 [v _setPB3 `(v  1 e 0 0 ]
 {
 [v setPB3@bValue `uc  1 a 1 wreg ]
 [v setPB3@bValue `uc  1 a 1 wreg ]
-"153
+"146
 } 0
-"123
+"116
 [v _initPB3 `(v  1 e 0 0 ]
 {
 [v initPB3@bValue `uc  1 a 1 wreg ]
 [v initPB3@bValue `uc  1 a 1 wreg ]
-"136
+"129
 } 0
-"585 D:\develop\AK7030-good\AK7030-OTP\common.c
+"603 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _ISR `I(v  1 e 0 0 ]
 {
-"586
+"604
 [v ISR@ucTimer1sCnt `uc  1 s 1 ucTimer1sCnt ]
-"642
+"660
 } 0
-"153
+"164
 [v _vPutSampleDataIntoTable `(v  1 e 0 0 ]
 {
-"187
-[v vPutSampleDataIntoTable@uiDeviationValue `ui  1 a 2 15 ]
-"273
-[v vPutSampleDataIntoTable@i `i  1 a 2 17 ]
-"153
+"195
+[v vPutSampleDataIntoTable@uiDeviationValue `ui  1 a 2 17 ]
+[v vPutSampleDataIntoTable@uiAbstractValue `ui  1 a 2 15 ]
+"291
+[v vPutSampleDataIntoTable@i `i  1 a 2 19 ]
+"164
 [v vPutSampleDataIntoTable@uiSampleData `ui  1 p 2 6 ]
 [v vPutSampleDataIntoTable@channel `uc  1 p 1 8 ]
-"155
-[v vPutSampleDataIntoTable@ucChannelFirstLength `uc  1 s 1 ucChannelFirstLength ]
-"157
-[v vPutSampleDataIntoTable@ucChannelFourthLength `uc  1 s 1 ucChannelFourthLength ]
-"159
+"166
+[v vPutSampleDataIntoTable@ucCh12Length `uc  1 s 1 ucCh12Length ]
+"168
+[v vPutSampleDataIntoTable@ucCh13Length `uc  1 s 1 ucCh13Length ]
+"170
 [v vPutSampleDataIntoTable@ucChannelFourteenthLength `uc  1 s 1 ucChannelFourteenthLength ]
-"160
+"171
 [v vPutSampleDataIntoTable@uiCalWidthArrayNew `ui  1 s 2 uiCalWidthArrayNew ]
-"161
+"172
 [v vPutSampleDataIntoTable@uiCalWidthArrayOld `ui  1 s 2 uiCalWidthArrayOld ]
-"179
+"189
 [v vPutSampleDataIntoTable@uiCalWidthCnt `ui  1 s 2 uiCalWidthCnt ]
-"181
+"191
 [v vPutSampleDataIntoTable@uiInitWidth `uc  1 s 1 uiInitWidth ]
-"283
+"301
 } 0
-"321
+"339
 [v i1_setAD_ConvertFlag `(v  1 e 0 0 ]
 {
 [v i1setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
 [v i1setAD_ConvertFlag@flag `uc  1 a 1 wreg ]
-"323
+"341
 } 0
 "106 D:\develop\AK7030-good\AK7030-OTP\periph.c
 [v _adc_get `(ui  1 e 2 0 ]
@@ -1647,30 +1659,35 @@ RESET_STEP 102
 [v adc_get@val `ui  1 a 2 2 ]
 "110
 } 0
-"105 D:\develop\AK7030-good\AK7030-OTP\common.c
+"116 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _Filter `(ui  1 e 2 0 ]
 {
 [v Filter@tmpValue `*.0i  1 a 1 wreg ]
-"113
+"124
 [v Filter@cir `i  1 a 2 11 ]
-"111
+"122
 [v Filter@filter_buf `[3]ui  1 a 6 5 ]
-"109
+"120
 [v Filter@filter_sum `ui  1 a 2 2 ]
 [v Filter@filter_temp `ui  1 a 2 0 ]
-"107
+"118
 [v Filter@i `uc  1 a 1 14 ]
 [v Filter@j `uc  1 a 1 13 ]
-"105
+"116
 [v Filter@tmpValue `*.0i  1 a 1 wreg ]
-"142
+"153
 } 0
-"54
+"65
 [v _setPWM_Width `(v  1 s 0 setPWM_Width ]
 {
 [v setPWM_Width@ucWidth `uc  1 a 1 wreg ]
 [v setPWM_Width@ucWidth `uc  1 a 1 wreg ]
-"55
+"66
 [v setPWM_Width@ucOldWidth `uc  1 s 1 ucOldWidth ]
-"61
+"72
+} 0
+"60
+[v _getWaitResetFlag `(uc  1 s 1 getWaitResetFlag ]
+{
+"62
 } 0

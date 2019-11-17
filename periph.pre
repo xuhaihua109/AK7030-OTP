@@ -815,7 +815,7 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 void adc_start();
 unsigned int adc_get(void);
 
-# 46 "D:\develop\AK7030-good\AK7030-OTP\common.h"
+# 50 "D:\develop\AK7030-good\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -829,7 +829,7 @@ void setAdcSampleChannel(unsigned char ucChannel);
 
 void process_AD_Converter_Value();
 
-# 64
+# 68
 unsigned int getAdOriginalCh12Value();
 unsigned int getAdOriginalCh13Value();
 
@@ -846,7 +846,7 @@ void startThreeHoursTimer(unsigned int uiSetTime);
 
 void startOneHoursTimer(unsigned int uiSetTime);
 
-# 85
+# 89
 void startTwentyMinTimer(unsigned int uiSetValue);
 unsigned char isFinishedTwentyMinTimer();
 
@@ -862,6 +862,8 @@ unsigned char isFinishedOneHoursTimer();
 
 unsigned char getAD_ConvertFlag();
 void setAD_ConvertFlag(unsigned char flag);
+
+void setWaitResetFlag(unsigned char bValue);
 
 # 13 "D:\develop\AK7030-good\AK7030-OTP\periph.c"
 void dac_init()
