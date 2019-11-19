@@ -913,14 +913,15 @@ return bWaitResetFlag;
 static void setPWM_Width(unsigned char ucWidth)
 {
 static unsigned char ucOldWidth = 0;
-if( ucOldWidth != ucWidth)
+
+if(1)
 {
 CCPR1L = ucWidth;
 ucOldWidth = ucWidth;
 }
 }
 
-unsigned int FilterCh13(int *tmpValue)
+unsigned int FilterCh13(unsigned int *tmpValue)
 {
 unsigned char i = 0, j = 0;
 
@@ -949,19 +950,19 @@ filter_buf[i + 1] = filter_temp;
 }
 }
 
-for(i = 2; i < 3 - 2; i++)
+for(i = 1; i < 3 - 1; i++)
 {
 filter_sum += filter_buf[i];
 }
 
 
-return (filter_sum >> 2 );
+return (filter_sum >> 0 );
 }
 
 
 
 
-unsigned int Filter(int *tmpValue)
+unsigned int Filter(unsigned int *tmpValue)
 {
 
 unsigned char i = 0, j = 0;
@@ -1002,11 +1003,11 @@ return (filter_sum );
 }
 
 
-static int uiSampleCh12[3];
+static unsigned int uiSampleCh12[3];
 
-static int uiSampleCh13[8];
+static unsigned int uiSampleCh13[3];
 
-static int uiSampleChannelFourteenth[3];
+static unsigned int uiSampleChannelFourteenth[3];
 
 
 void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
@@ -1044,11 +1045,18 @@ uiCalWidthArrayNew = Filter(uiSampleCh12);
 unsigned int uiDeviationValue = 0,uiAbstractValue = 0;
 
 if( uiCalWidthArrayNew >= uiCalWidthArrayOld)
+{
 uiAbstractValue = uiCalWidthArrayNew - uiCalWidthArrayOld;
+uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) + uiAbstractValue;
+}
 else
+{
 uiAbstractValue = uiCalWidthArrayOld - uiCalWidthArrayNew;
+uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) - uiAbstractValue;
 
-uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1)+ uiAbstractValue;
+}
+
+
 
 if(uiCalWidthCnt>400)
 uiDeviationValue =400;
@@ -1101,7 +1109,7 @@ uiSampleCh12[ucCh12Length] = uiSampleData;
 }
 else if(channel == 13)
 {
-if(ucCh13Length < 8)
+if(ucCh13Length < 3)
 {
 uiSampleCh13[ucCh13Length] = uiSampleData;
 
@@ -1189,14 +1197,14 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 349
+# 357
 unsigned int getAdOriginalCh12Value()
 {
 
 
 return Filter(uiSampleCh12);
 
-# 358
+# 366
 }
 
 
@@ -1205,7 +1213,7 @@ unsigned int getAdOriginalCh13Value()
 
 return FilterCh13(uiSampleCh13);
 
-# 369
+# 377
 }
 
 
@@ -1214,7 +1222,7 @@ unsigned int getAdOriginalCh14Value()
 
 return Filter(uiSampleChannelFourteenth);
 
-# 379
+# 387
 }
 
 
@@ -1233,7 +1241,7 @@ adc_start();
 }
 }
 
-# 406
+# 414
 static void AD_Sample(void)
 {
 if(sampleTimes < 3)
@@ -1271,7 +1279,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 447
+# 455
 }
 
 void clearTwelveHoursTimer()
@@ -1309,7 +1317,7 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 487
+# 495
 }
 
 void startOneHoursTimer(unsigned int uiSetTime)
@@ -1320,10 +1328,10 @@ uiOneHourTimer = uiSetTime;
 bOneHourTimerStartFlag = 1;
 }
 
-# 500
+# 508
 }
 
-# 514
+# 522
 void startTwentyMinTimer(unsigned int uiSetValue )
 {
 if(( 0 == uiTwentyMinTimer) && ( 0 == bTwentyMinStartFlag))
@@ -1345,7 +1353,7 @@ else
 return 0;
 }
 
-# 548
+# 556
 unsigned char isFinishedTwelveHoursTimer()
 {
 if(( uiBigTimer == 0 ) && bBigTimerStartFlag )
@@ -1445,7 +1453,7 @@ if(sampleChannelSelect == 12)
 
 vPutSampleDataIntoTable(adc_get(),12);
 
-# 649
+# 657
 }
 else
 {

@@ -1156,7 +1156,7 @@ ucTimerP5s++;
 else
 ucTimerP5s = 0;
 
-if( ucTimerP5s >= 2)
+if( ucTimerP5s >= 1)
 {
 ucTimerP5s = 0;
 ucStep = STARTUP_3_HOUR_TIMER_STEP;
@@ -1187,7 +1187,7 @@ ucTimerP5s++;
 else
 ucTimerP5s = 0;
 
-if( ucTimerP5s >= 2)
+if( ucTimerP5s >= 1)
 {
 ucTimerP5s = 0;
 ucStep = STARTUP_1_HOUR_TIMER_STEP;

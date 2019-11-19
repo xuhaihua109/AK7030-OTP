@@ -639,7 +639,7 @@ int main (void)
                         else
                             ucTimerP5s = 0;
 
-                        if( ucTimerP5s >= CONFIRMATION_COUT_0P2_SECOND)
+                        if( ucTimerP5s >= CONFIRMATION_COUT_0P1_SECOND)
                         {
                             ucTimerP5s = 0;
                             ucStep = STARTUP_3_HOUR_TIMER_STEP;
@@ -670,7 +670,7 @@ int main (void)
                         else
                             ucTimerP5s = 0;
 
-                        if( ucTimerP5s >= CONFIRMATION_COUT_0P2_SECOND)
+                        if( ucTimerP5s >= CONFIRMATION_COUT_0P1_SECOND)
                         {
                             ucTimerP5s = 0;
                             ucStep = STARTUP_1_HOUR_TIMER_STEP;

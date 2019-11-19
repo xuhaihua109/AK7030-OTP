@@ -1850,9 +1850,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "640
 [e = F870 -> -> 0 `i `uc ]
 [e :U 86 ]
-[; ;main.c: 642: if( ucTimerP5s >= 2)
+[; ;main.c: 642: if( ucTimerP5s >= 1)
 "642
-[e $ ! >= -> F870 `i -> 2 `i 87  ]
+[e $ ! >= -> F870 `i -> 1 `i 87  ]
 [; ;main.c: 643: {
 "643
 {
@@ -1936,9 +1936,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "671
 [e = F871 -> -> 0 `i `uc ]
 [e :U 93 ]
-[; ;main.c: 673: if( ucTimerP5s >= 2)
+[; ;main.c: 673: if( ucTimerP5s >= 1)
 "673
-[e $ ! >= -> F871 `i -> 2 `i 94  ]
+[e $ ! >= -> F871 `i -> 1 `i 94  ]
 [; ;main.c: 674: {
 "674
 {

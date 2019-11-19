@@ -64,29 +64,30 @@ static unsigned char getWaitResetFlag(void)
 static void setPWM_Width(unsigned char ucWidth)
 {
 	static unsigned char ucOldWidth = 0;
-	if( ucOldWidth !=  ucWidth)
+//	if( ucOldWidth !=  ucWidth)
+	if(1)
 	{
 		CCPR1L = ucWidth;
 		ucOldWidth = ucWidth;
 	}
 }
 
-unsigned int FilterCh13(int *tmpValue)
+unsigned int FilterCh13(unsigned int *tmpValue)
 {
 unsigned char i = 0, j = 0;
 
 unsigned  int filter_temp = 0, filter_sum = 0;
 
-unsigned int filter_buf[FILTER_N];
+unsigned int filter_buf[FILTER_N_CH13];
 
-for(int cir = 0;cir < FILTER_N; cir++)
+for(int cir = 0;cir < FILTER_N_CH13; cir++)
 	   filter_buf[cir] = *tmpValue++;
 
 
 
-for(j = 0; j < FILTER_N - 1; j++)
+for(j = 0; j < FILTER_N_CH13 - 1; j++)
 {
-  for(i = 0; i < FILTER_N - 1 - j; i++)
+  for(i = 0; i < FILTER_N_CH13 - 1 - j; i++)
   {
     if(filter_buf[i] > filter_buf[i + 1])
     {
@@ -100,7 +101,7 @@ for(j = 0; j < FILTER_N - 1; j++)
   }
 }
 
-for(i = FILTER_MAX_MIN_CNT; i < FILTER_N - FILTER_MAX_MIN_CNT; i++)
+for(i = FILTER_MAX_MIN_CNT; i < FILTER_N_CH13 - FILTER_MAX_MIN_CNT; i++)
 {
 	  filter_sum += filter_buf[i];
 }
@@ -112,7 +113,7 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 
 
 
- unsigned int Filter(int *tmpValue)
+ unsigned int Filter(unsigned int *tmpValue)
  {
 
    unsigned char i = 0, j = 0;
@@ -153,11 +154,11 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
  }
 
 
- static  int uiSampleCh12[FILTER_N];
+ static  unsigned int uiSampleCh12[FILTER_N];
 
- static  int uiSampleCh13[FILTER_N_CH13];
+ static  unsigned int uiSampleCh13[FILTER_N_CH13];
 
- static  int uiSampleChannelFourteenth[FILTER_N];
+ static  unsigned int uiSampleChannelFourteenth[FILTER_N];
 
 
  void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
@@ -195,11 +196,18 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 				 unsigned int uiDeviationValue = 0,uiAbstractValue = 0;
 
 				 if( uiCalWidthArrayNew >= uiCalWidthArrayOld)
+				 {
 					 uiAbstractValue = uiCalWidthArrayNew - uiCalWidthArrayOld;
+					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) + uiAbstractValue;
+				 }
 				 else
+				 {
 					 uiAbstractValue = uiCalWidthArrayOld - uiCalWidthArrayNew;
+					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) - uiAbstractValue;
 
-				 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1)+ uiAbstractValue;
+				 }
+
+
 
 				 if(uiCalWidthCnt>400)
 					uiDeviationValue =400;
