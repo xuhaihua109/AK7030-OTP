@@ -1093,8 +1093,10 @@ else
 ;
 
 if( 1 == getWaitResetFlag())
-uiInitWidth = 150;
+{
 
+uiInitWidth = 150;
+}
 setPWM_Width(uiInitWidth);
 
 
@@ -1197,14 +1199,14 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 357
+# 359
 unsigned int getAdOriginalCh12Value()
 {
 
 
 return Filter(uiSampleCh12);
 
-# 366
+# 368
 }
 
 
@@ -1213,7 +1215,7 @@ unsigned int getAdOriginalCh13Value()
 
 return FilterCh13(uiSampleCh13);
 
-# 377
+# 379
 }
 
 
@@ -1222,7 +1224,7 @@ unsigned int getAdOriginalCh14Value()
 
 return Filter(uiSampleChannelFourteenth);
 
-# 387
+# 389
 }
 
 
@@ -1241,7 +1243,7 @@ adc_start();
 }
 }
 
-# 414
+# 416
 static void AD_Sample(void)
 {
 if(sampleTimes < 3)
@@ -1279,7 +1281,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 455
+# 457
 }
 
 void clearTwelveHoursTimer()
@@ -1317,7 +1319,7 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 495
+# 497
 }
 
 void startOneHoursTimer(unsigned int uiSetTime)
@@ -1328,10 +1330,10 @@ uiOneHourTimer = uiSetTime;
 bOneHourTimerStartFlag = 1;
 }
 
-# 508
+# 510
 }
 
-# 522
+# 524
 void startTwentyMinTimer(unsigned int uiSetValue )
 {
 if(( 0 == uiTwentyMinTimer) && ( 0 == bTwentyMinStartFlag))
@@ -1353,7 +1355,7 @@ else
 return 0;
 }
 
-# 556
+# 558
 unsigned char isFinishedTwelveHoursTimer()
 {
 if(( uiBigTimer == 0 ) && bBigTimerStartFlag )
@@ -1392,7 +1394,7 @@ return 0;
 
 unsigned char isPermitSampleTime()
 {
-if(timer.timer10msStopWatch >= 10)
+if(timer.timer10msStopWatch >= 1)
 {
 return 1;
 }
@@ -1453,7 +1455,7 @@ if(sampleChannelSelect == 12)
 
 vPutSampleDataIntoTable(adc_get(),12);
 
-# 657
+# 659
 }
 else
 {

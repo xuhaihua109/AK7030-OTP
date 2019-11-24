@@ -1112,7 +1112,7 @@ ucTimerP3s++;
 else
 ucTimerP3s = 0;
 
-if( ucTimerP3s >= 3)
+if( ucTimerP3s >= 30)
 {
 ucTimerP3s = 0;
 ucStep = START_UP_PWM_STEP;
@@ -1130,7 +1130,7 @@ case START_UP_PWM_STEP:
 
 
 
-pwm_start(75,249);
+pwm_start(150,249);
 
 setPB3(0);
 setPB4(1);
@@ -1156,7 +1156,7 @@ ucTimerP5s++;
 else
 ucTimerP5s = 0;
 
-if( ucTimerP5s >= 1)
+if( ucTimerP5s >= 10)
 {
 ucTimerP5s = 0;
 ucStep = STARTUP_3_HOUR_TIMER_STEP;
@@ -1187,7 +1187,7 @@ ucTimerP5s++;
 else
 ucTimerP5s = 0;
 
-if( ucTimerP5s >= 1)
+if( ucTimerP5s >= 10)
 {
 ucTimerP5s = 0;
 ucStep = STARTUP_1_HOUR_TIMER_STEP;
@@ -1224,7 +1224,7 @@ else
 {
 if( uiCh13Value > 85 )
 {
-if( uiTimerOneP5s <= 1 )
+if( uiTimerOneP5s <= 10 )
 uiTimerOneP5s++;
 uiTimerTwoP5s = 0;
 uiTimerThreeP5s = 0;
@@ -1235,7 +1235,7 @@ uiTimerOneP5s = 0;
 }
 
 
-if(uiTimerOneP5s > 1)
+if(uiTimerOneP5s > 10)
 {
 setPB3(0);
 setPB4(1);
@@ -1248,7 +1248,7 @@ else
 {
 if( uiCh13Value < 75 )
 {
-if( uiTimerTwoP5s <= 1)
+if( uiTimerTwoP5s <= 10)
 uiTimerTwoP5s++;
 }
 else
@@ -1257,7 +1257,7 @@ uiTimerTwoP5s = 0;
 uiTimerThreeP5s = 0;
 }
 
-if(uiTimerTwoP5s > 1)
+if(uiTimerTwoP5s > 10)
 {
 setPB3(1);
 setPB4(0);
@@ -1268,7 +1268,7 @@ uiTimerThreeP5s++;
 else
 uiTimerThreeP5s = 0;
 
-if(uiTimerThreeP5s > 5)
+if(uiTimerThreeP5s > 50)
 reset();
 }
 
@@ -1285,8 +1285,9 @@ setPB5(1);
 
 
 setWaitResetFlag(1);
+pwm_start(150,249);
 
-# 778
+# 779
 ucStep = DELAY_ONE_SECOND_FOR_PWM;
 break;
 }
@@ -1294,7 +1295,7 @@ break;
 case DELAY_ONE_SECOND_FOR_PWM:
 {
 static unsigned ucDelay1s = 0;
-if(ucDelay1s <= 5)
+if(ucDelay1s <= 50)
 ucDelay1s++;
 else
 {
@@ -1302,7 +1303,7 @@ ucDelay1s = 0;
 ucStep = MEET_RESET_CONDITION_STEP;
 }
 
-# 796
+# 797
 break;
 }
 
@@ -1316,7 +1317,7 @@ ucTimerP5s++;
 else
 ucTimerP5s = 0;
 
-if(ucTimerP5s >= 5)
+if(ucTimerP5s >= 50)
 ucStep = RESET_STEP;
 break;
 }

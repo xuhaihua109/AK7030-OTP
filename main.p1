@@ -1752,9 +1752,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "593
 [e = F869 -> -> 0 `i `uc ]
 [e :U 79 ]
-[; ;main.c: 595: if( ucTimerP3s >= 3)
+[; ;main.c: 595: if( ucTimerP3s >= 30)
 "595
-[e $ ! >= -> F869 `i -> 3 `i 80  ]
+[e $ ! >= -> F869 `i -> 30 `i 80  ]
 [; ;main.c: 596: {
 "596
 {
@@ -1784,9 +1784,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 609: {
 "609
 {
-[; ;main.c: 614: pwm_start(75,249);
+[; ;main.c: 614: pwm_start(150,249);
 "614
-[e ( _pwm_start (2 , -> -> 75 `i `uc -> -> 249 `i `uc ]
+[e ( _pwm_start (2 , -> -> 150 `i `uc -> -> 249 `i `uc ]
 [; ;main.c: 616: setPB3(0);
 "616
 [e ( _setPB3 (1 -> -> 0 `i `uc ]
@@ -1850,9 +1850,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "640
 [e = F870 -> -> 0 `i `uc ]
 [e :U 86 ]
-[; ;main.c: 642: if( ucTimerP5s >= 1)
+[; ;main.c: 642: if( ucTimerP5s >= 10)
 "642
-[e $ ! >= -> F870 `i -> 1 `i 87  ]
+[e $ ! >= -> F870 `i -> 10 `i 87  ]
 [; ;main.c: 643: {
 "643
 {
@@ -1936,9 +1936,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "671
 [e = F871 -> -> 0 `i `uc ]
 [e :U 93 ]
-[; ;main.c: 673: if( ucTimerP5s >= 1)
+[; ;main.c: 673: if( ucTimerP5s >= 10)
 "673
-[e $ ! >= -> F871 `i -> 1 `i 94  ]
+[e $ ! >= -> F871 `i -> 10 `i 94  ]
 [; ;main.c: 674: {
 "674
 {
@@ -2039,9 +2039,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 711: {
 "711
 {
-[; ;main.c: 712: if( uiTimerOneP5s <= 1 )
+[; ;main.c: 712: if( uiTimerOneP5s <= 10 )
 "712
-[e $ ! <= F872 -> -> 1 `i `ui 100  ]
+[e $ ! <= F872 -> -> 10 `i `ui 100  ]
 [; ;main.c: 713: uiTimerOneP5s++;
 "713
 [e ++ F872 -> -> 1 `i `ui ]
@@ -2069,9 +2069,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 101 ]
 [; ;main.c: 720: }
-[; ;main.c: 723: if(uiTimerOneP5s > 1)
+[; ;main.c: 723: if(uiTimerOneP5s > 10)
 "723
-[e $ ! > F872 -> -> 1 `i `ui 102  ]
+[e $ ! > F872 -> -> 10 `i `ui 102  ]
 [; ;main.c: 724: {
 "724
 {
@@ -2106,9 +2106,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 735: {
 "735
 {
-[; ;main.c: 736: if( uiTimerTwoP5s <= 1)
+[; ;main.c: 736: if( uiTimerTwoP5s <= 10)
 "736
-[e $ ! <= F873 -> -> 1 `i `ui 105  ]
+[e $ ! <= F873 -> -> 10 `i `ui 105  ]
 [; ;main.c: 737: uiTimerTwoP5s++;
 "737
 [e ++ F873 -> -> 1 `i `ui ]
@@ -2133,9 +2133,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 106 ]
 [; ;main.c: 743: }
-[; ;main.c: 745: if(uiTimerTwoP5s > 1)
+[; ;main.c: 745: if(uiTimerTwoP5s > 10)
 "745
-[e $ ! > F873 -> -> 1 `i `ui 107  ]
+[e $ ! > F873 -> -> 10 `i `ui 107  ]
 [; ;main.c: 746: {
 "746
 {
@@ -2162,9 +2162,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "754
 [e = F874 -> -> 0 `i `ui ]
 [e :U 109 ]
-[; ;main.c: 756: if(uiTimerThreeP5s > 5)
+[; ;main.c: 756: if(uiTimerThreeP5s > 50)
 "756
-[e $ ! > F874 -> -> 5 `i `ui 110  ]
+[e $ ! > F874 -> -> 50 `i `ui 110  ]
 [; ;main.c: 757: reset();
 "757
 [e ( _reset ..  ]
@@ -2205,126 +2205,129 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 772: setWaitResetFlag(1);
 "772
 [e ( _setWaitResetFlag (1 -> -> 1 `i `uc ]
-[; ;main.c: 778: ucStep = DELAY_ONE_SECOND_FOR_PWM;
-"778
-[e = F868 . `E856 8 ]
-[; ;main.c: 779: break;
+[; ;main.c: 773: pwm_start(150,249);
+"773
+[e ( _pwm_start (2 , -> -> 150 `i `uc -> -> 249 `i `uc ]
+[; ;main.c: 779: ucStep = DELAY_ONE_SECOND_FOR_PWM;
 "779
-[e $U 73  ]
+[e = F868 . `E856 8 ]
+[; ;main.c: 780: break;
 "780
+[e $U 73  ]
+"781
 }
-[; ;main.c: 780: }
-[; ;main.c: 782: case DELAY_ONE_SECOND_FOR_PWM:
-"782
-[e :U 112 ]
-[; ;main.c: 783: {
+[; ;main.c: 781: }
+[; ;main.c: 783: case DELAY_ONE_SECOND_FOR_PWM:
 "783
-{
+[e :U 112 ]
+[; ;main.c: 784: {
 "784
+{
+"785
 [v F876 `ui  1 s ucDelay1s ]
 [i F876
 -> -> 0 `i `ui
 ]
-[; ;main.c: 784: static unsigned ucDelay1s = 0;
-[; ;main.c: 785: if(ucDelay1s <= 5)
-"785
-[e $ ! <= F876 -> -> 5 `i `ui 113  ]
-[; ;main.c: 786: ucDelay1s++;
+[; ;main.c: 785: static unsigned ucDelay1s = 0;
+[; ;main.c: 786: if(ucDelay1s <= 50)
 "786
+[e $ ! <= F876 -> -> 50 `i `ui 113  ]
+[; ;main.c: 787: ucDelay1s++;
+"787
 [e ++ F876 -> -> 1 `i `ui ]
 [e $U 114  ]
-"787
-[e :U 113 ]
-[; ;main.c: 787: else
-[; ;main.c: 788: {
 "788
-{
-[; ;main.c: 789: ucDelay1s = 0;
+[e :U 113 ]
+[; ;main.c: 788: else
+[; ;main.c: 789: {
 "789
-[e = F876 -> -> 0 `i `ui ]
-[; ;main.c: 790: ucStep = MEET_RESET_CONDITION_STEP;
+{
+[; ;main.c: 790: ucDelay1s = 0;
 "790
-[e = F868 . `E856 9 ]
+[e = F876 -> -> 0 `i `ui ]
+[; ;main.c: 791: ucStep = MEET_RESET_CONDITION_STEP;
 "791
+[e = F868 . `E856 9 ]
+"792
 }
 [e :U 114 ]
-[; ;main.c: 791: }
-[; ;main.c: 796: break;
-"796
-[e $U 73  ]
+[; ;main.c: 792: }
+[; ;main.c: 797: break;
 "797
+[e $U 73  ]
+"798
 }
-[; ;main.c: 797: }
-[; ;main.c: 799: case MEET_RESET_CONDITION_STEP:
-"799
-[e :U 115 ]
-[; ;main.c: 800: {
+[; ;main.c: 798: }
+[; ;main.c: 800: case MEET_RESET_CONDITION_STEP:
 "800
-{
+[e :U 115 ]
+[; ;main.c: 801: {
 "801
+{
+"802
 [v F877 `uc  1 s ucTimerP5s ]
 [i F877
 -> -> 0 `i `uc
 ]
-"802
+"803
 [v _ucChValue `ui  1 a ]
-[; ;main.c: 801: static unsigned char ucTimerP5s = 0;
-[; ;main.c: 802: unsigned int ucChValue = getAdOriginalCh13Value();
+[; ;main.c: 802: static unsigned char ucTimerP5s = 0;
+[; ;main.c: 803: unsigned int ucChValue = getAdOriginalCh13Value();
 [e = _ucChValue ( _getAdOriginalCh13Value ..  ]
-[; ;main.c: 804: if( ucChValue > 50 )
-"804
-[e $ ! > _ucChValue -> -> 50 `i `ui 116  ]
-[; ;main.c: 805: ucTimerP5s++;
+[; ;main.c: 805: if( ucChValue > 50 )
 "805
+[e $ ! > _ucChValue -> -> 50 `i `ui 116  ]
+[; ;main.c: 806: ucTimerP5s++;
+"806
 [e ++ F877 -> -> 1 `i `uc ]
 [e $U 117  ]
-"806
-[e :U 116 ]
-[; ;main.c: 806: else
-[; ;main.c: 807: ucTimerP5s = 0;
 "807
+[e :U 116 ]
+[; ;main.c: 807: else
+[; ;main.c: 808: ucTimerP5s = 0;
+"808
 [e = F877 -> -> 0 `i `uc ]
 [e :U 117 ]
-[; ;main.c: 809: if(ucTimerP5s >= 5)
-"809
-[e $ ! >= -> F877 `i -> 5 `i 118  ]
-[; ;main.c: 810: ucStep = RESET_STEP;
+[; ;main.c: 810: if(ucTimerP5s >= 50)
 "810
+[e $ ! >= -> F877 `i -> 50 `i 118  ]
+[; ;main.c: 811: ucStep = RESET_STEP;
+"811
 [e = F868 . `E856 10 ]
 [e :U 118 ]
-[; ;main.c: 811: break;
-"811
-[e $U 73  ]
+[; ;main.c: 812: break;
 "812
+[e $U 73  ]
+"813
 }
-[; ;main.c: 812: }
-[; ;main.c: 814: case RESET_STEP:
-"814
-[e :U 119 ]
-[; ;main.c: 815: {
+[; ;main.c: 813: }
+[; ;main.c: 815: case RESET_STEP:
 "815
-{
-[; ;main.c: 816: ucStep = INIT_STEP;
+[e :U 119 ]
+[; ;main.c: 816: {
 "816
-[e = F868 . `E856 0 ]
-[; ;main.c: 817: reset();
+{
+[; ;main.c: 817: ucStep = INIT_STEP;
 "817
-[e ( _reset ..  ]
-[; ;main.c: 818: break;
+[e = F868 . `E856 0 ]
+[; ;main.c: 818: reset();
 "818
-[e $U 73  ]
+[e ( _reset ..  ]
+[; ;main.c: 819: break;
 "819
-}
-[; ;main.c: 819: }
-[; ;main.c: 822: default:
-"822
-[e :U 120 ]
-[; ;main.c: 823: break;
-"823
 [e $U 73  ]
-"824
+"820
 }
-[; ;main.c: 824: }
+[; ;main.c: 820: }
+[; ;main.c: 823: default:
+"823
+[e :U 120 ]
+[; ;main.c: 824: break;
+"824
+[e $U 73  ]
+"825
+}
+[; ;main.c: 825: }
 [e $U 73  ]
 "570
 [e :U 74 ]
@@ -2340,20 +2343,20 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E856 9 115
  , $ . `E856 10 119
  120 ]
-"824
+"825
 [e :U 73 ]
-"826
+"827
 }
 [e :U 72 ]
-"827
+"828
 }
 [e :U 69 ]
 "550
 [e $U 70  ]
 [e :U 71 ]
-[; ;main.c: 826: }
 [; ;main.c: 827: }
-[; ;main.c: 829: }
-"829
+[; ;main.c: 828: }
+[; ;main.c: 830: }
+"830
 [e :UE 68 ]
 }

@@ -244,8 +244,10 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 					 ;//do nothing
 
 				 if( TRUE == getWaitResetFlag())
+				 {
+				//	 setWaitResetFlag(0);
 					 uiInitWidth = PWM_SIXTY_WIDTH;
-
+				 }
 				 setPWM_Width(uiInitWidth);
 				 
 				 
@@ -591,7 +593,7 @@ unsigned char isFinishedOneHoursTimer()
 
 unsigned char isPermitSampleTime()
 {
-	if(timer.timer10msStopWatch >= 10) //10*10ms = 100ms
+	if(timer.timer10msStopWatch >= 1) //10*10ms = 100ms
 	{
 		return 1;
 	}

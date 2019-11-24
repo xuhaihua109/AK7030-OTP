@@ -488,10 +488,10 @@ static void chipResetDebug( void )
 #endif
 
 
-#define   CONFIRMATION_COUT_0P5_SECOND    5
-#define   CONFIRMATION_COUT_0P3_SECOND    3
-#define   CONFIRMATION_COUT_0P2_SECOND    2
-#define   CONFIRMATION_COUT_0P1_SECOND    1
+#define   CONFIRMATION_COUT_0P5_SECOND    50
+#define   CONFIRMATION_COUT_0P3_SECOND    30
+#define   CONFIRMATION_COUT_0P2_SECOND    20
+#define   CONFIRMATION_COUT_0P1_SECOND    10
 
 
 int main (void)
@@ -611,7 +611,7 @@ int main (void)
                     cout << "  case START_UP_PWM_STEP" << endl;
                     cout <<"pwm_start(PWM_DEFAULT_THIRTY_WIDTH,PWM_FREQUENCY);"<<endl;
 #else
-                    pwm_start(PWM_DEFAULT_THIRTY_WIDTH,PWM_FREQUENCY);
+                    pwm_start(PWM_SIXTY_WIDTH,PWM_FREQUENCY);
 #endif
                     setPB3(SET_PIN_LOW);
                     setPB4(SET_PIN_HIGH);
@@ -770,6 +770,7 @@ int main (void)
                   //  pwm_config(0);
 #ifndef USE_SOFTWARE_SIMULATION_TEST
                     setWaitResetFlag(TRUE);
+                    pwm_start(PWM_SIXTY_WIDTH,PWM_FREQUENCY);
                //     pwm_start(PWM_SIXTY_WIDTH,PWM_FREQUENCY);
 #else
                     cout <<"pwm_start(PWM_SIXTY_WIDTH,PWM_FREQUENCY);"<<endl;
