@@ -94,7 +94,7 @@ using namespace std;
 
 #define CONFIG1 IO_MODE8   & PWRTE_ON   & LVTEN_ON    & WDTE_ON    &  RDSEL_ON & SMT_ON
 #define CONFIG2 OTP_MOD4K  & BOR26V      & FOSC_RC20M  & RESETE_OFF
-#define CONFIG3 OTP_4K_0  & WDTPS_128   & SUT_ON      & SUT_0
+#define CONFIG3 OTP_4K_0  & WDTPS_8   & SUT_ON      & SUT_0
 
 
 __CONFIG(CONFIG1);
@@ -476,11 +476,29 @@ static void chipResetDebug( void )
 }
 #endif
 
-#define   TIMER_20MIN       60//1200
-#define   TIMER_3HOUR       180//10800
-#define   TIMER_10HOUR      240//36000
-#define   TIMER_1HOUR       120//3600
 
+static void resetAllTimer()
+{
+	clearTwelveHoursTimer();
+	clearThreeHoursTimer();
+	clearOneHoursTimer();
+	clearTwentyMinTimer();
+}
+
+#define USE_DEDUG_TIMER   1
+
+#ifndef  USE_DEDUG_TIMER
+#define   TIMER_20MIN       1200
+#define   TIMER_3HOUR       10800
+#define   TIMER_10HOUR      36000
+#define   TIMER_1HOUR       3600
+#else
+#define   TIMER_20MIN       60
+#define   TIMER_3HOUR       180
+#define   TIMER_10HOUR      240
+#define   TIMER_1HOUR       120
+
+#endif
 #ifndef  USE_SOFTWARE_SIMULATION_TEST
 
 #else
@@ -665,7 +683,7 @@ int main (void)
                         ucStep = READY_FOR_RESET_STEP;
                     else
                     {
-                        if( getAdOriginalCh13Value() < 75 )
+                        if( getAdOriginalCh13Value() < 65 )
                             ucTimerP5s++;
                         else
                             ucTimerP5s = 0;
@@ -707,7 +725,7 @@ int main (void)
                         ucStep = READY_FOR_RESET_STEP;
                     else
                     {
-                        if( uiCh13Value > 85 )
+                        if( uiCh13Value > 90 )
                         {
                             if( uiTimerOneP5s <= CONFIRMATION_COUT_0P1_SECOND )
                                 uiTimerOneP5s++;
@@ -728,11 +746,16 @@ int main (void)
 
                             uiTimerOneP5s = 0;
                             uiTimerTwoP5s = 0;
+
+                            resetAllTimer();
+
+                            ucStep = START_UP_PWM_STEP;
                         }
                         else
                         {
-                            if( uiCh13Value < 75 )
+                            if( uiCh13Value < 65 )
                             {
+                           // 	PB4 = 1;
                                 if( uiTimerTwoP5s <= CONFIRMATION_COUT_0P1_SECOND)
                                     uiTimerTwoP5s++;
                             }
@@ -748,13 +771,15 @@ int main (void)
                                 setPB4(SET_PIN_LOW);
                                 setPB5(SET_PIN_HIGH);
 
-                                if(uiCh13Value < 25)
-                                    uiTimerThreeP5s++;
-                                else
-                                    uiTimerThreeP5s = 0;
-
-                                if(uiTimerThreeP5s > CONFIRMATION_COUT_0P5_SECOND)
-                                    reset();
+//                                if(uiCh13Value < 25)
+//                                    uiTimerThreeP5s++;
+//                                else
+//                                    uiTimerThreeP5s = 0;
+//
+//                                if(uiTimerThreeP5s > CONFIRMATION_COUT_0P3_SECOND)
+//                                {
+//                                    reset();
+//                                }
                             }
 
                         }

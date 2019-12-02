@@ -873,7 +873,7 @@ extern void _delay(unsigned long);
 # 100
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x0FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
-asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3F7F & 0x3FFF & 0x3FF8");;
 
 # 115
 void initPB3(unsigned char bValue)
@@ -1039,7 +1039,16 @@ while(1);
 # 300
 }
 
-# 497
+# 480
+static void resetAllTimer()
+{
+clearTwelveHoursTimer();
+clearThreeHoursTimer();
+clearOneHoursTimer();
+clearTwentyMinTimer();
+}
+
+# 515
 int main (void)
 {
 enum systemStep {
@@ -1058,7 +1067,7 @@ RESET_STEP,
 
 static enum systemStep ucStep = INIT_STEP;
 
-# 526
+# 544
 initPin();
 setPinInitVaule();
 selectAdChannel();
@@ -1069,12 +1078,12 @@ timer1_interrupt_config();
 
 adc_test_init(12,3);
 
-# 540
+# 558
 startTwentyMinTimer( 60 );
 _delay(1000);
 adc_start();
 
-# 550
+# 568
 while(1)
 {
 
@@ -1088,14 +1097,14 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 570
+# 588
 switch(ucStep)
 {
 
 case INIT_STEP:
 {
 
-# 579
+# 597
 static unsigned char ucTimerP3s = 0;
 
 if( isFinishedTwentyMinTimer() )
@@ -1120,7 +1129,7 @@ ucStep = START_UP_PWM_STEP;
 
 }
 
-# 605
+# 623
 break;
 }
 
@@ -1144,7 +1153,7 @@ break;
 case CHECK_10_HOUR_TIMER_STEP:
 {
 
-# 631
+# 649
 static unsigned char ucTimerP5s = 0;
 
 if( isFinishedTwelveHoursTimer () )
@@ -1182,7 +1191,7 @@ if( isFinishedThreeHoursTimer() )
 ucStep = READY_FOR_RESET_STEP;
 else
 {
-if( getAdOriginalCh13Value() < 75 )
+if( getAdOriginalCh13Value() < 65 )
 ucTimerP5s++;
 else
 ucTimerP5s = 0;
@@ -1210,7 +1219,7 @@ break;
 case CHECK_1_HOUR_TIMER_STEP:
 {
 
-# 699
+# 717
 static unsigned int uiTimerOneP5s = 0;
 static unsigned int uiTimerTwoP5s = 0;
 static unsigned int uiTimerThreeP5s = 0;
@@ -1222,7 +1231,7 @@ if( isFinishedOneHoursTimer() )
 ucStep = READY_FOR_RESET_STEP;
 else
 {
-if( uiCh13Value > 85 )
+if( uiCh13Value > 90 )
 {
 if( uiTimerOneP5s <= 10 )
 uiTimerOneP5s++;
@@ -1243,11 +1252,16 @@ setPB5(0);
 
 uiTimerOneP5s = 0;
 uiTimerTwoP5s = 0;
+
+resetAllTimer();
+
+ucStep = START_UP_PWM_STEP;
 }
 else
 {
-if( uiCh13Value < 75 )
+if( uiCh13Value < 65 )
 {
+
 if( uiTimerTwoP5s <= 10)
 uiTimerTwoP5s++;
 }
@@ -1263,13 +1277,7 @@ setPB3(1);
 setPB4(0);
 setPB5(1);
 
-if(uiCh13Value < 25)
-uiTimerThreeP5s++;
-else
-uiTimerThreeP5s = 0;
-
-if(uiTimerThreeP5s > 50)
-reset();
+# 783
 }
 
 }
@@ -1287,7 +1295,7 @@ setPB5(1);
 setWaitResetFlag(1);
 pwm_start(150,249);
 
-# 779
+# 804
 ucStep = DELAY_ONE_SECOND_FOR_PWM;
 break;
 }
@@ -1303,7 +1311,7 @@ ucDelay1s = 0;
 ucStep = MEET_RESET_CONDITION_STEP;
 }
 
-# 797
+# 822
 break;
 }
 

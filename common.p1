@@ -1830,9 +1830,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 216: uiCalWidthArrayOld=uiCalWidthArrayNew;
 "216
 [e = F878 F877 ]
-[; ;common.c: 221: if(uiDeviationValue > (312))
+[; ;common.c: 221: if(uiDeviationValue > (295))
 "221
-[e $ ! > _uiDeviationValue -> -> 312 `i `ui 83  ]
+[e $ ! > _uiDeviationValue -> -> 295 `i `ui 83  ]
 [; ;common.c: 222: {
 "222
 {
@@ -1845,8 +1845,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 84  ]
 "228
 [e :U 83 ]
-[; ;common.c: 228: else if(uiDeviationValue < (312))
-[e $ ! < _uiDeviationValue -> -> 312 `i `ui 85  ]
+[; ;common.c: 228: else if(uiDeviationValue < (295))
+[e $ ! < _uiDeviationValue -> -> 295 `i `ui 85  ]
 [; ;common.c: 229: {
 "229
 {

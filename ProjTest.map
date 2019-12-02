@@ -26,37 +26,35 @@ startup.obj     end_init                             11       11        2       
                 reset_vec                             0        0        2        0       0
 ProjTest.obj    intentry                              4        4        D        8       0
                 config                             2000     2000        3     4000       0
-                text1268                             13       13      204        8       0
-                text1260                            52E      52E       15        8       0
-                text1259                            5E2      5E2        4        8       0
-                text1258                            5EE      5EE        1        8       0
-                text1257                            5CA      5CA        8        8       0
-                text1256                            5B8      5B8        A        8       0
-                text1255                            5E9      5E9        3        8       0
-                text1253                            581      581        E        8       0
-                text1251                            5DE      5DE        4        8       0
-                text1250                            5EC      5EC        2        8       0
-                text1249                            5AE      5AE        A        8       0
-                text1248                            5DA      5DA        4        8       0
-                text1247                            573      573        E        8       0
-                text1246                            5A4      5A4        A        8       0
-                text1245                            5D6      5D6        4        8       0
-                text1244                            565      565        E        8       0
-                text1243                            59A      59A        A        8       0
-                text1242                            5D2      5D2        4        8       0
-                text1241                            557      557        E        8       0
-                text1240                            58F      58F        B        8       0
-                text1239                            5E6      5E6        3        8       0
-                text1234                            4DC      4DC       31        8       0
-                text1233                            50D      50D       21        8       0
-                text1232                            48C      48C       50        8       0
-                text1231                            3D4      3D4       B8        8       0
-                maintext                            217      217      1BD        8       0
+                text1311                             13       13      204        8       0
+                text1303                            52E      52E       15        8       0
+                text1302                            5D6      5D6        4        8       0
+                text1301                            5E2      5E2        1        8       0
+                text1296                            5CA      5CA        8        8       0
+                text1295                            5B8      5B8        A        8       0
+                text1294                            5DD      5DD        3        8       0
+                text1292                            581      581        E        8       0
+                text1290                            5D2      5D2        4        8       0
+                text1289                            5E0      5E0        2        8       0
+                text1288                            5AE      5AE        A        8       0
+                text1287                            573      573        E        8       0
+                text1286                            5A4      5A4        A        8       0
+                text1285                            565      565        E        8       0
+                text1284                            59A      59A        A        8       0
+                text1283                            557      557        E        8       0
+                text1282                            58F      58F        B        8       0
+                text1281                            5DA      5DA        3        8       0
+                text1276                            4C4      4C4       31        8       0
+                text1275                            4F5      4F5       21        8       0
+                text1274                            516      516       18        8       0
+                text1273                            474      474       50        8       0
+                text1272                            3BC      3BC       B8        8       0
+                maintext                            217      217      1A5        8       0
                 cstackBANK0                          20       20       1D       20       1
                 cstackCOMMON                         70       70        D       70       1
-                cstackBANK1                          BE       BE       14       A0       1
+                cstackBANK1                          BC       BC       14       A0       1
                 clrtext                             5C2      5C2        8        8       0
-                bssBANK1                             A0       A0       1E       A0       1
+                bssBANK1                             A0       A0       1C       A0       1
                 dataBANK0                            59       59        2       20       1
                 bssBANK0                             3D       3D       1C       20       1
                 bssCOMMON                            7D       7D        1       70       1
@@ -69,32 +67,30 @@ TOTAL           Name                               Link     Load   Length     Sp
                 end_init                             11       11        2         0
                 intentry                              4        4        D         0
                 reset_vec                             0        0        2         0
-                text1268                             13       13      204         0
-                text1260                            52E      52E       15         0
-                text1259                            5E2      5E2        4         0
-                text1258                            5EE      5EE        1         0
-                text1257                            5CA      5CA        8         0
-                text1256                            5B8      5B8        A         0
-                text1255                            5E9      5E9        3         0
-                text1253                            581      581        E         0
-                text1251                            5DE      5DE        4         0
-                text1250                            5EC      5EC        2         0
-                text1249                            5AE      5AE        A         0
-                text1248                            5DA      5DA        4         0
-                text1247                            573      573        E         0
-                text1246                            5A4      5A4        A         0
-                text1245                            5D6      5D6        4         0
-                text1244                            565      565        E         0
-                text1243                            59A      59A        A         0
-                text1242                            5D2      5D2        4         0
-                text1241                            557      557        E         0
-                text1240                            58F      58F        B         0
-                text1239                            5E6      5E6        3         0
-                text1234                            4DC      4DC       31         0
-                text1233                            50D      50D       21         0
-                text1232                            48C      48C       50         0
-                text1231                            3D4      3D4       B8         0
-                maintext                            217      217      1BD         0
+                text1311                             13       13      204         0
+                text1303                            52E      52E       15         0
+                text1302                            5D6      5D6        4         0
+                text1301                            5E2      5E2        1         0
+                text1296                            5CA      5CA        8         0
+                text1295                            5B8      5B8        A         0
+                text1294                            5DD      5DD        3         0
+                text1292                            581      581        E         0
+                text1290                            5D2      5D2        4         0
+                text1289                            5E0      5E0        2         0
+                text1288                            5AE      5AE        A         0
+                text1287                            573      573        E         0
+                text1286                            5A4      5A4        A         0
+                text1285                            565      565        E         0
+                text1284                            59A      59A        A         0
+                text1283                            557      557        E         0
+                text1282                            58F      58F        B         0
+                text1281                            5DA      5DA        3         0
+                text1276                            4C4      4C4       31         0
+                text1275                            4F5      4F5       21         0
+                text1274                            516      516       18         0
+                text1273                            474      474       50         0
+                text1272                            3BC      3BC       B8         0
+                maintext                            217      217      1A5         0
                 clrtext                             5C2      5C2        8         0
                 cinit                               543      543       14         0
 
@@ -110,8 +106,8 @@ TOTAL           Name                               Link     Load   Length     Sp
                 bssBANK0                             3D       3D       1C         1
 
         CLASS   BANK1          
-                cstackBANK1                          BE       BE       14         1
-                bssBANK1                             A0       A0       1E         1
+                cstackBANK1                          BC       BC       14         1
+                bssBANK1                             A0       A0       1C         1
 
         CLASS   BANK2          
 
@@ -146,10 +142,10 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000002  000002         0       0  CODE        2
-                intentry                       000004  0005EB  0005EF         8       0  CODE        2
+                intentry                       000004  0005DF  0005E3         8       0  CODE        2
                 cstackBANK0                    000020  00003B  00005B        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
-                bssBANK1                       0000A0  000032  0000D2        A0       1  BANK1       1
+                bssBANK1                       0000A0  000030  0000D0        A0       1  BANK1       1
                 config                         002000  000003  002003      4000       0  CONFIG      2
 
 
@@ -157,19 +153,19 @@ UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
         BANK0            005B-006F             15           1
-        BANK1            00D2-00EF             1E           1
+        BANK1            00D0-00EF             20           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0002-0003              2           2
-                         05EF-0FFF            211
+                         05E3-0FFF            21D
         CONFIG           2003-2007              5           2
         CONST            0002-0003              2           2
-                         05EF-0FFF            100
+                         05E3-0FFF            100
         ENTRY            0002-0003              2           2
-                         05EF-0FFF            100
+                         05E3-0FFF            100
         IDLOC            2008-200B              4           2
         RAM              005B-006F             15           1
-                         00D2-00EF             1E
+                         00D0-00EF             20
                          0110-016F             60
                          0190-01EF             60
         SFR0             0000-001F             20           1
@@ -177,9 +173,9 @@ UNUSED ADDRESS RANGES
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
         STRCODE          0002-0003              2           2
-                         05EF-0FFF            A11
+                         05E3-0FFF            A1D
         STRING           0002-0003              2           2
-                         05EF-0FFF            100
+                         05E3-0FFF            100
 
                                   Symbol Table
 
@@ -190,6 +186,7 @@ UNUSED ADDRESS RANGES
 ??_adc_get                                        cstackCOMMON 0072
 ??_adc_start                                      cstackBANK0  0035
 ??_adc_test_init                                  cstackBANK0  0036
+??_clearOneHoursTimer                             cstackBANK0  0035
 ??_clearThreeHoursTimer                           cstackBANK0  0035
 ??_clearTwelveHoursTimer                          cstackBANK0  0035
 ??_clearTwentyMinTimer                            cstackBANK0  0035
@@ -208,10 +205,11 @@ UNUSED ADDRESS RANGES
 ??_isFinishedTwelveHoursTimer                     cstackBANK0  0035
 ??_isFinishedTwentyMinTimer                       cstackBANK0  0035
 ??_isPermitSampleTime                             cstackBANK0  0035
-??_main                                           cstackBANK1  00CD
+??_main                                           cstackBANK1  00CB
 ??_process_AD_Converter_Value                     cstackBANK0  0038
 ??_pwm_start                                      cstackBANK0  0036
 ??_reset                                          cstackBANK0  0035
+??_resetAllTimer                                  cstackBANK0  0035
 ??_selectAdChannel                                cstackBANK0  0035
 ??_setAD_ConvertFlag                              cstackBANK0  0035
 ??_setPB3                                         cstackBANK0  0035
@@ -235,6 +233,7 @@ UNUSED ADDRESS RANGES
 ?_adc_get                                         cstackCOMMON 0070
 ?_adc_start                                       cstackCOMMON 0070
 ?_adc_test_init                                   cstackBANK0  0035
+?_clearOneHoursTimer                              cstackCOMMON 0070
 ?_clearThreeHoursTimer                            cstackCOMMON 0070
 ?_clearTwelveHoursTimer                           cstackCOMMON 0070
 ?_clearTwentyMinTimer                             cstackCOMMON 0070
@@ -257,6 +256,7 @@ UNUSED ADDRESS RANGES
 ?_process_AD_Converter_Value                      cstackCOMMON 0070
 ?_pwm_start                                       cstackBANK0  0035
 ?_reset                                           cstackCOMMON 0070
+?_resetAllTimer                                   cstackCOMMON 0070
 ?_selectAdChannel                                 cstackCOMMON 0070
 ?_setAD_ConvertFlag                               cstackCOMMON 0070
 ?_setPB3                                          cstackCOMMON 0070
@@ -280,13 +280,13 @@ Filter@filter_temp                                cstackBANK0  0020
 Filter@i                                          cstackBANK0  002E
 Filter@j                                          cstackBANK0  002D
 Filter@tmpValue                                   cstackBANK0  0024
-FilterCh13@cir                                    cstackBANK1  00C9
-FilterCh13@filter_buf                             cstackBANK1  00C3
-FilterCh13@filter_sum                             cstackBANK1  00C1
-FilterCh13@filter_temp                            cstackBANK1  00BF
-FilterCh13@i                                      cstackBANK1  00CC
-FilterCh13@j                                      cstackBANK1  00CB
-FilterCh13@tmpValue                               cstackBANK1  00BE
+FilterCh13@cir                                    cstackBANK1  00C7
+FilterCh13@filter_buf                             cstackBANK1  00C1
+FilterCh13@filter_sum                             cstackBANK1  00BF
+FilterCh13@filter_temp                            cstackBANK1  00BD
+FilterCh13@i                                      cstackBANK1  00CA
+FilterCh13@j                                      cstackBANK1  00C9
+FilterCh13@tmpValue                               cstackBANK1  00BC
 ISR@ucTimer1sCnt                                  bssBANK0     0049
 _ADCON0                                           (abs)        001F
 _ADCON1                                           (abs)        009F
@@ -295,16 +295,16 @@ _ADIF                                             (abs)        006A
 _ADON                                             (abs)        00F8
 _ADRESH                                           (abs)        001E
 _ADRESL                                           (abs)        009E
-_AD_Sample                                        text1232     04A9
+_AD_Sample                                        text1273     0491
 _CCP1CON                                          (abs)        0017
 _CCPR1L                                           (abs)        0015
 _CLKPCE                                           (abs)        0847
 _CLKPR                                            (abs)        0108
-_Filter                                           text1268     015C
-_FilterCh13                                       text1231     03DB
+_Filter                                           text1311     015C
+_FilterCh13                                       text1272     03C3
 _GIE                                              (abs)        005F
 _GO                                               (abs)        00F9
-_ISR                                              text1268     0013
+_ISR                                              text1311     0013
 _PB2                                              (abs)        0032
 _PB3                                              (abs)        0033
 _PB4                                              (abs)        0034
@@ -395,107 +395,111 @@ __Lsfr3                                           sfr3         0000
 __Lstrings                                        strings      0000
 __Ltext                                           text         0000
 __S0                                              (abs)        2003
-__S1                                              (abs)        00D2
-__end_of_AD_Sample                                text1232     04BD
-__end_of_Filter                                   text1268     01E2
-__end_of_FilterCh13                               text1231     0470
-__end_of_ISR                                      text1268     0079
-__end_of_adc_get                                  text1268     0084
-__end_of_adc_start                                text1232     04DC
-__end_of_adc_test_init                            text1232     04D8
-__end_of_clearThreeHoursTimer                     text1242     05D6
-__end_of_clearTwelveHoursTimer                    text1245     05DA
-__end_of_clearTwentyMinTimer                      text1248     05DE
-__end_of_clock_config                             text1257     05D2
-__end_of_clrSampeTime                             text1250     05EE
-__end_of_getAD_ConvertFlag                        text1232     04A6
-__end_of_getAdOriginalCh13Value                   text1231     03DB
-__end_of_getWaitResetFlag                         text1268     015C
-__end_of_initPB2_AsHighResistence                 text1234     04F7
-__end_of_initPB3                                  text1234     04F2
-__end_of_initPB4                                  text1234     0502
-__end_of_initPB5                                  text1234     050D
-__end_of_initPin                                  text1234     04E6
-__end_of_isFinishedOneHoursTimer                  text1240     059A
-__end_of_isFinishedThreeHoursTimer                text1243     05A4
-__end_of_isFinishedTwelveHoursTimer               text1246     05AE
-__end_of_isFinishedTwentyMinTimer                 text1249     05B8
-__end_of_isPermitSampleTime                       text1251     05E2
-__end_of_main                                     maintext     03D4
-__end_of_process_AD_Converter_Value               text1232     04A2
-__end_of_pwm_start                                text1260     0543
-__end_of_reset                                    text1259     05E2
-__end_of_selectAdChannel                          text1259     05E6
-__end_of_setAD_ConvertFlag                        text1232     04A9
-__end_of_setPB3                                   text1233     051E
-__end_of_setPB4                                   text1233     0526
-__end_of_setPB5                                   text1233     052E
-__end_of_setPWM_Width                             text1268     01E5
-__end_of_setPinInitVaule                          text1233     0515
-__end_of_setWaitResetFlag                         text1239     05E9
-__end_of_startOneHoursTimer                       text1241     0565
-__end_of_startThreeHoursTimer                     text1244     0573
-__end_of_startTwelveHourTimer                     text1247     0581
-__end_of_startTwentyMinTimer                      text1253     058F
-__end_of_timer1_config                            text1256     05C2
-__end_of_timer1_interrupt_config                  text1255     05EC
-__end_of_vPutSampleDataIntoTable                  text1268     015A
-__end_ofi1_setAD_ConvertFlag                      text1268     0087
+__S1                                              (abs)        00D0
+__end_of_AD_Sample                                text1273     04A5
+__end_of_Filter                                   text1311     01E2
+__end_of_FilterCh13                               text1272     0458
+__end_of_ISR                                      text1311     0079
+__end_of_adc_get                                  text1311     0084
+__end_of_adc_start                                text1273     04C4
+__end_of_adc_test_init                            text1273     04C0
+__end_of_clearOneHoursTimer                       text1274     052A
+__end_of_clearThreeHoursTimer                     text1274     0526
+__end_of_clearTwelveHoursTimer                    text1274     0522
+__end_of_clearTwentyMinTimer                      text1274     052E
+__end_of_clock_config                             text1296     05D2
+__end_of_clrSampeTime                             text1289     05E2
+__end_of_getAD_ConvertFlag                        text1273     048E
+__end_of_getAdOriginalCh13Value                   text1272     03C3
+__end_of_getWaitResetFlag                         text1311     015C
+__end_of_initPB2_AsHighResistence                 text1276     04DF
+__end_of_initPB3                                  text1276     04DA
+__end_of_initPB4                                  text1276     04EA
+__end_of_initPB5                                  text1276     04F5
+__end_of_initPin                                  text1276     04CE
+__end_of_isFinishedOneHoursTimer                  text1282     059A
+__end_of_isFinishedThreeHoursTimer                text1284     05A4
+__end_of_isFinishedTwelveHoursTimer               text1286     05AE
+__end_of_isFinishedTwentyMinTimer                 text1288     05B8
+__end_of_isPermitSampleTime                       text1290     05D6
+__end_of_main                                     maintext     03BC
+__end_of_process_AD_Converter_Value               text1273     048A
+__end_of_pwm_start                                text1303     0543
+__end_of_reset                                    text1302     05D6
+__end_of_resetAllTimer                            text1274     051D
+__end_of_selectAdChannel                          text1302     05DA
+__end_of_setAD_ConvertFlag                        text1273     0491
+__end_of_setPB3                                   text1275     0506
+__end_of_setPB4                                   text1275     050E
+__end_of_setPB5                                   text1275     0516
+__end_of_setPWM_Width                             text1311     01E5
+__end_of_setPinInitVaule                          text1275     04FD
+__end_of_setWaitResetFlag                         text1281     05DD
+__end_of_startOneHoursTimer                       text1283     0565
+__end_of_startThreeHoursTimer                     text1285     0573
+__end_of_startTwelveHourTimer                     text1287     0581
+__end_of_startTwentyMinTimer                      text1292     058F
+__end_of_timer1_config                            text1295     05C2
+__end_of_timer1_interrupt_config                  text1294     05E0
+__end_of_vPutSampleDataIntoTable                  text1311     015A
+__end_ofi1_setAD_ConvertFlag                      text1311     0087
 __pbssBANK0                                       bssBANK0     003D
 __pbssBANK1                                       bssBANK1     00A0
 __pbssCOMMON                                      bssCOMMON    007D
 __pcstackBANK0                                    cstackBANK0  0020
-__pcstackBANK1                                    cstackBANK1  00BE
+__pcstackBANK1                                    cstackBANK1  00BC
 __pcstackCOMMON                                   cstackCOMMON 0070
 __pdataBANK0                                      dataBANK0    0059
 __pidataBANK0                                     idataBANK0   0000
 __pintentry                                       intentry     0004
 __pmaintext                                       maintext     0217
-__ptext1231                                       text1231     03D4
-__ptext1232                                       text1232     048C
-__ptext1233                                       text1233     050D
-__ptext1234                                       text1234     04DC
-__ptext1235                                       text1232     04A9
-__ptext1236                                       text1232     04A6
-__ptext1237                                       text1232     04A2
-__ptext1238                                       text1231     03DB
-__ptext1239                                       text1239     05E6
-__ptext1240                                       text1240     058F
-__ptext1241                                       text1241     0557
-__ptext1242                                       text1242     05D2
-__ptext1243                                       text1243     059A
-__ptext1244                                       text1244     0565
-__ptext1245                                       text1245     05D6
-__ptext1246                                       text1246     05A4
-__ptext1247                                       text1247     0573
-__ptext1248                                       text1248     05DA
-__ptext1249                                       text1249     05AE
-__ptext1250                                       text1250     05EC
-__ptext1251                                       text1251     05DE
-__ptext1252                                       text1232     04D8
-__ptext1253                                       text1253     0581
-__ptext1254                                       text1232     04BD
-__ptext1255                                       text1255     05E9
-__ptext1256                                       text1256     05B8
-__ptext1257                                       text1257     05CA
-__ptext1258                                       text1258     05EE
-__ptext1259                                       text1259     05E2
-__ptext1260                                       text1260     052E
-__ptext1261                                       text1234     04F2
-__ptext1262                                       text1233     0526
-__ptext1263                                       text1234     0502
-__ptext1264                                       text1233     051E
-__ptext1265                                       text1234     04F7
-__ptext1266                                       text1233     0515
-__ptext1267                                       text1234     04E6
-__ptext1268                                       text1268     0013
-__ptext1269                                       text1268     0087
-__ptext1270                                       text1268     0084
-__ptext1271                                       text1268     0079
-__ptext1272                                       text1268     015C
-__ptext1273                                       text1268     01E2
-__ptext1274                                       text1268     015A
-__ptext1275                                       text1275     0000
+__ptext1272                                       text1272     03BC
+__ptext1273                                       text1273     0474
+__ptext1274                                       text1274     0516
+__ptext1275                                       text1275     04F5
+__ptext1276                                       text1276     04C4
+__ptext1277                                       text1273     0491
+__ptext1278                                       text1273     048E
+__ptext1279                                       text1273     048A
+__ptext1280                                       text1272     03C3
+__ptext1281                                       text1281     05DA
+__ptext1282                                       text1282     058F
+__ptext1283                                       text1283     0557
+__ptext1284                                       text1284     059A
+__ptext1285                                       text1285     0565
+__ptext1286                                       text1286     05A4
+__ptext1287                                       text1287     0573
+__ptext1288                                       text1288     05AE
+__ptext1289                                       text1289     05E0
+__ptext1290                                       text1290     05D2
+__ptext1291                                       text1273     04C0
+__ptext1292                                       text1292     0581
+__ptext1293                                       text1273     04A5
+__ptext1294                                       text1294     05DD
+__ptext1295                                       text1295     05B8
+__ptext1296                                       text1296     05CA
+__ptext1297                                       text1274     052A
+__ptext1298                                       text1274     0526
+__ptext1299                                       text1274     0522
+__ptext1300                                       text1274     051D
+__ptext1301                                       text1301     05E2
+__ptext1302                                       text1302     05D6
+__ptext1303                                       text1303     052E
+__ptext1304                                       text1276     04DA
+__ptext1305                                       text1275     050E
+__ptext1306                                       text1276     04EA
+__ptext1307                                       text1275     0506
+__ptext1308                                       text1276     04DF
+__ptext1309                                       text1275     04FD
+__ptext1310                                       text1276     04CE
+__ptext1311                                       text1311     0013
+__ptext1312                                       text1311     0087
+__ptext1313                                       text1311     0084
+__ptext1314                                       text1311     0079
+__ptext1315                                       text1311     015C
+__ptext1316                                       text1311     01E2
+__ptext1317                                       text1311     015A
+__ptext1318                                       text1318     0000
 __size_of_AD_Sample                               (abs)        0000
 __size_of_Filter                                  (abs)        0000
 __size_of_FilterCh13                              (abs)        0000
@@ -503,6 +507,7 @@ __size_of_ISR                                     (abs)        0000
 __size_of_adc_get                                 (abs)        0000
 __size_of_adc_start                               (abs)        0000
 __size_of_adc_test_init                           (abs)        0000
+__size_of_clearOneHoursTimer                      (abs)        0000
 __size_of_clearThreeHoursTimer                    (abs)        0000
 __size_of_clearTwelveHoursTimer                   (abs)        0000
 __size_of_clearTwentyMinTimer                     (abs)        0000
@@ -525,6 +530,7 @@ __size_of_main                                    (abs)        0000
 __size_of_process_AD_Converter_Value              (abs)        0000
 __size_of_pwm_start                               (abs)        0000
 __size_of_reset                                   (abs)        0000
+__size_of_resetAllTimer                           (abs)        0000
 __size_of_selectAdChannel                         (abs)        0000
 __size_of_setAD_ConvertFlag                       (abs)        0000
 __size_of_setPB3                                  (abs)        0000
@@ -542,75 +548,77 @@ __size_of_timer1_interrupt_config                 (abs)        0000
 __size_of_vPutSampleDataIntoTable                 (abs)        0000
 __size_ofi1_setAD_ConvertFlag                     (abs)        0000
 _adc_convert_flag                                 bssBANK0     004A
-_adc_get                                          text1268     0079
-_adc_start                                        text1232     04D8
-_adc_test_init                                    text1232     04BD
+_adc_get                                          text1311     0079
+_adc_start                                        text1273     04C0
+_adc_test_init                                    text1273     04A5
 _bBigTimerStartFlag                               bssBANK0     004B
 _bOneHourTimerStartFlag                           bssBANK0     004C
 _bSmallTimerStartFlag                             bssBANK0     004D
 _bTwentyMinStartFlag                              bssBANK0     004E
 _bWaitResetFlag                                   bssBANK0     004F
-_clearThreeHoursTimer                             text1242     05D2
-_clearTwelveHoursTimer                            text1245     05D6
-_clearTwentyMinTimer                              text1248     05DA
-_clock_config                                     text1257     05CA
-_clrSampeTime                                     text1250     05EC
+_clearOneHoursTimer                               text1274     0526
+_clearThreeHoursTimer                             text1274     0522
+_clearTwelveHoursTimer                            text1274     051D
+_clearTwentyMinTimer                              text1274     052A
+_clock_config                                     text1296     05CA
+_clrSampeTime                                     text1289     05E0
 _exit                                             init         0011
-_getAD_ConvertFlag                                text1232     04A2
-_getAdOriginalCh13Value                           text1231     03D4
-_getWaitResetFlag                                 text1268     015A
-_initPB2_AsHighResistence                         text1234     04F2
-_initPB3                                          text1234     04E6
-_initPB4                                          text1234     04F7
-_initPB5                                          text1234     0502
-_initPin                                          text1234     04DC
-_isFinishedOneHoursTimer                          text1240     058F
-_isFinishedThreeHoursTimer                        text1243     059A
-_isFinishedTwelveHoursTimer                       text1246     05A4
-_isFinishedTwentyMinTimer                         text1249     05AE
-_isPermitSampleTime                               text1251     05DE
+_getAD_ConvertFlag                                text1273     048A
+_getAdOriginalCh13Value                           text1272     03BC
+_getWaitResetFlag                                 text1311     015A
+_initPB2_AsHighResistence                         text1276     04DA
+_initPB3                                          text1276     04CE
+_initPB4                                          text1276     04DF
+_initPB5                                          text1276     04EA
+_initPin                                          text1276     04C4
+_isFinishedOneHoursTimer                          text1282     058F
+_isFinishedThreeHoursTimer                        text1284     059A
+_isFinishedTwelveHoursTimer                       text1286     05A4
+_isFinishedTwentyMinTimer                         text1288     05AE
+_isPermitSampleTime                               text1290     05D2
 _main                                             maintext     0217
-_process_AD_Converter_Value                       text1232     048C
-_pwm_start                                        text1260     052E
-_reset                                            text1258     05EE
+_process_AD_Converter_Value                       text1273     0474
+_pwm_start                                        text1303     052E
+_reset                                            text1301     05E2
+_resetAllTimer                                    text1274     0516
 _sampleChannelSelect                              dataBANK0    0059
 _sampleTimes                                      bssBANK0     0050
-_selectAdChannel                                  text1259     05E2
-_setAD_ConvertFlag                                text1232     04A6
-_setPB3                                           text1233     0515
-_setPB4                                           text1233     051E
-_setPB5                                           text1233     0526
-_setPWM_Width                                     text1268     01E2
-_setPinInitVaule                                  text1233     050D
-_setWaitResetFlag                                 text1239     05E6
-_startOneHoursTimer                               text1241     0557
-_startThreeHoursTimer                             text1244     0565
-_startTwelveHourTimer                             text1247     0573
-_startTwentyMinTimer                              text1253     0581
+_selectAdChannel                                  text1302     05D6
+_setAD_ConvertFlag                                text1273     048E
+_setPB3                                           text1275     04FD
+_setPB4                                           text1275     0506
+_setPB5                                           text1275     050E
+_setPWM_Width                                     text1311     01E2
+_setPinInitVaule                                  text1275     04F5
+_setWaitResetFlag                                 text1281     05DA
+_startOneHoursTimer                               text1283     0557
+_startThreeHoursTimer                             text1285     0565
+_startTwelveHourTimer                             text1287     0573
+_startTwentyMinTimer                              text1292     0581
 _timer                                            bssBANK0     0051
-_timer1_config                                    text1256     05B8
-_timer1_interrupt_config                          text1255     05E9
+_timer1_config                                    text1295     05B8
+_timer1_interrupt_config                          text1294     05DD
 _uiBigTimer                                       bssBANK0     003D
 _uiOneHourTimer                                   bssBANK0     003F
-_uiSampleCh12                                     bssBANK1     00AC
-_uiSampleCh13                                     bssBANK1     00B2
-_uiSampleChannelFourteenth                        bssBANK1     00B8
+_uiSampleCh12                                     bssBANK1     00AA
+_uiSampleCh13                                     bssBANK1     00B0
+_uiSampleChannelFourteenth                        bssBANK1     00B6
 _uiSmallTimer                                     bssBANK0     0041
 _uiTwentyMinTimer                                 bssBANK0     0043
 _uiTwentySecondsTimer                             bssBANK1     00A0
-_vPutSampleDataIntoTable                          text1268     0087
+_vPutSampleDataIntoTable                          text1311     0087
 adc_get@val                                       cstackCOMMON 0072
 adc_test_init@channel                             cstackBANK0  0037
 adc_test_init@ref                                 cstackBANK0  0035
 btemp                                             (abs)        007E
 clear_ram                                         clrtext      05C2
 end_of_initialization                             cinit        0554
-i1_setAD_ConvertFlag                              text1268     0084
-i1l1476                                                            
-i1l1482                                                            
-i1l1508                                                            
-i1l1573                                                            
-i1l2325                                                            
+i1_setAD_ConvertFlag                              text1311     0084
+i1l1478                                                            
+i1l1484                                                            
+i1l1510                                                            
+i1l1575                                                            
+i1l2327                                                            
 i1l3524                                                            
 i1l3528                                                            
 i1l3578                                                            
@@ -657,20 +665,24 @@ intlevel2                                         functab      0000
 intlevel3                                         functab      0000
 intlevel4                                         functab      0000
 intlevel5                                         functab      0000
-l1473                                                              
-l1495                                                              
-l1561                                                              
-l1564                                                              
-l1567                                                              
-l1570                                                              
-l1573                                                              
-l1579                                                              
-l1605                                                              
-l1608                                                              
-l1614                                                              
-l1654                                                              
-l2316                                                              
-l2322                                                              
+l1475                                                              
+l1497                                                              
+l1563                                                              
+l1566                                                              
+l1569                                                              
+l1572                                                              
+l1575                                                              
+l1581                                                              
+l1607                                                              
+l1610                                                              
+l1613                                                              
+l1616                                                              
+l1656                                                              
+l2318                                                              
+l2324                                                              
+l3974                                                              
+l3976                                                              
+l3978                                                              
 l3980                                                              
 l3982                                                              
 l3984                                                              
@@ -693,7 +705,6 @@ l4016
 l4018                                                              
 l4020                                                              
 l4022                                                              
-l4024                                                              
 l4026                                                              
 l4028                                                              
 l4030                                                              
@@ -704,97 +715,95 @@ l4038
 l4040                                                              
 l4042                                                              
 l4044                                                              
-l4050                                                              
-l4054                                                              
+l4046                                                              
+l4052                                                              
 l4056                                                              
-l4066                                                              
+l4058                                                              
 l4068                                                              
-l4072                                                              
+l4070                                                              
 l4074                                                              
-l4084                                                              
+l4076                                                              
 l4086                                                              
 l4092                                                              
 l4094                                                              
 l4098                                                              
 l4100                                                              
 l4110                                                              
-l4112                                                              
+l4116                                                              
 l4118                                                              
-l4120                                                              
+l4122                                                              
 l4124                                                              
-l4126                                                              
-l4136                                                              
-l4138                                                              
-l4144                                                              
+l4134                                                              
+l4140                                                              
+l4142                                                              
 l4146                                                              
-l4150                                                              
-l4152                                                              
-l4162                                                              
-l4164                                                              
+l4148                                                              
+l4158                                                              
+l4160                                                              
+l4168                                                              
+l4170                                                              
 l4172                                                              
-l4174                                                              
-l4176                                                              
-l4196                                                              
-l4204                                                              
-l4206                                                              
+l4192                                                              
+l4200                                                              
+l4202                                                              
+l4208                                                              
 l4212                                                              
-l4216                                                              
+l4214                                                              
 l4218                                                              
 l4222                                                              
-l4226                                                              
+l4228                                                              
+l4230                                                              
 l4232                                                              
 l4234                                                              
 l4236                                                              
 l4238                                                              
 l4240                                                              
-l4242                                                              
-l4246                                                              
-l4254                                                              
+l4244                                                              
+l4252                                                              
+l4256                                                              
 l4258                                                              
 l4260                                                              
 l4262                                                              
 l4264                                                              
 l4266                                                              
-l4268                                                              
+l4270                                                              
 l4272                                                              
-l4274                                                              
-l4282                                                              
-l4294                                                              
+l4280                                                              
+l4296                                                              
 l4298                                                              
 l4300                                                              
-l4302                                                              
-l4318                                                              
-l4322                                                              
-l4338                                                              
+l4316                                                              
+l4320                                                              
+l4336                                                              
+l4340                                                              
 l4342                                                              
 l4344                                                              
 l4346                                                              
 l4348                                                              
-l4350                                                              
-l4354                                                              
-l4366                                                              
+l4352                                                              
+l4370                                                              
+l4372                                                              
 l4374                                                              
-l4376                                                              
-l4390                                                              
-l4402                                                              
-l4410                                                              
-l4414                                                              
-l707                                                               
-l710                                                               
-l713                                                               
-l716                                                               
-l719                                                               
-main@cTimerP5s_781                                bssBANK0     0052
-main@cTimerP5s_787                                bssBANK0     0053
-main@ucChValue                                    cstackBANK1  00CE
+l4392                                                              
+l4400                                                              
+l4404                                                              
+l4416                                                              
+l709                                                               
+l712                                                               
+l715                                                               
+l718                                                               
+l721                                                               
+l730                                                               
+main@cTimerP5s_786                                bssBANK0     0052
+main@cTimerP5s_792                                bssBANK0     0053
+main@ucChValue                                    cstackBANK1  00CC
 main@ucDelay1s                                    bssBANK1     00A2
 main@ucStep                                       bssBANK0     0054
 main@ucTimerP3s                                   bssBANK0     0055
 main@ucTimerP5s                                   bssBANK0     0056
-main@uiCh13Value                                  cstackBANK1  00D0
+main@uiCh13Value                                  cstackBANK1  00CE
 main@uiTimerOneP5s                                bssBANK1     00A4
-main@uiTimerThreeP5s                              bssBANK1     00A6
-main@uiTimerTwoP5s                                bssBANK1     00A8
+main@uiTimerTwoP5s                                bssBANK1     00A6
 pwm_start@ucPulseFrequency                        cstackBANK0  0035
 pwm_start@ucPulseWidth                            cstackBANK0  0036
 reset_vec                                         reset_vec    0000
@@ -819,7 +828,7 @@ vPutSampleDataIntoTable@ucChannelFourteenthLength bssBANK0     0058
 vPutSampleDataIntoTable@uiAbstractValue           cstackBANK0  002F
 vPutSampleDataIntoTable@uiCalWidthArrayNew        bssBANK0     0045
 vPutSampleDataIntoTable@uiCalWidthArrayOld        bssBANK0     0047
-vPutSampleDataIntoTable@uiCalWidthCnt             bssBANK1     00AA
+vPutSampleDataIntoTable@uiCalWidthCnt             bssBANK1     00A8
 vPutSampleDataIntoTable@uiDeviationValue          cstackBANK0  0031
 vPutSampleDataIntoTable@uiInitWidth               dataBANK0    005A
 vPutSampleDataIntoTable@uiSampleData              cstackCOMMON 0076
