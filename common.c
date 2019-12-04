@@ -171,6 +171,14 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 	 static unsigned char ucChannelFourteenthLength = 0;
      static	unsigned int uiCalWidthArrayNew = 0;
      static	unsigned int uiCalWidthArrayOld = 0;
+
+     static unsigned int uiCalWidthArray1 = 0;
+     static unsigned int uiCalWidthArray2 = 0;
+     static unsigned int uiCalWidthArray3 = 0;
+     static unsigned int uiCalWidthArray4 = 0;
+
+     static unsigned char ucInitFlag = 0;
+
 	 if(channel == AD_CHANNEL_12_CHANNEL)
 	 {
 		 if(ucCh12Length < FILTER_N)
@@ -191,26 +199,43 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 
 				 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
 
-				 uiCalWidthArrayNew = Filter(uiSampleCh12);// when the value of AD12 is five, filter and calculate the average value.
+			//	 uiCalWidthArrayNew = Filter(uiSampleCh12);// when the value of AD12 is five, filter and calculate the average value.
+				 uiCalWidthArray1 = Filter(uiSampleCh12);
+
+				 if( 0 == ucInitFlag)
+				 {
+					 ucInitFlag = 1;
+
+					 uiCalWidthArray2 = uiCalWidthArray1;
+					 uiCalWidthArray3 = uiCalWidthArray1;
+					 uiCalWidthArray4 = uiCalWidthArray1;
+				 }
 
 				 unsigned int uiDeviationValue = 0,uiAbstractValue = 0;
 
-				 if( uiCalWidthArrayNew >= uiCalWidthArrayOld)
-				 {
-					 uiAbstractValue = uiCalWidthArrayNew - uiCalWidthArrayOld;
-					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) + uiAbstractValue;
-				 }
-				 else
-				 {
-					 uiAbstractValue = uiCalWidthArrayOld - uiCalWidthArrayNew;
-					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) - uiAbstractValue;
+//				 if( uiCalWidthArrayNew >= uiCalWidthArrayOld)
+//				 {
+//					 uiAbstractValue = uiCalWidthArrayNew - uiCalWidthArrayOld;
+//					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) + uiAbstractValue;
+//				 }
+//				 else
+//				 {
+//					 uiAbstractValue = uiCalWidthArrayOld - uiCalWidthArrayNew;
+//					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) - uiAbstractValue;
+//
+//				 }
 
-				 }
+				 uiDeviationValue = (uiCalWidthArray1 >> 2) + (uiCalWidthArray2 >> 2)
+						          + (uiCalWidthArray3 >> 2) + (uiCalWidthArray4 >> 2) + uiCalWidthArray4 - uiCalWidthArray3;
 
 
 
 				 if(uiCalWidthCnt>400)
 					uiDeviationValue =400;
+
+				 uiCalWidthArray4 = uiCalWidthArray3;
+				 uiCalWidthArray3 = uiCalWidthArray2;
+				 uiCalWidthArray2 = uiCalWidthArray1;
 
 
 				 uiCalWidthArrayOld=uiCalWidthArrayNew;
