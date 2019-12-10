@@ -116,13 +116,15 @@ void initPB3(unsigned char bValue)
 {
     if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        TRISB3 = 1;
+    //    TRISB3 = 1;
+    	TRISB0 = 1;
 #else
        cout <<"set PB3 as input pin."<<endl;
 #endif
     else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        TRISB3 = 0;
+    //    TRISB3 = 0;
+    	TRISB0 = 0;
 #else
        cout <<"set PB3 as output pin."<<endl;
 #endif
@@ -133,13 +135,15 @@ void setPB3(unsigned char bValue)
 {
     if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        PB3 = 1;
+    //    PB3 = 1;
+    	PB0 = 1;
 #else
        cout <<"set PB3 output 1"<<endl;
 #endif
     else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        PB3= 0;
+      //  PB3= 0;
+    	PB0 = 0;
 #else
        cout <<"set PB3 output 0"<<endl;
 #endif
@@ -151,13 +155,15 @@ void initPB4(unsigned char bValue)
 {
     if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        TRISB4 = 1;
+    //    TRISB4 = 1;
+    	TRISB3 = 1;
 #else
        cout <<"set PB4 as input pin."<<endl;
 #endif
     else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        TRISB4= 0;
+      //  TRISB4= 0;
+    	TRISB3 = 0;
 #else
        cout <<"set PB4 as output pin."<<endl;
 #endif
@@ -168,13 +174,15 @@ void setPB4(unsigned char bValue)
 {
     if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        PB4 = 1;
+      //  PB4 = 1;
+    	PB3 = 1;
 #else
        cout <<"set PB4 output 1."<<endl;
 #endif
     else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        PB4= 0;
+      //  PB4= 0;
+    	PB3 = 0;
 #else
        cout <<"set PB4 as output 0."<<endl;
 #endif
@@ -185,13 +193,15 @@ void initPB5(unsigned char bValue)
 {
     if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        TRISB5 = 1;
+     //   TRISB5 = 1;
+    	TRISB1 = 1;
 #else
        cout <<"set PB5 as input pin."<<endl;
 #endif
     else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        TRISB5= 0;
+     //   TRISB5= 0;
+    	 TRISB1= 0;
 #else
        cout <<"set PB5 as output pin."<<endl;
 #endif
@@ -202,13 +212,16 @@ void setPB5(unsigned char bValue)
 {
     if( bValue )
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        PB5 = 1;
+     //   PB5 = 1;
+    	PB1 = 1;
+
 #else
        cout <<"set PB5 output 1."<<endl;
 #endif
     else
 #ifndef USE_SOFTWARE_SIMULATION_TEST
-        PB5= 0;
+     //   PB5= 0;
+    	PB1 = 0;
 #else
        cout <<"set PB5 output 0."<<endl;
 #endif
@@ -282,8 +295,8 @@ static void setPinInitVaule( void )
 static void selectAdChannel( void )
 {
 #ifndef     USE_SOFTWARE_SIMULATION_TEST
-    TRISB0 = 1; //AD 12 CHANNEL
-    TRISB1 = 1; // AD 13 CHANNEL
+    TRISB4 = 1; //AD 12 CHANNEL
+    TRISB5 = 1; // AD 13 CHANNEL
 #else
     cout << "selectAdChannel(void)" << endl;
 #endif
@@ -485,7 +498,7 @@ static void resetAllTimer()
 	clearTwentyMinTimer();
 }
 
-#define USE_DEDUG_TIMER   1
+//#define USE_DEDUG_TIMER   1
 
 #ifndef  USE_DEDUG_TIMER
 #define   TIMER_20MIN       1200

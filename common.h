@@ -36,9 +36,9 @@
 
 #define USING_AD_FILTER_ALGORITHMN
 
-#define AD_CHANNEL_12_CHANNEL            12
+#define AD_CHANNEL_12_CHANNEL            2  // 12 channel -> 2 channel
 
-#define AD_CHANNEL_13_CHANNEL            13
+#define AD_CHANNEL_13_CHANNEL            1  // 13 channel -> 1 channel
 
 #define AD_CHANNEL_14_CHANNEL            14
 

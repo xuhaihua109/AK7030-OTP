@@ -880,14 +880,16 @@ void initPB3(unsigned char bValue)
 {
 if( bValue )
 
-TRISB3 = 1;
 
-# 123
+TRISB0 = 1;
+
+# 124
 else
 
-TRISB3 = 0;
 
-# 129
+TRISB0 = 0;
+
+# 131
 }
 
 
@@ -895,14 +897,16 @@ void setPB3(unsigned char bValue)
 {
 if( bValue )
 
-PB3 = 1;
 
-# 140
+PB0 = 1;
+
+# 143
 else
 
-PB3= 0;
 
-# 146
+PB0 = 0;
+
+# 150
 }
 
 
@@ -911,14 +915,16 @@ void initPB4(unsigned char bValue)
 {
 if( bValue )
 
-TRISB4 = 1;
 
-# 158
+TRISB3 = 1;
+
+# 163
 else
 
-TRISB4= 0;
 
-# 164
+TRISB3 = 0;
+
+# 170
 }
 
 
@@ -926,14 +932,16 @@ void setPB4(unsigned char bValue)
 {
 if( bValue )
 
-PB4 = 1;
 
-# 175
+PB3 = 1;
+
+# 182
 else
 
-PB4= 0;
 
-# 181
+PB3 = 0;
+
+# 189
 }
 
 
@@ -941,14 +949,16 @@ void initPB5(unsigned char bValue)
 {
 if( bValue )
 
-TRISB5 = 1;
 
-# 192
+TRISB1 = 1;
+
+# 201
 else
 
-TRISB5= 0;
 
-# 198
+TRISB1= 0;
+
+# 208
 }
 
 
@@ -956,14 +966,16 @@ void setPB5(unsigned char bValue)
 {
 if( bValue )
 
-PB5 = 1;
 
-# 209
+PB1 = 1;
+
+# 221
 else
 
-PB5= 0;
 
-# 215
+PB1 = 0;
+
+# 228
 }
 
 
@@ -973,7 +985,7 @@ void initPB2_AsHighResistence( void )
 PB2 = 1;
 PBOD2 = 1;
 
-# 226
+# 239
 }
 
 
@@ -993,7 +1005,7 @@ PBOD2 = 0;
 
 CCP1CON|= 0x0c;
 
-# 252
+# 265
 }
 
 
@@ -1008,7 +1020,7 @@ initPB4(0);
 
 initPB5(0);
 
-# 269
+# 282
 }
 
 static void setPinInitVaule( void )
@@ -1018,16 +1030,16 @@ setPB3(1);
 setPB4(0);
 setPB5(1);
 
-# 280
+# 293
 }
 
 static void selectAdChannel( void )
 {
 
-TRISB0 = 1;
-TRISB1 = 1;
+TRISB4 = 1;
+TRISB5 = 1;
 
-# 290
+# 303
 }
 
 
@@ -1036,10 +1048,10 @@ static void reset( void )
 
 while(1);
 
-# 300
+# 313
 }
 
-# 480
+# 493
 static void resetAllTimer()
 {
 clearTwelveHoursTimer();
@@ -1048,7 +1060,7 @@ clearOneHoursTimer();
 clearTwentyMinTimer();
 }
 
-# 515
+# 528
 int main (void)
 {
 enum systemStep {
@@ -1067,7 +1079,7 @@ RESET_STEP,
 
 static enum systemStep ucStep = INIT_STEP;
 
-# 544
+# 557
 initPin();
 setPinInitVaule();
 selectAdChannel();
@@ -1076,14 +1088,14 @@ clock_config();
 timer1_config();
 timer1_interrupt_config();
 
-adc_test_init(12,3);
+adc_test_init(2,3);
 
-# 558
-startTwentyMinTimer( 60 );
+# 571
+startTwentyMinTimer( 1200 );
 _delay(1000);
 adc_start();
 
-# 568
+# 581
 while(1)
 {
 
@@ -1097,14 +1109,14 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 588
+# 601
 switch(ucStep)
 {
 
 case INIT_STEP:
 {
 
-# 597
+# 610
 static unsigned char ucTimerP3s = 0;
 
 if( isFinishedTwentyMinTimer() )
@@ -1129,7 +1141,7 @@ ucStep = START_UP_PWM_STEP;
 
 }
 
-# 623
+# 636
 break;
 }
 
@@ -1145,7 +1157,7 @@ setPB3(0);
 setPB4(1);
 setPB5(0);
 clearTwentyMinTimer();
-startTwelveHourTimer( 240);
+startTwelveHourTimer( 36000);
 ucStep = CHECK_10_HOUR_TIMER_STEP;
 break;
 }
@@ -1153,7 +1165,7 @@ break;
 case CHECK_10_HOUR_TIMER_STEP:
 {
 
-# 649
+# 662
 static unsigned char ucTimerP5s = 0;
 
 if( isFinishedTwelveHoursTimer () )
@@ -1178,7 +1190,7 @@ break;
 case STARTUP_3_HOUR_TIMER_STEP:
 {
 clearTwelveHoursTimer();
-startThreeHoursTimer(180);
+startThreeHoursTimer(10800);
 ucStep = CHECK_3_HOUR_TIMER_STEP;
 break;
 }
@@ -1208,7 +1220,7 @@ break;
 case STARTUP_1_HOUR_TIMER_STEP:
 {
 clearThreeHoursTimer();
-startOneHoursTimer( 120 );
+startOneHoursTimer( 3600 );
 setPB3(1);
 setPB4(0);
 setPB5(1);
@@ -1219,7 +1231,7 @@ break;
 case CHECK_1_HOUR_TIMER_STEP:
 {
 
-# 717
+# 730
 static unsigned int uiTimerOneP5s = 0;
 static unsigned int uiTimerTwoP5s = 0;
 static unsigned int uiTimerThreeP5s = 0;
@@ -1277,7 +1289,7 @@ setPB3(1);
 setPB4(0);
 setPB5(1);
 
-# 783
+# 796
 }
 
 }
@@ -1295,7 +1307,7 @@ setPB5(1);
 setWaitResetFlag(1);
 pwm_start(150,249);
 
-# 804
+# 817
 ucStep = DELAY_ONE_SECOND_FOR_PWM;
 break;
 }
@@ -1311,7 +1323,7 @@ ucDelay1s = 0;
 ucStep = MEET_RESET_CONDITION_STEP;
 }
 
-# 822
+# 835
 break;
 }
 

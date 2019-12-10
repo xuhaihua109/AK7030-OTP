@@ -168,7 +168,7 @@
 `uc 1 ADVREF1 1 0 :1:7 
 ]
 [u S600 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
-"529 D:\develop\AK7030-good\AK7030-OTP\main.c
+"542 D:\develop\AK7030-good\AK7030-OTP\main.c
 [e E857 systemStep `uc
 INIT_STEP 0
 START_UP_PWM_STEP 1
@@ -658,31 +658,31 @@ RESET_STEP 102
 [v _ISR `I(v  1 e 0 0 ]
 "116 D:\develop\AK7030-good\AK7030-OTP\main.c
 [v _initPB3 `(v  1 e 0 0 ]
-"133
+"135
 [v _setPB3 `(v  1 e 0 0 ]
-"151
+"155
 [v _initPB4 `(v  1 e 0 0 ]
-"168
+"174
 [v _setPB4 `(v  1 e 0 0 ]
-"185
+"193
 [v _initPB5 `(v  1 e 0 0 ]
-"202
+"212
 [v _setPB5 `(v  1 e 0 0 ]
-"219
+"232
 [v _initPB2_AsHighResistence `(v  1 e 0 0 ]
-"231
+"244
 [v _pwm_start `(v  1 e 0 0 ]
-"256
+"269
 [v _initPin `(v  1 s 0 initPin ]
-"272
+"285
 [v _setPinInitVaule `(v  1 s 0 setPinInitVaule ]
-"283
+"296
 [v _selectAdChannel `(v  1 s 0 selectAdChannel ]
-"294
+"307
 [v _reset `(v  1 s 0 reset ]
-"481
+"494
 [v _resetAllTimer `(v  1 s 0 resetAllTimer ]
-"516
+"529
 [v _main `(i  1 e 2 0 ]
 "14 D:\develop\AK7030-good\AK7030-OTP\periph.c
 [v _dac_init `(v  1 e 0 0 ]
@@ -1362,30 +1362,30 @@ RESET_STEP 102
 [v _ALG6 `VEuc  1 e 1 @398 ]
 "918
 [v _ALG7 `VEuc  1 e 1 @399 ]
-"516 D:\develop\AK7030-good\AK7030-OTP\main.c
+"529 D:\develop\AK7030-good\AK7030-OTP\main.c
 [v _main `(i  1 e 2 0 ]
 {
-"828
+"841
 [v main@ucChValue `ui  1 a 2 24 ]
-"721
+"734
 [v main@uiCh13Value `ui  1 a 2 26 ]
-"531
+"544
 [v main@ucStep `E857  1 s 1 ucStep ]
-"597
+"610
 [v main@ucTimerP3s `uc  1 s 1 ucTimerP3s ]
-"649
+"662
 [v main@ucTimerP5s `uc  1 s 1 ucTimerP5s ]
-"680
+"693
 [v main@cTimerP5s_786 `uc  1 s 1 ucTimerP5s ]
-"717
+"730
 [v main@uiTimerOneP5s `ui  1 s 2 uiTimerOneP5s ]
-"718
+"731
 [v main@uiTimerTwoP5s `ui  1 s 2 uiTimerTwoP5s ]
-"810
+"823
 [v main@ucDelay1s `ui  1 s 2 ucDelay1s ]
-"827
+"840
 [v main@cTimerP5s_792 `uc  1 s 1 ucTimerP5s ]
-"855
+"868
 } 0
 "397 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _getAdOriginalCh13Value `(ui  1 e 2 0 ]
@@ -1397,20 +1397,20 @@ RESET_STEP 102
 {
 "430
 } 0
-"481 D:\develop\AK7030-good\AK7030-OTP\main.c
+"494 D:\develop\AK7030-good\AK7030-OTP\main.c
 [v _resetAllTimer `(v  1 s 0 resetAllTimer ]
 {
-"486
+"499
 } 0
-"272
+"285
 [v _setPinInitVaule `(v  1 s 0 setPinInitVaule ]
 {
-"280
+"293
 } 0
-"256
+"269
 [v _initPin `(v  1 s 0 initPin ]
 {
-"269
+"282
 } 0
 "442 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _AD_Sample `(v  1 s 0 AD_Sample ]
@@ -1556,70 +1556,70 @@ RESET_STEP 102
 {
 "488
 } 0
-"294 D:\develop\AK7030-good\AK7030-OTP\main.c
+"307 D:\develop\AK7030-good\AK7030-OTP\main.c
 [v _reset `(v  1 s 0 reset ]
 {
-"300
+"313
 } 0
-"283
+"296
 [v _selectAdChannel `(v  1 s 0 selectAdChannel ]
 {
-"290
+"303
 } 0
-"231
+"244
 [v _pwm_start `(v  1 e 0 0 ]
 {
 [v pwm_start@ucPulseWidth `uc  1 a 1 wreg ]
 [v pwm_start@ucPulseWidth `uc  1 a 1 wreg ]
 [v pwm_start@ucPulseFrequency `uc  1 p 1 0 ]
-"252
+"265
 } 0
-"219
+"232
 [v _initPB2_AsHighResistence `(v  1 e 0 0 ]
 {
-"226
+"239
 } 0
-"202
+"212
 [v _setPB5 `(v  1 e 0 0 ]
 {
 [v setPB5@bValue `uc  1 a 1 wreg ]
 [v setPB5@bValue `uc  1 a 1 wreg ]
-"215
+"228
 } 0
-"185
+"193
 [v _initPB5 `(v  1 e 0 0 ]
 {
 [v initPB5@bValue `uc  1 a 1 wreg ]
 [v initPB5@bValue `uc  1 a 1 wreg ]
-"198
+"208
 } 0
-"168
+"174
 [v _setPB4 `(v  1 e 0 0 ]
 {
 [v setPB4@bValue `uc  1 a 1 wreg ]
 [v setPB4@bValue `uc  1 a 1 wreg ]
-"181
+"189
 } 0
-"151
+"155
 [v _initPB4 `(v  1 e 0 0 ]
 {
 [v initPB4@bValue `uc  1 a 1 wreg ]
 [v initPB4@bValue `uc  1 a 1 wreg ]
-"164
+"170
 } 0
-"133
+"135
 [v _setPB3 `(v  1 e 0 0 ]
 {
 [v setPB3@bValue `uc  1 a 1 wreg ]
 [v setPB3@bValue `uc  1 a 1 wreg ]
-"146
+"150
 } 0
 "116
 [v _initPB3 `(v  1 e 0 0 ]
 {
 [v initPB3@bValue `uc  1 a 1 wreg ]
 [v initPB3@bValue `uc  1 a 1 wreg ]
-"129
+"131
 } 0
 "638 D:\develop\AK7030-good\AK7030-OTP\common.c
 [v _ISR `I(v  1 e 0 0 ]

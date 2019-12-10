@@ -870,7 +870,7 @@ static unsigned char adc_convert_flag = 0;
 
 # 23
 static unsigned char sampleTimes;
-static unsigned char sampleChannelSelect = 12;
+static unsigned char sampleChannelSelect = 2;
 
 
 
@@ -1028,7 +1028,7 @@ static unsigned int uiCalWidthArray4 = 0;
 
 static unsigned char ucInitFlag = 0;
 
-if(channel == 12)
+if(channel == 2)
 {
 if(ucCh12Length < 3)
 {
@@ -1123,7 +1123,7 @@ ucCh12Length = 0;
 uiSampleCh12[ucCh12Length] = uiSampleData;
 }
 }
-else if(channel == 13)
+else if(channel == 1)
 {
 if(ucCh13Length < 3)
 {
@@ -1249,10 +1249,10 @@ if(getAD_ConvertFlag())
 {
 setAD_ConvertFlag(0);
 AD_Sample();
-if(12 == sampleChannelSelect)
-adc_test_init(12,3);
+if(2 == sampleChannelSelect)
+adc_test_init(2,3);
 else
-adc_test_init(13,3);
+adc_test_init(1,3);
 adc_start();
 }
 }
@@ -1268,14 +1268,14 @@ if(sampleTimes >= 3)
 {
 sampleTimes = 0;
 
-if(sampleChannelSelect == 12)
+if(sampleChannelSelect == 2)
 {
-sampleChannelSelect = 13;
+sampleChannelSelect = 1;
 }
 
 else
 {
-sampleChannelSelect = 12;
+sampleChannelSelect = 2;
 }
 }
 }
@@ -1463,11 +1463,11 @@ if(ADIF)
 ADIF=0;
 setAD_ConvertFlag(1);
 
-if(sampleChannelSelect == 12)
+if(sampleChannelSelect == 2)
 {
 
 
-vPutSampleDataIntoTable(adc_get(),12);
+vPutSampleDataIntoTable(adc_get(),2);
 
 # 684
 }
@@ -1476,7 +1476,7 @@ else
 
 
 
-vPutSampleDataIntoTable(adc_get(),13);
+vPutSampleDataIntoTable(adc_get(),1);
 
 }
 
