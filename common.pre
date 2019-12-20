@@ -804,6 +804,10 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
+
+
+volatile bit SRAM_MAP @ ((unsigned)&ALG7*8)+0;
+
 # 50 "D:\develop\AK7030-good\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
@@ -864,6 +868,8 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 
 void adc_start();
 unsigned int adc_get(void);
+
+void uid_get(void);
 
 # 16 "D:\develop\AK7030-good\AK7030-OTP\common.c"
 static unsigned char adc_convert_flag = 0;
@@ -1081,14 +1087,14 @@ uiCalWidthArrayOld=uiCalWidthArrayNew;
 
 
 
-if(uiDeviationValue > (295))
+if(uiDeviationValue > (475))
 {
 
 
 uiInitWidth++;
 
 }
-else if(uiDeviationValue < (295))
+else if(uiDeviationValue < (475))
 {
 
 

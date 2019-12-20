@@ -707,6 +707,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ALG6 `Vuc  1 e@398 ]
 "918 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
+"922 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+[v _SRAM_MAP `Vb  1 e@3192 ]
+[s S42 `Vus 1 `Vus 1 `Vus 1 `Vus 1 `Vus 1 `Vus 1 `Vus 1 `Vus 1 ]
+[n S42 . freq u_1v2 u_2v1 otp_uid uidd_h uidd_l uids_h uids_l ]
+[s S43 `uc -> 16 `i ]
+[n S43 . buf ]
+[u S41 `S42 1 `S43 1 ]
+[n S41 . . . ]
+"21 D:\develop\AK7030-good\AK7030-OTP\periph.c
+[v _key `VS41  1 e@480 ]
+"25 D:\develop\AK7030-good\AK7030-OTP\periph.c
+[v _bgr_trim `us  1 e ]
+"26 D:\develop\AK7030-good\AK7030-OTP\periph.c
+[v _ad_offset `us  1 e ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
 [; ;stdio.h: 14: typedef unsigned short wchar_t;
@@ -1232,6 +1246,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 910: volatile unsigned char ALG5 @ 0x18D;
 [; ;yn8p520.h: 914: volatile unsigned char ALG6 @ 0x18E;
 [; ;yn8p520.h: 918: volatile unsigned char ALG7 @ 0x18F;
+[; ;yn8p520.h: 922: volatile bit SRAM_MAP @ ((unsigned)&ALG7*8)+0;
 [; ;periph.h: 13: void dac_init();
 [; ;periph.h: 14: void op1_init();
 [; ;periph.h: 15: void op2_init();
@@ -1239,6 +1254,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.h: 18: void adc_test_init(unsigned char channel,unsigned char ref);
 [; ;periph.h: 20: void adc_start();
 [; ;periph.h: 21: unsigned int adc_get(void);
+[; ;periph.h: 23: void uid_get(void);
 [; ;common.h: 50: void clock_config();
 [; ;common.h: 51: void timer1_config();
 [; ;common.h: 52: void timer1_interrupt_config();
@@ -1266,194 +1282,238 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 102: unsigned char getAD_ConvertFlag();
 [; ;common.h: 103: void setAD_ConvertFlag(unsigned char flag);
 [; ;common.h: 105: void setWaitResetFlag(unsigned char bValue);
-"14 D:\develop\AK7030-good\AK7030-OTP\periph.c
+[; ;periph.c: 7: volatile union {
+[; ;periph.c: 8: struct {
+[; ;periph.c: 9: volatile unsigned short freq;
+[; ;periph.c: 10: volatile unsigned short u_1v2;
+[; ;periph.c: 11: volatile unsigned short u_2v1;
+[; ;periph.c: 12: volatile unsigned short otp_uid;
+[; ;periph.c: 13: volatile unsigned short uidd_h;
+[; ;periph.c: 14: volatile unsigned short uidd_l;
+[; ;periph.c: 15: volatile unsigned short uids_h;
+[; ;periph.c: 16: volatile unsigned short uids_l;
+[; ;periph.c: 17: };
+[; ;periph.c: 18: struct {
+[; ;periph.c: 19: unsigned char buf[16];
+[; ;periph.c: 20: };
+[; ;periph.c: 21: } key @ 0x1e0;
+[; ;periph.c: 25: unsigned short bgr_trim;
+"26 D:\develop\AK7030-good\AK7030-OTP\periph.c
+[i _ad_offset
+-> -> 0 `i `us
+]
+[; ;periph.c: 26: unsigned short ad_offset=0;
+"31
+[v _uid_get `(v  1 ef ]
+{
+[; ;periph.c: 30: void uid_get(void)
+[; ;periph.c: 31: {
+[e :U _uid_get ]
+[f ]
+[; ;periph.c: 33: SRAM_MAP = 1;
+"33
+[e = _SRAM_MAP -> -> 1 `i `b ]
+[; ;periph.c: 35: bgr_trim = key.u_1v2;
+"35
+[e = _bgr_trim . . _key 0 1 ]
+[; ;periph.c: 36: ad_offset = key.otp_uid&0xff;
+"36
+[e = _ad_offset -> & -> . . _key 0 3 `ui -> -> 255 `i `ui `us ]
+[; ;periph.c: 38: ad_offset = 0;
+"38
+[e = _ad_offset -> -> 0 `i `us ]
+[; ;periph.c: 40: SRAM_MAP = 0;
+"40
+[e = _SRAM_MAP -> -> 0 `i `b ]
+[; ;periph.c: 42: }
+"42
+[e :UE 44 ]
+}
+"51
 [v _dac_init `(v  1 ef ]
 {
-[; ;periph.c: 13: void dac_init()
-[; ;periph.c: 14: {
+[; ;periph.c: 50: void dac_init()
+[; ;periph.c: 51: {
 [e :U _dac_init ]
 [f ]
-[; ;periph.c: 15: DACCON|=1;
-"15
+[; ;periph.c: 52: DACCON|=1;
+"52
 [e =| _DACCON -> -> 1 `i `uc ]
-[; ;periph.c: 17: DACR0=0x0F;
-"17
+[; ;periph.c: 54: DACR0=0x0F;
+"54
 [e = _DACR0 -> -> 15 `i `uc ]
-[; ;periph.c: 18: DACCON|=(1)<<2;
-"18
+[; ;periph.c: 55: DACCON|=(1)<<2;
+"55
 [e =| _DACCON -> << -> 1 `i -> 2 `i `uc ]
-[; ;periph.c: 22: }
-"22
-[e :UE 41 ]
+[; ;periph.c: 59: }
+"59
+[e :UE 45 ]
 }
-"26
+"63
 [v _op1_init `(v  1 ef ]
 {
-[; ;periph.c: 25: void op1_init()
-[; ;periph.c: 26: {
+[; ;periph.c: 62: void op1_init()
+[; ;periph.c: 63: {
 [e :U _op1_init ]
 [f ]
-[; ;periph.c: 33: OP1CON1=0x02;
-"33
-[e = _OP1CON1 -> -> 2 `i `uc ]
-[; ;periph.c: 34: OP1CON2=0xA0;
-"34
-[e = _OP1CON2 -> -> 160 `i `uc ]
-[; ;periph.c: 35: OP1CON0=0x80;
-"35
-[e = _OP1CON0 -> -> 128 `i `uc ]
-[; ;periph.c: 38: TRISB3=1;
-"38
-[e = _TRISB3 -> -> 1 `i `b ]
-[; ;periph.c: 40: TRISB5=0;
-"40
-[e = _TRISB5 -> -> 0 `i `b ]
-[; ;periph.c: 41: }
-"41
-[e :UE 42 ]
+[; ;periph.c: 70: OP1CON1=0x13;
+"70
+[e = _OP1CON1 -> -> 19 `i `uc ]
+[; ;periph.c: 71: OP1CON2=0x10;
+"71
+[e = _OP1CON2 -> -> 16 `i `uc ]
+[; ;periph.c: 72: OP1CON0=0x90;
+"72
+[e = _OP1CON0 -> -> 144 `i `uc ]
+[; ;periph.c: 78: }
+"78
+[e :UE 46 ]
 }
-"45
+"82
 [v _op2_init `(v  1 ef ]
 {
-[; ;periph.c: 44: void op2_init()
-[; ;periph.c: 45: {
+[; ;periph.c: 81: void op2_init()
+[; ;periph.c: 82: {
 [e :U _op2_init ]
 [f ]
-[; ;periph.c: 52: OP2CON1=0x14;
-"52
+[; ;periph.c: 89: OP2CON1=0x14;
+"89
 [e = _OP2CON1 -> -> 20 `i `uc ]
-[; ;periph.c: 54: OP2CON2=0x10;
-"54
+[; ;periph.c: 91: OP2CON2=0x10;
+"91
 [e = _OP2CON2 -> -> 16 `i `uc ]
-[; ;periph.c: 55: OP2CON0=0x80;
-"55
+[; ;periph.c: 92: OP2CON0=0x80;
+"92
 [e = _OP2CON0 -> -> 128 `i `uc ]
-[; ;periph.c: 61: }
-"61
-[e :UE 43 ]
+[; ;periph.c: 98: }
+"98
+[e :UE 47 ]
 }
-"70
+"107
 [v _int_enable `(v  1 ef1`uc ]
 {
-[; ;periph.c: 69: void int_enable(unsigned char mode)
-[; ;periph.c: 70: {
+[; ;periph.c: 106: void int_enable(unsigned char mode)
+[; ;periph.c: 107: {
 [e :U _int_enable ]
 [v _mode `uc  1 r1 ]
 [f ]
-[; ;periph.c: 71: if(mode)
-"71
-[e $ ! != -> _mode `i -> -> -> 0 `i `uc `i 45  ]
-[; ;periph.c: 72: {
-"72
+[; ;periph.c: 108: if(mode)
+"108
+[e $ ! != -> _mode `i -> -> -> 0 `i `uc `i 49  ]
+[; ;periph.c: 109: {
+"109
 {
-[; ;periph.c: 73: PEIE=1;
-"73
+[; ;periph.c: 110: PEIE=1;
+"110
 [e = _PEIE -> -> 1 `i `b ]
-[; ;periph.c: 74: GIE=1;
-"74
+[; ;periph.c: 111: GIE=1;
+"111
 [e = _GIE -> -> 1 `i `b ]
-"75
+"112
 }
-[; ;periph.c: 75: }
-[e $U 46  ]
-"76
-[e :U 45 ]
-[; ;periph.c: 76: else
-[; ;periph.c: 77: {
-"77
+[; ;periph.c: 112: }
+[e $U 50  ]
+"113
+[e :U 49 ]
+[; ;periph.c: 113: else
+[; ;periph.c: 114: {
+"114
 {
-[; ;periph.c: 78: PEIE=0;
-"78
+[; ;periph.c: 115: PEIE=0;
+"115
 [e = _PEIE -> -> 0 `i `b ]
-[; ;periph.c: 79: GIE=0;
-"79
+[; ;periph.c: 116: GIE=0;
+"116
 [e = _GIE -> -> 0 `i `b ]
-"80
+"117
 }
-[e :U 46 ]
-[; ;periph.c: 80: }
-[; ;periph.c: 81: }
-"81
-[e :UE 44 ]
+[e :U 50 ]
+[; ;periph.c: 117: }
+[; ;periph.c: 118: }
+"118
+[e :UE 48 ]
 }
-"85
+"122
 [v _adc_test_init `(v  1 ef2`uc`uc ]
 {
-[; ;periph.c: 84: void adc_test_init(unsigned char channel,unsigned char ref)
-[; ;periph.c: 85: {
+[; ;periph.c: 121: void adc_test_init(unsigned char channel,unsigned char ref)
+[; ;periph.c: 122: {
 [e :U _adc_test_init ]
 [v _channel `uc  1 r1 ]
 [v _ref `uc  1 r2 ]
 [f ]
-[; ;periph.c: 86: ADCON0 = 0x40;
-"86
+[; ;periph.c: 123: ADCON0 = 0x40;
+"123
 [e = _ADCON0 -> -> 64 `i `uc ]
-[; ;periph.c: 87: ADCON0|=channel<<2;
-"87
+[; ;periph.c: 124: ADCON0|=channel<<2;
+"124
 [e =| _ADCON0 -> << -> _channel `i -> 2 `i `uc ]
-[; ;periph.c: 88: ADCON1 = 0x35;
-"88
+[; ;periph.c: 125: ADCON1 = 0x35;
+"125
 [e = _ADCON1 -> -> 53 `i `uc ]
-[; ;periph.c: 89: ADCON1|=ref<<6;
-"89
+[; ;periph.c: 126: ADCON1|=ref<<6;
+"126
 [e =| _ADCON1 -> << -> _ref `i -> 6 `i `uc ]
-[; ;periph.c: 90: ADON=1;
-"90
+[; ;periph.c: 127: ADON=1;
+"127
 [e = _ADON -> -> 1 `i `b ]
-[; ;periph.c: 91: ADIE=1;
-"91
+[; ;periph.c: 128: ADIE=1;
+"128
 [e = _ADIE -> -> 1 `i `b ]
-[; ;periph.c: 92: }
-"92
-[e :UE 47 ]
+[; ;periph.c: 129: }
+"129
+[e :UE 51 ]
 }
-"96
+"133
 [v _setAdcSampleChannel `(v  1 ef1`uc ]
 {
-[; ;periph.c: 95: void setAdcSampleChannel(unsigned char ucChannel)
-[; ;periph.c: 96: {
+[; ;periph.c: 132: void setAdcSampleChannel(unsigned char ucChannel)
+[; ;periph.c: 133: {
 [e :U _setAdcSampleChannel ]
 [v _ucChannel `uc  1 r1 ]
 [f ]
-[; ;periph.c: 97: ADCON0|=ucChannel<<2;
-"97
+[; ;periph.c: 134: ADCON0|=ucChannel<<2;
+"134
 [e =| _ADCON0 -> << -> _ucChannel `i -> 2 `i `uc ]
-[; ;periph.c: 98: }
-"98
-[e :UE 48 ]
+[; ;periph.c: 135: }
+"135
+[e :UE 52 ]
 }
-"101
+"138
 [v _adc_start `(v  1 ef ]
 {
-[; ;periph.c: 100: void adc_start()
-[; ;periph.c: 101: {
+[; ;periph.c: 137: void adc_start()
+[; ;periph.c: 138: {
 [e :U _adc_start ]
 [f ]
-[; ;periph.c: 102: GO=1;
-"102
+[; ;periph.c: 139: GO=1;
+"139
 [e = _GO -> -> 1 `i `b ]
-[; ;periph.c: 103: }
-"103
-[e :UE 49 ]
+[; ;periph.c: 140: }
+"140
+[e :UE 53 ]
 }
-"106
+"143
 [v _adc_get `(ui  1 ef ]
 {
-[; ;periph.c: 105: unsigned int adc_get(void)
-[; ;periph.c: 106: {
+[; ;periph.c: 142: unsigned int adc_get(void)
+[; ;periph.c: 143: {
 [e :U _adc_get ]
 [f ]
-"107
+"144
 [v _val `ui  1 a ]
-[; ;periph.c: 107: unsigned int val;
-[; ;periph.c: 108: val = (ADRESH<<8) | ADRESL;
-"108
+[; ;periph.c: 144: unsigned int val;
+[; ;periph.c: 145: val = (ADRESH<<8) | ADRESL;
+"145
 [e = _val -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
-[; ;periph.c: 109: return val;
-"109
+[; ;periph.c: 147: val = val + ad_offset;
+"147
+[e = _val + _val -> _ad_offset `ui ]
+[; ;periph.c: 148: return val;
+"148
 [e ) _val ]
-[e $UE 50  ]
-[; ;periph.c: 110: }
-"110
-[e :UE 50 ]
+[e $UE 54  ]
+[; ;periph.c: 149: }
+"149
+[e :UE 54 ]
 }

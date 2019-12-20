@@ -804,6 +804,10 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
+
+
+volatile bit SRAM_MAP @ ((unsigned)&ALG7*8)+0;
+
 # 50 "D:\develop\AK7030-good\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
@@ -864,6 +868,8 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 
 void adc_start();
 unsigned int adc_get(void);
+
+void uid_get(void);
 
 
 # 48 "D:\develop\AK7030-good\AK7030-OTP\main.c"
@@ -1087,15 +1093,18 @@ selectAdChannel();
 clock_config();
 timer1_config();
 timer1_interrupt_config();
+op1_init();
 
-adc_test_init(2,3);
+uid_get();
 
-# 571
+adc_test_init(2,0);
+
+# 574
 startTwentyMinTimer( 1200 );
 _delay(1000);
 adc_start();
 
-# 581
+# 584
 while(1)
 {
 
@@ -1109,14 +1118,14 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 601
+# 610
 switch(ucStep)
 {
 
 case INIT_STEP:
 {
 
-# 610
+# 619
 static unsigned char ucTimerP3s = 0;
 
 if( isFinishedTwentyMinTimer() )
@@ -1126,7 +1135,7 @@ ucTimerP3s = 0;
 }
 else
 {
-if( getAdOriginalCh13Value() > 90 )
+if( getAdOriginalCh13Value() > 145)
 {
 ucTimerP3s++;
 }
@@ -1141,7 +1150,7 @@ ucStep = START_UP_PWM_STEP;
 
 }
 
-# 636
+# 645
 break;
 }
 
@@ -1165,14 +1174,14 @@ break;
 case CHECK_10_HOUR_TIMER_STEP:
 {
 
-# 662
+# 671
 static unsigned char ucTimerP5s = 0;
 
 if( isFinishedTwelveHoursTimer () )
 ucStep = READY_FOR_RESET_STEP;
 else
 {
-if( getAdOriginalCh13Value() < 200 )
+if( getAdOriginalCh13Value() < 322)
 ucTimerP5s++;
 else
 ucTimerP5s = 0;
@@ -1203,7 +1212,7 @@ if( isFinishedThreeHoursTimer() )
 ucStep = READY_FOR_RESET_STEP;
 else
 {
-if( getAdOriginalCh13Value() < 65 )
+if( getAdOriginalCh13Value() < 105)
 ucTimerP5s++;
 else
 ucTimerP5s = 0;
@@ -1231,7 +1240,7 @@ break;
 case CHECK_1_HOUR_TIMER_STEP:
 {
 
-# 730
+# 739
 static unsigned int uiTimerOneP5s = 0;
 static unsigned int uiTimerTwoP5s = 0;
 static unsigned int uiTimerThreeP5s = 0;
@@ -1243,7 +1252,7 @@ if( isFinishedOneHoursTimer() )
 ucStep = READY_FOR_RESET_STEP;
 else
 {
-if( uiCh13Value > 90 )
+if( uiCh13Value > 105)
 {
 if( uiTimerOneP5s <= 10 )
 uiTimerOneP5s++;
@@ -1271,7 +1280,7 @@ ucStep = START_UP_PWM_STEP;
 }
 else
 {
-if( uiCh13Value < 65 )
+if( uiCh13Value < 105)
 {
 
 if( uiTimerTwoP5s <= 10)
@@ -1289,7 +1298,7 @@ setPB3(1);
 setPB4(0);
 setPB5(1);
 
-# 796
+# 805
 }
 
 }
@@ -1307,7 +1316,7 @@ setPB5(1);
 setWaitResetFlag(1);
 pwm_start(150,249);
 
-# 817
+# 826
 ucStep = DELAY_ONE_SECOND_FOR_PWM;
 break;
 }
@@ -1323,7 +1332,7 @@ ucDelay1s = 0;
 ucStep = MEET_RESET_CONDITION_STEP;
 }
 
-# 835
+# 844
 break;
 }
 
@@ -1332,7 +1341,7 @@ case MEET_RESET_CONDITION_STEP:
 static unsigned char ucTimerP5s = 0;
 unsigned int ucChValue = getAdOriginalCh13Value();
 
-if( ucChValue > 50 )
+if( ucChValue > 81)
 ucTimerP5s++;
 else
 ucTimerP5s = 0;

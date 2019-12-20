@@ -20,4 +20,6 @@ void adc_test_init(uchar channel,uchar ref);//ADC初始化
 void adc_start();	//启动ADC
 uint adc_get(void);//获取采集结果
 
+void uid_get(void);
+
 #endif

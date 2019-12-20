@@ -15,7 +15,7 @@
 
 #define LOAD_PWM_STEP    2//  N*10ms, min steps is 10ms. 2*10ms = 20ms
 
-#define COMPARE_REFERENCE_VALUE  295
+#define COMPARE_REFERENCE_VALUE  475 // 295 * 1.61 = 475  //295
 
 
 #define uchar unsigned char
