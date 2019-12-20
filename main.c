@@ -562,7 +562,11 @@ int main (void)
         timer1_config();
         timer1_interrupt_config();
 
-        adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_2P1);//ADC初始化 通道12 PB0，2.1V 电压为参考源
+        uid_get();	//获取校准电压
+
+        op1_init(); //OP1初始化
+
+        adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_OP1);//ADC初始化 通道12 PB0，2.1V 电压为参考源
 
 //      dac_init(); //DAC0/1初始化
 //      op1_init(); //OP1初始化
@@ -577,6 +581,13 @@ int main (void)
         cout << "initialization after power on" << endl;
 #endif
 
+
+#define      INIT_STEP_CH13_AD_VALUE                         145 // 90
+#define      CHECK_10_HOUR_TIMER_STEP_CH13_AD_VALUE          322 //200
+#define      CHECK_3_HOUR_TIMER_STEP_CH13_AD_VALUE           105 //65
+#define      CHECK_1_HOUR_TIMER_STEP_CH13_AD_VALUE_FIRST           145// 90
+#define      CHECK_1_HOUR_TIMER_STEP_CH13_AD_VALUE_SECOND           105// 65
+#define      MEET_RESET_CONDITION_STEP_CH13_AD_VALUE         81 //50
 
         while(1)
         {
@@ -616,7 +627,7 @@ int main (void)
                 }
                 else
                 {
-                    if( getAdOriginalCh13Value() > 90 )
+                    if( getAdOriginalCh13Value() > INIT_STEP_CH13_AD_VALUE )
                     {
                         ucTimerP3s++;
                     }
@@ -665,7 +676,7 @@ int main (void)
                         ucStep = READY_FOR_RESET_STEP;
                     else
                     {
-                        if( getAdOriginalCh13Value() < 200 )
+                        if( getAdOriginalCh13Value() < CHECK_10_HOUR_TIMER_STEP_CH13_AD_VALUE )
                             ucTimerP5s++;
                         else
                             ucTimerP5s = 0;
@@ -696,7 +707,7 @@ int main (void)
                         ucStep = READY_FOR_RESET_STEP;
                     else
                     {
-                        if( getAdOriginalCh13Value() < 65 )
+                        if( getAdOriginalCh13Value() < CHECK_3_HOUR_TIMER_STEP_CH13_AD_VALUE )
                             ucTimerP5s++;
                         else
                             ucTimerP5s = 0;
@@ -738,7 +749,7 @@ int main (void)
                         ucStep = READY_FOR_RESET_STEP;
                     else
                     {
-                        if( uiCh13Value > 90 )
+                        if( uiCh13Value > CHECK_1_HOUR_TIMER_STEP_CH13_AD_VALUE_FIRST )
                         {
                             if( uiTimerOneP5s <= CONFIRMATION_COUT_0P1_SECOND )
                                 uiTimerOneP5s++;
@@ -766,7 +777,7 @@ int main (void)
                         }
                         else
                         {
-                            if( uiCh13Value < 65 )
+                            if( uiCh13Value < CHECK_1_HOUR_TIMER_STEP_CH13_AD_VALUE_SECOND )
                             {
                            // 	PB4 = 1;
                                 if( uiTimerTwoP5s <= CONFIRMATION_COUT_0P1_SECOND)
@@ -840,7 +851,7 @@ int main (void)
                     static unsigned char ucTimerP5s = 0;
                     unsigned int ucChValue = getAdOriginalCh13Value();
 
-                    if( ucChValue > 50 )
+                    if( ucChValue > MEET_RESET_CONDITION_STEP_CH13_AD_VALUE )
                         ucTimerP5s++;
                     else
                         ucTimerP5s = 0;

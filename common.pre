@@ -1,5 +1,5 @@
 
-# 1 "D:\develop\AK7030-good\AK7030-OTP\common.c"
+# 1 "D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.c"
 
 # 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
 typedef int ptrdiff_t;
@@ -65,7 +65,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 164 "D:\develop\AK7030-good\AK7030-OTP\yn8p520.h"
+# 164 "D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h"
 volatile unsigned char INDF @ 0x000;
 
 
@@ -804,7 +804,10 @@ volatile unsigned char ALG6 @ 0x18E;
 
 volatile unsigned char ALG7 @ 0x18F;
 
-# 50 "D:\develop\AK7030-good\AK7030-OTP\common.h"
+
+volatile bit SRAM_MAP @ ((unsigned)&ALG7*8)+0;
+
+# 50 "D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h"
 void clock_config();
 void timer1_config();
 void timer1_interrupt_config();
@@ -854,7 +857,7 @@ void setAD_ConvertFlag(unsigned char flag);
 
 void setWaitResetFlag(unsigned char bValue);
 
-# 13 "D:\develop\AK7030-good\AK7030-OTP\periph.h"
+# 13 "D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\periph.h"
 void dac_init();
 void op1_init();
 void op2_init();
@@ -864,8 +867,9 @@ void adc_test_init(unsigned char channel,unsigned char ref);
 
 void adc_start();
 unsigned int adc_get(void);
+void uid_get(void);
 
-# 16 "D:\develop\AK7030-good\AK7030-OTP\common.c"
+# 16 "D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.c"
 static unsigned char adc_convert_flag = 0;
 
 # 23
@@ -998,8 +1002,8 @@ filter_sum += filter_buf[i];
 }
 
 
-return (filter_sum );
 
+return (filter_sum );
 }
 
 
@@ -1021,11 +1025,7 @@ static unsigned char ucChannelFourteenthLength = 0;
 static unsigned int uiCalWidthArrayNew = 0;
 static unsigned int uiCalWidthArrayOld = 0;
 
-static unsigned int uiCalWidthArray1 = 0;
-static unsigned int uiCalWidthArray2 = 0;
-static unsigned int uiCalWidthArray3 = 0;
-static unsigned int uiCalWidthArray4 = 0;
-
+# 180
 static unsigned char ucInitFlag = 0;
 
 if(channel == 2)
@@ -1048,53 +1048,59 @@ static unsigned int uiCalWidthArray[1],uiCalWidthCnt = 0;
 
 static unsigned char uiInitWidth = 75;
 
+uiCalWidthArrayNew = Filter(uiSampleCh12);
 
-uiCalWidthArray1 = Filter(uiSampleCh12);
-
-if( 0 == ucInitFlag)
-{
-ucInitFlag = 1;
-
-uiCalWidthArray2 = uiCalWidthArray1;
-uiCalWidthArray3 = uiCalWidthArray1;
-uiCalWidthArray4 = uiCalWidthArray1;
-}
-
+# 215
 unsigned int uiDeviationValue = 0,uiAbstractValue = 0;
 
-# 228
-uiDeviationValue = (uiCalWidthArray1 >> 2) + (uiCalWidthArray2 >> 2)
-+ (uiCalWidthArray3 >> 2) + (uiCalWidthArray4 >> 2) + uiCalWidthArray4 - uiCalWidthArray3;
+if( uiCalWidthArrayNew >= uiCalWidthArrayOld)
+{
+uiAbstractValue = uiCalWidthArrayNew - uiCalWidthArrayOld;
+uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) + (uiAbstractValue<<1);
+
+}
+else
+{
+uiAbstractValue = uiCalWidthArrayOld - uiCalWidthArrayNew;
+uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) - (uiAbstractValue<<1);
 
 
+}
 
+# 236
 if(uiCalWidthCnt>400)
 uiDeviationValue =400;
 
-uiCalWidthArray4 = uiCalWidthArray3;
-uiCalWidthArray3 = uiCalWidthArray2;
-uiCalWidthArray2 = uiCalWidthArray1;
-
-
+# 244
 uiCalWidthArrayOld=uiCalWidthArrayNew;
 
 
 
 
-if(uiDeviationValue > (295))
+if(uiDeviationValue > (400))
+{
+
+if(uiDeviationValue <= (400+5))
+{uiInitWidth++;
+}
+else
+{uiInitWidth=uiInitWidth+2;
+}
+
+}
+else if(uiDeviationValue < (400))
 {
 
 
-uiInitWidth++;
+if(uiDeviationValue >= (400+5))
+{uiInitWidth--;
+}
+else
+{uiInitWidth=uiInitWidth-2;
+}
 
 }
-else if(uiDeviationValue < (295))
-{
 
-
-uiInitWidth--;
-
-}
 else
 ;
 
@@ -1213,14 +1219,14 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 384
+# 397
 unsigned int getAdOriginalCh12Value()
 {
 
 
 return Filter(uiSampleCh12);
 
-# 393
+# 406
 }
 
 
@@ -1229,7 +1235,7 @@ unsigned int getAdOriginalCh13Value()
 
 return FilterCh13(uiSampleCh13);
 
-# 404
+# 417
 }
 
 
@@ -1238,7 +1244,7 @@ unsigned int getAdOriginalCh14Value()
 
 return Filter(uiSampleChannelFourteenth);
 
-# 414
+# 427
 }
 
 
@@ -1250,14 +1256,14 @@ if(getAD_ConvertFlag())
 setAD_ConvertFlag(0);
 AD_Sample();
 if(2 == sampleChannelSelect)
-adc_test_init(2,3);
+adc_test_init(2,0);
 else
-adc_test_init(1,3);
+adc_test_init(1,0);
 adc_start();
 }
 }
 
-# 441
+# 454
 static void AD_Sample(void)
 {
 if(sampleTimes < 3)
@@ -1295,7 +1301,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 482
+# 495
 }
 
 void clearTwelveHoursTimer()
@@ -1333,7 +1339,7 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 522
+# 535
 }
 
 void startOneHoursTimer(unsigned int uiSetTime)
@@ -1344,10 +1350,10 @@ uiOneHourTimer = uiSetTime;
 bOneHourTimerStartFlag = 1;
 }
 
-# 535
+# 548
 }
 
-# 549
+# 562
 void startTwentyMinTimer(unsigned int uiSetValue )
 {
 if(( 0 == uiTwentyMinTimer) && ( 0 == bTwentyMinStartFlag))
@@ -1369,7 +1375,7 @@ else
 return 0;
 }
 
-# 583
+# 596
 unsigned char isFinishedTwelveHoursTimer()
 {
 if(( uiBigTimer == 0 ) && bBigTimerStartFlag )
@@ -1469,7 +1475,7 @@ if(sampleChannelSelect == 2)
 
 vPutSampleDataIntoTable(adc_get(),2);
 
-# 684
+# 697
 }
 else
 {

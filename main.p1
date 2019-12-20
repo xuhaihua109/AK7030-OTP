@@ -1,27 +1,27 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"164 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"164 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INDF `Vuc  1 e@0 ]
-"168 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"168 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _LVDCON `Vuc  1 e@1 ]
-"171 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"171 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PCL `Vuc  1 e@2 ]
-"175 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"175 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _STATUS `Vuc  1 e@3 ]
-"177 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"177 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CARRY `Vb  1 e@24 ]
-"178 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"178 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _DC `Vb  1 e@25 ]
-"179 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"179 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ZERO `Vb  1 e@26 ]
-"180 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"180 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nPD `Vb  1 e@27 ]
-"181 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"181 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nTO `Vb  1 e@28 ]
-"182 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"182 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _IRP `Vb  1 e@31 ]
-"183 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"183 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RP0 `Vb  1 e@29 ]
-"184 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"184 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RP1 `Vb  1 e@30 ]
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
 [n S3 . C DC Z nPD nTO RP IRP ]
@@ -29,99 +29,99 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S4 . . RP0 RP1 ]
 [u S2 `S3 1 `S4 1 ]
 [n S2 . . . ]
-"201 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"201 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _STATUSbits `VS2  1 e@3 ]
-"205 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"205 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _FSR `Vuc  1 e@4 ]
-"209 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"209 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PORTA `Vuc  1 e@5 ]
-"211 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"211 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PA0 `Vb  1 e@40 ]
-"212 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"212 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PA1 `Vb  1 e@41 ]
-"213 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"213 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PA2 `Vb  1 e@42 ]
-"214 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"214 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PA3 `Vb  1 e@43 ]
-"215 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"215 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PA4 `Vb  1 e@44 ]
-"216 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"216 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PA5 `Vb  1 e@45 ]
-"217 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"217 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PA6 `Vb  1 e@46 ]
-"218 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"218 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PA7 `Vb  1 e@47 ]
-"221 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"221 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PORTB `Vuc  1 e@6 ]
-"223 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"223 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PB0 `Vb  1 e@48 ]
-"224 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"224 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PB1 `Vb  1 e@49 ]
-"225 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"225 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PB2 `Vb  1 e@50 ]
-"226 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"226 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PB3 `Vb  1 e@51 ]
-"227 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"227 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PB4 `Vb  1 e@52 ]
-"228 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"228 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PB5 `Vb  1 e@53 ]
-"229 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"229 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PB6 `Vb  1 e@54 ]
-"230 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"230 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PB7 `Vb  1 e@55 ]
-"233 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"233 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR0L `Vuc  1 e@7 ]
-"234 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"234 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR0H `Vuc  1 e@8 ]
-"238 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"238 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR0 `Vui  1 e@7 ]
-"241 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"241 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T0CON `Vui  1 e@9 ]
-"244 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"244 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T0PS0 `Vb  1 e@72 ]
-"245 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"245 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T0PS1 `Vb  1 e@73 ]
-"246 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"246 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T0PS2 `Vb  1 e@74 ]
-"247 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"247 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PSA `Vb  1 e@75 ]
-"248 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"248 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T0SE `Vb  1 e@76 ]
-"249 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"249 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T0CS `Vb  1 e@77 ]
-"250 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"250 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T08BIT `Vb  1 e@78 ]
-"251 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"251 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR0ON `Vb  1 e@79 ]
-"254 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"254 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PCLATH `Vuc  1 e@10 ]
 [s S6 :4 `uc 1 ]
 [n S6 . . ]
 [u S5 `S6 1 ]
 [n S5 . . ]
-"261 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"261 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PCLATHbits `VS5  1 e@10 ]
-"265 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"265 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INTCON `Vuc  1 e@11 ]
-"267 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"267 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RBIF `Vb  1 e@88 ]
-"268 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"268 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INT0IF `Vb  1 e@89 ]
-"269 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"269 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T0IF `Vb  1 e@90 ]
-"270 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"270 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RBIE `Vb  1 e@91 ]
-"271 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"271 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INT0IE `Vb  1 e@92 ]
-"272 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"272 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T0IE `Vb  1 e@93 ]
-"273 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"273 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PEIE `Vb  1 e@94 ]
-"274 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"274 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _GIE `Vb  1 e@95 ]
-"275 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"275 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR0IF `Vb  1 e@90 ]
-"276 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"276 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR0IE `Vb  1 e@93 ]
 [s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S8 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
@@ -129,121 +129,121 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S9 . . TMR0IF . TMR0IE ]
 [u S7 `S8 1 `S9 1 ]
 [n S7 . . . ]
-"295 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"295 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INTCONbits `VS7  1 e@11 ]
-"300 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"300 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PIR1 `Vuc  1 e@12 ]
-"302 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"302 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR1IF `Vb  1 e@96 ]
-"303 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"303 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR2IF `Vb  1 e@97 ]
-"304 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"304 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1IF `Vb  1 e@98 ]
-"305 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"305 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPIF `Vb  1 e@99 ]
-"306 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"306 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TXIF `Vb  1 e@100 ]
-"307 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"307 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RCIF `Vb  1 e@101 ]
-"308 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"308 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INT1IF `Vb  1 e@102 ]
-"309 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"309 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INT2IF `Vb  1 e@103 ]
-"312 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"312 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PIR2 `Vuc  1 e@13 ]
-"314 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"314 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP1IF `Vb  1 e@104 ]
-"315 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"315 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP2IF `Vb  1 e@105 ]
-"316 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"316 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADIF `Vb  1 e@106 ]
-"317 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"317 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _LVDIF `Vb  1 e@107 ]
-"318 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"318 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWMIF `Vb  1 e@108 ]
-"319 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"319 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _BCLIF `Vb  1 e@109 ]
-"323 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"323 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR1L `Vuc  1 e@14 ]
-"327 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"327 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR1H `Vuc  1 e@15 ]
-"331 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"331 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR1 `Vui  1 e@14 ]
-"334 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"334 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T1CON `Vuc  1 e@16 ]
-"336 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"336 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR1ON `Vb  1 e@128 ]
-"337 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"337 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR1CS `Vb  1 e@129 ]
-"338 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"338 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nT1SYNC `Vb  1 e@130 ]
-"339 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"339 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T1OSCEN `Vb  1 e@131 ]
-"340 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"340 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T1INSYNC `Vb  1 e@130 ]
-"341 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"341 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T1CKPS0 `Vb  1 e@132 ]
-"342 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"342 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T1CKPS1 `Vb  1 e@133 ]
-"343 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"343 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RD16 `Vb  1 e@135 ]
-"346 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"346 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR2 `Vuc  1 e@17 ]
-"350 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"350 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T2CON `Vuc  1 e@18 ]
-"353 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"353 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T2CKPS0 `Vb  1 e@144 ]
-"354 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"354 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _T2CKPS1 `Vb  1 e@145 ]
-"355 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"355 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR2ON `Vb  1 e@146 ]
-"356 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"356 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TOUTPS0 `Vb  1 e@147 ]
-"357 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"357 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TOUTPS1 `Vb  1 e@148 ]
-"358 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"358 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TOUTPS2 `Vb  1 e@149 ]
-"359 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"359 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TOUTPS3 `Vb  1 e@150 ]
-"362 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"362 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPBUF `Vuc  1 e@19 ]
-"366 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"366 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPCON `Vuc  1 e@20 ]
-"368 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"368 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CKP `Vb  1 e@164 ]
-"369 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"369 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPEN `Vb  1 e@165 ]
-"370 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"370 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPOV `Vb  1 e@166 ]
-"371 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"371 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _WCOL `Vb  1 e@167 ]
-"372 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"372 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPM0 `Vb  1 e@160 ]
-"373 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"373 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPM1 `Vb  1 e@161 ]
-"374 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"374 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPM2 `Vb  1 e@162 ]
-"375 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"375 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPM3 `Vb  1 e@163 ]
-"378 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"378 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCPR1L `Vuc  1 e@21 ]
-"382 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"382 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCPR1H `Vuc  1 e@22 ]
-"386 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"386 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCPR1 `Vui  1 e@21 ]
-"389 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"389 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1CON `Vuc  1 e@23 ]
-"391 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"391 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1M0 `Vb  1 e@184 ]
-"392 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"392 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1M1 `Vb  1 e@185 ]
-"393 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"393 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1M2 `Vb  1 e@186 ]
-"394 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"394 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1M3 `Vb  1 e@187 ]
-"395 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"395 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1Y `Vb  1 e@188 ]
-"396 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"396 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1X `Vb  1 e@189 ]
 [s S11 :4 `uc 1 :2 `uc 1 ]
 [n S11 . CCP1M DC1B ]
@@ -251,39 +251,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S12 . CCP1M0 CCP1M1 CCP1M2 CCP1M3 CCP1Y CCP1X ]
 [u S10 `S11 1 `S12 1 ]
 [n S10 . . . ]
-"411 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"411 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1CONbits `VS10  1 e@23 ]
-"415 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"415 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RCSTA `Vuc  1 e@24 ]
-"417 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"417 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RX9D `Vb  1 e@192 ]
-"418 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"418 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OERR `Vb  1 e@193 ]
-"419 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"419 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _FERR `Vb  1 e@194 ]
-"420 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"420 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RXPARITY `Vb  1 e@195 ]
-"421 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"421 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CREN `Vb  1 e@196 ]
-"422 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"422 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SREN `Vb  1 e@197 ]
-"423 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"423 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RX9 `Vb  1 e@198 ]
-"424 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"424 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SPEN `Vb  1 e@199 ]
-"425 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"425 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RCD8 `Vb  1 e@192 ]
-"426 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"426 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RC9 `Vb  1 e@198 ]
-"427 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"427 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nRC8 `Vb  1 e@198 ]
-"428 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"428 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RC8_9 `Vb  1 e@198 ]
-"431 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"431 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TXREG `Vuc  1 e@25 ]
-"435 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"435 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RCREG `Vuc  1 e@26 ]
-"439 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"439 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP1CON0 `Vuc  1 e@27 ]
 [s S14 :4 `uc 1 ]
 [n S14 . OP1F ]
@@ -291,9 +291,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S15 . OP1F0 OP1F1 OP1F2 OP1F3 OP1ZLF OP1POL OP1OUT OP1ON ]
 [u S13 `S14 1 `S15 1 ]
 [n S13 . . . ]
-"456 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"456 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP1CON0bits `VS13  1 e@27 ]
-"460 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"460 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP1CON1 `Vuc  1 e@28 ]
 [s S17 :2 `uc 1 :2 `uc 1 :2 `uc 1 ]
 [n S17 . OP1NCH RSV OP1PCH ]
@@ -301,37 +301,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S18 . OP1NCH0 OP1NCH1 RSV0 RSV1 OP1PCH0 OP1PCH1 OP1INTN OP1INTP ]
 [u S16 `S17 1 `S18 1 ]
 [n S16 . . . ]
-"479 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"479 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP1CON1bits `VS16  1 e@28 ]
-"483 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"483 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP1CON2 `Vuc  1 e@29 ]
 [s S20 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S20 . RSV0 RSV1 RSV2 RSV3 A1O2N A1NS OP1A2DEN OP1OUTEN ]
 [u S19 `S20 1 ]
 [n S19 . . ]
-"497 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"497 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP1CON2bits `VS19  1 e@29 ]
-"501 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"501 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADRESH `Vuc  1 e@30 ]
-"505 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"505 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADCON0 `Vuc  1 e@31 ]
-"507 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"507 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADON `Vb  1 e@248 ]
-"508 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"508 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _GO_nDONE `Vb  1 e@249 ]
-"509 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"509 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _GO `Vb  1 e@249 ]
-"510 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"510 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CHS0 `Vb  1 e@250 ]
-"511 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"511 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CHS1 `Vb  1 e@251 ]
-"512 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"512 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CHS2 `Vb  1 e@252 ]
-"513 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"513 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CHS3 `Vb  1 e@253 ]
-"514 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"514 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nDONE `Vb  1 e@250 ]
-"515 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"515 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _GO_DONE `Vb  1 e@250 ]
 [s S22 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
 [n S22 . ADON G0 CHS ]
@@ -339,55 +339,55 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S23 . ADON GO CHS0 CHS1 CHS2 CHS3 ]
 [u S21 `S22 1 `S23 1 ]
 [n S21 . . . ]
-"531 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"531 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADCON0bits `VS21  1 e@31 ]
-"541 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"541 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _WDTCON `Vuc  1 e@129 ]
-"543 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"543 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SWDTEN `Vb  1 e@1032 ]
 [s S25 :1 `uc 1 ]
 [n S25 . SWDTEN ]
 [u S24 `S25 1 ]
 [n S24 . . ]
-"549 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"549 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _WDTCONbits `VS24  1 e@129 ]
-"553 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"553 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA `Vuc  1 e@133 ]
-"555 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"555 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA0 `Vb  1 e@1064 ]
-"556 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"556 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA1 `Vb  1 e@1065 ]
-"557 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"557 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA2 `Vb  1 e@1066 ]
-"558 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"558 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA3 `Vb  1 e@1067 ]
-"559 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"559 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA4 `Vb  1 e@1068 ]
-"560 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"560 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA5 `Vb  1 e@1069 ]
-"561 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"561 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA6 `Vb  1 e@1070 ]
-"562 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"562 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISA7 `Vb  1 e@1071 ]
-"565 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"565 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB `Vuc  1 e@134 ]
-"567 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"567 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB0 `Vb  1 e@1072 ]
-"568 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"568 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB1 `Vb  1 e@1073 ]
-"569 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"569 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB2 `Vb  1 e@1074 ]
-"570 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"570 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB3 `Vb  1 e@1075 ]
-"571 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"571 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB4 `Vb  1 e@1076 ]
-"572 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"572 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB5 `Vb  1 e@1077 ]
-"573 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"573 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB6 `Vb  1 e@1078 ]
-"574 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"574 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRISB7 `Vb  1 e@1079 ]
-"576 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"576 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _DACCON `Vuc  1 e@135 ]
 [s S27 :2 `uc 1 ]
 [n S27 . DACCH ]
@@ -395,197 +395,197 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S28 . DACCH0 DACCH1 DAC0EN DAC1EN ]
 [u S26 `S27 1 `S28 1 ]
 [n S26 . . . ]
-"589 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"589 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _DACCONbits `VS26  1 e@135 ]
-"592 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"592 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _DACR0 `Vuc  1 e@136 ]
-"593 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"593 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _DACR1 `Vuc  1 e@137 ]
-"596 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"596 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PIE1 `Vuc  1 e@140 ]
-"598 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"598 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR1IE `Vb  1 e@1120 ]
-"599 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"599 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TMR2IE `Vb  1 e@1121 ]
-"600 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"600 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CCP1IE `Vb  1 e@1122 ]
-"601 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"601 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPIE `Vb  1 e@1123 ]
-"602 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"602 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TXIE `Vb  1 e@1124 ]
-"603 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"603 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RCIE `Vb  1 e@1125 ]
-"604 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"604 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INT1IE `Vb  1 e@1126 ]
-"605 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"605 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INT2IE `Vb  1 e@1127 ]
-"608 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"608 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PIE2 `Vuc  1 e@141 ]
-"610 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"610 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP1IE `Vb  1 e@1128 ]
-"611 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"611 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP2IE `Vb  1 e@1129 ]
-"612 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"612 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADIE `Vb  1 e@1130 ]
-"613 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"613 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _LVDIE `Vb  1 e@1131 ]
-"614 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"614 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWMIE `Vb  1 e@1132 ]
-"615 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"615 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _BCLIE `Vb  1 e@1133 ]
-"619 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"619 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PCON `Vuc  1 e@142 ]
-"621 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"621 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nBOR `Vb  1 e@1136 ]
-"622 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"622 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nPOR `Vb  1 e@1137 ]
-"623 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"623 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INTEDG2 `Vb  1 e@1138 ]
-"624 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"624 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INTEDG1 `Vb  1 e@1139 ]
-"625 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"625 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INTEDG0 `Vb  1 e@1140 ]
-"626 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"626 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CKOE `Vb  1 e@1141 ]
-"627 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"627 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _I2C_AUX `Vb  1 e@1142 ]
-"628 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"628 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nBO `Vb  1 e@1136 ]
-"632 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"632 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWST `Vuc  1 e@143 ]
-"635 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"635 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPADD2 `Vuc  1 e@144 ]
-"638 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"638 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPCON2 `Vuc  1 e@145 ]
-"639 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"639 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SEN `Vb  1 e@1160 ]
-"640 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"640 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RSEN `Vb  1 e@1161 ]
-"641 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"641 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PEN `Vb  1 e@1162 ]
-"642 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"642 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RCEN `Vb  1 e@1163 ]
-"643 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"643 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ACKEN `Vb  1 e@1164 ]
-"644 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"644 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ACKDT `Vb  1 e@1165 ]
-"645 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"645 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ACKSTAT `Vb  1 e@1166 ]
-"646 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"646 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _GCEN `Vb  1 e@1167 ]
-"649 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"649 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PR2 `Vuc  1 e@146 ]
-"652 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"652 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPADD `Vuc  1 e@147 ]
-"655 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"655 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SSPSTAT `Vuc  1 e@148 ]
-"657 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"657 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _BF `Vb  1 e@1184 ]
-"658 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"658 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _UA `Vb  1 e@1185 ]
-"659 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"659 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _R_nW `Vb  1 e@1186 ]
-"660 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"660 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _S `Vb  1 e@1187 ]
-"661 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"661 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _P `Vb  1 e@1188 ]
-"662 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"662 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _D_nA `Vb  1 e@1189 ]
-"663 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"663 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CKE `Vb  1 e@1190 ]
-"664 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"664 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SMP `Vb  1 e@1191 ]
-"665 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"665 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _R `Vb  1 e@1186 ]
-"666 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"666 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _D `Vb  1 e@1189 ]
-"667 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"667 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _I2C_READ `Vb  1 e@1186 ]
-"668 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"668 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _I2C_START `Vb  1 e@1187 ]
-"669 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"669 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _I2C_STOP `Vb  1 e@1188 ]
-"670 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"670 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _I2C_DATA `Vb  1 e@1189 ]
-"671 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"671 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _R_W `Vb  1 e@1186 ]
-"672 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"672 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _D_A `Vb  1 e@1189 ]
-"673 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"673 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _READ_WRITE `Vb  1 e@1186 ]
-"674 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"674 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _DATA_ADDRESS `Vb  1 e@1189 ]
-"675 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"675 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nW `Vb  1 e@1186 ]
-"676 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"676 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nA `Vb  1 e@1189 ]
-"677 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"677 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nWRITE `Vb  1 e@1186 ]
-"678 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"678 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nADDRESS `Vb  1 e@1189 ]
-"681 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"681 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWMCON1 `Vuc  1 e@150 ]
-"683 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"683 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWM1ASE `Vb  1 e@1200 ]
-"684 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"684 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWM1OP2ASEN `Vb  1 e@1201 ]
-"685 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"685 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWM1OP1ASEN `Vb  1 e@1202 ]
-"686 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"686 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWM1RSE `Vb  1 e@1204 ]
-"687 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"687 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWM1OP2RSEN `Vb  1 e@1205 ]
-"688 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"688 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWM1OP1RSEN `Vb  1 e@1206 ]
-"692 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"692 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWMCON0 `Vuc  1 e@151 ]
-"694 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"694 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PWM1S `Vb  1 e@1214 ]
-"698 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"698 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TXSTA `Vuc  1 e@152 ]
-"700 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"700 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TX9D `Vb  1 e@1216 ]
-"701 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"701 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TRMT `Vb  1 e@1217 ]
-"702 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"702 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _BRGH `Vb  1 e@1218 ]
-"703 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"703 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TXPARITY `Vb  1 e@1219 ]
-"704 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"704 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SYNC `Vb  1 e@1220 ]
-"705 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"705 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TXEN `Vb  1 e@1221 ]
-"706 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"706 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TX9 `Vb  1 e@1222 ]
-"707 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"707 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CSRC `Vb  1 e@1223 ]
-"708 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"708 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TXD8 `Vb  1 e@1216 ]
-"709 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"709 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _nTX8 `Vb  1 e@1222 ]
-"710 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"710 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _TX8_9 `Vb  1 e@1222 ]
-"713 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"713 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SPBRG `Vuc  1 e@153 ]
-"717 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"717 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _UARTCON `Vuc  1 e@154 ]
-"719 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"719 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _INVMODE `Vb  1 e@1232 ]
-"720 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"720 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PARITY `Vb  1 e@1233 ]
-"721 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"721 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _RXODD_EVEN `Vb  1 e@1234 ]
-"722 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"722 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _BOUD_CLK `Vb  1 e@1235 ]
-"723 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"723 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _HALF_DUPLEX `Vb  1 e@1236 ]
-"724 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"724 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _DLSB `Vb  1 e@1237 ]
-"725 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"725 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _STOP_BIT1 `Vb  1 e@1238 ]
-"726 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"726 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _STOP_BIT0 `Vb  1 e@1239 ]
-"729 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"729 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP2CON0 `Vuc  1 e@155 ]
 [s S30 :4 `uc 1 ]
 [n S30 . OP2F ]
@@ -593,9 +593,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S31 . OP2F0 OP2F1 OP2F2 OP2F3 OP2ZLF OP2POL OP2OUT OP2ON ]
 [u S29 `S30 1 `S31 1 ]
 [n S29 . . . ]
-"746 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"746 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP2CON0bits `VS29  1 e@155 ]
-"750 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"750 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP2CON1 `Vuc  1 e@156 ]
 [s S33 :3 `uc 1 :3 `uc 1 ]
 [n S33 . OP2NCH OP2PCH ]
@@ -603,9 +603,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S34 . OP2NCH0 OP2NCH1 OP2NCH2 OP2PCH0 OP2PCH1 OP2PCH2 OP2INTN OP2INTP ]
 [u S32 `S33 1 `S34 1 ]
 [n S32 . . . ]
-"768 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"768 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP2CON1bits `VS32  1 e@156 ]
-"772 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"772 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP2CON2 `Vuc  1 e@157 ]
 [s S36 :3 `uc 1 ]
 [n S36 . PGA ]
@@ -613,27 +613,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S37 . PGA0 PGA1 PGA2 PGAEN A2O2N A2NS OP2A2DEN OP2OUTEN ]
 [u S35 `S36 1 `S37 1 ]
 [n S35 . . . ]
-"789 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"789 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _OP2CON2bits `VS35  1 e@157 ]
-"793 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"793 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADRESL `Vuc  1 e@158 ]
-"797 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"797 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADCON1 `Vuc  1 e@159 ]
-"799 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"799 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADCS0 `Vb  1 e@1272 ]
-"800 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"800 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADCS1 `Vb  1 e@1273 ]
-"801 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"801 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADCS2 `Vb  1 e@1274 ]
-"802 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"802 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ACQT0 `Vb  1 e@1275 ]
-"803 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"803 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ACQT1 `Vb  1 e@1276 ]
-"804 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"804 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ACQT2 `Vb  1 e@1277 ]
-"805 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"805 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADVREF0 `Vb  1 e@1276 ]
-"806 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"806 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADVERF1 `Vb  1 e@1277 ]
 [s S39 :3 `uc 1 :3 `uc 1 :2 `uc 1 ]
 [n S39 . ADCS ACQT ADVREF ]
@@ -641,119 +641,125 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S40 . ADCS0 ADCS1 ADCS2 ACQT0 ACQT1 ACOT2 ADVREF0 ADVREF1 ]
 [u S38 `S39 1 `S40 1 ]
 [n S38 . . . ]
-"824 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"824 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ADCON1bits `VS38  1 e@159 ]
-"833 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"833 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PAPU `Vuc  1 e@261 ]
-"837 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"837 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PBPU `Vuc  1 e@262 ]
-"841 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"841 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PBMASK `Vuc  1 e@263 ]
-"845 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"845 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CLKPR `Vuc  1 e@264 ]
-"847 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"847 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CLKPS0 `Vb  1 e@2112 ]
-"848 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"848 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CLKPS1 `Vb  1 e@2113 ]
-"849 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"849 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _CLKPCE `Vb  1 e@2119 ]
-"852 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"852 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SMCR `Vuc  1 e@265 ]
-"854 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"854 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SE `Vb  1 e@2120 ]
-"855 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"855 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SM0 `Vb  1 e@2121 ]
-"856 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"856 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SM1 `Vb  1 e@2122 ]
-"857 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"857 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _SM2 `Vb  1 e@2123 ]
-"860 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"860 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ALG0 `Vuc  1 e@268 ]
-"863 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"863 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _DACBIASEN `Vb  1 e@2148 ]
-"864 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"864 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _IOVCCEN `Vb  1 e@2149 ]
-"865 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"865 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _BIASEN `Vb  1 e@2150 ]
-"866 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"866 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _LDO2P0EN `Vb  1 e@2151 ]
-"869 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"869 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ALG1 `Vuc  1 e@269 ]
-"873 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"873 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ALG2 `Vuc  1 e@270 ]
-"877 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"877 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ALG3 `Vuc  1 e@271 ]
-"885 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"885 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PAPD `Vuc  1 e@389 ]
-"890 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"890 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PBPD `Vuc  1 e@390 ]
-"894 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"894 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PAOD `Vuc  1 e@391 ]
-"895 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"895 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PAOD6 `Vb  1 e@3134 ]
-"896 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"896 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PAOD7 `Vb  1 e@3135 ]
-"900 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"900 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PBOD `Vuc  1 e@392 ]
-"901 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"901 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PBOD2 `Vb  1 e@3138 ]
-"902 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"902 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _PBOD7 `Vb  1 e@3143 ]
-"906 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"906 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ALG4 `Vuc  1 e@396 ]
-"910 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"910 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ALG5 `Vuc  1 e@397 ]
-"914 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"914 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ALG6 `Vuc  1 e@398 ]
-"918 D:\develop\AK7030-good\AK7030-OTP\yn8p520.h
+"918 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
 [v _ALG7 `Vuc  1 e@399 ]
-"92 D:\develop\AK7030-good\AK7030-OTP\common.h
+"921 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\yn8p520.h
+[v _SRAM_MAP `Vb  1 e@3192 ]
+"92 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _clearTwelveHoursTimer `(v  0 ef ]
-"93 D:\develop\AK7030-good\AK7030-OTP\common.h
+"93 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _clearThreeHoursTimer `(v  0 ef ]
-"94 D:\develop\AK7030-good\AK7030-OTP\common.h
+"94 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _clearOneHoursTimer `(v  0 ef ]
-"95 D:\develop\AK7030-good\AK7030-OTP\common.h
+"95 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _clearTwentyMinTimer `(v  0 ef ]
 [p mainexit ]
-"50 D:\develop\AK7030-good\AK7030-OTP\common.h
+"50 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _clock_config `(v  0 ef ]
-"51 D:\develop\AK7030-good\AK7030-OTP\common.h
+"51 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _timer1_config `(v  0 ef ]
-"52 D:\develop\AK7030-good\AK7030-OTP\common.h
+"52 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _timer1_interrupt_config `(v  0 ef ]
-"18 D:\develop\AK7030-good\AK7030-OTP\periph.h
+"22 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\periph.h
+[v _uid_get `(v  0 ef ]
+"14 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\periph.h
+[v _op1_init `(v  0 ef ]
+"18 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\periph.h
 [v _adc_test_init `(v  0 ef2`uc`uc ]
-"89 D:\develop\AK7030-good\AK7030-OTP\common.h
+"89 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _startTwentyMinTimer `(v  0 ef1`ui ]
-"49 D:\develop\AK7030-good\AK7030-OTP\main.c
+"49 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\main.c
 [v __delay `(v  0 ef1`ul ]
 [p i __delay ]
-"20 D:\develop\AK7030-good\AK7030-OTP\periph.h
+"20 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\periph.h
 [v _adc_start `(v  0 ef ]
-"61 D:\develop\AK7030-good\AK7030-OTP\common.h
+"61 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _process_AD_Converter_Value `(v  0 ef ]
-"73 D:\develop\AK7030-good\AK7030-OTP\common.h
+"73 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _isPermitSampleTime `(uc  0 ef ]
-"75 D:\develop\AK7030-good\AK7030-OTP\common.h
+"75 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _clrSampeTime `(v  0 ef ]
-"90 D:\develop\AK7030-good\AK7030-OTP\common.h
+"90 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _isFinishedTwentyMinTimer `(uc  0 ef ]
-"69 D:\develop\AK7030-good\AK7030-OTP\common.h
+"69 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _getAdOriginalCh13Value `(ui  0 ef ]
-"79 D:\develop\AK7030-good\AK7030-OTP\common.h
+"79 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _startTwelveHourTimer `(v  0 ef1`ui ]
-"98 D:\develop\AK7030-good\AK7030-OTP\common.h
+"98 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _isFinishedTwelveHoursTimer `(uc  0 ef ]
-"80 D:\develop\AK7030-good\AK7030-OTP\common.h
+"80 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _startThreeHoursTimer `(v  0 ef1`ui ]
-"99 D:\develop\AK7030-good\AK7030-OTP\common.h
+"99 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _isFinishedThreeHoursTimer `(uc  0 ef ]
-"82 D:\develop\AK7030-good\AK7030-OTP\common.h
+"82 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _startOneHoursTimer `(v  0 ef1`ui ]
-"100 D:\develop\AK7030-good\AK7030-OTP\common.h
+"100 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _isFinishedOneHoursTimer `(uc  0 ef ]
-"105 D:\develop\AK7030-good\AK7030-OTP\common.h
+"105 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\common.h
 [v _setWaitResetFlag `(v  0 ef1`uc ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
@@ -1280,6 +1286,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;yn8p520.h: 910: volatile unsigned char ALG5 @ 0x18D;
 [; ;yn8p520.h: 914: volatile unsigned char ALG6 @ 0x18E;
 [; ;yn8p520.h: 918: volatile unsigned char ALG7 @ 0x18F;
+[; ;yn8p520.h: 921: volatile bit SRAM_MAP @ ((unsigned)&ALG7*8)+0;
 [; ;common.h: 50: void clock_config();
 [; ;common.h: 51: void timer1_config();
 [; ;common.h: 52: void timer1_interrupt_config();
@@ -1314,8 +1321,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.h: 18: void adc_test_init(unsigned char channel,unsigned char ref);
 [; ;periph.h: 20: void adc_start();
 [; ;periph.h: 21: unsigned int adc_get(void);
+[; ;periph.h: 22: void uid_get(void);
 [; ;main.c: 49: extern void _delay(unsigned long);
-"100 D:\develop\AK7030-good\AK7030-OTP\main.c
+"100 D:\develop\AK7030-OTP-191211-change-pin_bb_div2(two_filter)\AK7030-OTP\main.c
 [; ;main.c: 100: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x0FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
 [; 	psect config,class=CONFIG,delta=2 ;#
 [; 	dw 0x0FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF ;#
@@ -1645,12 +1653,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "542
-[c E857 0 1 2 3 4 5 6 99 100 101 102 .. ]
-[n E857 systemStep INIT_STEP START_UP_PWM_STEP CHECK_10_HOUR_TIMER_STEP STARTUP_3_HOUR_TIMER_STEP CHECK_3_HOUR_TIMER_STEP STARTUP_1_HOUR_TIMER_STEP CHECK_1_HOUR_TIMER_STEP READY_FOR_RESET_STEP DELAY_ONE_SECOND_FOR_PWM MEET_RESET_CONDITION_STEP RESET_STEP  ]
+[c E861 0 1 2 3 4 5 6 99 100 101 102 .. ]
+[n E861 systemStep INIT_STEP START_UP_PWM_STEP CHECK_10_HOUR_TIMER_STEP STARTUP_3_HOUR_TIMER_STEP CHECK_3_HOUR_TIMER_STEP STARTUP_1_HOUR_TIMER_STEP CHECK_1_HOUR_TIMER_STEP READY_FOR_RESET_STEP DELAY_ONE_SECOND_FOR_PWM MEET_RESET_CONDITION_STEP RESET_STEP  ]
 "544
-[v F869 `E857  1 s ucStep ]
-[i F869
-. `E857 0
+[v F873 `E861  1 s ucStep ]
+[i F873
+. `E861 0
 ]
 [; ;main.c: 530: enum systemStep {
 [; ;main.c: 531: INIT_STEP = 0,
@@ -1684,689 +1692,695 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 563: timer1_interrupt_config();
 "563
 [e ( _timer1_interrupt_config ..  ]
-[; ;main.c: 565: adc_test_init(2,3);
+[; ;main.c: 565: uid_get();
 "565
-[e ( _adc_test_init (2 , -> -> 2 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 571: startTwentyMinTimer( 1200 );
-"571
+[e ( _uid_get ..  ]
+[; ;main.c: 567: op1_init();
+"567
+[e ( _op1_init ..  ]
+[; ;main.c: 569: adc_test_init(2,0);
+"569
+[e ( _adc_test_init (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 575: startTwentyMinTimer( 1200 );
+"575
 [e ( _startTwentyMinTimer (1 -> -> 1200 `i `ui ]
-[; ;main.c: 572: _delay(1000);
-"572
+[; ;main.c: 576: _delay(1000);
+"576
 [e ( __delay (1 -> -> -> 1000 `i `l `ul ]
-[; ;main.c: 573: adc_start();
-"573
+[; ;main.c: 577: adc_start();
+"577
 [e ( _adc_start ..  ]
-[; ;main.c: 581: while(1)
-"581
-[e :U 71 ]
-[; ;main.c: 582: {
-"582
-{
-[; ;main.c: 584: asm(" clrwdt");
-"584
-[;  clrwdt ;#
-[; ;main.c: 586: process_AD_Converter_Value();
-"586
-[e ( _process_AD_Converter_Value ..  ]
-[; ;main.c: 588: if( isPermitSampleTime() )
-"588
-[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 73  ]
-[; ;main.c: 589: {
-"589
-{
-[; ;main.c: 592: clrSampeTime();
+[; ;main.c: 592: while(1)
 "592
+[e :U 71 ]
+[; ;main.c: 593: {
+"593
+{
+[; ;main.c: 595: asm(" clrwdt");
+"595
+[;  clrwdt ;#
+[; ;main.c: 597: process_AD_Converter_Value();
+"597
+[e ( _process_AD_Converter_Value ..  ]
+[; ;main.c: 599: if( isPermitSampleTime() )
+"599
+[e $ ! != -> ( _isPermitSampleTime ..  `i -> -> -> 0 `i `uc `i 73  ]
+[; ;main.c: 600: {
+"600
+{
+[; ;main.c: 603: clrSampeTime();
+"603
 [e ( _clrSampeTime ..  ]
-[; ;main.c: 601: switch(ucStep)
-"601
-[e $U 75  ]
-[; ;main.c: 602: {
-"602
-{
-[; ;main.c: 604: case INIT_STEP:
-"604
-[e :U 76 ]
-[; ;main.c: 605: {
-"605
-{
-"610
-[v F870 `uc  1 s ucTimerP3s ]
-[i F870
--> -> 0 `i `uc
-]
-[; ;main.c: 610: static unsigned char ucTimerP3s = 0;
-[; ;main.c: 612: if( isFinishedTwentyMinTimer() )
+[; ;main.c: 612: switch(ucStep)
 "612
-[e $ ! != -> ( _isFinishedTwentyMinTimer ..  `i -> -> -> 0 `i `uc `i 77  ]
+[e $U 75  ]
 [; ;main.c: 613: {
 "613
 {
-[; ;main.c: 614: ucStep = READY_FOR_RESET_STEP;
-"614
-[e = F869 . `E857 7 ]
-[; ;main.c: 615: ucTimerP3s = 0;
+[; ;main.c: 615: case INIT_STEP:
 "615
-[e = F870 -> -> 0 `i `uc ]
+[e :U 76 ]
+[; ;main.c: 616: {
 "616
-}
-[; ;main.c: 616: }
-[e $U 78  ]
-"617
-[e :U 77 ]
-[; ;main.c: 617: else
-[; ;main.c: 618: {
-"618
 {
-[; ;main.c: 619: if( getAdOriginalCh13Value() > 90 )
-"619
-[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 90 `i `ui 79  ]
-[; ;main.c: 620: {
-"620
-{
-[; ;main.c: 621: ucTimerP3s++;
 "621
-[e ++ F870 -> -> 1 `i `uc ]
-"622
-}
-[; ;main.c: 622: }
-[e $U 80  ]
+[v F874 `uc  1 s ucTimerP3s ]
+[i F874
+-> -> 0 `i `uc
+]
+[; ;main.c: 621: static unsigned char ucTimerP3s = 0;
+[; ;main.c: 623: if( isFinishedTwentyMinTimer() )
 "623
-[e :U 79 ]
-[; ;main.c: 623: else
-[; ;main.c: 624: ucTimerP3s = 0;
+[e $ ! != -> ( _isFinishedTwentyMinTimer ..  `i -> -> -> 0 `i `uc `i 77  ]
+[; ;main.c: 624: {
 "624
-[e = F870 -> -> 0 `i `uc ]
-[e :U 80 ]
-[; ;main.c: 626: if( ucTimerP3s >= 30)
-"626
-[e $ ! >= -> F870 `i -> 30 `i 81  ]
-[; ;main.c: 627: {
-"627
 {
-[; ;main.c: 628: ucTimerP3s = 0;
+[; ;main.c: 625: ucStep = READY_FOR_RESET_STEP;
+"625
+[e = F873 . `E861 7 ]
+[; ;main.c: 626: ucTimerP3s = 0;
+"626
+[e = F874 -> -> 0 `i `uc ]
+"627
+}
+[; ;main.c: 627: }
+[e $U 78  ]
 "628
-[e = F870 -> -> 0 `i `uc ]
-[; ;main.c: 629: ucStep = START_UP_PWM_STEP;
+[e :U 77 ]
+[; ;main.c: 628: else
+[; ;main.c: 629: {
 "629
-[e = F869 . `E857 1 ]
+{
+[; ;main.c: 630: if( getAdOriginalCh13Value() > 145 )
 "630
+[e $ ! > ( _getAdOriginalCh13Value ..  -> -> 145 `i `ui 79  ]
+[; ;main.c: 631: {
+"631
+{
+[; ;main.c: 632: ucTimerP3s++;
+"632
+[e ++ F874 -> -> 1 `i `uc ]
+"633
+}
+[; ;main.c: 633: }
+[e $U 80  ]
+"634
+[e :U 79 ]
+[; ;main.c: 634: else
+[; ;main.c: 635: ucTimerP3s = 0;
+"635
+[e = F874 -> -> 0 `i `uc ]
+[e :U 80 ]
+[; ;main.c: 637: if( ucTimerP3s >= 30)
+"637
+[e $ ! >= -> F874 `i -> 30 `i 81  ]
+[; ;main.c: 638: {
+"638
+{
+[; ;main.c: 639: ucTimerP3s = 0;
+"639
+[e = F874 -> -> 0 `i `uc ]
+[; ;main.c: 640: ucStep = START_UP_PWM_STEP;
+"640
+[e = F873 . `E861 1 ]
+"641
 }
 [e :U 81 ]
-"632
+"643
 }
 [e :U 78 ]
-[; ;main.c: 630: }
-[; ;main.c: 632: }
-[; ;main.c: 636: break;
-"636
-[e $U 74  ]
-"637
-}
-[; ;main.c: 637: }
-[; ;main.c: 639: case START_UP_PWM_STEP:
-"639
-[e :U 82 ]
-[; ;main.c: 640: {
-"640
-{
-[; ;main.c: 645: pwm_start(150,249);
-"645
-[e ( _pwm_start (2 , -> -> 150 `i `uc -> -> 249 `i `uc ]
-[; ;main.c: 647: setPB3(0);
+[; ;main.c: 641: }
+[; ;main.c: 643: }
+[; ;main.c: 647: break;
 "647
-[e ( _setPB3 (1 -> -> 0 `i `uc ]
-[; ;main.c: 648: setPB4(1);
-"648
-[e ( _setPB4 (1 -> -> 1 `i `uc ]
-[; ;main.c: 649: setPB5(0);
-"649
-[e ( _setPB5 (1 -> -> 0 `i `uc ]
-[; ;main.c: 650: clearTwentyMinTimer();
-"650
-[e ( _clearTwentyMinTimer ..  ]
-[; ;main.c: 651: startTwelveHourTimer( 36000);
-"651
-[e ( _startTwelveHourTimer (1 -> -> 36000 `l `ui ]
-[; ;main.c: 652: ucStep = CHECK_10_HOUR_TIMER_STEP;
-"652
-[e = F869 . `E857 2 ]
-[; ;main.c: 653: break;
-"653
 [e $U 74  ]
-"654
+"648
 }
-[; ;main.c: 654: }
-[; ;main.c: 656: case CHECK_10_HOUR_TIMER_STEP:
-"656
-[e :U 83 ]
-[; ;main.c: 657: {
-"657
+[; ;main.c: 648: }
+[; ;main.c: 650: case START_UP_PWM_STEP:
+"650
+[e :U 82 ]
+[; ;main.c: 651: {
+"651
 {
+[; ;main.c: 656: pwm_start(150,249);
+"656
+[e ( _pwm_start (2 , -> -> 150 `i `uc -> -> 249 `i `uc ]
+[; ;main.c: 658: setPB3(0);
+"658
+[e ( _setPB3 (1 -> -> 0 `i `uc ]
+[; ;main.c: 659: setPB4(1);
+"659
+[e ( _setPB4 (1 -> -> 1 `i `uc ]
+[; ;main.c: 660: setPB5(0);
+"660
+[e ( _setPB5 (1 -> -> 0 `i `uc ]
+[; ;main.c: 661: clearTwentyMinTimer();
+"661
+[e ( _clearTwentyMinTimer ..  ]
+[; ;main.c: 662: startTwelveHourTimer( 36000);
 "662
-[v F871 `uc  1 s ucTimerP5s ]
-[i F871
+[e ( _startTwelveHourTimer (1 -> -> 36000 `l `ui ]
+[; ;main.c: 663: ucStep = CHECK_10_HOUR_TIMER_STEP;
+"663
+[e = F873 . `E861 2 ]
+[; ;main.c: 664: break;
+"664
+[e $U 74  ]
+"665
+}
+[; ;main.c: 665: }
+[; ;main.c: 667: case CHECK_10_HOUR_TIMER_STEP:
+"667
+[e :U 83 ]
+[; ;main.c: 668: {
+"668
+{
+"673
+[v F875 `uc  1 s ucTimerP5s ]
+[i F875
 -> -> 0 `i `uc
 ]
-[; ;main.c: 662: static unsigned char ucTimerP5s = 0;
-[; ;main.c: 664: if( isFinishedTwelveHoursTimer () )
-"664
-[e $ ! != -> ( _isFinishedTwelveHoursTimer ..  `i -> -> -> 0 `i `uc `i 84  ]
-[; ;main.c: 665: ucStep = READY_FOR_RESET_STEP;
-"665
-[e = F869 . `E857 7 ]
-[e $U 85  ]
-"666
-[e :U 84 ]
-[; ;main.c: 666: else
-[; ;main.c: 667: {
-"667
-{
-[; ;main.c: 668: if( getAdOriginalCh13Value() < 200 )
-"668
-[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 200 `i `ui 86  ]
-[; ;main.c: 669: ucTimerP5s++;
-"669
-[e ++ F871 -> -> 1 `i `uc ]
-[e $U 87  ]
-"670
-[e :U 86 ]
-[; ;main.c: 670: else
-[; ;main.c: 671: ucTimerP5s = 0;
-"671
-[e = F871 -> -> 0 `i `uc ]
-[e :U 87 ]
-[; ;main.c: 673: if( ucTimerP5s >= 10)
-"673
-[e $ ! >= -> F871 `i -> 10 `i 88  ]
-[; ;main.c: 674: {
-"674
-{
-[; ;main.c: 675: ucTimerP5s = 0;
+[; ;main.c: 673: static unsigned char ucTimerP5s = 0;
+[; ;main.c: 675: if( isFinishedTwelveHoursTimer () )
 "675
-[e = F871 -> -> 0 `i `uc ]
-[; ;main.c: 676: ucStep = STARTUP_3_HOUR_TIMER_STEP;
+[e $ ! != -> ( _isFinishedTwelveHoursTimer ..  `i -> -> -> 0 `i `uc `i 84  ]
+[; ;main.c: 676: ucStep = READY_FOR_RESET_STEP;
 "676
-[e = F869 . `E857 3 ]
+[e = F873 . `E861 7 ]
+[e $U 85  ]
 "677
+[e :U 84 ]
+[; ;main.c: 677: else
+[; ;main.c: 678: {
+"678
+{
+[; ;main.c: 679: if( getAdOriginalCh13Value() < 322 )
+"679
+[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 322 `i `ui 86  ]
+[; ;main.c: 680: ucTimerP5s++;
+"680
+[e ++ F875 -> -> 1 `i `uc ]
+[e $U 87  ]
+"681
+[e :U 86 ]
+[; ;main.c: 681: else
+[; ;main.c: 682: ucTimerP5s = 0;
+"682
+[e = F875 -> -> 0 `i `uc ]
+[e :U 87 ]
+[; ;main.c: 684: if( ucTimerP5s >= 10)
+"684
+[e $ ! >= -> F875 `i -> 10 `i 88  ]
+[; ;main.c: 685: {
+"685
+{
+[; ;main.c: 686: ucTimerP5s = 0;
+"686
+[e = F875 -> -> 0 `i `uc ]
+[; ;main.c: 687: ucStep = STARTUP_3_HOUR_TIMER_STEP;
+"687
+[e = F873 . `E861 3 ]
+"688
 }
 [e :U 88 ]
-"678
-}
-[e :U 85 ]
-[; ;main.c: 677: }
-[; ;main.c: 678: }
-[; ;main.c: 679: break;
-"679
-[e $U 74  ]
-"680
-}
-[; ;main.c: 680: }
-[; ;main.c: 683: case STARTUP_3_HOUR_TIMER_STEP:
-"683
-[e :U 89 ]
-[; ;main.c: 684: {
-"684
-{
-[; ;main.c: 685: clearTwelveHoursTimer();
-"685
-[e ( _clearTwelveHoursTimer ..  ]
-[; ;main.c: 686: startThreeHoursTimer(10800);
-"686
-[e ( _startThreeHoursTimer (1 -> -> 10800 `i `ui ]
-[; ;main.c: 687: ucStep = CHECK_3_HOUR_TIMER_STEP;
-"687
-[e = F869 . `E857 4 ]
-[; ;main.c: 688: break;
-"688
-[e $U 74  ]
 "689
 }
+[e :U 85 ]
+[; ;main.c: 688: }
 [; ;main.c: 689: }
-[; ;main.c: 691: case CHECK_3_HOUR_TIMER_STEP:
+[; ;main.c: 690: break;
+"690
+[e $U 74  ]
 "691
-[e :U 90 ]
-[; ;main.c: 692: {
-"692
+}
+[; ;main.c: 691: }
+[; ;main.c: 694: case STARTUP_3_HOUR_TIMER_STEP:
+"694
+[e :U 89 ]
+[; ;main.c: 695: {
+"695
 {
-"693
-[v F872 `uc  1 s ucTimerP5s ]
-[i F872
+[; ;main.c: 696: clearTwelveHoursTimer();
+"696
+[e ( _clearTwelveHoursTimer ..  ]
+[; ;main.c: 697: startThreeHoursTimer(10800);
+"697
+[e ( _startThreeHoursTimer (1 -> -> 10800 `i `ui ]
+[; ;main.c: 698: ucStep = CHECK_3_HOUR_TIMER_STEP;
+"698
+[e = F873 . `E861 4 ]
+[; ;main.c: 699: break;
+"699
+[e $U 74  ]
+"700
+}
+[; ;main.c: 700: }
+[; ;main.c: 702: case CHECK_3_HOUR_TIMER_STEP:
+"702
+[e :U 90 ]
+[; ;main.c: 703: {
+"703
+{
+"704
+[v F876 `uc  1 s ucTimerP5s ]
+[i F876
 -> -> 0 `i `uc
 ]
-[; ;main.c: 693: static unsigned char ucTimerP5s = 0;
-[; ;main.c: 695: if( isFinishedThreeHoursTimer() )
-"695
-[e $ ! != -> ( _isFinishedThreeHoursTimer ..  `i -> -> -> 0 `i `uc `i 91  ]
-[; ;main.c: 696: ucStep = READY_FOR_RESET_STEP;
-"696
-[e = F869 . `E857 7 ]
-[e $U 92  ]
-"697
-[e :U 91 ]
-[; ;main.c: 697: else
-[; ;main.c: 698: {
-"698
-{
-[; ;main.c: 699: if( getAdOriginalCh13Value() < 65 )
-"699
-[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 65 `i `ui 93  ]
-[; ;main.c: 700: ucTimerP5s++;
-"700
-[e ++ F872 -> -> 1 `i `uc ]
-[e $U 94  ]
-"701
-[e :U 93 ]
-[; ;main.c: 701: else
-[; ;main.c: 702: ucTimerP5s = 0;
-"702
-[e = F872 -> -> 0 `i `uc ]
-[e :U 94 ]
-[; ;main.c: 704: if( ucTimerP5s >= 10)
-"704
-[e $ ! >= -> F872 `i -> 10 `i 95  ]
-[; ;main.c: 705: {
-"705
-{
-[; ;main.c: 706: ucTimerP5s = 0;
+[; ;main.c: 704: static unsigned char ucTimerP5s = 0;
+[; ;main.c: 706: if( isFinishedThreeHoursTimer() )
 "706
-[e = F872 -> -> 0 `i `uc ]
-[; ;main.c: 707: ucStep = STARTUP_1_HOUR_TIMER_STEP;
+[e $ ! != -> ( _isFinishedThreeHoursTimer ..  `i -> -> -> 0 `i `uc `i 91  ]
+[; ;main.c: 707: ucStep = READY_FOR_RESET_STEP;
 "707
-[e = F869 . `E857 5 ]
+[e = F873 . `E861 7 ]
+[e $U 92  ]
 "708
+[e :U 91 ]
+[; ;main.c: 708: else
+[; ;main.c: 709: {
+"709
+{
+[; ;main.c: 710: if( getAdOriginalCh13Value() < 105 )
+"710
+[e $ ! < ( _getAdOriginalCh13Value ..  -> -> 105 `i `ui 93  ]
+[; ;main.c: 711: ucTimerP5s++;
+"711
+[e ++ F876 -> -> 1 `i `uc ]
+[e $U 94  ]
+"712
+[e :U 93 ]
+[; ;main.c: 712: else
+[; ;main.c: 713: ucTimerP5s = 0;
+"713
+[e = F876 -> -> 0 `i `uc ]
+[e :U 94 ]
+[; ;main.c: 715: if( ucTimerP5s >= 10)
+"715
+[e $ ! >= -> F876 `i -> 10 `i 95  ]
+[; ;main.c: 716: {
+"716
+{
+[; ;main.c: 717: ucTimerP5s = 0;
+"717
+[e = F876 -> -> 0 `i `uc ]
+[; ;main.c: 718: ucStep = STARTUP_1_HOUR_TIMER_STEP;
+"718
+[e = F873 . `E861 5 ]
+"719
 }
 [e :U 95 ]
-"709
+"720
 }
 [e :U 92 ]
-[; ;main.c: 708: }
-[; ;main.c: 709: }
-[; ;main.c: 710: break;
-"710
-[e $U 74  ]
-"711
-}
-[; ;main.c: 711: }
-[; ;main.c: 713: case STARTUP_1_HOUR_TIMER_STEP:
-"713
-[e :U 96 ]
-[; ;main.c: 714: {
-"714
-{
-[; ;main.c: 715: clearThreeHoursTimer();
-"715
-[e ( _clearThreeHoursTimer ..  ]
-[; ;main.c: 716: startOneHoursTimer( 3600 );
-"716
-[e ( _startOneHoursTimer (1 -> -> 3600 `i `ui ]
-[; ;main.c: 717: setPB3(1);
-"717
-[e ( _setPB3 (1 -> -> 1 `i `uc ]
-[; ;main.c: 718: setPB4(0);
-"718
-[e ( _setPB4 (1 -> -> 0 `i `uc ]
-[; ;main.c: 719: setPB5(1);
-"719
-[e ( _setPB5 (1 -> -> 1 `i `uc ]
-[; ;main.c: 720: ucStep = CHECK_1_HOUR_TIMER_STEP;
-"720
-[e = F869 . `E857 6 ]
+[; ;main.c: 719: }
+[; ;main.c: 720: }
 [; ;main.c: 721: break;
 "721
 [e $U 74  ]
 "722
 }
 [; ;main.c: 722: }
-[; ;main.c: 724: case CHECK_1_HOUR_TIMER_STEP:
+[; ;main.c: 724: case STARTUP_1_HOUR_TIMER_STEP:
 "724
-[e :U 97 ]
+[e :U 96 ]
 [; ;main.c: 725: {
 "725
 {
-"730
-[v F873 `ui  1 s uiTimerOneP5s ]
-[i F873
--> -> 0 `i `ui
-]
-"731
-[v F874 `ui  1 s uiTimerTwoP5s ]
-[i F874
--> -> 0 `i `ui
-]
-"732
-[v F875 `ui  1 s uiTimerThreeP5s ]
-[i F875
--> -> 0 `i `ui
-]
-"734
-[v _uiCh13Value `ui  1 a ]
-[; ;main.c: 730: static unsigned int uiTimerOneP5s = 0;
-[; ;main.c: 731: static unsigned int uiTimerTwoP5s = 0;
-[; ;main.c: 732: static unsigned int uiTimerThreeP5s = 0;
-[; ;main.c: 734: unsigned int uiCh13Value = getAdOriginalCh13Value();
-[e = _uiCh13Value ( _getAdOriginalCh13Value ..  ]
-[; ;main.c: 737: if( isFinishedOneHoursTimer() )
-"737
-[e $ ! != -> ( _isFinishedOneHoursTimer ..  `i -> -> -> 0 `i `uc `i 98  ]
-[; ;main.c: 738: ucStep = READY_FOR_RESET_STEP;
-"738
-[e = F869 . `E857 7 ]
-[e $U 99  ]
-"739
-[e :U 98 ]
-[; ;main.c: 739: else
-[; ;main.c: 740: {
-"740
-{
-[; ;main.c: 741: if( uiCh13Value > 90 )
-"741
-[e $ ! > _uiCh13Value -> -> 90 `i `ui 100  ]
-[; ;main.c: 742: {
-"742
-{
-[; ;main.c: 743: if( uiTimerOneP5s <= 10 )
-"743
-[e $ ! <= F873 -> -> 10 `i `ui 101  ]
-[; ;main.c: 744: uiTimerOneP5s++;
-"744
-[e ++ F873 -> -> 1 `i `ui ]
-[e :U 101 ]
-[; ;main.c: 745: uiTimerTwoP5s = 0;
-"745
-[e = F874 -> -> 0 `i `ui ]
-[; ;main.c: 746: uiTimerThreeP5s = 0;
-"746
-[e = F875 -> -> 0 `i `ui ]
-"747
-}
-[; ;main.c: 747: }
-[e $U 102  ]
-"748
-[e :U 100 ]
-[; ;main.c: 748: else
-[; ;main.c: 749: {
-"749
-{
-[; ;main.c: 750: uiTimerOneP5s = 0;
-"750
-[e = F873 -> -> 0 `i `ui ]
-"751
-}
-[e :U 102 ]
-[; ;main.c: 751: }
-[; ;main.c: 754: if(uiTimerOneP5s > 10)
-"754
-[e $ ! > F873 -> -> 10 `i `ui 103  ]
-[; ;main.c: 755: {
-"755
-{
-[; ;main.c: 756: setPB3(0);
-"756
-[e ( _setPB3 (1 -> -> 0 `i `uc ]
-[; ;main.c: 757: setPB4(1);
-"757
-[e ( _setPB4 (1 -> -> 1 `i `uc ]
-[; ;main.c: 758: setPB5(0);
-"758
-[e ( _setPB5 (1 -> -> 0 `i `uc ]
-[; ;main.c: 760: uiTimerOneP5s = 0;
-"760
-[e = F873 -> -> 0 `i `ui ]
-[; ;main.c: 761: uiTimerTwoP5s = 0;
-"761
-[e = F874 -> -> 0 `i `ui ]
-[; ;main.c: 763: resetAllTimer();
-"763
-[e ( _resetAllTimer ..  ]
-[; ;main.c: 765: ucStep = START_UP_PWM_STEP;
-"765
-[e = F869 . `E857 1 ]
-"766
-}
-[; ;main.c: 766: }
-[e $U 104  ]
-"767
-[e :U 103 ]
-[; ;main.c: 767: else
-[; ;main.c: 768: {
-"768
-{
-[; ;main.c: 769: if( uiCh13Value < 65 )
-"769
-[e $ ! < _uiCh13Value -> -> 65 `i `ui 105  ]
-[; ;main.c: 770: {
-"770
-{
-[; ;main.c: 772: if( uiTimerTwoP5s <= 10)
-"772
-[e $ ! <= F874 -> -> 10 `i `ui 106  ]
-[; ;main.c: 773: uiTimerTwoP5s++;
-"773
-[e ++ F874 -> -> 1 `i `ui ]
-[e :U 106 ]
-"774
-}
-[; ;main.c: 774: }
-[e $U 107  ]
-"775
-[e :U 105 ]
-[; ;main.c: 775: else
-[; ;main.c: 776: {
-"776
-{
-[; ;main.c: 777: uiTimerTwoP5s = 0;
-"777
-[e = F874 -> -> 0 `i `ui ]
-[; ;main.c: 778: uiTimerThreeP5s = 0;
-"778
-[e = F875 -> -> 0 `i `ui ]
-"779
-}
-[e :U 107 ]
-[; ;main.c: 779: }
-[; ;main.c: 781: if(uiTimerTwoP5s > 10)
-"781
-[e $ ! > F874 -> -> 10 `i `ui 108  ]
-[; ;main.c: 782: {
-"782
-{
-[; ;main.c: 783: setPB3(1);
-"783
+[; ;main.c: 726: clearThreeHoursTimer();
+"726
+[e ( _clearThreeHoursTimer ..  ]
+[; ;main.c: 727: startOneHoursTimer( 3600 );
+"727
+[e ( _startOneHoursTimer (1 -> -> 3600 `i `ui ]
+[; ;main.c: 728: setPB3(1);
+"728
 [e ( _setPB3 (1 -> -> 1 `i `uc ]
-[; ;main.c: 784: setPB4(0);
-"784
+[; ;main.c: 729: setPB4(0);
+"729
 [e ( _setPB4 (1 -> -> 0 `i `uc ]
-[; ;main.c: 785: setPB5(1);
-"785
+[; ;main.c: 730: setPB5(1);
+"730
 [e ( _setPB5 (1 -> -> 1 `i `uc ]
-"796
-}
-[e :U 108 ]
-"798
-}
-[e :U 104 ]
-"799
-}
-[e :U 99 ]
-[; ;main.c: 796: }
-[; ;main.c: 798: }
-[; ;main.c: 799: }
-[; ;main.c: 800: break;
-"800
+[; ;main.c: 731: ucStep = CHECK_1_HOUR_TIMER_STEP;
+"731
+[e = F873 . `E861 6 ]
+[; ;main.c: 732: break;
+"732
 [e $U 74  ]
-"801
+"733
 }
-[; ;main.c: 801: }
-[; ;main.c: 803: case READY_FOR_RESET_STEP:
-"803
-[e :U 109 ]
-[; ;main.c: 804: {
-"804
+[; ;main.c: 733: }
+[; ;main.c: 735: case CHECK_1_HOUR_TIMER_STEP:
+"735
+[e :U 97 ]
+[; ;main.c: 736: {
+"736
 {
-[; ;main.c: 805: setPB3(0);
-"805
-[e ( _setPB3 (1 -> -> 0 `i `uc ]
-[; ;main.c: 806: setPB4(0);
-"806
-[e ( _setPB4 (1 -> -> 0 `i `uc ]
-[; ;main.c: 807: setPB5(1);
-"807
-[e ( _setPB5 (1 -> -> 1 `i `uc ]
-[; ;main.c: 810: setWaitResetFlag(1);
-"810
-[e ( _setWaitResetFlag (1 -> -> 1 `i `uc ]
-[; ;main.c: 811: pwm_start(150,249);
-"811
-[e ( _pwm_start (2 , -> -> 150 `i `uc -> -> 249 `i `uc ]
-[; ;main.c: 817: ucStep = DELAY_ONE_SECOND_FOR_PWM;
-"817
-[e = F869 . `E857 8 ]
-[; ;main.c: 818: break;
-"818
-[e $U 74  ]
-"819
-}
-[; ;main.c: 819: }
-[; ;main.c: 821: case DELAY_ONE_SECOND_FOR_PWM:
-"821
-[e :U 110 ]
-[; ;main.c: 822: {
-"822
-{
-"823
-[v F877 `ui  1 s ucDelay1s ]
+"741
+[v F877 `ui  1 s uiTimerOneP5s ]
 [i F877
 -> -> 0 `i `ui
 ]
-[; ;main.c: 823: static unsigned ucDelay1s = 0;
-[; ;main.c: 824: if(ucDelay1s <= 50)
-"824
-[e $ ! <= F877 -> -> 50 `i `ui 111  ]
-[; ;main.c: 825: ucDelay1s++;
-"825
-[e ++ F877 -> -> 1 `i `ui ]
-[e $U 112  ]
-"826
-[e :U 111 ]
-[; ;main.c: 826: else
-[; ;main.c: 827: {
-"827
+"742
+[v F878 `ui  1 s uiTimerTwoP5s ]
+[i F878
+-> -> 0 `i `ui
+]
+"743
+[v F879 `ui  1 s uiTimerThreeP5s ]
+[i F879
+-> -> 0 `i `ui
+]
+"745
+[v _uiCh13Value `ui  1 a ]
+[; ;main.c: 741: static unsigned int uiTimerOneP5s = 0;
+[; ;main.c: 742: static unsigned int uiTimerTwoP5s = 0;
+[; ;main.c: 743: static unsigned int uiTimerThreeP5s = 0;
+[; ;main.c: 745: unsigned int uiCh13Value = getAdOriginalCh13Value();
+[e = _uiCh13Value ( _getAdOriginalCh13Value ..  ]
+[; ;main.c: 748: if( isFinishedOneHoursTimer() )
+"748
+[e $ ! != -> ( _isFinishedOneHoursTimer ..  `i -> -> -> 0 `i `uc `i 98  ]
+[; ;main.c: 749: ucStep = READY_FOR_RESET_STEP;
+"749
+[e = F873 . `E861 7 ]
+[e $U 99  ]
+"750
+[e :U 98 ]
+[; ;main.c: 750: else
+[; ;main.c: 751: {
+"751
 {
-[; ;main.c: 828: ucDelay1s = 0;
-"828
+[; ;main.c: 752: if( uiCh13Value > 105 )
+"752
+[e $ ! > _uiCh13Value -> -> 105 `i `ui 100  ]
+[; ;main.c: 753: {
+"753
+{
+[; ;main.c: 754: if( uiTimerOneP5s <= 10 )
+"754
+[e $ ! <= F877 -> -> 10 `i `ui 101  ]
+[; ;main.c: 755: uiTimerOneP5s++;
+"755
+[e ++ F877 -> -> 1 `i `ui ]
+[e :U 101 ]
+[; ;main.c: 756: uiTimerTwoP5s = 0;
+"756
+[e = F878 -> -> 0 `i `ui ]
+[; ;main.c: 757: uiTimerThreeP5s = 0;
+"757
+[e = F879 -> -> 0 `i `ui ]
+"758
+}
+[; ;main.c: 758: }
+[e $U 102  ]
+"759
+[e :U 100 ]
+[; ;main.c: 759: else
+[; ;main.c: 760: {
+"760
+{
+[; ;main.c: 761: uiTimerOneP5s = 0;
+"761
 [e = F877 -> -> 0 `i `ui ]
-[; ;main.c: 829: ucStep = MEET_RESET_CONDITION_STEP;
+"762
+}
+[e :U 102 ]
+[; ;main.c: 762: }
+[; ;main.c: 765: if(uiTimerOneP5s > 10)
+"765
+[e $ ! > F877 -> -> 10 `i `ui 103  ]
+[; ;main.c: 766: {
+"766
+{
+[; ;main.c: 767: setPB3(0);
+"767
+[e ( _setPB3 (1 -> -> 0 `i `uc ]
+[; ;main.c: 768: setPB4(1);
+"768
+[e ( _setPB4 (1 -> -> 1 `i `uc ]
+[; ;main.c: 769: setPB5(0);
+"769
+[e ( _setPB5 (1 -> -> 0 `i `uc ]
+[; ;main.c: 771: uiTimerOneP5s = 0;
+"771
+[e = F877 -> -> 0 `i `ui ]
+[; ;main.c: 772: uiTimerTwoP5s = 0;
+"772
+[e = F878 -> -> 0 `i `ui ]
+[; ;main.c: 774: resetAllTimer();
+"774
+[e ( _resetAllTimer ..  ]
+[; ;main.c: 776: ucStep = START_UP_PWM_STEP;
+"776
+[e = F873 . `E861 1 ]
+"777
+}
+[; ;main.c: 777: }
+[e $U 104  ]
+"778
+[e :U 103 ]
+[; ;main.c: 778: else
+[; ;main.c: 779: {
+"779
+{
+[; ;main.c: 780: if( uiCh13Value < 105 )
+"780
+[e $ ! < _uiCh13Value -> -> 105 `i `ui 105  ]
+[; ;main.c: 781: {
+"781
+{
+[; ;main.c: 783: if( uiTimerTwoP5s <= 10)
+"783
+[e $ ! <= F878 -> -> 10 `i `ui 106  ]
+[; ;main.c: 784: uiTimerTwoP5s++;
+"784
+[e ++ F878 -> -> 1 `i `ui ]
+[e :U 106 ]
+"785
+}
+[; ;main.c: 785: }
+[e $U 107  ]
+"786
+[e :U 105 ]
+[; ;main.c: 786: else
+[; ;main.c: 787: {
+"787
+{
+[; ;main.c: 788: uiTimerTwoP5s = 0;
+"788
+[e = F878 -> -> 0 `i `ui ]
+[; ;main.c: 789: uiTimerThreeP5s = 0;
+"789
+[e = F879 -> -> 0 `i `ui ]
+"790
+}
+[e :U 107 ]
+[; ;main.c: 790: }
+[; ;main.c: 792: if(uiTimerTwoP5s > 10)
+"792
+[e $ ! > F878 -> -> 10 `i `ui 108  ]
+[; ;main.c: 793: {
+"793
+{
+[; ;main.c: 794: setPB3(1);
+"794
+[e ( _setPB3 (1 -> -> 1 `i `uc ]
+[; ;main.c: 795: setPB4(0);
+"795
+[e ( _setPB4 (1 -> -> 0 `i `uc ]
+[; ;main.c: 796: setPB5(1);
+"796
+[e ( _setPB5 (1 -> -> 1 `i `uc ]
+"807
+}
+[e :U 108 ]
+"809
+}
+[e :U 104 ]
+"810
+}
+[e :U 99 ]
+[; ;main.c: 807: }
+[; ;main.c: 809: }
+[; ;main.c: 810: }
+[; ;main.c: 811: break;
+"811
+[e $U 74  ]
+"812
+}
+[; ;main.c: 812: }
+[; ;main.c: 814: case READY_FOR_RESET_STEP:
+"814
+[e :U 109 ]
+[; ;main.c: 815: {
+"815
+{
+[; ;main.c: 816: setPB3(0);
+"816
+[e ( _setPB3 (1 -> -> 0 `i `uc ]
+[; ;main.c: 817: setPB4(0);
+"817
+[e ( _setPB4 (1 -> -> 0 `i `uc ]
+[; ;main.c: 818: setPB5(1);
+"818
+[e ( _setPB5 (1 -> -> 1 `i `uc ]
+[; ;main.c: 821: setWaitResetFlag(1);
+"821
+[e ( _setWaitResetFlag (1 -> -> 1 `i `uc ]
+[; ;main.c: 822: pwm_start(150,249);
+"822
+[e ( _pwm_start (2 , -> -> 150 `i `uc -> -> 249 `i `uc ]
+[; ;main.c: 828: ucStep = DELAY_ONE_SECOND_FOR_PWM;
+"828
+[e = F873 . `E861 8 ]
+[; ;main.c: 829: break;
 "829
-[e = F869 . `E857 9 ]
+[e $U 74  ]
 "830
 }
-[e :U 112 ]
 [; ;main.c: 830: }
-[; ;main.c: 835: break;
-"835
-[e $U 74  ]
-"836
-}
-[; ;main.c: 836: }
-[; ;main.c: 838: case MEET_RESET_CONDITION_STEP:
-"838
-[e :U 113 ]
-[; ;main.c: 839: {
-"839
+[; ;main.c: 832: case DELAY_ONE_SECOND_FOR_PWM:
+"832
+[e :U 110 ]
+[; ;main.c: 833: {
+"833
 {
+"834
+[v F881 `ui  1 s ucDelay1s ]
+[i F881
+-> -> 0 `i `ui
+]
+[; ;main.c: 834: static unsigned ucDelay1s = 0;
+[; ;main.c: 835: if(ucDelay1s <= 50)
+"835
+[e $ ! <= F881 -> -> 50 `i `ui 111  ]
+[; ;main.c: 836: ucDelay1s++;
+"836
+[e ++ F881 -> -> 1 `i `ui ]
+[e $U 112  ]
+"837
+[e :U 111 ]
+[; ;main.c: 837: else
+[; ;main.c: 838: {
+"838
+{
+[; ;main.c: 839: ucDelay1s = 0;
+"839
+[e = F881 -> -> 0 `i `ui ]
+[; ;main.c: 840: ucStep = MEET_RESET_CONDITION_STEP;
 "840
-[v F878 `uc  1 s ucTimerP5s ]
-[i F878
+[e = F873 . `E861 9 ]
+"841
+}
+[e :U 112 ]
+[; ;main.c: 841: }
+[; ;main.c: 846: break;
+"846
+[e $U 74  ]
+"847
+}
+[; ;main.c: 847: }
+[; ;main.c: 849: case MEET_RESET_CONDITION_STEP:
+"849
+[e :U 113 ]
+[; ;main.c: 850: {
+"850
+{
+"851
+[v F882 `uc  1 s ucTimerP5s ]
+[i F882
 -> -> 0 `i `uc
 ]
-"841
+"852
 [v _ucChValue `ui  1 a ]
-[; ;main.c: 840: static unsigned char ucTimerP5s = 0;
-[; ;main.c: 841: unsigned int ucChValue = getAdOriginalCh13Value();
+[; ;main.c: 851: static unsigned char ucTimerP5s = 0;
+[; ;main.c: 852: unsigned int ucChValue = getAdOriginalCh13Value();
 [e = _ucChValue ( _getAdOriginalCh13Value ..  ]
-[; ;main.c: 843: if( ucChValue > 50 )
-"843
-[e $ ! > _ucChValue -> -> 50 `i `ui 114  ]
-[; ;main.c: 844: ucTimerP5s++;
-"844
-[e ++ F878 -> -> 1 `i `uc ]
-[e $U 115  ]
-"845
-[e :U 114 ]
-[; ;main.c: 845: else
-[; ;main.c: 846: ucTimerP5s = 0;
-"846
-[e = F878 -> -> 0 `i `uc ]
-[e :U 115 ]
-[; ;main.c: 848: if(ucTimerP5s >= 50)
-"848
-[e $ ! >= -> F878 `i -> 50 `i 116  ]
-[; ;main.c: 849: ucStep = RESET_STEP;
-"849
-[e = F869 . `E857 10 ]
-[e :U 116 ]
-[; ;main.c: 850: break;
-"850
-[e $U 74  ]
-"851
-}
-[; ;main.c: 851: }
-[; ;main.c: 853: case RESET_STEP:
-"853
-[e :U 117 ]
-[; ;main.c: 854: {
+[; ;main.c: 854: if( ucChValue > 81 )
 "854
-{
-[; ;main.c: 855: ucStep = INIT_STEP;
+[e $ ! > _ucChValue -> -> 81 `i `ui 114  ]
+[; ;main.c: 855: ucTimerP5s++;
 "855
-[e = F869 . `E857 0 ]
-[; ;main.c: 856: reset();
+[e ++ F882 -> -> 1 `i `uc ]
+[e $U 115  ]
 "856
-[e ( _reset ..  ]
-[; ;main.c: 857: break;
+[e :U 114 ]
+[; ;main.c: 856: else
+[; ;main.c: 857: ucTimerP5s = 0;
 "857
-[e $U 74  ]
-"858
-}
-[; ;main.c: 858: }
-[; ;main.c: 861: default:
+[e = F882 -> -> 0 `i `uc ]
+[e :U 115 ]
+[; ;main.c: 859: if(ucTimerP5s >= 50)
+"859
+[e $ ! >= -> F882 `i -> 50 `i 116  ]
+[; ;main.c: 860: ucStep = RESET_STEP;
+"860
+[e = F873 . `E861 10 ]
+[e :U 116 ]
+[; ;main.c: 861: break;
 "861
-[e :U 118 ]
-[; ;main.c: 862: break;
+[e $U 74  ]
 "862
-[e $U 74  ]
-"863
 }
-[; ;main.c: 863: }
-[e $U 74  ]
-"601
-[e :U 75 ]
-[e [\ F869 , $ . `E857 0 76
- , $ . `E857 1 82
- , $ . `E857 2 83
- , $ . `E857 3 89
- , $ . `E857 4 90
- , $ . `E857 5 96
- , $ . `E857 6 97
- , $ . `E857 7 109
- , $ . `E857 8 110
- , $ . `E857 9 113
- , $ . `E857 10 117
- 118 ]
-"863
-[e :U 74 ]
+[; ;main.c: 862: }
+[; ;main.c: 864: case RESET_STEP:
+"864
+[e :U 117 ]
+[; ;main.c: 865: {
 "865
+{
+[; ;main.c: 866: ucStep = INIT_STEP;
+"866
+[e = F873 . `E861 0 ]
+[; ;main.c: 867: reset();
+"867
+[e ( _reset ..  ]
+[; ;main.c: 868: break;
+"868
+[e $U 74  ]
+"869
+}
+[; ;main.c: 869: }
+[; ;main.c: 872: default:
+"872
+[e :U 118 ]
+[; ;main.c: 873: break;
+"873
+[e $U 74  ]
+"874
+}
+[; ;main.c: 874: }
+[e $U 74  ]
+"612
+[e :U 75 ]
+[e [\ F873 , $ . `E861 0 76
+ , $ . `E861 1 82
+ , $ . `E861 2 83
+ , $ . `E861 3 89
+ , $ . `E861 4 90
+ , $ . `E861 5 96
+ , $ . `E861 6 97
+ , $ . `E861 7 109
+ , $ . `E861 8 110
+ , $ . `E861 9 113
+ , $ . `E861 10 117
+ 118 ]
+"874
+[e :U 74 ]
+"876
 }
 [e :U 73 ]
-"866
+"877
 }
 [e :U 70 ]
-"581
+"592
 [e $U 71  ]
 [e :U 72 ]
-[; ;main.c: 865: }
-[; ;main.c: 866: }
-[; ;main.c: 868: }
-"868
+[; ;main.c: 876: }
+[; ;main.c: 877: }
+[; ;main.c: 879: }
+"879
 [e :UE 69 ]
 }

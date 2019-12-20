@@ -2,7 +2,7 @@
 #define __COMMON_H__
 
 #define FILTER_N   3
-#define RIGHT_SHIFT_NUMBER    2   // 2^n = FILTER_N - 2
+#define RIGHT_SHIFT_NUMBER    1   // 2^n = FILTER_N - 2
 
 
 #define FILTER_N_CH13    3
@@ -15,7 +15,7 @@
 
 #define LOAD_PWM_STEP    2//  N*10ms, min steps is 10ms. 2*10ms = 20ms
 
-#define COMPARE_REFERENCE_VALUE  295
+#define COMPARE_REFERENCE_VALUE  400//295
 
 
 #define uchar unsigned char

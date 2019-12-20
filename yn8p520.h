@@ -918,7 +918,7 @@ volatile unsigned char           ALG6                @ 0x18E;
 volatile unsigned char           ALG7                @ 0x18F;
 // bit and bitfield definitions
 
-
+volatile bit SRAM_MAP              @ ((unsigned)&ALG7*8)+0;
 
 
 #endif

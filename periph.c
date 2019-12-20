@@ -4,6 +4,43 @@
 #include "common.h"
 
 
+volatile union {
+    struct {
+        volatile unsigned short freq;     //20MHz校准值
+		volatile unsigned short u_1v2;    //1.2v
+		volatile unsigned short u_2v1;    //2.15v
+		volatile unsigned short otp_uid;
+		volatile unsigned short uidd_h;   //批号
+		volatile unsigned short uidd_l;
+		volatile unsigned short uids_h;   //增量
+		volatile unsigned short uids_l;
+    };
+    struct {
+        unsigned char buf[16];
+    };
+} key @ 0x1e0;
+
+
+
+unsigned short bgr_trim;
+unsigned short ad_offset=0;
+
+
+////////////////////////UID//////////////////////////////////
+void uid_get(void)
+{
+
+	SRAM_MAP = 1;  //enable access uid region
+
+	bgr_trim = key.u_1v2;
+	ad_offset = key.otp_uid&0xff;
+
+	SRAM_MAP = 0;  //disable access uid region
+
+}
+
+
+
 ///////////////////////////DAC//////////////////////////////////
 //	 DAC输出电压= Vref*DACRn[5:0]/64	(n=0,1)
 //	 DAC0电压分别可以通过OP1放大从PB5输出，或作为其他用途
@@ -29,10 +66,9 @@ void op1_init()
 	//OP1CON2=0xA0; //A1E(PB5)输出 负端MUX连接 其他用途                                        10100000B
 	//OP1CON0=0x80; //OP1使能 正相输出 禁止滤波                                                10000000B
     
-    //配置：OP1负端选择DAC0=1.3V(内部管脚) ，OP1正端选择A1P(PB3)引脚
-    OP1CON1=0x02; //正沿负沿不中断 OP1 负端选择DAC0(内部管脚)引脚 ，OP1正端选择A1P(PB3)引脚    00000010B
-	OP1CON2=0xA0; //A1E(PB5)输出 负端MUX连接 其他用途                                        10100000B
-	OP1CON0=0x80; //OP1使能 正相输出 禁止滤波                                                10000000B
+	OP1CON1=0x13; // positive input is BGR(1.3v), negative input is AVss  added by xuhaihua on 2019/12/20
+		 	OP1CON2=0x10; //  set op1 as buffer, disconnect negative input  added by xuhaihua on 2019/12/20
+			OP1CON0=0x80; //  enable op1 and disable filter  added by xuhaihua on 2019/12/20
 
 	//OP1配置
 	TRISB3=1;	//PB3（A1P）输入
@@ -49,10 +85,10 @@ void op2_init()
 	//OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B   
     
     //配置：OP2负端选择DAC1=0.3V(内部管脚) , OP2正端选择A2P(PB6)引脚
-    OP2CON1=0x14; // set PB6 as A2P, set PB7 as A2N
-	//OP2CON2=0xA0; //A2E(PA7)输出 负端MUX连接 其他用途 增益放大使能 放大1倍                    10100000B
-    OP2CON2=0x10; //disable A2E(PA7)输出 ,负端MUX连接, OP2 作为BUFFER      10010000B
-	OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B 
+	 OP2CON1=0x14; // set PB6 as A2P, set PB7 as A2N
+		//OP2CON2=0xA0; //A2E(PA7)输出 负端MUX连接 其他用途 增益放大使能 放大1倍                    10100000B
+	   OP2CON2=0x10; //disable A2E(PA7)输出 ,负端MUX连接, OP2 作为BUFFER      10010000B
+		OP2CON0=0x80; //使能 OP2 正相输出 禁止滤波                                               10000000B
 
 	//OP2配置
 //	TRISA7=0;	//PA7（A2E）输出	  DAC1信号输出Pin
@@ -106,5 +142,8 @@ uint adc_get(void)
 {
 	uint val;
 	val = (ADRESH<<8) | ADRESL;
+
+	val = val + ad_offset;
+
 	return val;
 }

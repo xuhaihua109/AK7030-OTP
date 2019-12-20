@@ -149,8 +149,8 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
   }
 
    
-   return (filter_sum );
-
+   //return (filter_sum >> RIGHT_SHIFT_NUMBER );
+   return (filter_sum  );
  }
 
 
@@ -172,10 +172,10 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
      static	unsigned int uiCalWidthArrayNew = 0;
      static	unsigned int uiCalWidthArrayOld = 0;
 
-     static unsigned int uiCalWidthArray1 = 0;
-     static unsigned int uiCalWidthArray2 = 0;
-     static unsigned int uiCalWidthArray3 = 0;
-     static unsigned int uiCalWidthArray4 = 0;
+     //static unsigned int uiCalWidthArray1 = 0;
+     //static unsigned int uiCalWidthArray2 = 0;
+    // static unsigned int uiCalWidthArray3 = 0;
+    // static unsigned int uiCalWidthArray4 = 0;
 
      static unsigned char ucInitFlag = 0;
 
@@ -199,10 +199,10 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 
 				 static unsigned char uiInitWidth = PWM_DEFAULT_THIRTY_WIDTH;//width of PWM 30%
 
-			//	 uiCalWidthArrayNew = Filter(uiSampleCh12);// when the value of AD12 is five, filter and calculate the average value.
-				 uiCalWidthArray1 = Filter(uiSampleCh12);
+				 uiCalWidthArrayNew = Filter(uiSampleCh12);// when the value of AD12 is five, filter and calculate the average value.
+			//	 uiCalWidthArray1 = Filter(uiSampleCh12);
 
-				 if( 0 == ucInitFlag)
+			/*	 if( 0 == ucInitFlag)
 				 {
 					 ucInitFlag = 1;
 
@@ -210,32 +210,35 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 					 uiCalWidthArray3 = uiCalWidthArray1;
 					 uiCalWidthArray4 = uiCalWidthArray1;
 				 }
+              */
 
 				 unsigned int uiDeviationValue = 0,uiAbstractValue = 0;
 
-//				 if( uiCalWidthArrayNew >= uiCalWidthArrayOld)
-//				 {
-//					 uiAbstractValue = uiCalWidthArrayNew - uiCalWidthArrayOld;
-//					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) + uiAbstractValue;
-//				 }
-//				 else
-//				 {
-//					 uiAbstractValue = uiCalWidthArrayOld - uiCalWidthArrayNew;
-//					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) - uiAbstractValue;
-//
-//				 }
+				 if( uiCalWidthArrayNew >= uiCalWidthArrayOld)
+				 {
+					 uiAbstractValue = uiCalWidthArrayNew - uiCalWidthArrayOld;
+					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) + (uiAbstractValue<<1);
+                  
+				 }
+				 else
+				 {
+					 uiAbstractValue = uiCalWidthArrayOld - uiCalWidthArrayNew;
+					 uiDeviationValue = ((uiCalWidthArrayNew+uiCalWidthArrayOld)>>1) - (uiAbstractValue<<1);
+                 
 
-				 uiDeviationValue = (uiCalWidthArray1 >> 2) + (uiCalWidthArray2 >> 2)
-						          + (uiCalWidthArray3 >> 2) + (uiCalWidthArray4 >> 2) + uiCalWidthArray4 - uiCalWidthArray3;
+				 }
+
+			//	 uiDeviationValue = (uiCalWidthArray1 >> 2) + (uiCalWidthArray2 >> 2)
+			//			          + (uiCalWidthArray3 >> 2) + (uiCalWidthArray4 >> 2) + uiCalWidthArray4 - uiCalWidthArray3;
 
 
 
 				 if(uiCalWidthCnt>400)
 					uiDeviationValue =400;
 
-				 uiCalWidthArray4 = uiCalWidthArray3;
-				 uiCalWidthArray3 = uiCalWidthArray2;
-				 uiCalWidthArray2 = uiCalWidthArray1;
+				// uiCalWidthArray4 = uiCalWidthArray3;
+				// uiCalWidthArray3 = uiCalWidthArray2;
+				 //uiCalWidthArray2 = uiCalWidthArray1;
 
 
 				 uiCalWidthArrayOld=uiCalWidthArrayNew;
@@ -245,19 +248,29 @@ return (filter_sum >> DIVIDER_NUMBER_CH13 );
 
 				 if(uiDeviationValue > (COMPARE_REFERENCE_VALUE))
 				 {
-					 //unsigned int uiTmpValue =(uiDeviationValue - COMPARE_REFERENCE_VALUE)>> 2;
-
-					 uiInitWidth++;
-				   //uiInitWidth = uiInitWidth + uiTmpValue + 1;
+					 //unsigned int uiTmpValue =(uiDeviationValue - COMPARE_REFERENCE_VALUE)>> 1;
+                    if(uiDeviationValue <= (COMPARE_REFERENCE_VALUE+5))
+					 {uiInitWidth++;
+                     } 
+                     else
+                     {uiInitWidth=uiInitWidth+2;
+                     }             
+				   //uiInitWidth++;
 				 }
 				 else if(uiDeviationValue < (COMPARE_REFERENCE_VALUE))
 				 {
-					 //unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiDeviationValue)>> 2;
+					 //unsigned int uiTmpValue =  (COMPARE_REFERENCE_VALUE - uiDeviationValue)>> 1;
 
-					 uiInitWidth--;
-					//uiInitWidth = uiInitWidth - uiTmpValue - 1;
+					 if(uiDeviationValue >= (COMPARE_REFERENCE_VALUE+5))
+					 {uiInitWidth--;
+                     } 
+                     else
+                     {uiInitWidth=uiInitWidth-2;
+                     }   
+					//uiInitWidth--;
 				 }
-				 else
+	        
+				 else 
 					 ;//do nothing
 
 				 if(uiInitWidth > PWM_FREQUENCY)
@@ -422,9 +435,9 @@ void process_AD_Converter_Value()
 		setAD_ConvertFlag(0);
 		AD_Sample();
 		if(AD_CHANNEL_12_CHANNEL == sampleChannelSelect)
-			adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_2P1);
+			adc_test_init(AD_CHANNEL_12_CHANNEL,ADC_REF_OP1);
 		else
-			adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_2P1);
+			adc_test_init(AD_CHANNEL_13_CHANNEL,ADC_REF_OP1);
 		adc_start();	//ADCÆô¶¯
 	}
 }
