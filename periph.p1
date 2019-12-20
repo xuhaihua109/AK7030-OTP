@@ -1362,12 +1362,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;periph.c: 71: OP1CON0=0x80;
 "71
 [e = _OP1CON0 -> -> 128 `i `uc ]
-[; ;periph.c: 74: TRISB3=1;
-"74
-[e = _TRISB3 -> -> 1 `i `b ]
-[; ;periph.c: 76: TRISB5=0;
-"76
-[e = _TRISB5 -> -> 0 `i `b ]
 [; ;periph.c: 77: }
 "77
 [e :UE 46 ]

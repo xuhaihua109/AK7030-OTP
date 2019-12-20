@@ -1077,10 +1077,10 @@ uiCalWidthArrayOld=uiCalWidthArrayNew;
 
 
 
-if(uiDeviationValue > (400))
+if(uiDeviationValue > (470))
 {
 
-if(uiDeviationValue <= (400+5))
+if(uiDeviationValue <= (470+5))
 {uiInitWidth++;
 }
 else
@@ -1088,11 +1088,11 @@ else
 }
 
 }
-else if(uiDeviationValue < (400))
+else if(uiDeviationValue < (470))
 {
 
 
-if(uiDeviationValue >= (400+5))
+if(uiDeviationValue >= (470+5))
 {uiInitWidth--;
 }
 else

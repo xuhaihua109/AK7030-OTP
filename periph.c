@@ -71,9 +71,9 @@ void op1_init()
 			OP1CON0=0x80; //  enable op1 and disable filter  added by xuhaihua on 2019/12/20
 
 	//OP1配置
-	TRISB3=1;	//PB3（A1P）输入
-//	TRISB4=1;	//PB4（A1N）输入
-	TRISB5=0;	//PB5（A1E）输出  DAC0信号输出Pin
+//	TRISB3=1;	//PB3（A1P）输入
+////	TRISB4=1;	//PB4（A1N）输入
+//	TRISB5=0;	//PB5（A1E）输出  DAC0信号输出Pin
 }
 
 ////////////////////OP2配置为放大模式将DAC1电压从A1E(PA7)输出///////////////////////

@@ -1840,15 +1840,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 244: uiCalWidthArrayOld=uiCalWidthArrayNew;
 "244
 [e = F882 F881 ]
-[; ;common.c: 249: if(uiDeviationValue > (400))
+[; ;common.c: 249: if(uiDeviationValue > (470))
 "249
-[e $ ! > _uiDeviationValue -> -> 400 `i `ui 83  ]
+[e $ ! > _uiDeviationValue -> -> 470 `i `ui 83  ]
 [; ;common.c: 250: {
 "250
 {
-[; ;common.c: 252: if(uiDeviationValue <= (400+5))
+[; ;common.c: 252: if(uiDeviationValue <= (470+5))
 "252
-[e $ ! <= _uiDeviationValue -> + -> 400 `i -> 5 `i `ui 84  ]
+[e $ ! <= _uiDeviationValue -> + -> 470 `i -> 5 `i `ui 84  ]
 [; ;common.c: 253: {uiInitWidth++;
 "253
 {
@@ -1874,14 +1874,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 86  ]
 "260
 [e :U 83 ]
-[; ;common.c: 260: else if(uiDeviationValue < (400))
-[e $ ! < _uiDeviationValue -> -> 400 `i `ui 87  ]
+[; ;common.c: 260: else if(uiDeviationValue < (470))
+[e $ ! < _uiDeviationValue -> -> 470 `i `ui 87  ]
 [; ;common.c: 261: {
 "261
 {
-[; ;common.c: 264: if(uiDeviationValue >= (400+5))
+[; ;common.c: 264: if(uiDeviationValue >= (470+5))
 "264
-[e $ ! >= _uiDeviationValue -> + -> 400 `i -> 5 `i `ui 88  ]
+[e $ ! >= _uiDeviationValue -> + -> 470 `i -> 5 `i `ui 88  ]
 [; ;common.c: 265: {uiInitWidth--;
 "265
 {
