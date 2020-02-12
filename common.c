@@ -15,13 +15,15 @@
 
 static uchar adc_convert_flag = 0;
 
+#define FILTER_N   12
+
 #ifndef USING_AD_FILTER_ALGORITHMN
 static uint adc_original_CH1_value = 0,adc_original_CH14_value = 0,adc_original_CH4_value = 0;
 #endif
 
 //static uint buffer_Sample_AD_Value[TEMP_MAX_CONTINOUS_SAMPLE_TIMES];
 static uchar sampleTimes;
-static uchar sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
+static uchar sampleChannelSelect = AD_CHANNEL_0_CHANNEL;
 //static uint multiFilterMaxValue,multiFilterMinValue,multiFilterSumValue;
 //static uint sampleCH14Value,sampleCH4Value,sampleCH1Value;
 
@@ -39,6 +41,14 @@ static unsigned int uiTwentySecondsTimer = 0;
 
 static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
 
+static  int uiSampleZero[FILTER_N];
+
+ static  int uiSampleChannelSecond[FILTER_N];
+
+ static  int uiSampleChannelFifth[FILTER_N];
+
+ static  int uiSampleChannelSixth[FILTER_N];
+
 
 static void AD_Sample(void);
 
@@ -46,7 +56,7 @@ static void AD_Sample(void);
 
 
 
-#define FILTER_N   12
+
 
 
  unsigned int Filter(int *tmpValue)
@@ -88,82 +98,99 @@ static void AD_Sample(void);
  }
 
 
- static  int uiSampleChannelFirst[FILTER_N];
 
- static  int uiSampleChannelFourth[FILTER_N];
-
- static  int uiSampleChannelFourteenth[FILTER_N];
 
 
  void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
  {
 
-	 static unsigned char ucChannelFirstLength = 0;
+	 static unsigned char ucChannelZeroLength = 0;
 
-	 static unsigned char ucChannelFourthLength = 0;
+	 static unsigned char ucChannelSecondLength = 0;
 
-	 static unsigned char ucChannelFourteenthLength = 0;
+	 static unsigned char ucChannelFifthLength = 0;
 
-	 if(channel == AD_CHANNEL_1_CHANNEL)
+	 static unsigned char ucChannelSixthLength = 0;
+
+	 if(channel == AD_CHANNEL_0_CHANNEL)
 	 {
-		 if(ucChannelFirstLength < FILTER_N)
+		 if(ucChannelZeroLength < FILTER_N)
 		 {
-			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
+			 uiSampleZero[ucChannelZeroLength] = uiSampleData;
 
-			 ucChannelFirstLength++;
+			 ucChannelZeroLength++;
 		 }
 		 else
 		 {
-			 ucChannelFirstLength = 0;
+			 ucChannelZeroLength = 0;
 
-			 uiSampleChannelFirst[ucChannelFirstLength] = uiSampleData;
+			 uiSampleZero[ucChannelZeroLength] = uiSampleData;
+		 }
+	 }
+	 else if(channel == AD_CHANNEL_2_CHANNEL)
+	 {
+		 if(ucChannelSecondLength < FILTER_N)
+		 {
+			 uiSampleChannelSecond[ucChannelSecondLength] = uiSampleData;
+
+			ucChannelSecondLength++;
+		 }
+		 else
+		 {
+			ucChannelSecondLength = 0;
+
+			 uiSampleChannelSecond[ucChannelSecondLength] = uiSampleData;
 		 }
 	 }
 	 else if(channel == AD_CHANNEL_5_CHANNEL)
 	 {
-		 if(ucChannelFourthLength < FILTER_N)
+		 if(ucChannelFifthLength < FILTER_N)
 		 {
-			 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
+			 uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
 
-			ucChannelFourthLength++;
+			 ucChannelFifthLength++;
 		 }
 		 else
 		 {
-			ucChannelFourthLength = 0;
+			 ucChannelFifthLength = 0;
 
-			 uiSampleChannelFourth[ucChannelFourthLength] = uiSampleData;
+			 uiSampleChannelSecond[ucChannelFifthLength] = uiSampleData;
 		 }
 	 }
-	 else if(channel == AD_CHANNEL_14_CHANNEL)
+	 else if(channel == AD_CHANNEL_6_CHANNEL)
 	 {
-		 if(ucChannelFourteenthLength < FILTER_N)
+		 if(ucChannelSixthLength < FILTER_N)
 		 {
-			 uiSampleChannelFourteenth[ucChannelFourteenthLength] = uiSampleData;
+			 uiSampleChannelFifth[ucChannelSixthLength] = uiSampleData;
 
-			 ucChannelFourteenthLength++;
+			 ucChannelSixthLength++;
 		 }
 		 else
 		 {
-			 ucChannelFourteenthLength = 0;
+			 ucChannelSixthLength = 0;
 
-			 uiSampleChannelFourth[ucChannelFourteenthLength] = uiSampleData;
+			 uiSampleChannelSecond[ucChannelSixthLength] = uiSampleData;
 		 }
 	 }
 	 else
 	 {
-		 ucChannelFirstLength = 0;
+		 ucChannelZeroLength = 0;
 
-		 ucChannelFourthLength = 0;
+		 ucChannelSecondLength = 0;
 
-		 ucChannelFourteenthLength = 0;
+		 ucChannelFifthLength = 0;
+
+		 ucChannelSixthLength = 0;
 
 		 for(int i = 0;i < FILTER_N; i++)
 		 {
-			 uiSampleChannelFirst[i] = 0;
+			 uiSampleZero[i] = 0;
 
-			 uiSampleChannelFourth[i] = 0;
+			 uiSampleChannelSecond[i] = 0;
 
-			 uiSampleChannelFourth[i] = 0;
+			 uiSampleChannelFifth[i] = 0;
+
+			 uiSampleChannelSixth[i] = 0;
 
 		 }
 	 }
@@ -219,7 +246,7 @@ unsigned int getAdOriginalCh1Value()
 {
 
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelFirst);
+	return Filter(uiSampleZero);
 
 #else
 	return  adc_original_CH1_value;
@@ -230,7 +257,7 @@ unsigned int getAdOriginalCh1Value()
 unsigned int getAdOriginaCh4Value()
 {
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelFourth);
+	return Filter(uiSampleChannelSecond);
 
 #else
 	return adc_original_CH4_value;
@@ -241,7 +268,7 @@ unsigned int getAdOriginaCh4Value()
 unsigned int getAdOriginalCh14Value()
 {
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelFourteenth);
+	return Filter(uiSampleChannelFifth);
 #else
 	return adc_original_CH14_value;
 #endif
@@ -255,13 +282,17 @@ void process_AD_Converter_Value()
 	{
 		setAD_ConvertFlag(0);
 		AD_Sample();
-		if(AD_CHANNEL_5_CHANNEL == sampleChannelSelect)
-			adc_test_init(AD_CHANNEL_5_CHANNEL,ADC_REF_2P1);
-		else if(AD_CHANNEL_1_CHANNEL == sampleChannelSelect)
-			adc_test_init(AD_CHANNEL_1_CHANNEL,ADC_REF_2P1);
-		else
-			adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);
+//		if(AD_CHANNEL_0_CHANNEL == sampleChannelSelect)
+//			adc_test_init(AD_CHANNEL_5_CHANNEL,ADC_REF_2P1);
+//		else if(AD_CHANNEL_2_CHANNEL == sampleChannelSelect)
+//			adc_test_init(AD_CHANNEL_5_CHANNEL,ADC_REF_2P1);
+//		else if(AD_CHANNEL_5_CHANNEL == sampleChannelSelect)
+//					adc_test_init(AD_CHANNEL_6_CHANNEL,ADC_REF_2P1);
+//		else
+//			adc_test_init(AD_CHANNEL_0_CHANNEL,ADC_REF_2P1);
 //		setAdcSampleChannel(sampleChannelSelect);
+
+
 		adc_start();	//ADCÆô¶¯
 	}
 }
@@ -280,55 +311,38 @@ static void AD_Sample(void)
 	if(sampleTimes < TEMP_MAX_CONTINOUS_SAMPLE_TIMES)
 	{
 
-//		buffer_Sample_AD_Value[sampleTimes] = getAdOriginalValue();
-//
-//		if(sampleTimes == 0)
-//		{
-//			multiFilterMaxValue = buffer_Sample_AD_Value[0];
-//			multiFilterMinValue = buffer_Sample_AD_Value[0];
-//		}
-//
-//		if(multiFilterMaxValue < buffer_Sample_AD_Value[sampleTimes])
-//		{
-//			multiFilterMaxValue = buffer_Sample_AD_Value[sampleTimes];
-//		}
-//		if(multiFilterMinValue > buffer_Sample_AD_Value[sampleTimes])
-//		{
-//			multiFilterMinValue = buffer_Sample_AD_Value[sampleTimes];
-//		}
-
-//		multiFilterSumValue = multiFilterSumValue + buffer_Sample_AD_Value[sampleTimes];
-
 		sampleTimes++;
 
 		if(sampleTimes >= TEMP_MAX_CONTINOUS_SAMPLE_TIMES)
 		{
 			sampleTimes = 0;
 
-			if(sampleChannelSelect == AD_CHANNEL_14_CHANNEL)
+			if(sampleChannelSelect == AD_CHANNEL_0_CHANNEL)
 			{
 				  //filter max and min value,then calculate average value
 //				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_1_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_2_CHANNEL;
+			}
+			else if(sampleChannelSelect == AD_CHANNEL_2_CHANNEL)
+			{
+//				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
+				sampleChannelSelect = AD_CHANNEL_5_CHANNEL;
 			}
 			else if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
 			{
-//				sampleCH4Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
-			}
-			else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
-			{
 //				sampleCH1Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_5_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_6_CHANNEL;
 			}
 			else
 			{
 //				sampleCH14Value = ((multiFilterSumValue - multiFilterMaxValue - multiFilterMinValue))>> RIGHT_SHIFT_NUMBER;
-				sampleChannelSelect = AD_CHANNEL_14_CHANNEL;
+				sampleChannelSelect = AD_CHANNEL_0_CHANNEL;
 			}
 
 //			for(uchar index = 0; index < TEMP_MAX_CONTINOUS_SAMPLE_TIMES;index++)
 //				buffer_Sample_AD_Value[index] = 0;
+
+			adc_test_init(sampleChannelSelect,ADC_REF_2P1);
 
 		}
 	}
@@ -484,36 +498,37 @@ void interrupt ISR(void)
     }
 
 	if(ADIF)
-	   {
+	{
 		ADIF=0;
 		setAD_ConvertFlag(1);
+		vPutSampleDataIntoTable(adc_get(),sampleChannelSelect);
 //		adc_original_value = adc_get();
-		if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
-		{
+//		if(sampleChannelSelect == AD_CHANNEL_5_CHANNEL)
+//		{
+//
+//#ifdef USING_AD_FILTER_ALGORITHMN
+//			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_5_CHANNEL);
+//#else
+//			adc_original_CH4_value = adc_get();//getAdCh4Value();
+//#endif
+//		}
+//		else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
+//		{
+//#ifdef USING_AD_FILTER_ALGORITHMN
+//			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_1_CHANNEL);
+//#else
+//			adc_original_CH1_value = adc_get();//getAdCh1Value();
+//#endif
+//
+//		}
+//		else
+//		{
+//#ifndef USING_AD_FILTER_ALGORITHMN
+//			adc_original_CH14_value = adc_get();//getAdCh14Value();
+//#else
+//			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_14_CHANNEL);
+//#endif
+//		}
 
-#ifdef USING_AD_FILTER_ALGORITHMN
-			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_5_CHANNEL);
-#else
-			adc_original_CH4_value = adc_get();//getAdCh4Value();
-#endif
-		}
-		else if(sampleChannelSelect == AD_CHANNEL_1_CHANNEL)
-		{
-#ifdef USING_AD_FILTER_ALGORITHMN
-			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_1_CHANNEL);
-#else
-			adc_original_CH1_value = adc_get();//getAdCh1Value();
-#endif
-
-		}
-		else
-		{
-#ifndef USING_AD_FILTER_ALGORITHMN
-			adc_original_CH14_value = adc_get();//getAdCh14Value();
-#else
-			vPutSampleDataIntoTable(adc_get(),AD_CHANNEL_14_CHANNEL);
-#endif
-		}
-
-	   }
+	 }
 }

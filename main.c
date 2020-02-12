@@ -522,11 +522,11 @@ void main (void)
 		timer1_config();
 		timer1_interrupt_config();
 
-		adc_test_init(AD_CHANNEL_14_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
+		adc_test_init(AD_CHANNEL_0_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
 
 		dac_init(); //DAC0/1初始化
-		op1_init(); //OP1初始化
-		op2_init(); //OP2初始化
+//		op1_init(); //OP1初始化
+//		op2_init(); //OP2初始化
 
 
 		adc_start();	//ADC启动

@@ -16,11 +16,13 @@
 
 #define USING_AD_FILTER_ALGORITHMN
 
-#define AD_CHANNEL_14_CHANNEL            14
+#define AD_CHANNEL_0_CHANNEL            0
 
-#define AD_CHANNEL_1_CHANNEL            1
+#define AD_CHANNEL_2_CHANNEL            2
 
 #define AD_CHANNEL_5_CHANNEL            5
+
+#define AD_CHANNEL_6_CHANNEL            6
 
 
 void clock_config();
