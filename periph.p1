@@ -1246,22 +1246,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 34: void setAdcSampleChannel(unsigned char ucChannel);
 [; ;common.h: 39: void process_AD_Converter_Value();
 [; ;common.h: 46: unsigned int getAdOriginalCh1Value();
-[; ;common.h: 47: unsigned int getAdOriginaCh4Value();
-[; ;common.h: 49: unsigned int getAdOriginalCh14Value();
-[; ;common.h: 51: unsigned char isPermitSampleTime();
-[; ;common.h: 53: void clrSampeTime();
-[; ;common.h: 55: void setDAC0_ChannelValue(unsigned char ucValue);
-[; ;common.h: 57: void startTwelveHourTimer(unsigned int uiSetTime);
-[; ;common.h: 58: void startThreeHoursTimer(unsigned int uiSetTime);
-[; ;common.h: 61: void startTwentySecondsTimer();
-[; ;common.h: 62: unsigned char isFinishedTwentySecondsTimer();
-[; ;common.h: 65: void clearTwelveHoursTimer();
-[; ;common.h: 66: void clearThreeHoursTimer();
-[; ;common.h: 67: void clearTwentySecondsTimer();
-[; ;common.h: 69: unsigned char isFinishedTwelveHoursTimer();
-[; ;common.h: 70: unsigned char isFinishedThreeHoursTimer();
-[; ;common.h: 72: unsigned char getAD_ConvertFlag();
-[; ;common.h: 73: void setAD_ConvertFlag(unsigned char flag);
+[; ;common.h: 48: unsigned int getAdOriginalCh6Value();
+[; ;common.h: 49: unsigned int getAdOriginalCh5Value();
+[; ;common.h: 51: unsigned int getAdOriginalCh0Value();
+[; ;common.h: 53: unsigned int getAdOriginalCh2Value();
+[; ;common.h: 55: unsigned char isPermitSampleTime();
+[; ;common.h: 57: void clrSampeTime();
+[; ;common.h: 59: void setDAC0_ChannelValue(unsigned char ucValue);
+[; ;common.h: 61: void startTwelveHourTimer(unsigned int uiSetTime);
+[; ;common.h: 62: void startThreeHoursTimer(unsigned int uiSetTime);
+[; ;common.h: 65: void startTwentySecondsTimer();
+[; ;common.h: 66: unsigned char isFinishedTwentySecondsTimer();
+[; ;common.h: 68: void startTwentyMinuteTimer();
+[; ;common.h: 69: unsigned char isFinishedTwentyMinuteTimer();
+[; ;common.h: 72: void clearTwelveHoursTimer();
+[; ;common.h: 73: void clearThreeHoursTimer();
+[; ;common.h: 74: void clearTwentySecondsTimer();
+[; ;common.h: 75: void clearTwentyMinuteTimer();
+[; ;common.h: 78: unsigned char isFinishedTwelveHoursTimer();
+[; ;common.h: 79: unsigned char isFinishedThreeHoursTimer();
+[; ;common.h: 81: unsigned char getAD_ConvertFlag();
+[; ;common.h: 82: void setAD_ConvertFlag(unsigned char flag);
 "14 C:\temp\dev\AK7030-OTP\periph.c
 [v _dac_init `(v  1 ef ]
 {

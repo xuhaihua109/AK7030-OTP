@@ -820,9 +820,13 @@ void process_AD_Converter_Value();
 
 # 46
 unsigned int getAdOriginalCh1Value();
-unsigned int getAdOriginaCh4Value();
 
-unsigned int getAdOriginalCh14Value();
+unsigned int getAdOriginalCh6Value();
+unsigned int getAdOriginalCh5Value();
+
+unsigned int getAdOriginalCh0Value();
+
+unsigned int getAdOriginalCh2Value();
 
 unsigned char isPermitSampleTime();
 
@@ -837,10 +841,15 @@ void startThreeHoursTimer(unsigned int uiSetTime);
 void startTwentySecondsTimer();
 unsigned char isFinishedTwentySecondsTimer();
 
+void startTwentyMinuteTimer();
+unsigned char isFinishedTwentyMinuteTimer();
+
 
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
 void clearTwentySecondsTimer();
+void clearTwentyMinuteTimer();
+
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();
@@ -878,11 +887,11 @@ static TimeStopWatch timer;
 
 static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
-static unsigned int uiTwentySecondsTimer = 0;
+static unsigned int uiTwentySecondsTimer = 0,uiTwentyMinuteTimer = 0;
 
-static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
+static unsigned char bTwentyMinStartFlag= 0, bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
 
-static int uiSampleZero[12];
+static int uiSampleChannelZero[12];
 
 static int uiSampleChannelSecond[12];
 
@@ -948,7 +957,7 @@ if(channel == 0)
 {
 if(ucChannelZeroLength < 12)
 {
-uiSampleZero[ucChannelZeroLength] = uiSampleData;
+uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
 
 ucChannelZeroLength++;
 }
@@ -956,7 +965,7 @@ else
 {
 ucChannelZeroLength = 0;
 
-uiSampleZero[ucChannelZeroLength] = uiSampleData;
+uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
 }
 }
 else if(channel == 2)
@@ -1016,7 +1025,7 @@ ucChannelSixthLength = 0;
 
 for(int i = 0;i < 12; i++)
 {
-uiSampleZero[i] = 0;
+uiSampleChannelZero[i] = 0;
 
 uiSampleChannelSecond[i] = 0;
 
@@ -1073,27 +1082,44 @@ unsigned int getAdOriginalCh1Value()
 {
 
 
-return Filter(uiSampleZero);
+return Filter(uiSampleChannelZero);
 
 # 254
 }
 
 
-unsigned int getAdOriginaCh4Value()
+
+unsigned int getAdOriginalCh0Value()
 {
 
-return Filter(uiSampleChannelSecond);
+return Filter(uiSampleChannelZero);
 
 # 265
 }
 
-
-unsigned int getAdOriginalCh14Value()
+unsigned int getAdOriginalCh5Value()
 {
 
 return Filter(uiSampleChannelFifth);
 
-# 275
+# 274
+}
+
+
+unsigned int getAdOriginalCh6Value()
+{
+
+return Filter(uiSampleChannelSixth);
+
+# 284
+}
+
+unsigned int getAdOriginalCh2Value()
+{
+
+return Filter(uiSampleChannelSecond);
+
+# 293
 }
 
 
@@ -1105,12 +1131,12 @@ if(getAD_ConvertFlag())
 setAD_ConvertFlag(0);
 AD_Sample();
 
-# 296
+# 314
 adc_start();
 }
 }
 
-# 309
+# 327
 static void AD_Sample(void)
 {
 if(sampleTimes < 12)
@@ -1153,7 +1179,7 @@ adc_test_init(sampleChannelSelect,3);
 }
 }
 
-# 364
+# 382
 void setDAC0_ChannelValue(unsigned char ucValue)
 {
 DACR0=ucValue;
@@ -1167,7 +1193,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 381
+# 399
 }
 
 void clearTwelveHoursTimer()
@@ -1190,6 +1216,13 @@ bTwentySecStartFlag = 0;
 }
 
 
+void clearTwentyMinuteTimer()
+{
+uiTwentyMinuteTimer = 0;
+bTwentyMinStartFlag = 0;
+}
+
+
 void startThreeHoursTimer(unsigned int uiSetTime)
 {
 if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
@@ -1198,7 +1231,7 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 414
+# 439
 }
 
 
@@ -1212,11 +1245,33 @@ bTwentySecStartFlag = 1;
 }
 
 
+void startTwentyMinuteTimer()
+{
+if(( 0 == uiTwentyMinuteTimer) && ( 0 == bTwentyMinStartFlag))
+{
+uiTwentyMinuteTimer = 1200;
+bTwentyMinStartFlag = 1;
+}
+}
+
+
 unsigned char isFinishedTwentySecondsTimer()
 {
 if(( 0 == uiTwentySecondsTimer ) && bTwentySecStartFlag )
 {
 bTwentySecStartFlag = 0;
+return 1;
+}
+else
+return 0;
+}
+
+
+unsigned char isFinishedTwentyMinuteTimer()
+{
+if(( 0 == uiTwentyMinuteTimer ) && bTwentyMinStartFlag )
+{
+bTwentyMinStartFlag = 0;
 return 1;
 }
 else
@@ -1291,6 +1346,6 @@ ADIF=0;
 setAD_ConvertFlag(1);
 vPutSampleDataIntoTable(adc_get(),sampleChannelSelect);
 
-# 533
+# 580
 }
 }

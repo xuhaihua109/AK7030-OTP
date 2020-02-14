@@ -820,9 +820,13 @@ void process_AD_Converter_Value();
 
 # 46
 unsigned int getAdOriginalCh1Value();
-unsigned int getAdOriginaCh4Value();
 
-unsigned int getAdOriginalCh14Value();
+unsigned int getAdOriginalCh6Value();
+unsigned int getAdOriginalCh5Value();
+
+unsigned int getAdOriginalCh0Value();
+
+unsigned int getAdOriginalCh2Value();
 
 unsigned char isPermitSampleTime();
 
@@ -837,10 +841,15 @@ void startThreeHoursTimer(unsigned int uiSetTime);
 void startTwentySecondsTimer();
 unsigned char isFinishedTwentySecondsTimer();
 
+void startTwentyMinuteTimer();
+unsigned char isFinishedTwentyMinuteTimer();
+
 
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
 void clearTwentySecondsTimer();
+void clearTwentyMinuteTimer();
+
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();
@@ -864,17 +873,18 @@ unsigned int adc_get(void);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 79
+# 82
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x2FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF & 0x3FFF");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0x3FFF & 0x3FDF & 0x3FFF & 0x3FFE");;
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3FFF & 0x3FFF & 0x3FFF & 0x3FF8");;
 
-# 94
+# 97
 static void clearAllTimer(void)
 {
 clearTwelveHoursTimer();
 clearThreeHoursTimer();
 clearTwentySecondsTimer();
+clearTwentyMinuteTimer();
 }
 
 
@@ -893,30 +903,37 @@ PBOD7 = 0;
 PB7 = 0;
 clearAllTimer();
 
-# 119
+# 123
 }
 
 
 static void initPin(void)
 {
 
-PB6 = 1;
-PBOD6 = 1;
 
-
-
-PA0 = 0;
-PA1 = 0;
-PA2 = 0;
-PA3 = 0;
+TRISB0 = 0;
 PB0 = 0;
-PB1 = 1;
-PA6 = 0;
+TRISB1 = 0;
+PB1 = 0;
+TRISB2 = 0;
+PB2 = 0;
+TRISA0 = 0;
+PA0 = 0;
+TRISA1 = 0;
+PA1 = 0;
+TRISA2 = 0;
+PA2 = 1;
 
+TRISA3 = 0;
+PA3 = 0;
+TRISB4 = 0;
+PB4 = 0;
+TRISB7 = 0;
 PB7 = 0;
-PBOD7 = 0;
 
-# 144
+TRISB6 = 1;
+
+# 159
 }
 
 
@@ -927,12 +944,12 @@ if( bValue )
 
 PB0 = 1;
 
-# 156
+# 171
 else
 
 PB0 = 0;
 
-# 162
+# 177
 }
 
 
@@ -942,12 +959,27 @@ if( bValue )
 
 PB1 = 1;
 
-# 173
+# 188
 else
 
 PB1 = 0;
 
-# 179
+# 194
+}
+
+
+void setPB2(unsigned char bValue)
+{
+if( bValue )
+
+PB2 = 1;
+
+# 205
+else
+
+PB2 = 0;
+
+# 211
 }
 
 
@@ -957,12 +989,12 @@ if( bValue )
 
 PA0 = 1;
 
-# 190
+# 222
 else
 
 PA0 = 0;
 
-# 196
+# 228
 }
 
 
@@ -972,12 +1004,12 @@ if( bValue )
 
 PA1 = 1;
 
-# 207
+# 239
 else
 
 PA1 = 0;
 
-# 213
+# 245
 }
 
 
@@ -988,12 +1020,12 @@ if( bValue )
 
 PA2 = 1;
 
-# 225
+# 257
 else
 
 PA2 = 0;
 
-# 231
+# 263
 }
 
 
@@ -1003,12 +1035,49 @@ if( bValue )
 
 PA3 = 1;
 
-# 242
+# 274
 else
 
 PA3 = 0;
 
-# 248
+# 280
+}
+
+
+void setPB6(unsigned char bValue)
+{
+if( bValue )
+
+{
+TRISB6 = 0;
+PB6 = 1;
+}
+
+# 294
+else
+
+{
+TRISB6 = 0;
+PB6 = 0;
+}
+
+# 303
+}
+
+
+
+void setPB4(unsigned char bValue)
+{
+if( bValue )
+
+PB4 = 1;
+
+# 315
+else
+
+PB4 = 0;
+
+# 321
 }
 
 
@@ -1021,7 +1090,7 @@ PBOD7 = 1;
 PB7 = 1;
 }
 
-# 265
+# 338
 else
 
 {
@@ -1029,7 +1098,7 @@ PBOD7 = 0;
 PB7 = 0;
 }
 
-# 277
+# 350
 }
 
 
@@ -1039,19 +1108,39 @@ if( bValue )
 
 PA6 = 1;
 
-# 288
+# 361
 else
 
 PA6= 0;
 
-# 294
+# 367
 }
 
-# 458
-void main (void)
+void setPB6AsInput(void)
 {
 
-# 465
+TRISB6 = 1;
+
+# 377
+}
+
+# 577
+void clearParaFunction1(void)
+{
+setPA1(0);
+setPA0(0);
+
+setPB0(0);
+setPB1(0);
+setPB2(0);
+
+clearAllTimer();
+
+setPA3(0);
+setPB4(0);
+}
+
+# 609
 enum setp_Adc4
 {
 ADC4_STEP_INIT = 0,
@@ -1072,56 +1161,6 @@ ADC4_STEP_SIXTH,
 };
 
 
-static unsigned char ucWaitTime1S = 0;
-
-static unsigned char ucWaitTimeO3s = 0;
-
-static unsigned char ucSmallTimerActionFlag = 0;
-
-static unsigned char ucSetSmallActionFlag = 0;
-
-static unsigned char bCheckTweHour = 0;
-
-static unsigned char bCheckTheHour = 0;
-
-
-
-TRISA0 = 0;
-TRISA1 = 0;
-TRISA2 = 0;
-TRISA3 = 0;
-TRISB0 = 0;
-TRISB1 = 0;
-TRISA6 = 0;
-
-TRISB7 = 0;
-TRISB6 = 0;
-
-
-initPin();
-
-
-TRISB2 = 1;
-
-
-TRISA7 = 1;
-
-TRISB4 = 1;
-
-clock_config();
-timer1_config();
-timer1_interrupt_config();
-
-adc_test_init(0,3);
-
-dac_init();
-
-
-
-
-adc_start();
-
-# 537
 enum AD_CHANNEL_4_VALUE_PATH
 {
 LESS_THAN_1911 = 0,
@@ -1142,15 +1181,55 @@ MAIN_LOOP_STEP_FIFTH,
 MAIN_LOOP_STEP_SIXTH,
 MAIN_LOOP_STEP_SEVENTH,
 MAIN_LOOP_STEP_3_HOUR_BRANCH,
-MAIN_LOOP_STEP_12_HOUR_END,
+MAIN_LOOP_STEP_10_HOUR_END,
 };
 
 
 static enum MAIN_LOOP_STEP enumMainLoopStep = MAIN_LOOP_STEP_INIT;
 
-static enum AD_CHANNEL_4_VALUE_PATH ucChannel4Type = LESS_THAN_1911;
+static enum AD_CHANNEL_4_VALUE_PATH ucChannel5Type = LESS_THAN_1911;
 
-# 570
+
+static enum setp_Adc4 ucADC4_Step = ADC4_STEP_INIT;
+
+
+void call_ADC4_STEP_FOURTH_PREFIX2();
+void call_ADC4_STEP_FOURTH_PREFIX3(unsigned char bClearStep);
+
+
+
+
+void main(void)
+
+{
+
+# 679
+static unsigned char bCheckTweHour = 0;
+
+# 685
+initPin();
+
+
+TRISB3 = 1;
+
+TRISB5 = 1;
+
+TRISA7 = 1;
+
+TRISA6 = 1;
+
+clock_config();
+timer1_config();
+timer1_interrupt_config();
+
+adc_test_init(0,3);
+
+# 707
+adc_start();
+
+# 720
+startTwentyMinuteTimer();
+
 while(1)
 {
 
@@ -1164,15 +1243,16 @@ if( isPermitSampleTime() )
 
 clrSampeTime();
 
-# 596
+# 748
 switch(enumMainLoopStep)
 {
 case MAIN_LOOP_STEP_INIT:
 {
 
-# 604
+# 756
 static unsigned char ucTimerZeroPoint5s = 0;
-if(getAdOriginalCh14Value() > 1950)
+
+if(getAdOriginalCh0Value() <= 1950)
 {
 ucTimerZeroPoint5s++;
 }
@@ -1184,22 +1264,32 @@ if(ucTimerZeroPoint5s >= 5)
 ucTimerZeroPoint5s = 0;
 enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 }
+
+if(isFinishedTwentyMinuteTimer())
+enumMainLoopStep = MAIN_LOOP_STEP_10_HOUR_END;
 break;
 }
 
 case MAIN_LOOP_STEP_FIRST:
 {
 
-# 626
+# 782
 static unsigned char ucTimerZeroPoint3s = 0;
 
+static unsigned char ucTimerCntP3s = 0;
 
-if(getAdOriginalCh14Value() > 1950)
+
+if(getAdOriginalCh0Value() <= 1950)
 {
+ucTimerCntP3s++;
+if(ucTimerCntP3s >= 3)
+{
+ucTimerCntP3s = 0;
 
 enumMainLoopStep = MAIN_LOOP_STEP_SECOND;
 
 ucTimerZeroPoint3s = 0;
+}
 
 }
 else
@@ -1210,7 +1300,7 @@ if(ucTimerZeroPoint3s >= 3)
 {
 ucTimerZeroPoint3s = 0;
 
-clearPinPortAndTimer();
+clearParaFunction1();
 }
 }
 
@@ -1220,17 +1310,19 @@ break;
 case MAIN_LOOP_STEP_SECOND:
 {
 
-# 658
+# 821
 static unsigned char ucTimerP5s = 0;
 
-
-setPA6(1);
+setPA3(1);
+setPB4(1);
 
 if(ucTimerP5s < 5)
 ucTimerP5s++;
 else
 {
 ucTimerP5s = 0;
+
+startTwentyMinuteTimer();
 
 enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
 }
@@ -1241,37 +1333,38 @@ break;
 case MAIN_LOOP_STEP_THIRD:
 {
 
-# 681
-static unsigned char ucTimerADC1ZeroP5s = 0;
+# 846
+static unsigned char ucTimerLessZeroP5s = 0;
 
-static unsigned char ucTimerLessADC1ZeroP5s = 0;
+static unsigned char ucTimerLargeZeroP5s = 0;
 
-static unsigned char ucTimerLessADC1ZeroP5sFlag = 0;
 
 static unsigned char ucTimerRightP5s = 0;
 
-if(getAdOriginalCh1Value() < 115)
+if(getAdOriginalCh6Value() <= 85)
 {
-ucTimerADC1ZeroP5s = 0;
+ucTimerLargeZeroP5s = 0;
 
-ucTimerLessADC1ZeroP5s++;
+ucTimerLessZeroP5s++;
 }
 else
 {
-ucTimerADC1ZeroP5s++;
+ucTimerLargeZeroP5s++;
 
-ucTimerLessADC1ZeroP5s = 0;
+ucTimerLessZeroP5s = 0;
+
+ucTimerRightP5s = 0;
 }
 
-if(ucTimerADC1ZeroP5s >= 3)
+if(ucTimerLargeZeroP5s >= 3)
 {
-ucTimerADC1ZeroP5s = 0;
+ucTimerLargeZeroP5s = 0;
 enumMainLoopStep = MAIN_LOOP_STEP_FOURTH;
 }
-else if( ucTimerLessADC1ZeroP5s >= 3)
+else if( ucTimerLessZeroP5s >= 3)
 {
 
-if(getAdOriginalCh1Value() < 105)
+if(getAdOriginalCh6Value() < 65)
 {
 ucTimerRightP5s++;
 }
@@ -1282,7 +1375,7 @@ ucTimerRightP5s = 0;
 
 if(ucTimerRightP5s >= 3)
 {
-ucTimerLessADC1ZeroP5s = 0;
+ucTimerLargeZeroP5s = 0;
 ucTimerRightP5s = 0;
 enumMainLoopStep = MAIN_LOOP_STEP_3_HOUR_BRANCH;
 }
@@ -1299,8 +1392,8 @@ else
 if((MAIN_LOOP_STEP_3_HOUR_BRANCH == enumMainLoopStep) || (MAIN_LOOP_STEP_FOURTH == enumMainLoopStep))
 {
 ucTimerRightP5s = 0;
-ucTimerADC1ZeroP5s = 0;
-ucTimerLessADC1ZeroP5s = 0;
+ucTimerLargeZeroP5s = 0;
+ucTimerLessZeroP5s = 0;
 }
 
 
@@ -1310,7 +1403,7 @@ break;
 case MAIN_LOOP_STEP_FOURTH:
 {
 
-# 753
+# 919
 startTwelveHourTimer(36000);
 enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 
@@ -1322,22 +1415,21 @@ break;
 case MAIN_LOOP_STEP_FIFTH:
 {
 
-# 766
+# 932
 if(( isFinishedTwelveHoursTimer() && (! bCheckTweHour)))
 {
-enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
+enumMainLoopStep = MAIN_LOOP_STEP_10_HOUR_END;
 bCheckTweHour = 1;
 }
 else
 {
-static enum setp_Adc4 ucADC4_Step = ADC4_STEP_INIT;
 
 switch(ucADC4_Step)
 {
 case ADC4_STEP_INIT:
 {
 
-# 783
+# 948
 ucADC4_Step = ADC4_STEP_FIRST;
 break;
 }
@@ -1345,34 +1437,38 @@ break;
 case ADC4_STEP_FIRST:
 {
 
-# 792
+# 957
 static unsigned int uiOldValue = 0, uiMinValue = 0, uiMaxValue = 0;
 
 static unsigned char bInitFlag = 0;
 
+unsigned int uiCh5Value = 0;
+
+uiCh5Value = getAdOriginalCh5Value();
+
 if( 0 == bInitFlag)
 {
 bInitFlag = 1;
-uiOldValue = getAdOriginaCh4Value();
+uiOldValue = uiCh5Value;
 }
 
-# 809
-if(LESS_THAN_1911 == ucChannel4Type)
+# 978
+if(LESS_THAN_1911 == ucChannel5Type)
 {
 uiMinValue = 0;
 uiMaxValue = 1931;
 }
-else if(BETWEEN_1911_AND_2067 == ucChannel4Type)
+else if(BETWEEN_1911_AND_2067 == ucChannel5Type)
 {
 uiMinValue = 1931 - 40;
 uiMaxValue = 2047;
 }
-else if(BETWEEN_2067_AND_2204 == ucChannel4Type)
+else if(BETWEEN_2067_AND_2204 == ucChannel5Type)
 {
 uiMinValue = 2047 - 40;
 uiMaxValue = 2164;
 }
-else if(BETWEEN_2204_AND_2340 == ucChannel4Type)
+else if(BETWEEN_2204_AND_2340 == ucChannel5Type)
 {
 uiMinValue = 2164 - 40;
 uiMaxValue = 2281;
@@ -1384,22 +1480,22 @@ uiMaxValue = 2281;
 }
 
 
-if(( getAdOriginaCh4Value() < uiMinValue )
-|| (getAdOriginaCh4Value() > uiMaxValue ))
+if(( uiCh5Value < uiMinValue )
+|| ( uiCh5Value > uiMaxValue ))
 {
-uiOldValue = getAdOriginaCh4Value();
+uiOldValue = uiCh5Value;
 }
 
 if( uiOldValue < 1931 )
-ucChannel4Type = LESS_THAN_1911;
+ucChannel5Type = LESS_THAN_1911;
 else if( uiOldValue < 2047 )
-ucChannel4Type = BETWEEN_1911_AND_2067;
+ucChannel5Type = BETWEEN_1911_AND_2067;
 else if( uiOldValue < 2164 )
-ucChannel4Type = BETWEEN_2067_AND_2204;
+ucChannel5Type = BETWEEN_2067_AND_2204;
 else if( uiOldValue < 2281 )
-ucChannel4Type = BETWEEN_2204_AND_2340;
+ucChannel5Type = BETWEEN_2204_AND_2340;
 else
-ucChannel4Type = MORE_THAN_2340;
+ucChannel5Type = MORE_THAN_2340;
 
 ucADC4_Step = ADC4_STEP_SECOND;
 break;
@@ -1408,10 +1504,9 @@ break;
 case ADC4_STEP_SECOND:
 {
 
-# 862
-switch(ucChannel4Type)
+# 1032
+switch(ucChannel5Type)
 {
-
 case LESS_THAN_1911:
 {
 static unsigned char ucTimerDelay = 0;
@@ -1421,11 +1516,7 @@ switch(ucLoaderStep)
 {
 case 0:
 {
-
-
-PB0 = 1;
-
-# 880
+setPA1(1);
 ucLoaderStep++;
 break;
 }
@@ -1434,10 +1525,7 @@ case 1:
 {
 if(ucTimerDelay >= 5)
 {
-
-PA0 = 1;
-
-# 893
+setPA0(1);
 ucTimerDelay = 0;
 ucLoaderStep++;
 }
@@ -1450,10 +1538,7 @@ case 2:
 {
 if(ucTimerDelay >= 5)
 {
-
-PA1= 1;
-
-# 910
+setPB0(1);
 ucTimerDelay = 0;
 ucLoaderStep++;
 }
@@ -1467,10 +1552,7 @@ case 3:
 {
 if(ucTimerDelay >= 5)
 {
-
-PA2= 1;
-
-# 929
+setPB1(1);
 ucTimerDelay = 0;
 ucLoaderStep++;
 }
@@ -1483,10 +1565,7 @@ case 4:
 {
 if(ucTimerDelay >= 5)
 {
-
-PA3 = 1;
-
-# 946
+setPB2(1);
 ucTimerDelay = 0;
 ucLoaderStep++;
 }
@@ -1500,13 +1579,10 @@ case 5:
 if(ucTimerDelay >= 5)
 {
 
-PB0 = 0;
-PA0 = 0;
-PA1 = 0;
-PA2 = 0;
-PA3 = 0;
-
-# 971
+setPA0(0);
+setPB0(0);
+setPB1(0);
+setPB2(0);
 ucTimerDelay = 0;
 ucLoaderStep++;
 }
@@ -1545,10 +1621,7 @@ switch(ucLoaderStep1)
 {
 case 0:
 {
-
-PB0 = 1;
-
-# 1014
+setPA1(1);
 ucLoaderStep1++;
 break;
 }
@@ -1557,10 +1630,7 @@ case 1:
 {
 if(ucTimerDelay1 >= 5)
 {
-
-PA0 = 1;
-
-# 1027
+setPA0(1);
 ucTimerDelay1 = 0;
 ucLoaderStep1++;
 }
@@ -1573,10 +1643,7 @@ case 2:
 {
 if(ucTimerDelay1 >= 5)
 {
-
-PA1= 1;
-
-# 1044
+setPB0(1);
 ucTimerDelay1 = 0;
 ucLoaderStep1++;
 }
@@ -1590,7 +1657,7 @@ case 3:
 if(ucTimerDelay1 >= 5)
 {
 
-setPA2(1);
+setPB1(1);
 ucTimerDelay1 = 0;
 ucLoaderStep1++;
 }
@@ -1604,7 +1671,7 @@ case 4:
 if(ucTimerDelay1 >= 5)
 {
 
-setPA3(1);
+setPB2(1);
 ucTimerDelay1 = 0;
 ucLoaderStep1++;
 }
@@ -1617,14 +1684,13 @@ case 5:
 {
 if(ucTimerDelay1 >= 5)
 {
-
 setPA0(0);
 
-setPA1(0);
+setPB0(0);
 
-setPA2(0);
+setPB1(0);
 
-setPA3(0);
+setPB2(0);
 ucTimerDelay1 = 0;
 ucLoaderStep1++;
 }
@@ -1665,7 +1731,7 @@ switch(ucLoaderStep2)
 case 0:
 {
 
-setPB0(1);
+setPA1(1);
 
 setPA0(1);
 ucLoaderStep2++;
@@ -1677,7 +1743,7 @@ case 1:
 if(ucTimerDelay2 >= 5)
 {
 
-setPA1(1);
+setPB0(1);
 ucTimerDelay2 = 0;
 ucLoaderStep2++;
 }
@@ -1691,7 +1757,7 @@ case 2:
 if(ucTimerDelay2 >= 5)
 {
 
-setPA2(1);
+setPB1(1);
 ucTimerDelay2 = 0;
 ucLoaderStep2++;
 }
@@ -1705,7 +1771,7 @@ case 3:
 if(ucTimerDelay2 >= 5)
 {
 
-setPA3(1);
+setPB2(1);
 ucTimerDelay2 = 0;
 ucLoaderStep2++;
 }
@@ -1720,11 +1786,11 @@ if(ucTimerDelay2 >= 5)
 {
 
 
-setPA1(0);
+setPB0(0);
 
-setPA2(0);
+setPB1(0);
 
-setPA3(0);
+setPB2(0);
 ucTimerDelay2 = 0;
 ucLoaderStep2++;
 }
@@ -1779,7 +1845,7 @@ case 1:
 if(ucTimerDelay3 >= 5)
 {
 
-setPA2(1);
+setPB1(1);
 ucTimerDelay3 = 0;
 ucLoaderStep3++;
 }
@@ -1793,7 +1859,7 @@ case 2:
 if(ucTimerDelay3 >= 5)
 {
 
-setPA3(1);
+setPB2(1);
 ucTimerDelay3 = 0;
 ucLoaderStep3++;
 }
@@ -1809,9 +1875,9 @@ if(ucTimerDelay3 >= 5)
 {
 
 
-setPA2(0);
+setPB1(0);
 
-setPA3(0);
+setPB2(0);
 ucTimerDelay3 = 0;
 ucLoaderStep3++;
 }
@@ -1858,7 +1924,7 @@ setPA0(1);
 
 setPA1(1);
 
-setPA2(1);
+setPB1(1);
 ucLoaderStep4++;
 break;
 }
@@ -1868,7 +1934,7 @@ case 1:
 if(ucTimerDelay4 >= 5)
 {
 
-setPA3(1);
+setPB2(1);
 ucTimerDelay4 = 0;
 ucLoaderStep4++;
 }
@@ -1882,7 +1948,7 @@ case 2:
 if(ucTimerDelay4 >= 5)
 {
 
-setPA3(0);
+setPB2(0);
 ucTimerDelay4 = 0;
 ucLoaderStep4++;
 }
@@ -1923,12 +1989,12 @@ break;
 case ADC4_STEP_THIRD:
 {
 
-# 1392
+# 1518
 static unsigned char ucTimerDelayP2sLess = 0;
 
 static unsigned char ucTimerDelayP2sMore = 0;
 
-if( getAdOriginalCh1Value() <= 220 )
+if( getAdOriginalCh6Value() <= 150 )
 {
 ucTimerDelayP2sLess++;
 ucTimerDelayP2sMore = 0;
@@ -1939,6 +2005,13 @@ ucTimerDelayP2sMore++;
 ucTimerDelayP2sLess = 0;
 }
 
+if(ucTimerDelayP2sLess > 200)
+ucTimerDelayP2sLess = 2;
+
+
+if(ucTimerDelayP2sMore > 200)
+ucTimerDelayP2sMore = 2;
+
 if( ucTimerDelayP2sLess >= 2)
 {
 ucTimerDelayP2sLess = 0;
@@ -1946,14 +2019,32 @@ ucTimerDelayP2sMore = 0;
 
 startTwentySecondsTimer();
 
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX1;
-}
 
-if(ucTimerDelayP2sMore >= 2)
+if( !isFinishedTwentySecondsTimer() )
+{
+
+# 1554
+call_ADC4_STEP_FOURTH_PREFIX2();
+}
+else
+
+{
+
+# 1562
+call_ADC4_STEP_FOURTH_PREFIX3(0);
+}
+}
+else if(ucTimerDelayP2sMore >= 2)
 {
 ucTimerDelayP2sMore = 0;
 ucTimerDelayP2sLess = 0;
-ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
+
+# 1573
+call_ADC4_STEP_FOURTH_PREFIX2();
+}
+else
+{
+
 }
 
 
@@ -1963,9 +2054,10 @@ break;
 case ADC4_STEP_FOURTH_PREFIX1:
 {
 
-# 1433
+# 1589
 if( !isFinishedTwentySecondsTimer() )
 ucADC4_Step = ADC4_STEP_FOURTH_PREFIX2;
+
 else
 ucADC4_Step = ADC4_STEP_FOURTH_PREFIX3;
 
@@ -1976,55 +2068,184 @@ break;
 case ADC4_STEP_FOURTH_PREFIX2:
 {
 
-# 1447
-static unsigned char ucTimerForDACR0_CNT1 = 0, ucTimerForDACR0_CNT2 = 0;
+# 1604
+static unsigned char ucTimerCntMore = 0, ucTimerCntLess = 0;
 
-static unsigned char ucTimerForDACR0_CNT1_f = 0, ucTimerForDACR0_CNT2_f = 0;
+static unsigned char ucTimerCntMoreFlag = 0, ucTimerCntLessFlag = 0;
 
-if((getAdOriginalCh14Value() > 2800))
+if((getAdOriginalCh2Value() > 1950))
 {
-ucTimerForDACR0_CNT1++;
-ucTimerForDACR0_CNT2 = 0;
+ucTimerCntMore++;
+ucTimerCntLess = 0;
 }
 else
 {
-ucTimerForDACR0_CNT2++;
-ucTimerForDACR0_CNT1 = 0;
+ucTimerCntLess++;
+ucTimerCntMore = 0;
 }
 
-if(ucTimerForDACR0_CNT1 >= 2)
-ucTimerForDACR0_CNT1_f = 1;
+if(ucTimerCntMore >= 2)
+ucTimerCntMoreFlag = 1;
 
-if(ucTimerForDACR0_CNT2 >= 2)
-ucTimerForDACR0_CNT2_f = 1;
+if(ucTimerCntLess >= 2)
+ucTimerCntLessFlag = 1;
 
-if(ucTimerForDACR0_CNT1_f)
+if( ucTimerCntLessFlag )
 {
+static unsigned char ucPrefix2Step = 0;
 
-DACR0=0x0F;
+static unsigned char ucTimeCntP2s = 0;
 
-# 1475
-ucADC4_Step = ADC4_STEP_FOURTH;
+switch(ucPrefix2Step)
+{
+case 0:
+{
+ucTimeCntP2s = 0;
+setPA3(0);
+setPB6(0);
+ucPrefix2Step++;
+break;
 }
-else if(ucTimerForDACR0_CNT2_f)
+
+case 1:
 {
+if((getAdOriginalCh2Value() > 2300))
+{
+ucTimeCntP2s++;
+}
+else
+ucTimeCntP2s = 0;
 
-DACR0=0x09;
+if( ucTimeCntP2s >= 2)
+{
+ucTimeCntP2s = 0;
+ucPrefix2Step++;
+}
+break;
 
-# 1484
-ucADC4_Step = ADC4_STEP_FOURTH;
+
+}
+
+case 2:
+{
+setPA3(1);
+
+setPB6AsInput();
+ucPrefix2Step++;
+break;
+}
+
+case 3:
+{
+static unsigned char ucTimerCntP5s = 0;
+if( ucTimerCntP5s < 5)
+ucTimerCntP5s++;
+else
+{
+ucTimerCntP5s = 0;
+ucPrefix2Step++;
+
+}
+break;
+}
+
+case 4:
+{
+static unsigned char ucMoreThanP3sCnt = 0;
+
+static unsigned char ucLessThanP3sCnt = 0;
+if((getAdOriginalCh6Value() < 50))
+{
+ucLessThanP3sCnt++;
+ucMoreThanP3sCnt = 0;
+}
+else
+{
+ucMoreThanP3sCnt++;
+ucLessThanP3sCnt = 0;
+}
+
+if( ucLessThanP3sCnt >= 3)
+{
+ucLessThanP3sCnt = 0;
+ucMoreThanP3sCnt = 0;
+
+enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+ucADC4_Step = ADC4_STEP_INIT;
+ucTimerCntMoreFlag = 0;
+
+ucPrefix2Step = 0;
+;
+}
+
+if(ucMoreThanP3sCnt > 3)
+{
+ucLessThanP3sCnt = 0;
+ucMoreThanP3sCnt = 0;
+
+enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+ucADC4_Step = ADC4_STEP_INIT;
+ucTimerCntMoreFlag = 0;
+
+ucPrefix2Step = 0;
+;
+}
+break;
+}
+default:
+break;
+}
+}
+else if( ucTimerCntMoreFlag )
+{
+static unsigned char ucMoreThanP8sCnt = 0;
+
+static unsigned char ucLessThanP8sCnt = 0;
+if((getAdOriginalCh6Value() < 50))
+{
+ucLessThanP8sCnt++;
+ucMoreThanP8sCnt = 0;
+}
+else
+{
+ucMoreThanP8sCnt++;
+ucLessThanP8sCnt = 0;
+}
+
+if( ucLessThanP8sCnt >= 8)
+{
+ucLessThanP8sCnt = 0;
+ucMoreThanP8sCnt = 0;
+
+enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+ucADC4_Step = ADC4_STEP_INIT;
+ucTimerCntMoreFlag = 0;
+;
+}
+else if( ucMoreThanP8sCnt >= 8 )
+{
+ucLessThanP8sCnt = 0;
+ucMoreThanP8sCnt = 0;
+
+enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+ucADC4_Step = ADC4_STEP_INIT;
+ucTimerCntMoreFlag = 0;
+;
+}
+else
+;
 }
 else
 {
 ;
 }
 
-if(ADC4_STEP_FOURTH == ucADC4_Step)
+if(ADC4_STEP_INIT == ucADC4_Step)
 {
-ucTimerForDACR0_CNT1 = 0;
-ucTimerForDACR0_CNT2 = 0;
-ucTimerForDACR0_CNT1_f = 0;
-ucTimerForDACR0_CNT2_f = 0;
+ucTimerCntMore = 0;
+ucTimerCntLess = 0;
+ucTimerCntMoreFlag = 0;
+ucTimerCntLessFlag = 0;
 
 }
 
@@ -2034,15 +2255,13 @@ break;
 case ADC4_STEP_FOURTH_PREFIX3:
 {
 
-# 1508
+# 1792
 clearTwentySecondsTimer();
 
-setPA6(0);
+setPA3(0);
+setPB4(0);
+setPB6(1);
 
-PBOD6 = 0;
-PB6 = 1;
-
-# 1518
 ucADC4_Step = ADC4_STEP_FOURTH_PREFIX4;
 break;
 
@@ -2052,12 +2271,12 @@ break;
 case ADC4_STEP_FOURTH_PREFIX4:
 {
 
-# 1530
+# 1810
 static unsigned char ucDelayPrefix4TimerP5s;
 
 ucDelayPrefix4TimerP5s++;
 
-if( ucDelayPrefix4TimerP5s >= 5)
+if( ucDelayPrefix4TimerP5s >= 10)
 {
 ucDelayPrefix4TimerP5s = 0;
 
@@ -2068,12 +2287,10 @@ break;
 
 case ADC4_STEP_FOURTH_PREFIX5:
 {
+setPA3(1);
+setPB4(1);
 
-# 1550
-PBOD6 = 1;
-PB6 = 1;
-
-# 1556
+setPB6AsInput();
 ucADC4_Step = ADC4_STEP_FOURTH_PREFIX6;
 
 break;
@@ -2092,7 +2309,7 @@ ucDelayPrefix6TimerP2s = 0;
 
 ucADC4_Step = ADC4_STEP_INIT;
 
-enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
 }
 break;
 }
@@ -2101,49 +2318,14 @@ break;
 case ADC4_STEP_FOURTH:
 {
 
-# 1585
-static unsigned char ucCheckTimerP2sLess = 0;
-
-static unsigned char ucCheckTimerP2sMore = 0;
-
-if( getAdOriginalCh1Value() < 85)
-{
-ucCheckTimerP2sLess++;
-ucCheckTimerP2sMore = 0;
-}
-else
-{
-ucCheckTimerP2sMore++;
-ucCheckTimerP2sLess = 0;
-}
-
-if( ucCheckTimerP2sMore > 2)
-{
-ucCheckTimerP2sMore = 0;
-ucCheckTimerP2sLess = 0;
-
-ucADC4_Step = ADC4_STEP_INIT;
-
-enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
-}
-
-if( ucCheckTimerP2sLess > 2)
-{
-ucCheckTimerP2sMore = 0;
-ucCheckTimerP2sLess = 0;
-
-ucADC4_Step = ADC4_STEP_FOURTH_SUFFIX1;
-
-}
-
-
+# 1893
 break;
 }
 
 case ADC4_STEP_FOURTH_SUFFIX1:
 {
 
-# 1628
+# 1901
 static unsigned char ucFourthSuffix1TimerP3s = 0;
 
 ucFourthSuffix1TimerP3s++;
@@ -2160,7 +2342,7 @@ break;
 case ADC4_STEP_FOURTH_SUFFIX2:
 {
 
-# 1647
+# 1920
 setPA6(0);
 
 clearPinPortAndTimer();
@@ -2182,7 +2364,7 @@ break;
 case MAIN_LOOP_STEP_3_HOUR_BRANCH:
 {
 
-# 1670
+# 1943
 enum hour_3_branch_step{
 HOUR_3_BRANCH_STEP_FIRST,
 HOUR_3_BRANCH_STEP_SECOND,
@@ -2199,19 +2381,22 @@ case HOUR_3_BRANCH_STEP_FIRST:
 PB7 = 1;
 PBOD7 = 1;
 
-# 1689
+# 1962
 startThreeHoursTimer(10800);
 
 
-setPB0(1);
 
 setPA0(1);
 
 setPA1(1);
 
-setPA2(1);
+setPB0(1);
 
-setPA3(1);
+setPB1(1);
+
+setPB2(1);
+
+setPB4(0);
 
 enumBranchStep = HOUR_3_BRANCH_STEP_SECOND;
 break;
@@ -2220,35 +2405,19 @@ break;
 case HOUR_3_BRANCH_STEP_SECOND:
 {
 
-# 1711
-static unsigned char ucTimer20s = 0;
-
-if(ucTimer20s < 200)
-{
-ucTimer20s++;
-
-}
-else
-{
-
-ucTimer20s = 0;
-
+# 1988
 enumBranchStep = HOUR_3_BRANCH_STEP_THIRD;
-
-
-setPA6(0);
-}
 break;
 }
 
 case HOUR_3_BRANCH_STEP_THIRD:
 {
 
-# 1736
+# 1997
 if( (isFinishedTwelveHoursTimer()) || (isFinishedThreeHoursTimer()))
 {
 enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
-enumMainLoopStep = MAIN_LOOP_STEP_12_HOUR_END;
+enumMainLoopStep = MAIN_LOOP_STEP_10_HOUR_END;
 }
 else
 {
@@ -2256,7 +2425,7 @@ static unsigned char ucTimerX1P5s = 0;
 
 static unsigned char ucTimerLessX1P5s = 0;
 
-if(getAdOriginalCh1Value() < 115)
+if(getAdOriginalCh6Value() <= 85)
 {
 ucTimerX1P5s = 0;
 ucTimerLessX1P5s++;
@@ -2271,12 +2440,14 @@ if(ucTimerX1P5s >= 5)
 {
 ucTimerX1P5s = 0;
 
+ucTimerLessX1P5s = 0;
+
 
 
 PBOD7 = 0;
 PB7 = 0;
 
-# 1770
+# 2033
 clearThreeHoursTimer();
 
 enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
@@ -2289,7 +2460,7 @@ static unsigned char ucTimerX2P5s = 0;
 
 static unsigned char ucTimerLessX2P5s = 0;
 
-if(getAdOriginalCh14Value() >= 1950)
+if(getAdOriginalCh6Value() > 20)
 {
 ucTimerX2P5s++;
 ucTimerLessX2P5s = 0;
@@ -2306,9 +2477,13 @@ ucTimerX2P5s = 0;
 }
 else if(ucTimerLessX2P5s >= 5)
 {
-clearPinPortAndTimer();
+clearParaFunction1();
 enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
 enumBranchStep = HOUR_3_BRANCH_STEP_FIRST;
+
+ucTimerLessX2P5s = 0;
+
+ucTimerX2P5s = 0;
 }
 else
 {
@@ -2333,10 +2508,10 @@ break;
 break;
 }
 
-case MAIN_LOOP_STEP_12_HOUR_END:
+case MAIN_LOOP_STEP_10_HOUR_END:
 {
 
-# 1831
+# 2098
 enum INTERNAL_STEP {
 INTERNAL_FIRST_STEP,
 INTERNAL_SECOND_STEP,
@@ -2351,25 +2526,15 @@ switch (enumInteralStep)
 case INTERNAL_FIRST_STEP:
 {
 
-# 1848
-setPB0(0);
-
-setPB1(0);
-
-setPA0(0);
-
-setPA1(0);
-
+# 2115
 setPA2(0);
-
+setPA1(0);
+setPA0(0);
+setPB0(0);
+setPB1(0);
+setPB2(0);
 setPA3(0);
-
-
-PBOD6 = 0;
-PB6 = 1;
-
-# 1868
-setPA6(0);
+setPB4(0);
 
 enumInteralStep = INTERNAL_SECOND_STEP;
 break;
@@ -2378,10 +2543,10 @@ break;
 case INTERNAL_SECOND_STEP:
 {
 
-# 1879
+# 2133
 static unsigned char ucTimer1s = 0;
 
-if(getAdOriginalCh14Value() <= 1000)
+if(getAdOriginalCh0Value() >= 2500)
 {
 ucTimer1s++;
 }
@@ -2399,10 +2564,10 @@ break;
 case INTERNAL_THIRD_STEP:
 {
 
-# 1901
+# 2155
 static unsigned char ucTimerP3s = 0;
 
-if(getAdOriginalCh14Value() >= 1950)
+if(getAdOriginalCh0Value() <= 1950)
 {
 ucTimerP3s++;
 }
@@ -2416,9 +2581,6 @@ ucTimerP3s = 0;
 
 clearAllTimer();
 
-DACR0=0x0F;
-
-# 1921
 initPin();
 
 
@@ -2426,7 +2588,7 @@ enumMainLoopStep = MAIN_LOOP_STEP_INIT;
 
 while(1);
 
-# 1931
+# 2181
 }
 break;
 }
@@ -2445,5 +2607,344 @@ break;
 }
 }
 
+# 2201
 }
 
+
+void call_ADC4_STEP_FOURTH_PREFIX2(void)
+{
+enum enum_prefix2_step
+{
+prefix2_step1 = 0,
+prefix2_step2,
+prefix2_step3,
+prefix2_step4,
+prefix2_step5,
+prefix2_step6,
+prefix2_step7,
+prefix2_step8,
+prefix2_step9,
+};
+
+# 2223
+static unsigned char ucTimerCntMore = 0, ucTimerCntLess = 0;
+
+static unsigned char ucTimerCntMoreFlag = 0, ucTimerCntLessFlag = 0;
+
+static unsigned char ucCompareStep = 0;
+
+switch( ucCompareStep )
+{
+case 0:
+{
+if((getAdOriginalCh2Value() > 1950))
+{
+ucTimerCntMore++;
+ucTimerCntLess = 0;
+}
+else
+{
+ucTimerCntLess++;
+ucTimerCntMore = 0;
+}
+
+if(ucTimerCntMore >= 2)
+{
+ucTimerCntMoreFlag = 1;
+ucCompareStep = 1;
+}
+if(ucTimerCntLess >= 2)
+{
+ucTimerCntLessFlag = 1;
+ucCompareStep = 2;
+}
+break;
+}
+case 1:
+{
+static unsigned char ucMoreThanP8sCnt = 0;
+
+static unsigned char ucLessThanP8sCnt = 0;
+
+static unsigned char ucTimerCntN1 = 0;
+
+if((getAdOriginalCh2Value() < 1950))
+{
+ucTimerCntN1++;
+if(ucTimerCntN1 >= 2)
+{
+ucTimerCntN1 = 0;
+ucCompareStep = 2;
+}
+}
+else
+ucTimerCntN1 = 0;
+
+# 2280
+if((getAdOriginalCh6Value() < 50))
+{
+ucLessThanP8sCnt++;
+ucMoreThanP8sCnt = 0;
+
+ucLessThanP8sCnt = 0;
+break;
+}
+else
+{
+ucMoreThanP8sCnt++;
+ucLessThanP8sCnt = 0;
+}
+
+if( ucLessThanP8sCnt >= 8)
+{
+ucLessThanP8sCnt = 0;
+ucMoreThanP8sCnt = 0;
+
+enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+ucADC4_Step = ADC4_STEP_INIT;
+ucTimerCntMoreFlag = 0;
+;
+}
+else if( ucMoreThanP8sCnt >= 8 )
+{
+ucLessThanP8sCnt = 0;
+ucMoreThanP8sCnt = 0;
+
+enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+ucADC4_Step = ADC4_STEP_INIT;
+ucTimerCntMoreFlag = 0;
+;
+}
+else
+;
+break;
+}
+
+case 2:
+{
+
+static enum enum_prefix2_step ucPrefix2Step = prefix2_step1;
+
+static unsigned char ucTimeCntP2s = 0;
+
+switch(ucPrefix2Step)
+{
+case prefix2_step1:
+{
+
+# 2333
+ucTimeCntP2s = 0;
+setPA3(0);
+setPB6(0);
+ucPrefix2Step = prefix2_step2;
+break;
+}
+
+case prefix2_step2:
+{
+
+# 2345
+if((getAdOriginalCh2Value() > 2300))
+{
+ucTimeCntP2s++;
+}
+else
+ucTimeCntP2s = 0;
+
+if( ucTimeCntP2s >= 2)
+{
+ucTimeCntP2s = 0;
+ucPrefix2Step = prefix2_step3;
+}
+break;
+
+
+}
+
+case prefix2_step3:
+{
+
+# 2367
+setPA3(1);
+
+setPB6AsInput();
+ucPrefix2Step = prefix2_step4;
+break;
+}
+
+case prefix2_step4:
+{
+
+# 2379
+static unsigned char ucTimerCntP5s = 0;
+if( ucTimerCntP5s < 5)
+ucTimerCntP5s++;
+else
+{
+ucTimerCntP5s = 0;
+ucPrefix2Step = prefix2_step5;
+
+}
+break;
+}
+
+case prefix2_step5:
+{
+
+# 2396
+static unsigned char ucMoreThanP3sCnt = 0;
+
+static unsigned char ucLessThanP3sCnt = 0;
+if((getAdOriginalCh6Value() < 50))
+{
+ucLessThanP3sCnt++;
+ucMoreThanP3sCnt = 0;
+}
+else
+{
+ucMoreThanP3sCnt++;
+ucLessThanP3sCnt = 0;
+}
+
+if( ucLessThanP3sCnt >= 3)
+{
+ucLessThanP3sCnt = 0;
+ucMoreThanP3sCnt = 0;
+
+enumMainLoopStep = MAIN_LOOP_STEP_FIRST;
+ucADC4_Step = ADC4_STEP_INIT;
+ucTimerCntMoreFlag = 0;
+
+ucPrefix2Step = prefix2_step1;
+}
+
+if(ucMoreThanP3sCnt >= 3)
+{
+ucLessThanP3sCnt = 0;
+ucMoreThanP3sCnt = 0;
+
+enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+ucADC4_Step = ADC4_STEP_INIT;
+ucTimerCntMoreFlag = 0;
+
+ucPrefix2Step = prefix2_step1;
+;
+}
+break;
+}
+default:
+break;
+}
+
+break;
+}
+default:
+break;
+}
+
+# 2631
+if(ADC4_STEP_INIT == ucADC4_Step)
+{
+ucTimerCntMore = 0;
+ucTimerCntLess = 0;
+ucTimerCntMoreFlag = 0;
+ucTimerCntLessFlag = 0;
+
+}
+}
+
+void call_ADC4_STEP_FOURTH_PREFIX3(unsigned char bClearStep)
+{
+static unsigned char ucPreFix3Step = 0;
+
+static unsigned char ucPrefix3Cnt = 0;
+
+if( 1 == bClearStep)
+{
+bClearStep = 0;
+ucPreFix3Step = 0;
+ucPrefix3Cnt = 0;
+}
+
+switch(ucPreFix3Step)
+{
+case 0:
+{
+
+# 2662
+setPA3(0);
+setPB4(0);
+setPB6(1);
+ucPrefix3Cnt = 0;
+ucPreFix3Step = 1;
+break;
+}
+
+case 1:
+{
+
+# 2675
+ucPrefix3Cnt++;
+
+if( ucPrefix3Cnt >= 10)
+{
+ucPrefix3Cnt = 0;
+ucPreFix3Step = 2;
+}
+break;
+}
+
+case 2:
+{
+
+# 2690
+ucPrefix3Cnt++;
+
+if( ucPrefix3Cnt >= 10)
+{
+ucPrefix3Cnt = 0;
+
+ucPreFix3Step = 3;
+}
+break;
+}
+
+case 3:
+{
+
+# 2706
+setPA3(1);
+setPB4(1);
+
+setPB6AsInput();
+ucPrefix3Cnt = 0;
+
+ucPreFix3Step = 4;
+break;
+}
+case 4:
+{
+
+# 2720
+ucPrefix3Cnt++;
+
+if( ucPrefix3Cnt >= 2)
+{
+clearTwentySecondsTimer();
+
+ucPrefix3Cnt = 0;
+
+ucADC4_Step = ADC4_STEP_INIT;
+
+enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+
+ucPreFix3Step = 0;
+}
+break;
+}
+
+default:
+break;
+}
+
+}

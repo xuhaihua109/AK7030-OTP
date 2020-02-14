@@ -44,9 +44,13 @@ void process_AD_Converter_Value();
 
 
 unsigned int getAdOriginalCh1Value();
-unsigned int getAdOriginaCh4Value();
 
-unsigned int getAdOriginalCh14Value();
+unsigned int getAdOriginalCh6Value();
+unsigned int getAdOriginalCh5Value();
+
+unsigned int getAdOriginalCh0Value();
+
+unsigned int getAdOriginalCh2Value();
 
 unsigned char isPermitSampleTime();
 
@@ -61,10 +65,15 @@ void startThreeHoursTimer(unsigned int uiSetTime);// 3 hours
 void startTwentySecondsTimer();//20s
 unsigned char isFinishedTwentySecondsTimer();
 
+void startTwentyMinuteTimer();//20m
+unsigned char isFinishedTwentyMinuteTimer();
+
 
 void clearTwelveHoursTimer();
 void clearThreeHoursTimer();
 void clearTwentySecondsTimer();
+void clearTwentyMinuteTimer();
+
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();

@@ -37,11 +37,11 @@ static  TimeStopWatch timer;
 
 static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
 
-static unsigned int uiTwentySecondsTimer = 0;
+static unsigned int uiTwentySecondsTimer = 0,uiTwentyMinuteTimer = 0;
 
-static unsigned char bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
+static unsigned char bTwentyMinStartFlag= 0, bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
 
-static  int uiSampleZero[FILTER_N];
+static  int uiSampleChannelZero[FILTER_N];
 
  static  int uiSampleChannelSecond[FILTER_N];
 
@@ -116,7 +116,7 @@ static void AD_Sample(void);
 	 {
 		 if(ucChannelZeroLength < FILTER_N)
 		 {
-			 uiSampleZero[ucChannelZeroLength] = uiSampleData;
+			 uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
 
 			 ucChannelZeroLength++;
 		 }
@@ -124,7 +124,7 @@ static void AD_Sample(void);
 		 {
 			 ucChannelZeroLength = 0;
 
-			 uiSampleZero[ucChannelZeroLength] = uiSampleData;
+			 uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
 		 }
 	 }
 	 else if(channel == AD_CHANNEL_2_CHANNEL)
@@ -184,7 +184,7 @@ static void AD_Sample(void);
 
 		 for(int i = 0;i < FILTER_N; i++)
 		 {
-			 uiSampleZero[i] = 0;
+			 uiSampleChannelZero[i] = 0;
 
 			 uiSampleChannelSecond[i] = 0;
 
@@ -246,7 +246,7 @@ unsigned int getAdOriginalCh1Value()
 {
 
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleZero);
+	return Filter(uiSampleChannelZero);
 
 #else
 	return  adc_original_CH1_value;
@@ -254,21 +254,39 @@ unsigned int getAdOriginalCh1Value()
 }
 
 
-unsigned int getAdOriginaCh4Value()
+
+unsigned int getAdOriginalCh0Value()
 {
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelSecond);
-
+	return Filter(uiSampleChannelZero);
 #else
-	return adc_original_CH4_value;
+	return adc_original_CH14_value;
+#endif
+}
+
+unsigned int getAdOriginalCh5Value()
+{
+#ifdef USING_AD_FILTER_ALGORITHMN
+	return Filter(uiSampleChannelFifth);
+#else
+	return adc_original_CH14_value;
 #endif
 }
 
 
-unsigned int getAdOriginalCh14Value()
+unsigned int getAdOriginalCh6Value()
 {
 #ifdef USING_AD_FILTER_ALGORITHMN
-	return Filter(uiSampleChannelFifth);
+	return Filter(uiSampleChannelSixth);
+#else
+	return adc_original_CH14_value;
+#endif
+}
+
+unsigned int getAdOriginalCh2Value()
+{
+#ifdef USING_AD_FILTER_ALGORITHMN
+	return Filter(uiSampleChannelSecond);
 #else
 	return adc_original_CH14_value;
 #endif
@@ -400,6 +418,13 @@ void clearTwentySecondsTimer()
 }
 
 
+void clearTwentyMinuteTimer()
+{
+	uiTwentyMinuteTimer = 0;
+	bTwentyMinStartFlag = 0;
+}
+
+
 void startThreeHoursTimer(unsigned int uiSetTime)
 {
 	if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
@@ -424,11 +449,33 @@ void startTwentySecondsTimer()
 }
 
 
+void startTwentyMinuteTimer()
+{
+	if(( 0 == uiTwentyMinuteTimer) && ( 0 == bTwentyMinStartFlag))
+	{
+		uiTwentyMinuteTimer = 1200;
+		bTwentyMinStartFlag = 1;
+	}
+}
+
+
 unsigned char isFinishedTwentySecondsTimer()
 {
 	if(( 0 == uiTwentySecondsTimer ) && bTwentySecStartFlag )
 	{
 		bTwentySecStartFlag = 0;
+		return 1;
+	}
+	else
+		return 0;
+}
+
+
+unsigned char isFinishedTwentyMinuteTimer()
+{
+	if(( 0 == uiTwentyMinuteTimer ) && bTwentyMinStartFlag )
+	{
+		bTwentyMinStartFlag = 0;
 		return 1;
 	}
 	else
