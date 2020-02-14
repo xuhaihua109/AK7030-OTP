@@ -331,7 +331,7 @@ static void AD_Sample(void)
 
 		sampleTimes++;
 
-		if(sampleTimes >= TEMP_MAX_CONTINOUS_SAMPLE_TIMES)
+		if(sampleTimes >= FILTER_N)
 		{
 			sampleTimes = 0;
 
