@@ -65,7 +65,7 @@ void startThreeHoursTimer(unsigned int uiSetTime);// 3 hours
 void startTwentySecondsTimer();//20s
 unsigned char isFinishedTwentySecondsTimer();
 
-void startTwentyMinuteTimer();//20m
+void startTwentyMinuteTimer(unsigned int uiValue);//20m
 unsigned char isFinishedTwentyMinuteTimer();
 
 

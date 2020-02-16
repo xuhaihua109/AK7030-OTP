@@ -449,11 +449,11 @@ void startTwentySecondsTimer()
 }
 
 
-void startTwentyMinuteTimer()
+void startTwentyMinuteTimer( unsigned int uiValue )
 {
 	if(( 0 == uiTwentyMinuteTimer) && ( 0 == bTwentyMinStartFlag))
 	{
-		uiTwentyMinuteTimer = 1200;
+		uiTwentyMinuteTimer = uiValue;
 		bTwentyMinStartFlag = 1;
 	}
 }

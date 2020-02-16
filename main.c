@@ -563,8 +563,9 @@ void clearAllTimer(void)
 #endif
 
 
-#define   TEN_HOUR_TIMER         36000
-#define   THREE_HOUR_TIMER       10800
+#define   TEN_HOUR_TIMER         300//36000
+#define   THREE_HOUR_TIMER       180//10800
+#define   TWENTY_MINUTE_TIMER     60//1200
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 
@@ -717,7 +718,7 @@ void main(void)
 		static unsigned char ucTimerPowerLed = FALSE;
 	#endif
 
-		startTwentyMinuteTimer();
+		startTwentyMinuteTimer(TWENTY_MINUTE_TIMER);
 
 		while(1)
 	    {
@@ -829,7 +830,7 @@ void main(void)
 						{
 							ucTimerP5s = 0;
 
-							startTwentyMinuteTimer();
+							startTwentyMinuteTimer(TWENTY_MINUTE_TIMER);
 
 				   			enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
 						}
