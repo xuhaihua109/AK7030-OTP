@@ -1292,7 +1292,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 62: void startThreeHoursTimer(unsigned int uiSetTime);
 [; ;common.h: 65: void startTwentySecondsTimer();
 [; ;common.h: 66: unsigned char isFinishedTwentySecondsTimer();
-[; ;common.h: 68: void startTwentyMinuteTimer();
+[; ;common.h: 68: void startTwentyMinuteTimer(unsigned int uiValue);
 [; ;common.h: 69: unsigned char isFinishedTwentyMinuteTimer();
 [; ;common.h: 72: void clearTwelveHoursTimer();
 [; ;common.h: 73: void clearThreeHoursTimer();
@@ -1497,23 +1497,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _channel `uc  1 r2 ]
 [f ]
 "107
-[v F857 `uc  1 s ucChannelZeroLength ]
-[i F857
--> -> 0 `i `uc
-]
-"109
-[v F858 `uc  1 s ucChannelSecondLength ]
+[v F858 `uc  1 s ucChannelZeroLength ]
 [i F858
 -> -> 0 `i `uc
 ]
-"111
-[v F859 `uc  1 s ucChannelFifthLength ]
+"109
+[v F859 `uc  1 s ucChannelSecondLength ]
 [i F859
 -> -> 0 `i `uc
 ]
-"113
-[v F860 `uc  1 s ucChannelSixthLength ]
+"111
+[v F860 `uc  1 s ucChannelFifthLength ]
 [i F860
+-> -> 0 `i `uc
+]
+"113
+[v F861 `uc  1 s ucChannelSixthLength ]
+[i F861
 -> -> 0 `i `uc
 ]
 [; ;common.c: 107: static unsigned char ucChannelZeroLength = 0;
@@ -1528,16 +1528,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 117: if(ucChannelZeroLength < 12)
 "117
-[e $ ! < -> F857 `i -> 12 `i 59  ]
+[e $ ! < -> F858 `i -> 12 `i 59  ]
 [; ;common.c: 118: {
 "118
 {
 [; ;common.c: 119: uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
 "119
-[e = *U + &U _uiSampleChannelZero * -> F857 `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelZero * -> F858 `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> _uiSampleData `i ]
 [; ;common.c: 121: ucChannelZeroLength++;
 "121
-[e ++ F857 -> -> 1 `i `uc ]
+[e ++ F858 -> -> 1 `i `uc ]
 "122
 }
 [; ;common.c: 122: }
@@ -1550,10 +1550,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 125: ucChannelZeroLength = 0;
 "125
-[e = F857 -> -> 0 `i `uc ]
+[e = F858 -> -> 0 `i `uc ]
 [; ;common.c: 127: uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
 "127
-[e = *U + &U _uiSampleChannelZero * -> F857 `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelZero * -> F858 `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> _uiSampleData `i ]
 "128
 }
 [e :U 60 ]
@@ -1571,16 +1571,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 132: if(ucChannelSecondLength < 12)
 "132
-[e $ ! < -> F858 `i -> 12 `i 63  ]
+[e $ ! < -> F859 `i -> 12 `i 63  ]
 [; ;common.c: 133: {
 "133
 {
 [; ;common.c: 134: uiSampleChannelSecond[ucChannelSecondLength] = uiSampleData;
 "134
-[e = *U + &U _uiSampleChannelSecond * -> F858 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelSecond * -> F859 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
 [; ;common.c: 136: ucChannelSecondLength++;
 "136
-[e ++ F858 -> -> 1 `i `uc ]
+[e ++ F859 -> -> 1 `i `uc ]
 "137
 }
 [; ;common.c: 137: }
@@ -1593,10 +1593,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 140: ucChannelSecondLength = 0;
 "140
-[e = F858 -> -> 0 `i `uc ]
+[e = F859 -> -> 0 `i `uc ]
 [; ;common.c: 142: uiSampleChannelSecond[ucChannelSecondLength] = uiSampleData;
 "142
-[e = *U + &U _uiSampleChannelSecond * -> F858 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelSecond * -> F859 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
 "143
 }
 [e :U 64 ]
@@ -1614,16 +1614,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 147: if(ucChannelFifthLength < 12)
 "147
-[e $ ! < -> F859 `i -> 12 `i 67  ]
+[e $ ! < -> F860 `i -> 12 `i 67  ]
 [; ;common.c: 148: {
 "148
 {
 [; ;common.c: 149: uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
 "149
-[e = *U + &U _uiSampleChannelFifth * -> F859 `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelFifth * -> F860 `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> _uiSampleData `i ]
 [; ;common.c: 151: ucChannelFifthLength++;
 "151
-[e ++ F859 -> -> 1 `i `uc ]
+[e ++ F860 -> -> 1 `i `uc ]
 "152
 }
 [; ;common.c: 152: }
@@ -1636,10 +1636,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 155: ucChannelFifthLength = 0;
 "155
-[e = F859 -> -> 0 `i `uc ]
-[; ;common.c: 157: uiSampleChannelSecond[ucChannelFifthLength] = uiSampleData;
+[e = F860 -> -> 0 `i `uc ]
+[; ;common.c: 157: uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
 "157
-[e = *U + &U _uiSampleChannelSecond * -> F859 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelFifth * -> F860 `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> _uiSampleData `i ]
 "158
 }
 [e :U 68 ]
@@ -1657,16 +1657,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 162: if(ucChannelSixthLength < 12)
 "162
-[e $ ! < -> F860 `i -> 12 `i 71  ]
+[e $ ! < -> F861 `i -> 12 `i 71  ]
 [; ;common.c: 163: {
 "163
 {
-[; ;common.c: 164: uiSampleChannelFifth[ucChannelSixthLength] = uiSampleData;
+[; ;common.c: 164: uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
 "164
-[e = *U + &U _uiSampleChannelFifth * -> F860 `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelSixth * -> F861 `ux -> -> # *U &U _uiSampleChannelSixth `ui `ux -> _uiSampleData `i ]
 [; ;common.c: 166: ucChannelSixthLength++;
 "166
-[e ++ F860 -> -> 1 `i `uc ]
+[e ++ F861 -> -> 1 `i `uc ]
 "167
 }
 [; ;common.c: 167: }
@@ -1679,10 +1679,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 170: ucChannelSixthLength = 0;
 "170
-[e = F860 -> -> 0 `i `uc ]
-[; ;common.c: 172: uiSampleChannelSecond[ucChannelSixthLength] = uiSampleData;
+[e = F861 -> -> 0 `i `uc ]
+[; ;common.c: 172: uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
 "172
-[e = *U + &U _uiSampleChannelSecond * -> F860 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
+[e = *U + &U _uiSampleChannelSixth * -> F861 `ux -> -> # *U &U _uiSampleChannelSixth `ui `ux -> _uiSampleData `i ]
 "173
 }
 [e :U 72 ]
@@ -1699,16 +1699,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;common.c: 177: ucChannelZeroLength = 0;
 "177
-[e = F857 -> -> 0 `i `uc ]
+[e = F858 -> -> 0 `i `uc ]
 [; ;common.c: 179: ucChannelSecondLength = 0;
 "179
-[e = F858 -> -> 0 `i `uc ]
+[e = F859 -> -> 0 `i `uc ]
 [; ;common.c: 181: ucChannelFifthLength = 0;
 "181
-[e = F859 -> -> 0 `i `uc ]
+[e = F860 -> -> 0 `i `uc ]
 [; ;common.c: 183: ucChannelSixthLength = 0;
 "183
-[e = F860 -> -> 0 `i `uc ]
+[e = F861 -> -> 0 `i `uc ]
 [; ;common.c: 185: for(int i = 0;i < 12; i++)
 "185
 {
@@ -2214,11 +2214,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 110 ]
 }
 "453
-[v _startTwentyMinuteTimer `(v  1 ef ]
+[v _startTwentyMinuteTimer `(v  1 ef1`ui ]
 {
-[; ;common.c: 452: void startTwentyMinuteTimer()
+[; ;common.c: 452: void startTwentyMinuteTimer( unsigned int uiValue )
 [; ;common.c: 453: {
 [e :U _startTwentyMinuteTimer ]
+[v _uiValue `ui  1 r1 ]
 [f ]
 [; ;common.c: 454: if(( 0 == uiTwentyMinuteTimer) && ( 0 == bTwentyMinStartFlag))
 "454
@@ -2226,9 +2227,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 455: {
 "455
 {
-[; ;common.c: 456: uiTwentyMinuteTimer = 1200;
+[; ;common.c: 456: uiTwentyMinuteTimer = uiValue;
 "456
-[e = _uiTwentyMinuteTimer -> -> 1200 `i `ui ]
+[e = _uiTwentyMinuteTimer _uiValue ]
 [; ;common.c: 457: bTwentyMinStartFlag = 1;
 "457
 [e = _bTwentyMinStartFlag -> -> 1 `i `uc ]
@@ -2432,16 +2433,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 129 ]
 }
 "524
-[v F869 `(v  1 tf ]
-[v _ISR `IF869  1 e ]
+[v F871 `(v  1 tf ]
+[v _ISR `IF871  1 e ]
 {
 [; ;common.c: 523: void interrupt ISR(void)
 [; ;common.c: 524: {
 [e :U _ISR ]
 [f ]
 "525
-[v F870 `uc  1 s ucTimer1sCnt ]
-[i F870
+[v F872 `uc  1 s ucTimer1sCnt ]
+[i F872
 -> -> 0 `i `uc
 ]
 [; ;common.c: 525: static unsigned char ucTimer1sCnt = 0;
@@ -2459,16 +2460,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . _timer 0 -> -> 1 `i `uc ]
 [; ;common.c: 531: ucTimer1sCnt++;
 "531
-[e ++ F870 -> -> 1 `i `uc ]
+[e ++ F872 -> -> 1 `i `uc ]
 [; ;common.c: 533: if(ucTimer1sCnt >= 100)
 "533
-[e $ ! >= -> F870 `i -> 100 `i 132  ]
+[e $ ! >= -> F872 `i -> 100 `i 132  ]
 [; ;common.c: 534: {
 "534
 {
 [; ;common.c: 535: ucTimer1sCnt = 0;
 "535
-[e = F870 -> -> 0 `i `uc ]
+[e = F872 -> -> 0 `i `uc ]
 [; ;common.c: 536: if(uiBigTimer > 0)
 "536
 [e $ ! > _uiBigTimer -> -> 0 `i `ui 133  ]

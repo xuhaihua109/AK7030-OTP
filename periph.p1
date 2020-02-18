@@ -1257,7 +1257,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 62: void startThreeHoursTimer(unsigned int uiSetTime);
 [; ;common.h: 65: void startTwentySecondsTimer();
 [; ;common.h: 66: unsigned char isFinishedTwentySecondsTimer();
-[; ;common.h: 68: void startTwentyMinuteTimer();
+[; ;common.h: 68: void startTwentyMinuteTimer(unsigned int uiValue);
 [; ;common.h: 69: unsigned char isFinishedTwentyMinuteTimer();
 [; ;common.h: 72: void clearTwelveHoursTimer();
 [; ;common.h: 73: void clearThreeHoursTimer();

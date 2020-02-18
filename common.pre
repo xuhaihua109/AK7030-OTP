@@ -841,7 +841,7 @@ void startThreeHoursTimer(unsigned int uiSetTime);
 void startTwentySecondsTimer();
 unsigned char isFinishedTwentySecondsTimer();
 
-void startTwentyMinuteTimer();
+void startTwentyMinuteTimer(unsigned int uiValue);
 unsigned char isFinishedTwentyMinuteTimer();
 
 
@@ -995,14 +995,14 @@ else
 {
 ucChannelFifthLength = 0;
 
-uiSampleChannelSecond[ucChannelFifthLength] = uiSampleData;
+uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
 }
 }
 else if(channel == 6)
 {
 if(ucChannelSixthLength < 12)
 {
-uiSampleChannelFifth[ucChannelSixthLength] = uiSampleData;
+uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
 
 ucChannelSixthLength++;
 }
@@ -1010,7 +1010,7 @@ else
 {
 ucChannelSixthLength = 0;
 
-uiSampleChannelSecond[ucChannelSixthLength] = uiSampleData;
+uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
 }
 }
 else
@@ -1245,11 +1245,11 @@ bTwentySecStartFlag = 1;
 }
 
 
-void startTwentyMinuteTimer()
+void startTwentyMinuteTimer( unsigned int uiValue )
 {
 if(( 0 == uiTwentyMinuteTimer) && ( 0 == bTwentyMinStartFlag))
 {
-uiTwentyMinuteTimer = 1200;
+uiTwentyMinuteTimer = uiValue;
 bTwentyMinStartFlag = 1;
 }
 }

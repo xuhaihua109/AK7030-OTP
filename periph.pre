@@ -852,7 +852,7 @@ void startThreeHoursTimer(unsigned int uiSetTime);
 void startTwentySecondsTimer();
 unsigned char isFinishedTwentySecondsTimer();
 
-void startTwentyMinuteTimer();
+void startTwentyMinuteTimer(unsigned int uiValue);
 unsigned char isFinishedTwentyMinuteTimer();
 
 

@@ -154,14 +154,14 @@ static void AD_Sample(void);
 		 {
 			 ucChannelFifthLength = 0;
 
-			 uiSampleChannelSecond[ucChannelFifthLength] = uiSampleData;
+			 uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
 		 }
 	 }
 	 else if(channel == AD_CHANNEL_6_CHANNEL)
 	 {
 		 if(ucChannelSixthLength < FILTER_N)
 		 {
-			 uiSampleChannelFifth[ucChannelSixthLength] = uiSampleData;
+			 uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
 
 			 ucChannelSixthLength++;
 		 }
@@ -169,7 +169,7 @@ static void AD_Sample(void);
 		 {
 			 ucChannelSixthLength = 0;
 
-			 uiSampleChannelSecond[ucChannelSixthLength] = uiSampleData;
+			 uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
 		 }
 	 }
 	 else
