@@ -28,31 +28,31 @@ ProjTest.obj    intentry                              4        4        D       
                 config                             2000     2000        3     4000       0
                 text1035                            F1C      F1C       E4     1E38       0
                 text1030                            EA7      EA7       27     1D4E       0
-                text1024                            E14      E14        9     1C28       0
-                text1020                            DFC      DFC        8     1BF8       0
-                text1018                            E04      E04        8     1C08       0
-                text1017                            E1D      E1D        A     1C3A       0
-                text1016                            DF3      DF3        3     1BE6       0
-                text1013                            E68      E68       14     1CD0       0
-                text1012                            DF6      DF6        6     1BEC       0
-                text1011                              2        2        2        0       0
-                text1010                            E27      E27        C     1C4E       0
-                text1009                            E7C      E7C       14     1CF8       0
-                text1008                            E33      E33        C     1C66       0
-                text1007                            E57      E57       11     1CAE       0
-                text1006                            E3F      E3F        C     1C7E       0
-                text1005                            7EC      7EC       14        8       0
-                text1004                            E4B      E4B        C     1C96       0
-                text997                             567      567      285        8       0
+                text1024                            E00      E00        9     1C00       0
+                text1020                            DE8      DE8        8     1BD0       0
+                text1018                            DF0      DF0        8     1BE0       0
+                text1017                            E09      E09        A     1C12       0
+                text1016                            DDF      DDF        3     1BBE       0
+                text1013                            E54      E54       14     1CA8       0
+                text1012                            DE2      DE2        6     1BC4       0
+                text1011                            7FE      7FE        2      FFC       0
+                text1010                            E13      E13        C     1C26       0
+                text1009                            E68      E68       14     1CD0       0
+                text1008                            E1F      E1F        C     1C3E       0
+                text1007                            E43      E43       11     1C86       0
+                text1006                            E2B      E2B        C     1C56       0
+                text1005                            E7C      E7C       14     1CF8       0
+                text1004                            E37      E37        C     1C6E       0
+                text997                             56B      56B      285        8       0
                 text991                             ECE      ECE       4E     1D9C       0
                 swtext4                             800      800       1A     1000       0
-                swtext3                             836      836        C     1000       0
-                swtext2                             828      828        E     1000       0
-                swtext1                             81A      81A        E     1000       0
-                maintext                             13       13      554        8       0
+                swtext3                             828      828        C     1000       0
+                swtext2                             81A      81A        E     1000       0
+                swtext1                             7F0      7F0        E      FE0       0
+                maintext                             13       13      558        8       0
                 cstackBANK0                          20       20       2A       20       1
                 cstackCOMMON                         70       70        D       70       1
-                clrtext                             E0C      E0C        8     1C18       0
+                clrtext                             DF8      DF8        8     1BF0       0
                 bssBANK3                            190      190       48      190       1
                 bssBANK1                             A0       A0       48       A0       1
                 bssBANK0                             4A       4A       25       20       1
@@ -62,9 +62,9 @@ ProjTest.obj    intentry                              4        4        D       
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CONST          
                 swtext4                             800      800       1A         0
-                swtext3                             836      836        C         0
-                swtext2                             828      828        E         0
-                swtext1                             81A      81A        E         0
+                swtext3                             828      828        C         0
+                swtext2                             81A      81A        E         0
+                swtext1                             7F0      7F0        E         0
 
         CLASS   CODE           
                 end_init                             11       11        2         0
@@ -72,25 +72,25 @@ TOTAL           Name                               Link     Load   Length     Sp
                 reset_vec                             0        0        2         0
                 text1035                            F1C      F1C       E4         0
                 text1030                            EA7      EA7       27         0
-                text1024                            E14      E14        9         0
-                text1020                            DFC      DFC        8         0
-                text1018                            E04      E04        8         0
-                text1017                            E1D      E1D        A         0
-                text1016                            DF3      DF3        3         0
-                text1013                            E68      E68       14         0
-                text1012                            DF6      DF6        6         0
-                text1011                              2        2        2         0
-                text1010                            E27      E27        C         0
-                text1009                            E7C      E7C       14         0
-                text1008                            E33      E33        C         0
-                text1007                            E57      E57       11         0
-                text1006                            E3F      E3F        C         0
-                text1005                            7EC      7EC       14         0
-                text1004                            E4B      E4B        C         0
-                text997                             567      567      285         0
+                text1024                            E00      E00        9         0
+                text1020                            DE8      DE8        8         0
+                text1018                            DF0      DF0        8         0
+                text1017                            E09      E09        A         0
+                text1016                            DDF      DDF        3         0
+                text1013                            E54      E54       14         0
+                text1012                            DE2      DE2        6         0
+                text1011                            7FE      7FE        2         0
+                text1010                            E13      E13        C         0
+                text1009                            E68      E68       14         0
+                text1008                            E1F      E1F        C         0
+                text1007                            E43      E43       11         0
+                text1006                            E2B      E2B        C         0
+                text1005                            E7C      E7C       14         0
+                text1004                            E37      E37        C         0
+                text997                             56B      56B      285         0
                 text991                             ECE      ECE       4E         0
-                maintext                             13       13      554         0
-                clrtext                             E0C      E0C        8         0
+                maintext                             13       13      558         0
+                clrtext                             DF8      DF8        8         0
                 cinit                               E90      E90       17         0
 
         CLASS   STRCODE        
@@ -139,27 +139,30 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
-                reset_vec                      000000  000004  000004         0       0  CODE        2
-                intentry                       000004  0007FC  000800         8       0  CODE        2
+                reset_vec                      000000  000002  000002         0       0  CODE        2
+                intentry                       000004  0007EC  0007F0         8       0  CODE        2
                 cstackBANK0                    000020  00004F  00006F        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
                 bssBANK1                       0000A0  000048  0000E8        A0       1  BANK1       1
                 bssBANK3                       000190  000048  0001D8       190       1  BANK3       1
-                swtext4                        000800  000042  000842      1000       0  CONST       2
-                text1016                       000DF3  000003  000DF6      1BE6       0  CODE        2
-                text1012                       000DF6  000006  000DFC      1BEC       0  CODE        2
-                text1020                       000DFC  000008  000E04      1BF8       0  CODE        2
-                text1018                       000E04  000008  000E0C      1C08       0  CODE        2
-                clrtext                        000E0C  000008  000E14      1C18       0  CODE        2
-                text1024                       000E14  000009  000E1D      1C28       0  CODE        2
-                text1017                       000E1D  00000A  000E27      1C3A       0  CODE        2
-                text1010                       000E27  00000C  000E33      1C4E       0  CODE        2
-                text1008                       000E33  00000C  000E3F      1C66       0  CODE        2
-                text1006                       000E3F  00000C  000E4B      1C7E       0  CODE        2
-                text1004                       000E4B  00000C  000E57      1C96       0  CODE        2
-                text1007                       000E57  000011  000E68      1CAE       0  CODE        2
-                text1013                       000E68  000014  000E7C      1CD0       0  CODE        2
-                text1009                       000E7C  000014  000E90      1CF8       0  CODE        2
+                swtext1                        0007F0  00000E  0007FE       FE0       0  CONST       2
+                text1011                       0007FE  000002  000800       FFC       0  CODE        2
+                swtext4                        000800  000034  000834      1000       0  CONST       2
+                text1016                       000DDF  000003  000DE2      1BBE       0  CODE        2
+                text1012                       000DE2  000006  000DE8      1BC4       0  CODE        2
+                text1020                       000DE8  000008  000DF0      1BD0       0  CODE        2
+                text1018                       000DF0  000008  000DF8      1BE0       0  CODE        2
+                clrtext                        000DF8  000008  000E00      1BF0       0  CODE        2
+                text1024                       000E00  000009  000E09      1C00       0  CODE        2
+                text1017                       000E09  00000A  000E13      1C12       0  CODE        2
+                text1010                       000E13  00000C  000E1F      1C26       0  CODE        2
+                text1008                       000E1F  00000C  000E2B      1C3E       0  CODE        2
+                text1006                       000E2B  00000C  000E37      1C56       0  CODE        2
+                text1004                       000E37  00000C  000E43      1C6E       0  CODE        2
+                text1007                       000E43  000011  000E54      1C86       0  CODE        2
+                text1013                       000E54  000014  000E68      1CA8       0  CODE        2
+                text1009                       000E68  000014  000E7C      1CD0       0  CODE        2
+                text1005                       000E7C  000014  000E90      1CF8       0  CODE        2
                 cinit                          000E90  000017  000EA7      1D20       0  CODE        2
                 text1030                       000EA7  000027  000ECE      1D4E       0  CODE        2
                 text991                        000ECE  00004E  000F1C      1D9C       0  CODE        2
@@ -174,10 +177,13 @@ UNUSED ADDRESS RANGES
         BANK1            00E8-00EF              8           1
         BANK2            0110-016F             60           1
         BANK3            01D8-01EF             18           1
-        CODE             0842-0DF2            5B1           2
+        CODE             0002-0003              2           2
+                         0834-0DDE            5AB
         CONFIG           2003-2007              5           2
-        CONST            0842-0DF2            100           2
-        ENTRY            0842-0DF2            100           2
+        CONST            0002-0003              2           2
+                         0834-0DDE            100
+        ENTRY            0002-0003              2           2
+                         0834-0DDE            100
         IDLOC            2008-200B              4           2
         RAM              006F-006F              1           1
                          00E8-00EF              8
@@ -187,8 +193,10 @@ UNUSED ADDRESS RANGES
         SFR1             0080-009F             20           1
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
-        STRCODE          0842-0DF2            5B1           2
-        STRING           0842-0DF2            100           2
+        STRCODE          0002-0003              2           2
+                         0834-0DDE            5AB
+        STRING           0002-0003              2           2
+                         0834-0DDE            100
 
                                   Symbol Table
 
@@ -310,7 +318,7 @@ _ADRESL                                        (abs)        009E
 _AD_Sample                                     text991      0EE5
 _CLKPCE                                        (abs)        0847
 _CLKPR                                         (abs)        0108
-_Filter                                        text997      072E
+_Filter                                        text997      0732
 _GIE                                           (abs)        005F
 _GO                                            (abs)        00F9
 _ISR                                           text1035     0F1C
@@ -415,53 +423,53 @@ __Ltext                                        text         0000
 __S0                                           (abs)        2003
 __S1                                           (abs)        01D8
 __end_of_AD_Sample                             text991      0F07
-__end_of_Filter                                text997      07C5
+__end_of_Filter                                text997      07C9
 __end_of_ISR                                   text1035     0F63
 __end_of_adc_get                               text1035     0FE4
 __end_of_adc_start                             text991      0EE5
 __end_of_adc_test_init                         text991      0F1C
-__end_of_call_ADC4_STEP_FOURTH_PREFIX2         text997      0702
-__end_of_call_ADC4_STEP_FOURTH_PREFIX3         text997      062C
-__end_of_clearAllTimer                         text997      05CE
-__end_of_clearParaFunction1                    text997      059D
-__end_of_clearPinPortAndTimer                  text997      0587
-__end_of_clearThreeHoursTimer                  text997      05DA
-__end_of_clearTwelveHoursTimer                 text997      05D4
-__end_of_clearTwentyMinuteTimer                text997      07D1
-__end_of_clearTwentySecondsTimer               text997      07CB
-__end_of_clock_config                          text1018     0E0C
-__end_of_clrSampeTime                          text1011     0004
+__end_of_call_ADC4_STEP_FOURTH_PREFIX2         text997      0706
+__end_of_call_ADC4_STEP_FOURTH_PREFIX3         text997      0630
+__end_of_clearAllTimer                         text997      05D2
+__end_of_clearParaFunction1                    text997      05A1
+__end_of_clearPinPortAndTimer                  text997      058B
+__end_of_clearThreeHoursTimer                  text997      05DE
+__end_of_clearTwelveHoursTimer                 text997      05D8
+__end_of_clearTwentyMinuteTimer                text997      07D5
+__end_of_clearTwentySecondsTimer               text997      07CF
+__end_of_clock_config                          text1018     0DF8
+__end_of_clrSampeTime                          text1011     0800
 __end_of_getAD_ConvertFlag                     text991      0EDD
-__end_of_getAdOriginalCh0Value                 text997      057B
-__end_of_getAdOriginalCh2Value                 text997      070B
-__end_of_getAdOriginalCh5Value                 text997      0571
-__end_of_getAdOriginalCh6Value                 text997      071D
+__end_of_getAdOriginalCh0Value                 text997      057F
+__end_of_getAdOriginalCh2Value                 text997      070F
+__end_of_getAdOriginalCh5Value                 text997      0575
+__end_of_getAdOriginalCh6Value                 text997      0721
 __end_of_initPin                               text1030     0ECE
-__end_of_isFinishedThreeHoursTimer             text1004     0E57
-__end_of_isFinishedTwelveHoursTimer            text1008     0E3F
-__end_of_isFinishedTwentyMinuteTimer           text1010     0E33
-__end_of_isFinishedTwentySecondsTimer          text1006     0E4B
-__end_of_isPermitSampleTime                    text1012     0DFC
-__end_of_main                                  maintext     0567
+__end_of_isFinishedThreeHoursTimer             text1004     0E43
+__end_of_isFinishedTwelveHoursTimer            text1008     0E2B
+__end_of_isFinishedTwentyMinuteTimer           text1010     0E1F
+__end_of_isFinishedTwentySecondsTimer          text1006     0E37
+__end_of_isPermitSampleTime                    text1012     0DE8
+__end_of_main                                  maintext     056B
 __end_of_process_AD_Converter_Value            text991      0ED9
 __end_of_setAD_ConvertFlag                     text991      0EE2
-__end_of_setPA0                                text997      05BE
-__end_of_setPA1                                text997      05C7
-__end_of_setPA2                                text1024     0E1D
-__end_of_setPA3                                text997      0714
-__end_of_setPA6                                text1020     0E04
-__end_of_setPB0                                text997      05A5
-__end_of_setPB1                                text997      05AD
-__end_of_setPB2                                text997      05B5
-__end_of_setPB4                                text997      0634
-__end_of_setPB6                                text997      072B
-__end_of_setPB6AsInput                         text997      072E
-__end_of_startThreeHoursTimer                  text1005     0800
-__end_of_startTwelveHourTimer                  text1009     0E90
-__end_of_startTwentyMinuteTimer                text1013     0E7C
-__end_of_startTwentySecondsTimer               text1007     0E68
-__end_of_timer1_config                         text1017     0E27
-__end_of_timer1_interrupt_config               text1016     0DF6
+__end_of_setPA0                                text997      05C2
+__end_of_setPA1                                text997      05CB
+__end_of_setPA2                                text1024     0E09
+__end_of_setPA3                                text997      0718
+__end_of_setPA6                                text1020     0DF0
+__end_of_setPB0                                text997      05A9
+__end_of_setPB1                                text997      05B1
+__end_of_setPB2                                text997      05B9
+__end_of_setPB4                                text997      0638
+__end_of_setPB6                                text997      072F
+__end_of_setPB6AsInput                         text997      0732
+__end_of_startThreeHoursTimer                  text1005     0E90
+__end_of_startTwelveHourTimer                  text1009     0E7C
+__end_of_startTwentyMinuteTimer                text1013     0E68
+__end_of_startTwentySecondsTimer               text1007     0E54
+__end_of_timer1_config                         text1017     0E13
+__end_of_timer1_interrupt_config               text1016     0DE2
 __end_of_vPutSampleDataIntoTable               text1035     0FD8
 __end_ofi1_setAD_ConvertFlag                   text1035     0FE8
 __pbssBANK0                                    bssBANK0     004A
@@ -472,61 +480,61 @@ __pcstackBANK0                                 cstackBANK0  0020
 __pcstackCOMMON                                cstackCOMMON 0070
 __pintentry                                    intentry     0004
 __pmaintext                                    maintext     0013
-__pswtext1                                     swtext1      081A
-__pswtext2                                     swtext2      0828
-__pswtext3                                     swtext3      0836
+__pswtext1                                     swtext1      07F0
+__pswtext2                                     swtext2      081A
+__pswtext3                                     swtext3      0828
 __pswtext4                                     swtext4      0800
-__ptext1000                                    text997      05C7
+__ptext1000                                    text997      05CB
 __ptext1001                                    text991      0EDD
 __ptext1002                                    text991      0ED9
-__ptext1003                                    text997      072E
-__ptext1004                                    text1004     0E4B
-__ptext1005                                    text1005     07EC
-__ptext1006                                    text1006     0E3F
-__ptext1007                                    text1007     0E57
-__ptext1008                                    text1008     0E33
-__ptext1009                                    text1009     0E7C
-__ptext1010                                    text1010     0E27
-__ptext1011                                    text1011     0002
-__ptext1012                                    text1012     0DF6
-__ptext1013                                    text1013     0E68
+__ptext1003                                    text997      0732
+__ptext1004                                    text1004     0E37
+__ptext1005                                    text1005     0E7C
+__ptext1006                                    text1006     0E2B
+__ptext1007                                    text1007     0E43
+__ptext1008                                    text1008     0E1F
+__ptext1009                                    text1009     0E68
+__ptext1010                                    text1010     0E13
+__ptext1011                                    text1011     07FE
+__ptext1012                                    text1012     0DE2
+__ptext1013                                    text1013     0E54
 __ptext1014                                    text991      0EE2
 __ptext1015                                    text991      0F07
-__ptext1016                                    text1016     0DF3
-__ptext1017                                    text1017     0E1D
-__ptext1018                                    text1018     0E04
-__ptext1019                                    text997      072B
-__ptext1020                                    text1020     0DFC
-__ptext1021                                    text997      062C
-__ptext1022                                    text997      071D
-__ptext1023                                    text997      070B
-__ptext1024                                    text1024     0E14
-__ptext1025                                    text997      05BE
-__ptext1026                                    text997      05B5
-__ptext1027                                    text997      05AD
-__ptext1028                                    text997      05A5
-__ptext1029                                    text997      059D
+__ptext1016                                    text1016     0DDF
+__ptext1017                                    text1017     0E09
+__ptext1018                                    text1018     0DF0
+__ptext1019                                    text997      072F
+__ptext1020                                    text1020     0DE8
+__ptext1021                                    text997      0630
+__ptext1022                                    text997      0721
+__ptext1023                                    text997      070F
+__ptext1024                                    text1024     0E00
+__ptext1025                                    text997      05C2
+__ptext1026                                    text997      05B9
+__ptext1027                                    text997      05B1
+__ptext1028                                    text997      05A9
+__ptext1029                                    text997      05A1
 __ptext1030                                    text1030     0EA7
-__ptext1031                                    text997      07CB
-__ptext1032                                    text997      07C5
-__ptext1033                                    text997      05D4
-__ptext1034                                    text997      05CE
+__ptext1031                                    text997      07CF
+__ptext1032                                    text997      07C9
+__ptext1033                                    text997      05D8
+__ptext1034                                    text997      05D2
 __ptext1035                                    text1035     0F1C
 __ptext1036                                    text1035     0FE4
 __ptext1037                                    text1035     0FD8
 __ptext1038                                    text1035     0F63
 __ptext1039                                    text1039     0000
 __ptext989                                     text989      0000
-__ptext990                                     text997      0634
+__ptext990                                     text997      0638
 __ptext991                                     text991      0ECE
-__ptext992                                     text997      0587
-__ptext993                                     text997      057B
+__ptext992                                     text997      058B
+__ptext993                                     text997      057F
 __ptext994                                     text991      0EE5
-__ptext995                                     text997      0702
-__ptext996                                     text997      05DA
-__ptext997                                     text997      0567
-__ptext998                                     text997      0714
-__ptext999                                     text997      0571
+__ptext995                                     text997      0706
+__ptext996                                     text997      05DE
+__ptext997                                     text997      056B
+__ptext998                                     text997      0718
+__ptext999                                     text997      0575
 __size_of_AD_Sample                            (abs)        0000
 __size_of_Filter                               (abs)        0000
 __size_of_ISR                                  (abs)        0000
@@ -585,53 +593,53 @@ _bBigTimerStartFlag                            bssBANK0     004C
 _bSmallTimerStartFlag                          bssBANK0     004D
 _bTwentyMinStartFlag                           bssBANK0     004E
 _bTwentySecStartFlag                           bssBANK0     004F
-_call_ADC4_STEP_FOURTH_PREFIX2                 text997      0634
-_call_ADC4_STEP_FOURTH_PREFIX3                 text997      05DA
-_clearAllTimer                                 text997      05C7
-_clearParaFunction1                            text997      0587
-_clearPinPortAndTimer                          text997      057B
-_clearThreeHoursTimer                          text997      05D4
-_clearTwelveHoursTimer                         text997      05CE
-_clearTwentyMinuteTimer                        text997      07CB
-_clearTwentySecondsTimer                       text997      07C5
-_clock_config                                  text1018     0E04
-_clrSampeTime                                  text1011     0002
+_call_ADC4_STEP_FOURTH_PREFIX2                 text997      0638
+_call_ADC4_STEP_FOURTH_PREFIX3                 text997      05DE
+_clearAllTimer                                 text997      05CB
+_clearParaFunction1                            text997      058B
+_clearPinPortAndTimer                          text997      057F
+_clearThreeHoursTimer                          text997      05D8
+_clearTwelveHoursTimer                         text997      05D2
+_clearTwentyMinuteTimer                        text997      07CF
+_clearTwentySecondsTimer                       text997      07C9
+_clock_config                                  text1018     0DF0
+_clrSampeTime                                  text1011     07FE
 _enumMainLoopStep                              bssBANK0     0050
 _exit                                          init         0011
 _getAD_ConvertFlag                             text991      0ED9
-_getAdOriginalCh0Value                         text997      0571
-_getAdOriginalCh2Value                         text997      0702
-_getAdOriginalCh5Value                         text997      0567
-_getAdOriginalCh6Value                         text997      0714
+_getAdOriginalCh0Value                         text997      0575
+_getAdOriginalCh2Value                         text997      0706
+_getAdOriginalCh5Value                         text997      056B
+_getAdOriginalCh6Value                         text997      0718
 _initPin                                       text1030     0EA7
-_isFinishedThreeHoursTimer                     text1004     0E4B
-_isFinishedTwelveHoursTimer                    text1008     0E33
-_isFinishedTwentyMinuteTimer                   text1010     0E27
-_isFinishedTwentySecondsTimer                  text1006     0E3F
-_isPermitSampleTime                            text1012     0DF6
+_isFinishedThreeHoursTimer                     text1004     0E37
+_isFinishedTwelveHoursTimer                    text1008     0E1F
+_isFinishedTwentyMinuteTimer                   text1010     0E13
+_isFinishedTwentySecondsTimer                  text1006     0E2B
+_isPermitSampleTime                            text1012     0DE2
 _main                                          maintext     0013
 _process_AD_Converter_Value                    text991      0ECE
 _sampleChannelSelect                           bssBANK0     0051
 _sampleTimes                                   bssBANK0     0052
 _setAD_ConvertFlag                             text991      0EDD
-_setPA0                                        text997      05B5
-_setPA1                                        text997      05BE
-_setPA2                                        text1024     0E14
-_setPA3                                        text997      070B
-_setPA6                                        text1020     0DFC
-_setPB0                                        text997      059D
-_setPB1                                        text997      05A5
-_setPB2                                        text997      05AD
-_setPB4                                        text997      062C
-_setPB6                                        text997      071D
-_setPB6AsInput                                 text997      072B
-_startThreeHoursTimer                          text1005     07EC
-_startTwelveHourTimer                          text1009     0E7C
-_startTwentyMinuteTimer                        text1013     0E68
-_startTwentySecondsTimer                       text1007     0E57
+_setPA0                                        text997      05B9
+_setPA1                                        text997      05C2
+_setPA2                                        text1024     0E00
+_setPA3                                        text997      070F
+_setPA6                                        text1020     0DE8
+_setPB0                                        text997      05A1
+_setPB1                                        text997      05A9
+_setPB2                                        text997      05B1
+_setPB4                                        text997      0630
+_setPB6                                        text997      0721
+_setPB6AsInput                                 text997      072F
+_startThreeHoursTimer                          text1005     0E7C
+_startTwelveHourTimer                          text1009     0E68
+_startTwentyMinuteTimer                        text1013     0E54
+_startTwentySecondsTimer                       text1007     0E43
 _timer                                         bssBANK1     00AE
-_timer1_config                                 text1017     0E1D
-_timer1_interrupt_config                       text1016     0DF3
+_timer1_config                                 text1017     0E09
+_timer1_interrupt_config                       text1016     0DDF
 _ucADC4_Step                                   bssBANK0     0053
 _ucChannel5Type                                bssBANK0     0054
 _uiBigTimer                                    bssBANK1     00A0
@@ -661,7 +669,7 @@ call_ADC4_STEP_FOURTH_PREFIX2@ucTimerCntP5s    bssBANK1     00B9
 call_ADC4_STEP_FOURTH_PREFIX3@bClearStep       cstackBANK0  0021
 call_ADC4_STEP_FOURTH_PREFIX3@ucPreFix3Step    bssBANK1     00BA
 call_ADC4_STEP_FOURTH_PREFIX3@ucPrefix3Cnt     bssCOMMON    007D
-clear_ram                                      clrtext      0E0C
+clear_ram                                      clrtext      0DF8
 end_of_initialization                          cinit        0EA4
 i1_setAD_ConvertFlag                           text1035     0FE4
 i1l1928                                                         
