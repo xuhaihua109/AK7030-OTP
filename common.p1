@@ -2254,9 +2254,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 465: {
 "465
 {
-[; ;common.c: 466: bTwentySecStartFlag = 0;
-"466
-[e = _bTwentySecStartFlag -> -> 0 `i `uc ]
 [; ;common.c: 467: return 1;
 "467
 [e ) -> -> 1 `i `uc ]
@@ -2491,34 +2488,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 "543
 [e -- _uiTwentySecondsTimer -> -> 1 `i `ui ]
 [e :U 135 ]
-"544
+[; ;common.c: 545: if(uiTwentyMinuteTimer)
+"545
+[e $ ! != _uiTwentyMinuteTimer -> -> 0 `i `ui 136  ]
+[; ;common.c: 546: uiTwentyMinuteTimer--;
+"546
+[e -- _uiTwentyMinuteTimer -> -> 1 `i `ui ]
+[e :U 136 ]
+"547
 }
 [e :U 132 ]
-"545
+"548
 }
 [e :U 131 ]
-[; ;common.c: 544: }
-[; ;common.c: 545: }
-[; ;common.c: 547: if(ADIF)
-"547
-[e $ ! _ADIF 136  ]
-[; ;common.c: 548: {
-"548
-{
-[; ;common.c: 549: ADIF=0;
-"549
-[e = _ADIF -> -> 0 `i `b ]
-[; ;common.c: 550: setAD_ConvertFlag(1);
+[; ;common.c: 547: }
+[; ;common.c: 548: }
+[; ;common.c: 550: if(ADIF)
 "550
-[e ( _setAD_ConvertFlag (1 -> -> 1 `i `uc ]
-[; ;common.c: 551: vPutSampleDataIntoTable(adc_get(),sampleChannelSelect);
+[e $ ! _ADIF 137  ]
+[; ;common.c: 551: {
 "551
+{
+[; ;common.c: 552: ADIF=0;
+"552
+[e = _ADIF -> -> 0 `i `b ]
+[; ;common.c: 553: setAD_ConvertFlag(1);
+"553
+[e ( _setAD_ConvertFlag (1 -> -> 1 `i `uc ]
+[; ;common.c: 554: vPutSampleDataIntoTable(adc_get(),sampleChannelSelect);
+"554
 [e ( _vPutSampleDataIntoTable (2 , ( _adc_get ..  _sampleChannelSelect ]
-"580
+"583
 }
-[e :U 136 ]
-[; ;common.c: 580: }
-[; ;common.c: 581: }
-"581
+[e :U 137 ]
+[; ;common.c: 583: }
+[; ;common.c: 584: }
+"584
 [e :UE 130 ]
 }

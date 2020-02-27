@@ -1259,7 +1259,7 @@ unsigned char isFinishedTwentySecondsTimer()
 {
 if(( 0 == uiTwentySecondsTimer ) && bTwentySecStartFlag )
 {
-bTwentySecStartFlag = 0;
+
 return 1;
 }
 else
@@ -1337,6 +1337,9 @@ uiSmallTimer--;
 
 if(uiTwentySecondsTimer)
 uiTwentySecondsTimer--;
+
+if(uiTwentyMinuteTimer)
+uiTwentyMinuteTimer--;
 }
 }
 
@@ -1346,6 +1349,6 @@ ADIF=0;
 setAD_ConvertFlag(1);
 vPutSampleDataIntoTable(adc_get(),sampleChannelSelect);
 
-# 580
+# 583
 }
 }

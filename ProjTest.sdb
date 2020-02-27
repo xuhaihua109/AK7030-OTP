@@ -738,7 +738,7 @@ prefix2_step9 8
 [v _main `(v  1 e 0 0 ]
 "2208
 [v _call_ADC4_STEP_FOURTH_PREFIX2 `(v  1 e 0 0 ]
-"2645
+"2460
 [v _call_ADC4_STEP_FOURTH_PREFIX3 `(v  1 e 0 0 ]
 "14 C:\temp\dev\AK7030-OTP\periph.c
 [v _dac_init `(v  1 e 0 0 ]
@@ -1538,7 +1538,7 @@ prefix2_step9 8
 [v call_ADC4_STEP_FOURTH_PREFIX2@ucMoreThanP3sCnt `uc  1 s 1 ucMoreThanP3sCnt ]
 "2401
 [v call_ADC4_STEP_FOURTH_PREFIX2@ucLessThanP3sCnt `uc  1 s 1 ucLessThanP3sCnt ]
-"2642
+"2457
 } 0
 "298 C:\temp\dev\AK7030-OTP\common.c
 [v _process_AD_Converter_Value `(v  1 e 0 0 ]
@@ -1565,16 +1565,16 @@ prefix2_step9 8
 {
 "293
 } 0
-"2645 C:\temp\dev\AK7030-OTP\main.c
+"2460 C:\temp\dev\AK7030-OTP\main.c
 [v _call_ADC4_STEP_FOURTH_PREFIX3 `(v  1 e 0 0 ]
 {
 [v call_ADC4_STEP_FOURTH_PREFIX3@bClearStep `uc  1 a 1 wreg ]
 [v call_ADC4_STEP_FOURTH_PREFIX3@bClearStep `uc  1 a 1 wreg ]
-"2646
+"2461
 [v call_ADC4_STEP_FOURTH_PREFIX3@ucPreFix3Step `uc  1 s 1 ucPreFix3Step ]
-"2648
+"2463
 [v call_ADC4_STEP_FOURTH_PREFIX3@ucPrefix3Cnt `uc  1 s 1 ucPrefix3Cnt ]
-"2744
+"2559
 } 0
 "268 C:\temp\dev\AK7030-OTP\common.c
 [v _getAdOriginalCh5Value `(ui  1 e 2 0 ]
@@ -1811,7 +1811,7 @@ prefix2_step9 8
 {
 "525
 [v ISR@ucTimer1sCnt `uc  1 s 1 ucTimer1sCnt ]
-"581
+"584
 } 0
 "235
 [v i1_setAD_ConvertFlag `(v  1 e 0 0 ]

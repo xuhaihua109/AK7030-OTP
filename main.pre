@@ -2735,7 +2735,7 @@ case prefix2_step1:
 # 2336
 ucTimeCntP2s = 0;
 setPA3(0);
-setPB6(0);
+setPB6(1);
 ucPrefix2Step = prefix2_step2;
 break;
 }
@@ -2842,7 +2842,6 @@ default:
 break;
 }
 
-# 2634
 if(ADC4_STEP_INIT == ucADC4_Step)
 {
 ucTimerCntMore = 0;
@@ -2871,7 +2870,7 @@ switch(ucPreFix3Step)
 case 0:
 {
 
-# 2665
+# 2480
 setPA3(0);
 setPB4(0);
 setPB6(1);
@@ -2883,7 +2882,7 @@ break;
 case 1:
 {
 
-# 2678
+# 2493
 ucPrefix3Cnt++;
 
 if( ucPrefix3Cnt >= 10)
@@ -2897,7 +2896,7 @@ break;
 case 2:
 {
 
-# 2693
+# 2508
 ucPrefix3Cnt++;
 
 if( ucPrefix3Cnt >= 10)
@@ -2912,7 +2911,7 @@ break;
 case 3:
 {
 
-# 2709
+# 2524
 setPA3(1);
 setPB4(1);
 
@@ -2925,7 +2924,7 @@ break;
 case 4:
 {
 
-# 2723
+# 2538
 ucPrefix3Cnt++;
 
 if( ucPrefix3Cnt >= 2)

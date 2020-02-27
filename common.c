@@ -201,7 +201,7 @@ void clock_config()
 {
 	// Systen clock config
 	CLKPR = 0x80; 		// divide 1  允许更新CLKPS位CLKPCE更新时CLKPS[1:0]必须同时写入 2’b00，4T清零 系统时钟
-	CLKPR = 0x00;		//禁止更新 CLKPS 位	
+	CLKPR = 0x00;		//禁止更新 CLKPS 位
 	while(CLKPCE);
 }
 
@@ -463,7 +463,7 @@ unsigned char isFinishedTwentySecondsTimer()
 {
 	if(( 0 == uiTwentySecondsTimer ) && bTwentySecStartFlag )
 	{
-		bTwentySecStartFlag = 0;
+//		bTwentySecStartFlag = 0;
 		return 1;
 	}
 	else
@@ -541,6 +541,9 @@ void interrupt ISR(void)
 
 			if(uiTwentySecondsTimer)
 				uiTwentySecondsTimer--;
+
+			if(uiTwentyMinuteTimer)
+			    uiTwentyMinuteTimer--;
 		}
     }
 

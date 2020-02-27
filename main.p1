@@ -5804,9 +5804,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 2337: setPA3(0);
 "2337
 [e ( _setPA3 (1 -> -> 0 `i `uc ]
-[; ;main.c: 2338: setPB6(0);
+[; ;main.c: 2338: setPB6(1);
 "2338
-[e ( _setPB6 (1 -> -> 0 `i `uc ]
+[e ( _setPB6 (1 -> -> 1 `i `uc ]
 [; ;main.c: 2339: ucPrefix2Step = prefix2_step2;
 "2339
 [e = F976 . `E958 1 ]
@@ -6083,244 +6083,244 @@ Version 3.2 HI-TECH Software Intermediate Code
  370 ]
 "2447
 [e :U 335 ]
-[; ;main.c: 2634: if(ADC4_STEP_INIT == ucADC4_Step)
-"2634
+[; ;main.c: 2449: if(ADC4_STEP_INIT == ucADC4_Step)
+"2449
 [e $ ! == -> . `E860 0 `i -> _ucADC4_Step `i 371  ]
-[; ;main.c: 2635: {
-"2635
+[; ;main.c: 2450: {
+"2450
 {
-[; ;main.c: 2636: ucTimerCntMore = 0;
-"2636
+[; ;main.c: 2451: ucTimerCntMore = 0;
+"2451
 [e = F968 -> -> 0 `i `uc ]
-[; ;main.c: 2637: ucTimerCntLess = 0;
-"2637
+[; ;main.c: 2452: ucTimerCntLess = 0;
+"2452
 [e = F969 -> -> 0 `i `uc ]
-[; ;main.c: 2638: ucTimerCntMoreFlag = 0;
-"2638
+[; ;main.c: 2453: ucTimerCntMoreFlag = 0;
+"2453
 [e = F970 -> -> 0 `i `uc ]
-[; ;main.c: 2639: ucTimerCntLessFlag = 0;
-"2639
+[; ;main.c: 2454: ucTimerCntLessFlag = 0;
+"2454
 [e = F971 -> -> 0 `i `uc ]
-"2641
+"2456
 }
 [e :U 371 ]
-[; ;main.c: 2641: }
-[; ;main.c: 2642: }
-"2642
+[; ;main.c: 2456: }
+[; ;main.c: 2457: }
+"2457
 [e :UE 334 ]
 }
-"2645
+"2460
 [v _call_ADC4_STEP_FOURTH_PREFIX3 `(v  1 ef1`uc ]
 {
-[; ;main.c: 2644: void call_ADC4_STEP_FOURTH_PREFIX3(unsigned char bClearStep)
-[; ;main.c: 2645: {
+[; ;main.c: 2459: void call_ADC4_STEP_FOURTH_PREFIX3(unsigned char bClearStep)
+[; ;main.c: 2460: {
 [e :U _call_ADC4_STEP_FOURTH_PREFIX3 ]
 [v _bClearStep `uc  1 r1 ]
 [f ]
-"2646
+"2461
 [v F982 `uc  1 s ucPreFix3Step ]
 [i F982
 -> -> 0 `i `uc
 ]
-"2648
+"2463
 [v F983 `uc  1 s ucPrefix3Cnt ]
 [i F983
 -> -> 0 `i `uc
 ]
-[; ;main.c: 2646: static unsigned char ucPreFix3Step = 0;
-[; ;main.c: 2648: static unsigned char ucPrefix3Cnt = 0;
-[; ;main.c: 2650: if( 1 == bClearStep)
-"2650
+[; ;main.c: 2461: static unsigned char ucPreFix3Step = 0;
+[; ;main.c: 2463: static unsigned char ucPrefix3Cnt = 0;
+[; ;main.c: 2465: if( 1 == bClearStep)
+"2465
 [e $ ! == -> 1 `i -> _bClearStep `i 373  ]
-[; ;main.c: 2651: {
-"2651
+[; ;main.c: 2466: {
+"2466
 {
-[; ;main.c: 2652: bClearStep = 0;
-"2652
+[; ;main.c: 2467: bClearStep = 0;
+"2467
 [e = _bClearStep -> -> 0 `i `uc ]
-[; ;main.c: 2653: ucPreFix3Step = 0;
-"2653
+[; ;main.c: 2468: ucPreFix3Step = 0;
+"2468
 [e = F982 -> -> 0 `i `uc ]
-[; ;main.c: 2654: ucPrefix3Cnt = 0;
-"2654
+[; ;main.c: 2469: ucPrefix3Cnt = 0;
+"2469
 [e = F983 -> -> 0 `i `uc ]
-"2655
+"2470
 }
 [e :U 373 ]
-[; ;main.c: 2655: }
-[; ;main.c: 2657: switch(ucPreFix3Step)
-"2657
+[; ;main.c: 2470: }
+[; ;main.c: 2472: switch(ucPreFix3Step)
+"2472
 [e $U 375  ]
-[; ;main.c: 2658: {
-"2658
+[; ;main.c: 2473: {
+"2473
 {
-[; ;main.c: 2659: case 0:
-"2659
+[; ;main.c: 2474: case 0:
+"2474
 [e :U 376 ]
-[; ;main.c: 2660: {
-"2660
+[; ;main.c: 2475: {
+"2475
 {
-[; ;main.c: 2665: setPA3(0);
-"2665
+[; ;main.c: 2480: setPA3(0);
+"2480
 [e ( _setPA3 (1 -> -> 0 `i `uc ]
-[; ;main.c: 2666: setPB4(0);
-"2666
+[; ;main.c: 2481: setPB4(0);
+"2481
 [e ( _setPB4 (1 -> -> 0 `i `uc ]
-[; ;main.c: 2667: setPB6(1);
-"2667
+[; ;main.c: 2482: setPB6(1);
+"2482
 [e ( _setPB6 (1 -> -> 1 `i `uc ]
-[; ;main.c: 2668: ucPrefix3Cnt = 0;
-"2668
+[; ;main.c: 2483: ucPrefix3Cnt = 0;
+"2483
 [e = F983 -> -> 0 `i `uc ]
-[; ;main.c: 2669: ucPreFix3Step = 1;
-"2669
+[; ;main.c: 2484: ucPreFix3Step = 1;
+"2484
 [e = F982 -> -> 1 `i `uc ]
-[; ;main.c: 2670: break;
-"2670
+[; ;main.c: 2485: break;
+"2485
 [e $U 374  ]
-"2671
+"2486
 }
-[; ;main.c: 2671: }
-[; ;main.c: 2673: case 1:
-"2673
+[; ;main.c: 2486: }
+[; ;main.c: 2488: case 1:
+"2488
 [e :U 377 ]
-[; ;main.c: 2674: {
-"2674
+[; ;main.c: 2489: {
+"2489
 {
-[; ;main.c: 2678: ucPrefix3Cnt++;
-"2678
+[; ;main.c: 2493: ucPrefix3Cnt++;
+"2493
 [e ++ F983 -> -> 1 `i `uc ]
-[; ;main.c: 2680: if( ucPrefix3Cnt >= 10)
-"2680
+[; ;main.c: 2495: if( ucPrefix3Cnt >= 10)
+"2495
 [e $ ! >= -> F983 `i -> 10 `i 378  ]
-[; ;main.c: 2681: {
-"2681
+[; ;main.c: 2496: {
+"2496
 {
-[; ;main.c: 2682: ucPrefix3Cnt = 0;
-"2682
+[; ;main.c: 2497: ucPrefix3Cnt = 0;
+"2497
 [e = F983 -> -> 0 `i `uc ]
-[; ;main.c: 2683: ucPreFix3Step = 2;
-"2683
+[; ;main.c: 2498: ucPreFix3Step = 2;
+"2498
 [e = F982 -> -> 2 `i `uc ]
-"2684
+"2499
 }
 [e :U 378 ]
-[; ;main.c: 2684: }
-[; ;main.c: 2685: break;
-"2685
+[; ;main.c: 2499: }
+[; ;main.c: 2500: break;
+"2500
 [e $U 374  ]
-"2686
+"2501
 }
-[; ;main.c: 2686: }
-[; ;main.c: 2688: case 2:
-"2688
+[; ;main.c: 2501: }
+[; ;main.c: 2503: case 2:
+"2503
 [e :U 379 ]
-[; ;main.c: 2689: {
-"2689
+[; ;main.c: 2504: {
+"2504
 {
-[; ;main.c: 2693: ucPrefix3Cnt++;
-"2693
+[; ;main.c: 2508: ucPrefix3Cnt++;
+"2508
 [e ++ F983 -> -> 1 `i `uc ]
-[; ;main.c: 2695: if( ucPrefix3Cnt >= 10)
-"2695
+[; ;main.c: 2510: if( ucPrefix3Cnt >= 10)
+"2510
 [e $ ! >= -> F983 `i -> 10 `i 380  ]
-[; ;main.c: 2696: {
-"2696
+[; ;main.c: 2511: {
+"2511
 {
-[; ;main.c: 2697: ucPrefix3Cnt = 0;
-"2697
+[; ;main.c: 2512: ucPrefix3Cnt = 0;
+"2512
 [e = F983 -> -> 0 `i `uc ]
-[; ;main.c: 2699: ucPreFix3Step = 3;
-"2699
+[; ;main.c: 2514: ucPreFix3Step = 3;
+"2514
 [e = F982 -> -> 3 `i `uc ]
-"2700
+"2515
 }
 [e :U 380 ]
-[; ;main.c: 2700: }
-[; ;main.c: 2701: break;
-"2701
+[; ;main.c: 2515: }
+[; ;main.c: 2516: break;
+"2516
 [e $U 374  ]
-"2702
+"2517
 }
-[; ;main.c: 2702: }
-[; ;main.c: 2704: case 3:
-"2704
+[; ;main.c: 2517: }
+[; ;main.c: 2519: case 3:
+"2519
 [e :U 381 ]
-[; ;main.c: 2705: {
-"2705
+[; ;main.c: 2520: {
+"2520
 {
-[; ;main.c: 2709: setPA3(1);
-"2709
+[; ;main.c: 2524: setPA3(1);
+"2524
 [e ( _setPA3 (1 -> -> 1 `i `uc ]
-[; ;main.c: 2710: setPB4(1);
-"2710
+[; ;main.c: 2525: setPB4(1);
+"2525
 [e ( _setPB4 (1 -> -> 1 `i `uc ]
-[; ;main.c: 2712: setPB6AsInput();
-"2712
+[; ;main.c: 2527: setPB6AsInput();
+"2527
 [e ( _setPB6AsInput ..  ]
-[; ;main.c: 2713: ucPrefix3Cnt = 0;
-"2713
+[; ;main.c: 2528: ucPrefix3Cnt = 0;
+"2528
 [e = F983 -> -> 0 `i `uc ]
-[; ;main.c: 2715: ucPreFix3Step = 4;
-"2715
+[; ;main.c: 2530: ucPreFix3Step = 4;
+"2530
 [e = F982 -> -> 4 `i `uc ]
-[; ;main.c: 2716: break;
-"2716
+[; ;main.c: 2531: break;
+"2531
 [e $U 374  ]
-"2717
+"2532
 }
-[; ;main.c: 2717: }
-[; ;main.c: 2718: case 4:
-"2718
+[; ;main.c: 2532: }
+[; ;main.c: 2533: case 4:
+"2533
 [e :U 382 ]
-[; ;main.c: 2719: {
-"2719
+[; ;main.c: 2534: {
+"2534
 {
-[; ;main.c: 2723: ucPrefix3Cnt++;
-"2723
+[; ;main.c: 2538: ucPrefix3Cnt++;
+"2538
 [e ++ F983 -> -> 1 `i `uc ]
-[; ;main.c: 2725: if( ucPrefix3Cnt >= 2)
-"2725
+[; ;main.c: 2540: if( ucPrefix3Cnt >= 2)
+"2540
 [e $ ! >= -> F983 `i -> 2 `i 383  ]
-[; ;main.c: 2726: {
-"2726
+[; ;main.c: 2541: {
+"2541
 {
-[; ;main.c: 2727: clearTwentySecondsTimer();
-"2727
+[; ;main.c: 2542: clearTwentySecondsTimer();
+"2542
 [e ( _clearTwentySecondsTimer ..  ]
-[; ;main.c: 2729: ucPrefix3Cnt = 0;
-"2729
+[; ;main.c: 2544: ucPrefix3Cnt = 0;
+"2544
 [e = F983 -> -> 0 `i `uc ]
-[; ;main.c: 2731: ucADC4_Step = ADC4_STEP_INIT;
-"2731
+[; ;main.c: 2546: ucADC4_Step = ADC4_STEP_INIT;
+"2546
 [e = _ucADC4_Step . `E860 0 ]
-[; ;main.c: 2733: enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
-"2733
+[; ;main.c: 2548: enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
+"2548
 [e = _enumMainLoopStep . `E882 3 ]
-[; ;main.c: 2735: ucPreFix3Step = 0;
-"2735
+[; ;main.c: 2550: ucPreFix3Step = 0;
+"2550
 [e = F982 -> -> 0 `i `uc ]
-"2736
+"2551
 }
 [e :U 383 ]
-[; ;main.c: 2736: }
-[; ;main.c: 2737: break;
-"2737
+[; ;main.c: 2551: }
+[; ;main.c: 2552: break;
+"2552
 [e $U 374  ]
-"2738
+"2553
 }
-[; ;main.c: 2738: }
-[; ;main.c: 2740: default:
-"2740
+[; ;main.c: 2553: }
+[; ;main.c: 2555: default:
+"2555
 [e :U 384 ]
-[; ;main.c: 2741: break;
-"2741
+[; ;main.c: 2556: break;
+"2556
 [e $U 374  ]
-"2742
+"2557
 }
-[; ;main.c: 2742: }
+[; ;main.c: 2557: }
 [e $U 374  ]
-"2657
+"2472
 [e :U 375 ]
 [e [\ F982 , $ -> -> 0 `i `uc 376
  , $ -> -> 1 `i `uc 377
@@ -6328,9 +6328,9 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 3 `i `uc 381
  , $ -> -> 4 `i `uc 382
  384 ]
-"2742
+"2557
 [e :U 374 ]
-[; ;main.c: 2744: }
-"2744
+[; ;main.c: 2559: }
+"2559
 [e :UE 372 ]
 }
