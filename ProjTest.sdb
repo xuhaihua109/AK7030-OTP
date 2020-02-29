@@ -207,33 +207,41 @@ ADC4_STEP_FOURTH_SUFFIX2 12
 ADC4_STEP_FIFTH 13
 ADC4_STEP_SIXTH 14
 ]
-"1950
-[e E940 hour_3_branch_step `uc
+"1949
+[e E927 hour_3_branch_step `uc
 HOUR_3_BRANCH_STEP_FIRST 0
 HOUR_3_BRANCH_STEP_SECOND 1
 HOUR_3_BRANCH_STEP_THIRD 2
 ]
-"2106
-[e E949 INTERNAL_STEP `uc
+"2105
+[e E936 INTERNAL_STEP `uc
 INTERNAL_FIRST_STEP 0
 INTERNAL_SECOND_STEP 1
 INTERNAL_THIRD_STEP 2
 INTERNAL_FOUTTH_STEP 3
 ]
-"2220
-[e E958 enum_prefix2_step `uc
-prefix2_step1 0
-prefix2_step2 1
-prefix2_step3 2
-prefix2_step4 3
-prefix2_step5 4
-prefix2_step6 5
-prefix2_step7 6
-prefix2_step8 7
-prefix2_step9 8
+"2219
+[e E945 enum_waiting_loop_step `uc
+WAITING_LOOP_STEP1 0
+WAITING_LOOP_STEP2 1
+WAITING_LOOP_STEP3 2
+WAITING_LOOP_STEP4 3
+WAITING_LOOP_STEP5 4
+WAITING_LOOP_STEP6 5
+WAITING_LOOP_STEP7 6
+WAITING_LOOP_STEP8 7
+WAITING_LOOP_STEP9 8
+]
+"2229
+[e E955 enumCmpStep `uc
+COMPARE_STEP0 0
+COMPARE_STEP1 1
+COMPARE_STEP2 2
+COMPARE_STEP3 3
+COMPARE_STEP4 4
 ]
 "184 C:\temp\dev\AK7030-OTP\yn8p520.h
-[s S919 . 1 `uc 1 C 1 0 :1:0 
+[s S910 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
 `uc 1 nPD 1 0 :1:3 
@@ -241,17 +249,17 @@ prefix2_step9 8
 `uc 1 RP 1 0 :2:5 
 `uc 1 IRP 1 0 :1:7 
 ]
-[s S927 . 1 `uc 1 . 1 0 :5:0 
+[s S918 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RP0 1 0 :1:5 
 `uc 1 RP1 1 0 :1:6 
 ]
-[u S931 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
+[u S922 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
 "254
-[s S967 . 1 `uc 1 . 1 0 :4:0 
+[s S958 . 1 `uc 1 . 1 0 :4:0 
 ]
-[u S969 . 1 `S91 1 . 1 0 ]
+[u S960 . 1 `S91 1 . 1 0 ]
 "276
-[s S983 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S974 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -260,28 +268,28 @@ prefix2_step9 8
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S992 . 1 `uc 1 . 1 0 :2:0 
+[s S983 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S997 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
+[u S988 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
 "396
-[s S1058 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S1049 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 ]
-[s S1061 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S1052 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
 `uc 1 CCP1Y 1 0 :1:4 
 `uc 1 CCP1X 1 0 :1:5 
 ]
-[u S1068 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
+[u S1059 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
 "439
-[s S1088 . 1 `uc 1 OP1F 1 0 :4:0 
+[s S1079 . 1 `uc 1 OP1F 1 0 :4:0 
 ]
-[s S1090 . 1 `uc 1 OP1F0 1 0 :1:0 
+[s S1081 . 1 `uc 1 OP1F0 1 0 :1:0 
 `uc 1 OP1F1 1 0 :1:1 
 `uc 1 OP1F2 1 0 :1:2 
 `uc 1 OP1F3 1 0 :1:3 
@@ -290,13 +298,13 @@ prefix2_step9 8
 `uc 1 OP1OUT 1 0 :1:6 
 `uc 1 OP1ON 1 0 :1:7 
 ]
-[u S1099 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
+[u S1090 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
 "460
-[s S1104 . 1 `uc 1 OP1NCH 1 0 :2:0 
+[s S1095 . 1 `uc 1 OP1NCH 1 0 :2:0 
 `uc 1 RSV 1 0 :2:2 
 `uc 1 OP1PCH 1 0 :2:4 
 ]
-[s S1108 . 1 `uc 1 OP1NCH0 1 0 :1:0 
+[s S1099 . 1 `uc 1 OP1NCH0 1 0 :1:0 
 `uc 1 OP1NCH1 1 0 :1:1 
 `uc 1 RSV0 1 0 :1:2 
 `uc 1 RSV1 1 0 :1:3 
@@ -305,9 +313,9 @@ prefix2_step9 8
 `uc 1 OP1INTN 1 0 :1:6 
 `uc 1 OP1INTP 1 0 :1:7 
 ]
-[u S1117 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
+[u S1108 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
 "483
-[s S1122 . 1 `uc 1 RSV0 1 0 :1:0 
+[s S1113 . 1 `uc 1 RSV0 1 0 :1:0 
 `uc 1 RSV1 1 0 :1:1 
 `uc 1 RSV2 1 0 :1:2 
 `uc 1 RSV3 1 0 :1:3 
@@ -316,37 +324,37 @@ prefix2_step9 8
 `uc 1 OP1A2DEN 1 0 :1:6 
 `uc 1 OP1OUTEN 1 0 :1:7 
 ]
-[u S1131 . 1 `S296 1 . 1 0 ]
+[u S1122 . 1 `S296 1 . 1 0 ]
 "515
-[s S1145 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1136 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 G0 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S1149 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1140 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[u S1156 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
+[u S1147 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
 "543
-[s S1162 . 1 `uc 1 SWDTEN 1 0 :1:0 
+[s S1153 . 1 `uc 1 SWDTEN 1 0 :1:0 
 ]
-[u S1164 . 1 `S356 1 . 1 0 ]
+[u S1155 . 1 `S356 1 . 1 0 ]
 "576
-[s S1186 . 1 `uc 1 DACCH 1 0 :2:0 
+[s S1177 . 1 `uc 1 DACCH 1 0 :2:0 
 ]
-[s S1188 . 1 `uc 1 DACCH0 1 0 :1:0 
+[s S1179 . 1 `uc 1 DACCH0 1 0 :1:0 
 `uc 1 DACCH1 1 0 :1:1 
 `uc 1 DAC0EN 1 0 :1:2 
 `uc 1 DAC1EN 1 0 :1:3 
 ]
-[u S1193 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
+[u S1184 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
 "729
-[s S1292 . 1 `uc 1 OP2F 1 0 :4:0 
+[s S1283 . 1 `uc 1 OP2F 1 0 :4:0 
 ]
-[s S1294 . 1 `uc 1 OP2F0 1 0 :1:0 
+[s S1285 . 1 `uc 1 OP2F0 1 0 :1:0 
 `uc 1 OP2F1 1 0 :1:1 
 `uc 1 OP2F2 1 0 :1:2 
 `uc 1 OP2F3 1 0 :1:3 
@@ -355,12 +363,12 @@ prefix2_step9 8
 `uc 1 OP2OUT 1 0 :1:6 
 `uc 1 OP2ON 1 0 :1:7 
 ]
-[u S1303 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
+[u S1294 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
 "750
-[s S1308 . 1 `uc 1 OP2NCH 1 0 :3:0 
+[s S1299 . 1 `uc 1 OP2NCH 1 0 :3:0 
 `uc 1 OP2PCH 1 0 :3:3 
 ]
-[s S1311 . 1 `uc 1 OP2NCH0 1 0 :1:0 
+[s S1302 . 1 `uc 1 OP2NCH0 1 0 :1:0 
 `uc 1 OP2NCH1 1 0 :1:1 
 `uc 1 OP2NCH2 1 0 :1:2 
 `uc 1 OP2PCH0 1 0 :1:3 
@@ -369,11 +377,11 @@ prefix2_step9 8
 `uc 1 OP2INTN 1 0 :1:6 
 `uc 1 OP2INTP 1 0 :1:7 
 ]
-[u S1320 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
+[u S1311 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
 "772
-[s S1325 . 1 `uc 1 PGA 1 0 :3:0 
+[s S1316 . 1 `uc 1 PGA 1 0 :3:0 
 ]
-[s S1327 . 1 `uc 1 PGA0 1 0 :1:0 
+[s S1318 . 1 `uc 1 PGA0 1 0 :1:0 
 `uc 1 PGA1 1 0 :1:1 
 `uc 1 PGA2 1 0 :1:2 
 `uc 1 PGAEN 1 0 :1:3 
@@ -382,13 +390,13 @@ prefix2_step9 8
 `uc 1 OP2A2DEN 1 0 :1:6 
 `uc 1 OP2OUTEN 1 0 :1:7 
 ]
-[u S1336 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
+[u S1327 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
 "806
-[s S1350 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S1341 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 ADVREF 1 0 :2:6 
 ]
-[s S1354 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S1345 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
@@ -397,13 +405,13 @@ prefix2_step9 8
 `uc 1 ADVREF0 1 0 :1:6 
 `uc 1 ADVREF1 1 0 :1:7 
 ]
-[u S1363 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
+[u S1354 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
 "26 C:\temp\dev\AK7030-OTP\common.c
-[s S1402 . 1 `uc 1 timer10msStopWatch 1 0 ]
+[s S1393 . 1 `uc 1 timer10msStopWatch 1 0 ]
 "524
 [v F871 `(v  1 t 0 ]
 "184 C:\temp\dev\AK7030-OTP\yn8p520.h
-[s S1491 . 1 `uc 1 C 1 0 :1:0 
+[s S1482 . 1 `uc 1 C 1 0 :1:0 
 `uc 1 DC 1 0 :1:1 
 `uc 1 Z 1 0 :1:2 
 `uc 1 nPD 1 0 :1:3 
@@ -411,17 +419,17 @@ prefix2_step9 8
 `uc 1 RP 1 0 :2:5 
 `uc 1 IRP 1 0 :1:7 
 ]
-[s S1499 . 1 `uc 1 . 1 0 :5:0 
+[s S1490 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RP0 1 0 :1:5 
 `uc 1 RP1 1 0 :1:6 
 ]
-[u S1503 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
+[u S1494 . 1 `S31 1 . 1 0 `S39 1 . 1 0 ]
 "254
-[s S1539 . 1 `uc 1 . 1 0 :4:0 
+[s S1530 . 1 `uc 1 . 1 0 :4:0 
 ]
-[u S1541 . 1 `S91 1 . 1 0 ]
+[u S1532 . 1 `S91 1 . 1 0 ]
 "276
-[s S1555 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S1546 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -430,28 +438,28 @@ prefix2_step9 8
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S1564 . 1 `uc 1 . 1 0 :2:0 
+[s S1555 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S1569 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
+[u S1560 . 1 `S109 1 . 1 0 `S118 1 . 1 0 ]
 "396
-[s S1630 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S1621 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 ]
-[s S1633 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S1624 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
 `uc 1 CCP1Y 1 0 :1:4 
 `uc 1 CCP1X 1 0 :1:5 
 ]
-[u S1640 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
+[u S1631 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
 "439
-[s S1660 . 1 `uc 1 OP1F 1 0 :4:0 
+[s S1651 . 1 `uc 1 OP1F 1 0 :4:0 
 ]
-[s S1662 . 1 `uc 1 OP1F0 1 0 :1:0 
+[s S1653 . 1 `uc 1 OP1F0 1 0 :1:0 
 `uc 1 OP1F1 1 0 :1:1 
 `uc 1 OP1F2 1 0 :1:2 
 `uc 1 OP1F3 1 0 :1:3 
@@ -460,13 +468,13 @@ prefix2_step9 8
 `uc 1 OP1OUT 1 0 :1:6 
 `uc 1 OP1ON 1 0 :1:7 
 ]
-[u S1671 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
+[u S1662 . 1 `S238 1 . 1 0 `S240 1 . 1 0 ]
 "460
-[s S1676 . 1 `uc 1 OP1NCH 1 0 :2:0 
+[s S1667 . 1 `uc 1 OP1NCH 1 0 :2:0 
 `uc 1 RSV 1 0 :2:2 
 `uc 1 OP1PCH 1 0 :2:4 
 ]
-[s S1680 . 1 `uc 1 OP1NCH0 1 0 :1:0 
+[s S1671 . 1 `uc 1 OP1NCH0 1 0 :1:0 
 `uc 1 OP1NCH1 1 0 :1:1 
 `uc 1 RSV0 1 0 :1:2 
 `uc 1 RSV1 1 0 :1:3 
@@ -475,9 +483,9 @@ prefix2_step9 8
 `uc 1 OP1INTN 1 0 :1:6 
 `uc 1 OP1INTP 1 0 :1:7 
 ]
-[u S1689 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
+[u S1680 . 1 `S265 1 . 1 0 `S269 1 . 1 0 ]
 "483
-[s S1694 . 1 `uc 1 RSV0 1 0 :1:0 
+[s S1685 . 1 `uc 1 RSV0 1 0 :1:0 
 `uc 1 RSV1 1 0 :1:1 
 `uc 1 RSV2 1 0 :1:2 
 `uc 1 RSV3 1 0 :1:3 
@@ -486,37 +494,37 @@ prefix2_step9 8
 `uc 1 OP1A2DEN 1 0 :1:6 
 `uc 1 OP1OUTEN 1 0 :1:7 
 ]
-[u S1703 . 1 `S296 1 . 1 0 ]
+[u S1694 . 1 `S296 1 . 1 0 ]
 "515
-[s S1717 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1708 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 G0 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S1721 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1712 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[u S1728 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
+[u S1719 . 1 `S328 1 . 1 0 `S332 1 . 1 0 ]
 "543
-[s S1734 . 1 `uc 1 SWDTEN 1 0 :1:0 
+[s S1725 . 1 `uc 1 SWDTEN 1 0 :1:0 
 ]
-[u S1736 . 1 `S356 1 . 1 0 ]
+[u S1727 . 1 `S356 1 . 1 0 ]
 "576
-[s S1758 . 1 `uc 1 DACCH 1 0 :2:0 
+[s S1749 . 1 `uc 1 DACCH 1 0 :2:0 
 ]
-[s S1760 . 1 `uc 1 DACCH0 1 0 :1:0 
+[s S1751 . 1 `uc 1 DACCH0 1 0 :1:0 
 `uc 1 DACCH1 1 0 :1:1 
 `uc 1 DAC0EN 1 0 :1:2 
 `uc 1 DAC1EN 1 0 :1:3 
 ]
-[u S1765 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
+[u S1756 . 1 `S382 1 . 1 0 `S384 1 . 1 0 ]
 "729
-[s S1864 . 1 `uc 1 OP2F 1 0 :4:0 
+[s S1855 . 1 `uc 1 OP2F 1 0 :4:0 
 ]
-[s S1866 . 1 `uc 1 OP2F0 1 0 :1:0 
+[s S1857 . 1 `uc 1 OP2F0 1 0 :1:0 
 `uc 1 OP2F1 1 0 :1:1 
 `uc 1 OP2F2 1 0 :1:2 
 `uc 1 OP2F3 1 0 :1:3 
@@ -525,12 +533,12 @@ prefix2_step9 8
 `uc 1 OP2OUT 1 0 :1:6 
 `uc 1 OP2ON 1 0 :1:7 
 ]
-[u S1875 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
+[u S1866 . 1 `S495 1 . 1 0 `S497 1 . 1 0 ]
 "750
-[s S1880 . 1 `uc 1 OP2NCH 1 0 :3:0 
+[s S1871 . 1 `uc 1 OP2NCH 1 0 :3:0 
 `uc 1 OP2PCH 1 0 :3:3 
 ]
-[s S1883 . 1 `uc 1 OP2NCH0 1 0 :1:0 
+[s S1874 . 1 `uc 1 OP2NCH0 1 0 :1:0 
 `uc 1 OP2NCH1 1 0 :1:1 
 `uc 1 OP2NCH2 1 0 :1:2 
 `uc 1 OP2PCH0 1 0 :1:3 
@@ -539,11 +547,11 @@ prefix2_step9 8
 `uc 1 OP2INTN 1 0 :1:6 
 `uc 1 OP2INTP 1 0 :1:7 
 ]
-[u S1892 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
+[u S1883 . 1 `S522 1 . 1 0 `S525 1 . 1 0 ]
 "772
-[s S1897 . 1 `uc 1 PGA 1 0 :3:0 
+[s S1888 . 1 `uc 1 PGA 1 0 :3:0 
 ]
-[s S1899 . 1 `uc 1 PGA0 1 0 :1:0 
+[s S1890 . 1 `uc 1 PGA0 1 0 :1:0 
 `uc 1 PGA1 1 0 :1:1 
 `uc 1 PGA2 1 0 :1:2 
 `uc 1 PGAEN 1 0 :1:3 
@@ -552,13 +560,13 @@ prefix2_step9 8
 `uc 1 OP2A2DEN 1 0 :1:6 
 `uc 1 OP2OUTEN 1 0 :1:7 
 ]
-[u S1908 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
+[u S1899 . 1 `S551 1 . 1 0 `S553 1 . 1 0 ]
 "806
-[s S1922 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S1913 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 ADVREF 1 0 :2:6 
 ]
-[s S1926 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S1917 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
@@ -567,7 +575,7 @@ prefix2_step9 8
 `uc 1 ADVREF0 1 0 :1:6 
 `uc 1 ADVREF1 1 0 :1:7 
 ]
-[u S1935 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
+[u S1926 . 1 `S587 1 . 1 0 `S591 1 . 1 0 ]
 "3 bmul.c
 [v ___bmul `(uc  1 e 1 0 ]
 "5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\abdiv.c
@@ -736,10 +744,10 @@ prefix2_step9 8
 [v _clearParaFunction1 `(v  1 e 0 0 ]
 "672
 [v _main `(v  1 e 0 0 ]
-"2208
-[v _call_ADC4_STEP_FOURTH_PREFIX2 `(v  1 e 0 0 ]
-"2460
-[v _call_ADC4_STEP_FOURTH_PREFIX3 `(v  1 e 0 0 ]
+"2207
+[v _vHandle20sTimeron `(v  1 e 0 0 ]
+"2481
+[v _vHandle20sTimerOut `(v  1 e 0 0 ]
 "14 C:\temp\dev\AK7030-OTP\periph.c
 [v _dac_init `(v  1 e 0 0 ]
 "26
@@ -763,7 +771,7 @@ prefix2_step9 8
 "26
 [v _sampleChannelSelect `uc  1 s 1 sampleChannelSelect ]
 "36
-[v _timer `S1402  1 s 1 timer ]
+[v _timer `S1393  1 s 1 timer ]
 "38
 [v _uiBigTimer `ui  1 s 2 uiBigTimer ]
 [v _uiSmallTimer `ui  1 s 2 uiSmallTimer ]
@@ -1470,75 +1478,51 @@ prefix2_step9 8
 [v main@ucTimerDelayP2sLess `uc  1 s 1 ucTimerDelayP2sLess ]
 "1523
 [v main@ucTimerDelayP2sMore `uc  1 s 1 ucTimerDelayP2sMore ]
-"1607
-[v main@ucTimerCntMore `uc  1 s 1 ucTimerCntMore ]
-[v main@ucTimerCntLess `uc  1 s 1 ucTimerCntLess ]
-"1609
-[v main@ucTimerCntMoreFlag `uc  1 s 1 ucTimerCntMoreFlag ]
-[v main@ucTimerCntLessFlag `uc  1 s 1 ucTimerCntLessFlag ]
-"1630
-[v main@ucPrefix2Step `uc  1 s 1 ucPrefix2Step ]
-"1632
-[v main@ucTimeCntP2s `uc  1 s 1 ucTimeCntP2s ]
-"1675
-[v main@ucTimerCntP5s `uc  1 s 1 ucTimerCntP5s ]
-"1689
-[v main@ucMoreThanP3sCnt `uc  1 s 1 ucMoreThanP3sCnt ]
-"1691
-[v main@ucLessThanP3sCnt `uc  1 s 1 ucLessThanP3sCnt ]
-"1736
-[v main@ucMoreThanP8sCnt `uc  1 s 1 ucMoreThanP8sCnt ]
-"1738
-[v main@ucLessThanP8sCnt `uc  1 s 1 ucLessThanP8sCnt ]
-"1813
-[v main@ucDelayPrefix4TimerP5s `uc  1 s 1 ucDelayPrefix4TimerP5s ]
-"1840
-[v main@ucDelayPrefix6TimerP2s `uc  1 s 1 ucDelayPrefix6TimerP2s ]
-"1904
+"1903
 [v main@ucFourthSuffix1TimerP3s `uc  1 s 1 ucFourthSuffix1TimerP3s ]
-"1952
-[v main@enumBranchStep `E940  1 s 1 enumBranchStep ]
-"2007
+"1951
+[v main@enumBranchStep `E927  1 s 1 enumBranchStep ]
+"2006
 [v main@ucTimerX1P5s `uc  1 s 1 ucTimerX1P5s ]
-"2009
+"2008
 [v main@ucTimerLessX1P5s `uc  1 s 1 ucTimerLessX1P5s ]
-"2044
+"2043
 [v main@ucTimerX2P5s `uc  1 s 1 ucTimerX2P5s ]
-"2046
+"2045
 [v main@ucTimerLessX2P5s `uc  1 s 1 ucTimerLessX2P5s ]
-"2108
-[v main@enumInteralStep `E949  1 s 1 enumInteralStep ]
-"2136
+"2107
+[v main@enumInteralStep `E936  1 s 1 enumInteralStep ]
+"2135
 [v main@ucTimer1s `uc  1 s 1 ucTimer1s ]
-"2158
+"2157
 [v main@ucTimerP3s `uc  1 s 1 ucTimerP3s ]
-"2204
+"2203
 } 0
-"2208
-[v _call_ADC4_STEP_FOURTH_PREFIX2 `(v  1 e 0 0 ]
+"2207
+[v _vHandle20sTimeron `(v  1 e 0 0 ]
 {
-"2226
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucTimerCntMore `uc  1 s 1 ucTimerCntMore ]
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucTimerCntLess `uc  1 s 1 ucTimerCntLess ]
-"2230
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucCompareStep `uc  1 s 1 ucCompareStep ]
-"2261
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucMoreThanP8sCnt `uc  1 s 1 ucMoreThanP8sCnt ]
-"2263
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucLessThanP8sCnt `uc  1 s 1 ucLessThanP8sCnt ]
-"2265
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucTimerCntN1 `uc  1 s 1 ucTimerCntN1 ]
-"2325
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucPrefix2Step `E958  1 s 1 ucPrefix2Step ]
-"2327
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucTimeCntP2s `uc  1 s 1 ucTimeCntP2s ]
-"2382
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucTimerCntP5s `uc  1 s 1 ucTimerCntP5s ]
-"2399
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucMoreThanP3sCnt `uc  1 s 1 ucMoreThanP3sCnt ]
-"2401
-[v call_ADC4_STEP_FOURTH_PREFIX2@ucLessThanP3sCnt `uc  1 s 1 ucLessThanP3sCnt ]
-"2457
+"2235
+[v vHandle20sTimeron@ucTimerCntMore `uc  1 s 1 ucTimerCntMore ]
+[v vHandle20sTimeron@ucTimerCntLess `uc  1 s 1 ucTimerCntLess ]
+"2237
+[v vHandle20sTimeron@ucCompareStep `E955  1 s 1 ucCompareStep ]
+"2273
+[v vHandle20sTimeron@ucMoreThanP8sCnt `uc  1 s 1 ucMoreThanP8sCnt ]
+"2275
+[v vHandle20sTimeron@ucLessThanP8sCnt `uc  1 s 1 ucLessThanP8sCnt ]
+"2277
+[v vHandle20sTimeron@ucTimerCntN1 `uc  1 s 1 ucTimerCntN1 ]
+"2344
+[v vHandle20sTimeron@waitLoopStep `E945  1 s 1 waitLoopStep ]
+"2346
+[v vHandle20sTimeron@ucTimeCntP2s `uc  1 s 1 ucTimeCntP2s ]
+"2403
+[v vHandle20sTimeron@ucTimerCntP5s `uc  1 s 1 ucTimerCntP5s ]
+"2420
+[v vHandle20sTimeron@ucMoreThanP3sCnt `uc  1 s 1 ucMoreThanP3sCnt ]
+"2422
+[v vHandle20sTimeron@ucLessThanP3sCnt `uc  1 s 1 ucLessThanP3sCnt ]
+"2478
 } 0
 "298 C:\temp\dev\AK7030-OTP\common.c
 [v _process_AD_Converter_Value `(v  1 e 0 0 ]
@@ -1565,16 +1549,16 @@ prefix2_step9 8
 {
 "293
 } 0
-"2460 C:\temp\dev\AK7030-OTP\main.c
-[v _call_ADC4_STEP_FOURTH_PREFIX3 `(v  1 e 0 0 ]
+"2481 C:\temp\dev\AK7030-OTP\main.c
+[v _vHandle20sTimerOut `(v  1 e 0 0 ]
 {
-[v call_ADC4_STEP_FOURTH_PREFIX3@bClearStep `uc  1 a 1 wreg ]
-[v call_ADC4_STEP_FOURTH_PREFIX3@bClearStep `uc  1 a 1 wreg ]
-"2461
-[v call_ADC4_STEP_FOURTH_PREFIX3@ucPreFix3Step `uc  1 s 1 ucPreFix3Step ]
-"2463
-[v call_ADC4_STEP_FOURTH_PREFIX3@ucPrefix3Cnt `uc  1 s 1 ucPrefix3Cnt ]
-"2559
+[v vHandle20sTimerOut@bClearStep `uc  1 a 1 wreg ]
+[v vHandle20sTimerOut@bClearStep `uc  1 a 1 wreg ]
+"2482
+[v vHandle20sTimerOut@ucTimerOnBehaviorStep `uc  1 s 1 ucTimerOnBehaviorStep ]
+"2484
+[v vHandle20sTimerOut@ucTimeCnt `uc  1 s 1 ucTimeCnt ]
+"2580
 } 0
 "268 C:\temp\dev\AK7030-OTP\common.c
 [v _getAdOriginalCh5Value `(ui  1 e 2 0 ]
