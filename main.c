@@ -2349,6 +2349,8 @@ void vHandle20sTimeron(void)
                 cout <<"COMPARE_STEP2: "<<endl;
 #endif
 
+                clearTwentySecondsTimer();
+
                 switch(waitLoopStep)
                 {
                     case WAITING_LOOP_STEP1:
@@ -2569,6 +2571,8 @@ void vHandle20sTimerOut(unsigned char bClearStep)
                 enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
 
                 ucTimerOnBehaviorStep = 0;
+
+                clearTwentySecondsTimer();
             }
             break;
         }
