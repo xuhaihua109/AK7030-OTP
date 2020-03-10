@@ -1263,10 +1263,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 73: void clearThreeHoursTimer();
 [; ;common.h: 74: void clearTwentySecondsTimer();
 [; ;common.h: 75: void clearTwentyMinuteTimer();
-[; ;common.h: 78: unsigned char isFinishedTwelveHoursTimer();
-[; ;common.h: 79: unsigned char isFinishedThreeHoursTimer();
-[; ;common.h: 81: unsigned char getAD_ConvertFlag();
-[; ;common.h: 82: void setAD_ConvertFlag(unsigned char flag);
+[; ;common.h: 77: void vPause20sTimer(unsigned char bValue);
+[; ;common.h: 80: unsigned char isFinishedTwelveHoursTimer();
+[; ;common.h: 81: unsigned char isFinishedThreeHoursTimer();
+[; ;common.h: 83: unsigned char getAD_ConvertFlag();
+[; ;common.h: 84: void setAD_ConvertFlag(unsigned char flag);
 "14 C:\temp\dev\AK7030-OTP\periph.c
 [v _dac_init `(v  1 ef ]
 {

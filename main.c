@@ -2349,8 +2349,6 @@ void vHandle20sTimeron(void)
                 cout <<"COMPARE_STEP2: "<<endl;
 #endif
 
-                clearTwentySecondsTimer();
-
                 switch(waitLoopStep)
                 {
                     case WAITING_LOOP_STEP1:
@@ -2358,6 +2356,7 @@ void vHandle20sTimeron(void)
     #ifdef USE_SOFTWARE_SIMULATION_TEST
                         cout <<"tag #4:"<<endl;
     #endif
+                        vPause20sTimer(TRUE);
                         ucTimeCntP2s = 0;
                         setPA3(0);
                         setPB6(1);
@@ -2476,6 +2475,8 @@ void vHandle20sTimeron(void)
             ucTimerCntMore = 0;
             ucTimerCntLess = 0;
             ucCompareStep = COMPARE_STEP0;
+
+            vPause20sTimer(FALSE);
         }
 }
 
@@ -2571,8 +2572,6 @@ void vHandle20sTimerOut(unsigned char bClearStep)
                 enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
 
                 ucTimerOnBehaviorStep = 0;
-
-                clearTwentySecondsTimer();
             }
             break;
         }

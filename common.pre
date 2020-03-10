@@ -850,6 +850,8 @@ void clearThreeHoursTimer();
 void clearTwentySecondsTimer();
 void clearTwentyMinuteTimer();
 
+void vPause20sTimer(unsigned char bValue);
+
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();
@@ -883,6 +885,8 @@ unsigned char timer10msStopWatch;
 
 }TimeStopWatch;
 
+static unsigned char bPause20secTimer = 0;
+
 static TimeStopWatch timer;
 
 static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
@@ -902,7 +906,15 @@ static int uiSampleChannelSixth[12];
 
 static void AD_Sample(void);
 
-# 62
+
+void vPause20sTimer(unsigned char bValue)
+{
+bPause20secTimer = bValue;
+}
+
+
+
+
 unsigned int Filter(int *tmpValue)
 {
 
@@ -941,7 +953,7 @@ return (filter_sum >> 3);
 
 }
 
-# 104
+# 108
 void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
 {
 
@@ -1077,14 +1089,14 @@ void setAD_ConvertFlag(unsigned char flag)
 adc_convert_flag = flag;
 }
 
-# 245
+# 249
 unsigned int getAdOriginalCh1Value()
 {
 
 
 return Filter(uiSampleChannelZero);
 
-# 254
+# 258
 }
 
 
@@ -1094,7 +1106,7 @@ unsigned int getAdOriginalCh0Value()
 
 return Filter(uiSampleChannelZero);
 
-# 265
+# 269
 }
 
 unsigned int getAdOriginalCh5Value()
@@ -1102,7 +1114,7 @@ unsigned int getAdOriginalCh5Value()
 
 return Filter(uiSampleChannelFifth);
 
-# 274
+# 278
 }
 
 
@@ -1111,7 +1123,7 @@ unsigned int getAdOriginalCh6Value()
 
 return Filter(uiSampleChannelSixth);
 
-# 284
+# 288
 }
 
 unsigned int getAdOriginalCh2Value()
@@ -1119,7 +1131,7 @@ unsigned int getAdOriginalCh2Value()
 
 return Filter(uiSampleChannelSecond);
 
-# 293
+# 297
 }
 
 
@@ -1131,12 +1143,12 @@ if(getAD_ConvertFlag())
 setAD_ConvertFlag(0);
 AD_Sample();
 
-# 314
+# 318
 adc_start();
 }
 }
 
-# 327
+# 331
 static void AD_Sample(void)
 {
 if(sampleTimes < 12)
@@ -1179,7 +1191,7 @@ adc_test_init(sampleChannelSelect,3);
 }
 }
 
-# 382
+# 386
 void setDAC0_ChannelValue(unsigned char ucValue)
 {
 DACR0=ucValue;
@@ -1193,7 +1205,7 @@ uiBigTimer = uiSetTime;
 bBigTimerStartFlag = 1;
 }
 
-# 399
+# 403
 }
 
 void clearTwelveHoursTimer()
@@ -1213,6 +1225,7 @@ void clearTwentySecondsTimer()
 {
 uiTwentySecondsTimer = 0;
 bTwentySecStartFlag = 0;
+bPause20secTimer = 0;
 }
 
 
@@ -1231,7 +1244,7 @@ uiSmallTimer = uiSetTime;
 bSmallTimerStartFlag = 1;
 }
 
-# 439
+# 444
 }
 
 
@@ -1335,10 +1348,10 @@ uiBigTimer--;
 if(uiSmallTimer)
 uiSmallTimer--;
 
-if(uiTwentySecondsTimer)
+if((uiTwentySecondsTimer)&& (0 == bPause20secTimer))
 uiTwentySecondsTimer--;
 
-if(uiTwentyMinuteTimer)
+if((uiTwentyMinuteTimer))
 uiTwentyMinuteTimer--;
 }
 }
@@ -1349,6 +1362,6 @@ ADIF=0;
 setAD_ConvertFlag(1);
 vPutSampleDataIntoTable(adc_get(),sampleChannelSelect);
 
-# 583
+# 588
 }
 }

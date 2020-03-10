@@ -74,6 +74,8 @@ void clearThreeHoursTimer();
 void clearTwentySecondsTimer();
 void clearTwentyMinuteTimer();
 
+void vPause20sTimer(unsigned char bValue);
+
 
 unsigned char isFinishedTwelveHoursTimer();
 unsigned char isFinishedThreeHoursTimer();

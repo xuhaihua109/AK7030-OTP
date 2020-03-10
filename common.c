@@ -33,6 +33,8 @@ typedef struct
 
 }TimeStopWatch;
 
+static unsigned char bPause20secTimer = 0;
+
 static  TimeStopWatch timer;
 
 static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
@@ -53,8 +55,10 @@ static  int uiSampleChannelZero[FILTER_N];
 static void AD_Sample(void);
 
 
-
-
+void vPause20sTimer(unsigned char bValue)
+{
+	bPause20secTimer = bValue;
+}
 
 
 
@@ -415,6 +419,7 @@ void clearTwentySecondsTimer()
 {
 	uiTwentySecondsTimer = 0;
 	bTwentySecStartFlag = 0;
+	bPause20secTimer = 0;
 }
 
 
@@ -539,10 +544,10 @@ void interrupt ISR(void)
 			if(uiSmallTimer)
 				uiSmallTimer--;
 
-			if(uiTwentySecondsTimer)
+			if((uiTwentySecondsTimer)&& (0 == bPause20secTimer))
 				uiTwentySecondsTimer--;
 
-			if(uiTwentyMinuteTimer)
+			if((uiTwentyMinuteTimer))
 			    uiTwentyMinuteTimer--;
 		}
     }

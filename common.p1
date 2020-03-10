@@ -713,35 +713,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _sampleTimes `uc  1 s ]
 "26 C:\temp\dev\AK7030-OTP\common.c
 [v _sampleChannelSelect `uc  1 s ]
+"36 C:\temp\dev\AK7030-OTP\common.c
+[v _bPause20secTimer `uc  1 s ]
 [s S41 `uc 1 ]
 [n S41 . timer10msStopWatch ]
-"36 C:\temp\dev\AK7030-OTP\common.c
+"38 C:\temp\dev\AK7030-OTP\common.c
 [v _timer `S41  1 s ]
-"38 C:\temp\dev\AK7030-OTP\common.c
+"40 C:\temp\dev\AK7030-OTP\common.c
 [v _uiBigTimer `ui  1 s ]
-"38 C:\temp\dev\AK7030-OTP\common.c
+"40 C:\temp\dev\AK7030-OTP\common.c
 [v _uiSmallTimer `ui  1 s ]
-"40 C:\temp\dev\AK7030-OTP\common.c
+"42 C:\temp\dev\AK7030-OTP\common.c
 [v _uiTwentySecondsTimer `ui  1 s ]
-"40 C:\temp\dev\AK7030-OTP\common.c
+"42 C:\temp\dev\AK7030-OTP\common.c
 [v _uiTwentyMinuteTimer `ui  1 s ]
-"42 C:\temp\dev\AK7030-OTP\common.c
-[v _bTwentyMinStartFlag `uc  1 s ]
-"42 C:\temp\dev\AK7030-OTP\common.c
-[v _bTwentySecStartFlag `uc  1 s ]
-"42 C:\temp\dev\AK7030-OTP\common.c
-[v _bBigTimerStartFlag `uc  1 s ]
-"42 C:\temp\dev\AK7030-OTP\common.c
-[v _bSmallTimerStartFlag `uc  1 s ]
 "44 C:\temp\dev\AK7030-OTP\common.c
-[v _uiSampleChannelZero `i  -> 12 `i s ]
+[v _bTwentyMinStartFlag `uc  1 s ]
+"44 C:\temp\dev\AK7030-OTP\common.c
+[v _bTwentySecStartFlag `uc  1 s ]
+"44 C:\temp\dev\AK7030-OTP\common.c
+[v _bBigTimerStartFlag `uc  1 s ]
+"44 C:\temp\dev\AK7030-OTP\common.c
+[v _bSmallTimerStartFlag `uc  1 s ]
 "46 C:\temp\dev\AK7030-OTP\common.c
-[v _uiSampleChannelSecond `i  -> 12 `i s ]
+[v _uiSampleChannelZero `i  -> 12 `i s ]
 "48 C:\temp\dev\AK7030-OTP\common.c
-[v _uiSampleChannelFifth `i  -> 12 `i s ]
+[v _uiSampleChannelSecond `i  -> 12 `i s ]
 "50 C:\temp\dev\AK7030-OTP\common.c
+[v _uiSampleChannelFifth `i  -> 12 `i s ]
+"52 C:\temp\dev\AK7030-OTP\common.c
 [v _uiSampleChannelSixth `i  -> 12 `i s ]
-"53 C:\temp\dev\AK7030-OTP\common.c
+"55 C:\temp\dev\AK7030-OTP\common.c
 [v _AD_Sample `(v  0 sf ]
 "20 C:\temp\dev\AK7030-OTP\periph.h
 [v _adc_start `(v  0 ef ]
@@ -1298,10 +1300,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.h: 73: void clearThreeHoursTimer();
 [; ;common.h: 74: void clearTwentySecondsTimer();
 [; ;common.h: 75: void clearTwentyMinuteTimer();
-[; ;common.h: 78: unsigned char isFinishedTwelveHoursTimer();
-[; ;common.h: 79: unsigned char isFinishedThreeHoursTimer();
-[; ;common.h: 81: unsigned char getAD_ConvertFlag();
-[; ;common.h: 82: void setAD_ConvertFlag(unsigned char flag);
+[; ;common.h: 77: void vPause20sTimer(unsigned char bValue);
+[; ;common.h: 80: unsigned char isFinishedTwelveHoursTimer();
+[; ;common.h: 81: unsigned char isFinishedThreeHoursTimer();
+[; ;common.h: 83: unsigned char getAD_ConvertFlag();
+[; ;common.h: 84: void setAD_ConvertFlag(unsigned char flag);
 [; ;periph.h: 13: void dac_init();
 [; ;periph.h: 14: void op1_init();
 [; ;periph.h: 15: void op2_init();
@@ -1324,24 +1327,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;common.c: 31: {
 [; ;common.c: 32: unsigned char timer10msStopWatch;
 [; ;common.c: 34: }TimeStopWatch;
-[; ;common.c: 36: static TimeStopWatch timer;
-"38
+"36
+[i _bPause20secTimer
+-> -> 0 `i `uc
+]
+[; ;common.c: 36: static unsigned char bPause20secTimer = 0;
+[; ;common.c: 38: static TimeStopWatch timer;
+"40
 [i _uiBigTimer
 -> -> 0 `i `ui
 ]
 [i _uiSmallTimer
 -> -> 0 `i `ui
 ]
-[; ;common.c: 38: static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
-"40
+[; ;common.c: 40: static unsigned int uiBigTimer = 0,uiSmallTimer = 0;
+"42
 [i _uiTwentySecondsTimer
 -> -> 0 `i `ui
 ]
 [i _uiTwentyMinuteTimer
 -> -> 0 `i `ui
 ]
-[; ;common.c: 40: static unsigned int uiTwentySecondsTimer = 0,uiTwentyMinuteTimer = 0;
-"42
+[; ;common.c: 42: static unsigned int uiTwentySecondsTimer = 0,uiTwentyMinuteTimer = 0;
+"44
 [i _bTwentyMinStartFlag
 -> -> 0 `i `uc
 ]
@@ -1354,1175 +1362,1193 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _bSmallTimerStartFlag
 -> -> 0 `i `uc
 ]
-[; ;common.c: 42: static unsigned char bTwentyMinStartFlag= 0, bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
-[; ;common.c: 44: static int uiSampleChannelZero[12];
-[; ;common.c: 46: static int uiSampleChannelSecond[12];
-[; ;common.c: 48: static int uiSampleChannelFifth[12];
-[; ;common.c: 50: static int uiSampleChannelSixth[12];
-[; ;common.c: 53: static void AD_Sample(void);
-"63
+[; ;common.c: 44: static unsigned char bTwentyMinStartFlag= 0, bTwentySecStartFlag = 0, bBigTimerStartFlag = 0, bSmallTimerStartFlag = 0;
+[; ;common.c: 46: static int uiSampleChannelZero[12];
+[; ;common.c: 48: static int uiSampleChannelSecond[12];
+[; ;common.c: 50: static int uiSampleChannelFifth[12];
+[; ;common.c: 52: static int uiSampleChannelSixth[12];
+[; ;common.c: 55: static void AD_Sample(void);
+"59
+[v _vPause20sTimer `(v  1 ef1`uc ]
+{
+[; ;common.c: 58: void vPause20sTimer(unsigned char bValue)
+[; ;common.c: 59: {
+[e :U _vPause20sTimer ]
+[v _bValue `uc  1 r1 ]
+[f ]
+[; ;common.c: 60: bPause20secTimer = bValue;
+"60
+[e = _bPause20secTimer _bValue ]
+[; ;common.c: 61: }
+"61
+[e :UE 42 ]
+}
+"67
 [v _Filter `(ui  1 ef1`*i ]
 {
-[; ;common.c: 62: unsigned int Filter(int *tmpValue)
-[; ;common.c: 63: {
+[; ;common.c: 66: unsigned int Filter(int *tmpValue)
+[; ;common.c: 67: {
 [e :U _Filter ]
 [v _tmpValue `*i  1 r1 ]
 [f ]
-"65
+"69
 [v _i `uc  1 a ]
-[; ;common.c: 65: unsigned char i = 0, j = 0;
+[; ;common.c: 69: unsigned char i = 0, j = 0;
 [e = _i -> -> 0 `i `uc ]
 [v _j `uc  1 a ]
 [e = _j -> -> 0 `i `uc ]
-"67
+"71
 [v _filter_temp `ui  1 a ]
-[; ;common.c: 67: unsigned int filter_temp = 0, filter_sum = 0;
+[; ;common.c: 71: unsigned int filter_temp = 0, filter_sum = 0;
 [e = _filter_temp -> -> 0 `i `ui ]
 [v _filter_sum `ui  1 a ]
 [e = _filter_sum -> -> 0 `i `ui ]
-"69
+"73
 [v _filter_buf `ui  -> 12 `i a ]
-[; ;common.c: 69: unsigned int filter_buf[12];
-[; ;common.c: 71: for(int cir = 0;cir < 12; cir++)
-"71
+[; ;common.c: 73: unsigned int filter_buf[12];
+[; ;common.c: 75: for(int cir = 0;cir < 12; cir++)
+"75
 {
 [v _cir `i  1 a ]
 [e = _cir -> 0 `i ]
-[e $ < _cir -> 12 `i 43  ]
-[e $U 44  ]
-"72
-[e :U 43 ]
-[; ;common.c: 72: filter_buf[cir] = *tmpValue++;
-[e = *U + &U _filter_buf * -> -> _cir `ui `ux -> -> # *U &U _filter_buf `ui `ux -> *U ++ _tmpValue * -> -> 1 `i `x -> -> # *U _tmpValue `i `x `ui ]
-"71
-[e ++ _cir -> 1 `i ]
-[e $ < _cir -> 12 `i 43  ]
+[e $ < _cir -> 12 `i 44  ]
+[e $U 45  ]
+"76
 [e :U 44 ]
-"72
-}
-[; ;common.c: 75: for(j = 0; j < 12 - 1; j++)
+[; ;common.c: 76: filter_buf[cir] = *tmpValue++;
+[e = *U + &U _filter_buf * -> -> _cir `ui `ux -> -> # *U &U _filter_buf `ui `ux -> *U ++ _tmpValue * -> -> 1 `i `x -> -> # *U _tmpValue `i `x `ui ]
 "75
+[e ++ _cir -> 1 `i ]
+[e $ < _cir -> 12 `i 44  ]
+[e :U 45 ]
+"76
+}
+[; ;common.c: 79: for(j = 0; j < 12 - 1; j++)
+"79
 {
 [e = _j -> -> 0 `i `uc ]
-[e $ < -> _j `i - -> 12 `i -> 1 `i 46  ]
-[e $U 47  ]
-"76
-[e :U 46 ]
-[; ;common.c: 76: {
+[e $ < -> _j `i - -> 12 `i -> 1 `i 47  ]
+[e $U 48  ]
+"80
+[e :U 47 ]
+[; ;common.c: 80: {
 {
-[; ;common.c: 77: for(i = 0; i < 12 - 1 - j; i++)
-"77
+[; ;common.c: 81: for(i = 0; i < 12 - 1 - j; i++)
+"81
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 52  ]
-"78
-[e :U 49 ]
-[; ;common.c: 78: {
-{
-[; ;common.c: 79: if(filter_buf[i] > filter_buf[i + 1])
-"79
-[e $ ! > *U + &U _filter_buf * -> _i `ux -> -> # *U &U _filter_buf `ui `ux *U + &U _filter_buf * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _filter_buf `ui `ux 53  ]
-[; ;common.c: 80: {
-"80
-{
-[; ;common.c: 82: filter_temp = filter_buf[i];
+[e $U 53  ]
 "82
-[e = _filter_temp *U + &U _filter_buf * -> _i `ux -> -> # *U &U _filter_buf `ui `ux ]
-[; ;common.c: 84: filter_buf[i] = filter_buf[i + 1];
-"84
-[e = *U + &U _filter_buf * -> _i `ux -> -> # *U &U _filter_buf `ui `ux *U + &U _filter_buf * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _filter_buf `ui `ux ]
-[; ;common.c: 86: filter_buf[i + 1] = filter_temp;
-"86
-[e = *U + &U _filter_buf * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _filter_buf `ui `ux _filter_temp ]
-"87
-}
-[e :U 53 ]
-"88
-}
-"77
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 52 ]
-[e $ < -> _i `i - - -> 12 `i -> 1 `i -> _j `i 49  ]
 [e :U 50 ]
+[; ;common.c: 82: {
+{
+[; ;common.c: 83: if(filter_buf[i] > filter_buf[i + 1])
+"83
+[e $ ! > *U + &U _filter_buf * -> _i `ux -> -> # *U &U _filter_buf `ui `ux *U + &U _filter_buf * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _filter_buf `ui `ux 54  ]
+[; ;common.c: 84: {
+"84
+{
+[; ;common.c: 86: filter_temp = filter_buf[i];
+"86
+[e = _filter_temp *U + &U _filter_buf * -> _i `ux -> -> # *U &U _filter_buf `ui `ux ]
+[; ;common.c: 88: filter_buf[i] = filter_buf[i + 1];
 "88
-}
-"89
-}
-"75
-[e ++ _j -> -> 1 `i `uc ]
-[e $ < -> _j `i - -> 12 `i -> 1 `i 46  ]
-[e :U 47 ]
-"89
-}
-[; ;common.c: 87: }
-[; ;common.c: 88: }
-[; ;common.c: 89: }
-[; ;common.c: 91: for(i = 2; i < 12 - 2; i++)
+[e = *U + &U _filter_buf * -> _i `ux -> -> # *U &U _filter_buf `ui `ux *U + &U _filter_buf * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _filter_buf `ui `ux ]
+[; ;common.c: 90: filter_buf[i + 1] = filter_temp;
+"90
+[e = *U + &U _filter_buf * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _filter_buf `ui `ux _filter_temp ]
 "91
+}
+[e :U 54 ]
+"92
+}
+"81
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 53 ]
+[e $ < -> _i `i - - -> 12 `i -> 1 `i -> _j `i 50  ]
+[e :U 51 ]
+"92
+}
+"93
+}
+"79
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i - -> 12 `i -> 1 `i 47  ]
+[e :U 48 ]
+"93
+}
+[; ;common.c: 91: }
+[; ;common.c: 92: }
+[; ;common.c: 93: }
+[; ;common.c: 95: for(i = 2; i < 12 - 2; i++)
+"95
 {
 [e = _i -> -> 2 `i `uc ]
-[e $ < -> _i `i - -> 12 `i -> 2 `i 54  ]
-[e $U 55  ]
-"92
-[e :U 54 ]
-[; ;common.c: 92: {
-{
-[; ;common.c: 93: filter_sum += filter_buf[i];
-"93
-[e =+ _filter_sum *U + &U _filter_buf * -> _i `ux -> -> # *U &U _filter_buf `ui `ux ]
-"94
-}
-"91
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i - -> 12 `i -> 2 `i 54  ]
-[e :U 55 ]
-"94
-}
-[; ;common.c: 94: }
-[; ;common.c: 96: return (filter_sum >> 3);
+[e $ < -> _i `i - -> 12 `i -> 2 `i 55  ]
+[e $U 56  ]
 "96
-[e ) >> _filter_sum -> 3 `i ]
-[e $UE 42  ]
-[; ;common.c: 98: }
+[e :U 55 ]
+[; ;common.c: 96: {
+{
+[; ;common.c: 97: filter_sum += filter_buf[i];
+"97
+[e =+ _filter_sum *U + &U _filter_buf * -> _i `ux -> -> # *U &U _filter_buf `ui `ux ]
 "98
-[e :UE 42 ]
 }
-"105
+"95
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i - -> 12 `i -> 2 `i 55  ]
+[e :U 56 ]
+"98
+}
+[; ;common.c: 98: }
+[; ;common.c: 100: return (filter_sum >> 3);
+"100
+[e ) >> _filter_sum -> 3 `i ]
+[e $UE 43  ]
+[; ;common.c: 102: }
+"102
+[e :UE 43 ]
+}
+"109
 [v _vPutSampleDataIntoTable `(v  1 ef2`ui`uc ]
 {
-[; ;common.c: 104: void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
-[; ;common.c: 105: {
+[; ;common.c: 108: void vPutSampleDataIntoTable(unsigned int uiSampleData,unsigned char channel)
+[; ;common.c: 109: {
 [e :U _vPutSampleDataIntoTable ]
 [v _uiSampleData `ui  1 r1 ]
 [v _channel `uc  1 r2 ]
 [f ]
-"107
-[v F858 `uc  1 s ucChannelZeroLength ]
-[i F858
--> -> 0 `i `uc
-]
-"109
-[v F859 `uc  1 s ucChannelSecondLength ]
-[i F859
--> -> 0 `i `uc
-]
 "111
-[v F860 `uc  1 s ucChannelFifthLength ]
-[i F860
+[v F862 `uc  1 s ucChannelZeroLength ]
+[i F862
 -> -> 0 `i `uc
 ]
 "113
-[v F861 `uc  1 s ucChannelSixthLength ]
-[i F861
+[v F863 `uc  1 s ucChannelSecondLength ]
+[i F863
 -> -> 0 `i `uc
 ]
-[; ;common.c: 107: static unsigned char ucChannelZeroLength = 0;
-[; ;common.c: 109: static unsigned char ucChannelSecondLength = 0;
-[; ;common.c: 111: static unsigned char ucChannelFifthLength = 0;
-[; ;common.c: 113: static unsigned char ucChannelSixthLength = 0;
-[; ;common.c: 115: if(channel == 0)
 "115
-[e $ ! == -> _channel `i -> 0 `i 58  ]
-[; ;common.c: 116: {
-"116
-{
-[; ;common.c: 117: if(ucChannelZeroLength < 12)
+[v F864 `uc  1 s ucChannelFifthLength ]
+[i F864
+-> -> 0 `i `uc
+]
 "117
-[e $ ! < -> F858 `i -> 12 `i 59  ]
-[; ;common.c: 118: {
-"118
-{
-[; ;common.c: 119: uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
+[v F865 `uc  1 s ucChannelSixthLength ]
+[i F865
+-> -> 0 `i `uc
+]
+[; ;common.c: 111: static unsigned char ucChannelZeroLength = 0;
+[; ;common.c: 113: static unsigned char ucChannelSecondLength = 0;
+[; ;common.c: 115: static unsigned char ucChannelFifthLength = 0;
+[; ;common.c: 117: static unsigned char ucChannelSixthLength = 0;
+[; ;common.c: 119: if(channel == 0)
 "119
-[e = *U + &U _uiSampleChannelZero * -> F858 `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> _uiSampleData `i ]
-[; ;common.c: 121: ucChannelZeroLength++;
+[e $ ! == -> _channel `i -> 0 `i 59  ]
+[; ;common.c: 120: {
+"120
+{
+[; ;common.c: 121: if(ucChannelZeroLength < 12)
 "121
-[e ++ F858 -> -> 1 `i `uc ]
+[e $ ! < -> F862 `i -> 12 `i 60  ]
+[; ;common.c: 122: {
 "122
-}
-[; ;common.c: 122: }
-[e $U 60  ]
+{
+[; ;common.c: 123: uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
 "123
-[e :U 59 ]
-[; ;common.c: 123: else
-[; ;common.c: 124: {
-"124
-{
-[; ;common.c: 125: ucChannelZeroLength = 0;
+[e = *U + &U _uiSampleChannelZero * -> F862 `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> _uiSampleData `i ]
+[; ;common.c: 125: ucChannelZeroLength++;
 "125
-[e = F858 -> -> 0 `i `uc ]
-[; ;common.c: 127: uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
-"127
-[e = *U + &U _uiSampleChannelZero * -> F858 `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> _uiSampleData `i ]
-"128
+[e ++ F862 -> -> 1 `i `uc ]
+"126
 }
-[e :U 60 ]
-"129
-}
-[; ;common.c: 128: }
-[; ;common.c: 129: }
+[; ;common.c: 126: }
 [e $U 61  ]
-"130
-[e :U 58 ]
-[; ;common.c: 130: else if(channel == 2)
-[e $ ! == -> _channel `i -> 2 `i 62  ]
-[; ;common.c: 131: {
+"127
+[e :U 60 ]
+[; ;common.c: 127: else
+[; ;common.c: 128: {
+"128
+{
+[; ;common.c: 129: ucChannelZeroLength = 0;
+"129
+[e = F862 -> -> 0 `i `uc ]
+[; ;common.c: 131: uiSampleChannelZero[ucChannelZeroLength] = uiSampleData;
 "131
-{
-[; ;common.c: 132: if(ucChannelSecondLength < 12)
+[e = *U + &U _uiSampleChannelZero * -> F862 `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> _uiSampleData `i ]
 "132
-[e $ ! < -> F859 `i -> 12 `i 63  ]
-[; ;common.c: 133: {
+}
+[e :U 61 ]
 "133
-{
-[; ;common.c: 134: uiSampleChannelSecond[ucChannelSecondLength] = uiSampleData;
+}
+[; ;common.c: 132: }
+[; ;common.c: 133: }
+[e $U 62  ]
 "134
-[e = *U + &U _uiSampleChannelSecond * -> F859 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
-[; ;common.c: 136: ucChannelSecondLength++;
+[e :U 59 ]
+[; ;common.c: 134: else if(channel == 2)
+[e $ ! == -> _channel `i -> 2 `i 63  ]
+[; ;common.c: 135: {
+"135
+{
+[; ;common.c: 136: if(ucChannelSecondLength < 12)
 "136
-[e ++ F859 -> -> 1 `i `uc ]
+[e $ ! < -> F863 `i -> 12 `i 64  ]
+[; ;common.c: 137: {
 "137
-}
-[; ;common.c: 137: }
-[e $U 64  ]
+{
+[; ;common.c: 138: uiSampleChannelSecond[ucChannelSecondLength] = uiSampleData;
 "138
-[e :U 63 ]
-[; ;common.c: 138: else
-[; ;common.c: 139: {
-"139
-{
-[; ;common.c: 140: ucChannelSecondLength = 0;
+[e = *U + &U _uiSampleChannelSecond * -> F863 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
+[; ;common.c: 140: ucChannelSecondLength++;
 "140
-[e = F859 -> -> 0 `i `uc ]
-[; ;common.c: 142: uiSampleChannelSecond[ucChannelSecondLength] = uiSampleData;
-"142
-[e = *U + &U _uiSampleChannelSecond * -> F859 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
-"143
+[e ++ F863 -> -> 1 `i `uc ]
+"141
 }
-[e :U 64 ]
-"144
-}
-[; ;common.c: 143: }
-[; ;common.c: 144: }
+[; ;common.c: 141: }
 [e $U 65  ]
-"145
-[e :U 62 ]
-[; ;common.c: 145: else if(channel == 5)
-[e $ ! == -> _channel `i -> 5 `i 66  ]
-[; ;common.c: 146: {
+"142
+[e :U 64 ]
+[; ;common.c: 142: else
+[; ;common.c: 143: {
+"143
+{
+[; ;common.c: 144: ucChannelSecondLength = 0;
+"144
+[e = F863 -> -> 0 `i `uc ]
+[; ;common.c: 146: uiSampleChannelSecond[ucChannelSecondLength] = uiSampleData;
 "146
-{
-[; ;common.c: 147: if(ucChannelFifthLength < 12)
+[e = *U + &U _uiSampleChannelSecond * -> F863 `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> _uiSampleData `i ]
 "147
-[e $ ! < -> F860 `i -> 12 `i 67  ]
-[; ;common.c: 148: {
+}
+[e :U 65 ]
 "148
-{
-[; ;common.c: 149: uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
+}
+[; ;common.c: 147: }
+[; ;common.c: 148: }
+[e $U 66  ]
 "149
-[e = *U + &U _uiSampleChannelFifth * -> F860 `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> _uiSampleData `i ]
-[; ;common.c: 151: ucChannelFifthLength++;
+[e :U 63 ]
+[; ;common.c: 149: else if(channel == 5)
+[e $ ! == -> _channel `i -> 5 `i 67  ]
+[; ;common.c: 150: {
+"150
+{
+[; ;common.c: 151: if(ucChannelFifthLength < 12)
 "151
-[e ++ F860 -> -> 1 `i `uc ]
+[e $ ! < -> F864 `i -> 12 `i 68  ]
+[; ;common.c: 152: {
 "152
-}
-[; ;common.c: 152: }
-[e $U 68  ]
+{
+[; ;common.c: 153: uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
 "153
-[e :U 67 ]
-[; ;common.c: 153: else
-[; ;common.c: 154: {
-"154
-{
-[; ;common.c: 155: ucChannelFifthLength = 0;
+[e = *U + &U _uiSampleChannelFifth * -> F864 `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> _uiSampleData `i ]
+[; ;common.c: 155: ucChannelFifthLength++;
 "155
-[e = F860 -> -> 0 `i `uc ]
-[; ;common.c: 157: uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
-"157
-[e = *U + &U _uiSampleChannelFifth * -> F860 `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> _uiSampleData `i ]
-"158
+[e ++ F864 -> -> 1 `i `uc ]
+"156
 }
-[e :U 68 ]
-"159
-}
-[; ;common.c: 158: }
-[; ;common.c: 159: }
+[; ;common.c: 156: }
 [e $U 69  ]
-"160
-[e :U 66 ]
-[; ;common.c: 160: else if(channel == 6)
-[e $ ! == -> _channel `i -> 6 `i 70  ]
-[; ;common.c: 161: {
+"157
+[e :U 68 ]
+[; ;common.c: 157: else
+[; ;common.c: 158: {
+"158
+{
+[; ;common.c: 159: ucChannelFifthLength = 0;
+"159
+[e = F864 -> -> 0 `i `uc ]
+[; ;common.c: 161: uiSampleChannelFifth[ucChannelFifthLength] = uiSampleData;
 "161
-{
-[; ;common.c: 162: if(ucChannelSixthLength < 12)
+[e = *U + &U _uiSampleChannelFifth * -> F864 `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> _uiSampleData `i ]
 "162
-[e $ ! < -> F861 `i -> 12 `i 71  ]
-[; ;common.c: 163: {
+}
+[e :U 69 ]
 "163
-{
-[; ;common.c: 164: uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
+}
+[; ;common.c: 162: }
+[; ;common.c: 163: }
+[e $U 70  ]
 "164
-[e = *U + &U _uiSampleChannelSixth * -> F861 `ux -> -> # *U &U _uiSampleChannelSixth `ui `ux -> _uiSampleData `i ]
-[; ;common.c: 166: ucChannelSixthLength++;
+[e :U 67 ]
+[; ;common.c: 164: else if(channel == 6)
+[e $ ! == -> _channel `i -> 6 `i 71  ]
+[; ;common.c: 165: {
+"165
+{
+[; ;common.c: 166: if(ucChannelSixthLength < 12)
 "166
-[e ++ F861 -> -> 1 `i `uc ]
+[e $ ! < -> F865 `i -> 12 `i 72  ]
+[; ;common.c: 167: {
 "167
-}
-[; ;common.c: 167: }
-[e $U 72  ]
+{
+[; ;common.c: 168: uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
 "168
-[e :U 71 ]
-[; ;common.c: 168: else
-[; ;common.c: 169: {
-"169
-{
-[; ;common.c: 170: ucChannelSixthLength = 0;
+[e = *U + &U _uiSampleChannelSixth * -> F865 `ux -> -> # *U &U _uiSampleChannelSixth `ui `ux -> _uiSampleData `i ]
+[; ;common.c: 170: ucChannelSixthLength++;
 "170
-[e = F861 -> -> 0 `i `uc ]
-[; ;common.c: 172: uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
-"172
-[e = *U + &U _uiSampleChannelSixth * -> F861 `ux -> -> # *U &U _uiSampleChannelSixth `ui `ux -> _uiSampleData `i ]
-"173
+[e ++ F865 -> -> 1 `i `uc ]
+"171
 }
-[e :U 72 ]
-"174
-}
-[; ;common.c: 173: }
-[; ;common.c: 174: }
+[; ;common.c: 171: }
 [e $U 73  ]
-"175
-[e :U 70 ]
-[; ;common.c: 175: else
-[; ;common.c: 176: {
-"176
+"172
+[e :U 72 ]
+[; ;common.c: 172: else
+[; ;common.c: 173: {
+"173
 {
-[; ;common.c: 177: ucChannelZeroLength = 0;
+[; ;common.c: 174: ucChannelSixthLength = 0;
+"174
+[e = F865 -> -> 0 `i `uc ]
+[; ;common.c: 176: uiSampleChannelSixth[ucChannelSixthLength] = uiSampleData;
+"176
+[e = *U + &U _uiSampleChannelSixth * -> F865 `ux -> -> # *U &U _uiSampleChannelSixth `ui `ux -> _uiSampleData `i ]
 "177
-[e = F858 -> -> 0 `i `uc ]
-[; ;common.c: 179: ucChannelSecondLength = 0;
+}
+[e :U 73 ]
+"178
+}
+[; ;common.c: 177: }
+[; ;common.c: 178: }
+[e $U 74  ]
 "179
-[e = F859 -> -> 0 `i `uc ]
-[; ;common.c: 181: ucChannelFifthLength = 0;
+[e :U 71 ]
+[; ;common.c: 179: else
+[; ;common.c: 180: {
+"180
+{
+[; ;common.c: 181: ucChannelZeroLength = 0;
 "181
-[e = F860 -> -> 0 `i `uc ]
-[; ;common.c: 183: ucChannelSixthLength = 0;
+[e = F862 -> -> 0 `i `uc ]
+[; ;common.c: 183: ucChannelSecondLength = 0;
 "183
-[e = F861 -> -> 0 `i `uc ]
-[; ;common.c: 185: for(int i = 0;i < 12; i++)
+[e = F863 -> -> 0 `i `uc ]
+[; ;common.c: 185: ucChannelFifthLength = 0;
 "185
+[e = F864 -> -> 0 `i `uc ]
+[; ;common.c: 187: ucChannelSixthLength = 0;
+"187
+[e = F865 -> -> 0 `i `uc ]
+[; ;common.c: 189: for(int i = 0;i < 12; i++)
+"189
 {
 [v _i `i  1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 12 `i 74  ]
-[e $U 75  ]
-"186
-[e :U 74 ]
-[; ;common.c: 186: {
-{
-[; ;common.c: 187: uiSampleChannelZero[i] = 0;
-"187
-[e = *U + &U _uiSampleChannelZero * -> -> _i `ui `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> 0 `i ]
-[; ;common.c: 189: uiSampleChannelSecond[i] = 0;
-"189
-[e = *U + &U _uiSampleChannelSecond * -> -> _i `ui `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> 0 `i ]
-[; ;common.c: 191: uiSampleChannelFifth[i] = 0;
-"191
-[e = *U + &U _uiSampleChannelFifth * -> -> _i `ui `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> 0 `i ]
-[; ;common.c: 193: uiSampleChannelSixth[i] = 0;
-"193
-[e = *U + &U _uiSampleChannelSixth * -> -> _i `ui `ux -> -> # *U &U _uiSampleChannelSixth `ui `ux -> 0 `i ]
-"195
-}
-"185
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 12 `i 74  ]
+[e $ < _i -> 12 `i 75  ]
+[e $U 76  ]
+"190
 [e :U 75 ]
+[; ;common.c: 190: {
+{
+[; ;common.c: 191: uiSampleChannelZero[i] = 0;
+"191
+[e = *U + &U _uiSampleChannelZero * -> -> _i `ui `ux -> -> # *U &U _uiSampleChannelZero `ui `ux -> 0 `i ]
+[; ;common.c: 193: uiSampleChannelSecond[i] = 0;
+"193
+[e = *U + &U _uiSampleChannelSecond * -> -> _i `ui `ux -> -> # *U &U _uiSampleChannelSecond `ui `ux -> 0 `i ]
+[; ;common.c: 195: uiSampleChannelFifth[i] = 0;
 "195
-}
-"196
-}
-[e :U 73 ]
-[e :U 69 ]
-[e :U 65 ]
-[e :U 61 ]
-[; ;common.c: 195: }
-[; ;common.c: 196: }
-[; ;common.c: 197: }
+[e = *U + &U _uiSampleChannelFifth * -> -> _i `ui `ux -> -> # *U &U _uiSampleChannelFifth `ui `ux -> 0 `i ]
+[; ;common.c: 197: uiSampleChannelSixth[i] = 0;
 "197
-[e :UE 57 ]
+[e = *U + &U _uiSampleChannelSixth * -> -> _i `ui `ux -> -> # *U &U _uiSampleChannelSixth `ui `ux -> 0 `i ]
+"199
 }
+"189
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 12 `i 75  ]
+[e :U 76 ]
+"199
+}
+"200
+}
+[e :U 74 ]
+[e :U 70 ]
+[e :U 66 ]
+[e :U 62 ]
+[; ;common.c: 199: }
+[; ;common.c: 200: }
+[; ;common.c: 201: }
 "201
+[e :UE 58 ]
+}
+"205
 [v _clock_config `(v  1 ef ]
 {
-[; ;common.c: 200: void clock_config()
-[; ;common.c: 201: {
+[; ;common.c: 204: void clock_config()
+[; ;common.c: 205: {
 [e :U _clock_config ]
 [f ]
-[; ;common.c: 203: CLKPR = 0x80;
-"203
+[; ;common.c: 207: CLKPR = 0x80;
+"207
 [e = _CLKPR -> -> 128 `i `uc ]
-[; ;common.c: 204: CLKPR = 0x00;
-"204
+[; ;common.c: 208: CLKPR = 0x00;
+"208
 [e = _CLKPR -> -> 0 `i `uc ]
-[; ;common.c: 205: while(CLKPCE);
-"205
-[e $U 78  ]
-[e :U 79 ]
-[e :U 78 ]
-[e $ _CLKPCE 79  ]
-[e :U 80 ]
-[; ;common.c: 206: }
-"206
-[e :UE 77 ]
-}
+[; ;common.c: 209: while(CLKPCE);
 "209
+[e $U 79  ]
+[e :U 80 ]
+[e :U 79 ]
+[e $ _CLKPCE 80  ]
+[e :U 81 ]
+[; ;common.c: 210: }
+"210
+[e :UE 78 ]
+}
+"213
 [v _timer1_config `(v  1 ef ]
 {
-[; ;common.c: 208: void timer1_config()
-[; ;common.c: 209: {
+[; ;common.c: 212: void timer1_config()
+[; ;common.c: 213: {
 [e :U _timer1_config ]
 [f ]
-[; ;common.c: 211: TMR1H=0xCF;
-"211
+[; ;common.c: 215: TMR1H=0xCF;
+"215
 [e = _TMR1H -> -> 207 `i `uc ]
-[; ;common.c: 212: TMR1L=0x2C;
-"212
-[e = _TMR1L -> -> 44 `i `uc ]
-[; ;common.c: 213: T1CON=0xE1;
-"213
-[e = _T1CON -> -> 225 `i `uc ]
-[; ;common.c: 214: TMR1IE=1;
-"214
-[e = _TMR1IE -> -> 1 `i `b ]
-[; ;common.c: 216: }
+[; ;common.c: 216: TMR1L=0x2C;
 "216
-[e :UE 81 ]
-}
-"221
-[v _timer1_interrupt_config `(v  1 ef ]
-{
-[; ;common.c: 220: void timer1_interrupt_config()
-[; ;common.c: 221: {
-[e :U _timer1_interrupt_config ]
-[f ]
-[; ;common.c: 222: GIE = 1;
-"222
-[e = _GIE -> -> 1 `i `b ]
-[; ;common.c: 223: PEIE = 1;
-"223
-[e = _PEIE -> -> 1 `i `b ]
-[; ;common.c: 224: }
-"224
+[e = _TMR1L -> -> 44 `i `uc ]
+[; ;common.c: 217: T1CON=0xE1;
+"217
+[e = _T1CON -> -> 225 `i `uc ]
+[; ;common.c: 218: TMR1IE=1;
+"218
+[e = _TMR1IE -> -> 1 `i `b ]
+[; ;common.c: 220: }
+"220
 [e :UE 82 ]
 }
-"229
-[v _getAD_ConvertFlag `(uc  1 ef ]
+"225
+[v _timer1_interrupt_config `(v  1 ef ]
 {
-[; ;common.c: 228: unsigned char getAD_ConvertFlag()
-[; ;common.c: 229: {
-[e :U _getAD_ConvertFlag ]
+[; ;common.c: 224: void timer1_interrupt_config()
+[; ;common.c: 225: {
+[e :U _timer1_interrupt_config ]
 [f ]
-[; ;common.c: 230: return adc_convert_flag;
-"230
-[e ) _adc_convert_flag ]
-[e $UE 83  ]
-[; ;common.c: 231: }
-"231
+[; ;common.c: 226: GIE = 1;
+"226
+[e = _GIE -> -> 1 `i `b ]
+[; ;common.c: 227: PEIE = 1;
+"227
+[e = _PEIE -> -> 1 `i `b ]
+[; ;common.c: 228: }
+"228
 [e :UE 83 ]
 }
+"233
+[v _getAD_ConvertFlag `(uc  1 ef ]
+{
+[; ;common.c: 232: unsigned char getAD_ConvertFlag()
+[; ;common.c: 233: {
+[e :U _getAD_ConvertFlag ]
+[f ]
+[; ;common.c: 234: return adc_convert_flag;
+"234
+[e ) _adc_convert_flag ]
+[e $UE 84  ]
+[; ;common.c: 235: }
 "235
+[e :UE 84 ]
+}
+"239
 [v _setAD_ConvertFlag `(v  1 ef1`uc ]
 {
-[; ;common.c: 234: void setAD_ConvertFlag(unsigned char flag)
-[; ;common.c: 235: {
+[; ;common.c: 238: void setAD_ConvertFlag(unsigned char flag)
+[; ;common.c: 239: {
 [e :U _setAD_ConvertFlag ]
 [v _flag `uc  1 r1 ]
 [f ]
-[; ;common.c: 236: adc_convert_flag = flag;
-"236
+[; ;common.c: 240: adc_convert_flag = flag;
+"240
 [e = _adc_convert_flag _flag ]
-[; ;common.c: 237: }
-"237
-[e :UE 84 ]
-}
-"246
-[v _getAdOriginalCh1Value `(ui  1 ef ]
-{
-[; ;common.c: 245: unsigned int getAdOriginalCh1Value()
-[; ;common.c: 246: {
-[e :U _getAdOriginalCh1Value ]
-[f ]
-[; ;common.c: 249: return Filter(uiSampleChannelZero);
-"249
-[e ) ( _Filter (1 &U _uiSampleChannelZero ]
-[e $UE 85  ]
-[; ;common.c: 254: }
-"254
+[; ;common.c: 241: }
+"241
 [e :UE 85 ]
 }
-"259
-[v _getAdOriginalCh0Value `(ui  1 ef ]
+"250
+[v _getAdOriginalCh1Value `(ui  1 ef ]
 {
-[; ;common.c: 258: unsigned int getAdOriginalCh0Value()
-[; ;common.c: 259: {
-[e :U _getAdOriginalCh0Value ]
+[; ;common.c: 249: unsigned int getAdOriginalCh1Value()
+[; ;common.c: 250: {
+[e :U _getAdOriginalCh1Value ]
 [f ]
-[; ;common.c: 261: return Filter(uiSampleChannelZero);
-"261
+[; ;common.c: 253: return Filter(uiSampleChannelZero);
+"253
 [e ) ( _Filter (1 &U _uiSampleChannelZero ]
 [e $UE 86  ]
-[; ;common.c: 265: }
-"265
+[; ;common.c: 258: }
+"258
 [e :UE 86 ]
 }
-"268
-[v _getAdOriginalCh5Value `(ui  1 ef ]
+"263
+[v _getAdOriginalCh0Value `(ui  1 ef ]
 {
-[; ;common.c: 267: unsigned int getAdOriginalCh5Value()
-[; ;common.c: 268: {
-[e :U _getAdOriginalCh5Value ]
+[; ;common.c: 262: unsigned int getAdOriginalCh0Value()
+[; ;common.c: 263: {
+[e :U _getAdOriginalCh0Value ]
 [f ]
-[; ;common.c: 270: return Filter(uiSampleChannelFifth);
-"270
-[e ) ( _Filter (1 &U _uiSampleChannelFifth ]
+[; ;common.c: 265: return Filter(uiSampleChannelZero);
+"265
+[e ) ( _Filter (1 &U _uiSampleChannelZero ]
 [e $UE 87  ]
-[; ;common.c: 274: }
-"274
+[; ;common.c: 269: }
+"269
 [e :UE 87 ]
 }
-"278
-[v _getAdOriginalCh6Value `(ui  1 ef ]
+"272
+[v _getAdOriginalCh5Value `(ui  1 ef ]
 {
-[; ;common.c: 277: unsigned int getAdOriginalCh6Value()
-[; ;common.c: 278: {
-[e :U _getAdOriginalCh6Value ]
+[; ;common.c: 271: unsigned int getAdOriginalCh5Value()
+[; ;common.c: 272: {
+[e :U _getAdOriginalCh5Value ]
 [f ]
-[; ;common.c: 280: return Filter(uiSampleChannelSixth);
-"280
-[e ) ( _Filter (1 &U _uiSampleChannelSixth ]
+[; ;common.c: 274: return Filter(uiSampleChannelFifth);
+"274
+[e ) ( _Filter (1 &U _uiSampleChannelFifth ]
 [e $UE 88  ]
-[; ;common.c: 284: }
-"284
+[; ;common.c: 278: }
+"278
 [e :UE 88 ]
 }
-"287
-[v _getAdOriginalCh2Value `(ui  1 ef ]
+"282
+[v _getAdOriginalCh6Value `(ui  1 ef ]
 {
-[; ;common.c: 286: unsigned int getAdOriginalCh2Value()
-[; ;common.c: 287: {
-[e :U _getAdOriginalCh2Value ]
+[; ;common.c: 281: unsigned int getAdOriginalCh6Value()
+[; ;common.c: 282: {
+[e :U _getAdOriginalCh6Value ]
 [f ]
-[; ;common.c: 289: return Filter(uiSampleChannelSecond);
-"289
-[e ) ( _Filter (1 &U _uiSampleChannelSecond ]
+[; ;common.c: 284: return Filter(uiSampleChannelSixth);
+"284
+[e ) ( _Filter (1 &U _uiSampleChannelSixth ]
 [e $UE 89  ]
-[; ;common.c: 293: }
-"293
+[; ;common.c: 288: }
+"288
 [e :UE 89 ]
 }
-"298
-[v _process_AD_Converter_Value `(v  1 ef ]
+"291
+[v _getAdOriginalCh2Value `(ui  1 ef ]
 {
-[; ;common.c: 297: void process_AD_Converter_Value()
-[; ;common.c: 298: {
-[e :U _process_AD_Converter_Value ]
+[; ;common.c: 290: unsigned int getAdOriginalCh2Value()
+[; ;common.c: 291: {
+[e :U _getAdOriginalCh2Value ]
 [f ]
-[; ;common.c: 299: if(getAD_ConvertFlag())
-"299
-[e $ ! != -> ( _getAD_ConvertFlag ..  `i -> -> -> 0 `i `uc `i 91  ]
-[; ;common.c: 300: {
-"300
-{
-[; ;common.c: 301: setAD_ConvertFlag(0);
-"301
-[e ( _setAD_ConvertFlag (1 -> -> 0 `i `uc ]
-[; ;common.c: 302: AD_Sample();
-"302
-[e ( _AD_Sample ..  ]
-[; ;common.c: 314: adc_start();
-"314
-[e ( _adc_start ..  ]
-"315
-}
-[e :U 91 ]
-[; ;common.c: 315: }
-[; ;common.c: 316: }
-"316
+[; ;common.c: 293: return Filter(uiSampleChannelSecond);
+"293
+[e ) ( _Filter (1 &U _uiSampleChannelSecond ]
+[e $UE 90  ]
+[; ;common.c: 297: }
+"297
 [e :UE 90 ]
 }
-"328
+"302
+[v _process_AD_Converter_Value `(v  1 ef ]
+{
+[; ;common.c: 301: void process_AD_Converter_Value()
+[; ;common.c: 302: {
+[e :U _process_AD_Converter_Value ]
+[f ]
+[; ;common.c: 303: if(getAD_ConvertFlag())
+"303
+[e $ ! != -> ( _getAD_ConvertFlag ..  `i -> -> -> 0 `i `uc `i 92  ]
+[; ;common.c: 304: {
+"304
+{
+[; ;common.c: 305: setAD_ConvertFlag(0);
+"305
+[e ( _setAD_ConvertFlag (1 -> -> 0 `i `uc ]
+[; ;common.c: 306: AD_Sample();
+"306
+[e ( _AD_Sample ..  ]
+[; ;common.c: 318: adc_start();
+"318
+[e ( _adc_start ..  ]
+"319
+}
+[e :U 92 ]
+[; ;common.c: 319: }
+[; ;common.c: 320: }
+"320
+[e :UE 91 ]
+}
+"332
 [v _AD_Sample `(v  1 sf ]
 {
-[; ;common.c: 327: static void AD_Sample(void)
-[; ;common.c: 328: {
+[; ;common.c: 331: static void AD_Sample(void)
+[; ;common.c: 332: {
 [e :U _AD_Sample ]
 [f ]
-[; ;common.c: 329: if(sampleTimes < 12)
-"329
-[e $ ! < -> _sampleTimes `i -> 12 `i 93  ]
-[; ;common.c: 330: {
-"330
-{
-[; ;common.c: 332: sampleTimes++;
-"332
-[e ++ _sampleTimes -> -> 1 `i `uc ]
-[; ;common.c: 334: if(sampleTimes >= 12)
+[; ;common.c: 333: if(sampleTimes < 12)
+"333
+[e $ ! < -> _sampleTimes `i -> 12 `i 94  ]
+[; ;common.c: 334: {
 "334
-[e $ ! >= -> _sampleTimes `i -> 12 `i 94  ]
-[; ;common.c: 335: {
-"335
 {
-[; ;common.c: 336: sampleTimes = 0;
+[; ;common.c: 336: sampleTimes++;
 "336
-[e = _sampleTimes -> -> 0 `i `uc ]
-[; ;common.c: 338: if(sampleChannelSelect == 0)
+[e ++ _sampleTimes -> -> 1 `i `uc ]
+[; ;common.c: 338: if(sampleTimes >= 12)
 "338
-[e $ ! == -> _sampleChannelSelect `i -> 0 `i 95  ]
+[e $ ! >= -> _sampleTimes `i -> 12 `i 95  ]
 [; ;common.c: 339: {
 "339
 {
-[; ;common.c: 342: sampleChannelSelect = 2;
+[; ;common.c: 340: sampleTimes = 0;
+"340
+[e = _sampleTimes -> -> 0 `i `uc ]
+[; ;common.c: 342: if(sampleChannelSelect == 0)
 "342
-[e = _sampleChannelSelect -> -> 2 `i `uc ]
+[e $ ! == -> _sampleChannelSelect `i -> 0 `i 96  ]
+[; ;common.c: 343: {
 "343
-}
-[; ;common.c: 343: }
-[e $U 96  ]
-"344
-[e :U 95 ]
-[; ;common.c: 344: else if(sampleChannelSelect == 2)
-[e $ ! == -> _sampleChannelSelect `i -> 2 `i 97  ]
-[; ;common.c: 345: {
-"345
 {
-[; ;common.c: 347: sampleChannelSelect = 5;
+[; ;common.c: 346: sampleChannelSelect = 2;
+"346
+[e = _sampleChannelSelect -> -> 2 `i `uc ]
 "347
-[e = _sampleChannelSelect -> -> 5 `i `uc ]
+}
+[; ;common.c: 347: }
+[e $U 97  ]
 "348
-}
-[; ;common.c: 348: }
-[e $U 98  ]
-"349
-[e :U 97 ]
-[; ;common.c: 349: else if(sampleChannelSelect == 5)
-[e $ ! == -> _sampleChannelSelect `i -> 5 `i 99  ]
-[; ;common.c: 350: {
-"350
-{
-[; ;common.c: 352: sampleChannelSelect = 6;
-"352
-[e = _sampleChannelSelect -> -> 6 `i `uc ]
-"353
-}
-[; ;common.c: 353: }
-[e $U 100  ]
-"354
-[e :U 99 ]
-[; ;common.c: 354: else
-[; ;common.c: 355: {
-"355
-{
-[; ;common.c: 357: sampleChannelSelect = 0;
-"357
-[e = _sampleChannelSelect -> -> 0 `i `uc ]
-"358
-}
-[e :U 100 ]
-[e :U 98 ]
 [e :U 96 ]
-[; ;common.c: 358: }
-[; ;common.c: 363: adc_test_init(sampleChannelSelect,3);
-"363
+[; ;common.c: 348: else if(sampleChannelSelect == 2)
+[e $ ! == -> _sampleChannelSelect `i -> 2 `i 98  ]
+[; ;common.c: 349: {
+"349
+{
+[; ;common.c: 351: sampleChannelSelect = 5;
+"351
+[e = _sampleChannelSelect -> -> 5 `i `uc ]
+"352
+}
+[; ;common.c: 352: }
+[e $U 99  ]
+"353
+[e :U 98 ]
+[; ;common.c: 353: else if(sampleChannelSelect == 5)
+[e $ ! == -> _sampleChannelSelect `i -> 5 `i 100  ]
+[; ;common.c: 354: {
+"354
+{
+[; ;common.c: 356: sampleChannelSelect = 6;
+"356
+[e = _sampleChannelSelect -> -> 6 `i `uc ]
+"357
+}
+[; ;common.c: 357: }
+[e $U 101  ]
+"358
+[e :U 100 ]
+[; ;common.c: 358: else
+[; ;common.c: 359: {
+"359
+{
+[; ;common.c: 361: sampleChannelSelect = 0;
+"361
+[e = _sampleChannelSelect -> -> 0 `i `uc ]
+"362
+}
+[e :U 101 ]
+[e :U 99 ]
+[e :U 97 ]
+[; ;common.c: 362: }
+[; ;common.c: 367: adc_test_init(sampleChannelSelect,3);
+"367
 [e ( _adc_test_init (2 , _sampleChannelSelect -> -> 3 `i `uc ]
-"365
+"369
+}
+[e :U 95 ]
+"370
 }
 [e :U 94 ]
-"366
+[; ;common.c: 369: }
+[; ;common.c: 370: }
+[; ;common.c: 371: }
+"371
+[e :UE 93 ]
 }
-[e :U 93 ]
-[; ;common.c: 365: }
-[; ;common.c: 366: }
-[; ;common.c: 367: }
-"367
-[e :UE 92 ]
-}
-"383
+"387
 [v _setDAC0_ChannelValue `(v  1 ef1`uc ]
 {
-[; ;common.c: 382: void setDAC0_ChannelValue(unsigned char ucValue)
-[; ;common.c: 383: {
+[; ;common.c: 386: void setDAC0_ChannelValue(unsigned char ucValue)
+[; ;common.c: 387: {
 [e :U _setDAC0_ChannelValue ]
 [v _ucValue `uc  1 r1 ]
 [f ]
-[; ;common.c: 384: DACR0=ucValue;
-"384
-[e = _DACR0 _ucValue ]
-[; ;common.c: 385: }
-"385
-[e :UE 101 ]
-}
+[; ;common.c: 388: DACR0=ucValue;
 "388
+[e = _DACR0 _ucValue ]
+[; ;common.c: 389: }
+"389
+[e :UE 102 ]
+}
+"392
 [v _startTwelveHourTimer `(v  1 ef1`ui ]
 {
-[; ;common.c: 387: void startTwelveHourTimer(unsigned int uiSetTime )
-[; ;common.c: 388: {
+[; ;common.c: 391: void startTwelveHourTimer(unsigned int uiSetTime )
+[; ;common.c: 392: {
 [e :U _startTwelveHourTimer ]
 [v _uiSetTime `ui  1 r1 ]
 [f ]
-[; ;common.c: 389: if((0 == uiBigTimer) && ( 0 == bBigTimerStartFlag))
-"389
-[e $ ! && == -> -> 0 `i `ui _uiBigTimer == -> 0 `i -> _bBigTimerStartFlag `i 103  ]
-[; ;common.c: 390: {
-"390
-{
-[; ;common.c: 391: uiBigTimer = uiSetTime;
-"391
-[e = _uiBigTimer _uiSetTime ]
-[; ;common.c: 392: bBigTimerStartFlag = 1;
-"392
-[e = _bBigTimerStartFlag -> -> 1 `i `uc ]
+[; ;common.c: 393: if((0 == uiBigTimer) && ( 0 == bBigTimerStartFlag))
 "393
+[e $ ! && == -> -> 0 `i `ui _uiBigTimer == -> 0 `i -> _bBigTimerStartFlag `i 104  ]
+[; ;common.c: 394: {
+"394
+{
+[; ;common.c: 395: uiBigTimer = uiSetTime;
+"395
+[e = _uiBigTimer _uiSetTime ]
+[; ;common.c: 396: bBigTimerStartFlag = 1;
+"396
+[e = _bBigTimerStartFlag -> -> 1 `i `uc ]
+"397
 }
-[e :U 103 ]
-[; ;common.c: 393: }
-[; ;common.c: 399: }
-"399
-[e :UE 102 ]
+[e :U 104 ]
+[; ;common.c: 397: }
+[; ;common.c: 403: }
+"403
+[e :UE 103 ]
 }
-"402
+"406
 [v _clearTwelveHoursTimer `(v  1 ef ]
 {
-[; ;common.c: 401: void clearTwelveHoursTimer()
-[; ;common.c: 402: {
+[; ;common.c: 405: void clearTwelveHoursTimer()
+[; ;common.c: 406: {
 [e :U _clearTwelveHoursTimer ]
 [f ]
-[; ;common.c: 403: uiBigTimer = 0;
-"403
+[; ;common.c: 407: uiBigTimer = 0;
+"407
 [e = _uiBigTimer -> -> 0 `i `ui ]
-[; ;common.c: 404: bBigTimerStartFlag = 0;
-"404
+[; ;common.c: 408: bBigTimerStartFlag = 0;
+"408
 [e = _bBigTimerStartFlag -> -> 0 `i `uc ]
-[; ;common.c: 405: }
-"405
-[e :UE 104 ]
-}
+[; ;common.c: 409: }
 "409
-[v _clearThreeHoursTimer `(v  1 ef ]
-{
-[; ;common.c: 408: void clearThreeHoursTimer()
-[; ;common.c: 409: {
-[e :U _clearThreeHoursTimer ]
-[f ]
-[; ;common.c: 410: uiSmallTimer = 0;
-"410
-[e = _uiSmallTimer -> -> 0 `i `ui ]
-[; ;common.c: 411: bSmallTimerStartFlag = 0;
-"411
-[e = _bSmallTimerStartFlag -> -> 0 `i `uc ]
-[; ;common.c: 412: }
-"412
 [e :UE 105 ]
 }
-"415
-[v _clearTwentySecondsTimer `(v  1 ef ]
+"413
+[v _clearThreeHoursTimer `(v  1 ef ]
 {
-[; ;common.c: 414: void clearTwentySecondsTimer()
-[; ;common.c: 415: {
-[e :U _clearTwentySecondsTimer ]
+[; ;common.c: 412: void clearThreeHoursTimer()
+[; ;common.c: 413: {
+[e :U _clearThreeHoursTimer ]
 [f ]
-[; ;common.c: 416: uiTwentySecondsTimer = 0;
+[; ;common.c: 414: uiSmallTimer = 0;
+"414
+[e = _uiSmallTimer -> -> 0 `i `ui ]
+[; ;common.c: 415: bSmallTimerStartFlag = 0;
+"415
+[e = _bSmallTimerStartFlag -> -> 0 `i `uc ]
+[; ;common.c: 416: }
 "416
-[e = _uiTwentySecondsTimer -> -> 0 `i `ui ]
-[; ;common.c: 417: bTwentySecStartFlag = 0;
-"417
-[e = _bTwentySecStartFlag -> -> 0 `i `uc ]
-[; ;common.c: 418: }
-"418
 [e :UE 106 ]
 }
-"422
-[v _clearTwentyMinuteTimer `(v  1 ef ]
+"419
+[v _clearTwentySecondsTimer `(v  1 ef ]
 {
-[; ;common.c: 421: void clearTwentyMinuteTimer()
-[; ;common.c: 422: {
-[e :U _clearTwentyMinuteTimer ]
+[; ;common.c: 418: void clearTwentySecondsTimer()
+[; ;common.c: 419: {
+[e :U _clearTwentySecondsTimer ]
 [f ]
-[; ;common.c: 423: uiTwentyMinuteTimer = 0;
+[; ;common.c: 420: uiTwentySecondsTimer = 0;
+"420
+[e = _uiTwentySecondsTimer -> -> 0 `i `ui ]
+[; ;common.c: 421: bTwentySecStartFlag = 0;
+"421
+[e = _bTwentySecStartFlag -> -> 0 `i `uc ]
+[; ;common.c: 422: bPause20secTimer = 0;
+"422
+[e = _bPause20secTimer -> -> 0 `i `uc ]
+[; ;common.c: 423: }
 "423
-[e = _uiTwentyMinuteTimer -> -> 0 `i `ui ]
-[; ;common.c: 424: bTwentyMinStartFlag = 0;
-"424
-[e = _bTwentyMinStartFlag -> -> 0 `i `uc ]
-[; ;common.c: 425: }
-"425
 [e :UE 107 ]
 }
+"427
+[v _clearTwentyMinuteTimer `(v  1 ef ]
+{
+[; ;common.c: 426: void clearTwentyMinuteTimer()
+[; ;common.c: 427: {
+[e :U _clearTwentyMinuteTimer ]
+[f ]
+[; ;common.c: 428: uiTwentyMinuteTimer = 0;
+"428
+[e = _uiTwentyMinuteTimer -> -> 0 `i `ui ]
+[; ;common.c: 429: bTwentyMinStartFlag = 0;
 "429
+[e = _bTwentyMinStartFlag -> -> 0 `i `uc ]
+[; ;common.c: 430: }
+"430
+[e :UE 108 ]
+}
+"434
 [v _startThreeHoursTimer `(v  1 ef1`ui ]
 {
-[; ;common.c: 428: void startThreeHoursTimer(unsigned int uiSetTime)
-[; ;common.c: 429: {
+[; ;common.c: 433: void startThreeHoursTimer(unsigned int uiSetTime)
+[; ;common.c: 434: {
 [e :U _startThreeHoursTimer ]
 [v _uiSetTime `ui  1 r1 ]
 [f ]
-[; ;common.c: 430: if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
-"430
-[e $ ! && == -> -> 0 `i `ui _uiSmallTimer == -> 0 `i -> _bSmallTimerStartFlag `i 109  ]
-[; ;common.c: 431: {
-"431
+[; ;common.c: 435: if(( 0 == uiSmallTimer ) && ( 0 == bSmallTimerStartFlag ))
+"435
+[e $ ! && == -> -> 0 `i `ui _uiSmallTimer == -> 0 `i -> _bSmallTimerStartFlag `i 110  ]
+[; ;common.c: 436: {
+"436
 {
-[; ;common.c: 432: uiSmallTimer = uiSetTime;
-"432
+[; ;common.c: 437: uiSmallTimer = uiSetTime;
+"437
 [e = _uiSmallTimer _uiSetTime ]
-[; ;common.c: 433: bSmallTimerStartFlag = 1;
-"433
+[; ;common.c: 438: bSmallTimerStartFlag = 1;
+"438
 [e = _bSmallTimerStartFlag -> -> 1 `i `uc ]
-"434
-}
-[e :U 109 ]
-[; ;common.c: 434: }
-[; ;common.c: 439: }
 "439
-[e :UE 108 ]
 }
-"443
+[e :U 110 ]
+[; ;common.c: 439: }
+[; ;common.c: 444: }
+"444
+[e :UE 109 ]
+}
+"448
 [v _startTwentySecondsTimer `(v  1 ef ]
 {
-[; ;common.c: 442: void startTwentySecondsTimer()
-[; ;common.c: 443: {
+[; ;common.c: 447: void startTwentySecondsTimer()
+[; ;common.c: 448: {
 [e :U _startTwentySecondsTimer ]
 [f ]
-[; ;common.c: 444: if(( 0 == uiTwentySecondsTimer) && ( 0 == bTwentySecStartFlag))
-"444
-[e $ ! && == -> -> 0 `i `ui _uiTwentySecondsTimer == -> 0 `i -> _bTwentySecStartFlag `i 111  ]
-[; ;common.c: 445: {
-"445
-{
-[; ;common.c: 446: uiTwentySecondsTimer = 20;
-"446
-[e = _uiTwentySecondsTimer -> -> 20 `i `ui ]
-[; ;common.c: 447: bTwentySecStartFlag = 1;
-"447
-[e = _bTwentySecStartFlag -> -> 1 `i `uc ]
-"448
-}
-[e :U 111 ]
-[; ;common.c: 448: }
-[; ;common.c: 449: }
+[; ;common.c: 449: if(( 0 == uiTwentySecondsTimer) && ( 0 == bTwentySecStartFlag))
 "449
-[e :UE 110 ]
-}
+[e $ ! && == -> -> 0 `i `ui _uiTwentySecondsTimer == -> 0 `i -> _bTwentySecStartFlag `i 112  ]
+[; ;common.c: 450: {
+"450
+{
+[; ;common.c: 451: uiTwentySecondsTimer = 20;
+"451
+[e = _uiTwentySecondsTimer -> -> 20 `i `ui ]
+[; ;common.c: 452: bTwentySecStartFlag = 1;
+"452
+[e = _bTwentySecStartFlag -> -> 1 `i `uc ]
 "453
+}
+[e :U 112 ]
+[; ;common.c: 453: }
+[; ;common.c: 454: }
+"454
+[e :UE 111 ]
+}
+"458
 [v _startTwentyMinuteTimer `(v  1 ef1`ui ]
 {
-[; ;common.c: 452: void startTwentyMinuteTimer( unsigned int uiValue )
-[; ;common.c: 453: {
+[; ;common.c: 457: void startTwentyMinuteTimer( unsigned int uiValue )
+[; ;common.c: 458: {
 [e :U _startTwentyMinuteTimer ]
 [v _uiValue `ui  1 r1 ]
 [f ]
-[; ;common.c: 454: if(( 0 == uiTwentyMinuteTimer) && ( 0 == bTwentyMinStartFlag))
-"454
-[e $ ! && == -> -> 0 `i `ui _uiTwentyMinuteTimer == -> 0 `i -> _bTwentyMinStartFlag `i 113  ]
-[; ;common.c: 455: {
-"455
-{
-[; ;common.c: 456: uiTwentyMinuteTimer = uiValue;
-"456
-[e = _uiTwentyMinuteTimer _uiValue ]
-[; ;common.c: 457: bTwentyMinStartFlag = 1;
-"457
-[e = _bTwentyMinStartFlag -> -> 1 `i `uc ]
-"458
-}
-[e :U 113 ]
-[; ;common.c: 458: }
-[; ;common.c: 459: }
+[; ;common.c: 459: if(( 0 == uiTwentyMinuteTimer) && ( 0 == bTwentyMinStartFlag))
 "459
-[e :UE 112 ]
-}
+[e $ ! && == -> -> 0 `i `ui _uiTwentyMinuteTimer == -> 0 `i -> _bTwentyMinStartFlag `i 114  ]
+[; ;common.c: 460: {
+"460
+{
+[; ;common.c: 461: uiTwentyMinuteTimer = uiValue;
+"461
+[e = _uiTwentyMinuteTimer _uiValue ]
+[; ;common.c: 462: bTwentyMinStartFlag = 1;
+"462
+[e = _bTwentyMinStartFlag -> -> 1 `i `uc ]
 "463
+}
+[e :U 114 ]
+[; ;common.c: 463: }
+[; ;common.c: 464: }
+"464
+[e :UE 113 ]
+}
+"468
 [v _isFinishedTwentySecondsTimer `(uc  1 ef ]
 {
-[; ;common.c: 462: unsigned char isFinishedTwentySecondsTimer()
-[; ;common.c: 463: {
+[; ;common.c: 467: unsigned char isFinishedTwentySecondsTimer()
+[; ;common.c: 468: {
 [e :U _isFinishedTwentySecondsTimer ]
 [f ]
-[; ;common.c: 464: if(( 0 == uiTwentySecondsTimer ) && bTwentySecStartFlag )
-"464
-[e $ ! && == -> -> 0 `i `ui _uiTwentySecondsTimer != -> _bTwentySecStartFlag `i -> -> -> 0 `i `uc `i 115  ]
-[; ;common.c: 465: {
-"465
-{
-[; ;common.c: 467: return 1;
-"467
-[e ) -> -> 1 `i `uc ]
-[e $UE 114  ]
-"468
-}
-[; ;common.c: 468: }
-[e $U 116  ]
+[; ;common.c: 469: if(( 0 == uiTwentySecondsTimer ) && bTwentySecStartFlag )
 "469
-[e :U 115 ]
-[; ;common.c: 469: else
-[; ;common.c: 470: return 0;
+[e $ ! && == -> -> 0 `i `ui _uiTwentySecondsTimer != -> _bTwentySecStartFlag `i -> -> -> 0 `i `uc `i 116  ]
+[; ;common.c: 470: {
 "470
-[e ) -> -> 0 `i `uc ]
-[e $UE 114  ]
-[e :U 116 ]
-[; ;common.c: 471: }
-"471
-[e :UE 114 ]
+{
+[; ;common.c: 472: return 1;
+"472
+[e ) -> -> 1 `i `uc ]
+[e $UE 115  ]
+"473
 }
+[; ;common.c: 473: }
+[e $U 117  ]
+"474
+[e :U 116 ]
+[; ;common.c: 474: else
+[; ;common.c: 475: return 0;
 "475
+[e ) -> -> 0 `i `uc ]
+[e $UE 115  ]
+[e :U 117 ]
+[; ;common.c: 476: }
+"476
+[e :UE 115 ]
+}
+"480
 [v _isFinishedTwentyMinuteTimer `(uc  1 ef ]
 {
-[; ;common.c: 474: unsigned char isFinishedTwentyMinuteTimer()
-[; ;common.c: 475: {
+[; ;common.c: 479: unsigned char isFinishedTwentyMinuteTimer()
+[; ;common.c: 480: {
 [e :U _isFinishedTwentyMinuteTimer ]
 [f ]
-[; ;common.c: 476: if(( 0 == uiTwentyMinuteTimer ) && bTwentyMinStartFlag )
-"476
-[e $ ! && == -> -> 0 `i `ui _uiTwentyMinuteTimer != -> _bTwentyMinStartFlag `i -> -> -> 0 `i `uc `i 118  ]
-[; ;common.c: 477: {
-"477
-{
-[; ;common.c: 478: bTwentyMinStartFlag = 0;
-"478
-[e = _bTwentyMinStartFlag -> -> 0 `i `uc ]
-[; ;common.c: 479: return 1;
-"479
-[e ) -> -> 1 `i `uc ]
-[e $UE 117  ]
-"480
-}
-[; ;common.c: 480: }
-[e $U 119  ]
+[; ;common.c: 481: if(( 0 == uiTwentyMinuteTimer ) && bTwentyMinStartFlag )
 "481
-[e :U 118 ]
-[; ;common.c: 481: else
-[; ;common.c: 482: return 0;
+[e $ ! && == -> -> 0 `i `ui _uiTwentyMinuteTimer != -> _bTwentyMinStartFlag `i -> -> -> 0 `i `uc `i 119  ]
+[; ;common.c: 482: {
 "482
-[e ) -> -> 0 `i `uc ]
-[e $UE 117  ]
-[e :U 119 ]
-[; ;common.c: 483: }
+{
+[; ;common.c: 483: bTwentyMinStartFlag = 0;
 "483
-[e :UE 117 ]
+[e = _bTwentyMinStartFlag -> -> 0 `i `uc ]
+[; ;common.c: 484: return 1;
+"484
+[e ) -> -> 1 `i `uc ]
+[e $UE 118  ]
+"485
 }
+[; ;common.c: 485: }
+[e $U 120  ]
+"486
+[e :U 119 ]
+[; ;common.c: 486: else
+[; ;common.c: 487: return 0;
 "487
+[e ) -> -> 0 `i `uc ]
+[e $UE 118  ]
+[e :U 120 ]
+[; ;common.c: 488: }
+"488
+[e :UE 118 ]
+}
+"492
 [v _isFinishedTwelveHoursTimer `(uc  1 ef ]
 {
-[; ;common.c: 486: unsigned char isFinishedTwelveHoursTimer()
-[; ;common.c: 487: {
+[; ;common.c: 491: unsigned char isFinishedTwelveHoursTimer()
+[; ;common.c: 492: {
 [e :U _isFinishedTwelveHoursTimer ]
 [f ]
-[; ;common.c: 488: if(( uiBigTimer == 0 ) && bBigTimerStartFlag )
-"488
-[e $ ! && == _uiBigTimer -> -> 0 `i `ui != -> _bBigTimerStartFlag `i -> -> -> 0 `i `uc `i 121  ]
-[; ;common.c: 489: {
-"489
-{
-[; ;common.c: 490: bBigTimerStartFlag = 0;
-"490
-[e = _bBigTimerStartFlag -> -> 0 `i `uc ]
-[; ;common.c: 491: return 1;
-"491
-[e ) -> -> 1 `i `uc ]
-[e $UE 120  ]
-"492
-}
-[; ;common.c: 492: }
-[e $U 122  ]
+[; ;common.c: 493: if(( uiBigTimer == 0 ) && bBigTimerStartFlag )
 "493
-[e :U 121 ]
-[; ;common.c: 493: else
-[; ;common.c: 494: return 0;
+[e $ ! && == _uiBigTimer -> -> 0 `i `ui != -> _bBigTimerStartFlag `i -> -> -> 0 `i `uc `i 122  ]
+[; ;common.c: 494: {
 "494
-[e ) -> -> 0 `i `uc ]
-[e $UE 120  ]
-[e :U 122 ]
-[; ;common.c: 495: }
+{
+[; ;common.c: 495: bBigTimerStartFlag = 0;
 "495
-[e :UE 120 ]
+[e = _bBigTimerStartFlag -> -> 0 `i `uc ]
+[; ;common.c: 496: return 1;
+"496
+[e ) -> -> 1 `i `uc ]
+[e $UE 121  ]
+"497
 }
+[; ;common.c: 497: }
+[e $U 123  ]
 "498
+[e :U 122 ]
+[; ;common.c: 498: else
+[; ;common.c: 499: return 0;
+"499
+[e ) -> -> 0 `i `uc ]
+[e $UE 121  ]
+[e :U 123 ]
+[; ;common.c: 500: }
+"500
+[e :UE 121 ]
+}
+"503
 [v _isFinishedThreeHoursTimer `(uc  1 ef ]
 {
-[; ;common.c: 497: unsigned char isFinishedThreeHoursTimer()
-[; ;common.c: 498: {
+[; ;common.c: 502: unsigned char isFinishedThreeHoursTimer()
+[; ;common.c: 503: {
 [e :U _isFinishedThreeHoursTimer ]
 [f ]
-[; ;common.c: 499: if((uiSmallTimer == 0) && bSmallTimerStartFlag)
-"499
-[e $ ! && == _uiSmallTimer -> -> 0 `i `ui != -> _bSmallTimerStartFlag `i -> -> -> 0 `i `uc `i 124  ]
-[; ;common.c: 500: {
-"500
-{
-[; ;common.c: 501: bSmallTimerStartFlag = 0;
-"501
-[e = _bSmallTimerStartFlag -> -> 0 `i `uc ]
-[; ;common.c: 502: return 1;
-"502
-[e ) -> -> 1 `i `uc ]
-[e $UE 123  ]
-"503
-}
-[; ;common.c: 503: }
-[e $U 125  ]
+[; ;common.c: 504: if((uiSmallTimer == 0) && bSmallTimerStartFlag)
 "504
-[e :U 124 ]
-[; ;common.c: 504: else
-[; ;common.c: 505: return 0;
+[e $ ! && == _uiSmallTimer -> -> 0 `i `ui != -> _bSmallTimerStartFlag `i -> -> -> 0 `i `uc `i 125  ]
+[; ;common.c: 505: {
 "505
-[e ) -> -> 0 `i `uc ]
-[e $UE 123  ]
-[e :U 125 ]
-[; ;common.c: 506: }
+{
+[; ;common.c: 506: bSmallTimerStartFlag = 0;
 "506
-[e :UE 123 ]
+[e = _bSmallTimerStartFlag -> -> 0 `i `uc ]
+[; ;common.c: 507: return 1;
+"507
+[e ) -> -> 1 `i `uc ]
+[e $UE 124  ]
+"508
 }
+[; ;common.c: 508: }
+[e $U 126  ]
 "509
+[e :U 125 ]
+[; ;common.c: 509: else
+[; ;common.c: 510: return 0;
+"510
+[e ) -> -> 0 `i `uc ]
+[e $UE 124  ]
+[e :U 126 ]
+[; ;common.c: 511: }
+"511
+[e :UE 124 ]
+}
+"514
 [v _isPermitSampleTime `(uc  1 ef ]
 {
-[; ;common.c: 508: unsigned char isPermitSampleTime()
-[; ;common.c: 509: {
+[; ;common.c: 513: unsigned char isPermitSampleTime()
+[; ;common.c: 514: {
 [e :U _isPermitSampleTime ]
 [f ]
-[; ;common.c: 510: if(timer.timer10msStopWatch >= 10)
-"510
-[e $ ! >= -> . _timer 0 `i -> 10 `i 127  ]
-[; ;common.c: 511: {
-"511
-{
-[; ;common.c: 512: return 1;
-"512
-[e ) -> -> 1 `i `uc ]
-[e $UE 126  ]
-"513
-}
-[; ;common.c: 513: }
-[e $U 128  ]
-"514
-[e :U 127 ]
-[; ;common.c: 514: else
-[; ;common.c: 515: return 0;
+[; ;common.c: 515: if(timer.timer10msStopWatch >= 10)
 "515
-[e ) -> -> 0 `i `uc ]
-[e $UE 126  ]
-[e :U 128 ]
-[; ;common.c: 516: }
+[e $ ! >= -> . _timer 0 `i -> 10 `i 128  ]
+[; ;common.c: 516: {
 "516
-[e :UE 126 ]
-}
-"519
-[v _clrSampeTime `(v  1 ef ]
 {
-[; ;common.c: 518: void clrSampeTime()
-[; ;common.c: 519: {
-[e :U _clrSampeTime ]
-[f ]
-[; ;common.c: 520: timer.timer10msStopWatch = 0;
+[; ;common.c: 517: return 1;
+"517
+[e ) -> -> 1 `i `uc ]
+[e $UE 127  ]
+"518
+}
+[; ;common.c: 518: }
+[e $U 129  ]
+"519
+[e :U 128 ]
+[; ;common.c: 519: else
+[; ;common.c: 520: return 0;
 "520
-[e = . _timer 0 -> -> 0 `i `uc ]
+[e ) -> -> 0 `i `uc ]
+[e $UE 127  ]
+[e :U 129 ]
 [; ;common.c: 521: }
 "521
-[e :UE 129 ]
+[e :UE 127 ]
 }
 "524
-[v F871 `(v  1 tf ]
-[v _ISR `IF871  1 e ]
+[v _clrSampeTime `(v  1 ef ]
 {
-[; ;common.c: 523: void interrupt ISR(void)
+[; ;common.c: 523: void clrSampeTime()
 [; ;common.c: 524: {
+[e :U _clrSampeTime ]
+[f ]
+[; ;common.c: 525: timer.timer10msStopWatch = 0;
+"525
+[e = . _timer 0 -> -> 0 `i `uc ]
+[; ;common.c: 526: }
+"526
+[e :UE 130 ]
+}
+"529
+[v F875 `(v  1 tf ]
+[v _ISR `IF875  1 e ]
+{
+[; ;common.c: 528: void interrupt ISR(void)
+[; ;common.c: 529: {
 [e :U _ISR ]
 [f ]
-"525
-[v F872 `uc  1 s ucTimer1sCnt ]
-[i F872
+"530
+[v F876 `uc  1 s ucTimer1sCnt ]
+[i F876
 -> -> 0 `i `uc
 ]
-[; ;common.c: 525: static unsigned char ucTimer1sCnt = 0;
-[; ;common.c: 527: if(TMR1IF == 1)
-"527
-[e $ ! == -> _TMR1IF `i -> 1 `i 131  ]
-[; ;common.c: 528: {
-"528
-{
-[; ;common.c: 529: TMR1IF = 0 ;
-"529
-[e = _TMR1IF -> -> 0 `i `b ]
-[; ;common.c: 530: timer.timer10msStopWatch++;
-"530
-[e ++ . _timer 0 -> -> 1 `i `uc ]
-[; ;common.c: 531: ucTimer1sCnt++;
-"531
-[e ++ F872 -> -> 1 `i `uc ]
-[; ;common.c: 533: if(ucTimer1sCnt >= 100)
+[; ;common.c: 530: static unsigned char ucTimer1sCnt = 0;
+[; ;common.c: 532: if(TMR1IF == 1)
+"532
+[e $ ! == -> _TMR1IF `i -> 1 `i 132  ]
+[; ;common.c: 533: {
 "533
-[e $ ! >= -> F872 `i -> 100 `i 132  ]
-[; ;common.c: 534: {
-"534
 {
-[; ;common.c: 535: ucTimer1sCnt = 0;
+[; ;common.c: 534: TMR1IF = 0 ;
+"534
+[e = _TMR1IF -> -> 0 `i `b ]
+[; ;common.c: 535: timer.timer10msStopWatch++;
 "535
-[e = F872 -> -> 0 `i `uc ]
-[; ;common.c: 536: if(uiBigTimer > 0)
+[e ++ . _timer 0 -> -> 1 `i `uc ]
+[; ;common.c: 536: ucTimer1sCnt++;
 "536
-[e $ ! > _uiBigTimer -> -> 0 `i `ui 133  ]
-[; ;common.c: 537: uiBigTimer--;
-"537
-[e -- _uiBigTimer -> -> 1 `i `ui ]
-[e :U 133 ]
-[; ;common.c: 539: if(uiSmallTimer)
+[e ++ F876 -> -> 1 `i `uc ]
+[; ;common.c: 538: if(ucTimer1sCnt >= 100)
+"538
+[e $ ! >= -> F876 `i -> 100 `i 133  ]
+[; ;common.c: 539: {
 "539
-[e $ ! != _uiSmallTimer -> -> 0 `i `ui 134  ]
-[; ;common.c: 540: uiSmallTimer--;
+{
+[; ;common.c: 540: ucTimer1sCnt = 0;
 "540
-[e -- _uiSmallTimer -> -> 1 `i `ui ]
-[e :U 134 ]
-[; ;common.c: 542: if(uiTwentySecondsTimer)
+[e = F876 -> -> 0 `i `uc ]
+[; ;common.c: 541: if(uiBigTimer > 0)
+"541
+[e $ ! > _uiBigTimer -> -> 0 `i `ui 134  ]
+[; ;common.c: 542: uiBigTimer--;
 "542
-[e $ ! != _uiTwentySecondsTimer -> -> 0 `i `ui 135  ]
-[; ;common.c: 543: uiTwentySecondsTimer--;
-"543
-[e -- _uiTwentySecondsTimer -> -> 1 `i `ui ]
-[e :U 135 ]
-[; ;common.c: 545: if(uiTwentyMinuteTimer)
+[e -- _uiBigTimer -> -> 1 `i `ui ]
+[e :U 134 ]
+[; ;common.c: 544: if(uiSmallTimer)
+"544
+[e $ ! != _uiSmallTimer -> -> 0 `i `ui 135  ]
+[; ;common.c: 545: uiSmallTimer--;
 "545
-[e $ ! != _uiTwentyMinuteTimer -> -> 0 `i `ui 136  ]
-[; ;common.c: 546: uiTwentyMinuteTimer--;
-"546
-[e -- _uiTwentyMinuteTimer -> -> 1 `i `ui ]
-[e :U 136 ]
+[e -- _uiSmallTimer -> -> 1 `i `ui ]
+[e :U 135 ]
+[; ;common.c: 547: if((uiTwentySecondsTimer)&& (0 == bPause20secTimer))
 "547
+[e $ ! && != _uiTwentySecondsTimer -> -> 0 `i `ui == -> 0 `i -> _bPause20secTimer `i 136  ]
+[; ;common.c: 548: uiTwentySecondsTimer--;
+"548
+[e -- _uiTwentySecondsTimer -> -> 1 `i `ui ]
+[e :U 136 ]
+[; ;common.c: 550: if((uiTwentyMinuteTimer))
+"550
+[e $ ! != _uiTwentyMinuteTimer -> -> 0 `i `ui 137  ]
+[; ;common.c: 551: uiTwentyMinuteTimer--;
+"551
+[e -- _uiTwentyMinuteTimer -> -> 1 `i `ui ]
+[e :U 137 ]
+"552
+}
+[e :U 133 ]
+"553
 }
 [e :U 132 ]
-"548
-}
-[e :U 131 ]
-[; ;common.c: 547: }
-[; ;common.c: 548: }
-[; ;common.c: 550: if(ADIF)
-"550
-[e $ ! _ADIF 137  ]
-[; ;common.c: 551: {
-"551
+[; ;common.c: 552: }
+[; ;common.c: 553: }
+[; ;common.c: 555: if(ADIF)
+"555
+[e $ ! _ADIF 138  ]
+[; ;common.c: 556: {
+"556
 {
-[; ;common.c: 552: ADIF=0;
-"552
+[; ;common.c: 557: ADIF=0;
+"557
 [e = _ADIF -> -> 0 `i `b ]
-[; ;common.c: 553: setAD_ConvertFlag(1);
-"553
+[; ;common.c: 558: setAD_ConvertFlag(1);
+"558
 [e ( _setAD_ConvertFlag (1 -> -> 1 `i `uc ]
-[; ;common.c: 554: vPutSampleDataIntoTable(adc_get(),sampleChannelSelect);
-"554
+[; ;common.c: 559: vPutSampleDataIntoTable(adc_get(),sampleChannelSelect);
+"559
 [e ( _vPutSampleDataIntoTable (2 , ( _adc_get ..  _sampleChannelSelect ]
-"583
+"588
 }
-[e :U 137 ]
-[; ;common.c: 583: }
-[; ;common.c: 584: }
-"584
-[e :UE 130 ]
+[e :U 138 ]
+[; ;common.c: 588: }
+[; ;common.c: 589: }
+"589
+[e :UE 131 ]
 }
