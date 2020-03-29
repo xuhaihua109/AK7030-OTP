@@ -565,9 +565,9 @@ void clearAllTimer(void)
 #endif
 
 
-#define   TEN_HOUR_TIMER         300//36000
-#define   THREE_HOUR_TIMER       180//10800
-#define   TWENTY_MINUTE_TIMER     60//1200
+#define   TEN_HOUR_TIMER         36000
+#define   THREE_HOUR_TIMER       10800
+#define   TWENTY_MINUTE_TIMER    1200
 
 #define  LETE_BRANCH_COMMON_STAY_TIME     1
 
@@ -2052,7 +2052,9 @@ void main(void)
                                         else
                                         {
                                             ucTimerX2P5s = 0;
-                                            ucTimerLessX2P5s++;
+                                           // ucTimerLessX2P5s++;
+                                            ucTimerLessX2P5s = 0;// this condition never meet
+
                                         }
 
                                         if(ucTimerX2P5s >= 5)
@@ -2122,6 +2124,7 @@ void main(void)
                                 setPB2(0);
                                 setPA3(0);
                                 setPB4(0);
+                                setPB6(1);
 
                                 enumInteralStep = INTERNAL_SECOND_STEP;
                                 break;

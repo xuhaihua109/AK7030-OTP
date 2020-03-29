@@ -1230,7 +1230,7 @@ adc_test_init(0,3);
 adc_start();
 
 # 723
-startTwentyMinuteTimer(60);
+startTwentyMinuteTimer(1200);
 
 while(1)
 {
@@ -1324,7 +1324,7 @@ else
 {
 ucTimerP5s = 0;
 
-startTwentyMinuteTimer(60);
+startTwentyMinuteTimer(1200);
 
 enumMainLoopStep = MAIN_LOOP_STEP_THIRD;
 }
@@ -1406,7 +1406,7 @@ case MAIN_LOOP_STEP_FOURTH:
 {
 
 # 922
-startTwelveHourTimer(300);
+startTwelveHourTimer(36000);
 enumMainLoopStep = MAIN_LOOP_STEP_FIFTH;
 
 bCheckTweHour = 0;
@@ -2120,7 +2120,7 @@ PB7 = 1;
 PBOD7 = 1;
 
 # 1964
-startThreeHoursTimer(180);
+startThreeHoursTimer(10800);
 
 
 
@@ -2206,7 +2206,9 @@ ucTimerLessX2P5s = 0;
 else
 {
 ucTimerX2P5s = 0;
-ucTimerLessX2P5s++;
+
+ucTimerLessX2P5s = 0;
+
 }
 
 if(ucTimerX2P5s >= 5)
@@ -2249,7 +2251,7 @@ break;
 case MAIN_LOOP_STEP_10_HOUR_END:
 {
 
-# 2100
+# 2102
 enum INTERNAL_STEP {
 INTERNAL_FIRST_STEP,
 INTERNAL_SECOND_STEP,
@@ -2264,7 +2266,7 @@ switch (enumInteralStep)
 case INTERNAL_FIRST_STEP:
 {
 
-# 2117
+# 2119
 setPA2(0);
 setPA1(0);
 setPA0(0);
@@ -2273,6 +2275,7 @@ setPB1(0);
 setPB2(0);
 setPA3(0);
 setPB4(0);
+setPB6(1);
 
 enumInteralStep = INTERNAL_SECOND_STEP;
 break;
@@ -2281,7 +2284,7 @@ break;
 case INTERNAL_SECOND_STEP:
 {
 
-# 2135
+# 2138
 static unsigned char ucTimer1s = 0;
 
 if(getAdOriginalCh0Value() >= 2500)
@@ -2302,7 +2305,7 @@ break;
 case INTERNAL_THIRD_STEP:
 {
 
-# 2157
+# 2160
 static unsigned char ucTimerP3s = 0;
 
 if(getAdOriginalCh0Value() <= 1950)
@@ -2326,7 +2329,7 @@ enumMainLoopStep = MAIN_LOOP_STEP_INIT;
 
 while(1);
 
-# 2183
+# 2186
 }
 break;
 }
@@ -2345,7 +2348,7 @@ break;
 }
 }
 
-# 2203
+# 2206
 }
 
 
@@ -2374,7 +2377,7 @@ COMPARE_STEP4,
 
 };
 
-# 2235
+# 2238
 static unsigned char ucTimerCntMore = 0, ucTimerCntLess = 0;
 
 static enum enumCmpStep ucCompareStep = COMPARE_STEP0;
@@ -2406,7 +2409,7 @@ ucCompareStep = COMPARE_STEP2;
 ucTimerCntLess = 0;
 }
 
-# 2269
+# 2272
 break;
 }
 case COMPARE_STEP1:
@@ -2434,7 +2437,7 @@ break;
 else
 ucTimerCntN1 = 0;
 
-# 2300
+# 2303
 if((getAdOriginalCh6Value() < 50))
 {
 ucLessThanP8sCnt++;
@@ -2471,7 +2474,7 @@ ucCompareStep = COMPARE_STEP0;
 else
 ;
 
-# 2338
+# 2341
 break;
 }
 
@@ -2482,13 +2485,13 @@ static enum enum_waiting_loop_step waitLoopStep = WAITING_LOOP_STEP1;
 
 static unsigned char ucTimeCntP2s = 0;
 
-# 2352
+# 2355
 switch(waitLoopStep)
 {
 case WAITING_LOOP_STEP1:
 {
 
-# 2359
+# 2362
 vPause20sTimer(1);
 ucTimeCntP2s = 0;
 setPA3(0);
@@ -2500,7 +2503,7 @@ break;
 case WAITING_LOOP_STEP2:
 {
 
-# 2372
+# 2375
 if((getAdOriginalCh2Value() > 2300))
 {
 ucTimeCntP2s++;
@@ -2519,7 +2522,7 @@ break;
 case WAITING_LOOP_STEP3:
 {
 
-# 2392
+# 2395
 setPA3(1);
 
 setPB6AsInput();
@@ -2530,7 +2533,7 @@ break;
 case WAITING_LOOP_STEP4:
 {
 
-# 2404
+# 2407
 static unsigned char ucTimerCntP5s = 0;
 if( ucTimerCntP5s < 5)
 ucTimerCntP5s++;
@@ -2546,7 +2549,7 @@ break;
 case WAITING_LOOP_STEP5:
 {
 
-# 2421
+# 2424
 static unsigned char ucMoreThanP3sCnt = 0;
 
 static unsigned char ucLessThanP3sCnt = 0;
@@ -2627,7 +2630,7 @@ switch(ucTimerOnBehaviorStep)
 case 0:
 {
 
-# 2504
+# 2507
 setPA3(0);
 setPB4(0);
 setPB6(1);
@@ -2639,7 +2642,7 @@ break;
 case 1:
 {
 
-# 2517
+# 2520
 ucTimeCnt++;
 
 if( ucTimeCnt >= 10)
@@ -2653,7 +2656,7 @@ break;
 case 2:
 {
 
-# 2532
+# 2535
 ucTimeCnt++;
 
 if( ucTimeCnt >= 1)
@@ -2668,7 +2671,7 @@ break;
 case 3:
 {
 
-# 2548
+# 2551
 setPA3(1);
 setPB4(1);
 
@@ -2681,7 +2684,7 @@ break;
 case 4:
 {
 
-# 2562
+# 2565
 ucTimeCnt++;
 
 if( ucTimeCnt >= 2)

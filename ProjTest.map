@@ -26,70 +26,70 @@ startup.obj     end_init                             11       11        2       
                 reset_vec                             0        0        2        0       0
 ProjTest.obj    intentry                              4        4        D        8       0
                 config                             2000     2000        3     4000       0
-                text1055                            F0F      F0F       F1     1E1E       0
-                text1050                            75F      75F       27        8       0
-                text1044                            ECE      ECE        9     1D9C       0
-                text1040                            EBE      EBE        8     1D7C       0
-                text1038                            EC6      EC6        8     1D8C       0
-                text1037                            ED7      ED7        A     1DAE       0
-                text1036                            EB5      EB5        3     1D6A       0
-                text1033                            7C5      7C5       14        8       0
-                text1032                            EB8      EB8        6     1D70       0
-                text1031                              2        2        2        0       0
-                text1030                            EEB      EEB        C     1DD6       0
-                text1029                            7B1      7B1       14        8       0
-                text1028                            EF7      EF7        C     1DEE       0
-                text1027                            7D9      7D9       11        8       0
-                text1026                            EE1      EE1        A     1DC2       0
-                text1025                            79D      79D       14        8       0
-                text1024                            F03      F03        C     1E06       0
-                text1016                            471      471      2A0        8       0
-                text1010                            711      711       4E        8       0
-                swtext3                             80E      80E        C     1000       0
-                swtext2                             800      800        E     1000       0
-                swtext1                             7EA      7EA        E      FD4       0
-                maintext                             13       13      45E        8       0
+                text1050                            709      709       F1        8       0
+                text1045                            F8B      F8B       27     1F16       0
+                text1039                            EE6      EE6        9     1DCC       0
+                text1035                            ECE      ECE        8     1D9C       0
+                text1033                            ED6      ED6        8     1DAC       0
+                text1032                            EEF      EEF        A     1DDE       0
+                text1031                            ECB      ECB        3     1D96       0
+                text1028                            F38      F38       14     1E70       0
+                text1027                            7FA      7FA        6        8       0
+                text1026                              2        2        2        0       0
+                text1025                            F03      F03        C     1E06       0
+                text1024                            F4C      F4C       14     1E98       0
+                text1023                            F0F      F0F        C     1E1E       0
+                text1022                            F27      F27       11     1E4E       0
+                text1021                            EF9      EF9        A     1DF2       0
+                text1020                            F60      F60       14     1EC0       0
+                text1019                            F1B      F1B        C     1E36       0
+                text1011                            46A      46A      29F        8       0
+                text1005                            FB2      FB2       4E     1F64       0
+                swtext3                             81C      81C        C     1000       0
+                swtext2                             80E      80E        E     1000       0
+                swtext1                             800      800        E     1000       0
+                maintext                             13       13      457        8       0
                 cstackBANK0                          20       20       2A       20       1
                 cstackCOMMON                         70       70        D       70       1
-                clrtext                             7F8      7F8        8      FF0       0
+                clrtext                             EDE      EDE        8     1DBC       0
                 bssBANK3                            190      190       48      190       1
                 bssBANK1                             A0       A0       3C       A0       1
                 bssBANK0                             4A       4A       25       20       1
                 bssCOMMON                            7D       7D        1       70       1
-                cinit                               786      786       17        8       0
+                cinit                               F74      F74       17     1EE8       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CONST          
-                swtext3                             80E      80E        C         0
-                swtext2                             800      800        E         0
-                swtext1                             7EA      7EA        E         0
+                swtext3                             81C      81C        C         0
+                swtext2                             80E      80E        E         0
+                swtext1                             800      800        E         0
 
         CLASS   CODE           
                 end_init                             11       11        2         0
                 intentry                              4        4        D         0
                 reset_vec                             0        0        2         0
-                text1055                            F0F      F0F       F1         0
-                text1050                            75F      75F       27         0
-                text1044                            ECE      ECE        9         0
-                text1040                            EBE      EBE        8         0
-                text1038                            EC6      EC6        8         0
-                text1037                            ED7      ED7        A         0
-                text1036                            EB5      EB5        3         0
-                text1033                            7C5      7C5       14         0
-                text1032                            EB8      EB8        6         0
-                text1031                              2        2        2         0
-                text1030                            EEB      EEB        C         0
-                text1029                            7B1      7B1       14         0
-                text1028                            EF7      EF7        C         0
-                text1027                            7D9      7D9       11         0
-                text1026                            EE1      EE1        A         0
-                text1025                            79D      79D       14         0
-                text1024                            F03      F03        C         0
-                text1016                            471      471      2A0         0
-                text1010                            711      711       4E         0
-                maintext                             13       13      45E         0
-                clrtext                             7F8      7F8        8         0
-                cinit                               786      786       17         0
+                text1050                            709      709       F1         0
+                text1045                            F8B      F8B       27         0
+                text1039                            EE6      EE6        9         0
+                text1035                            ECE      ECE        8         0
+                text1033                            ED6      ED6        8         0
+                text1032                            EEF      EEF        A         0
+                text1031                            ECB      ECB        3         0
+                text1028                            F38      F38       14         0
+                text1027                            7FA      7FA        6         0
+                text1026                              2        2        2         0
+                text1025                            F03      F03        C         0
+                text1024                            F4C      F4C       14         0
+                text1023                            F0F      F0F        C         0
+                text1022                            F27      F27       11         0
+                text1021                            EF9      EF9        A         0
+                text1020                            F60      F60       14         0
+                text1019                            F1B      F1B        C         0
+                text1011                            46A      46A      29F         0
+                text1005                            FB2      FB2       4E         0
+                maintext                             13       13      457         0
+                clrtext                             EDE      EDE        8         0
+                cinit                               F74      F74       17         0
 
         CLASS   STRCODE        
 
@@ -138,25 +138,29 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000004  000004         0       0  CODE        2
-                intentry                       000004  0007E6  0007EA         8       0  CODE        2
+                intentry                       000004  0007FC  000800         8       0  CODE        2
                 cstackBANK0                    000020  00004F  00006F        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
                 bssBANK1                       0000A0  00003C  0000DC        A0       1  BANK1       1
                 bssBANK3                       000190  000048  0001D8       190       1  BANK3       1
-                swtext1                        0007EA  00000E  0007F8       FD4       0  CONST       2
-                clrtext                        0007F8  000008  000800       FF0       0  CODE        2
-                swtext2                        000800  00001A  00081A      1000       0  CONST       2
-                text1036                       000EB5  000003  000EB8      1D6A       0  CODE        2
-                text1032                       000EB8  000006  000EBE      1D70       0  CODE        2
-                text1040                       000EBE  000008  000EC6      1D7C       0  CODE        2
-                text1038                       000EC6  000008  000ECE      1D8C       0  CODE        2
-                text1044                       000ECE  000009  000ED7      1D9C       0  CODE        2
-                text1037                       000ED7  00000A  000EE1      1DAE       0  CODE        2
-                text1026                       000EE1  00000A  000EEB      1DC2       0  CODE        2
-                text1030                       000EEB  00000C  000EF7      1DD6       0  CODE        2
-                text1028                       000EF7  00000C  000F03      1DEE       0  CODE        2
-                text1024                       000F03  00000C  000F0F      1E06       0  CODE        2
-                text1055                       000F0F  0000F1  001000      1E1E       0  CODE        2
+                swtext1                        000800  000028  000828      1000       0  CONST       2
+                text1031                       000ECB  000003  000ECE      1D96       0  CODE        2
+                text1035                       000ECE  000008  000ED6      1D9C       0  CODE        2
+                text1033                       000ED6  000008  000EDE      1DAC       0  CODE        2
+                clrtext                        000EDE  000008  000EE6      1DBC       0  CODE        2
+                text1039                       000EE6  000009  000EEF      1DCC       0  CODE        2
+                text1032                       000EEF  00000A  000EF9      1DDE       0  CODE        2
+                text1021                       000EF9  00000A  000F03      1DF2       0  CODE        2
+                text1025                       000F03  00000C  000F0F      1E06       0  CODE        2
+                text1023                       000F0F  00000C  000F1B      1E1E       0  CODE        2
+                text1019                       000F1B  00000C  000F27      1E36       0  CODE        2
+                text1022                       000F27  000011  000F38      1E4E       0  CODE        2
+                text1028                       000F38  000014  000F4C      1E70       0  CODE        2
+                text1024                       000F4C  000014  000F60      1E98       0  CODE        2
+                text1020                       000F60  000014  000F74      1EC0       0  CODE        2
+                cinit                          000F74  000017  000F8B      1EE8       0  CODE        2
+                text1045                       000F8B  000027  000FB2      1F16       0  CODE        2
+                text1005                       000FB2  00004E  001000      1F64       0  CODE        2
                 config                         002000  000003  002003      4000       0  CONFIG      2
 
 
@@ -167,10 +171,10 @@ UNUSED ADDRESS RANGES
         BANK1            00DC-00EF             14           1
         BANK2            0110-016F             60           1
         BANK3            01D8-01EF             18           1
-        CODE             081A-0EB4            69B           2
+        CODE             0828-0ECA            6A3           2
         CONFIG           2003-2007              5           2
-        CONST            081A-0EB4            100           2
-        ENTRY            081A-0EB4            100           2
+        CONST            0828-0ECA            100           2
+        ENTRY            0828-0ECA            100           2
         IDLOC            2008-200B              4           2
         RAM              006F-006F              1           1
                          00DC-00EF             14
@@ -180,8 +184,8 @@ UNUSED ADDRESS RANGES
         SFR1             0080-009F             20           1
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
-        STRCODE          081A-0EB4            69B           2
-        STRING           081A-0EB4            100           2
+        STRCODE          0828-0ECA            6A3           2
+        STRING           0828-0ECA            100           2
 
                                   Symbol Table
 
@@ -302,13 +306,13 @@ _ADIF                                         (abs)        006A
 _ADON                                         (abs)        00F8
 _ADRESH                                       (abs)        001E
 _ADRESL                                       (abs)        009E
-_AD_Sample                                    text1010     0728
+_AD_Sample                                    text1005     0FC9
 _CLKPCE                                       (abs)        0847
 _CLKPR                                        (abs)        0108
-_Filter                                       text1016     0652
+_Filter                                       text1011     064A
 _GIE                                          (abs)        005F
 _GO                                           (abs)        00F9
-_ISR                                          text1055     0F0F
+_ISR                                          text1050     0709
 _PA0                                          (abs)        0028
 _PA1                                          (abs)        0029
 _PA2                                          (abs)        002A
@@ -409,57 +413,57 @@ __Lstrings                                    strings      0000
 __Ltext                                       text         0000
 __S0                                          (abs)        2003
 __S1                                          (abs)        01D8
-__end_of_AD_Sample                            text1010     074A
-__end_of_Filter                               text1016     06E9
-__end_of_ISR                                  text1055     0F63
-__end_of_adc_get                              text1055     0FE4
-__end_of_adc_start                            text1010     0728
-__end_of_adc_test_init                        text1010     075F
-__end_of_clearAllTimer                        text1016     04D8
-__end_of_clearParaFunction1                   text1016     04A7
-__end_of_clearPinPortAndTimer                 text1016     0491
-__end_of_clearThreeHoursTimer                 text1016     04E4
-__end_of_clearTwelveHoursTimer                text1016     04DE
-__end_of_clearTwentyMinuteTimer               text1016     06F6
-__end_of_clearTwentySecondsTimer              text1016     06F1
-__end_of_clock_config                         text1038     0ECE
-__end_of_clrSampeTime                         text1031     0004
-__end_of_getAD_ConvertFlag                    text1010     0720
-__end_of_getAdOriginalCh0Value                text1016     0485
-__end_of_getAdOriginalCh2Value                text1016     062A
-__end_of_getAdOriginalCh5Value                text1016     047B
-__end_of_getAdOriginalCh6Value                text1016     063C
-__end_of_initPin                              text1050     0786
-__end_of_isFinishedThreeHoursTimer            text1024     0F0F
-__end_of_isFinishedTwelveHoursTimer           text1028     0F03
-__end_of_isFinishedTwentyMinuteTimer          text1030     0EF7
-__end_of_isFinishedTwentySecondsTimer         text1026     0EEB
-__end_of_isPermitSampleTime                   text1032     0EBE
-__end_of_main                                 maintext     0471
-__end_of_process_AD_Converter_Value           text1010     071C
-__end_of_setAD_ConvertFlag                    text1010     0725
-__end_of_setPA0                               text1016     04C8
-__end_of_setPA1                               text1016     04D1
-__end_of_setPA2                               text1044     0ED7
-__end_of_setPA3                               text1016     0633
-__end_of_setPA6                               text1040     0EC6
-__end_of_setPB0                               text1016     04AF
-__end_of_setPB1                               text1016     04B7
-__end_of_setPB2                               text1016     04BF
-__end_of_setPB4                               text1016     053E
-__end_of_setPB6                               text1016     064A
-__end_of_setPB6AsInput                        text1016     064D
-__end_of_startThreeHoursTimer                 text1025     07B1
-__end_of_startTwelveHourTimer                 text1029     07C5
-__end_of_startTwentyMinuteTimer               text1033     07D9
-__end_of_startTwentySecondsTimer              text1027     07EA
-__end_of_timer1_config                        text1037     0EE1
-__end_of_timer1_interrupt_config              text1036     0EB8
-__end_of_vHandle20sTimerOut                   text1016     0536
-__end_of_vHandle20sTimeron                    text1016     0621
-__end_of_vPause20sTimer                       text1016     0652
-__end_of_vPutSampleDataIntoTable              text1055     0FD8
-__end_ofi1_setAD_ConvertFlag                  text1055     0FE8
+__end_of_AD_Sample                            text1005     0FEB
+__end_of_Filter                               text1011     06E1
+__end_of_ISR                                  text1050     075D
+__end_of_adc_get                              text1050     07DE
+__end_of_adc_start                            text1005     0FC9
+__end_of_adc_test_init                        text1005     1000
+__end_of_clearAllTimer                        text1011     04D0
+__end_of_clearParaFunction1                   text1011     04A0
+__end_of_clearPinPortAndTimer                 text1011     048A
+__end_of_clearThreeHoursTimer                 text1011     04DC
+__end_of_clearTwelveHoursTimer                text1011     04D6
+__end_of_clearTwentyMinuteTimer               text1011     06EE
+__end_of_clearTwentySecondsTimer              text1011     06E9
+__end_of_clock_config                         text1033     0EDE
+__end_of_clrSampeTime                         text1026     0004
+__end_of_getAD_ConvertFlag                    text1005     0FC1
+__end_of_getAdOriginalCh0Value                text1011     047E
+__end_of_getAdOriginalCh2Value                text1011     0622
+__end_of_getAdOriginalCh5Value                text1011     0474
+__end_of_getAdOriginalCh6Value                text1011     0634
+__end_of_initPin                              text1045     0FB2
+__end_of_isFinishedThreeHoursTimer            text1019     0F27
+__end_of_isFinishedTwelveHoursTimer           text1023     0F1B
+__end_of_isFinishedTwentyMinuteTimer          text1025     0F0F
+__end_of_isFinishedTwentySecondsTimer         text1021     0F03
+__end_of_isPermitSampleTime                   text1027     0800
+__end_of_main                                 maintext     046A
+__end_of_process_AD_Converter_Value           text1005     0FBD
+__end_of_setAD_ConvertFlag                    text1005     0FC6
+__end_of_setPA0                               text1011     04C1
+__end_of_setPA1                               text1011     04C9
+__end_of_setPA2                               text1039     0EEF
+__end_of_setPA3                               text1011     062B
+__end_of_setPA6                               text1035     0ED6
+__end_of_setPB0                               text1011     04A8
+__end_of_setPB1                               text1011     04B0
+__end_of_setPB2                               text1011     04B8
+__end_of_setPB4                               text1011     0536
+__end_of_setPB6                               text1011     0642
+__end_of_setPB6AsInput                        text1011     0645
+__end_of_startThreeHoursTimer                 text1020     0F74
+__end_of_startTwelveHourTimer                 text1024     0F60
+__end_of_startTwentyMinuteTimer               text1028     0F4C
+__end_of_startTwentySecondsTimer              text1022     0F38
+__end_of_timer1_config                        text1032     0EF9
+__end_of_timer1_interrupt_config              text1031     0ECE
+__end_of_vHandle20sTimerOut                   text1011     052E
+__end_of_vHandle20sTimeron                    text1011     0619
+__end_of_vPause20sTimer                       text1011     064A
+__end_of_vPutSampleDataIntoTable              text1050     07D2
+__end_ofi1_setAD_ConvertFlag                  text1050     07E2
 __pbssBANK0                                   bssBANK0     004A
 __pbssBANK1                                   bssBANK1     00A0
 __pbssBANK3                                   bssBANK3     0190
@@ -468,61 +472,61 @@ __pcstackBANK0                                cstackBANK0  0020
 __pcstackCOMMON                               cstackCOMMON 0070
 __pintentry                                   intentry     0004
 __pmaintext                                   maintext     0013
-__pswtext1                                    swtext1      07EA
-__pswtext2                                    swtext2      0800
-__pswtext3                                    swtext3      080E
-__ptext1008                                   text1008     0000
-__ptext1009                                   text1016     053E
-__ptext1010                                   text1010     0711
-__ptext1011                                   text1016     0491
-__ptext1012                                   text1016     0485
-__ptext1013                                   text1010     0728
-__ptext1014                                   text1016     0621
-__ptext1015                                   text1016     04E4
-__ptext1016                                   text1016     0471
-__ptext1017                                   text1016     0633
-__ptext1018                                   text1016     047B
-__ptext1019                                   text1016     04D1
-__ptext1020                                   text1010     0720
-__ptext1021                                   text1010     071C
-__ptext1022                                   text1016     0652
-__ptext1023                                   text1016     064D
-__ptext1024                                   text1024     0F03
-__ptext1025                                   text1025     079D
-__ptext1026                                   text1026     0EE1
-__ptext1027                                   text1027     07D9
-__ptext1028                                   text1028     0EF7
-__ptext1029                                   text1029     07B1
-__ptext1030                                   text1030     0EEB
-__ptext1031                                   text1031     0002
-__ptext1032                                   text1032     0EB8
-__ptext1033                                   text1033     07C5
-__ptext1034                                   text1010     0725
-__ptext1035                                   text1010     074A
-__ptext1036                                   text1036     0EB5
-__ptext1037                                   text1037     0ED7
-__ptext1038                                   text1038     0EC6
-__ptext1039                                   text1016     064A
-__ptext1040                                   text1040     0EBE
-__ptext1041                                   text1016     0536
-__ptext1042                                   text1016     063C
-__ptext1043                                   text1016     062A
-__ptext1044                                   text1044     0ECE
-__ptext1045                                   text1016     04C8
-__ptext1046                                   text1016     04BF
-__ptext1047                                   text1016     04B7
-__ptext1048                                   text1016     04AF
-__ptext1049                                   text1016     04A7
-__ptext1050                                   text1050     075F
-__ptext1051                                   text1016     06F1
-__ptext1052                                   text1016     06E9
-__ptext1053                                   text1016     04DE
-__ptext1054                                   text1016     04D8
-__ptext1055                                   text1055     0F0F
-__ptext1056                                   text1055     0FE4
-__ptext1057                                   text1055     0FD8
-__ptext1058                                   text1055     0F63
-__ptext1059                                   text1059     0000
+__pswtext1                                    swtext1      0800
+__pswtext2                                    swtext2      080E
+__pswtext3                                    swtext3      081C
+__ptext1003                                   text1003     0000
+__ptext1004                                   text1011     0536
+__ptext1005                                   text1005     0FB2
+__ptext1006                                   text1011     048A
+__ptext1007                                   text1011     047E
+__ptext1008                                   text1005     0FC9
+__ptext1009                                   text1011     0619
+__ptext1010                                   text1011     04DC
+__ptext1011                                   text1011     046A
+__ptext1012                                   text1011     062B
+__ptext1013                                   text1011     0474
+__ptext1014                                   text1011     04C9
+__ptext1015                                   text1005     0FC1
+__ptext1016                                   text1005     0FBD
+__ptext1017                                   text1011     064A
+__ptext1018                                   text1011     0645
+__ptext1019                                   text1019     0F1B
+__ptext1020                                   text1020     0F60
+__ptext1021                                   text1021     0EF9
+__ptext1022                                   text1022     0F27
+__ptext1023                                   text1023     0F0F
+__ptext1024                                   text1024     0F4C
+__ptext1025                                   text1025     0F03
+__ptext1026                                   text1026     0002
+__ptext1027                                   text1027     07FA
+__ptext1028                                   text1028     0F38
+__ptext1029                                   text1005     0FC6
+__ptext1030                                   text1005     0FEB
+__ptext1031                                   text1031     0ECB
+__ptext1032                                   text1032     0EEF
+__ptext1033                                   text1033     0ED6
+__ptext1034                                   text1011     0642
+__ptext1035                                   text1035     0ECE
+__ptext1036                                   text1011     052E
+__ptext1037                                   text1011     0634
+__ptext1038                                   text1011     0622
+__ptext1039                                   text1039     0EE6
+__ptext1040                                   text1011     04C1
+__ptext1041                                   text1011     04B8
+__ptext1042                                   text1011     04B0
+__ptext1043                                   text1011     04A8
+__ptext1044                                   text1011     04A0
+__ptext1045                                   text1045     0F8B
+__ptext1046                                   text1011     06E9
+__ptext1047                                   text1011     06E1
+__ptext1048                                   text1011     04D6
+__ptext1049                                   text1011     04D0
+__ptext1050                                   text1050     0709
+__ptext1051                                   text1050     07DE
+__ptext1052                                   text1050     07D2
+__ptext1053                                   text1050     075D
+__ptext1054                                   text1054     0000
 __size_of_AD_Sample                           (abs)        0000
 __size_of_Filter                              (abs)        0000
 __size_of_ISR                                 (abs)        0000
@@ -575,59 +579,59 @@ __size_of_vPause20sTimer                      (abs)        0000
 __size_of_vPutSampleDataIntoTable             (abs)        0000
 __size_ofi1_setAD_ConvertFlag                 (abs)        0000
 _adc_convert_flag                             bssBANK1     00AD
-_adc_get                                      text1055     0FD8
-_adc_start                                    text1010     0725
-_adc_test_init                                text1010     074A
+_adc_get                                      text1050     07D2
+_adc_start                                    text1005     0FC6
+_adc_test_init                                text1005     0FEB
 _bBigTimerStartFlag                           bssBANK0     004C
 _bPause20secTimer                             bssBANK1     00AE
 _bSmallTimerStartFlag                         bssBANK0     004D
 _bTwentyMinStartFlag                          bssBANK0     004E
 _bTwentySecStartFlag                          bssBANK0     004F
-_clearAllTimer                                text1016     04D1
-_clearParaFunction1                           text1016     0491
-_clearPinPortAndTimer                         text1016     0485
-_clearThreeHoursTimer                         text1016     04DE
-_clearTwelveHoursTimer                        text1016     04D8
-_clearTwentyMinuteTimer                       text1016     06F1
-_clearTwentySecondsTimer                      text1016     06E9
-_clock_config                                 text1038     0EC6
-_clrSampeTime                                 text1031     0002
+_clearAllTimer                                text1011     04C9
+_clearParaFunction1                           text1011     048A
+_clearPinPortAndTimer                         text1011     047E
+_clearThreeHoursTimer                         text1011     04D6
+_clearTwelveHoursTimer                        text1011     04D0
+_clearTwentyMinuteTimer                       text1011     06E9
+_clearTwentySecondsTimer                      text1011     06E1
+_clock_config                                 text1033     0ED6
+_clrSampeTime                                 text1026     0002
 _enumMainLoopStep                             bssBANK0     0050
 _exit                                         init         0011
-_getAD_ConvertFlag                            text1010     071C
-_getAdOriginalCh0Value                        text1016     047B
-_getAdOriginalCh2Value                        text1016     0621
-_getAdOriginalCh5Value                        text1016     0471
-_getAdOriginalCh6Value                        text1016     0633
-_initPin                                      text1050     075F
-_isFinishedThreeHoursTimer                    text1024     0F03
-_isFinishedTwelveHoursTimer                   text1028     0EF7
-_isFinishedTwentyMinuteTimer                  text1030     0EEB
-_isFinishedTwentySecondsTimer                 text1026     0EE1
-_isPermitSampleTime                           text1032     0EB8
+_getAD_ConvertFlag                            text1005     0FBD
+_getAdOriginalCh0Value                        text1011     0474
+_getAdOriginalCh2Value                        text1011     0619
+_getAdOriginalCh5Value                        text1011     046A
+_getAdOriginalCh6Value                        text1011     062B
+_initPin                                      text1045     0F8B
+_isFinishedThreeHoursTimer                    text1019     0F1B
+_isFinishedTwelveHoursTimer                   text1023     0F0F
+_isFinishedTwentyMinuteTimer                  text1025     0F03
+_isFinishedTwentySecondsTimer                 text1021     0EF9
+_isPermitSampleTime                           text1027     07FA
 _main                                         maintext     0013
-_process_AD_Converter_Value                   text1010     0711
+_process_AD_Converter_Value                   text1005     0FB2
 _sampleChannelSelect                          bssBANK0     0051
 _sampleTimes                                  bssBANK0     0052
-_setAD_ConvertFlag                            text1010     0720
-_setPA0                                       text1016     04BF
-_setPA1                                       text1016     04C8
-_setPA2                                       text1044     0ECE
-_setPA3                                       text1016     062A
-_setPA6                                       text1040     0EBE
-_setPB0                                       text1016     04A7
-_setPB1                                       text1016     04AF
-_setPB2                                       text1016     04B7
-_setPB4                                       text1016     0536
-_setPB6                                       text1016     063C
-_setPB6AsInput                                text1016     064A
-_startThreeHoursTimer                         text1025     079D
-_startTwelveHourTimer                         text1029     07B1
-_startTwentyMinuteTimer                       text1033     07C5
-_startTwentySecondsTimer                      text1027     07D9
+_setAD_ConvertFlag                            text1005     0FC1
+_setPA0                                       text1011     04B8
+_setPA1                                       text1011     04C1
+_setPA2                                       text1039     0EE6
+_setPA3                                       text1011     0622
+_setPA6                                       text1035     0ECE
+_setPB0                                       text1011     04A0
+_setPB1                                       text1011     04A8
+_setPB2                                       text1011     04B0
+_setPB4                                       text1011     052E
+_setPB6                                       text1011     0634
+_setPB6AsInput                                text1011     0642
+_startThreeHoursTimer                         text1020     0F60
+_startTwelveHourTimer                         text1024     0F4C
+_startTwentyMinuteTimer                       text1028     0F38
+_startTwentySecondsTimer                      text1022     0F27
 _timer                                        bssBANK1     00AF
-_timer1_config                                text1037     0ED7
-_timer1_interrupt_config                      text1036     0EB5
+_timer1_config                                text1032     0EEF
+_timer1_interrupt_config                      text1031     0ECB
 _ucADC4_Step                                  bssBANK0     0053
 _ucChannel5Type                               bssBANK0     0054
 _uiBigTimer                                   bssBANK1     00A0
@@ -638,38 +642,38 @@ _uiSampleChannelZero                          bssBANK1     00C4
 _uiSmallTimer                                 bssBANK1     00A2
 _uiTwentyMinuteTimer                          bssBANK1     00A4
 _uiTwentySecondsTimer                         bssBANK1     00A6
-_vHandle20sTimerOut                           text1016     04E4
-_vHandle20sTimeron                            text1016     053E
-_vPause20sTimer                               text1016     064D
-_vPutSampleDataIntoTable                      text1055     0F63
+_vHandle20sTimerOut                           text1011     04DC
+_vHandle20sTimeron                            text1011     0536
+_vPause20sTimer                               text1011     0645
+_vPutSampleDataIntoTable                      text1050     075D
 adc_get@val                                   cstackCOMMON 0072
 adc_test_init@channel                         cstackBANK0  0022
 adc_test_init@ref                             cstackBANK0  0020
 btemp                                         (abs)        007E
-clear_ram                                     clrtext      07F8
-end_of_initialization                         cinit        079A
-i1_setAD_ConvertFlag                          text1055     0FE4
+clear_ram                                     clrtext      0EDE
+end_of_initialization                         cinit        0F88
+i1_setAD_ConvertFlag                          text1050     07DE
 i1l1863                                                        
 i1l2620                                                        
-i1l4645                                                        
-i1l4651                                                        
-i1l4655                                                        
-i1l4663                                                        
-i1l4667                                                        
-i1l4675                                                        
-i1l4679                                                        
-i1l4687                                                        
-i1l4691                                                        
+i1l4643                                                        
+i1l4649                                                        
+i1l4653                                                        
+i1l4661                                                        
+i1l4665                                                        
+i1l4673                                                        
+i1l4677                                                        
+i1l4685                                                        
+i1l4689                                                        
+i1l4699                                                        
 i1l4701                                                        
-i1l4703                                                        
-i1l4711                                                        
+i1l4709                                                        
+i1l4713                                                        
 i1l4715                                                        
-i1l4717                                                        
-i1l4721                                                        
+i1l4719                                                        
+i1l4735                                                        
 i1l4737                                                        
 i1l4739                                                        
-i1l4741                                                        
-i1l4745                                                        
+i1l4743                                                        
 i1setAD_ConvertFlag@flag                      cstackCOMMON 0070
 interrupt_function                            intentry     0004
 intlevel0                                     functab      0000
@@ -696,9 +700,10 @@ l1912
 l1952                                                          
 l2611                                                          
 l2617                                                          
+l4409                                                          
 l4411                                                          
 l4413                                                          
-l4415                                                          
+l4417                                                          
 l4419                                                          
 l4421                                                          
 l4423                                                          
@@ -730,99 +735,99 @@ l4473
 l4475                                                          
 l4477                                                          
 l4479                                                          
-l4481                                                          
-l4485                                                          
+l4483                                                          
+l4489                                                          
 l4491                                                          
-l4493                                                          
+l4503                                                          
 l4505                                                          
-l4507                                                          
+l4509                                                          
 l4511                                                          
-l4513                                                          
-l4523                                                          
+l4521                                                          
+l4527                                                          
 l4529                                                          
-l4531                                                          
+l4533                                                          
 l4535                                                          
-l4537                                                          
-l4547                                                          
+l4545                                                          
+l4551                                                          
 l4553                                                          
-l4555                                                          
-l4559                                                          
-l4569                                                          
+l4557                                                          
+l4567                                                          
+l4573                                                          
 l4575                                                          
-l4577                                                          
+l4579                                                          
 l4581                                                          
-l4583                                                          
+l4591                                                          
 l4593                                                          
-l4595                                                          
+l4601                                                          
 l4603                                                          
 l4605                                                          
-l4607                                                          
-l4627                                                          
+l4625                                                          
+l4633                                                          
 l4635                                                          
-l4637                                                          
-l4641                                                          
-l4705                                                          
-l4709                                                          
-l4749                                                          
-l4753                                                          
-l4757                                                          
+l4639                                                          
+l4703                                                          
+l4707                                                          
+l4747                                                          
+l4751                                                          
+l4755                                                          
+l4759                                                          
 l4761                                                          
-l4763                                                          
+l4765                                                          
 l4767                                                          
-l4769                                                          
-l4773                                                          
-l4777                                                          
+l4771                                                          
+l4775                                                          
+l4779                                                          
 l4781                                                          
 l4783                                                          
-l4785                                                          
+l4787                                                          
 l4789                                                          
 l4791                                                          
-l4793                                                          
-l4797                                                          
+l4795                                                          
+l4799                                                          
 l4801                                                          
 l4803                                                          
 l4805                                                          
-l4807                                                          
-l4813                                                          
-l4817                                                          
-l4821                                                          
-l4825                                                          
+l4811                                                          
+l4815                                                          
+l4819                                                          
+l4823                                                          
+l4839                                                          
 l4841                                                          
 l4843                                                          
 l4845                                                          
 l4847                                                          
 l4849                                                          
 l4851                                                          
-l4853                                                          
+l4855                                                          
 l4857                                                          
-l4859                                                          
-l4865                                                          
-l4869                                                          
-l4875                                                          
-l4881                                                          
-l4887                                                          
+l4863                                                          
+l4867                                                          
+l4873                                                          
+l4879                                                          
+l4885                                                          
+l4889                                                          
 l4891                                                          
 l4893                                                          
-l4895                                                          
-l4901                                                          
-l4905                                                          
-l4909                                                          
-l4915                                                          
+l4899                                                          
+l4903                                                          
+l4907                                                          
+l4913                                                          
+l4919                                                          
 l4921                                                          
-l4923                                                          
+l4927                                                          
 l4929                                                          
 l4931                                                          
 l4933                                                          
-l4935                                                          
-l4947                                                          
-l4951                                                          
-l4959                                                          
-l4965                                                          
-l4969                                                          
-l4975                                                          
+l4945                                                          
+l4949                                                          
+l4957                                                          
+l4963                                                          
+l4967                                                          
+l4973                                                          
+l4979                                                          
 l4981                                                          
 l4983                                                          
-l4985                                                          
+l4999                                                          
 l5001                                                          
 l5003                                                          
 l5005                                                          
@@ -832,62 +837,57 @@ l5011
 l5013                                                          
 l5015                                                          
 l5017                                                          
-l5019                                                          
-l5023                                                          
-l5037                                                          
-l5047                                                          
+l5021                                                          
+l5035                                                          
+l5045                                                          
+l5049                                                          
 l5051                                                          
-l5053                                                          
-l5057                                                          
-l5061                                                          
-l5065                                                          
+l5055                                                          
+l5059                                                          
+l5063                                                          
+l5069                                                          
 l5071                                                          
-l5073                                                          
-l5079                                                          
+l5077                                                          
+l5081                                                          
 l5083                                                          
-l5085                                                          
-l5091                                                          
-l5105                                                          
+l5089                                                          
+l5103                                                          
+l5113                                                          
 l5115                                                          
-l5117                                                          
-l5125                                                          
+l5123                                                          
+l5127                                                          
 l5129                                                          
-l5131                                                          
-l5135                                                          
-l5141                                                          
-l5145                                                          
-l5233                                                          
-l5299                                                          
-l5355                                                          
-l5401                                                          
-l5437                                                          
-l5455                                                          
-l5459                                                          
+l5133                                                          
+l5139                                                          
+l5143                                                          
+l5231                                                          
+l5297                                                          
+l5353                                                          
+l5399                                                          
+l5435                                                          
+l5453                                                          
+l5457                                                          
+l5467                                                          
 l5469                                                          
-l5471                                                          
-l5485                                                          
-l5489                                                          
+l5483                                                          
+l5487                                                          
+l5491                                                          
 l5493                                                          
 l5495                                                          
-l5497                                                          
+l5501                                                          
 l5503                                                          
-l5505                                                          
-l5521                                                          
-l5525                                                          
+l5519                                                          
+l5523                                                          
+l5529                                                          
 l5531                                                          
 l5533                                                          
 l5535                                                          
 l5537                                                          
-l5539                                                          
-l5547                                                          
-l5551                                                          
-l5561                                                          
-l5563                                                          
-l5565                                                          
-l5575                                                          
-l5587                                                          
-l5599                                                          
-l5601                                                          
+l5545                                                          
+l5571                                                          
+l5583                                                          
+l5595                                                          
+l5597                                                          
 l693                                                           
 l696                                                           
 l699                                                           
@@ -944,7 +944,7 @@ start                                         init         0011
 startThreeHoursTimer@uiSetTime                cstackBANK0  0020
 startTwelveHourTimer@uiSetTime                cstackBANK0  0020
 startTwentyMinuteTimer@uiValue                cstackBANK0  0020
-start_initialization                          cinit        0786
+start_initialization                          cinit        0F74
 vHandle20sTimerOut@bClearStep                 cstackBANK0  0021
 vHandle20sTimerOut@ucTimeCnt                  bssCOMMON    007D
 vHandle20sTimerOut@ucTimerOnBehaviorStep      bssBANK1     00B8
