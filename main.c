@@ -1524,7 +1524,8 @@ void main(void)
 
                                     if( getAdOriginalCh6Value() <= 150 )
                                     {
-                                        ucTimerDelayP2sLess++;
+                                       // ucTimerDelayP2sLess++;
+                                    	ucTimerDelayP2sLess = 0;
                                         ucTimerDelayP2sMore = 0;
                                     }
                                     else
