@@ -703,7 +703,7 @@ void main(void)
         adc_test_init(AD_CHANNEL_0_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
 
 //      dac_init(); //DAC0/1初始化
-//      op1_init(); //OP1初始化
+        op1_init(); //OP1初始化
 //      op2_init(); //OP2初始化
 
 
@@ -1524,8 +1524,8 @@ void main(void)
 
                                     if( getAdOriginalCh6Value() <= 150 )
                                     {
-                                       // ucTimerDelayP2sLess++;
-                                    	ucTimerDelayP2sLess = 0;
+                                        ucTimerDelayP2sLess++;
+                                    //	ucTimerDelayP2sLess = 0;
                                         ucTimerDelayP2sMore = 0;
                                     }
                                     else
