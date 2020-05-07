@@ -95,6 +95,7 @@ __CONFIG(CONFIG3);
 
 
 
+
 #ifndef USE_SOFTWARE_SIMULATION_TEST
 static void clearAllTimer(void)
 {
@@ -574,6 +575,47 @@ void clearAllTimer(void)
 #define    TRUE   1
 #define    FALSE  0
 
+#if USE_21V_AS_AD_REFERENCE_VOLTAGE
+
+//AD0 channel
+#define  AD0_COMPARE_VALUE_0    1950
+#define  AD0_COMPARE_VALUE_1    2500
+
+//AD5 channel
+#define             RANGE_FIRST_VALUE                1931
+#define             RANGE_SECOND_VALUE               2047
+#define             RANGE_THIRD_VALUE                2164
+#define             RANGE_FOURTH_VALUE               2281
+#define             HYSTERETIC_NEGATIVE_VALUE        40
+#define             HYSTERETIC_POSITIVE_VALUE        0
+//AD6 channel
+#define  AD6_COMPARE_VALUE_0    85
+#define  AD6_COMPARE_VALUE_1    65
+#define  AD6_COMPARE_VALUE_2    150
+#define  AD6_COMPARE_VALUE_3    20
+#define  AD6_COMPARE_VALUE_4    50
+#else
+
+// AD0 CHANNEL
+ #define  AD0_COMPARE_VALUE_0    3150
+ #define  AD0_COMPARE_VALUE_1    4038
+
+// AD5 CHANNEL
+#define             RANGE_FIRST_VALUE                3119
+#define             RANGE_SECOND_VALUE               3306
+#define             RANGE_THIRD_VALUE                3495
+#define             RANGE_FOURTH_VALUE               3684
+#define             HYSTERETIC_NEGATIVE_VALUE        65
+#define             HYSTERETIC_POSITIVE_VALUE        0
+
+
+//AD6 channel
+#define  AD6_COMPARE_VALUE_0    137
+#define  AD6_COMPARE_VALUE_1    105
+#define  AD6_COMPARE_VALUE_2    242
+#define  AD6_COMPARE_VALUE_3    32
+#define  AD6_COMPARE_VALUE_4    81
+#endif
 
 
 
@@ -699,12 +741,13 @@ void main(void)
         clock_config(); //使系统时钟稳定
         timer1_config();
         timer1_interrupt_config();
+        op2_init(); //OP2初始化
 
-        adc_test_init(AD_CHANNEL_0_CHANNEL,ADC_REF_2P1);//ADC初始化 通道0 PB3，2.1V 电压为参考源
+        adc_test_init(AD_CHANNEL_0_CHANNEL,ADC_REF_PB5);//ADC初始化 通道0 PB3，2.1V 电压为参考源
 
 //      dac_init(); //DAC0/1初始化
         op1_init(); //OP1初始化
-//      op2_init(); //OP2初始化
+
 
 
         adc_start();    //ADC启动
@@ -758,7 +801,7 @@ void main(void)
 #endif
                         static unsigned char ucTimerZeroPoint5s = 0;
 
-                        if(getAdOriginalCh0Value() <= 1950)//  AD value -> 2v
+                        if(getAdOriginalCh0Value() <= AD0_COMPARE_VALUE_0)//  AD value -> 2v
                         {
                             ucTimerZeroPoint5s++;
                         }
@@ -787,7 +830,7 @@ void main(void)
                         static unsigned char ucTimerCntP3s = 0;
 
 
-                        if(getAdOriginalCh0Value() <= 1950)// AD value -> 2v
+                        if(getAdOriginalCh0Value() <= AD0_COMPARE_VALUE_0)// AD value -> 2v
                         {
                             ucTimerCntP3s++;
                             if(ucTimerCntP3s >= TIMER_CNT_ZERO_POINT_THREE_SECOND)
@@ -853,7 +896,7 @@ void main(void)
 
                         static unsigned char ucTimerRightP5s = 0;
 
-                        if(getAdOriginalCh6Value() <= 85)
+                        if(getAdOriginalCh6Value() <= AD6_COMPARE_VALUE_0)
                         {
                             ucTimerLargeZeroP5s = 0;
 
@@ -876,7 +919,7 @@ void main(void)
                         else if( ucTimerLessZeroP5s >= TIMER_CNT_ZERO_POINT_THREE_SECOND) //AD6 <= 85 && timer >= 0.3s
                         {
 
-                            if(getAdOriginalCh6Value() < 65)//????// wait to be determined.
+                            if(getAdOriginalCh6Value() < AD6_COMPARE_VALUE_1)//????// wait to be determined.
                             {
                                 ucTimerRightP5s++;
                             }
@@ -971,12 +1014,7 @@ void main(void)
                                         uiOldValue = uiCh5Value;
                                     }
 
-                #define             RANGE_FIRST_VALUE                1931
-                #define             RANGE_SECOND_VALUE               2047
-                #define             RANGE_THIRD_VALUE                2164
-                #define             RANGE_FOURTH_VALUE               2281
-                #define             HYSTERETIC_NEGATIVE_VALUE        40
-                #define             HYSTERETIC_POSITIVE_VALUE        0
+
 
                                     if(LESS_THAN_1911 == ucChannel5Type)
                                     {
@@ -1522,7 +1560,7 @@ void main(void)
 
                                     static unsigned char ucTimerDelayP2sMore = 0;
 
-                                    if( getAdOriginalCh6Value() <= 150 )
+                                    if( getAdOriginalCh6Value() <= AD6_COMPARE_VALUE_2 )
                                     {
                                         ucTimerDelayP2sLess++;
                                     //	ucTimerDelayP2sLess = 0;
@@ -2008,7 +2046,7 @@ void main(void)
 
                                     static unsigned char ucTimerLessX1P5s = 0;
 
-                                    if(getAdOriginalCh6Value() <= 85)
+                                    if(getAdOriginalCh6Value() <= AD6_COMPARE_VALUE_0)
                                     {
                                         ucTimerX1P5s = 0;
                                         ucTimerLessX1P5s++;
@@ -2045,7 +2083,7 @@ void main(void)
 
                                         static unsigned char ucTimerLessX2P5s = 0;
 
-                                        if(getAdOriginalCh6Value() > 20)
+                                        if(getAdOriginalCh6Value() > AD6_COMPARE_VALUE_3)
                                         {
                                             ucTimerX2P5s++;
                                             ucTimerLessX2P5s = 0;
@@ -2138,7 +2176,7 @@ void main(void)
 #endif
                                 static unsigned char ucTimer1s = 0;
 
-                                if(getAdOriginalCh0Value() >= 2500)
+                                if(getAdOriginalCh0Value() >= AD0_COMPARE_VALUE_1)
                                 {
                                     ucTimer1s++;
                                 }
@@ -2160,7 +2198,7 @@ void main(void)
 #endif
                                 static unsigned char ucTimerP3s = 0;
 
-                                if(getAdOriginalCh0Value() <= 1950)
+                                if(getAdOriginalCh0Value() <= AD0_COMPARE_VALUE_0)
                                 {
                                     ucTimerP3s++;
                                 }
@@ -2301,7 +2339,7 @@ void vHandle20sTimeron(void)
     #ifdef USE_SOFTWARE_SIMULATION_TEST
                         cout <<"tag #9:"<<endl;
     #endif
-                if((getAdOriginalCh6Value() < 50))
+                if((getAdOriginalCh6Value() < AD6_COMPARE_VALUE_4))
                 {
                     ucLessThanP8sCnt++;
                     ucMoreThanP8sCnt = 0;
@@ -2425,7 +2463,7 @@ void vHandle20sTimeron(void)
                         static unsigned char ucMoreThanP3sCnt = 0;
 
                         static unsigned char ucLessThanP3sCnt = 0;
-                        if((getAdOriginalCh6Value() < 50))
+                        if((getAdOriginalCh6Value() < AD6_COMPARE_VALUE_4))
                         {
                             ucLessThanP3sCnt++;
                             ucMoreThanP3sCnt = 0;
