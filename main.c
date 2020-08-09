@@ -125,6 +125,13 @@ static void clearPinPortAndTimer(void)
 #endif
 }
 
+#ifdef   USE_SOFTWARE_SIMULATION_TEST
+void vPause20sTimer(unsigned char ucValue);
+{
+	;
+}
+#endif
+
 
 static void initPin(void)
 {
